@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BookOpen, Volume2, Search, Lightbulb, Sparkles, BookMarked, ArrowLeft } from 'lucide-react';
+import { BookOpen, Volume2, Search, Lightbulb, Sparkles, BookMarked, ArrowLeft, ChevronDown } from 'lucide-react';
 import { unitTheories, TheorySection } from '../data/theoryData';
 import { sound } from '../services/sound';
 
@@ -79,27 +79,31 @@ export const TheoryPage: React.FC<TheoryPageProps> = ({
         </p>
       </div>
 
-      {/* Horizontal Unit Selector Pills */}
-      <div className="w-full flex gap-2 overflow-x-auto pb-2 mb-4 scrollbar-none">
-        {unitTheories.map((unit) => {
-          const isSelected = unit.unitId === selectedUnitId;
-          return (
-            <button
-              key={unit.unitId}
-              onClick={() => {
-                sound.playTap();
-                setSelectedUnitId(unit.unitId);
-              }}
-              className={`px-3.5 py-2 rounded-2xl font-black text-xs whitespace-nowrap transition-all border-2 flex items-center gap-1.5 ${
-                isSelected
-                  ? 'bg-duo-blue text-white border-duo-blue-dark shadow-duo-btn-sm'
-                  : 'bg-white text-gray-600 border-duo-gray-200 hover:border-duo-blue shadow-sm'
-              }`}
-            >
-              <span>U{unit.unitId}: {unit.title.split(':')[0]}</span>
-            </button>
-          );
-        })}
+      {/* Unit Dropdown Selector */}
+      <div className="w-full mb-4">
+        <label className="block text-[11px] font-black uppercase text-gray-500 tracking-wider mb-1.5 ml-1 flex items-center justify-between">
+          <span>Unidad a estudiar:</span>
+          <span className="text-duo-blue font-bold">{unitTheories.length} unidades disponibles</span>
+        </label>
+        <div className="relative">
+          <select
+            value={selectedUnitId}
+            onChange={(e) => {
+              sound.playTap();
+              setSelectedUnitId(Number(e.target.value));
+            }}
+            className="w-full appearance-none bg-white border-2 border-duo-gray-300 hover:border-duo-blue focus:border-duo-blue rounded-2xl py-3 px-4 pr-10 text-xs md:text-sm font-black text-gray-800 shadow-[0_4px_0_0_#e5e5e5] focus:outline-none transition-all cursor-pointer"
+          >
+            {unitTheories.map((unit) => (
+              <option key={unit.unitId} value={unit.unitId} className="py-2 text-xs font-bold text-gray-800">
+                Unidad {unit.unitId}: {unit.title} ({unit.genkiChapter})
+              </option>
+            ))}
+          </select>
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-gray-500">
+            <ChevronDown className="w-5 h-5 stroke-[2.5px]" />
+          </div>
+        </div>
       </div>
 
       {/* Search Input */}
