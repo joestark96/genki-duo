@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Heart, Volume2, CheckCircle2, AlertCircle, ArrowRight, Trophy, Sparkles, RotateCcw } from 'lucide-react';
+import { X, Heart, Volume2, CheckCircle2, AlertCircle, ArrowRight, Trophy, Sparkles, RotateCcw, FastForward, ShieldAlert } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { Exercise, LessonNode, UserProfile } from '../../types';
 import { sound } from '../../services/sound';
@@ -7,16 +7,20 @@ import { sound } from '../../services/sound';
 interface QuizModalProps {
   lesson: LessonNode;
   userProfile: UserProfile;
+  isJumpAhead?: boolean;
   onClose: () => void;
   onCompleteLesson: (nodeId: string, earnedXp: number, stars: number) => void;
+  onPassJumpAhead?: (unitId: number) => void;
   onDeductHeart: () => void;
 }
 
 export const QuizModal: React.FC<QuizModalProps> = ({
   lesson,
   userProfile,
+  isJumpAhead = false,
   onClose,
   onCompleteLesson,
+  onPassJumpAhead,
   onDeductHeart
 }) => {
   const exercises = lesson.exercises;
@@ -32,9 +36,10 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   const [selectedLeft, setSelectedLeft] = useState<string | null>(null);
   const [selectedRight, setSelectedRight] = useState<string | null>(null);
 
-  // Status: 'answering' | 'correct' | 'incorrect' | 'completed' | 'game-over'
-  const [status, setStatus] = useState<'answering' | 'correct' | 'incorrect' | 'completed' | 'game-over'>('answering');
+  // Status: 'answering' | 'correct' | 'incorrect' | 'completed' | 'game-over' | 'jump-failed' | 'jump-passed'
+  const [status, setStatus] = useState<'answering' | 'correct' | 'incorrect' | 'completed' | 'game-over' | 'jump-failed' | 'jump-passed'>('answering');
   const [heartsLeft, setHeartsLeft] = useState(userProfile.hearts);
+  const [jumpChancesLeft, setJumpChancesLeft] = useState(3); // 3 mistakes allowed in Jump Ahead
   const [wrongAttempts, setWrongAttempts] = useState(0);
 
   const currentExercise: Exercise | undefined = exercises[currentIndex];
@@ -71,7 +76,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
     }
   }, [currentIndex, currentExercise]);
 
-  if (!currentExercise && status !== 'completed' && status !== 'game-over') {
+  if (!currentExercise && status !== 'completed' && status !== 'game-over' && status !== 'jump-failed' && status !== 'jump-passed') {
     return null;
   }
 
@@ -99,14 +104,27 @@ export const QuizModal: React.FC<QuizModalProps> = ({
       setStatus('correct');
     } else {
       sound.playIncorrect();
-      setStatus('incorrect');
       setWrongAttempts(prev => prev + 1);
-      const newHearts = Math.max(0, heartsLeft - 1);
-      setHeartsLeft(newHearts);
-      onDeductHeart();
 
-      if (newHearts === 0) {
-        setStatus('game-over');
+      if (isJumpAhead) {
+        const remaining = jumpChancesLeft - 1;
+        setJumpChancesLeft(remaining);
+
+        if (remaining <= 0) {
+          setStatus('jump-failed');
+        } else {
+          setStatus('incorrect');
+        }
+      } else {
+        const newHearts = Math.max(0, heartsLeft - 1);
+        setHeartsLeft(newHearts);
+        onDeductHeart();
+
+        if (newHearts === 0) {
+          setStatus('game-over');
+        } else {
+          setStatus('incorrect');
+        }
       }
     }
   };
@@ -116,16 +134,21 @@ export const QuizModal: React.FC<QuizModalProps> = ({
     if (currentIndex < exercises.length - 1) {
       setCurrentIndex(prev => prev + 1);
     } else {
-      // Completed lesson!
+      // Completed exam or lesson!
       sound.playLessonComplete();
       confetti({
-        particleCount: 80,
-        spread: 70,
+        particleCount: 100,
+        spread: 80,
         origin: { y: 0.6 }
       });
-      setStatus('completed');
-      const stars = wrongAttempts === 0 ? 3 : wrongAttempts <= 2 ? 2 : 1;
-      onCompleteLesson(lesson.id, 20, stars);
+
+      if (isJumpAhead) {
+        setStatus('jump-passed');
+      } else {
+        setStatus('completed');
+        const stars = wrongAttempts === 0 ? 3 : wrongAttempts <= 2 ? 2 : 1;
+        onCompleteLesson(lesson.id, 20, stars);
+      }
     }
   };
 
@@ -164,14 +187,12 @@ export const QuizModal: React.FC<QuizModalProps> = ({
 
   const checkPairMatch = (leftId: string, rightId: string) => {
     if (leftId === rightId) {
-      // Matched!
       sound.playTap();
       const newMatched = [...matchedPairs, leftId];
       setMatchedPairs(newMatched);
       setSelectedLeft(null);
       setSelectedRight(null);
 
-      // If all matched, mark ready
       if (newMatched.length === currentExercise?.pairs?.length) {
         sound.playCorrect();
         setStatus('correct');
@@ -200,7 +221,78 @@ export const QuizModal: React.FC<QuizModalProps> = ({
     return false;
   };
 
-  // --- VICTORY SCREEN ---
+  // --- JUMP AHEAD PASSED SCREEN ---
+  if (status === 'jump-passed') {
+    return (
+      <div className="fixed inset-0 z-50 bg-white flex flex-col justify-between p-6 animate-fade-in">
+        <div className="flex-1 flex flex-col items-center justify-center text-center max-w-sm mx-auto">
+          <div className="w-24 h-24 bg-duo-green rounded-full flex items-center justify-center mb-6 shadow-duo-btn border-4 border-duo-green-dark animate-bounce">
+            <Trophy className="w-12 h-12 text-white stroke-[2.5px]" />
+          </div>
+          <h2 className="text-2xl font-black text-gray-800 mb-1">¡Prueba de Salto Superada!</h2>
+          <p className="text-gray-500 font-bold text-sm mb-6">
+            Has demostrado tu dominio con solo {3 - jumpChancesLeft} error(es). ¡Unidad saltada y siguiente nivel desbloqueado!
+          </p>
+
+          <div className="grid grid-cols-2 gap-4 w-full mb-8">
+            <div className="bg-duo-yellow-light/60 border-2 border-duo-yellow rounded-2xl p-4 flex flex-col items-center">
+              <span className="text-xs font-black text-duo-yellow-dark uppercase">EXP Ganada</span>
+              <span className="text-2xl font-black text-duo-yellow-dark flex items-center gap-1">
+                <Sparkles className="w-5 h-5" /> +100 XP
+              </span>
+            </div>
+            <div className="bg-duo-green-light/60 border-2 border-duo-green rounded-2xl p-4 flex flex-col items-center">
+              <span className="text-xs font-black text-duo-green-dark uppercase">Resultado</span>
+              <span className="text-xl font-black text-duo-green">
+                ¡Aprobado!
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <button
+          onClick={() => {
+            if (onPassJumpAhead) {
+              onPassJumpAhead(lesson.unitId);
+            }
+            onClose();
+          }}
+          className="w-full max-w-sm mx-auto py-3.5 bg-duo-green hover:bg-duo-green-dark text-white font-black text-lg rounded-2xl shadow-[0_5px_0_0_#46a302] active:translate-y-1 active:shadow-none transition-all uppercase tracking-wider"
+        >
+          Desbloquear Siguiente Unidad
+        </button>
+      </div>
+    );
+  }
+
+  // --- JUMP AHEAD FAILED SCREEN (3 ERRORS) ---
+  if (status === 'jump-failed') {
+    return (
+      <div className="fixed inset-0 z-50 bg-white flex flex-col justify-between p-6 animate-fade-in">
+        <div className="flex-1 flex flex-col items-center justify-center text-center max-w-sm mx-auto">
+          <div className="w-20 h-20 bg-duo-red-light rounded-full flex items-center justify-center mb-6 border-4 border-duo-red shadow-md">
+            <ShieldAlert className="w-10 h-10 text-duo-red" />
+          </div>
+          <h2 className="text-2xl font-black text-gray-800 mb-2">Prueba de Salto No Superada</h2>
+          <p className="text-gray-600 font-bold text-sm mb-4">
+            Cometiste 3 errores en el examen. Para saltarte una unidad completa debes demostrar un dominio de los temas.
+          </p>
+          <div className="p-4 bg-gray-50 border-2 border-duo-gray-200 rounded-2xl text-xs font-bold text-gray-500 mb-6">
+            💡 Consejo: Te recomendamos completar las lecciones guiadas del roadmap para dominar el vocabulario y la gramática.
+          </div>
+        </div>
+
+        <button
+          onClick={onClose}
+          className="w-full max-w-sm mx-auto py-3.5 bg-duo-blue text-white font-black text-lg rounded-2xl shadow-[0_5px_0_0_#1899d6] active:translate-y-1 active:shadow-none transition-all uppercase tracking-wider flex items-center justify-center gap-2"
+        >
+          <RotateCcw className="w-5 h-5" /> Volver a Practicar en la Unidad
+        </button>
+      </div>
+    );
+  }
+
+  // --- STANDARD LESSON COMPLETED SCREEN ---
   if (status === 'completed') {
     return (
       <div className="fixed inset-0 z-50 bg-white flex flex-col justify-between p-6 animate-fade-in">
@@ -239,7 +331,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
     );
   }
 
-  // --- GAME OVER SCREEN ---
+  // --- GAME OVER SCREEN (Normal Lesson) ---
   if (status === 'game-over') {
     return (
       <div className="fixed inset-0 z-50 bg-white flex flex-col justify-between p-6">
@@ -265,7 +357,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-white flex flex-col justify-between">
-      {/* Top Header: Close, Progress bar, Hearts */}
+      {/* Top Header: Close, Progress bar, Hearts / Chances */}
       <div className="px-4 py-3 flex items-center gap-4 max-w-2xl mx-auto w-full">
         <button
           onClick={onClose}
@@ -277,17 +369,45 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         {/* Duolingo progress bar */}
         <div className="flex-1 h-3.5 bg-duo-gray-200 rounded-full overflow-hidden p-0.5">
           <div
-            className="h-full bg-duo-green rounded-full transition-all duration-300"
+            className={`h-full rounded-full transition-all duration-300 ${
+              isJumpAhead ? 'bg-duo-orange' : 'bg-duo-green'
+            }`}
             style={{ width: `${progressPercent}%` }}
           />
         </div>
 
-        {/* Hearts indicator */}
-        <div className="flex items-center gap-1 font-black text-duo-red">
-          <Heart className="w-5 h-5 fill-duo-red animate-pulse" />
-          <span>{heartsLeft}</span>
-        </div>
+        {/* Indicator: Jump Ahead Strikes or Normal Hearts */}
+        {isJumpAhead ? (
+          <div className="flex items-center gap-1">
+            {[1, 2, 3].map((strikeIdx) => {
+              const isLost = strikeIdx > jumpChancesLeft;
+              return (
+                <Heart
+                  key={strikeIdx}
+                  className={`w-5 h-5 transition-all ${
+                    isLost ? 'text-gray-300 fill-gray-200' : 'text-duo-red fill-duo-red animate-pulse'
+                  }`}
+                />
+              );
+            })}
+          </div>
+        ) : (
+          <div className="flex items-center gap-1 font-black text-duo-red">
+            <Heart className="w-5 h-5 fill-duo-red animate-pulse" />
+            <span>{heartsLeft}</span>
+          </div>
+        )}
       </div>
+
+      {/* Jump Ahead Banner */}
+      {isJumpAhead && (
+        <div className="w-full bg-duo-orange-light/50 border-b-2 border-duo-orange/40 py-1.5 px-4 text-center">
+          <span className="text-xs font-black text-duo-orange-dark uppercase tracking-wider flex items-center justify-center gap-1.5">
+            <FastForward className="w-4 h-4" />
+            Prueba de Salto de Unidad • Máximo 3 Errores ({jumpChancesLeft} vidas restantes)
+          </span>
+        </div>
+      )}
 
       {/* Main Exercise Area */}
       <div className="flex-1 max-w-lg mx-auto w-full px-4 py-4 flex flex-col justify-center overflow-y-auto">
@@ -318,7 +438,6 @@ export const QuizModal: React.FC<QuizModalProps> = ({
           {/* Audio button for listening exercise (Duolingo Normal & Slow/Turtle speed) */}
           {currentExercise.type === 'listening' && (
             <div className="flex items-center justify-center gap-4 my-6">
-              {/* Normal speed */}
               <button
                 onClick={() => {
                   sound.playTap();
@@ -332,7 +451,6 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                 <span className="text-[11px] font-black uppercase mt-1 tracking-wider">Escuchar</span>
               </button>
 
-              {/* Slow / Turtle speed (0.6x) */}
               <button
                 onClick={() => {
                   sound.playTap();
@@ -384,10 +502,9 @@ export const QuizModal: React.FC<QuizModalProps> = ({
           </div>
         )}
 
-        {/* 2. Word-order Exercise (Duolingo Sentence Builder) */}
+        {/* 2. Word-order Exercise */}
         {currentExercise.type === 'word-order' && (
           <div className="flex flex-col gap-6">
-            {/* Sentence target slot */}
             <div className="min-h-[70px] p-3 bg-gray-50 border-b-2 border-duo-gray-300 rounded-2xl flex flex-wrap gap-2 items-center">
               {selectedWords.length === 0 ? (
                 <span className="text-gray-400 text-sm font-bold italic">Toca las palabras para formar la frase...</span>
@@ -404,7 +521,6 @@ export const QuizModal: React.FC<QuizModalProps> = ({
               )}
             </div>
 
-            {/* Word bank pool */}
             <div className="flex flex-wrap gap-2.5 justify-center py-4">
               {availableWords.map((word, idx) => (
                 <button
@@ -422,7 +538,6 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         {/* 3. Match Pairs Exercise */}
         {currentExercise.type === 'match-pairs' && currentExercise.pairs && (
           <div className="grid grid-cols-2 gap-3">
-            {/* Left column */}
             <div className="flex flex-col gap-2.5">
               {currentExercise.pairs.map(p => {
                 const isMatched = matchedPairs.includes(p.id);
@@ -447,7 +562,6 @@ export const QuizModal: React.FC<QuizModalProps> = ({
               })}
             </div>
 
-            {/* Right column */}
             <div className="flex flex-col gap-2.5">
               {currentExercise.pairs.map(p => {
                 const isMatched = matchedPairs.includes(p.id);
@@ -540,4 +654,3 @@ export const QuizModal: React.FC<QuizModalProps> = ({
     </div>
   );
 };
-
