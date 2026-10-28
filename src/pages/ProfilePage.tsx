@@ -1,5 +1,5 @@
 import React from 'react';
-import { User, Flame, Zap, Heart, Gem, Database, RotateCcw, Award, CheckCircle2 } from 'lucide-react';
+import { User, Flame, Zap, Heart, Gem, Database, RotateCcw, Award, CheckCircle2, Volume2 } from 'lucide-react';
 import { UserProfile, Unit } from '../types';
 import { sound } from '../services/sound';
 
@@ -100,6 +100,48 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
           </button>
         </div>
       )}
+
+      {/* Audio Engine & Diagnostic Card */}
+      <h3 className="text-sm font-black text-gray-700 uppercase tracking-wider mb-2">Motor de Audio y Voz</h3>
+      <div className="bg-white p-4 rounded-2xl border-2 border-duo-gray-200 shadow-duo-card mb-5">
+        <div className="flex items-center justify-between mb-2">
+          <div className="flex items-center gap-2">
+            <Volume2 className="w-5 h-5 text-duo-green" />
+            <span className="text-xs font-black text-gray-800">Reproducción de Audio Japonés</span>
+          </div>
+          <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-duo-green-light text-duo-green-dark">
+            {sound.getAvailableJapaneseVoices().length > 0 ? 'Voz Local' : 'Audio Web HD'}
+          </span>
+        </div>
+        <p className="text-xs font-medium text-gray-500 mb-3">
+          {sound.getAvailableJapaneseVoices().length > 0
+            ? `Voz detectada: ${sound.getAvailableJapaneseVoices()[0].name}`
+            : 'Usando motor de pronunciación japonesa en streaming de alta calidad.'}
+        </p>
+
+        <div className="grid grid-cols-2 gap-2">
+          <button
+            onClick={() => {
+              sound.playTap();
+              sound.speakJapanese('こんにちは');
+            }}
+            className="py-2.5 px-3 bg-duo-blue-light border-2 border-duo-blue text-duo-blue-dark font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-blue hover:text-white transition-all flex items-center justify-center gap-1.5"
+          >
+            <Volume2 className="w-4 h-4" />
+            <span>Oír: こんにちは</span>
+          </button>
+          <button
+            onClick={() => {
+              sound.playTap();
+              sound.speakJapanese('ありがとうございます');
+            }}
+            className="py-2.5 px-3 bg-duo-green-light border-2 border-duo-green text-duo-green-dark font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-green hover:text-white transition-all flex items-center justify-center gap-1.5"
+          >
+            <Volume2 className="w-4 h-4" />
+            <span>Oír: ありがとう</span>
+          </button>
+        </div>
+      </div>
 
       {/* SQLite Local Persistence Section */}
       <h3 className="text-sm font-black text-gray-700 uppercase tracking-wider mb-2">Persistencia de Datos</h3>

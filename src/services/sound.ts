@@ -5,19 +5,32 @@ class SoundService {
   private isEnabled: boolean = true;
   private activeUtterance: SpeechSynthesisUtterance | null = null;
   private activeAudio: HTMLAudioElement | null = null;
+  private voices: SpeechSynthesisVoice[] = [];
 
   constructor() {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      // Eagerly trigger voice loading in Chromium/Safari
-      try {
-        window.speechSynthesis.getVoices();
-        window.speechSynthesis.onvoiceschanged = () => {
-          window.speechSynthesis.getVoices();
-        };
-      } catch (e) {
-        console.warn('Error preloading voices:', e);
-      }
+      this.loadVoices();
+      window.speechSynthesis.onvoiceschanged = () => {
+        this.loadVoices();
+      };
     }
+  }
+
+  private loadVoices() {
+    try {
+      this.voices = window.speechSynthesis.getVoices() || [];
+    } catch (_) {}
+  }
+
+  public getAvailableJapaneseVoices(): SpeechSynthesisVoice[] {
+    if (this.voices.length === 0 && typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      this.loadVoices();
+    }
+    return this.voices.filter(v => {
+      const l = (v.lang || '').toLowerCase();
+      const n = (v.name || '').toLowerCase();
+      return l.startsWith('ja') || l.includes('jp') || n.includes('japan') || n.includes('kyoko') || n.includes('ichiro') || n.includes('ayumi');
+    });
   }
 
   private getAudioContext(): AudioContext | null {
@@ -42,68 +55,105 @@ class SoundService {
     return this.isEnabled;
   }
 
-  // Speak Japanese using native SpeechSynthesis with voice auto-selection and anti-GC protection
-  public speakJapanese(text: string, rate: number = 0.85) {
-    if (!this.isEnabled) return;
+  // Play audio stream from public Japanese pronunciation dictionary
+  private playOnlineAudio(text: string, rate: number = 1.0): Promise<boolean> {
+    return new Promise((resolve) => {
+      try {
+        if (this.activeAudio) {
+          this.activeAudio.pause();
+          this.activeAudio = null;
+        }
+
+        // Youdao Japanese audio API (public, supports CORS, returns real MP3 for any kanji/kana)
+        const url = `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(text)}&le=jap`;
+        const audio = new Audio(url);
+        this.activeAudio = audio;
+        audio.playbackRate = Math.max(0.6, Math.min(1.2, rate));
+
+        audio.oncanplaythrough = () => {
+          audio.play().then(() => resolve(true)).catch((e) => {
+            console.warn('Audio play error:', e);
+            resolve(false);
+          });
+        };
+
+        audio.onerror = () => {
+          console.warn('Online Japanese audio stream failed to load');
+          resolve(false);
+        };
+
+        // Fallback timeout in case network hangs
+        setTimeout(() => resolve(false), 3000);
+      } catch (e) {
+        console.warn('Online audio exception:', e);
+        resolve(false);
+      }
+    });
+  }
+
+  // Speak Japanese using SpeechSynthesis with automatic fallback to Youdao Japanese audio stream
+  public async speakJapanese(text: string, rate: number = 0.9): Promise<void> {
     const cleanText = text.replace(/\[.*?\]/g, '').trim();
     if (!cleanText) return;
 
-    // 1. Stop any previously playing audio element
-    if (this.activeAudio) {
-      try {
-        this.activeAudio.pause();
-        this.activeAudio.currentTime = 0;
-      } catch (_) {}
-      this.activeAudio = null;
-    }
+    // Ensure AudioContext is awakened if present
+    this.getAudioContext();
 
-    // 2. Speak using native SpeechSynthesis (Supported on Chrome, Edge, Safari, Firefox, Android, iOS)
-    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+    const jaVoices = this.getAvailableJapaneseVoices();
+
+    // Strategy 1: If browser / Windows HAS a Japanese voice installed, use native SpeechSynthesis
+    if (jaVoices.length > 0 && typeof window !== 'undefined' && 'speechSynthesis' in window) {
       try {
-        // Chromium workaround: ensure synthesizer is not stuck in paused state
         if (window.speechSynthesis.paused) {
           window.speechSynthesis.resume();
         }
-        window.speechSynthesis.cancel();
 
         const utterance = new SpeechSynthesisUtterance(cleanText);
-
-        // Keep active reference on both instance and window to prevent V8 Garbage Collector bug
         this.activeUtterance = utterance;
-        (window as unknown as { __duo_active_utterance: SpeechSynthesisUtterance }).__duo_active_utterance = utterance;
+        (window as unknown as { __duo_utt: SpeechSynthesisUtterance }).__duo_utt = utterance;
 
-        utterance.lang = 'ja-JP';
-        utterance.rate = Math.max(0.5, Math.min(1.2, rate));
+        utterance.voice = jaVoices[0];
+        utterance.lang = jaVoices[0].lang || 'ja-JP';
+        utterance.rate = rate;
         utterance.pitch = 1.0;
+        utterance.volume = 1.0;
 
-        // Try to match specific Japanese voice if voices list is populated
-        const voices = window.speechSynthesis.getVoices();
-        if (voices && voices.length > 0) {
-          const jaVoice = voices.find(v => {
-            const l = (v.lang || '').toLowerCase();
-            const n = (v.name || '').toLowerCase();
-            return l.startsWith('ja') || l.includes('jp') || n.includes('japan') || n.includes('kyoko') || n.includes('otoya');
-          });
-          if (jaVoice) {
-            utterance.voice = jaVoice;
-          }
-        }
+        let started = false;
+        utterance.onstart = () => {
+          started = true;
+        };
+
+        utterance.onerror = (e) => {
+          console.warn('SpeechSynthesis error, falling back to online audio stream:', e);
+          this.activeUtterance = null;
+          this.playOnlineAudio(cleanText, rate);
+        };
 
         utterance.onend = () => {
           this.activeUtterance = null;
         };
 
-        utterance.onerror = (e) => {
-          console.warn('SpeechSynthesis error:', e);
-          this.activeUtterance = null;
-        };
-
         window.speechSynthesis.speak(utterance);
+
+        // Safety check: if SpeechSynthesis does not start within 400ms (common Windows silent failure), fallback to online audio!
+        setTimeout(() => {
+          if (!started && this.activeUtterance === utterance) {
+            console.log('Native SpeechSynthesis did not start audio in time, using online stream fallback...');
+            window.speechSynthesis.cancel();
+            this.activeUtterance = null;
+            this.playOnlineAudio(cleanText, rate);
+          }
+        }, 400);
+
         return;
       } catch (err) {
-        console.warn('SpeechSynthesis speak failed:', err);
+        console.warn('SpeechSynthesis invocation error:', err);
       }
     }
+
+    // Strategy 2: If no Japanese voice is installed in Windows/Browser or SpeechSynthesis is not supported,
+    // play the high-clarity Japanese native audio stream directly!
+    await this.playOnlineAudio(cleanText, rate);
   }
 
   // Play Duolingo-style chime on correct answer (cheerful high arpeggio)
