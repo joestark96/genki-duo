@@ -1,4 +1,4 @@
-// Web Audio API synthesizers for Duolingo-style sound effects + Resilient Japanese Audio & TTS
+// Web Audio API synthesizers for Duolingo-style sound effects + High-Speed Resilient Japanese Audio & TTS
 
 class SoundService {
   private audioCtx: AudioContext | null = null;
@@ -6,6 +6,8 @@ class SoundService {
   private activeUtterance: SpeechSynthesisUtterance | null = null;
   private activeAudio: HTMLAudioElement | null = null;
   private voices: SpeechSynthesisVoice[] = [];
+  // In-memory audio cache for 0ms instantaneous replay
+  private audioCache: Map<string, HTMLAudioElement> = new Map();
 
   constructor() {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
@@ -55,8 +57,22 @@ class SoundService {
     return this.isEnabled;
   }
 
-  // Play audio stream from public Japanese pronunciation dictionary
-  private playOnlineAudio(text: string, rate: number = 1.0): Promise<boolean> {
+  // Preload audio into memory cache in the background for zero-latency instant clicks
+  public preloadAudio(text: string) {
+    const cleanText = text.replace(/\[.*?\]/g, '').trim();
+    if (!cleanText || this.audioCache.has(cleanText)) return;
+
+    try {
+      const url = `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(cleanText)}&le=jap`;
+      const audio = new Audio();
+      audio.preload = 'auto';
+      audio.src = url;
+      this.audioCache.set(cleanText, audio);
+    } catch (_) {}
+  }
+
+  // Play audio stream from public Japanese pronunciation dictionary with instant streaming & memory cache
+  private playOnlineAudio(text: string, rate: number = 0.9): Promise<boolean> {
     return new Promise((resolve) => {
       try {
         if (this.activeAudio) {
@@ -64,26 +80,32 @@ class SoundService {
           this.activeAudio = null;
         }
 
-        // Youdao Japanese audio API (public, supports CORS, returns real MP3 for any kanji/kana)
-        const url = `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(text)}&le=jap`;
-        const audio = new Audio(url);
+        let audio = this.audioCache.get(text);
+        if (!audio) {
+          const url = `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(text)}&le=jap`;
+          audio = new Audio(url);
+          audio.preload = 'auto';
+          this.audioCache.set(text, audio);
+        } else {
+          audio.currentTime = 0;
+        }
+
         this.activeAudio = audio;
-        audio.playbackRate = Math.max(0.6, Math.min(1.2, rate));
+        audio.playbackRate = Math.max(0.55, Math.min(1.2, rate));
+        audio.volume = 0.85; // Pleasant, non-blasting balanced volume
 
-        audio.oncanplaythrough = () => {
-          audio.play().then(() => resolve(true)).catch((e) => {
-            console.warn('Audio play error:', e);
-            resolve(false);
-          });
-        };
-
-        audio.onerror = () => {
-          console.warn('Online Japanese audio stream failed to load');
-          resolve(false);
-        };
-
-        // Fallback timeout in case network hangs
-        setTimeout(() => resolve(false), 3000);
+        // Call play() immediately to trigger streaming playback without waiting for full download!
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise
+            .then(() => resolve(true))
+            .catch((err) => {
+              console.warn('Audio play notice:', err);
+              resolve(false);
+            });
+        } else {
+          resolve(true);
+        }
       } catch (e) {
         console.warn('Online audio exception:', e);
         resolve(false);
@@ -91,17 +113,16 @@ class SoundService {
     });
   }
 
-  // Speak Japanese using SpeechSynthesis with automatic fallback to Youdao Japanese audio stream
+  // Speak Japanese with 0ms delay: prefers instant cache / immediate stream if no local voice installed
   public async speakJapanese(text: string, rate: number = 0.9): Promise<void> {
     const cleanText = text.replace(/\[.*?\]/g, '').trim();
     if (!cleanText) return;
 
-    // Ensure AudioContext is awakened if present
     this.getAudioContext();
 
     const jaVoices = this.getAvailableJapaneseVoices();
 
-    // Strategy 1: If browser / Windows HAS a Japanese voice installed, use native SpeechSynthesis
+    // If local system has a Japanese voice, play it immediately
     if (jaVoices.length > 0 && typeof window !== 'undefined' && 'speechSynthesis' in window) {
       try {
         if (window.speechSynthesis.paused) {
@@ -116,43 +137,23 @@ class SoundService {
         utterance.lang = jaVoices[0].lang || 'ja-JP';
         utterance.rate = rate;
         utterance.pitch = 1.0;
-        utterance.volume = 1.0;
-
-        let started = false;
-        utterance.onstart = () => {
-          started = true;
-        };
-
-        utterance.onerror = (e) => {
-          console.warn('SpeechSynthesis error, falling back to online audio stream:', e);
-          this.activeUtterance = null;
-          this.playOnlineAudio(cleanText, rate);
-        };
+        utterance.volume = 0.85;
 
         utterance.onend = () => {
           this.activeUtterance = null;
         };
 
+        utterance.onerror = () => {
+          this.activeUtterance = null;
+          this.playOnlineAudio(cleanText, rate);
+        };
+
         window.speechSynthesis.speak(utterance);
-
-        // Safety check: if SpeechSynthesis does not start within 400ms (common Windows silent failure), fallback to online audio!
-        setTimeout(() => {
-          if (!started && this.activeUtterance === utterance) {
-            console.log('Native SpeechSynthesis did not start audio in time, using online stream fallback...');
-            window.speechSynthesis.cancel();
-            this.activeUtterance = null;
-            this.playOnlineAudio(cleanText, rate);
-          }
-        }, 400);
-
         return;
-      } catch (err) {
-        console.warn('SpeechSynthesis invocation error:', err);
-      }
+      } catch (_) {}
     }
 
-    // Strategy 2: If no Japanese voice is installed in Windows/Browser or SpeechSynthesis is not supported,
-    // play the high-clarity Japanese native audio stream directly!
+    // Direct, ultra-fast streaming playback (no 400ms timeout delay!)
     await this.playOnlineAudio(cleanText, rate);
   }
 
@@ -176,7 +177,7 @@ class SoundService {
     osc.frequency.setValueAtTime(783.99, now + 0.16);
     osc.frequency.setValueAtTime(1046.50, now + 0.24);
 
-    gain.gain.setValueAtTime(0.15, now);
+    gain.gain.setValueAtTime(0.12, now);
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.6);
 
     osc.start(now);
@@ -201,7 +202,7 @@ class SoundService {
     osc.frequency.setValueAtTime(155.56, now);
     osc.frequency.linearRampToValueAtTime(130.81, now + 0.25);
 
-    gain.gain.setValueAtTime(0.18, now);
+    gain.gain.setValueAtTime(0.14, now);
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
 
     osc.start(now);
@@ -225,7 +226,7 @@ class SoundService {
     osc.frequency.setValueAtTime(400, now);
     osc.frequency.exponentialRampToValueAtTime(800, now + 0.04);
 
-    gain.gain.setValueAtTime(0.1, now);
+    gain.gain.setValueAtTime(0.08, now);
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
 
     osc.start(now);
@@ -250,7 +251,7 @@ class SoundService {
 
       const noteTime = now + idx * 0.12;
       osc.frequency.setValueAtTime(freq, noteTime);
-      gain.gain.setValueAtTime(0.2, noteTime);
+      gain.gain.setValueAtTime(0.16, noteTime);
       gain.gain.exponentialRampToValueAtTime(0.001, noteTime + 0.45);
 
       osc.start(noteTime);

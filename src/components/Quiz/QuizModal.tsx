@@ -57,11 +57,16 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         setMatchedPairs([]);
       }
 
-      // Auto play audio for listening exercise or when prompt has voice
+      // Preload audio for instantaneous 0ms playback on click
+      if (currentExercise.japaneseVoiceText) {
+        sound.preloadAudio(currentExercise.japaneseVoiceText);
+      }
+
+      // Auto play audio for listening exercise
       if (currentExercise.japaneseVoiceText && currentExercise.type === 'listening') {
         setTimeout(() => {
           sound.speakJapanese(currentExercise.japaneseVoiceText!);
-        }, 400);
+        }, 150);
       }
     }
   }, [currentIndex, currentExercise]);

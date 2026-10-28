@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Volume2, RotateCw, Check, Clock, Eye, Sparkles, Filter, Search, Award, BookOpen } from 'lucide-react';
 import { Flashcard, FlashcardCategory, JLPTLevel } from '../../types';
 import { sound } from '../../services/sound';
@@ -47,6 +47,13 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
   });
 
   const currentCard: Flashcard | undefined = filteredCards[currentIndex];
+
+  // Preload audio as soon as a card is displayed for instant 0ms playback
+  useEffect(() => {
+    if (currentCard?.japanese) {
+      sound.preloadAudio(currentCard.japanese);
+    }
+  }, [currentCard]);
 
   const handleFlip = () => {
     sound.playTap();
