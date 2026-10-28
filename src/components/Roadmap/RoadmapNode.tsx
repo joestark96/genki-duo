@@ -1,0 +1,157 @@
+import React from 'react';
+import { Check, Lock, Star, Play, Sparkles, MessageCircle, ShoppingBag, Coffee, Heart, Music, Users, Award, Flame, BookOpen } from 'lucide-react';
+import { LessonNode } from '../../types';
+import { sound } from '../../services/sound';
+
+interface RoadmapNodeProps {
+  node: LessonNode;
+  position: 'center' | 'left' | 'right';
+  isActive: boolean;
+  onSelectNode: (node: LessonNode) => void;
+}
+
+export const RoadmapNode: React.FC<RoadmapNodeProps> = ({
+  node,
+  position,
+  isActive,
+  onSelectNode
+}) => {
+  const isCompleted = node.stars > 0 || node.completedSteps >= node.totalSteps;
+  const isLocked = !node.unlocked;
+
+  // Icon mapping
+  const renderIcon = () => {
+    const props = { className: 'w-7 h-7 text-white stroke-[2.5px]' };
+    switch (node.icon) {
+      case 'Sparkles': return <Sparkles {...props} />;
+      case 'Flame': return <Flame {...props} />;
+      case 'BookOpen': return <BookOpen {...props} />;
+      case 'MessageCircle': return <MessageCircle {...props} />;
+      case 'ShoppingBag': return <ShoppingBag {...props} />;
+      case 'Coffee': return <Coffee {...props} />;
+      case 'Heart': return <Heart {...props} />;
+      case 'Music': return <Music {...props} />;
+      case 'Users': return <Users {...props} />;
+      case 'Award': return <Award {...props} />;
+      default: return <Play {...props} />;
+    }
+  };
+
+  // Color classes for 3D Duolingo button
+  const getColorClasses = () => {
+    if (isLocked) {
+      return {
+        bg: 'bg-duo-gray-300',
+        border: 'border-duo-gray-400',
+        shadow: 'shadow-[0_6px_0_0_#a3a3a3]'
+      };
+    }
+    if (isCompleted) {
+      return {
+        bg: 'bg-duo-yellow',
+        border: 'border-duo-yellow-dark',
+        shadow: 'shadow-[0_6px_0_0_#e5b400]'
+      };
+    }
+    switch (node.color) {
+      case 'blue':
+        return {
+          bg: 'bg-duo-blue',
+          border: 'border-duo-blue-dark',
+          shadow: 'shadow-[0_6px_0_0_#1899d6]'
+        };
+      case 'orange':
+        return {
+          bg: 'bg-duo-orange',
+          border: 'border-duo-orange-dark',
+          shadow: 'shadow-[0_6px_0_0_#e08500]'
+        };
+      case 'purple':
+        return {
+          bg: 'bg-duo-purple',
+          border: 'border-duo-purple-dark',
+          shadow: 'shadow-[0_6px_0_0_#a855f7]'
+        };
+      case 'red':
+        return {
+          bg: 'bg-duo-red',
+          border: 'border-duo-red-dark',
+          shadow: 'shadow-[0_6px_0_0_#ea2b2b]'
+        };
+      case 'green':
+      default:
+        return {
+          bg: 'bg-duo-green',
+          border: 'border-duo-green-dark',
+          shadow: 'shadow-[0_6px_0_0_#46a302]'
+        };
+    }
+  };
+
+  const colors = getColorClasses();
+
+  // Position offset
+  const getOffsetClass = () => {
+    if (position === 'left') return '-translate-x-14';
+    if (position === 'right') return 'translate-x-14';
+    return 'translate-x-0';
+  };
+
+  return (
+    <div className={`relative flex flex-col items-center my-4 transition-transform duration-200 ${getOffsetClass()}`}>
+      {/* Floating Callout badge for the active lesson */}
+      {isActive && !isCompleted && !isLocked && (
+        <div className="absolute -top-11 z-20 animate-bounce">
+          <div className="bg-white border-2 border-duo-gray-300 px-3 py-1 rounded-xl shadow-md flex items-center gap-1 font-black text-xs text-duo-green tracking-wide uppercase">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>¡Comenzar!</span>
+          </div>
+          <div className="w-2.5 h-2.5 bg-white border-r-2 border-b-2 border-duo-gray-300 transform rotate-45 mx-auto -mt-1.5"></div>
+        </div>
+      )}
+
+      {/* 3D Round Node Button */}
+      <button
+        onClick={() => {
+          if (!isLocked) {
+            sound.playTap();
+            onSelectNode(node);
+          }
+        }}
+        disabled={isLocked}
+        className={`relative w-20 h-20 rounded-full flex items-center justify-center transition-all duration-150 active:translate-y-1 active:shadow-none ${colors.bg} ${colors.shadow} ${
+          isLocked ? 'cursor-not-allowed opacity-80' : 'cursor-pointer hover:brightness-105'
+        }`}
+      >
+        {/* Pulsing halo ring for active node */}
+        {isActive && !isLocked && !isCompleted && (
+          <div className="absolute inset-0 rounded-full border-4 border-duo-green animate-ping opacity-30 pointer-events-none" />
+        )}
+
+        {/* Inner icon */}
+        <div className="flex flex-col items-center justify-center">
+          {isLocked ? (
+            <Lock className="w-7 h-7 text-duo-gray-500" />
+          ) : isCompleted ? (
+            <Check className="w-9 h-9 text-white stroke-[3.5px]" />
+          ) : (
+            renderIcon()
+          )}
+        </div>
+
+        {/* Crown / Stars badge at bottom-right */}
+        {isCompleted && (
+          <div className="absolute -bottom-1 -right-1 bg-duo-yellow-dark text-white rounded-full p-1 border-2 border-white shadow-sm flex items-center justify-center">
+            <Star className="w-3.5 h-3.5 fill-white" />
+          </div>
+        )}
+      </button>
+
+      {/* Label under node */}
+      <div className="mt-2 text-center max-w-[140px]">
+        <div className="text-xs font-black text-gray-800 line-clamp-1">{node.title}</div>
+        <div className="text-[10px] font-bold text-gray-500 line-clamp-1">{node.japaneseTitle}</div>
+      </div>
+    </div>
+  );
+};
