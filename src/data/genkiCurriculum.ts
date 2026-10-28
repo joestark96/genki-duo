@@ -1839,70 +1839,1024 @@ export const genkiCurriculum: Unit[] = [
     themeColor: '#ff9600',
     nodes: [
       {
-        id: 'l2-node-1',
-        unitId: 2,
-        lessonNumber: 2,
-        title: 'Esto, Eso y Aquello',
-        japaneseTitle: 'これ・それ・あれ',
-        description: 'Los demostrativos de distancia espacial de Genki',
-        icon: 'ShoppingBag',
-        color: 'orange',
-        totalSteps: 3,
-        unlocked: false,
-        completedSteps: 0,
-        stars: 0,
-        exercises: [
-          {
-            id: 'ex-2-1',
-            type: 'multiple-choice',
-            prompt: 'Señalas un objeto que está junto a la otra persona. ¿Cuál usas?',
-            promptSub: 'Eso (cerca del oyente)',
-            options: [
-              { id: 'd2', text: 'それ (sore)', isCorrect: true },
-              { id: 'd1', text: 'これ (kore - cerca del que habla)' },
-              { id: 'd3', text: 'あれ (are - lejos de ambos)' },
-              { id: 'd4', text: 'どれ (dore - cuál)' }
-            ],
-            correctAnswerId: 'd2',
-            explanation: 'Regla Ko-So-A-Do: Kore (hablante), Sore (oyente), Are (lejos), Dore (pregunta).'
-          },
-          {
-            id: 'ex-2-2',
-            type: 'word-order',
-            prompt: 'Traduce al japonés la pregunta: "¿Cuánto cuesta este libro?":',
-            japaneseVoiceText: 'このほんはいくらですか',
-            wordBank: ['いくら', 'このほん', 'か', 'は', 'です', 'そのほん', 'どれ'],
-            correctSentence: ['このほん', 'は', 'いくら', 'です', 'か'],
-            explanation: '「この本」 (este libro) + は + 「いくらですか」 (¿cuánto cuesta?).'
-          }
-        ]
+            "id": "l2-node-1",
+            "unitId": 2,
+            "lessonNumber": 2,
+            "title": "Vocabulario: Cosas Cotidianas",
+            "japaneseTitle": "たんご：日用品（にちようひん）",
+            "description": "Aprende los objetos cotidianos clave de Genki: paraguas, reloj, libro, etc.",
+            "icon": "ShoppingBag",
+            "color": "orange",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-2-1-1",
+                        "type": "multiple-choice",
+                        "prompt": "¿Cómo se dice \"reloj de pulsera\" en japonés?",
+                        "options": [
+                              {
+                                    "id": "t1",
+                                    "text": "とけい (tokei)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "t2",
+                                    "text": "さいふ (saifu)"
+                              },
+                              {
+                                    "id": "t3",
+                                    "text": "かばん (kaban)"
+                              },
+                              {
+                                    "id": "t4",
+                                    "text": "ぼうし (boushi)"
+                              }
+                        ],
+                        "correctAnswerId": "t1",
+                        "explanation": "「時計」(とけい / tokei) significa reloj (tanto de pared como de pulsera)."
+                  },
+                  {
+                        "id": "ex-2-1-2",
+                        "type": "match-pairs",
+                        "prompt": "Empareja los objetos de la Lección 2 de Genki:",
+                        "pairs": [
+                              {
+                                    "id": "o1",
+                                    "left": "かさ",
+                                    "right": "Paraguas"
+                              },
+                              {
+                                    "id": "o2",
+                                    "left": "さいふ",
+                                    "right": "Cartera / Billetera"
+                              },
+                              {
+                                    "id": "o3",
+                                    "left": "ぼうし",
+                                    "right": "Sombrero / Gorra"
+                              },
+                              {
+                                    "id": "o4",
+                                    "left": "じてんしゃ",
+                                    "right": "Bicicleta"
+                              }
+                        ],
+                        "explanation": "Vocabulario esencial que Mary y sus amigos usan al ir de compras en Genki."
+                  },
+                  {
+                        "id": "ex-2-1-3",
+                        "type": "listening",
+                        "prompt": "Escucha la palabra que se pronuncia:",
+                        "japaneseVoiceText": "しんぶん",
+                        "options": [
+                              {
+                                    "id": "l-shin",
+                                    "text": "Periódico (しんぶん)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "l-hon",
+                                    "text": "Libro (ほん)"
+                              },
+                              {
+                                    "id": "l-zash",
+                                    "text": "Revista (ざっし)"
+                              }
+                        ],
+                        "correctAnswerId": "l-shin",
+                        "explanation": "「新聞」(しんぶん / shinbun) = periódico."
+                  }
+            ]
       },
       {
-        id: 'l2-node-2',
-        unitId: 2,
-        lessonNumber: 2,
-        title: 'Partículas の y も',
-        japaneseTitle: 'の (posesión) y も (también)',
-        description: 'Mi libro (私の本) y "yo también" (私も)',
-        icon: 'Sparkles',
-        color: 'purple',
-        totalSteps: 3,
-        unlocked: false,
-        completedSteps: 0,
-        stars: 0,
-        exercises: [
-          {
-            id: 'ex-2-no1',
-            type: 'word-order',
-            prompt: 'Traduce al japonés la frase: "El bolso de Mary":',
-            japaneseVoiceText: 'メアリーさんのかばん',
-            wordBank: ['かばん', 'の', 'メアリーさん', 'は', 'ほん'],
-            correctSentence: ['メアリーさん', 'の', 'かばん'],
-            explanation: 'En japonés el poseedor va primero, seguido de 「の」 y el objeto poseído.'
-          }
-        ]
+            "id": "l2-node-2",
+            "unitId": 2,
+            "lessonNumber": 2,
+            "title": "Demostrativos: これ・それ・あれ",
+            "japaneseTitle": "これ・それ・あれ・どれ",
+            "description": "Señalar esto, eso y aquello según la distancia física",
+            "icon": "Package",
+            "color": "orange",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-2-2-1",
+                        "type": "multiple-choice",
+                        "prompt": "Tienes un objeto en tus manos y preguntas qué es. ¿Cuál demostrativo usas?",
+                        "options": [
+                              {
+                                    "id": "k1",
+                                    "text": "これ (kore - cerca de quien habla)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "k2",
+                                    "text": "それ (sore - cerca del oyente)"
+                              },
+                              {
+                                    "id": "k3",
+                                    "text": "あれ (are - lejos de ambos)"
+                              }
+                        ],
+                        "correctAnswerId": "k1",
+                        "explanation": "「これ」 se usa para lo que está en posesión o alcance del hablante."
+                  },
+                  {
+                        "id": "ex-2-2-2",
+                        "type": "word-order",
+                        "prompt": "Traduce al japonés la pregunta: \"¿Qué es eso (cerca de ti)?\":",
+                        "japaneseVoiceText": "それはなんですか",
+                        "wordBank": [
+                              "なん",
+                              "それ",
+                              "か",
+                              "は",
+                              "です",
+                              "これ",
+                              "どれ"
+                        ],
+                        "correctSentence": [
+                              "それ",
+                              "は",
+                              "なん",
+                              "です",
+                              "か"
+                        ],
+                        "explanation": "それ (eso) + は + 何 (なん / qué) + です + か."
+                  },
+                  {
+                        "id": "ex-2-2-3",
+                        "type": "multiple-choice",
+                        "prompt": "Ves un edificio allá a lo lejos en la distancia. ¿Cuál usas?",
+                        "options": [
+                              {
+                                    "id": "a1",
+                                    "text": "あれ (are - lejos de ambos)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "a2",
+                                    "text": "これ (kore)"
+                              },
+                              {
+                                    "id": "a3",
+                                    "text": "それ (sore)"
+                              }
+                        ],
+                        "correctAnswerId": "a1",
+                        "explanation": "「あれ」 se refiere a objetos o lugares alejados tanto del que habla como del que escucha."
+                  }
+            ]
+      },
+      {
+            "id": "l2-node-3",
+            "unitId": 2,
+            "lessonNumber": 2,
+            "title": "Demostrativos: この・その・あの",
+            "japaneseTitle": "この・その・あの + 名詞",
+            "description": "Este libro, ese reloj y aquel paraguas (+ sustantivo obligatorio)",
+            "icon": "BookOpen",
+            "color": "purple",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-2-3-1",
+                        "type": "multiple-choice",
+                        "prompt": "¿Cuál es la diferencia entre 「これ」 y 「この」?",
+                        "options": [
+                              {
+                                    "id": "diff1",
+                                    "text": "「この」 SIEMPRE debe ir seguido de un sustantivo (ej. この本)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "diff2",
+                                    "text": "「これ」 solo se usa con personas"
+                              },
+                              {
+                                    "id": "diff3",
+                                    "text": "Significan exactamente lo mismo y son intercambiables"
+                              }
+                        ],
+                        "correctAnswerId": "diff1",
+                        "explanation": "Regla de oro de Genki: この, その, あの y どの nunca pueden estar solos; modifican a un sustantivo."
+                  },
+                  {
+                        "id": "ex-2-3-2",
+                        "type": "word-order",
+                        "prompt": "Traduce al japonés la pregunta: \"¿Cuánto cuesta este libro?\":",
+                        "japaneseVoiceText": "このほんはいくらですか",
+                        "wordBank": [
+                              "いくら",
+                              "このほん",
+                              "か",
+                              "は",
+                              "です",
+                              "そのほん",
+                              "どれ"
+                        ],
+                        "correctSentence": [
+                              "このほん",
+                              "は",
+                              "いくら",
+                              "です",
+                              "か"
+                        ],
+                        "explanation": "「この本」 (este libro) + は + いくら (cuánto) + です + か."
+                  },
+                  {
+                        "id": "ex-2-3-3",
+                        "type": "match-pairs",
+                        "prompt": "Empareja las frases demostrativas con su traducción:",
+                        "pairs": [
+                              {
+                                    "id": "p-kono",
+                                    "left": "このかさ",
+                                    "right": "Este paraguas"
+                              },
+                              {
+                                    "id": "p-sono",
+                                    "left": "そのとけい",
+                                    "right": "Ese reloj"
+                              },
+                              {
+                                    "id": "p-ano",
+                                    "left": "あのかばん",
+                                    "right": "Aquel bolso"
+                              },
+                              {
+                                    "id": "p-dono",
+                                    "left": "どのおる",
+                                    "right": "¿Cuál toalla?"
+                              }
+                        ],
+                        "explanation": "Ko-So-A-Do seguido del objeto específico."
+                  }
+            ]
+      },
+      {
+            "id": "l2-node-4",
+            "unitId": 2,
+            "lessonNumber": 2,
+            "title": "Ubicaciones: ここ・そこ・あそこ",
+            "japaneseTitle": "場所の指示詞（ここ・そこ・あそこ・どこ）",
+            "description": "Preguntar y dar ubicaciones en el campus y en la ciudad",
+            "icon": "MapPin",
+            "color": "blue",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-2-4-1",
+                        "type": "word-order",
+                        "prompt": "Traduce al japonés la frase más útil del viajero: \"¿Dónde está el baño?\":",
+                        "japaneseVoiceText": "トイレはどこですか",
+                        "wordBank": [
+                              "どこ",
+                              "トイレ",
+                              "です",
+                              "は",
+                              "か",
+                              "ここ",
+                              "いくら"
+                        ],
+                        "correctSentence": [
+                              "トイレ",
+                              "は",
+                              "どこ",
+                              "です",
+                              "か"
+                        ],
+                        "explanation": "トイレ (baño / WC) + は + どこ (dónde) + です + か."
+                  },
+                  {
+                        "id": "ex-2-4-2",
+                        "type": "match-pairs",
+                        "prompt": "Empareja los lugares de Genki Lección 2:",
+                        "pairs": [
+                              {
+                                    "id": "pl1",
+                                    "left": "としょかん",
+                                    "right": "Biblioteca"
+                              },
+                              {
+                                    "id": "pl2",
+                                    "left": "ぎんこう",
+                                    "right": "Banco (financiero)"
+                              },
+                              {
+                                    "id": "pl3",
+                                    "left": "ゆうびんきょく",
+                                    "right": "Oficina de correos"
+                              },
+                              {
+                                    "id": "pl4",
+                                    "left": "だいがく",
+                                    "right": "Universidad"
+                              }
+                        ],
+                        "explanation": "Lugares clave que se aprenden para pedir direcciones."
+                  },
+                  {
+                        "id": "ex-2-4-3",
+                        "type": "listening",
+                        "prompt": "Escucha la indicación que da el audio:",
+                        "japaneseVoiceText": "ゆうびんきょくはあそこです",
+                        "options": [
+                              {
+                                    "id": "loc-aso",
+                                    "text": "La oficina de correos está allá.",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "loc-koko",
+                                    "text": "La biblioteca está aquí."
+                              },
+                              {
+                                    "id": "loc-soko",
+                                    "text": "El banco está ahí cerca."
+                              }
+                        ],
+                        "correctAnswerId": "loc-aso",
+                        "explanation": "あそこ (asoko) indica una ubicación alejada de ambos."
+                  }
+            ]
+      },
+      {
+            "id": "l2-node-5",
+            "unitId": 2,
+            "lessonNumber": 2,
+            "title": "Números Grandes: 100 a 10,000",
+            "japaneseTitle": "百（ひゃく）・千（せん）・万（まん）",
+            "description": "Los cientos, miles y las 6 lecturas irregulares de dinero",
+            "icon": "Sparkles",
+            "color": "orange",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-2-5-1",
+                        "type": "multiple-choice",
+                        "prompt": "¡Cuidado con las irregularidades! ¿Cómo se dice 300 en japonés?",
+                        "options": [
+                              {
+                                    "id": "h3-san",
+                                    "text": "さんびゃく (sanbyaku - con dakuten)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "h3-norm",
+                                    "text": "さんひゃく (sanhyaku)"
+                              },
+                              {
+                                    "id": "h3-pya",
+                                    "text": "さんぴゃく (sanpyaku)"
+                              }
+                        ],
+                        "correctAnswerId": "h3-san",
+                        "explanation": "Las 3 irregularidades en cientos son: 300 = さんびゃく, 600 = ろっぴゃく, 800 = はっぴゃく."
+                  },
+                  {
+                        "id": "ex-2-5-2",
+                        "type": "match-pairs",
+                        "prompt": "Empareja los números con su lectura especial:",
+                        "pairs": [
+                              {
+                                    "id": "bp1",
+                                    "left": "600",
+                                    "right": "ろっぴゃく (roppyaku)"
+                              },
+                              {
+                                    "id": "bp2",
+                                    "left": "800",
+                                    "right": "はっぴゃく (happyaku)"
+                              },
+                              {
+                                    "id": "bp3",
+                                    "left": "3,000",
+                                    "right": "さんぜん (sanzen)"
+                              },
+                              {
+                                    "id": "bp4",
+                                    "left": "8,000",
+                                    "right": "はっせん (hassen)"
+                              }
+                        ],
+                        "explanation": "En los miles: 3,000 es sanzen (con z) y 8,000 es hassen (con s geminada)."
+                  },
+                  {
+                        "id": "ex-2-5-3",
+                        "type": "multiple-choice",
+                        "prompt": "¿Cómo se dice 10,000 en japonés?",
+                        "options": [
+                              {
+                                    "id": "man-1",
+                                    "text": "いちまん (ichiman)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "man-sen",
+                                    "text": "じゅうせん (juusen)"
+                              },
+                              {
+                                    "id": "man-hyaku",
+                                    "text": "ひゃくひゃく"
+                              }
+                        ],
+                        "correctAnswerId": "man-1",
+                        "explanation": "El sistema numérico japonés agrupa de 4 en 4 ceros: 10,000 es la unidad base 「万」(まん / man)."
+                  }
+            ]
+      },
+      {
+            "id": "l2-node-6",
+            "unitId": 2,
+            "lessonNumber": 2,
+            "title": "Precios: 〜はいくらですか",
+            "japaneseTitle": "値段（ねだん）と 買い物（かいもの）",
+            "description": "Preguntar cuánto cuesta y pagar en yenes (円 / えん)",
+            "icon": "Tag",
+            "color": "green",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-2-6-1",
+                        "type": "word-order",
+                        "prompt": "Traduce al japonés la pregunta: \"¿Cuánto cuesta este reloj?\":",
+                        "japaneseVoiceText": "このとけいはいくらですか",
+                        "wordBank": [
+                              "このとけい",
+                              "いくら",
+                              "は",
+                              "です",
+                              "か",
+                              "そのとけい",
+                              "だれ"
+                        ],
+                        "correctSentence": [
+                              "このとけい",
+                              "は",
+                              "いくら",
+                              "です",
+                              "か"
+                        ],
+                        "explanation": "この時計 + は + いくら (cuánto) + ですか."
+                  },
+                  {
+                        "id": "ex-2-6-2",
+                        "type": "listening",
+                        "prompt": "Escucha el precio que dice el vendedor:",
+                        "japaneseVoiceText": "にせんごひゃくえんです",
+                        "options": [
+                              {
+                                    "id": "pr-2500",
+                                    "text": "¥2,500 yenes",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "pr-2050",
+                                    "text": "¥2,050 yenes"
+                              },
+                              {
+                                    "id": "pr-1500",
+                                    "text": "¥1,500 yenes"
+                              }
+                        ],
+                        "correctAnswerId": "pr-2500",
+                        "explanation": "にせん (2,000) + ごひゃく (500) + えん (yenes) = 2,500 yenes."
+                  },
+                  {
+                        "id": "ex-2-6-3",
+                        "type": "multiple-choice",
+                        "prompt": "En la tienda, ¿qué frase dices cuando decides comprar algo y entregas el dinero?",
+                        "options": [
+                              {
+                                    "id": "buy-kore",
+                                    "text": "これをください (Kore o kudasai - Deme esto por favor)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "buy-say",
+                                    "text": "さようなら"
+                              },
+                              {
+                                    "id": "buy-oka",
+                                    "text": "おかえりなさい"
+                              }
+                        ],
+                        "correctAnswerId": "buy-kore",
+                        "explanation": "「これをください」(Deme esto, por favor) es la frase estándar de compras en Genki."
+                  }
+            ]
+      },
+      {
+            "id": "l2-node-7",
+            "unitId": 2,
+            "lessonNumber": 2,
+            "title": "Posesión: ¿De quién es? (だれの)",
+            "japaneseTitle": "だれの + 名詞（だれのかばん）",
+            "description": "Preguntar de quién es un objeto extraviado o una pertenencia",
+            "icon": "HelpCircle",
+            "color": "blue",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-2-7-1",
+                        "type": "multiple-choice",
+                        "prompt": "¿Cómo preguntas \"¿De quién es esta billetera?\" en japonés?",
+                        "options": [
+                              {
+                                    "id": "dare-1",
+                                    "text": "これはだれのさいふですか。",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "dare-2",
+                                    "text": "これはなんのさいふですか。"
+                              },
+                              {
+                                    "id": "dare-3",
+                                    "text": "だれはさいふですか。"
+                              }
+                        ],
+                        "correctAnswerId": "dare-1",
+                        "explanation": "「だれの」(dare no) = de quién."
+                  },
+                  {
+                        "id": "ex-2-7-2",
+                        "type": "word-order",
+                        "prompt": "Traduce al japonés la respuesta: \"Es el bolso de Mary\":",
+                        "japaneseVoiceText": "メアリーさんのかばんです",
+                        "wordBank": [
+                              "かばん",
+                              "メアリーさん",
+                              "の",
+                              "です",
+                              "は",
+                              "ほん"
+                        ],
+                        "correctSentence": [
+                              "メアリーさん",
+                              "の",
+                              "かばん",
+                              "です"
+                        ],
+                        "explanation": "Mary-san no kaban desu (Es el bolso de Mary)."
+                  },
+                  {
+                        "id": "ex-2-7-3",
+                        "type": "listening",
+                        "prompt": "Escucha a quién pertenece el objeto:",
+                        "japaneseVoiceText": "これはやましたせんせいのほんです",
+                        "options": [
+                              {
+                                    "id": "l-yama-bk",
+                                    "text": "Este es el libro del profesor Yamashita.",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "l-yama-wat",
+                                    "text": "Este es el reloj de Takeshi."
+                              },
+                              {
+                                    "id": "l-yama-stu",
+                                    "text": "Este es el libro del estudiante."
+                              }
+                        ],
+                        "correctAnswerId": "l-yama-bk",
+                        "explanation": "Yamashita-sensei no hon desu."
+                  }
+            ]
+      },
+      {
+            "id": "l2-node-8",
+            "unitId": 2,
+            "lessonNumber": 2,
+            "title": "La Partícula も (También)",
+            "japaneseTitle": "助詞「も」（〜も〜）",
+            "description": "Cómo expresar \"yo también\" o \"este también\" reemplazando la partícula は",
+            "icon": "Sparkles",
+            "color": "purple",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-2-8-1",
+                        "type": "multiple-choice",
+                        "prompt": "Takeshi dice: 「わたしは学生です」. Si tú también eres estudiante, ¿cómo respondes?",
+                        "options": [
+                              {
+                                    "id": "mo-cor",
+                                    "text": "わたしも学生です。(Watashi mo gakusei desu.)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "mo-wa",
+                                    "text": "わたしはも学生です。"
+                              },
+                              {
+                                    "id": "mo-no",
+                                    "text": "わたしの学生です。"
+                              }
+                        ],
+                        "correctAnswerId": "mo-cor",
+                        "explanation": "La partícula 「も」 sustituye COMPLETAMENTE a 「は」. Nunca se dicen juntas."
+                  },
+                  {
+                        "id": "ex-2-8-2",
+                        "type": "word-order",
+                        "prompt": "Traduce al japonés: \"Este paraguas también cuesta 1,000 yenes\":",
+                        "japaneseVoiceText": "このかさもせんえんです",
+                        "wordBank": [
+                              "このかさ",
+                              "せんえん",
+                              "も",
+                              "です",
+                              "は",
+                              "いくら"
+                        ],
+                        "correctSentence": [
+                              "このかさ",
+                              "も",
+                              "せんえん",
+                              "です"
+                        ],
+                        "explanation": "Kono kasa mo sen-en desu."
+                  },
+                  {
+                        "id": "ex-2-8-3",
+                        "type": "match-pairs",
+                        "prompt": "Empareja la frase original con su réplica con も:",
+                        "pairs": [
+                              {
+                                    "id": "mop1",
+                                    "left": "メアリーさんはアメリカ人です。",
+                                    "right": "スミスさんもアメリカ人です。"
+                              },
+                              {
+                                    "id": "mop2",
+                                    "left": "これは私のペンです。",
+                                    "right": "それも私のペンです。"
+                              },
+                              {
+                                    "id": "mop3",
+                                    "left": "たけしさんは2年生です。",
+                                    "right": "ロバートさんも2年生です。"
+                              }
+                        ],
+                        "explanation": "も vincula oraciones con propiedades idénticas."
+                  }
+            ]
+      },
+      {
+            "id": "l2-node-9",
+            "unitId": 2,
+            "lessonNumber": 2,
+            "title": "Negación: 〜じゃありません",
+            "japaneseTitle": "否定形（じゃありません）",
+            "description": "Decir \"no es...\" de forma educada en conversación",
+            "icon": "ShieldAlert",
+            "color": "red",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-2-9-1",
+                        "type": "multiple-choice",
+                        "prompt": "¿Cómo transformas 「肉です」(Es carne) a negativo educado?",
+                        "options": [
+                              {
+                                    "id": "neg-ja",
+                                    "text": "肉じゃありません (Niku ja arimasen)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "neg-nai",
+                                    "text": "肉ではないです"
+                              },
+                              {
+                                    "id": "neg-no",
+                                    "text": "肉じゃありませんでした"
+                              }
+                        ],
+                        "correctAnswerId": "neg-ja",
+                        "explanation": "Para negar con です, se cambia por 「じゃありません」."
+                  },
+                  {
+                        "id": "ex-2-9-2",
+                        "type": "word-order",
+                        "prompt": "Traduce al japonés: \"No soy profesor de japonés\":",
+                        "japaneseVoiceText": "にほんごのせんせいじゃありません",
+                        "wordBank": [
+                              "じゃありません",
+                              "にほんご",
+                              "せんせい",
+                              "の",
+                              "です",
+                              "は"
+                        ],
+                        "correctSentence": [
+                              "にほんご",
+                              "の",
+                              "せんせい",
+                              "じゃありません"
+                        ],
+                        "explanation": "Nihongo no sensei ja arimasen."
+                  },
+                  {
+                        "id": "ex-2-9-3",
+                        "type": "listening",
+                        "prompt": "Escucha la oración negativa:",
+                        "japaneseVoiceText": "あれはたけしさんのじてんしゃじゃありません",
+                        "options": [
+                              {
+                                    "id": "l-neg-bike",
+                                    "text": "Aquella no es la bicicleta de Takeshi.",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "l-neg-car",
+                                    "text": "Aquella es la bicicleta de Mary."
+                              },
+                              {
+                                    "id": "l-neg-yes",
+                                    "text": "Takeshi tiene una bicicleta nueva."
+                              }
+                        ],
+                        "correctAnswerId": "l-neg-bike",
+                        "explanation": "Takeshi-san no jitensha ja arimasen."
+                  }
+            ]
+      },
+      {
+            "id": "l2-node-10",
+            "unitId": 2,
+            "lessonNumber": 2,
+            "title": "Partículas Finales: ね y よ",
+            "japaneseTitle": "終助詞「ね」と「よ」",
+            "description": "Buscar acuerdo (¿verdad?) y compartir información nueva o enfática",
+            "icon": "Smile",
+            "color": "green",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-2-10-1",
+                        "type": "multiple-choice",
+                        "prompt": "Pruebas un plato delicioso con tu amigo y buscas su confirmación (\"Está rico, ¿verdad?\"). ¿Cuál usas?",
+                        "options": [
+                              {
+                                    "id": "part-ne",
+                                    "text": "おいしいですね (Oishii desu ne - buscando acuerdo)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "part-yo",
+                                    "text": "おいしいですよ (dando info nueva al otro)"
+                              },
+                              {
+                                    "id": "part-ka",
+                                    "text": "おいしいですか (pregunta pura de si está rico)"
+                              }
+                        ],
+                        "correctAnswerId": "part-ne",
+                        "explanation": "「ね」 busca complicidad o confirmación del oyente (¿a que sí?)."
+                  },
+                  {
+                        "id": "ex-2-10-2",
+                        "type": "multiple-choice",
+                        "prompt": "Tu amigo va a comprar un libro y tú le adviertes que es muy caro (él no lo sabe). ¿Qué partícula usas?",
+                        "options": [
+                              {
+                                    "id": "part-yo2",
+                                    "text": "たかいですよ (Takai desu yo - informando con certeza)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "part-ne2",
+                                    "text": "たかいですね"
+                              }
+                        ],
+                        "correctAnswerId": "part-yo2",
+                        "explanation": "「よ」 se usa cuando el hablante tiene una información que el oyente desconoce."
+                  },
+                  {
+                        "id": "ex-2-10-3",
+                        "type": "listening",
+                        "prompt": "Escucha la entonación de la frase:",
+                        "japaneseVoiceText": "これはおいしいですね",
+                        "options": [
+                              {
+                                    "id": "l-ne-agree",
+                                    "text": "Esto está delicioso, ¿verdad?",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "l-ne-warn",
+                                    "text": "¡Te advierto que esto está delicioso!"
+                              }
+                        ],
+                        "correctAnswerId": "l-ne-agree",
+                        "explanation": "Kore wa oishii desu ne."
+                  }
+            ]
+      },
+      {
+            "id": "l2-node-11",
+            "unitId": 2,
+            "lessonNumber": 2,
+            "title": "Workbook: Escucha en la Tienda",
+            "japaneseTitle": "ワークブック：買い物のリスニング",
+            "description": "Ejercicios de escucha idénticos a los del cuaderno oficial de compras",
+            "icon": "Headphones",
+            "color": "purple",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-2-11-1",
+                        "type": "listening",
+                        "prompt": "Escucha la conversación en la tienda:",
+                        "japaneseVoiceText": "すみません、そのとけいはいくらですか。ー さんぜんごひゃくえんです。",
+                        "options": [
+                              {
+                                    "id": "wb2-p1",
+                                    "text": "Pregunta el precio del reloj y cuesta 3,500 yenes.",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "wb2-p2",
+                                    "text": "Pregunta por el bolso y cuesta 5,300 yenes."
+                              },
+                              {
+                                    "id": "wb2-p3",
+                                    "text": "Pregunta dónde está la tienda."
+                              }
+                        ],
+                        "correctAnswerId": "wb2-p1",
+                        "explanation": "その時計はいくらですか (3,500 yenes = さんぜんごひゃくえん)."
+                  },
+                  {
+                        "id": "ex-2-11-2",
+                        "type": "listening",
+                        "prompt": "Escucha el objeto que decide comprar el cliente:",
+                        "japaneseVoiceText": "じゃあ、このあおいかさをください",
+                        "options": [
+                              {
+                                    "id": "wb2-blue-umb",
+                                    "text": "El paraguas azul (あおいかさ)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "wb2-red-hat",
+                                    "text": "El sombrero rojo"
+                              },
+                              {
+                                    "id": "wb2-black-bag",
+                                    "text": "La cartera negra"
+                              }
+                        ],
+                        "correctAnswerId": "wb2-blue-umb",
+                        "explanation": "「この青い傘をください」(Deme este paraguas azul, por favor)."
+                  },
+                  {
+                        "id": "ex-2-11-3",
+                        "type": "listening",
+                        "prompt": "Escucha la respuesta del encargado:",
+                        "japaneseVoiceText": "ぎんこうはあそこですよ",
+                        "options": [
+                              {
+                                    "id": "wb2-bank-adv",
+                                    "text": "Le informa que el banco está allá.",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "wb2-bank-cl",
+                                    "text": "El banco está cerrado."
+                              },
+                              {
+                                    "id": "wb2-post",
+                                    "text": "Correos está aquí."
+                              }
+                        ],
+                        "correctAnswerId": "wb2-bank-adv",
+                        "explanation": "Ginkou wa asoko desu yo."
+                  }
+            ]
+      },
+      {
+            "id": "l2-node-12",
+            "unitId": 2,
+            "lessonNumber": 2,
+            "title": "Workbook: Integración y Restaurante",
+            "japaneseTitle": "ワークブック：レストランの会話 と 総合問題",
+            "description": "Pedir el menú, ordenar platillos y diálogo completo de Genki",
+            "icon": "Award",
+            "color": "orange",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-2-12-1",
+                        "type": "word-order",
+                        "prompt": "Traduce al japonés la frase en el restaurante: \"El menú, por favor\":",
+                        "japaneseVoiceText": "メニューをください",
+                        "wordBank": [
+                              "メニュー",
+                              "ください",
+                              "を",
+                              "は",
+                              "これ"
+                        ],
+                        "correctSentence": [
+                              "メニュー",
+                              "を",
+                              "ください"
+                        ],
+                        "explanation": "メニュー (menú) + を (partícula de objeto directo) + ください (por favor)."
+                  },
+                  {
+                        "id": "ex-2-12-2",
+                        "type": "multiple-choice",
+                        "prompt": "¿Cómo preguntas cortésmente al mesero \"¿Cuánto es en total?\" al pagar la cuenta?",
+                        "options": [
+                              {
+                                    "id": "bill-ikura",
+                                    "text": "いくらですか。 (Ikura desu ka)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "bill-doko",
+                                    "text": "どこですか。"
+                              },
+                              {
+                                    "id": "bill-dare",
+                                    "text": "だれですか。"
+                              }
+                        ],
+                        "correctAnswerId": "bill-ikura",
+                        "explanation": "いくらですか = ¿cuánto es / cuánto cuesta?."
+                  },
+                  {
+                        "id": "ex-2-12-3",
+                        "type": "match-pairs",
+                        "prompt": "Empareja los platillos típicos del diálogo de Genki Lección 2:",
+                        "pairs": [
+                              {
+                                    "id": "dp1",
+                                    "left": "とんかつ",
+                                    "right": "Chuleta de cerdo empanizada"
+                              },
+                              {
+                                    "id": "dp2",
+                                    "left": "にく",
+                                    "right": "Carne"
+                              },
+                              {
+                                    "id": "dp3",
+                                    "left": "さかな",
+                                    "right": "Pescado"
+                              },
+                              {
+                                    "id": "dp4",
+                                    "left": "みず",
+                                    "right": "Agua"
+                              }
+                        ],
+                        "explanation": "Comidas que Mary y Takeshi piden en el restaurante en Genki L2."
+                  }
+            ]
       }
-    ]
+]
   },
 
   // ==========================================
@@ -1917,46 +2871,940 @@ export const genkiCurriculum: Unit[] = [
     themeColor: '#ce82ff',
     nodes: [
       {
-        id: 'l3-node-1',
-        unitId: 3,
-        lessonNumber: 3,
-        title: 'Verbos Forma 〜ます',
-        japaneseTitle: '〜ます と 〜ません',
-        description: 'Comer, beber, escuchar y ver en presente educado',
-        icon: 'Coffee',
-        color: 'purple',
-        totalSteps: 3,
-        unlocked: false,
-        completedSteps: 0,
-        stars: 0,
-        exercises: [
-          {
-            id: 'ex-3-1',
-            type: 'multiple-choice',
-            prompt: '¿Cómo dices "No como carne" de forma educada?',
-            promptSub: 'Negativo de たべます (tabemasu)',
-            japaneseVoiceText: 'たべません',
-            options: [
-              { id: 'v-neg', text: 'たべません (tabemasen)', isCorrect: true },
-              { id: 'v-pos', text: 'たべます (tabemasu)' },
-              { id: 'v-past', text: 'たべました (tabemashita)' },
-              { id: 'v-plain', text: 'たべない (tabenai)' }
-            ],
-            correctAnswerId: 'v-neg',
-            explanation: 'Para negar un verbo en forma -masu, cambias 〜ます por 〜ません.'
-          },
-          {
-            id: 'ex-3-2',
-            type: 'word-order',
-            prompt: 'Traduce al japonés: "Bebo café":',
-            japaneseVoiceText: 'コーヒーをのみます',
-            wordBank: ['のみます', 'コーヒー', 'を', 'たべます', 'おちゃ'],
-            correctSentence: ['コーヒー', 'を', 'のみます'],
-            explanation: 'La partícula 「を」 (wo / o) marca el objeto directo sobre el que recae la acción.'
-          }
-        ]
+            "id": "l3-node-1",
+            "unitId": 3,
+            "lessonNumber": 3,
+            "title": "Vocabulario: Verbos de Vida Diaria",
+            "japaneseTitle": "たんご：毎日の動詞（どうし）",
+            "description": "Comer, beber, ver, escuchar, leer, dormir y levantarse",
+            "icon": "Coffee",
+            "color": "purple",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-3-1-1",
+                        "type": "match-pairs",
+                        "prompt": "Empareja los verbos de rutina en su forma educada:",
+                        "pairs": [
+                              {
+                                    "id": "v1",
+                                    "left": "たべます",
+                                    "right": "Comer"
+                              },
+                              {
+                                    "id": "v2",
+                                    "left": "のみます",
+                                    "right": "Beber"
+                              },
+                              {
+                                    "id": "v3",
+                                    "left": "みます",
+                                    "right": "Ver / Mirar"
+                              },
+                              {
+                                    "id": "v4",
+                                    "left": "ききます",
+                                    "right": "Escuchar"
+                              }
+                        ],
+                        "explanation": "Los 4 verbos sensoriales y de alimentación más básicos de Genki."
+                  },
+                  {
+                        "id": "ex-3-1-2",
+                        "type": "match-pairs",
+                        "prompt": "Empareja los verbos de movimiento y sueño:",
+                        "pairs": [
+                              {
+                                    "id": "v5",
+                                    "left": "おきます",
+                                    "right": "Levantarse / Despertar"
+                              },
+                              {
+                                    "id": "v6",
+                                    "left": "ねます",
+                                    "right": "Acostarse / Dormir"
+                              },
+                              {
+                                    "id": "v7",
+                                    "left": "いきます",
+                                    "right": "Ir"
+                              },
+                              {
+                                    "id": "v8",
+                                    "left": "かえります",
+                                    "right": "Regresar (a casa)"
+                              }
+                        ],
+                        "explanation": "Verbos clave para describir tu día a día."
+                  },
+                  {
+                        "id": "ex-3-1-3",
+                        "type": "listening",
+                        "prompt": "Escucha el verbo que se pronuncia:",
+                        "japaneseVoiceText": "べんきょうします",
+                        "options": [
+                              {
+                                    "id": "l-ben",
+                                    "text": "Estudiar (べんきょうします)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "l-kai",
+                                    "text": "Comprar (かいます)"
+                              },
+                              {
+                                    "id": "l-han",
+                                    "text": "Hablar (はなします)"
+                              }
+                        ],
+                        "correctAnswerId": "l-ben",
+                        "explanation": "勉強します (べんきょうします / benkyou shimasu) = estudiar."
+                  }
+            ]
+      },
+      {
+            "id": "l3-node-2",
+            "unitId": 3,
+            "lessonNumber": 3,
+            "title": "Los 3 Grupos de Verbos",
+            "japaneseTitle": "動詞の３つのグループ",
+            "description": "Aprende a clasificar los verbos U, Ru e Irregulares",
+            "icon": "Layers",
+            "color": "blue",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-3-2-1",
+                        "type": "multiple-choice",
+                        "prompt": "¿Cuáles son los ÚNICOS dos verbos irregulares de todo el idioma japonés?",
+                        "options": [
+                              {
+                                    "id": "irr-pair",
+                                    "text": "する (hacer) y くる (venir)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "irr-tab",
+                                    "text": "たべる (comer) y のむ (beber)"
+                              },
+                              {
+                                    "id": "irr-ik",
+                                    "text": "いく (ir) y みる (ver)"
+                              }
+                        ],
+                        "correctAnswerId": "irr-pair",
+                        "explanation": "En japonés solo hay 2 verbos irregulares: する y くる. ¡Todos los demás son regulares!"
+                  },
+                  {
+                        "id": "ex-3-2-2",
+                        "type": "multiple-choice",
+                        "prompt": "El verbo 「たべる」(comer) termina en \"-eru\". ¿A qué grupo pertenece?",
+                        "options": [
+                              {
+                                    "id": "g-ru",
+                                    "text": "Grupo 2: Ru-verbs (一段動詞 - Ichidan)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "g-u",
+                                    "text": "Grupo 1: U-verbs (五段動詞 - Godan)"
+                              },
+                              {
+                                    "id": "g-irr",
+                                    "text": "Grupo 3: Irregular"
+                              }
+                        ],
+                        "correctAnswerId": "g-ru",
+                        "explanation": "La gran mayoría de verbos que terminan en -eru e -iru son Ru-verbs (se quita る y se añade ます)."
+                  },
+                  {
+                        "id": "ex-3-2-3",
+                        "type": "match-pairs",
+                        "prompt": "Empareja el verbo con su forma de diccionario:",
+                        "pairs": [
+                              {
+                                    "id": "vg1",
+                                    "left": "のみます",
+                                    "right": "のむ (nomu - beber)"
+                              },
+                              {
+                                    "id": "vg2",
+                                    "left": "たべます",
+                                    "right": "たべる (taberu - comer)"
+                              },
+                              {
+                                    "id": "vg3",
+                                    "left": "します",
+                                    "right": "する (suru - hacer)"
+                              },
+                              {
+                                    "id": "vg4",
+                                    "left": "きます",
+                                    "right": "くる (kuru - venir)"
+                              }
+                        ],
+                        "explanation": "Correspondencia entre forma educada 〜ます y diccionario."
+                  }
+            ]
+      },
+      {
+            "id": "l3-node-3",
+            "unitId": 3,
+            "lessonNumber": 3,
+            "title": "Conjugación: 〜ます y 〜ません",
+            "japaneseTitle": "現在形（〜ます・〜ません）",
+            "description": "Afirmación y negación de hábitos diarios y planes futuros",
+            "icon": "CheckCircle2",
+            "color": "green",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-3-3-1",
+                        "type": "multiple-choice",
+                        "prompt": "¿Cómo dices \"No como carne\" de forma educada?",
+                        "options": [
+                              {
+                                    "id": "neg-tabe",
+                                    "text": "たべません (tabemasen)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "neg-tabu",
+                                    "text": "たべないです"
+                              },
+                              {
+                                    "id": "neg-mash",
+                                    "text": "たべました"
+                              }
+                        ],
+                        "correctAnswerId": "neg-tabe",
+                        "explanation": "Para negar en presente educado habitual, se sustituye 〜ます por 〜ません."
+                  },
+                  {
+                        "id": "ex-3-3-2",
+                        "type": "word-order",
+                        "prompt": "Traduce al japonés la frase afirmativa: \"Escucho música\":",
+                        "japaneseVoiceText": "おんがくをききます",
+                        "wordBank": [
+                              "おんがく",
+                              "ききます",
+                              "を",
+                              "は",
+                              "のみます"
+                        ],
+                        "correctSentence": [
+                              "おんがく",
+                              "を",
+                              "ききます"
+                        ],
+                        "explanation": "音楽 (おんがく / ongaku) + を + 聞きます (ききます / kikimasu)."
+                  },
+                  {
+                        "id": "ex-3-3-3",
+                        "type": "match-pairs",
+                        "prompt": "Empareja los afirmativos con sus negativos correspondientes:",
+                        "pairs": [
+                              {
+                                    "id": "c-n1",
+                                    "left": "のみます (bebo)",
+                                    "right": "のみません (no bebo)"
+                              },
+                              {
+                                    "id": "c-n2",
+                                    "left": "みます (veo)",
+                                    "right": "みません (no veo)"
+                              },
+                              {
+                                    "id": "c-n3",
+                                    "left": "いきます (voy)",
+                                    "right": "いきません (no voy)"
+                              },
+                              {
+                                    "id": "c-n4",
+                                    "left": "します (hago)",
+                                    "right": "しません (no hago)"
+                              }
+                        ],
+                        "explanation": "〜ます ➔ 〜ません es la regla universal."
+                  }
+            ]
+      },
+      {
+            "id": "l3-node-4",
+            "unitId": 3,
+            "lessonNumber": 3,
+            "title": "Partícula を: Objeto Directo",
+            "japaneseTitle": "助詞「を」（目的語）",
+            "description": "Marca el objeto sobre el que recae la acción física del verbo",
+            "icon": "Target",
+            "color": "purple",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-3-4-1",
+                        "type": "multiple-choice",
+                        "prompt": "¿Cómo se pronuncia la partícula 「を」 cuando se habla en japonés natural?",
+                        "options": [
+                              {
+                                    "id": "wo-o",
+                                    "text": "Se pronuncia exactamente como \"o\" (la \"w\" es muda)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "wo-w",
+                                    "text": "Se pronuncia fuertemente \"wo\""
+                              },
+                              {
+                                    "id": "wo-wa",
+                                    "text": "Se pronuncia \"wa\""
+                              }
+                        ],
+                        "correctAnswerId": "wo-o",
+                        "explanation": "En japonés moderno, la partícula 「を」 siempre se pronuncia simplemente como vocal \"o\"."
+                  },
+                  {
+                        "id": "ex-3-4-2",
+                        "type": "word-order",
+                        "prompt": "Traduce al japonés: \"Leo el periódico\":",
+                        "japaneseVoiceText": "しんぶんをよみます",
+                        "wordBank": [
+                              "しんぶん",
+                              "よみます",
+                              "を",
+                              "は",
+                              "で",
+                              "かきます"
+                        ],
+                        "correctSentence": [
+                              "しんぶん",
+                              "を",
+                              "よみます"
+                        ],
+                        "explanation": "新聞 (しんぶん) + を + 読みます (よみます)."
+                  },
+                  {
+                        "id": "ex-3-4-3",
+                        "type": "listening",
+                        "prompt": "Escucha qué acción realiza la persona:",
+                        "japaneseVoiceText": "コーヒーをのみます",
+                        "options": [
+                              {
+                                    "id": "l-cof",
+                                    "text": "Bebo café.",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "l-tea",
+                                    "text": "Bebo té verde."
+                              },
+                              {
+                                    "id": "l-wat",
+                                    "text": "Compro café."
+                              }
+                        ],
+                        "correctAnswerId": "l-cof",
+                        "explanation": "Koohii o nomimasu."
+                  }
+            ]
+      },
+      {
+            "id": "l3-node-5",
+            "unitId": 3,
+            "lessonNumber": 3,
+            "title": "Partícula で: Lugar de Acción",
+            "japaneseTitle": "助詞「で」（動作の場所）",
+            "description": "Indica el lugar donde se realiza una actividad o evento",
+            "icon": "MapPin",
+            "color": "orange",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-3-5-1",
+                        "type": "multiple-choice",
+                        "prompt": "¿Qué partícula indica el lugar donde estás estudiando o comiendo?",
+                        "options": [
+                              {
+                                    "id": "p-de",
+                                    "text": "で (de)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "p-ni",
+                                    "text": "に (ni)"
+                              },
+                              {
+                                    "id": "p-wo",
+                                    "text": "を (wo)"
+                              }
+                        ],
+                        "correctAnswerId": "p-de",
+                        "explanation": "「で」 marca el escenario o lugar donde ocurre una acción activa."
+                  },
+                  {
+                        "id": "ex-3-5-2",
+                        "type": "word-order",
+                        "prompt": "Traduce al japonés: \"Estudio en la biblioteca\":",
+                        "japaneseVoiceText": "としょかんでべんきょうします",
+                        "wordBank": [
+                              "としょかん",
+                              "べんきょうします",
+                              "で",
+                              "を",
+                              "に",
+                              "うち"
+                        ],
+                        "correctSentence": [
+                              "としょかん",
+                              "で",
+                              "べんきょうします"
+                        ],
+                        "explanation": "Lugar + で + Acción: としょかんでべんきょうします."
+                  },
+                  {
+                        "id": "ex-3-5-3",
+                        "type": "listening",
+                        "prompt": "Escucha dónde ocurre la acción:",
+                        "japaneseVoiceText": "うちでテレビをみます",
+                        "options": [
+                              {
+                                    "id": "l-tv-home",
+                                    "text": "Veo la televisión en casa.",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "l-tv-cafe",
+                                    "text": "Veo la televisión en el café."
+                              },
+                              {
+                                    "id": "l-tv-school",
+                                    "text": "Veo la televisión en la escuela."
+                              }
+                        ],
+                        "correctAnswerId": "l-tv-home",
+                        "explanation": "うちで (en casa) + テレビをみます (veo la televisión)."
+                  }
+            ]
+      },
+      {
+            "id": "l3-node-6",
+            "unitId": 3,
+            "lessonNumber": 3,
+            "title": "Partículas に y へ: Destinos",
+            "japaneseTitle": "助詞「に」と「へ」（移動の目標と方向）",
+            "description": "Ir a la escuela y volver a casa con verbos de movimiento",
+            "icon": "Compass",
+            "color": "blue",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-3-6-1",
+                        "type": "multiple-choice",
+                        "prompt": "¿Cómo se pronuncia la partícula de dirección 「へ」 cuando acompaña a verbos de movimiento?",
+                        "options": [
+                              {
+                                    "id": "he-e",
+                                    "text": "Se pronuncia siempre \"e\" (igual que la vocal え)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "he-he",
+                                    "text": "Se pronuncia \"he\""
+                              },
+                              {
+                                    "id": "he-ha",
+                                    "text": "Se pronuncia \"ha\""
+                              }
+                        ],
+                        "correctAnswerId": "he-e",
+                        "explanation": "Al igual que は se lee \"wa\", la partícula へ siempre se lee \"e\"."
+                  },
+                  {
+                        "id": "ex-3-6-2",
+                        "type": "word-order",
+                        "prompt": "Traduce al japonés: \"Voy a la escuela\":",
+                        "japaneseVoiceText": "がっこうにいきます",
+                        "wordBank": [
+                              "がくせい",
+                              "がっこう",
+                              "いきます",
+                              "に",
+                              "で",
+                              "を"
+                        ],
+                        "correctSentence": [
+                              "がっこう",
+                              "に",
+                              "いきます"
+                        ],
+                        "explanation": "がっこう (escuela) + に (meta) + いきます (voy)."
+                  },
+                  {
+                        "id": "ex-3-6-3",
+                        "type": "match-pairs",
+                        "prompt": "Empareja los destinos con su verbo habitual:",
+                        "pairs": [
+                              {
+                                    "id": "mov1",
+                                    "left": "うちにかえります",
+                                    "right": "Regresar a casa"
+                              },
+                              {
+                                    "id": "mov2",
+                                    "left": "にほんにいきます",
+                                    "right": "Ir a Japón"
+                              },
+                              {
+                                    "id": "mov3",
+                                    "left": "だいがくにきます",
+                                    "right": "Venir a la universidad"
+                              }
+                        ],
+                        "explanation": "Destino + に/へ + いきます / きます / かえります."
+                  }
+            ]
+      },
+      {
+            "id": "l3-node-7",
+            "unitId": 3,
+            "lessonNumber": 3,
+            "title": "La Partícula に con Horas y Tiempo",
+            "japaneseTitle": "時間と助詞「に」のルール",
+            "description": "La regla de oro de Genki: cuándo se usa に y cuándo está prohibido",
+            "icon": "Clock",
+            "color": "orange",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-3-7-1",
+                        "type": "multiple-choice",
+                        "prompt": "¿Cuál de estas expresiones de tiempo NUNCA lleva la partícula 「に」?",
+                        "options": [
+                              {
+                                    "id": "no-ni-rel",
+                                    "text": "きょう (hoy) y まいにち (todos los días)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "ni-time",
+                                    "text": "7時 (a las 7:00)"
+                              },
+                              {
+                                    "id": "ni-day",
+                                    "text": "にちようび (el domingo)"
+                              }
+                        ],
+                        "correctAnswerId": "no-ni-rel",
+                        "explanation": "Regla de Genki: las palabras temporales relativas (hoy, mañana, todos los días, la próxima semana) NO llevan に."
+                  },
+                  {
+                        "id": "ex-3-7-2",
+                        "type": "word-order",
+                        "prompt": "Traduce al japonés: \"Me levanto a las siete\":",
+                        "japaneseVoiceText": "しちじにおきます",
+                        "wordBank": [
+                              "おきます",
+                              "しちじ",
+                              "に",
+                              "で",
+                              "を",
+                              "ねます"
+                        ],
+                        "correctSentence": [
+                              "しちじ",
+                              "に",
+                              "おきます"
+                        ],
+                        "explanation": "Hora numérica + に + Verbo: しちじにおきます."
+                  },
+                  {
+                        "id": "ex-3-7-3",
+                        "type": "listening",
+                        "prompt": "Escucha a qué hora se acuesta la persona:",
+                        "japaneseVoiceText": "じゅういちじはんにねます",
+                        "options": [
+                              {
+                                    "id": "l-slp-1130",
+                                    "text": "Me duermo a las 11:30.",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "l-slp-1030",
+                                    "text": "Me duermo a las 10:30."
+                              },
+                              {
+                                    "id": "l-slp-1100",
+                                    "text": "Me duermo a las 11:00."
+                              }
+                        ],
+                        "correctAnswerId": "l-slp-1130",
+                        "explanation": "じゅういちじはん (11:30) + に + ねます."
+                  }
+            ]
+      },
+      {
+            "id": "l3-node-8",
+            "unitId": 3,
+            "lessonNumber": 3,
+            "title": "Frecuencia: まいにち, よく, あまり",
+            "japaneseTitle": "頻度の副詞（ひんどのふくし）",
+            "description": "Expresar qué tan seguido haces cosas y los adverbios negativos",
+            "icon": "Flame",
+            "color": "red",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-3-8-1",
+                        "type": "multiple-choice",
+                        "prompt": "El adverbio 「あまり」(amari = casi no) tiene una regla estricta. ¿Cuál es?",
+                        "options": [
+                              {
+                                    "id": "am-neg",
+                                    "text": "SIEMPRE debe ir acompañado de un verbo en negativo (〜ません)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "am-pos",
+                                    "text": "Solo se usa con verbos afirmativos"
+                              },
+                              {
+                                    "id": "am-past",
+                                    "text": "Solo se usa en tiempo pasado"
+                              }
+                        ],
+                        "correctAnswerId": "am-neg",
+                        "explanation": "「あまり」 y 「ぜんぜん」 exigen obligatoriamente terminación negativa (ej. あまり食べません = casi no como)."
+                  },
+                  {
+                        "id": "ex-3-8-2",
+                        "type": "match-pairs",
+                        "prompt": "Empareja los adverbios de frecuencia en orden decreciente:",
+                        "pairs": [
+                              {
+                                    "id": "fr1",
+                                    "left": "まいにち",
+                                    "right": "Todos los días (100%)"
+                              },
+                              {
+                                    "id": "fr2",
+                                    "left": "よく",
+                                    "right": "Frecuentemente / A menudo (80%)"
+                              },
+                              {
+                                    "id": "fr3",
+                                    "left": "ときどき",
+                                    "right": "A veces (50%)"
+                              },
+                              {
+                                    "id": "fr4",
+                                    "left": "ぜんぜん + neg",
+                                    "right": "Nunca / Para nada (0%)"
+                              }
+                        ],
+                        "explanation": "Escala de frecuencia de Genki Lección 3."
+                  },
+                  {
+                        "id": "ex-3-8-3",
+                        "type": "word-order",
+                        "prompt": "Traduce al japonés: \"A menudo veo películas\":",
+                        "japaneseVoiceText": "よくえいがをみます",
+                        "wordBank": [
+                              "えいが",
+                              "みます",
+                              "よく",
+                              "を",
+                              "あまり",
+                              "で"
+                        ],
+                        "correctSentence": [
+                              "よく",
+                              "えいが",
+                              "を",
+                              "みます"
+                        ],
+                        "explanation": "Yoku eiga o mimasu (A menudo veo películas)."
+                  }
+            ]
+      },
+      {
+            "id": "l3-node-9",
+            "unitId": 3,
+            "lessonNumber": 3,
+            "title": "Invitaciones: 〜ませんか",
+            "japaneseTitle": "提案・勧誘（〜ませんか）",
+            "description": "Cómo invitar a alguien a salir de manera cortés y sugerente",
+            "icon": "Heart",
+            "color": "red",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-3-9-1",
+                        "type": "multiple-choice",
+                        "prompt": "¿Cómo invitas a alguien diciendo: \"¿Por qué no tomamos un café?\" en Genki?",
+                        "options": [
+                              {
+                                    "id": "inv-cof",
+                                    "text": "コーヒーをのみませんか。(Koohii o nomimasen ka)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "inv-pos",
+                                    "text": "コーヒーをのみますか。"
+                              },
+                              {
+                                    "id": "inv-sh",
+                                    "text": "コーヒーをのんでください。"
+                              }
+                        ],
+                        "correctAnswerId": "inv-cof",
+                        "explanation": "La forma negativa interrogativa 〜ませんか es la manera más educada y clásica de invitar a alguien."
+                  },
+                  {
+                        "id": "ex-3-9-2",
+                        "type": "word-order",
+                        "prompt": "Traduce al japonés la invitación: \"¿Almorzamos juntos? (¿Comemos el almuerzo?)\":",
+                        "japaneseVoiceText": "ひるごはんをたべませんか",
+                        "wordBank": [
+                              "ひるごはん",
+                              "たべませんか",
+                              "を",
+                              "は",
+                              "で",
+                              "のみませんか"
+                        ],
+                        "correctSentence": [
+                              "ひるごはん",
+                              "を",
+                              "たべませんか"
+                        ],
+                        "explanation": "Hirugohan o tabemasen ka."
+                  },
+                  {
+                        "id": "ex-3-9-3",
+                        "type": "multiple-choice",
+                        "prompt": "Cuando alguien te invita con 〜ませんか y quieres aceptar entusiasmado, ¿qué respondes?",
+                        "options": [
+                              {
+                                    "id": "ans-ii",
+                                    "text": "いいですね。(¡Me parece bien! / ¡Excelente idea!)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "ans-iie",
+                                    "text": "いいえ、だめです。"
+                              },
+                              {
+                                    "id": "ans-gom",
+                                    "text": "ごめんなさい。"
+                              }
+                        ],
+                        "correctAnswerId": "ans-ii",
+                        "explanation": "「いいですね」(Ii desu ne) es la respuesta entusiasta por excelencia en Genki."
+                  }
+            ]
+      },
+      {
+            "id": "l3-node-10",
+            "unitId": 3,
+            "lessonNumber": 3,
+            "title": "Workbook: Escucha de Rutinas y Citas",
+            "japaneseTitle": "ワークブック：リスニング問題（週末の予定）",
+            "description": "Ejercicios de escucha idénticos a los del cuaderno sobre fines de semana",
+            "icon": "Headphones",
+            "color": "purple",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-3-10-1",
+                        "type": "listening",
+                        "prompt": "Escucha el plan de Takeshi para el sábado:",
+                        "japaneseVoiceText": "どようびにきょうとへいきます",
+                        "options": [
+                              {
+                                    "id": "wb3-kyo",
+                                    "text": "El sábado va a Kioto.",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "wb3-tok",
+                                    "text": "El domingo va a Tokio."
+                              },
+                              {
+                                    "id": "wb3-hom",
+                                    "text": "Se queda en casa a estudiar."
+                              }
+                        ],
+                        "correctAnswerId": "wb3-kyo",
+                        "explanation": "どようび (sábado) + に + きょうとへいきます (va a Kioto)."
+                  },
+                  {
+                        "id": "ex-3-10-2",
+                        "type": "listening",
+                        "prompt": "Escucha qué hace Mary los domingos:",
+                        "japaneseVoiceText": "にちようびによくテニスをします",
+                        "options": [
+                              {
+                                    "id": "wb3-ten",
+                                    "text": "Los domingos a menudo juega tenis.",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "wb3-stu",
+                                    "text": "Los domingos estudia en la biblioteca."
+                              },
+                              {
+                                    "id": "wb3-swi",
+                                    "text": "Los domingos nada en la piscina."
+                              }
+                        ],
+                        "correctAnswerId": "wb3-ten",
+                        "explanation": "Nichiyoubi ni yoku tenisu o shimasu."
+                  },
+                  {
+                        "id": "ex-3-10-3",
+                        "type": "listening",
+                        "prompt": "Escucha la invitación que hace Takeshi a Mary:",
+                        "japaneseVoiceText": "こんばん、えいがをみませんか。ー ええ、いいですね。",
+                        "options": [
+                              {
+                                    "id": "wb3-mov-ok",
+                                    "text": "La invita a ver una película esta noche y Mary acepta.",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "wb3-mov-no",
+                                    "text": "La invita a cenar pero Mary no puede."
+                              },
+                              {
+                                    "id": "wb3-mov-sun",
+                                    "text": "Pregunta si mañana hay clases."
+                              }
+                        ],
+                        "correctAnswerId": "wb3-mov-ok",
+                        "explanation": "Konban eiga o mimasen ka. - Ee, ii desu ne."
+                  }
+            ]
+      },
+      {
+            "id": "l3-node-11",
+            "unitId": 3,
+            "lessonNumber": 3,
+            "title": "Workbook: Integración y Cita del Sábado",
+            "japaneseTitle": "ワークブック：第３課 総合問題",
+            "description": "Prueba final de la Lección 3 unificando horarios, lugares y partículas",
+            "icon": "Award",
+            "color": "orange",
+            "totalSteps": 3,
+            "unlocked": false,
+            "completedSteps": 0,
+            "stars": 0,
+            "exercises": [
+                  {
+                        "id": "ex-3-11-1",
+                        "type": "multiple-choice",
+                        "prompt": "Encuentra el error de partículas del Workbook: 「あした 学校 で 行きます」. ¿Cuál es el error?",
+                        "options": [
+                              {
+                                    "id": "err-part-de",
+                                    "text": "Debe ser 「学校 に / へ 行きます」(con verbos de movimiento se usa に o へ, no で)",
+                                    "isCorrect": true
+                              },
+                              {
+                                    "id": "err-part-ash",
+                                    "text": "あした debe llevar に"
+                              },
+                              {
+                                    "id": "err-part-ik",
+                                    "text": "El verbo 行きます está mal conjugado"
+                              }
+                        ],
+                        "correctAnswerId": "err-part-de",
+                        "explanation": "で indica el lugar donde se realiza una acción estática. Para movimiento y metas se usa に o へ."
+                  },
+                  {
+                        "id": "ex-3-11-2",
+                        "type": "word-order",
+                        "prompt": "Arma la oración completa de rutina: \"Todos los días estudio japonés en la universidad\":",
+                        "japaneseVoiceText": "まいにちだいがくでにほんごをべんきょうします",
+                        "wordBank": [
+                              "べんきょうします",
+                              "だいがく",
+                              "まいにち",
+                              "にほんご",
+                              "で",
+                              "を",
+                              "に"
+                        ],
+                        "correctSentence": [
+                              "まいにち",
+                              "だいがく",
+                              "で",
+                              "にほんご",
+                              "を",
+                              "べんきょうします"
+                        ],
+                        "explanation": "まいにち (tiempo relativo) + だいがくで (lugar) + 日本語を (objeto) + べんきょうします (verbo)."
+                  },
+                  {
+                        "id": "ex-3-11-3",
+                        "type": "match-pairs",
+                        "prompt": "Empareja los días de la semana de Genki Lección 3:",
+                        "pairs": [
+                              {
+                                    "id": "day1",
+                                    "left": "げつようび",
+                                    "right": "Lunes"
+                              },
+                              {
+                                    "id": "day2",
+                                    "left": "きんようび",
+                                    "right": "Viernes"
+                              },
+                              {
+                                    "id": "day3",
+                                    "left": "どようび",
+                                    "right": "Sábado"
+                              },
+                              {
+                                    "id": "day4",
+                                    "left": "にちようび",
+                                    "right": "Domingo"
+                              }
+                        ],
+                        "explanation": "Días indispensables para coordinar citas y planes semanales."
+                  }
+            ]
       }
-    ]
+]
   },
 
   // ==========================================

@@ -310,6 +310,47 @@ export const unitTheories: UnitTheory[] = [
         ]
       },
       {
+        id: 'u2-numbers-prices',
+        title: 'Números Grandes y Precios: 〜はいくらですか',
+        japaneseTitle: '百（ひゃく）・千（せん）・万（まん）と 値段',
+        category: 'vocabulary',
+        summary: 'Cómo contar dinero en yenes (円 / えん) y las 6 lecturas irregulares que siempre vienen en exámenes.',
+        content: [
+          '• **Cientos (百 / ひゃく):** Las 3 irregularidades fonéticas:',
+          '   • 300 = **さんびゃく (sanbyaku)** — con dakuten (゛)',
+          '   • 600 = **ろっぴゃく (roppyaku)** — con handakuten (゜) y tsu pequeño (っ)',
+          '   • 800 = **はっぴゃく (happyaku)** — con handakuten (゜) y tsu pequeño (っ)',
+          '• **Miles (千 / せん):** Las 2 irregularidades:',
+          '   • 3,000 = **さんぜん (sanzen)** — con z',
+          '   • 8,000 = **はっせん (hassen)** — con s geminada (っ)',
+          '• **Diez Mil (万 / まん):** 10,000 se dice **いちまん (ichiman)**. El sistema japonés cuenta en bloques de 4 ceros (万 = 10,000).',
+          '• **Preguntar el precio:** 「[Objeto] は いくらですか」 (¿Cuánto cuesta...?).',
+          '• **Decidir comprar:** 「これをください」 (Deme esto, por favor).'
+        ],
+        examples: [
+          { japanese: 'このとけいはいくらですか。ー さんぜんごひゃくえんです。', romaji: 'Kono tokei wa ikura desu ka. - Sanzen gohyaku-en desu.', spanish: '¿Cuánto cuesta este reloj? - Cuesta 3,500 yenes.', audioText: 'このとけいはいくらですかさんぜんごひゃくえんです' },
+          { japanese: 'じゃあ、これをください。', romaji: 'Jaa, kore o kudasai.', spanish: 'Entonces, deme esto por favor.', audioText: 'じゃあこれをください' }
+        ],
+        tip: '1,000 se dice simplemente 「せん」(sen), no "ichi-sen". Pero 10,000 OBLIGATORIAMENTE lleva el uno: 「いちまん」(ichiman).'
+      },
+      {
+        id: 'u2-dare-no',
+        title: 'Posesión e Interrogativo: だれの (¿De quién?)',
+        japaneseTitle: 'だれの + 名詞',
+        category: 'grammar',
+        formula: 'これは だれの [Objeto] ですか',
+        summary: 'Para preguntar de quién es un objeto, combinamos だれ (quién) con la partícula de posesión の.',
+        content: [
+          '• Pregunta: これは**だれのかばん**ですか。(¿De quién es esta bolsa?).',
+          '• Respuesta completa: それはメアリーさんのかばんです。(Esa es la bolsa de Mary).',
+          '• Respuesta corta natural: メアリーさんのです。(Es de Mary — omitiendo el objeto repetido).'
+        ],
+        examples: [
+          { japanese: 'これはだれのさいふですか。', romaji: 'Kore wa dare no saifu desu ka.', spanish: '¿De quién es esta billetera?', audioText: 'これはだれのさいふですか' },
+          { japanese: 'やましたせんせいのほんです。', romaji: 'Yamashita-sensei no hon desu.', spanish: 'Es el libro del profesor Yamashita.', audioText: 'やましたせんせいのほんです' }
+        ]
+      },
+      {
         id: 'u2-particle-mo',
         title: 'La Partícula de Inclusión も (También)',
         japaneseTitle: '助詞「も」（〜también〜）',
@@ -324,7 +365,7 @@ export const unitTheories: UnitTheory[] = [
         ],
         examples: [
           { japanese: 'わたしも学生です。', romaji: 'Watashi mo gakusei desu.', spanish: 'Yo también soy estudiante.', audioText: 'わたしもがくせいです' },
-          { japanese: 'これも千円です。', romaji: 'Kore mo sen-en desu.', spanish: 'Esto también cuesta 1,000 yenes.', audioText: 'これもありますせんえんです' }
+          { japanese: 'これも千円です。', romaji: 'Kore mo sen-en desu.', spanish: 'Esto también cuesta 1,000 yenes.', audioText: 'これもせんえんです' }
         ],
         tip: '¡Nunca digas 「はも」 juntos! 「も」 reemplaza totalmente a 「は」.'
       },
@@ -344,6 +385,36 @@ export const unitTheories: UnitTheory[] = [
         examples: [
           { japanese: 'わたしはさくら大学の学生じゃありません。', romaji: 'Watashi wa Sakura daigaku no gakusei ja arimasen.', spanish: 'No soy estudiante de la Universidad Sakura.', audioText: 'わたしはさくらだいがくのがくせいじゃありません' }
         ]
+      },
+      {
+        id: 'u2-final-particles',
+        title: 'Partículas Finales: ね (Acuerdo) y よ (Énfasis)',
+        japaneseTitle: '文末助詞「ね」と「よ」',
+        category: 'grammar',
+        summary: 'Pequeñas partículas al final de la frase que cambian radicalmente la intención comunicativa y el tono social.',
+        content: [
+          '• **ね (ne):** Busca la confirmación o complicidad del oyente (equivale a "¿verdad?", "¿a que sí?", "¿no crees?"). Se usa cuando ambos comparten la misma experiencia.',
+          '   • Ej: 「おいしいですね」 (¡Está delicioso, ¿verdad?!).',
+          '• **よ (yo):** Indica que el hablante tiene una información que el oyente desconoce o enfatiza con seguridad.',
+          '   • Ej: 「とんかつは千円ですよ」 (¡Te aviso que el tonkatsu cuesta 1,000 yenes!).'
+        ],
+        examples: [
+          { japanese: 'このかばんはたかいですね。', romaji: 'Kono kaban wa takai desu ne.', spanish: 'Esta bolsa es cara, ¿verdad?', audioText: 'このかばんはたかいですね' },
+          { japanese: 'ぎんこうはあそこですよ。', romaji: 'Ginkou wa asoko desu yo.', spanish: '¡El banco está allá, te informo!', audioText: 'ぎんこうはあそこですよ' }
+        ]
+      },
+      {
+        id: 'u2-shopping-culture',
+        title: 'Cultura: Compras y Modales en Japón',
+        japaneseTitle: '日本の買い物マナー',
+        category: 'culture',
+        summary: 'Costumbres imprescindibles para hacer compras y comer en restaurantes japoneses.',
+        content: [
+          '• **いらっしゃいませ (Irasshaimase):** Significa "Bienvenido a la tienda". No es necesario responder nada; una ligera inclinación de cabeza es suficiente.',
+          '• **La bandeja para el dinero (カルトン / karuton):** En Japón nunca se entrega el dinero o la tarjeta en la mano del cajero; se coloca sobre la bandeja pequeña del mostrador.',
+          '• **Sin propinas (No tipping):** En Japón no existe la cultura de la propina. Dejar dinero extra en la mesa se considera confuso e incluso de mala educación; te perseguirán para devolvértelo pensando que lo olvidaste.'
+        ],
+        tip: 'Al pedir comida en un restaurante, di el nombre del platillo seguido de 「をください」(o kudasai) o simplemente 「をおねがいします」(o onegaishimasu).'
       }
     ]
   },
@@ -418,7 +489,78 @@ export const unitTheories: UnitTheory[] = [
           { japanese: 'じゅういちじにねます。', romaji: 'Juuichiji ni nemasu.', spanish: 'Me voy a dormir a las 11:00.', audioText: 'じゅういちじにねます' }
         ],
         tip: 'Regla de oro de Genki para partícula に: Las palabras de tiempo relativo (きょう [hoy], あした [mañana], まいにち [todos los días], こんばん [esta noche]) ¡NUNCA llevan に!'
+      },
+      {
+        id: 'u3-time-frequency',
+        title: 'Adverbios de Frecuencia y Tiempo Relativo',
+        japaneseTitle: '頻度の副詞（まいにち・よく・あまり）',
+        category: 'vocabulary',
+        summary: 'Cómo graduar tus hábitos diarios desde 100% hasta 0%, y los adverbios que exigen negación obligatoria.',
+        content: [
+          '• **まいにち (Mainichi):** Todos los días (100% de frecuencia).',
+          '• **よく (Yoku):** A menudo / Frecuentemente (80%). Ej: 「よく映画を見ます」 (A menudo veo películas).',
+          '• **ときどき (Tokidoki):** A veces (50%). Ej: 「ときどきマクドナルドに行きます」 (A veces voy a McDonald\'s).',
+          '• **あまり + Negativo (Amari ... masen):** Casi no / Raras veces (15%). ¡NUNCA con verbo afirmativo!',
+          '• **ぜんぜん + Negativo (Zenzen ... masen):** Nunca / Para nada (0%). ¡NUNCA con verbo afirmativo!'
+        ],
+        table: {
+          title: 'Escala de Frecuencia de Genki Lección 3',
+          headers: ['Adverbio', 'Frecuencia', 'Polaridad del Verbo', 'Ejemplo'],
+          rows: [
+            ['まいにち', '100% (Todos los días)', 'Afirmativo', 'まいにち勉強します'],
+            ['よく', '80% (A menudo)', 'Afirmativo', 'よく本を読みます'],
+            ['ときどき', '50% (A veces)', 'Afirmativo', 'ときどきテニスをします'],
+            ['あまり', '15% (Casi no)', 'Negativo OBLIGATORIO', 'あまり食べません'],
+            ['ぜんぜん', '0% (Nunca / Para nada)', 'Negativo OBLIGATORIO', 'ぜんぜん飲みません']
+          ]
+        },
+        examples: [
+          { japanese: 'わたしはあまりおさけをのみません。', romaji: 'Watashi wa amari osake o nomimasen.', spanish: 'Casi no bebo alcohol.', audioText: 'わたしはあまりおさけをのみません' },
+          { japanese: 'ぜんぜんテレビをみません。', romaji: 'Zenzen terebi o mimasen.', spanish: 'No veo televisión en absoluto.', audioText: 'ぜんぜんテレビをみません' }
+        ],
+        tip: 'Error típico: decir "Zenzen nomimasu" es un error grave. Si dices 「ぜんぜん」 o 「あまり」, tu verbo DEBE terminar en 〜ません.'
+      },
+      {
+        id: 'u3-invitations',
+        title: 'Invitaciones Educadas: 〜ませんか',
+        japaneseTitle: '提案と勧誘（〜ませんか）',
+        category: 'grammar',
+        formula: '[Verbo raíz] + ませんか？ (¿Por qué no...?)',
+        summary: 'En japonés no se invita con órdenes ni preguntas directas secas, sino con una suave sugerencia negativa.',
+        content: [
+          'Al invitar a alguien en Genki, se usa la forma negativa interrogativa **〜ませんか** para darle al oyente espacio de rechazar cómodamente sin presión social.',
+          '• Invitación: 「いっしょに昼ごはんを食べ**ませんか**」 (¿Por qué no comemos el almuerzo juntos?).',
+          '• **Aceptar entusiasmado:** 「いいですね。食べましょう！」 (¡Me parece excelente! ¡Comamos!).',
+          '• **Rechazar educadamente:** En Japón es de muy mala educación decir un "No" seco. Se dice: **「すみません、ちょっと…」** (Disculpa, es que... [dejando la frase inconclusa]).'
+        ],
+        examples: [
+          { japanese: 'こんばん、えいがをみませんか。', romaji: 'Konban, eiga o mimasen ka.', spanish: '¿Por qué no vemos una película esta noche?', audioText: 'こんばんえいがをみませんか' },
+          { japanese: 'ええ、いいですね。', romaji: 'Ee, ii desu ne.', spanish: 'Sí, ¡me parece excelente!', audioText: 'ええいいですね' }
+        ]
+      },
+      {
+        id: 'u3-days-of-week',
+        title: 'Los Días de la Semana y los Elementos',
+        japaneseTitle: '曜日（ようび：月火水木金土日）',
+        category: 'vocabulary',
+        summary: 'Los 7 días de la semana en japonés están basados en los astros y los elementos naturales.',
+        content: [
+          'Todos los días de la semana terminan con el sufijo **〜ようび (youbi)**:',
+          '• **月曜日 (げつようび / getsuyoubi):** Lunes — Luna (月)',
+          '• **火曜日 (かようび / kayoubi):** Martes — Fuego (火)',
+          '• **水曜日 (すいようび / suiyoubi):** Miércoles — Agua (水)',
+          '• **木曜日 (もくようび / mokuyoubi):** Jueves — Madera / Árbol (木)',
+          '• **金曜日 (きんようび / kinyoubi):** Viernes — Oro / Metal (金)',
+          '• **土曜日 (どようび / doyoubi):** Sábado — Tierra / Suelo (土)',
+          '• **日曜日 (にちようび / nichiyoubi):** Domingo — Sol / Día (日)'
+        ],
+        examples: [
+          { japanese: 'どようびに京都へ行きます。', romaji: 'Doyoubi ni Kyouto e ikimasu.', spanish: 'El sábado iré a Kioto.', audioText: 'どようびにきょうとへいきます' },
+          { japanese: 'にちようびはやすみです。', romaji: 'Nichiyoubi wa yasumi desu.', spanish: 'El domingo es día libre / descanso.', audioText: 'にちようびはやすみです' }
+        ],
+        tip: 'Los días específicos de la semana pueden llevar la partícula 「に」 opcionalmente (どようびに), pero nunca los días relativos como あした (mañana).'
       }
     ]
   }
 ];
+
