@@ -448,58 +448,64 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard,
             </div>
           </div>
 
-          {/* Rating / SRS Action Buttons */}
-          <div className="grid grid-cols-4 gap-2 w-full mt-2.5">
-            <button
-              onClick={() => handleRating('again')}
-              disabled={isAnimating}
-              className="py-2.5 bg-duo-red-light dark:bg-duo-red/25 border-2 border-duo-red text-duo-red-dark dark:text-red-300 font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-red hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
-            >
-              <span>Repetir</span>
-              <span className="text-[9px] opacity-80">1 día</span>
-            </button>
-            <button
-              onClick={() => handleRating('hard')}
-              disabled={isAnimating}
-              className="py-2.5 bg-duo-orange-light dark:bg-duo-orange/25 border-2 border-duo-orange text-duo-orange-dark dark:text-orange-300 font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-orange hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
-            >
-              <span>Difícil</span>
-              <span className="text-[9px] opacity-80">2 días</span>
-            </button>
-            <button
-              onClick={() => handleRating('good')}
-              disabled={isAnimating}
-              className="py-2.5 bg-duo-blue-light dark:bg-duo-blue/25 border-2 border-duo-blue text-duo-blue-dark dark:text-blue-300 font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-blue hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
-            >
-              <span>Bien</span>
-              <span className="text-[9px] opacity-80">4 días</span>
-            </button>
-            <button
-              onClick={() => handleRating('easy')}
-              disabled={isAnimating}
-              className="py-2.5 bg-duo-green-light dark:bg-duo-green/25 border-2 border-duo-green text-duo-green-dark dark:text-green-300 font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-green hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
-            >
-              <span>Fácil</span>
-              <span className="text-[9px] opacity-80">7 días</span>
-            </button>
-          </div>
+          {/* Sticky Action Bar (Anchored right above Bottom Navigation) */}
+          <div className="sticky bottom-[58px] z-20 w-full bg-gray-50/95 dark:bg-[#131f24]/95 backdrop-blur-md pt-2.5 pb-2 border-t border-duo-gray-200 dark:border-[#283842] shadow-[0_-4px_16px_rgba(0,0,0,0.06)] dark:shadow-[0_-4px_16px_rgba(0,0,0,0.4)] mt-4 transition-all">
+            {/* Rating / SRS Action Buttons */}
+            <div className="grid grid-cols-4 gap-2 w-full">
+              <button
+                onClick={() => handleRating('again')}
+                disabled={isAnimating}
+                className="py-2.5 bg-duo-red-light dark:bg-duo-red/25 border-2 border-duo-red text-duo-red-dark dark:text-red-300 font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-red hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
+              >
+                <span>Repetir</span>
+                <span className="text-[9px] opacity-80">1 día</span>
+              </button>
+              <button
+                onClick={() => handleRating('hard')}
+                disabled={isAnimating}
+                className="py-2.5 bg-duo-orange-light dark:bg-duo-orange/25 border-2 border-duo-orange text-duo-orange-dark dark:text-orange-300 font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-orange hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
+              >
+                <span>Difícil</span>
+                <span className="text-[9px] opacity-80">2 días</span>
+              </button>
+              <button
+                onClick={() => handleRating('good')}
+                disabled={isAnimating}
+                className="py-2.5 bg-duo-blue-light dark:bg-duo-blue/25 border-2 border-duo-blue text-duo-blue-dark dark:text-blue-300 font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-blue hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
+              >
+                <span>Bien</span>
+                <span className="text-[9px] opacity-80">4 días</span>
+              </button>
+              <button
+                onClick={() => handleRating('easy')}
+                disabled={isAnimating}
+                className="py-2.5 bg-duo-green-light dark:bg-duo-green/25 border-2 border-duo-green text-duo-green-dark dark:text-green-300 font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-green hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
+              >
+                <span>Fácil</span>
+                <span className="text-[9px] opacity-80">7 días</span>
+              </button>
+            </div>
 
-          {/* Prev / Next controls */}
-          <div className="flex justify-between w-full mt-2">
-            <button
-              onClick={handlePrev}
-              disabled={isAnimating}
-              className="text-xs font-bold text-gray-500 hover:text-gray-800 p-2 disabled:opacity-50 disabled:pointer-events-none"
-            >
-              ← Anterior
-            </button>
-            <button
-              onClick={handleNext}
-              disabled={isAnimating}
-              className="text-xs font-bold text-gray-500 hover:text-gray-800 p-2 disabled:opacity-50 disabled:pointer-events-none"
-            >
-              Siguiente →
-            </button>
+            {/* Prev / Next controls inside sticky bar */}
+            <div className="flex justify-between items-center w-full pt-1.5 px-1">
+              <button
+                onClick={handlePrev}
+                disabled={isAnimating}
+                className="text-xs font-bold text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 p-1 disabled:opacity-50 disabled:pointer-events-none"
+              >
+                ← Anterior
+              </button>
+              <span className="text-[11px] font-bold text-gray-400 dark:text-gray-500">
+                {filteredCards.length > 0 ? currentIndex + 1 : 0} de {filteredCards.length}
+              </span>
+              <button
+                onClick={handleNext}
+                disabled={isAnimating}
+                className="text-xs font-bold text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200 p-1 disabled:opacity-50 disabled:pointer-events-none"
+              >
+                Siguiente →
+              </button>
+            </div>
           </div>
         </div>
       ) : (
