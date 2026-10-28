@@ -105,11 +105,11 @@ export const RoadmapNode: React.FC<RoadmapNodeProps> = ({
       {/* Floating Callout badge for the active lesson */}
       {isActive && !isCompleted && !isLocked && (
         <div className="absolute -top-11 z-20 animate-bounce">
-          <div className="bg-white border-2 border-duo-gray-300 px-3 py-1 rounded-xl shadow-md flex items-center gap-1 font-black text-xs text-duo-green tracking-wide uppercase">
+          <div className="bg-white dark:bg-[#18272e] border-2 border-duo-gray-300 dark:border-[#283842] px-3 py-1 rounded-xl shadow-md flex items-center gap-1 font-black text-xs text-duo-green dark:text-green-400 tracking-wide uppercase">
             <Sparkles className="w-3.5 h-3.5" />
             <span>¡Comenzar!</span>
           </div>
-          <div className="w-2.5 h-2.5 bg-white border-r-2 border-b-2 border-duo-gray-300 transform rotate-45 mx-auto -mt-1.5"></div>
+          <div className="w-2.5 h-2.5 bg-white dark:bg-[#18272e] border-r-2 border-b-2 border-duo-gray-300 dark:border-[#283842] transform rotate-45 mx-auto -mt-1.5"></div>
         </div>
       )}
 
@@ -152,8 +152,8 @@ export const RoadmapNode: React.FC<RoadmapNodeProps> = ({
 
       {/* Label under node */}
       <div className="mt-2 text-center max-w-[140px]">
-        <div className="text-xs font-black text-gray-800 line-clamp-1">{node.title}</div>
-        <div className="text-[10px] font-bold text-gray-500 line-clamp-1">{node.japaneseTitle}</div>
+        <div className="text-xs font-black text-gray-800 dark:text-gray-100 line-clamp-1">{node.title}</div>
+        <div className="text-[10px] font-bold text-gray-500 dark:text-gray-400 line-clamp-1">{node.japaneseTitle}</div>
       </div>
     </div>
   );

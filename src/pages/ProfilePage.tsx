@@ -88,7 +88,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
       {profile.hearts < profile.maxHearts && (
         <div className="bg-duo-red-light/60 dark:bg-duo-red-dark/20 border-2 border-duo-red p-4 rounded-2xl mb-5 flex items-center justify-between">
           <div>
-            <h4 className="text-xs font-black text-duo-red-dark dark:text-duo-red uppercase">¿Sin vidas?</h4>
+            <h4 className="text-xs font-black text-duo-red-dark dark:text-red-300 uppercase">¿Sin vidas?</h4>
             <p className="text-xs font-bold text-gray-600 dark:text-gray-300">Recarga todos tus corazones</p>
           </div>
           <button
@@ -194,7 +194,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
             <Volume2 className="w-5 h-5 text-duo-green" />
             <span className="text-xs font-black text-gray-800 dark:text-gray-100">Reproducción de Audio Japonés</span>
           </div>
-          <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-duo-green-light dark:bg-duo-green/20 text-duo-green-dark dark:text-duo-green">
+          <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-duo-green-light dark:bg-duo-green/20 text-duo-green-dark dark:text-green-300">
             {sound.getAvailableJapaneseVoices().length > 0 ? 'Voz Local' : 'Audio Web HD'}
           </span>
         </div>
@@ -210,7 +210,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
               sound.playTap();
               sound.speakJapanese('こんにちは');
             }}
-            className="py-2.5 px-3 bg-duo-blue-light dark:bg-duo-blue/20 border-2 border-duo-blue text-duo-blue-dark dark:text-duo-blue font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-blue hover:text-white transition-all flex items-center justify-center gap-1.5"
+            className="py-2.5 px-3 bg-duo-blue-light dark:bg-duo-blue/20 border-2 border-duo-blue text-duo-blue-dark dark:text-blue-300 font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-blue hover:text-white transition-all flex items-center justify-center gap-1.5"
           >
             <Volume2 className="w-4 h-4" />
             <span>Oír: こんにちは</span>
@@ -220,7 +220,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
               sound.playTap();
               sound.speakJapanese('ありがとうございます');
             }}
-            className="py-2.5 px-3 bg-duo-green-light dark:bg-duo-green/20 border-2 border-duo-green text-duo-green-dark dark:text-duo-green font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-green hover:text-white transition-all flex items-center justify-center gap-1.5"
+            className="py-2.5 px-3 bg-duo-green-light dark:bg-duo-green/20 border-2 border-duo-green text-duo-green-dark dark:text-green-300 font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-green hover:text-white transition-all flex items-center justify-center gap-1.5"
           >
             <Volume2 className="w-4 h-4" />
             <span>Oír: ありがとう</span>

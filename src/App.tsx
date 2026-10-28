@@ -62,8 +62,10 @@ export const App: React.FC = () => {
         sound.setEnabled(userProf.soundEnabled);
         if (userProf.darkMode) {
           document.documentElement.classList.add('dark');
+          document.body.classList.add('dark');
         } else {
           document.documentElement.classList.remove('dark');
+          document.body.classList.remove('dark');
         }
 
         // 2. Load lesson progress and sync with units
@@ -139,8 +141,10 @@ export const App: React.FC = () => {
     setProfile(updated);
     if (newDarkMode) {
       document.documentElement.classList.add('dark');
+      document.body.classList.add('dark');
     } else {
       document.documentElement.classList.remove('dark');
+      document.body.classList.remove('dark');
     }
     await dbService.saveUserProfile(updated);
   };

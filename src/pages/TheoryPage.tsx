@@ -145,7 +145,7 @@ export const TheoryPage: React.FC<TheoryPageProps> = ({
               }}
               className={`px-3 py-1.5 rounded-xl font-bold text-[11px] transition-all border ${
                 isCatActive
-                  ? 'bg-gray-800 dark:bg-duo-green text-white border-gray-900 dark:border-duo-green-dark shadow-sm'
+                  ? 'bg-gray-800 dark:bg-duo-green text-white dark:text-gray-950 font-black border-gray-900 dark:border-duo-green-dark shadow-sm'
                   : 'bg-gray-100 dark:bg-[#18272e] text-gray-600 dark:text-gray-300 border-gray-200 dark:border-[#283842] hover:bg-gray-200 dark:hover:bg-gray-800'
               }`}
             >
@@ -289,10 +289,10 @@ const TheorySectionCard: React.FC<{ section: TheorySection }> = ({ section }) =>
 
       {/* Genki Tip */}
       {section.tip && (
-        <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-200 dark:border-amber-800/50 rounded-2xl flex items-start gap-2.5">
-          <Lightbulb className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
-          <div className="text-xs text-amber-900 dark:text-amber-200 font-medium leading-relaxed">
-            <strong className="font-black text-amber-800 dark:text-amber-300">Consejo Genki: </strong>
+        <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-950/40 border-2 border-amber-200 dark:border-amber-700/60 rounded-2xl flex items-start gap-2.5">
+          <Lightbulb className="w-4 h-4 text-amber-600 dark:text-amber-300 flex-shrink-0 mt-0.5" />
+          <div className="text-xs text-amber-900 dark:text-amber-100 font-medium leading-relaxed">
+            <strong className="font-black text-amber-800 dark:text-amber-200">Consejo Genki: </strong>
             {section.tip}
           </div>
         </div>

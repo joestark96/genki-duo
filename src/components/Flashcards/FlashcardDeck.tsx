@@ -326,12 +326,12 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard,
 
                   {/* Specific Kanji Readings Display */}
                   {currentCard.category === 'kanji' && (
-                    <div className="w-full bg-duo-purple-light/30 dark:bg-duo-purple/10 border border-duo-purple/40 rounded-2xl p-3 my-2 text-left">
+                    <div className="w-full bg-duo-purple-light/30 dark:bg-duo-purple/20 border border-duo-purple/40 rounded-2xl p-3 my-2 text-left">
                       {currentCard.onyomi && (
                         <div className="text-xs mb-1.5 flex items-center justify-between">
                           <div>
-                            <span className="font-black text-duo-purple-dark dark:text-duo-purple mr-1">On'yomi (音読み):</span>
-                            <span className="font-bold text-gray-800 dark:text-gray-200 font-['Noto_Sans_JP']">{currentCard.onyomi}</span>
+                            <span className="font-black text-duo-purple-dark dark:text-purple-300 mr-1">On'yomi (音読み):</span>
+                            <span className="font-bold text-gray-800 dark:text-gray-100 font-['Noto_Sans_JP']">{currentCard.onyomi}</span>
                           </div>
                           <button
                             onClick={(e) => {
@@ -341,15 +341,15 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard,
                             className="p-1 hover:bg-duo-purple/20 rounded"
                             title="Oír lectura On"
                           >
-                            <Volume2 className="w-3.5 h-3.5 text-duo-purple-dark dark:text-duo-purple" />
+                            <Volume2 className="w-3.5 h-3.5 text-duo-purple-dark dark:text-purple-300" />
                           </button>
                         </div>
                       )}
                       {currentCard.kunyomi && (
                         <div className="text-xs flex items-center justify-between">
                           <div>
-                            <span className="font-black text-duo-green-dark dark:text-duo-green mr-1">Kun'yomi (訓読み):</span>
-                            <span className="font-bold text-gray-800 dark:text-gray-200 font-['Noto_Sans_JP']">{currentCard.kunyomi}</span>
+                            <span className="font-black text-duo-green-dark dark:text-green-300 mr-1">Kun'yomi (訓読み):</span>
+                            <span className="font-bold text-gray-800 dark:text-gray-100 font-['Noto_Sans_JP']">{currentCard.kunyomi}</span>
                           </div>
                           <button
                             onClick={(e) => {
@@ -359,7 +359,7 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard,
                             className="p-1 hover:bg-duo-green/20 rounded"
                             title="Oír lectura Kun"
                           >
-                            <Volume2 className="w-3.5 h-3.5 text-duo-green-dark dark:text-duo-green" />
+                            <Volume2 className="w-3.5 h-3.5 text-duo-green-dark dark:text-green-300" />
                           </button>
                         </div>
                       )}
@@ -453,7 +453,7 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard,
             <button
               onClick={() => handleRating('again')}
               disabled={isAnimating}
-              className="py-2.5 bg-duo-red-light border-2 border-duo-red text-duo-red-dark font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-red hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
+              className="py-2.5 bg-duo-red-light dark:bg-duo-red/25 border-2 border-duo-red text-duo-red-dark dark:text-red-300 font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-red hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
             >
               <span>Repetir</span>
               <span className="text-[9px] opacity-80">1 día</span>
@@ -461,7 +461,7 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard,
             <button
               onClick={() => handleRating('hard')}
               disabled={isAnimating}
-              className="py-2.5 bg-duo-orange-light border-2 border-duo-orange text-duo-orange-dark font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-orange hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
+              className="py-2.5 bg-duo-orange-light dark:bg-duo-orange/25 border-2 border-duo-orange text-duo-orange-dark dark:text-orange-300 font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-orange hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
             >
               <span>Difícil</span>
               <span className="text-[9px] opacity-80">2 días</span>
@@ -469,7 +469,7 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard,
             <button
               onClick={() => handleRating('good')}
               disabled={isAnimating}
-              className="py-2.5 bg-duo-blue-light border-2 border-duo-blue text-duo-blue-dark font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-blue hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
+              className="py-2.5 bg-duo-blue-light dark:bg-duo-blue/25 border-2 border-duo-blue text-duo-blue-dark dark:text-blue-300 font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-blue hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
             >
               <span>Bien</span>
               <span className="text-[9px] opacity-80">4 días</span>
@@ -477,7 +477,7 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard,
             <button
               onClick={() => handleRating('easy')}
               disabled={isAnimating}
-              className="py-2.5 bg-duo-green-light border-2 border-duo-green text-duo-green-dark font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-green hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
+              className="py-2.5 bg-duo-green-light dark:bg-duo-green/25 border-2 border-duo-green text-duo-green-dark dark:text-green-300 font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-green hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
             >
               <span>Fácil</span>
               <span className="text-[9px] opacity-80">7 días</span>

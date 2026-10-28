@@ -61,8 +61,8 @@ export const KanaTable: React.FC<KanaTableProps> = ({ showRomaji = true }) => {
           }}
           className={`px-3 py-1.5 rounded-full text-xs font-extrabold border-2 transition-all ${
             tableType === 'gojuon'
-              ? 'bg-duo-green-light dark:bg-duo-green/20 border-duo-green text-duo-green-dark dark:text-duo-green'
-              : 'bg-white dark:bg-[#18272e] border-duo-gray-200 dark:border-[#283842] text-gray-500 dark:text-gray-400'
+              ? 'bg-duo-green-light dark:bg-duo-green/25 border-duo-green text-duo-green-dark dark:text-green-300'
+              : 'bg-white dark:bg-[#18272e] border-duo-gray-200 dark:border-[#283842] text-gray-500 dark:text-gray-300'
           }`}
         >
           Básicos (46 Sonidos)
@@ -74,8 +74,8 @@ export const KanaTable: React.FC<KanaTableProps> = ({ showRomaji = true }) => {
           }}
           className={`px-3 py-1.5 rounded-full text-xs font-extrabold border-2 transition-all ${
             tableType === 'dakuten'
-              ? 'bg-duo-orange-light dark:bg-duo-orange/20 border-duo-orange text-duo-orange-dark dark:text-duo-orange'
-              : 'bg-white dark:bg-[#18272e] border-duo-gray-200 dark:border-[#283842] text-gray-500 dark:text-gray-400'
+              ? 'bg-duo-orange-light dark:bg-duo-orange/25 border-duo-orange text-duo-orange-dark dark:text-orange-300'
+              : 'bg-white dark:bg-[#18272e] border-duo-gray-200 dark:border-[#283842] text-gray-500 dark:text-gray-300'
           }`}
         >
           Modificados (゛/ ゜)
@@ -93,8 +93,8 @@ export const KanaTable: React.FC<KanaTableProps> = ({ showRomaji = true }) => {
               {showRomaji && (
                 <div className="text-base font-black text-gray-800 dark:text-gray-100">{activeChar.romaji}</div>
               )}
-              <div className="text-xs font-bold text-gray-500 dark:text-gray-400">
-                Ejemplo: <span className="text-gray-800 dark:text-gray-100 font-['Noto_Sans_JP']">{activeChar.example}</span> ({activeChar.exampleMeaning})
+              <div className="text-xs font-bold text-gray-500 dark:text-gray-300">
+                Ejemplo: <span className="text-gray-800 dark:text-white font-black font-['Noto_Sans_JP']">{activeChar.example}</span> ({activeChar.exampleMeaning})
               </div>
             </div>
           </div>
