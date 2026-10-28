@@ -562,5 +562,924 @@ export const unitTheories: UnitTheory[] = [
       }
     ]
   }
-];
+,
 
+  {
+    "unitId": 4,
+    "title": "Genki Lección 4: La Primera Cita",
+    "genkiChapter": "Genki I - Lesson 4",
+    "subtitle": "Pasado 〜ました, Existencia (あります/います) y Posición",
+    "description": "Aprende a ubicar objetos y personas en el espacio, conjugar verbos en pasado y conectar frases con と, から y まで.",
+    "themeColor": "#ff4b4b",
+    "sections": [
+      {
+        "id": "u4-arimasu-imasu",
+        "title": "Verbos de Existencia: あります vs います",
+        "japaneseTitle": "存在動詞：あります（無生物）と います（有生物）",
+        "category": "grammar",
+        "formula": "[Lugar] に [Sujeto] が あります/います",
+        "summary": "En japonés \"haber\" o \"estar\" se divide estrictamente según si el sujeto es inanimado o un ser vivo.",
+        "content": [
+          "• **あります (arimasu):** Se usa EXCLUSIVAMENTE para objetos inanimados, cosas inertes y plantas.",
+          "   • 本があります (Hay un libro / Está el libro).",
+          "   • テレビがあります (Hay una televisión).",
+          "• **います (imasu):** Se usa para seres vivos que se mueven por voluntad propia (personas y animales).",
+          "   • 学生がいます (Hay estudiantes / Están los estudiantes).",
+          "   • 猫がいます (Hay un gato).",
+          "• **Partículas obligatorias:** El lugar estático donde existe la cosa o persona se marca con **に**, y la cosa o persona que existe se marca con **が**."
+        ],
+        "examples": [
+          {
+            "japanese": "教室に山下先生がいます。",
+            "romaji": "Kyoushitsu ni Yamashita-sensei ga imasu.",
+            "spanish": "El profesor Yamashita está en el aula.",
+            "audioText": "きょうしつにやましたせんせいがいます"
+          },
+          {
+            "japanese": "机の上にペンがあります。",
+            "romaji": "Tsukue no ue ni pen ga arimasu.",
+            "spanish": "Hay un bolígrafo sobre el escritorio.",
+            "audioText": "つくえのうえにペンがあります"
+          }
+        ],
+        "tip": "¡Cuidado con las plantas! Aunque biológicamente están vivas, como no se mueven por sí mismas, en japonés usan あります (花があります = Hay flores)."
+      },
+      {
+        "id": "u4-position-words",
+        "title": "Palabras de Posición Relativa",
+        "japaneseTitle": "位置を表す言葉（上・下・前・後ろ・中・隣・間）",
+        "category": "vocabulary",
+        "formula": "[Objeto Referencia] の [Posición] に [Cosa] が あります/います",
+        "summary": "Cómo indicar la posición exacta de un objeto o persona con respecto a otro.",
+        "content": [
+          "• **上 (うえ / ue):** Arriba / Sobre / Encima de (机の上 = sobre el escritorio).",
+          "• **下 (した / shita):** Abajo / Debajo de (机の下 = debajo del escritorio).",
+          "• **前 (まえ / mae):** Delante de / Frente a (駅の前 = frente a la estación).",
+          "• **後ろ (うしろ / ushiro):** Detrás de / A espaldas de (銀行の後ろ = detrás del banco).",
+          "• **中 (なか / naka):** Dentro de / En el interior de (かばんの中 = dentro del bolso).",
+          "• **隣 (となり / tonari):** Al lado de (en la misma categoría o fila; ej. 本屋の隣 = junto a la librería).",
+          "• **近く (ちかく / chikaku):** Cerca de (公園の近く = cerca del parque).",
+          "• **間 (あいだ / aida):** Entre A y B (A と B の間)."
+        ],
+        "examples": [
+          {
+            "japanese": "猫は机の下にいます。",
+            "romaji": "Neko wa tsukue no shita ni imasu.",
+            "spanish": "El gato está debajo del escritorio.",
+            "audioText": "ねこはつくえのしたにいます"
+          },
+          {
+            "japanese": "銀行は図書館と郵便局の間にあります。",
+            "romaji": "Ginkou wa toshokan to yuubinkyoku no aida ni arimasu.",
+            "spanish": "El banco está entre la biblioteca y la oficina de correos.",
+            "audioText": "ぎんこうはとしょかんとゆうびんきょくのあいだにあります"
+          }
+        ]
+      },
+      {
+        "id": "u4-past-tense",
+        "title": "Tiempo Pasado de Verbos y de です",
+        "japaneseTitle": "過去形（〜ました・〜ませんでした・〜でした）",
+        "category": "grammar",
+        "summary": "Cómo relatar lo que hiciste ayer, el fin de semana o en tus vacaciones.",
+        "content": [
+          "• **Pasado Educado de Verbos:**",
+          "   • Afirmativo: 〜ます ➔ **〜ました** (たべました = comí / いきました = fui).",
+          "   • Negativo: 〜ません ➔ **〜ませんでした** (たべませんでした = no comí / いきませんでした = no fui).",
+          "• **Pasado de です (para sustantivos):**",
+          "   • Afirmativo: です ➔ **でした** (日曜日でした = fue domingo).",
+          "   • Negativo: じゃありません ➔ **じゃありませんでした** (学生じゃありませんでした = no era estudiante)."
+        ],
+        "examples": [
+          {
+            "japanese": "きのう、日本語を勉強しました。",
+            "romaji": "Kinou, nihongo o benkyou shimashita.",
+            "spanish": "Ayer estudié japonés.",
+            "audioText": "きのうにほんごをべんきょうしました"
+          },
+          {
+            "japanese": "きのうはいい天気でした。",
+            "romaji": "Kinou wa ii tenki deshita.",
+            "spanish": "Ayer hizo buen clima.",
+            "audioText": "きのうはいいてんきでした"
+          }
+        ]
+      },
+      {
+        "id": "u4-particles-to-kara-made",
+        "title": "Partículas と, から y まで",
+        "japaneseTitle": "助詞「と」「から」「まで」",
+        "category": "grammar",
+        "summary": "Conectar sustantivos, indicar compañía y marcar rangos de tiempo y distancia.",
+        "content": [
+          "• **Partícula と (to):**",
+          "   1. Conector \"y\" para listas exhaustivas: パンとミルク (pan y leche).",
+          "   2. Compañía \"con\": メアリーさんと映画を見ました (Fui al cine con Mary).",
+          "• **Partículas から (kara = desde) y まで (made = hasta):**",
+          "   • Horarios: 9時から5時まで (De 9:00 a 5:00).",
+          "   • Lugares: 東京から京都まで (De Tokio a Kioto)."
+        ],
+        "examples": [
+          {
+            "japanese": "きのう、たけしさんと図書館で勉強しました。",
+            "romaji": "Kinou, Takeshi-san to toshokan de benkyou shimashita.",
+            "spanish": "Ayer estudié en la biblioteca con Takeshi.",
+            "audioText": "きのうたけしさんととしょかんでべんきょうしました"
+          },
+          {
+            "japanese": "日本語の授業は九時から十時半までです。",
+            "romaji": "Nihongo no jugyou wa kuji kara juujihan made desu.",
+            "spanish": "La clase de japonés es de 9:00 a 10:30.",
+            "audioText": "にほんごのじゅぎょうはくじからじゅうじはんまでです"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "unitId": 5,
+    "title": "Genki Lección 5: Viaje a Okinawa",
+    "genkiChapter": "Genki I - Lesson 5",
+    "subtitle": "Adjetivos い y な, Gustos (好き/嫌い) y Sugerencias",
+    "description": "Aprende a describir el mundo en presente y pasado con los dos tipos de adjetivos, expresar gustos con 好き y hacer propuestas activas.",
+    "themeColor": "#00cd9c",
+    "sections": [
+      {
+        "id": "u5-two-adjectives",
+        "title": "Los 2 Tipos de Adjetivos en Japonés",
+        "japaneseTitle": "い形容詞（いけいようし）と な形容詞（なけいようし）",
+        "category": "grammar",
+        "summary": "A diferencia del español, en japonés los adjetivos funcionan como mini-verbos y se conjugan en presente y pasado.",
+        "content": [
+          "1. **い-adjetivos (i-adjectives):** Terminan intrínsecamente en la vocal 「い」 (ej. たかい, あたらしい, おもしろい, さむい). Se conjugan directamente cambiando su última vocal.",
+          "2. **な-adjetivos (na-adjectives):** No terminan en い o terminan en kanji con lectura -i especial (ej. 静か [しずか], 元気 [げんき], 暇 [ひま]). Se conjugan exactamente igual que los sustantivos usando です.",
+          "• **¡Las 2 excepciones clásicas de examen!**",
+          "   • **きれい (kirei = hermoso/limpio):** Aunque termina en sonido -i, ¡es un な-adjetivo!",
+          "   • **ゆうめい (yuumei = famoso):** ¡Es un な-adjetivo!"
+        ],
+        "tip": "Los な-adjetivos se llaman así porque cuando se colocan inmediatamente antes de un sustantivo, es OBLIGATORIO añadir 「な」: きれいな海 (mar hermoso), 静かな町 (pueblo tranquilo)."
+      },
+      {
+        "id": "u5-adj-conjugation-tables",
+        "title": "Tabla Maestra de Conjugación de Adjetivos",
+        "japaneseTitle": "形容詞の活用表（現在・過去・肯定・否定）",
+        "category": "grammar",
+        "summary": "Cómo conjugar ambos tipos de adjetivos en las 4 formas fundamentales.",
+        "table": {
+          "title": "Conjugaciones de い-adjetivos y な-adjetivos en Genki",
+          "headers": [
+            "Forma",
+            "い-adjetivo (さむい - frío)",
+            "な-adjetivo (しずか - tranquilo)",
+            "Excepción: いい (bueno)"
+          ],
+          "rows": [
+            [
+              "Presente Afirmativo",
+              "さむいです (hace frío)",
+              "しずかです (es tranquilo)",
+              "いいです (es bueno)"
+            ],
+            [
+              "Presente Negativo",
+              "さむくないです (no hace frío)",
+              "しずかじゃありません (no es tranquilo)",
+              "よくないです (no es bueno)"
+            ],
+            [
+              "Pasado Afirmativo",
+              "さむかったです (hizo frío)",
+              "しずかでした (era tranquilo)",
+              "よかったです (fue bueno)"
+            ],
+            [
+              "Pasado Negativo",
+              "さむくなかったです (no hizo frío)",
+              "しずかじゃありませんでした",
+              "よくなかったです (no fue bueno)"
+            ]
+          ]
+        },
+        "content": [
+          "• Para い-adjetivos: la 「い」 final se sustituye por **くないです** (negativo), **かったです** (pasado) o **くなかったです** (pasado negativo).",
+          "• Para な-adjetivos: la palabra queda intacta y solo se cambia です por **じゃありません**, **でした** o **じゃありませんでした**.",
+          "• El adjetivo **いい (bueno)** SIEMPRE toma su raíz arcaica **よい (yoi)** para todas las conjugaciones negativas y pasadas."
+        ],
+        "examples": [
+          {
+            "japanese": "沖縄の海はとてもきれいでした。",
+            "romaji": "Okinawa no umi wa totemo kirei deshita.",
+            "spanish": "El mar de Okinawa era muy hermoso.",
+            "audioText": "おきなわのうみはとてもきれいでした"
+          },
+          {
+            "japanese": "きのうのテストは難しくなかったです。",
+            "romaji": "Kinou no tesuto wa muzukashikunakatta desu.",
+            "spanish": "El examen de ayer no estuvo difícil.",
+            "audioText": "きのうのテストはむずかしくなかったです"
+          }
+        ]
+      },
+      {
+        "id": "u5-likes-suki",
+        "title": "Gustos y Preferencias: 好き y 嫌い con Partícula が",
+        "japaneseTitle": "好嫌表現：すき・きらい（助詞「が」）",
+        "category": "grammar",
+        "formula": "[Persona] は [Cosa] が 好き/嫌い です",
+        "summary": "En japonés \"gustar\" no es un verbo activo, sino un adjetivo que describe una atracción, por lo que lleva が y nunca を.",
+        "content": [
+          "• **好き (すき / suki):** Gustar / Agradar.",
+          "• **大好き (だいすき / daisuki):** Encantar / Gustar muchísimo.",
+          "• **嫌い (きらい / kirai):** Disgustar / No agradar.",
+          "• **大嫌い (だいきらい / daikirai):** Odiar / Detestar.",
+          "• **Regla estricta:** La cosa que te gusta se marca OBLIGATORIAMENTE con **「が」**.",
+          "   • Correcto: 私は日本料理**が**好きです。",
+          "   • ¡ERROR!: 私は日本料理**を**好きです。(Nunca uses を con 好き)."
+        ],
+        "examples": [
+          {
+            "japanese": "メアリーさんは犬が大好きです。",
+            "romaji": "Mary-san wa inu ga daisuki desu.",
+            "spanish": "A Mary le encantan los perros.",
+            "audioText": "メアリーさんは犬がだいすきです"
+          },
+          {
+            "japanese": "野菜があまり好きじゃないです。",
+            "romaji": "Yasai ga amari suki ja nai desu.",
+            "spanish": "Casi no me gustan las verduras.",
+            "audioText": "やさいがあまりすきじゃないです"
+          }
+        ]
+      },
+      {
+        "id": "u5-mashou",
+        "title": "Sugerencias Activas: 〜ましょう y 〜ましょうか",
+        "japaneseTitle": "提案表現（〜ましょう・〜ましょうか）",
+        "category": "grammar",
+        "summary": "Cómo proponer planes conjuntos entusiastas o brindar ayuda proactiva a otra persona.",
+        "content": [
+          "• **〜ましょう (mashou = \"¡Hagámoslo!\"):** Propuesta activa de hacer algo juntos.",
+          "   • 行きましょう！ (¡Vamos!).",
+          "   • 食べましょう！ (¡Comamos!).",
+          "• **〜ましょうか (mashou ka = \"¿Lo hacemos? / ¿Te ayudo?\"):** Ofrecimiento amable de ayuda.",
+          "   • 荷物を持ちましょうか (¿Llevo tu maleta / equipaje?).",
+          "   • 窓を開けましょうか (¿Abro la ventana?)."
+        ],
+        "examples": [
+          {
+            "japanese": "あの喫茶店でちょっと休みましょう。",
+            "romaji": "Ano kissaten de chotto yasumimashou.",
+            "spanish": "Descansemos un momento en esa cafetería.",
+            "audioText": "あのきっさてんでちょっとやすみましょう"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "unitId": 6,
+    "title": "Genki Lección 6: La Forma Te (〜て形)",
+    "genkiChapter": "Genki I - Lesson 6",
+    "subtitle": "La Famosa Forma Te, Favores, Permisos y Secuencias",
+    "description": "El pilar fundamental de la gramática japonesa: cómo conjugar la forma Te para pedir favores (〜てください), pedir permisos (〜てもいいですか) y conectar acciones.",
+    "themeColor": "#1cb0f6",
+    "sections": [
+      {
+        "id": "u6-te-rules",
+        "title": "Reglas de Conjugación de la Forma Te",
+        "japaneseTitle": "て形の作り方 と「て形の歌」",
+        "category": "grammar",
+        "summary": "La forma Te no tiene tiempo verbal propio, pero es el puente para más de 20 estructuras avanzadas del japonés.",
+        "content": [
+          "1. **Ru-verbs (Grupo 2):** Quitas る y pones て (食べる ➔ 食べて, 見る ➔ 見て, 起きる ➔ 起きて).",
+          "2. **U-verbs (Grupo 1) - La Canción de la Forma Te:**",
+          "   • Verbos en **う, つ, る** ➔ **って** (会う➔会って, 待つ➔待って, 取る➔取って).",
+          "   • Verbos en **む, ぶ, ぬ** ➔ **んで** (飲む➔飲んで, 遊ぶ➔遊んで, 死ぬ➔死んで).",
+          "   • Verbos en **く** ➔ **いて** (書く➔書いて). *¡Excepción!* **行く ➔ 行って** (itte).",
+          "   • Verbos en **ぐ** ➔ **いで** (泳ぐ➔泳いで).",
+          "   • Verbos en **す** ➔ **して** (話す➔話して).",
+          "3. **Verbos Irregulares:**",
+          "   • する ➔ **して**",
+          "   • くる ➔ **きて**"
+        ],
+        "table": {
+          "title": "Resumen Mnemotécnico de la Forma Te",
+          "headers": [
+            "Terminación de Diccionario",
+            "Cambio a Forma Te",
+            "Ejemplo de Verbo"
+          ],
+          "rows": [
+            [
+              "う、つ、る",
+              "〜って",
+              "まつ (esperar) ➔ まって"
+            ],
+            [
+              "む、ぶ、ぬ",
+              "〜んで",
+              "のむ (beber) ➔ のんで"
+            ],
+            [
+              "く",
+              "〜いて (excepto 行く➔行って)",
+              "かく (escribir) ➔ かいて"
+            ],
+            [
+              "ぐ",
+              "〜いで",
+              "およぐ (nadar) ➔ およいで"
+            ],
+            [
+              "す",
+              "〜して",
+              "はなす (hablar) ➔ はなして"
+            ],
+            [
+              "る (Ru-verb)",
+              "〜て",
+              "たべる (comer) ➔ たべて"
+            ],
+            [
+              "する / くる (Irregulares)",
+              "して / きて",
+              "べんきょうする ➔ べんきょうして"
+            ]
+          ]
+        },
+        "tip": "Aprende la melodía de la canción infantil \"Santa Claus is Coming to Town\" con las terminaciones: u, tsu, ru -> tte / mu, bu, nu -> nde / ku -> ite, gu -> ide / su -> shite!"
+      },
+      {
+        "id": "u6-kudasai-mo-ii",
+        "title": "Favores (〜てください) y Permisos (〜てもいいですか)",
+        "japaneseTitle": "依頼（〜てください）と 許可（〜てもいいですか）",
+        "category": "grammar",
+        "formula": "Forma Te + ください (Por favor haz...) / Forma Te + もいいですか (¿Puedo...?)",
+        "summary": "Cómo pedir favores de manera cortés y solicitar permiso para realizar una acción.",
+        "content": [
+          "• **〜てください (te kudasai):** Petición amable imperativa educada.",
+          "   • 教科書を読んでください (Por favor lea el libro de texto).",
+          "   • ちょっと待ってください (Por favor espere un momento).",
+          "• **〜てもいいですか (te mo ii desu ka):** \"¿Está bien si hago...? / ¿Puedo...?\".",
+          "   • 写真を撮ってもいいですか (¿Puedo tomar una foto?).",
+          "   • トイレに行ってもいいですか (¿Puedo ir al baño?).",
+          "• **〜てはいけません (te wa ikemasen):** Prohibición estricta (\"No debes / Está prohibido\").",
+          "   • ここでタバコを吸ってはいけません (No debes fumar aquí)."
+        ],
+        "examples": [
+          {
+            "japanese": "ゆっくり話してください。",
+            "romaji": "Yukkuri hanashite kudasai.",
+            "spanish": "Por favor hable despacio.",
+            "audioText": "ゆっくりはなしてください"
+          },
+          {
+            "japanese": "ここで写真を撮ってもいいですか。",
+            "romaji": "Koko de shashin o totte mo ii desu ka.",
+            "spanish": "¿Puedo tomar una fotografía aquí?",
+            "audioText": "ここでしゃしんをとってもいいですか"
+          }
+        ]
+      },
+      {
+        "id": "u6-sequences-kara",
+        "title": "Conectar Acciones en Secuencia y Causa con 〜から",
+        "japaneseTitle": "動作の連続（〜て、〜て）と 理由の「から」",
+        "category": "grammar",
+        "summary": "Cómo enlazar múltiples actividades consecutivas y justificar motivos.",
+        "content": [
+          "• **Secuencia de Acciones:** Conecta verbos en forma Te en orden cronológico. El tiempo verbal (presente o pasado) se indica ÚNICAMENTE en el último verbo de la oración.",
+          "   • きのう 7時に**起きて**、朝ごはんを**食べて**、大学へ**行きました**。",
+          "• **Conector Causal 〜から (kara = porque / ya que):**",
+          "   • Estructura: **[Causa / Razón] から、[Resultado / Consecuencia]**.",
+          "   • 明日テストがありますから、今晩勉強します (Porque mañana tengo examen, estudiaré esta noche)."
+        ],
+        "examples": [
+          {
+            "japanese": "図書館へ行って本を借りました。",
+            "romaji": "Toshokan e itte hon o karimashita.",
+            "spanish": "Fui a la biblioteca y pedí prestado un libro.",
+            "audioText": "としょかんへいってほんをかりました"
+          },
+          {
+            "japanese": "つかれましたから、早く寝ます。",
+            "romaji": "Tsukaremashita kara, hayaku nemasu.",
+            "spanish": "Como me cansé, me iré a dormir temprano.",
+            "audioText": "つかれましたからはやくねます"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "unitId": 7,
+    "title": "Genki Lección 7: Foto Familiar",
+    "genkiChapter": "Genki I - Lesson 7",
+    "subtitle": "Acciones en Curso (〜ています) y Descripciones",
+    "description": "Aprende a describir la familia, estados continuos (casado, vivir en), rasgos físicos con が y conectar adjetivos con la forma Te.",
+    "themeColor": "#ff9600",
+    "sections": [
+      {
+        "id": "u7-family",
+        "title": "Vocabulario: Familia Uchi vs Familia Soto",
+        "japaneseTitle": "家族の呼び方（うち と そと）",
+        "category": "vocabulary",
+        "summary": "El sistema social japonés usa términos humildes para la familia propia y términos honoríficos para la familia ajena.",
+        "table": {
+          "title": "Términos de Familia Propios (Humildes) vs Ajenos (Respetuosos)",
+          "headers": [
+            "Pariente",
+            "Mi Familia (Uchi / Humilde)",
+            "La Familia de Otros (Soto / Respetuoso)"
+          ],
+          "rows": [
+            [
+              "Padre",
+              "ちち (父)",
+              "おとうさん (お父さん)"
+            ],
+            [
+              "Madre",
+              "はは (母)",
+              "おかあさん (お母さん)"
+            ],
+            [
+              "Hermano mayor",
+              "あに (兄)",
+              "おにいさん (お兄さん)"
+            ],
+            [
+              "Hermana mayor",
+              "あね (姉)",
+              "おねえさん (お姉さん)"
+            ],
+            [
+              "Hermano menor",
+              "おとうと (弟)",
+              "おとうとさん"
+            ],
+            [
+              "Hermana menor",
+              "いもうと (妹)",
+              "いもうとさん"
+            ],
+            [
+              "Esposo",
+              "おっと (夫) / 主人",
+              "ごしゅじん (ご主人)"
+            ],
+            [
+              "Esposa",
+              "つま (妻) / 家内",
+              "おくさん (奥さん)"
+            ]
+          ]
+        },
+        "content": [
+          "• Al hablar con un maestro, jefe o cliente sobre tu propia madre, dices 「母」(haha).",
+          "• Al dirigirte a la madre de tu amigo o a tu propia mamá en casa, dices 「お母さん」(okaasan)."
+        ],
+        "tip": "¡Regla social de oro! Nunca uses おとうさん u おかあさん para hablar de tu propia familia ante un cliente o desconocido en Japón."
+      },
+      {
+        "id": "u7-te-iru",
+        "title": "Acciones Continuas y Estados: 〜ています",
+        "japaneseTitle": "動作の進行 と 状態の継続（〜ています）",
+        "category": "grammar",
+        "formula": "Forma Te + います",
+        "summary": "Tiene dos significados esenciales: acción que ocurre en el momento (inglés -ing) o estado continuo resultante de una acción previa.",
+        "content": [
+          "1. **Acción en curso:** 本を読んでいます (Estoy leyendo un libro).",
+          "2. **Estados continuos permanentes (¡Muy importante en Genki!):**",
+          "   • 結婚しています (けっこんしています = Estar casado).",
+          "   • 住んでいます (すんでいます = Residir / Vivir en...).",
+          "   • 知っています (しっています = Saber / Conocer).",
+          "   • 持っています (もっています = Tener / Poseer).",
+          "• **¡La trampa de oro de Genki!** Si te preguntan si conoces algo y NO lo sabes, se responde obligatoriamente: **「知りません」(shirimasen)**. ¡NUNCA digas \"shitte imasen\"!"
+        ],
+        "examples": [
+          {
+            "japanese": "姉は結婚していて、東京に住んでいます。",
+            "romaji": "Ane wa kekkon shite ite, Tokyo ni sunde imasu.",
+            "spanish": "Mi hermana mayor está casada y vive en Tokio.",
+            "audioText": "あねはけっこんしていてとうきょうにすんでいます"
+          },
+          {
+            "japanese": "山下先生を知っていますか。ー いいえ、知りません。",
+            "romaji": "Yamashita-sensei o shitte imasu ka. - Iie, shirimasen.",
+            "spanish": "¿Conoce al profesor Yamashita? - No, no lo conozco.",
+            "audioText": "やましたせんせいをしっていますかいいえしりません"
+          }
+        ]
+      },
+      {
+        "id": "u7-body-descriptions",
+        "title": "Descripciones Físicas y Atributos Personales",
+        "japaneseTitle": "身体的特徴：[人] は [部分] が [形容詞]",
+        "category": "grammar",
+        "formula": "[Persona] は [Parte del cuerpo] が [Adjetivo] です",
+        "summary": "En japonés no se dice \"Mary tiene ojos grandes\", sino \"En cuanto a Mary, sus ojos son grandes\".",
+        "content": [
+          "• **背が高い (せがたかい):** Alto de estatura.",
+          "• **背が低い (せがひくい):** Bajo de estatura.",
+          "• **目が大きい (めがおおきい):** De ojos grandes.",
+          "• **髪が長い (かみがながい):** De cabello largo.",
+          "• **Conectar adjetivos con Forma Te:**",
+          "   • い-adjetivo: い ➔ **くて** (安くておいしい = barato y rico).",
+          "   • な-adjetivo / sustantivo: añadir **で** (静かで綺麗 = tranquilo y hermoso)."
+        ],
+        "examples": [
+          {
+            "japanese": "メアリーさんは背が高くて、髪が短いです。",
+            "romaji": "Mary-san wa se ga takakute, kami ga mijikai desu.",
+            "spanish": "Mary es alta de estatura y tiene el cabello corto.",
+            "audioText": "メアリーさんはせがたかくてかみがみじかいです"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "unitId": 8,
+    "title": "Genki Lección 8: Estilo Informal y Opiniones",
+    "genkiChapter": "Genki I - Lesson 8",
+    "subtitle": "La Forma Corta (普通体), Citas y 〜と思います",
+    "description": "El salto a la fluidez informal: cómo hablar casualmente con amigos, expresar opiniones (\"Creo que...\") y citar discursos ajenos.",
+    "themeColor": "#ce82ff",
+    "sections": [
+      {
+        "id": "u8-short-forms",
+        "title": "La Forma Corta Presente: Afirmativo y Negativo (ない形)",
+        "japaneseTitle": "ショートフォーム（辞書形 と ない形）",
+        "category": "grammar",
+        "summary": "El estilo informal se utiliza entre amigos cercanos, familia y para construir cláusulas subordinadas.",
+        "content": [
+          "• **Afirmativo presente:** Es idéntico a la **forma de diccionario** (食べる, 飲む, 行く, する, くる).",
+          "• **Negativo presente (Forma ない):**",
+          "   • **Ru-verbs:** る ➔ **ない** (たべる ➔ たべない).",
+          "   • **U-verbs:** sonido -u ➔ columna **-a + ない** (のむ ➔ のまない, かく ➔ かかない, はなす ➔ はなさない). *¡Ojo con los verbos en う!* Cambian a **わない** (かう ➔ かわない).",
+          "   • **Irregulares:** する ➔ **しない**, くる ➔ **こない**.",
+          "   • **El verbo あります en negativo corto es simplemente: ない**."
+        ],
+        "examples": [
+          {
+            "japanese": "あした、いっしょにどこかに行く？",
+            "romaji": "Ashita, isshoni dokoka ni iku?",
+            "spanish": "¿Vas a ir a algún lugar mañana conmigo? (casual)",
+            "audioText": "あしたいっしょにどこかにいく"
+          },
+          {
+            "japanese": "きょうはコーヒーを飲まない。",
+            "romaji": "Kyou wa koohii o nomanai.",
+            "spanish": "Hoy no tomaré café (informal).",
+            "audioText": "きょうはコーヒーをのまない"
+          }
+        ]
+      },
+      {
+        "id": "u8-opinions-quotes",
+        "title": "Opinar con 〜と思います y Citar con 〜と言っていました",
+        "japaneseTitle": "意見（〜とおもいます）と 引用（〜といっていました）",
+        "category": "grammar",
+        "formula": "[Oración en forma corta] + と思います / と言っていました",
+        "summary": "Cómo expresar tus pensamientos subjetivos y citar lo que otra persona ha dicho.",
+        "content": [
+          "• **〜と思います (to omoimasu = Pienso que...):** La cláusula antes de と OBLIGATORIAMENTE debe estar en forma corta.",
+          "   • 日本語は面白いと思います (Pienso que el japonés es interesante).",
+          "   • 明日雨が降ると思います (Creo que mañana lloverá).",
+          "• **〜と言っていました (to itte imashita = Dijo que...):** Cita indirecta.",
+          "   • ロバートさんは肉を食べないと言っていました (Robert dijo que no come carne)."
+        ],
+        "examples": [
+          {
+            "japanese": "たけしさんは親切だと思います。",
+            "romaji": "Takeshi-san wa shinsetsu da to omoimasu.",
+            "spanish": "Pienso que Takeshi es muy amable.",
+            "audioText": "たけしさんはしんせつだとおもいます"
+          }
+        ],
+        "tip": "¡Cuidado con los な-adjetivos y sustantivos antes de と思います! Deben llevar 「だ」 en afirmativo presente: 親切だと思います (shinsetsu DA to omoimasu)."
+      },
+      {
+        "id": "u8-naide-kudasai",
+        "title": "Peticiones Negativas: 〜ないでください",
+        "japaneseTitle": "禁止・否定の依頼（〜ないでください：Por favor no hagas...）",
+        "category": "grammar",
+        "formula": "Forma ない + でください",
+        "summary": "Cómo pedir de forma muy educada que alguien se abstenga de hacer algo.",
+        "content": [
+          "• Se toma la forma corta negativa (ない形) y se le añade **でください**.",
+          "   • 写真を撮らないでください (Por favor no tome fotografías).",
+          "   • ここに入らないでください (Por favor no entre aquí).",
+          "   • 忘れないでください (Por favor no lo olvide)."
+        ],
+        "examples": [
+          {
+            "japanese": "ここで電話を使わないでください。",
+            "romaji": "Koko de denwa o tsukawanaide kudasai.",
+            "spanish": "Por favor no use el teléfono aquí.",
+            "audioText": "ここででんわをつかわないでください"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "unitId": 9,
+    "title": "Genki Lección 9: Pasado Informal y Relativas",
+    "genkiChapter": "Genki I - Lesson 9",
+    "subtitle": "Formas Cortas Pasadas (〜た/〜なかった) y Cláusulas Relativas",
+    "description": "Aprende a modificar sustantivos con oraciones complejas (\"el libro que compré ayer\") y la forma Ta de pasado informal.",
+    "themeColor": "#2b70c9",
+    "sections": [
+      {
+        "id": "u9-past-short-forms",
+        "title": "Pasado Informal: La Forma 〜た y 〜なかった",
+        "japaneseTitle": "過去のショートフォーム（た形 と なかった形）",
+        "category": "grammar",
+        "summary": "La forma Ta se conjuga exactamente igual que la forma Te, pero cambiando -te por -ta y -de por -da.",
+        "content": [
+          "• **Afirmativo pasado informal (Forma Ta):**",
+          "   • 食べて ➔ **食べた** (comí / comió)",
+          "   • 飲んで ➔ **飲んだ** (bebí / bebió)",
+          "   • 書いて ➔ **書いた** (escribí)",
+          "   • 行って ➔ **行った** (fui)",
+          "• **Negativo pasado informal (Forma 〜なかった):**",
+          "   • Se toma la forma ない y se sustituye い por **かった**.",
+          "   • 食べない ➔ **食べなかった** (no comí)",
+          "   • 行かない ➔ **行かなかった** (no fui)"
+        ],
+        "examples": [
+          {
+            "japanese": "きのう、なにをした？",
+            "romaji": "Kinou, nani o shita?",
+            "spanish": "¿Qué hiciste ayer? (casual)",
+            "audioText": "きのうなにをした"
+          }
+        ]
+      },
+      {
+        "id": "u9-relative-clauses",
+        "title": "Oraciones Relativas (Modificar Sustantivos con Verbos)",
+        "japaneseTitle": "連体修飾（動詞＋名詞：El libro que compré）",
+        "category": "grammar",
+        "formula": "[Oración en forma corta] + Sustantivo",
+        "summary": "En japonés no existe la palabra \"que\" para cláusulas relativas. Basta con colocar la frase en forma corta antes del sustantivo.",
+        "content": [
+          "• En español decimos: \"El libro [que compré ayer]\".",
+          "• En japonés se invierte el orden: **[きのう買った] 本** (Kinou katta hon).",
+          "• Ejemplos cotidianos de Genki:",
+          "   • 本を読んでいる人 (La persona que está leyendo un libro).",
+          "   • きのう見た映画 (La película que vi ayer)."
+        ],
+        "examples": [
+          {
+            "japanese": "眼鏡をかけている人は山下先生です。",
+            "romaji": "Megane o kakete iru hito wa Yamashita-sensei desu.",
+            "spanish": "La persona que lleva lentes es el profesor Yamashita.",
+            "audioText": "めがねをかけているひとはやましたせんせいです"
+          }
+        ]
+      },
+      {
+        "id": "u9-mada-te-imasen",
+        "title": "Acciones Incompletas: まだ〜ていません",
+        "japaneseTitle": "まだ〜ていません（Todavía no he...）",
+        "category": "grammar",
+        "summary": "Indica que una acción no se ha completado todavía, pero se tiene la intención o expectativa de realizarla.",
+        "content": [
+          "• Si alguien te pregunta 「もう宿題をしましたか」(¿Ya hiciste la tarea?), se responde:",
+          "   • **いいえ、まだしていません** (No, todavía no la he hecho).",
+          "• ¡Cuidado! Decir 「しませんでした」 significaría \"No la hice (y ya no la haré)\"."
+        ],
+        "examples": [
+          {
+            "japanese": "まだ昼ごはんを食べていません。",
+            "romaji": "Mada hirugohan o tabete imasen.",
+            "spanish": "Todavía no he almorzado.",
+            "audioText": "まだひるごはんをたべていません"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "unitId": 10,
+    "title": "Genki Lección 10: Comparaciones y Proyectos",
+    "genkiChapter": "Genki I - Lesson 10",
+    "subtitle": "Comparaciones (A のほうが B より), Superlativos e Intención",
+    "description": "Aprende a comparar opciones, expresar superlativos con 一番, proyectar planes firmes con 〜つもり y cambios de estado con なる.",
+    "themeColor": "#ff4b4b",
+    "sections": [
+      {
+        "id": "u10-comparisons",
+        "title": "Comparaciones entre 2 Elementos: A のほうが B より",
+        "japaneseTitle": "比較表現（A のほうが B より）",
+        "category": "grammar",
+        "formula": "A のほうが B より [Adjetivo] です (A es más [Adjetivo] que B)",
+        "summary": "La estructura obligatoria para comparar dos cosas o personas en japonés.",
+        "content": [
+          "• **A のほうが:** Marca la opción ganadora (\"el lado de A\").",
+          "• **B より:** Marca la referencia (\"más que B\").",
+          "• **Pregunta comparativa:** A と B と どちらのほうが [Adjetivo] ですか (¿Cuál es más... entre A y B?).",
+          "• ¡Ojo! Entre 2 opciones siempre se pregunta con **どちら (dochira)**, nunca con どれ."
+        ],
+        "examples": [
+          {
+            "japanese": "新幹線のほうがバスより速いです。",
+            "romaji": "Shinkansen no hou ga basu yori hayai desu.",
+            "spanish": "El tren bala es más rápido que el autobús.",
+            "audioText": "しんかんせんのほうがバスよりはやいです"
+          },
+          {
+            "japanese": "日本とメキシコとどちらのほうが暑いですか。",
+            "romaji": "Nihon to Mekishiko to dochira no hou ga atsui desu ka.",
+            "spanish": "Entre Japón y México, ¿cuál es más caluroso?",
+            "audioText": "にほんとメキシコとどちらのほうがあついですか"
+          }
+        ]
+      },
+      {
+        "id": "u10-superlatives",
+        "title": "Superlativos: [Grupo] の中で 一番〜",
+        "japaneseTitle": "最上級（〜の中で一番：El número uno / El más）",
+        "category": "grammar",
+        "formula": "[Grupo / Categoría] の中で [Elemento] が 一番 [Adjetivo] です",
+        "summary": "Cómo expresar el grado superlativo absoluto entre 3 o más elementos.",
+        "content": [
+          "• **一番 (いちばん / ichiban):** Significa \"el número uno\" o \"el más\".",
+          "• Estructura: 「果物の中で りんごが一番好きです」 (De todas las frutas, las manzanas son las que más me gustan)."
+        ],
+        "examples": [
+          {
+            "japanese": "季節の中で秋が一番好きです。",
+            "romaji": "Kisetsu no naka de aki ga ichiban suki desu.",
+            "spanish": "De todas las estaciones, el otoño es mi favorita.",
+            "audioText": "きせつのなかであきがいちばんすきです"
+          }
+        ]
+      },
+      {
+        "id": "u10-tsumori-naru",
+        "title": "Intenciones (〜つもり) y Cambios de Estado (なる)",
+        "japaneseTitle": "意図（〜つもり）と 変化（〜くなる・〜になる）",
+        "category": "grammar",
+        "summary": "Expresar lo que planeas hacer y cómo las cosas cambian o se transforman.",
+        "content": [
+          "• **Verbo en forma diccionario + つもりです:** Tengo la intención de... (日本へ行くつもりです = Tengo la intención de ir a Japón).",
+          "• **Verbo en forma ない + つもりです:** No pienso... (勉強しないつもりです = No pienso estudiar).",
+          "• **Cambio con なる (volverse / convertirse en):**",
+          "   • い-adjetivo: quitar い y poner **くなる** (寒くなる = hacerse frío / enfriarse).",
+          "   • な-adjetivo o sustantivo: añadir **になる** (医者になる = convertirse en médico)."
+        ],
+        "examples": [
+          {
+            "japanese": "冬休みに国へ帰るつもりです。",
+            "romaji": "Fuyuyasumi ni kuni e kaeru tsumori desu.",
+            "spanish": "En las vacaciones de invierno tengo la intención de regresar a mi país.",
+            "audioText": "ふゆやすみにくにへかえるつもりです"
+          },
+          {
+            "japanese": "日本語の先生になりたいです。",
+            "romaji": "Nihongo no sensei ni naritai desu.",
+            "spanish": "Quiero convertirme en profesor de japonés.",
+            "audioText": "にほんごのせんせいになりたいです"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "unitId": 11,
+    "title": "Genki Lección 11: Deseos y Experiencias",
+    "genkiChapter": "Genki I - Lesson 11",
+    "subtitle": "Deseos (〜たい), Experiencias (〜ことがある) y 〜たり〜たり",
+    "description": "Expresa tus deseos personales, habla de tus experiencias vividas y lista actividades con 〜たり〜たりする.",
+    "themeColor": "#00cd9c",
+    "sections": [
+      {
+        "id": "u11-desires-tai",
+        "title": "Deseos Personales: 〜たい (Quiero hacer...)",
+        "japaneseTitle": "願望表現（〜たいです）",
+        "category": "grammar",
+        "formula": "Raíz Masu (sin ます) + たいです",
+        "summary": "Cómo expresar lo que tú mismo deseas hacer. Se conjuga exactamente como un い-adjetivo.",
+        "content": [
+          "• **Formación:** Se toma la raíz del verbo quitando 〜ます y se añade **たい**.",
+          "   • 行きます ➔ **行きたいです** (quiero ir).",
+          "   • 食べます ➔ **食べたいです** (quiero comer).",
+          "• **Conjugación como い-adjetivo:**",
+          "   • Negativo: 行きた**くないです** (no quiero ir).",
+          "   • Pasado: 行きた**かったです** (quería ir).",
+          "   • Pasado Negativo: 行きた**くなかったです** (no quería ir).",
+          "• **Partícula:** Con 〜たい, el objeto directo puede marcarse tanto con **を** como con **が** (お寿司が食べたい / お寿司を食べたい)."
+        ],
+        "examples": [
+          {
+            "japanese": "来年、日本へ行きたいです。",
+            "romaji": "Rainen, Nihon e ikitai desu.",
+            "spanish": "El próximo año quiero ir a Japón.",
+            "audioText": "らいねんにほんへいきたいです"
+          }
+        ]
+      },
+      {
+        "id": "u11-tari-koto-ga-aru",
+        "title": "Actividades de Muestra (〜たり〜たり) y Experiencias (〜ことがある)",
+        "japaneseTitle": "例示（〜たり〜たりする）と 経験（〜ことがある）",
+        "category": "grammar",
+        "summary": "Listar ejemplos de actividades y relatar lo que has experimentado en tu vida.",
+        "content": [
+          "• **〜たり〜たりする (Hacer cosas como A y B):**",
+          "   • Forma Ta de los verbos + り + する (ej. 本を読んだり、音楽を聞いたりしました = Hice cosas como leer y escuchar música).",
+          "• **〜ことがある (Haber tenido la experiencia de...):**",
+          "   • Forma Ta + ことがあります (ej. 富士山に登ったことがありますか = ¿Alguna vez has subido al Monte Fuji?).",
+          "   • Negativo: 〜たことがありません (Nunca en mi vida he hecho...)."
+        ],
+        "examples": [
+          {
+            "japanese": "休みの日は映画を見たり掃除したりします。",
+            "romaji": "Yasumi no hi wa eiga o mitari souji shitari shimasu.",
+            "spanish": "En mis días libres hago cosas como ver películas y hacer aseo.",
+            "audioText": "やすみのひはえいがをみたりそうじしたりします"
+          },
+          {
+            "japanese": "納豆を食べたことがありません。",
+            "romaji": "Nattou o tabeta koto ga arimasen.",
+            "spanish": "Nunca en mi vida he probado el natto.",
+            "audioText": "なっとうをたべたことがありません"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "unitId": 12,
+    "title": "Genki Lección 12: Salud, Consejos y Deberes",
+    "genkiChapter": "Genki I - Lesson 12",
+    "subtitle": "Modo Explicativo (〜んです), Excesos (〜すぎる) y Obligación",
+    "description": "La gran culminación de Genki I: el modo explicativo imprescindible 〜んです, excesos, consejos de salud (〜ほうがいい) y obligaciones (〜なければいけません).",
+    "themeColor": "#ce82ff",
+    "sections": [
+      {
+        "id": "u12-n-desu",
+        "title": "El Modo Explicativo: 〜んです / 〜のだ",
+        "japaneseTitle": "説明の「〜んです」（状況説明・理由の提示）",
+        "category": "grammar",
+        "formula": "[Oración en forma corta] + んです",
+        "summary": "Una de las partículas más frecuentes y naturales del japonés hablado: sirve para dar explicaciones, justificaciones o pedir contexto.",
+        "content": [
+          "• Se utiliza cuando hay una evidencia visible o contexto compartido y se desea explicar la causa.",
+          "• Si alguien te ve enfermo y pregunta: 「どうしたんですか」(¿Qué te ocurrió?), respondes:",
+          "   • **頭が痛いんです** (Es que me duele la cabeza).",
+          "• Con sustantivos y な-adjetivos en presente afirmativo, se inserta **な**: 病気**なんです** (Es que estoy enfermo)."
+        ],
+        "examples": [
+          {
+            "japanese": "お腹が痛いんです。",
+            "romaji": "Onaka ga itai n desu.",
+            "spanish": "Es que me duele el estómago.",
+            "audioText": "おなかがいたいんです"
+          }
+        ]
+      },
+      {
+        "id": "u12-sugiru-advice-duty",
+        "title": "Excesos (〜すぎる), Consejos (〜ほうがいい) y Obligación",
+        "japaneseTitle": "過度（〜すぎる）・助言（〜ほうがいい）・義務（〜なければいけない）",
+        "category": "grammar",
+        "summary": "Estructuras de salud para decir lo que hiciste en exceso, dar consejos médicos y expresar deberes ineludibles.",
+        "content": [
+          "• **〜すぎる (Hacer en exceso / Demasiado):**",
+          "   • Verbo raíz + すぎる (食べすぎました = Comí demasiado).",
+          "   • Adjetivo sin い + すぎる (高すぎます = Es demasiado caro).",
+          "• **〜ほうがいいです (Sería mejor que...):**",
+          "   • Consejo afirmativo: Forma Ta + ほうがいいです (薬を**飲んだ**ほうがいいです = Sería mejor que te tomes la medicina).",
+          "   • Consejo negativo: Forma ない + ほうがいいです (お風呂に**入らない**ほうがいいです = Sería mejor que no tomes un baño caliente).",
+          "• **〜なければいけません (Tengo que... / Es obligatorio):**",
+          "   • Forma ない ➔ quitar い y poner **ければいけません** (病院へ**行かなければいけません** = Tengo que ir al hospital)."
+        ],
+        "examples": [
+          {
+            "japanese": "きのう食べすぎました。",
+            "romaji": "Kinou tabesugimashita.",
+            "spanish": "Ayer comí en exceso.",
+            "audioText": "きのうたべすぎました"
+          },
+          {
+            "japanese": "早く寝たほうがいいですよ。",
+            "romaji": "Hayaku neta hou ga ii desu yo.",
+            "spanish": "Sería mejor que te duermas temprano, te aconsejo.",
+            "audioText": "はやくねたほうがいいですよ"
+          },
+          {
+            "japanese": "熱がありますから、病院へ行かなければいけません。",
+            "romaji": "Netsu ga arimasu kara, byouin e ikanakereba ikemasen.",
+            "spanish": "Como tengo fiebre, debo ir al hospital.",
+            "audioText": "ねつがありますからびょういんへいかなければいけません"
+          }
+        ]
+      }
+    ]
+  }
+];
