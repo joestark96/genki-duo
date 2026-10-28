@@ -185,6 +185,63 @@ export const App: React.FC = () => {
     }
   };
 
+  // Skip a unit and immediately unlock the next one
+  const handleSkipUnit = async (unitId: number) => {
+    const unitIndex = units.findIndex(u => u.id === unitId);
+    if (unitIndex === -1) return;
+
+    const targetUnit = units[unitIndex];
+    const isUnlocked = targetUnit.nodes.some(n => n.unlocked);
+    if (!isUnlocked) return;
+
+    // 1. Mark all nodes in this unit as completed with at least 1 star
+    const updatedNodes = targetUnit.nodes.map(n => ({
+      ...n,
+      unlocked: true,
+      completedSteps: n.totalSteps,
+      stars: Math.max(n.stars, 1)
+    }));
+
+    // 2. Unlock the first node of the next unit if it exists
+    let nextUnitFirstNodeId: string | null = null;
+    let nextUnitId: number | null = null;
+
+    const newUnits = units.map((unit, idx) => {
+      if (idx === unitIndex) {
+        return { ...unit, nodes: updatedNodes };
+      }
+      if (idx === unitIndex + 1 && unit.nodes.length > 0) {
+        nextUnitFirstNodeId = unit.nodes[0].id;
+        nextUnitId = unit.id;
+        const newNodes = [...unit.nodes];
+        newNodes[0] = { ...newNodes[0], unlocked: true };
+        return { ...unit, nodes: newNodes };
+      }
+      return unit;
+    });
+
+    setUnits(newUnits);
+
+    // 3. Award +50 XP and play victory sound
+    const updatedProfile: UserProfile = {
+      ...profile,
+      xp: profile.xp + 50,
+      gems: profile.gems + 20
+    };
+    setProfile(updatedProfile);
+    await dbService.saveUserProfile(updatedProfile);
+
+    // 4. Persist to SQLite
+    for (const node of updatedNodes) {
+      await dbService.saveLessonNodeProgress(node.id, unitId, true, node.totalSteps, node.totalSteps, node.stars);
+    }
+    if (nextUnitFirstNodeId && nextUnitId !== null) {
+      await dbService.saveLessonNodeProgress(nextUnitFirstNodeId, nextUnitId, true, 0, 3, 0);
+    }
+
+    sound.playLessonComplete();
+  };
+
   // Rate a flashcard in SRS
   const handleRateCard = async (cardId: string, category: string, rating: 'again' | 'hard' | 'good' | 'easy') => {
     await dbService.updateFlashcardSRS(cardId, category, rating);
@@ -232,6 +289,7 @@ export const App: React.FC = () => {
                 units={units}
                 userProfile={profile}
                 onCompleteLesson={handleCompleteLesson}
+                onSkipUnit={handleSkipUnit}
                 onDeductHeart={handleDeductHeart}
               />
             )}
