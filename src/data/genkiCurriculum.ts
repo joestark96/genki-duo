@@ -1093,23 +1093,24 @@ export const genkiCurriculum: Unit[] = [
   },
 
   // ==========================================
-  // UNIDAD 1: GENKI LECCIÓN 1 (Nuevos Amigos)
+  // UNIDAD 1: GENKI LECCIÓN 1 (Nuevos Amigos - Libro y Cuaderno de Ejercicios)
   // ==========================================
   {
     id: 1,
     genkiBook: 'Genki I',
-    title: 'Genki Lección 1: Nuevos Amigos',
-    subtitle: 'Saludos, Números y X は Y です',
-    description: 'Preséntate, pregunta la hora y forma tus primeras oraciones en japonés.',
+    title: 'Genki Lección 1: Nuevos Amigos (新しい友達)',
+    subtitle: 'Currículo Completo: Textbook + Workbook Exercises',
+    description: 'Aprende presentaciones, nacionalidades, carreras, números 0-100, la hora, edades, teléfonos y partículas は, か, の.',
     themeColor: '#1cb0f6',
     nodes: [
+      // 1. SALUDOS Y EXPRESIONES DE ENCUENTRO (Textbook Dialogue I & II)
       {
         id: 'l1-node-1',
         unitId: 1,
         lessonNumber: 1,
-        title: 'Saludos de Encuentro',
-        japaneseTitle: 'あいさつ',
-        description: 'Aprende Ohayou, Konnichiwa y Arigatou',
+        title: 'Saludos y Presentaciones',
+        japaneseTitle: 'あいさつ と 自己紹介',
+        description: 'Frases esenciales de presentación de Genki L1',
         icon: 'MessageCircle',
         color: 'blue',
         totalSteps: 3,
@@ -1118,103 +1119,66 @@ export const genkiCurriculum: Unit[] = [
         stars: 0,
         exercises: [
           {
-            id: 'ex-1-1',
+            id: 'ex-1-1-1',
             type: 'multiple-choice',
-            prompt: '¿Cómo saludas formalmente por la mañana en japonés?',
-            promptSub: 'Buenos días (formal)',
-            japaneseVoiceText: 'おはようございます',
+            prompt: '¿Qué frase se dice AL INICIO de presentarse por primera vez?',
+            promptSub: 'Mucho gusto (encantado)',
+            japaneseVoiceText: 'はじめまして',
             options: [
-              { id: 's1', text: 'おはようございます (Ohayou gozaimasu)', isCorrect: true },
-              { id: 's2', text: 'こんにちは (Konnichiwa)' },
-              { id: 's3', text: 'こんばんは (Konbanwa)' },
-              { id: 's4', text: 'さようなら (Sayounara)' }
+              { id: 'h1', text: 'はじめまして (Hajimemashite)', isCorrect: true },
+              { id: 'h2', text: 'さようなら (Sayounara)' },
+              { id: 'h3', text: 'じゃあ、また (Jaa, mata)' },
+              { id: 'h4', text: 'ただいま (Tadaima)' }
             ],
-            correctAnswerId: 's1',
-            explanation: '「おはようございます」 es el saludo formal de la mañana que enseña Genki L1.'
+            correctAnswerId: 'h1',
+            explanation: '「はじめまして」 proviene de はじめる (comenzar) y se usa la primera vez que conoces a alguien.'
           },
           {
-            id: 'ex-1-2',
+            id: 'ex-1-1-2',
             type: 'word-order',
-            prompt: 'Ordena las palabras para decir: "Hola, soy Mary."',
-            promptSub: 'こんにちは、メアリーです。',
-            japaneseVoiceText: 'こんにちはメアリーです',
-            wordBank: ['です', 'こんにちは', 'メアリー'],
-            correctSentence: ['こんにちは', 'メアリー', 'です'],
-            explanation: 'En japonés, el verbo/cópula 「です」 siempre va al final de la oración.'
+            prompt: 'Forma la frase clásica de cierre: "Mucho gusto / Cuento con su favor":',
+            promptSub: 'よろしくおねがいします',
+            japaneseVoiceText: 'よろしくおねがいします',
+            wordBank: ['おねがいします', 'よろしく'],
+            correctSentence: ['よろしく', 'おねがいします'],
+            explanation: '「よろしくお願いします」 es la frase indispensable para cerrar cualquier presentación.'
           },
           {
-            id: 'ex-1-3',
-            type: 'listening',
-            prompt: 'Escucha y selecciona la traducción en español:',
-            japaneseVoiceText: 'ありがとうございます',
-            options: [
-              { id: 'l1-a', text: 'Muchas gracias', isCorrect: true },
-              { id: 'l1-b', text: 'De nada' },
-              { id: 'l1-c', text: 'Buenas noches' },
-              { id: 'l1-d', text: 'Disculpe' }
+            id: 'ex-1-1-3',
+            type: 'match-pairs',
+            prompt: 'Empareja los saludos cotidianos de Genki:',
+            pairs: [
+              { id: 'p1', left: 'おはようございます', right: 'Buenos días' },
+              { id: 'p2', left: 'こんにちは', right: 'Buenas tardes / Hola' },
+              { id: 'p3', left: 'こんばんは', right: 'Buenas noches (saludo)' },
+              { id: 'p4', left: 'おやすみなさい', right: 'Buenas noches (despedida)' }
             ],
-            correctAnswerId: 'l1-a',
-            explanation: '「ありがとうございます」 significa "Muchas gracias".'
+            explanation: 'Genki distingue claramente los saludos diurnos de la despedida nocturna.'
+          },
+          {
+            id: 'ex-1-1-4',
+            type: 'listening',
+            prompt: 'Escucha el audio y selecciona la traducción adecuada:',
+            japaneseVoiceText: 'すみません',
+            options: [
+              { id: 'sumi-1', text: 'Disculpe / Perdón', isCorrect: true },
+              { id: 'sumi-2', text: 'De nada' },
+              { id: 'sumi-3', text: 'Hasta luego' }
+            ],
+            correctAnswerId: 'sumi-1',
+            explanation: '「すみません」 sirve tanto para disculparse como para llamar la atención del mesero o profesor.'
           }
         ]
       },
+
+      // 2. NÚMEROS 0 AL 100 (Workbook Practice: Numbers)
       {
         id: 'l1-node-2',
         unitId: 1,
         lessonNumber: 1,
-        title: 'Estructura X は Y です',
-        japaneseTitle: 'X は Y です (X es Y)',
-        description: 'La partícula tema は (wa) y la cópula です (desu)',
-        icon: 'BookOpen',
-        color: 'green',
-        totalSteps: 3,
-        unlocked: false,
-        completedSteps: 0,
-        stars: 0,
-        exercises: [
-          {
-            id: 'ex-1-g1',
-            type: 'word-order',
-            prompt: 'Forma la frase: "Takeshi es estudiante."',
-            promptSub: 'たけしさんは学生です。',
-            japaneseVoiceText: 'たけしさんはがくせいです',
-            wordBank: ['がくせい', 'です', 'たけしさん', 'は'],
-            correctSentence: ['たけしさん', 'は', 'がくせい', 'です'],
-            explanation: 'X (たけしさん) + は (wa) + Y (がくせい) + です (desu).'
-          },
-          {
-            id: 'ex-1-g2',
-            type: 'multiple-choice',
-            prompt: '¿Cómo se pronuncia la partícula 「は」 cuando marca el tema?',
-            promptSub: 'わたし「は」がくせいです',
-            options: [
-              { id: 'w1', text: 'Se pronuncia "wa"', isCorrect: true },
-              { id: 'w2', text: 'Se pronuncia "ha"' },
-              { id: 'w3', text: 'Se pronuncia "pa"' },
-              { id: 'w4', text: 'No se pronuncia' }
-            ],
-            correctAnswerId: 'w1',
-            explanation: 'Como regla de Genki, el caracter 「は」 se pronuncia "wa" únicamente cuando actúa como partícula gramatical de tema.'
-          },
-          {
-            id: 'ex-1-g3',
-            type: 'word-order',
-            prompt: 'Ordena para decir: "¿Eres estudiante?" (Pregunta con か)',
-            promptSub: '学生ですか。',
-            japaneseVoiceText: 'がくせいですか',
-            wordBank: ['か', 'がくせい', 'です'],
-            correctSentence: ['がくせい', 'です', 'か'],
-            explanation: 'Al añadir la partícula interrogativa 「か」 al final, conviertes cualquier oración en pregunta.'
-          }
-        ]
-      },
-      {
-        id: 'l1-node-3',
-        unitId: 1,
-        lessonNumber: 1,
-        title: 'Números y la Hora',
-        japaneseTitle: 'すうじ と じかん',
-        description: 'Números 1-100 y decir la hora con 〜時 (ji)',
+        title: 'Números 0 al 100',
+        japaneseTitle: 'すうじ（０〜１００）',
+        description: 'Conteo y operaciones matemáticas del libro de ejercicios',
         icon: 'Flame',
         color: 'orange',
         totalSteps: 3,
@@ -1223,31 +1187,664 @@ export const genkiCurriculum: Unit[] = [
         stars: 0,
         exercises: [
           {
-            id: 'ex-1-n1',
-            type: 'match-pairs',
-            prompt: 'Empareja los números con su lectura en japonés',
-            pairs: [
-              { id: 'np1', left: '一 (1)', right: 'いち (ichi)' },
-              { id: 'np2', left: '二 (2)', right: 'に (ni)' },
-              { id: 'np3', left: '三 (3)', right: 'さん (san)' },
-              { id: 'np4', left: '十 (10)', right: 'じゅう (juu)' }
+            id: 'ex-1-2-1',
+            type: 'multiple-choice',
+            prompt: '¿Cómo se lee el número 45 en japonés?',
+            promptSub: '45 = 40 (よんじゅう) + 5 (ご)',
+            japaneseVoiceText: 'よんじゅうご',
+            options: [
+              { id: 'n45-1', text: 'よんじゅうご (yonjuugo)', isCorrect: true },
+              { id: 'n45-2', text: 'しじゅうご (shijuugo)' },
+              { id: 'n45-3', text: 'ごじゅうよん (gojuuyon)' }
             ],
-            explanation: 'Los números base del 1 al 10 son la clave para contar en Genki.'
+            correctAnswerId: 'n45-1',
+            explanation: 'En las decenas, 40 se dice siempre よんじゅう (yonjuu).'
           },
           {
-            id: 'ex-1-n2',
+            id: 'ex-1-2-2',
+            type: 'match-pairs',
+            prompt: 'Empareja las decenas:',
+            pairs: [
+              { id: 'dp1', left: '二十 (20)', right: 'にじゅう' },
+              { id: 'dp2', left: '三十 (30)', right: 'さんじゅう' },
+              { id: 'dp3', left: '七十 (70)', right: 'ななじゅう' },
+              { id: 'dp4', left: '百 (100)', right: 'ひゃく' }
+            ],
+            explanation: '100 se dice 「ひゃく」 (hyaku), no "ichi-hyaku".'
+          },
+          {
+            id: 'ex-1-2-3',
+            type: 'word-order',
+            prompt: 'Del Workbook: Resuelve la suma 8 + 4 = 12 en japonés:',
+            promptSub: 'はち ＋ よん ＝ じゅうに (12)',
+            japaneseVoiceText: 'じゅうに',
+            wordBank: ['に', 'じゅう'],
+            correctSentence: ['じゅう', 'に'],
+            explanation: '10 (じゅう) + 2 (に) = 12 (じゅうに).'
+          },
+          {
+            id: 'ex-1-2-4',
+            type: 'listening',
+            prompt: 'Escucha el número dictado en japonés:',
+            japaneseVoiceText: 'きゅうじゅうきゅう',
+            options: [
+              { id: 'n-99', text: '99', isCorrect: true },
+              { id: 'n-89', text: '89' },
+              { id: 'n-19', text: '19' }
+            ],
+            correctAnswerId: 'n-99',
+            explanation: 'きゅうじゅう (90) + きゅう (9) = 99.'
+          }
+        ]
+      },
+
+      // 3. LA HORA Y MEDIA HORA (Textbook & Workbook Practice: Time)
+      {
+        id: 'l1-node-3',
+        unitId: 1,
+        lessonNumber: 1,
+        title: 'La Hora: 〜時 y 〜時半',
+        japaneseTitle: 'じかん（何時・何時半）',
+        description: 'Aprende a decir la hora y las 3 horas irregulares clave',
+        icon: 'Sparkles',
+        color: 'purple',
+        totalSteps: 3,
+        unlocked: false,
+        completedSteps: 0,
+        stars: 0,
+        exercises: [
+          {
+            id: 'ex-1-3-1',
             type: 'multiple-choice',
-            prompt: '¿Qué hora significa 「いま なんじ ですか」?',
+            prompt: '¡Cuidado con las 3 horas irregulares de Genki! ¿Cómo se dice "las 4 en punto"?',
+            promptSub: '4:00',
+            japaneseVoiceText: 'よじ',
+            options: [
+              { id: 't4-yo', text: 'よじ (yoji - irregular)', isCorrect: true },
+              { id: 't4-yon', text: 'よんじ (yonji)' },
+              { id: 't4-shi', text: 'しじ (shiji)' }
+            ],
+            correctAnswerId: 't4-yo',
+            explanation: 'Regla de oro de Genki: 4:00 es よじ (yoji), 7:00 es しちじ (shichiji) y 9:00 es くじ (kuji).'
+          },
+          {
+            id: 'ex-1-3-2',
+            type: 'match-pairs',
+            prompt: 'Empareja las horas con su lectura:',
+            pairs: [
+              { id: 'tp1', left: '1:00', right: 'いちじ (ichiji)' },
+              { id: 'tp2', left: '7:00', right: 'しちじ (shichiji)' },
+              { id: 'tp3', left: '9:00', right: 'くじ (kuji)' },
+              { id: 'tp4', left: '2:30', right: 'にじはん (niji han)' }
+            ],
+            explanation: '半 (はん / han) significa "y media".'
+          },
+          {
+            id: 'ex-1-3-3',
+            type: 'word-order',
+            prompt: 'Ordena la pregunta del libro: "¿Qué hora es ahora?":',
             promptSub: '今、何時ですか。',
             japaneseVoiceText: 'いまなんじですか',
-            options: [
-              { id: 't1', text: '¿Qué hora es ahora?', isCorrect: true },
-              { id: 't2', text: '¿A qué hora nos vemos?' },
-              { id: 't3', text: '¿Dónde está el reloj?' },
-              { id: 't4', text: '¿Cuántos años tienes?' }
-            ],
-            correctAnswerId: 't1',
+            wordBank: ['か', 'なんじ', 'いま', 'です'],
+            correctSentence: ['いま', 'なんじ', 'です', 'か'],
             explanation: 'いま (ahora) + なんじ (qué hora) + ですか (es?).'
+          },
+          {
+            id: 'ex-1-3-4',
+            type: 'listening',
+            prompt: 'Escucha la hora que dice el audio:',
+            japaneseVoiceText: 'さんじはんです',
+            options: [
+              { id: 't-330', text: '3:30 (3 y media)', isCorrect: true },
+              { id: 't-230', text: '2:30' },
+              { id: 't-300', text: '3:00' }
+            ],
+            correctAnswerId: 't-330',
+            explanation: 'さんじ (3:00) + はん (y media) + です = 3:30.'
+          }
+        ]
+      },
+
+      // 4. ESTRUCTURA X は Y です (Grammar 1: Identity & Nationalities)
+      {
+        id: 'l1-node-4',
+        unitId: 1,
+        lessonNumber: 1,
+        title: 'Estructura X は Y です',
+        japaneseTitle: '文法１：X は Y です',
+        description: 'Afirmaciones de identidad y nacionalidades con 〜人',
+        icon: 'BookOpen',
+        color: 'green',
+        totalSteps: 3,
+        unlocked: false,
+        completedSteps: 0,
+        stars: 0,
+        exercises: [
+          {
+            id: 'ex-1-4-1',
+            type: 'word-order',
+            prompt: 'Traduce: "Mary es estadounidense."',
+            promptSub: 'メアリーさんはアメリカ人です。',
+            japaneseVoiceText: 'メアリーさんはアメリカじんです',
+            wordBank: ['アメリカじん', 'です', 'メアリーさん', 'は'],
+            correctSentence: ['メアリーさん', 'は', 'アメリカじん', 'です'],
+            explanation: 'País + 人 (じん) = Nacionalidad. メアリーさんはアメリカ人です。'
+          },
+          {
+            id: 'ex-1-4-2',
+            type: 'match-pairs',
+            prompt: 'Empareja los países con su gentilicio en japonés:',
+            pairs: [
+              { id: 'np1', left: '日本 (Japón)', right: 'にほんじん' },
+              { id: 'np2', left: 'アメリカ (EE.UU.)', right: 'アメリカじん' },
+              { id: 'np3', left: 'イギリス (Reino Unido)', right: 'イギリスじん' },
+              { id: 'np4', left: '中国 (China)', right: 'ちゅうごくじん' }
+            ],
+            explanation: 'En japonés, basta con sufijar 「人」(jin) al nombre de cualquier país.'
+          },
+          {
+            id: 'ex-1-4-3',
+            type: 'multiple-choice',
+            prompt: 'En la frase 「わたしはメアリーです」, ¿cuál es la función de 「は」?',
+            promptSub: 'Partícula tema',
+            options: [
+              { id: 'wa-top', text: 'Marca el tema sobre el que se va a hablar ("En cuanto a mí...")', isCorrect: true },
+              { id: 'wa-verb', text: 'Es el verbo de la oración' },
+              { id: 'wa-adj', text: 'Indica el objeto directo' }
+            ],
+            correctAnswerId: 'wa-top',
+            explanation: 'は es la partícula marcadora de tema por excelencia en el idioma japonés.'
+          },
+          {
+            id: 'ex-1-4-4',
+            type: 'listening',
+            prompt: 'Escucha la oración:',
+            japaneseVoiceText: 'たけしさんはにほんじんです',
+            options: [
+              { id: 'l-tak-jap', text: 'Takeshi es japonés.', isCorrect: true },
+              { id: 'l-tak-stu', text: 'Takeshi es estudiante.' }
+            ],
+            correctAnswerId: 'l-tak-jap',
+            explanation: 'Takeshi-san wa nihonjin desu (Takeshi es japonés).'
+          }
+        ]
+      },
+
+      // 5. PREGUNTAS CON か (Grammar 2: Question Sentences)
+      {
+        id: 'l1-node-5',
+        unitId: 1,
+        lessonNumber: 1,
+        title: 'Preguntas con la Partícula か',
+        japaneseTitle: '文法２：質問の「か」',
+        description: 'Preguntas directas y respuestas con はい / いいえ',
+        icon: 'HelpCircle',
+        color: 'blue',
+        totalSteps: 3,
+        unlocked: false,
+        completedSteps: 0,
+        stars: 0,
+        exercises: [
+          {
+            id: 'ex-1-5-1',
+            type: 'multiple-choice',
+            prompt: '¿Cómo conviertes una oración afirmativa en pregunta en japonés?',
+            promptSub: '学生です ➔ ¿Es estudiante?',
+            options: [
+              { id: 'q-ka', text: 'Agregando la partícula 「か」 al final', isCorrect: true },
+              { id: 'q-inv', text: 'Invirtiendo el sujeto y el verbo como en inglés' },
+              { id: 'q-not', text: 'Solo cambiando la entonación sin ninguna palabra' }
+            ],
+            correctAnswerId: 'q-ka',
+            explanation: 'No se altera el orden de las palabras; simplemente se añade 「か」 al final.'
+          },
+          {
+            id: 'ex-1-5-2',
+            type: 'word-order',
+            prompt: 'Ordena la pregunta del diálogo de Genki: "¿Takeshi es estudiante?":',
+            promptSub: 'たけしさんは学生ですか。',
+            japaneseVoiceText: 'たけしさんはがくせいですか',
+            wordBank: ['か', 'がくせい', 'は', 'です', 'たけしさん'],
+            correctSentence: ['たけしさん', 'は', 'がくせい', 'です', 'か'],
+            explanation: 'Sujeto + は + Atributo + です + か.'
+          },
+          {
+            id: 'ex-1-5-3',
+            type: 'match-pairs',
+            prompt: 'Empareja la pregunta con su respuesta afirmativa o negativa:',
+            pairs: [
+              { id: 'qp1', left: '学生ですか。', right: 'はい、学生です。' },
+              { id: 'qp2', left: 'アメリカ人ですか。', right: 'いいえ、日本人です。' },
+              { id: 'qp3', left: '専攻は何ですか。', right: '日本語です。' },
+              { id: 'qp4', left: '先生ですか。', right: 'はい、先生です。' }
+            ],
+            explanation: 'はい (sí) y いいえ (no) son las respuestas estándar aprendidas en el libro.'
+          },
+          {
+            id: 'ex-1-5-4',
+            type: 'listening',
+            prompt: 'Escucha la pregunta:',
+            japaneseVoiceText: 'りゅうがくせいですか',
+            options: [
+              { id: 'ans-ryu', text: '¿Eres estudiante de intercambio?', isCorrect: true },
+              { id: 'ans-daig', text: '¿Eres universitario?' },
+              { id: 'ans-sensei', text: '¿Eres profesor?' }
+            ],
+            correctAnswerId: 'ans-ryu',
+            explanation: '留学生 (りゅうがくせい / ryuugakusei) = estudiante internacional.'
+          }
+        ]
+      },
+
+      // 6. OCUPACIONES Y ROLES SOCIALES (Textbook & Workbook Vocabulary)
+      {
+        id: 'l1-node-6',
+        unitId: 1,
+        lessonNumber: 1,
+        title: 'Ocupaciones y Roles Sociales',
+        japaneseTitle: '職業（しょくぎょう）',
+        description: 'Vocabulario de oficios y roles de los personajes de Genki',
+        icon: 'Users',
+        color: 'purple',
+        totalSteps: 3,
+        unlocked: false,
+        completedSteps: 0,
+        stars: 0,
+        exercises: [
+          {
+            id: 'ex-1-6-1',
+            type: 'match-pairs',
+            prompt: 'Empareja las ocupaciones de Genki Lección 1:',
+            pairs: [
+              { id: 'op1', left: '先生 (せんせい)', right: 'Profesor / Maestro' },
+              { id: 'op2', left: '学生 (がくせい)', right: 'Estudiante' },
+              { id: 'op3', left: '会社員 (かいしゃいん)', right: 'Empleado de empresa' },
+              { id: 'op4', left: '主婦 (しゅふ)', right: 'Ama de casa' }
+            ],
+            explanation: 'Estas son las 4 ocupaciones principales presentadas en el vocabulario de Genki L1.'
+          },
+          {
+            id: 'ex-1-6-2',
+            type: 'multiple-choice',
+            prompt: '¿Cómo se le dice respetuosamente al profesor Yamashita?',
+            promptSub: 'Mr. Yamashita / Profesor Yamashita',
+            options: [
+              { id: 'yam-1', text: '山下先生 (Yamashita-sensei)', isCorrect: true },
+              { id: 'yam-2', text: '山下さん (Yamashita-san)' },
+              { id: 'yam-3', text: '山下くん (Yamashita-kun)' }
+            ],
+            correctAnswerId: 'yam-1',
+            explanation: 'En las escuelas japonesas y en Genki, a los maestros se les llama con el título 「先生」.'
+          },
+          {
+            id: 'ex-1-6-3',
+            type: 'word-order',
+            prompt: 'Traduce: "Mi padre es empleado de empresa":',
+            promptSub: '父は会社員です。',
+            japaneseVoiceText: 'ちちはかいしゃいんです',
+            wordBank: ['かいしゃいん', 'は', 'ちち', 'です'],
+            correctSentence: ['ちち', 'は', 'かいしゃいん', 'です'],
+            explanation: '会社員 (かいしゃいん / kaishain) = empleado de oficina.'
+          }
+        ]
+      },
+
+      // 7. ESPECIALIDADES Y AÑOS UNIVERSITARIOS (Textbook & Workbook Practice: Majors)
+      {
+        id: 'l1-node-7',
+        unitId: 1,
+        lessonNumber: 1,
+        title: 'Carreras Universitarias y Cursos',
+        japaneseTitle: '専攻（せんこう）と 学年',
+        description: 'Expresar qué estudias y tu año de estudio (1.º a 4.º año)',
+        icon: 'BookOpen',
+        color: 'orange',
+        totalSteps: 3,
+        unlocked: false,
+        completedSteps: 0,
+        stars: 0,
+        exercises: [
+          {
+            id: 'ex-1-7-1',
+            type: 'match-pairs',
+            prompt: 'Empareja las especialidades (専攻 / senkou):',
+            pairs: [
+              { id: 'mp1', left: 'けいざい (keizai)', right: 'Economía' },
+              { id: 'mp2', left: 'れきし (rekishi)', right: 'Historia' },
+              { id: 'mp3', left: 'ぶんがく (bungaku)', right: 'Literatura' },
+              { id: 'mp4', left: 'ビジネス (bijinesu)', right: 'Negocios' }
+            ],
+            explanation: 'Genki L1 enseña las carreras universitarias más comunes en el campus.'
+          },
+          {
+            id: 'ex-1-7-2',
+            type: 'word-order',
+            prompt: 'Forma la frase de Mary: "Mi especialidad es la lengua japonesa":',
+            promptSub: '専攻は日本語です。',
+            japaneseVoiceText: 'せんこうはにほんごです',
+            wordBank: ['にほんご', 'は', 'せんこう', 'です'],
+            correctSentence: ['せんこう', 'は', 'にほんご', 'です'],
+            explanation: '専攻 (せんこう / senkou) = especialidad / carrera universitaria.'
+          },
+          {
+            id: 'ex-1-7-3',
+            type: 'multiple-choice',
+            prompt: '¿Cómo se dice "Estudiante de segundo año" (sofomoro en la universidad)?',
+            promptSub: '2.º año',
+            japaneseVoiceText: 'にねんせい',
+            options: [
+              { id: 'yr-2', text: '二年生 (にねんせい / ninensei)', isCorrect: true },
+              { id: 'yr-1', text: '一年生 (いちねんせい)' },
+              { id: 'yr-3', text: '三年生 (さんねんせい)' }
+            ],
+            correctAnswerId: 'yr-2',
+            explanation: 'Número + 年生 (ねんせい / nensei) indica el grado escolar.'
+          },
+          {
+            id: 'ex-1-7-4',
+            type: 'listening',
+            prompt: 'Escucha la carrera que menciona el audio:',
+            japaneseVoiceText: 'コンピューター',
+            options: [
+              { id: 'l-comp', text: 'Computación / Informática', isCorrect: true },
+              { id: 'l-econ', text: 'Economía' }
+            ],
+            correctAnswerId: 'l-comp',
+            explanation: 'コンピューター (konpyuutaa) se escribe en Katakana.'
+          }
+        ]
+      },
+
+      // 8. EDAD: 〜才 / 〜歳 (Textbook & Workbook Practice: Age)
+      {
+        id: 'l1-node-8',
+        unitId: 1,
+        lessonNumber: 1,
+        title: 'Edad: 〜才 (Años de edad)',
+        japaneseTitle: '年齢（〜さい・はたち）',
+        description: 'Preguntar la edad y las excepciones irregulares: 1, 8 y 20 años',
+        icon: 'Flame',
+        color: 'red',
+        totalSteps: 3,
+        unlocked: false,
+        completedSteps: 0,
+        stars: 0,
+        exercises: [
+          {
+            id: 'ex-1-8-1',
+            type: 'multiple-choice',
+            prompt: '¡Excepción cultural súper importante! ¿Cómo se dice "20 años de edad" (mayoría de edad tradicional)?',
+            promptSub: '20 años',
+            japaneseVoiceText: 'はたち',
+            options: [
+              { id: 'age-hatachi', text: 'はたち (hatachi - lectura especial tradicional)', isCorrect: true },
+              { id: 'age-nijusai', text: 'にじゅっさい (nijussai)' },
+              { id: 'age-nisai', text: 'にさい (nisai)' }
+            ],
+            correctAnswerId: 'age-hatachi',
+            explanation: 'Cumplir 20 años en Japón se celebra en el Seijin no Hi y se dice tradicionalmente 「はたち」.'
+          },
+          {
+            id: 'ex-1-8-2',
+            type: 'match-pairs',
+            prompt: 'Empareja las edades con sus lecturas irregulares:',
+            pairs: [
+              { id: 'ap1', left: '1 año', right: 'いっさい (issai)' },
+              { id: 'ap2', left: '8 años', right: 'はっさい (hassai)' },
+              { id: 'ap3', left: '10 años', right: 'じゅっさい (jussai)' },
+              { id: 'ap4', left: '19 años', right: 'じゅうきゅうさい' }
+            ],
+            explanation: '1, 8 y 10 tienen asimilación consonántica con tsu pequeño (っ).'
+          },
+          {
+            id: 'ex-1-8-3',
+            type: 'word-order',
+            prompt: 'Ordena la pregunta del Workbook: "¿Cuántos años tienes?":',
+            promptSub: '何歳ですか。',
+            japaneseVoiceText: 'なんさいですか',
+            wordBank: ['か', 'なんさい', 'です'],
+            correctSentence: ['なんさい', 'です', 'か'],
+            explanation: '何歳 (なんさい / nansai) = cuántos años.'
+          }
+        ]
+      },
+
+      // 9. PARTÍCULA MODIFICADORA の (Grammar 3: Noun1 の Noun2)
+      {
+        id: 'l1-node-9',
+        unitId: 1,
+        lessonNumber: 1,
+        title: 'La Partícula の (Conexión)',
+        japaneseTitle: '文法３：名詞１ の 名詞２',
+        description: 'Posesión, pertenencia y afiliación universitaria',
+        icon: 'Sparkles',
+        color: 'purple',
+        totalSteps: 3,
+        unlocked: false,
+        completedSteps: 0,
+        stars: 0,
+        exercises: [
+          {
+            id: 'ex-1-9-1',
+            type: 'word-order',
+            prompt: 'Traduce: "Estudiante de la Universidad Sakura":',
+            promptSub: 'さくら大学の学生',
+            japaneseVoiceText: 'さくらだいがくのがくせい',
+            wordBank: ['がくせい', 'の', 'さくらだいがく'],
+            correctSentence: ['さくらだいがく', 'の', 'がくせい'],
+            explanation: 'En japonés lo general/institución va primero, seguido de の y la persona.'
+          },
+          {
+            id: 'ex-1-9-2',
+            type: 'multiple-choice',
+            prompt: '¿Cómo se dice "Profesor de idioma japonés"?',
+            promptSub: 'Profesor de japonés',
+            japaneseVoiceText: 'にほんごのせんせい',
+            options: [
+              { id: 'no-nihon', text: '日本語の先生 (nihongo no sensei)', isCorrect: true },
+              { id: 'no-inv', text: '先生の日本語 (sensei no nihongo)' },
+              { id: 'no-wa', text: '日本語は先生 (nihongo wa sensei)' }
+            ],
+            correctAnswerId: 'no-nihon',
+            explanation: 'El sustantivo 1 (日本語) califica y describe al sustantivo 2 (先生).'
+          },
+          {
+            id: 'ex-1-9-3',
+            type: 'word-order',
+            prompt: 'Del Workbook: Traduce "El amigo de Takeshi":',
+            promptSub: 'たけしさんのともだち',
+            japaneseVoiceText: 'たけしさんのともだち',
+            wordBank: ['ともだち', 'の', 'たけしさん'],
+            correctSentence: ['たけしさん', 'の', 'ともだち'],
+            explanation: 'Poseedor (Takeshi) + の + posesión/vínculo (amigo).'
+          },
+          {
+            id: 'ex-1-9-4',
+            type: 'listening',
+            prompt: 'Escucha la frase con partícula の:',
+            japaneseVoiceText: 'わたしのでんわばんごう',
+            options: [
+              { id: 'no-ph', text: 'Mi número de teléfono', isCorrect: true },
+              { id: 'no-name', text: 'Mi nombre' },
+              { id: 'no-univ', text: 'Mi universidad' }
+            ],
+            correctAnswerId: 'no-ph',
+            explanation: 'わたしの (mi) + でんわばんごう (número de teléfono).'
+          }
+        ]
+      },
+
+      // 10. TELÉFONOS Y CONTACTO (Textbook & Workbook Practice: Phone numbers)
+      {
+        id: 'l1-node-10',
+        unitId: 1,
+        lessonNumber: 1,
+        title: 'Teléfonos y Preguntar Contacto',
+        japaneseTitle: '電話番号（でんわばんごう）',
+        description: 'Cómo leer números de teléfono con の como guión',
+        icon: 'PhoneCall',
+        color: 'blue',
+        totalSteps: 3,
+        unlocked: false,
+        completedSteps: 0,
+        stars: 0,
+        exercises: [
+          {
+            id: 'ex-1-10-1',
+            type: 'multiple-choice',
+            prompt: '¿Cómo se lee el guion en un número telefónico en japonés (ej. 283-9541)?',
+            promptSub: '283 - 9541',
+            options: [
+              { id: 'ph-no', text: 'Se pronuncia con la partícula 「の」(no)', isCorrect: true },
+              { id: 'ph-hai', text: 'Se dice "hyphen"' },
+              { id: 'ph-sil', text: 'Se deja una pausa larga en silencio' }
+            ],
+            correctAnswerId: 'ph-no',
+            explanation: 'En números telefónicos, los guiones separadores se dicen en voz alta como 「の」.'
+          },
+          {
+            id: 'ex-1-10-2',
+            type: 'word-order',
+            prompt: 'Ordena la pregunta: "¿Cuál es tu número de teléfono?":',
+            promptSub: '電話番号は何番ですか。',
+            japaneseVoiceText: 'でんわばんごうはなんばんですか',
+            wordBank: ['か', 'なんばん', 'でんわばんごう', 'です', 'は'],
+            correctSentence: ['でんわばんごう', 'は', 'なんばん', 'です', 'か'],
+            explanation: '何番 (なんばん / nanban) = qué número.'
+          },
+          {
+            id: 'ex-1-10-3',
+            type: 'listening',
+            prompt: 'Escucha el número telefónico que se dicta:',
+            japaneseVoiceText: 'ゼロきゅうゼロのいちにさん',
+            options: [
+              { id: 'p-090', text: '090 - 123', isCorrect: true },
+              { id: 'p-080', text: '080 - 123' },
+              { id: 'p-090-4', text: '090 - 456' }
+            ],
+            correctAnswerId: 'p-090',
+            explanation: 'ゼロ (0) + きゅう (9) + ゼロ (0) + の (-) + いち (1) + に (2) + さん (3).'
+          }
+        ]
+      },
+
+      // 11. WORKBOOK: COMPRENSIÓN AUDITIVA (Workbook Listening Practice)
+      {
+        id: 'l1-node-11',
+        unitId: 1,
+        lessonNumber: 1,
+        title: 'Workbook: Práctica Auditiva',
+        japaneseTitle: 'ワークブック：リスニング問題',
+        description: 'Ejercicios de escucha idénticos a los del cuaderno oficial',
+        icon: 'Headphones',
+        color: 'green',
+        totalSteps: 3,
+        unlocked: false,
+        completedSteps: 0,
+        stars: 0,
+        exercises: [
+          {
+            id: 'ex-1-11-1',
+            type: 'listening',
+            prompt: 'Ejercicio de escucha del Workbook: ¿Quién está hablando?',
+            japaneseVoiceText: 'はじめまして。メアリー・ハートです。アリゾナだいがくのがくせいです。にねんせいです。',
+            options: [
+              { id: 'wb-m1', text: 'Mary Hart, estudiante de 2.º año de la Univ. de Arizona', isCorrect: true },
+              { id: 'wb-m2', text: 'Takeshi, estudiante de 3.º año de Sakura' },
+              { id: 'wb-m3', text: 'Profesor Yamashita' }
+            ],
+            correctAnswerId: 'wb-m1',
+            explanation: 'Mary se presenta: estudiante de Arizona de segundo año (にねんせい).'
+          },
+          {
+            id: 'ex-1-11-2',
+            type: 'listening',
+            prompt: 'Escucha la conversación entre Takeshi y Mary:',
+            japaneseVoiceText: 'メアリーさん、せんこうはなんですか。ー にほんごです。',
+            options: [
+              { id: 'wb-ans-nih', text: 'Takeshi pregunta la carrera de Mary y ella responde "japonés".', isCorrect: true },
+              { id: 'wb-ans-eng', text: 'Pregunta la hora de la clase.' },
+              { id: 'wb-ans-ph', text: 'Pregunta su número de teléfono.' }
+            ],
+            correctAnswerId: 'wb-ans-nih',
+            explanation: 'せんこうはなんですか (¿Cuál es tu especialidad?) -> 日本語です (Japonés).'
+          },
+          {
+            id: 'ex-1-11-3',
+            type: 'listening',
+            prompt: 'Escucha la edad que dice Takeshi:',
+            japaneseVoiceText: 'にじゅういっさいです',
+            options: [
+              { id: 'wb-21', text: '21 años (にじゅういっさい)', isCorrect: true },
+              { id: 'wb-20', text: '20 años (はたち)' },
+              { id: 'wb-22', text: '22 años' }
+            ],
+            correctAnswerId: 'wb-21',
+            explanation: '20 (にじゅう) + 1 año con asimilación (いっさい) = 21 años.'
+          }
+        ]
+      },
+
+      // 12. WORKBOOK: EVALUACIÓN INTEGRADORA (Review & Self-Introduction Dialogue)
+      {
+        id: 'l1-node-12',
+        unitId: 1,
+        lessonNumber: 1,
+        title: 'Workbook: Integración y Diálogo',
+        japaneseTitle: 'ワークブック：総合問題 と 自己紹介',
+        description: 'Prueba final de la Lección 1 combinando todo lo aprendido',
+        icon: 'Award',
+        color: 'orange',
+        totalSteps: 3,
+        unlocked: false,
+        completedSteps: 0,
+        stars: 0,
+        exercises: [
+          {
+            id: 'ex-1-12-1',
+            type: 'word-order',
+            prompt: 'Arma la auto-presentación completa de Takeshi del libro:',
+            promptSub: 'たけしです。さくら大学の学生です。',
+            japaneseVoiceText: 'たけしですさくらだいがくのがくせいです',
+            wordBank: ['がくせい', 'たけし', 'の', 'さくらだいがく', 'です', 'です'],
+            correctSentence: ['たけし', 'です', 'さくらだいがく', 'の', 'がくせい', 'です'],
+            explanation: 'Takeshi desu. Sakura daigaku no gakusei desu.'
+          },
+          {
+            id: 'ex-1-12-2',
+            type: 'multiple-choice',
+            prompt: 'Encuentra el error del Workbook: ¿Cuál de estas 3 oraciones tiene un error de partícula?',
+            options: [
+              { id: 'err-1', text: 'メアリーさん は アメリカ人 の です。(Uso incorrecto de の al final)', isCorrect: true },
+              { id: 'err-2', text: 'メアリーさんはアメリカ人です。(Correcta)' },
+              { id: 'err-3', text: 'メアリーさんは学生ですか。(Correcta)' }
+            ],
+            correctAnswerId: 'err-1',
+            explanation: 'No se pone 「の」 antes de です sin un sustantivo posterior.'
+          },
+          {
+            id: 'ex-1-12-3',
+            type: 'match-pairs',
+            prompt: 'Empareja las preguntas clave de la Lección 1 con su significado:',
+            pairs: [
+              { id: 'rev1', left: 'おなまえは？', right: '¿Cuál es su nombre?' },
+              { id: 'rev2', left: 'ごせんこうは？', right: '¿Cuál es su especialidad?' },
+              { id: 'rev3', left: 'おいくつですか？', right: '¿Qué edad tiene?' },
+              { id: 'rev4', left: 'いまなんじですか？', right: '¿Qué hora es ahora?' }
+            ],
+            explanation: '¡Has dominado todas las preguntas comunicativas de la Lección 1 de Genki!'
+          },
+          {
+            id: 'ex-1-12-4',
+            type: 'listening',
+            prompt: 'Escucha el mensaje final de despedida de la Lección 1:',
+            japaneseVoiceText: 'どうぞよろしくおねがいします',
+            options: [
+              { id: 'fin-yoro', text: 'Encantado de conocerle, cuento con su favor.', isCorrect: true },
+              { id: 'fin-ohay', text: 'Buenos días por la mañana.' }
+            ],
+            correctAnswerId: 'fin-yoro',
+            explanation: '¡Felicitaciones! Has completado el currículo íntegro de la Lección 1 de Genki.'
           }
         ]
       }

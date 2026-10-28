@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, Lock, Star, Play, Sparkles, MessageCircle, ShoppingBag, Coffee, Heart, Music, Users, Award, Flame, BookOpen } from 'lucide-react';
+import { Check, Lock, Star, Play, Sparkles, MessageCircle, ShoppingBag, Coffee, Heart, Music, Users, Award, Flame, BookOpen, HelpCircle, PhoneCall, Headphones } from 'lucide-react';
 import { LessonNode } from '../../types';
 import { sound } from '../../services/sound';
 
@@ -33,6 +33,9 @@ export const RoadmapNode: React.FC<RoadmapNodeProps> = ({
       case 'Music': return <Music {...props} />;
       case 'Users': return <Users {...props} />;
       case 'Award': return <Award {...props} />;
+      case 'HelpCircle': return <HelpCircle {...props} />;
+      case 'PhoneCall': return <PhoneCall {...props} />;
+      case 'Headphones': return <Headphones {...props} />;
       default: return <Play {...props} />;
     }
   };
