@@ -1,8 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import { X, Heart, Volume2, CheckCircle2, AlertCircle, ArrowRight, Trophy, Sparkles, RotateCcw, FastForward, ShieldAlert } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { Exercise, LessonNode, UserProfile } from '../../types';
+import { Exercise, LessonNode, MatchPair, UserProfile } from '../../types';
 import { sound } from '../../services/sound';
+
+function shuffleArray<T>(array: T[]): T[] {
+  const arr = [...array];
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
 
 interface QuizModalProps {
   lesson: LessonNode;
@@ -35,6 +44,9 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   const [matchedPairs, setMatchedPairs] = useState<string[]>([]);
   const [selectedLeft, setSelectedLeft] = useState<string | null>(null);
   const [selectedRight, setSelectedRight] = useState<string | null>(null);
+  const [mismatchedPair, setMismatchedPair] = useState<{ left: string; right: string } | null>(null);
+  const [shuffledLeftPairs, setShuffledLeftPairs] = useState<MatchPair[]>([]);
+  const [shuffledRightPairs, setShuffledRightPairs] = useState<MatchPair[]>([]);
 
   // Status: 'answering' | 'correct' | 'incorrect' | 'completed' | 'game-over' | 'jump-failed' | 'jump-passed'
   const [status, setStatus] = useState<'answering' | 'correct' | 'incorrect' | 'completed' | 'game-over' | 'jump-failed' | 'jump-passed'>('answering');
@@ -51,6 +63,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
       setSelectedOptionId(null);
       setSelectedLeft(null);
       setSelectedRight(null);
+      setMismatchedPair(null);
       setStatus('answering');
 
       if (currentExercise.type === 'word-order' && currentExercise.wordBank) {
@@ -58,8 +71,22 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         setSelectedWords([]);
       }
 
-      if (currentExercise.type === 'match-pairs') {
+      if (currentExercise.type === 'match-pairs' && currentExercise.pairs) {
         setMatchedPairs([]);
+        // 1. Barajar la columna izquierda
+        const lefts = shuffleArray(currentExercise.pairs);
+        setShuffledLeftPairs(lefts);
+
+        // 2. Barajar la columna derecha intercalada (evitar que queden en la misma fila horizontal)
+        let rights = shuffleArray(currentExercise.pairs);
+        if (currentExercise.pairs.length > 1) {
+          let attempts = 0;
+          while (attempts < 25 && rights.some((r, i) => r.id === lefts[i]?.id)) {
+            rights = shuffleArray(currentExercise.pairs);
+            attempts++;
+          }
+        }
+        setShuffledRightPairs(rights);
       }
 
       // Preload audio for instantaneous 0ms playback on click
@@ -192,16 +219,29 @@ export const QuizModal: React.FC<QuizModalProps> = ({
       setMatchedPairs(newMatched);
       setSelectedLeft(null);
       setSelectedRight(null);
+      setMismatchedPair(null);
 
-      if (newMatched.length === currentExercise?.pairs?.length) {
+      if (newMatched.length === (currentExercise?.pairs?.length || 0)) {
         sound.playCorrect();
         setStatus('correct');
       }
     } else {
       sound.playIncorrect();
+      setMismatchedPair({ left: leftId, right: rightId });
+      setWrongAttempts(prev => prev + 1);
+
+      if (isJumpAhead) {
+        const remaining = jumpChancesLeft - 1;
+        setJumpChancesLeft(remaining);
+        if (remaining <= 0) {
+          setStatus('jump-failed');
+        }
+      }
+
       setTimeout(() => {
         setSelectedLeft(null);
         setSelectedRight(null);
+        setMismatchedPair(null);
       }, 500);
     }
   };
@@ -536,12 +576,13 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         )}
 
         {/* 3. Match Pairs Exercise */}
-        {currentExercise.type === 'match-pairs' && currentExercise.pairs && (
+        {currentExercise.type === 'match-pairs' && (
           <div className="grid grid-cols-2 gap-3">
             <div className="flex flex-col gap-2.5">
-              {currentExercise.pairs.map(p => {
+              {shuffledLeftPairs.map(p => {
                 const isMatched = matchedPairs.includes(p.id);
                 const isSelected = selectedLeft === p.id;
+                const isMismatched = mismatchedPair?.left === p.id;
                 return (
                   <button
                     key={`left-${p.id}`}
@@ -550,6 +591,8 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                     className={`p-3.5 rounded-2xl border-2 font-bold text-center transition-all ${
                       isMatched
                         ? 'opacity-30 border-duo-green bg-duo-green-light/40 text-duo-green-dark cursor-default'
+                        : isMismatched
+                        ? 'border-red-500 bg-red-50 text-red-600 shadow-[0_4px_0_0_#ef4444] animate-shake'
                         : isSelected
                         ? 'border-duo-blue bg-duo-blue-light/50 shadow-[0_4px_0_0_#1cb0f6]'
                         : 'border-duo-gray-200 bg-white shadow-duo-card hover:bg-gray-50'
@@ -563,9 +606,10 @@ export const QuizModal: React.FC<QuizModalProps> = ({
             </div>
 
             <div className="flex flex-col gap-2.5">
-              {currentExercise.pairs.map(p => {
+              {shuffledRightPairs.map(p => {
                 const isMatched = matchedPairs.includes(p.id);
                 const isSelected = selectedRight === p.id;
+                const isMismatched = mismatchedPair?.right === p.id;
                 return (
                   <button
                     key={`right-${p.id}`}
@@ -574,6 +618,8 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                     className={`p-3.5 rounded-2xl border-2 font-bold text-center transition-all flex items-center justify-center min-h-[64px] ${
                       isMatched
                         ? 'opacity-30 border-duo-green bg-duo-green-light/40 text-duo-green-dark cursor-default'
+                        : isMismatched
+                        ? 'border-red-500 bg-red-50 text-red-600 shadow-[0_4px_0_0_#ef4444] animate-shake'
                         : isSelected
                         ? 'border-duo-blue bg-duo-blue-light/50 shadow-[0_4px_0_0_#1cb0f6]'
                         : 'border-duo-gray-200 bg-white shadow-duo-card hover:bg-gray-50'
