@@ -14,3 +14,4 @@ export const KanaPage: React.FC = () => {
     </div>
   );
 };
+

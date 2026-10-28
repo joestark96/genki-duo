@@ -135,3 +135,4 @@ export const KanaTable: React.FC = () => {
     </div>
   );
 };
+

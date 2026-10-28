@@ -52,3 +52,4 @@ export const TopBar: React.FC<TopBarProps> = ({ profile, onSoundToggle }) => {
     </header>
   );
 };
+

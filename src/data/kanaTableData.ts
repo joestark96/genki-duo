@@ -108,3 +108,4 @@ export const dakutenKanaList: KanaChar[] = [
   { hira: 'ぺ', kata: 'ペ', romaji: 'pe', example: 'ペン', exampleMeaning: 'Bolígrafo' },
   { hira: 'ぽ', kata: 'ポ', romaji: 'po', example: 'ポスト', exampleMeaning: 'Buzón' }
 ];
+

@@ -310,15 +310,34 @@ export const QuizModal: React.FC<QuizModalProps> = ({
             </div>
           )}
 
-          {/* Audio button for listening exercise */}
+          {/* Audio button for listening exercise (Duolingo Normal & Slow/Turtle speed) */}
           {currentExercise.type === 'listening' && (
-            <div className="flex justify-center my-6">
+            <div className="flex items-center justify-center gap-4 my-6">
+              {/* Normal speed */}
               <button
-                onClick={() => sound.speakJapanese(currentExercise.japaneseVoiceText!)}
-                className="w-24 h-24 bg-duo-blue rounded-3xl flex flex-col items-center justify-center text-white shadow-[0_6px_0_0_#1899d6] active:translate-y-1 active:shadow-none hover:brightness-105 transition-all"
+                onClick={() => {
+                  sound.playTap();
+                  sound.speakJapanese(currentExercise.japaneseVoiceText!, 0.9);
+                }}
+                className="w-24 h-24 bg-duo-blue rounded-3xl flex flex-col items-center justify-center text-white shadow-[0_6px_0_0_#1899d6] active:translate-y-1 active:shadow-none hover:brightness-105 transition-all relative group"
+                title="Escuchar audio"
               >
+                <div className="absolute inset-0 rounded-3xl border-2 border-white/30 animate-pulse pointer-events-none" />
                 <Volume2 className="w-10 h-10 stroke-[2.5px]" />
-                <span className="text-xs font-black uppercase mt-1">Escuchar</span>
+                <span className="text-[11px] font-black uppercase mt-1 tracking-wider">Escuchar</span>
+              </button>
+
+              {/* Slow / Turtle speed (0.6x) */}
+              <button
+                onClick={() => {
+                  sound.playTap();
+                  sound.speakJapanese(currentExercise.japaneseVoiceText!, 0.55);
+                }}
+                className="w-16 h-16 bg-duo-blue-light/80 border-2 border-duo-blue rounded-2xl flex flex-col items-center justify-center text-duo-blue-dark shadow-[0_4px_0_0_#1cb0f6] active:translate-y-1 active:shadow-none hover:bg-duo-blue-light transition-all"
+                title="Escuchar lento (velocidad tortuga)"
+              >
+                <span className="text-2xl leading-none">🐢</span>
+                <span className="text-[9px] font-black uppercase mt-0.5">Lento</span>
               </button>
             </div>
           )}
@@ -516,3 +535,4 @@ export const QuizModal: React.FC<QuizModalProps> = ({
     </div>
   );
 };
+

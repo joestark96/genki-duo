@@ -55,17 +55,33 @@ export interface Unit {
   nodes: LessonNode[];
 }
 
-export type FlashcardCategory = 'hiragana' | 'katakana' | 'vocabulary' | 'phrases';
+export type FlashcardCategory = 'hiragana' | 'katakana' | 'vocabulary' | 'phrases' | 'kanji';
+
+export type JLPTLevel = 'N5' | 'N4' | 'N3' | 'N2' | 'N1';
+
+export interface KanjiCompound {
+  word: string;
+  furigana: string;
+  romaji: string;
+  meaning: string;
+}
 
 export interface Flashcard {
   id: string;
   category: FlashcardCategory;
   genkiLesson?: number; // 0 = general kana, 1 = Lesson 1, etc.
+  jlptLevel?: JLPTLevel;
   japanese: string;
   furigana: string;
   romaji: string;
   spanish: string;
   english?: string;
+  // Kanji specific metadata
+  onyomi?: string;      // Reading in Katakana
+  kunyomi?: string;     // Reading in Hiragana
+  strokeCount?: number; // Number of strokes
+  radicals?: string;    // Radical description
+  compounds?: KanjiCompound[]; // Common words using this Kanji
   exampleSentence?: string;
   exampleTranslation?: string;
   notes?: string;
@@ -89,3 +105,4 @@ export interface UserProfile {
   soundEnabled: boolean;
   furiganaMode: 'always' | 'on-hover' | 'hidden';
 }
+

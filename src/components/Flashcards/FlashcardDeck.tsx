@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Volume2, RotateCw, Check, Clock, Eye, Sparkles, Filter, Search } from 'lucide-react';
-import { Flashcard, FlashcardCategory } from '../../types';
+import { Volume2, RotateCw, Check, Clock, Eye, Sparkles, Filter, Search, Award, BookOpen } from 'lucide-react';
+import { Flashcard, FlashcardCategory, JLPTLevel } from '../../types';
 import { sound } from '../../services/sound';
 
 interface FlashcardDeckProps {
@@ -10,6 +10,7 @@ interface FlashcardDeckProps {
 
 export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard }) => {
   const [selectedCategory, setSelectedCategory] = useState<FlashcardCategory | 'all'>('all');
+  const [selectedJlpt, setSelectedJlpt] = useState<JLPTLevel | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
@@ -17,20 +18,32 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
 
   // Filter cards
   const filteredCards = cards.filter(c => {
-    const matchesCategory =
-      selectedCategory === 'all'
-        ? true
-        : selectedCategory === 'hiragana' || selectedCategory === 'katakana'
-        ? c.category === selectedCategory || c.category === 'hiragana' || c.category === 'katakana'
-        : c.category === selectedCategory;
+    // 1. Category match
+    let matchesCategory = false;
+    if (selectedCategory === 'all') {
+      matchesCategory = true;
+    } else if (selectedCategory === 'hiragana') {
+      matchesCategory = c.category === 'hiragana' || c.category === 'katakana';
+    } else {
+      matchesCategory = c.category === selectedCategory;
+    }
 
+    // 2. JLPT level match (when in kanji category or when jlpt filter active)
+    let matchesJlpt = true;
+    if (selectedCategory === 'kanji' && selectedJlpt !== 'all') {
+      matchesJlpt = c.jlptLevel === selectedJlpt;
+    }
+
+    // 3. Search query match
     const matchesSearch =
       searchQuery === '' ||
       c.japanese.toLowerCase().includes(searchQuery.toLowerCase()) ||
       c.romaji.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      c.spanish.toLowerCase().includes(searchQuery.toLowerCase());
+      c.spanish.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      (c.onyomi && c.onyomi.toLowerCase().includes(searchQuery.toLowerCase())) ||
+      (c.kunyomi && c.kunyomi.toLowerCase().includes(searchQuery.toLowerCase()));
 
-    return matchesCategory && matchesSearch;
+    return matchesCategory && matchesJlpt && matchesSearch;
   });
 
   const currentCard: Flashcard | undefined = filteredCards[currentIndex];
@@ -48,7 +61,7 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
     if (currentIndex < filteredCards.length - 1) {
       setCurrentIndex(prev => prev + 1);
     } else {
-      setCurrentIndex(0); // Loop back or done
+      setCurrentIndex(0);
     }
   };
 
@@ -67,9 +80,10 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
   return (
     <div className="max-w-md mx-auto w-full px-4 py-3 flex flex-col items-center">
       {/* Category Pills */}
-      <div className="w-full flex items-center gap-1.5 overflow-x-auto pb-2 scrollbar-none">
+      <div className="w-full flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
         {[
           { id: 'all', label: 'Todas' },
+          { id: 'kanji', label: 'Kanjis' },
           { id: 'hiragana', label: 'Kanas' },
           { id: 'vocabulary', label: 'Vocabulario' },
           { id: 'phrases', label: 'Frases' }
@@ -93,6 +107,39 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
         ))}
       </div>
 
+      {/* JLPT Sub-filters (Shown when Kanjis is active) */}
+      {selectedCategory === 'kanji' && (
+        <div className="w-full flex items-center gap-1.5 overflow-x-auto py-2 scrollbar-none border-t border-b border-duo-gray-200 my-1 animate-fade-in">
+          <span className="text-[10px] font-black uppercase text-gray-400 mr-1 flex items-center gap-0.5">
+            <Award className="w-3.5 h-3.5 text-duo-purple" />
+            JLPT:
+          </span>
+          {[
+            { id: 'all', label: 'Todos N' },
+            { id: 'N5', label: 'N5 (Genki I)' },
+            { id: 'N4', label: 'N4 (Genki II)' },
+            { id: 'N3', label: 'N3 (Intermedio)' }
+          ].map(jlpt => (
+            <button
+              key={jlpt.id}
+              onClick={() => {
+                sound.playTap();
+                setSelectedJlpt(jlpt.id as JLPTLevel | 'all');
+                setCurrentIndex(0);
+                setIsFlipped(false);
+              }}
+              className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all flex-shrink-0 ${
+                selectedJlpt === jlpt.id
+                  ? 'bg-duo-purple text-white shadow-duo-btn-sm'
+                  : 'bg-white border border-duo-gray-300 text-gray-600 hover:bg-gray-50'
+              }`}
+            >
+              {jlpt.label}
+            </button>
+          ))}
+        </div>
+      )}
+
       {/* Search Bar */}
       <div className="w-full relative my-2">
         <Search className="w-4 h-4 text-gray-400 absolute left-3 top-2.5" />
@@ -104,12 +151,16 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
             setCurrentIndex(0);
             setIsFlipped(false);
           }}
-          placeholder="Buscar palabra, kanji o significado..."
+          placeholder={
+            selectedCategory === 'kanji'
+              ? 'Buscar kanji, on’yomi, kun’yomi o significado...'
+              : 'Buscar palabra, kanji o significado...'
+          }
           className="w-full pl-9 pr-3 py-2 text-xs font-bold bg-white border-2 border-duo-gray-200 rounded-xl focus:border-duo-blue focus:outline-none"
         />
       </div>
 
-      {/* Progress Counter */}
+      {/* Progress Counter & Controls */}
       <div className="w-full flex justify-between items-center text-xs font-bold text-gray-400 px-1 my-1">
         <span>Tarjeta {filteredCards.length > 0 ? currentIndex + 1 : 0} de {filteredCards.length}</span>
         <button
@@ -123,63 +174,188 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
 
       {/* Main Flashcard Container with 3D Flip */}
       {currentCard ? (
-        <div className="w-full my-3 perspective-1000">
+        <div className="w-full my-2 perspective-1000">
           <div
             onClick={handleFlip}
-            className={`w-full min-h-[300px] bg-white border-2 border-duo-gray-300 rounded-3xl p-6 shadow-duo-card cursor-pointer flex flex-col justify-between transition-all duration-300 relative select-none hover:border-duo-blue ${
+            className={`w-full min-h-[320px] bg-white border-2 border-duo-gray-300 rounded-3xl p-5 shadow-duo-card cursor-pointer flex flex-col justify-between transition-all duration-300 relative select-none hover:border-duo-blue ${
               isFlipped ? 'bg-gradient-to-br from-white to-duo-blue-light/20' : ''
             }`}
           >
             {/* Top Card Info Bar */}
             <div className="flex justify-between items-center w-full">
-              <span className="px-2.5 py-1 bg-duo-gray-100 border border-duo-gray-300 text-gray-600 text-[10px] font-black rounded-lg uppercase tracking-wider">
-                {currentCard.category} {currentCard.genkiLesson ? `• Genki L${currentCard.genkiLesson}` : ''}
-              </span>
+              <div className="flex items-center gap-1.5 flex-wrap">
+                <span className="px-2.5 py-1 bg-duo-gray-100 border border-duo-gray-300 text-gray-600 text-[10px] font-black rounded-lg uppercase tracking-wider">
+                  {currentCard.category}
+                </span>
 
+                {currentCard.jlptLevel && (
+                  <span className="px-2 py-0.5 bg-duo-purple-light border border-duo-purple text-duo-purple-dark text-[10px] font-black rounded-lg uppercase flex items-center gap-0.5">
+                    <Award className="w-3 h-3" />
+                    JLPT {currentCard.jlptLevel}
+                  </span>
+                )}
+
+                {currentCard.genkiLesson ? (
+                  <span className="px-2 py-0.5 bg-duo-blue-light border border-duo-blue text-duo-blue-dark text-[10px] font-black rounded-lg uppercase flex items-center gap-0.5">
+                    <BookOpen className="w-3 h-3" />
+                    Genki L{currentCard.genkiLesson}
+                  </span>
+                ) : null}
+              </div>
+
+              {/* Speaker Audio Button */}
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   sound.speakJapanese(currentCard.japanese);
                 }}
-                className="p-2 bg-duo-blue text-white rounded-xl shadow-duo-btn-sm hover:bg-duo-blue-dark transition-all"
+                className="p-2.5 bg-duo-blue text-white rounded-xl shadow-duo-btn-sm hover:bg-duo-blue-dark active:translate-y-0.5 transition-all flex items-center gap-1"
                 title="Escuchar audio"
               >
-                <Volume2 className="w-5 h-5" />
+                <Volume2 className="w-4 h-4" />
+                <span className="text-[10px] font-black uppercase">Oír</span>
               </button>
             </div>
 
             {/* Card Center Content */}
-            <div className="flex flex-col items-center justify-center my-6 text-center">
+            <div className="flex flex-col items-center justify-center my-4 text-center">
               {!isFlipped ? (
                 /* FRONT OF CARD */
                 <>
-                  <div className="text-5xl md:text-6xl font-bold font-['Noto_Sans_JP'] text-gray-900 tracking-wide mb-3">
+                  <div className={`font-bold font-['Noto_Sans_JP'] text-gray-900 tracking-wide mb-2 ${
+                    currentCard.category === 'kanji' ? 'text-7xl md:text-8xl' : 'text-5xl md:text-6xl'
+                  }`}>
                     {currentCard.japanese}
                   </div>
+
+                  {currentCard.category === 'kanji' && (
+                    <div className="flex items-center gap-3 text-xs font-bold text-gray-500 mb-2">
+                      {currentCard.strokeCount && (
+                        <span className="bg-gray-100 px-2 py-0.5 rounded-md border border-gray-200">
+                          {currentCard.strokeCount} trazos
+                        </span>
+                      )}
+                      {currentCard.radicals && (
+                        <span className="bg-gray-100 px-2 py-0.5 rounded-md border border-gray-200">
+                          Radical: {currentCard.radicals}
+                        </span>
+                      )}
+                    </div>
+                  )}
+
                   {showRomaji && (
                     <div className="text-base font-extrabold text-duo-blue">
                       {currentCard.romaji}
                     </div>
                   )}
+
                   <div className="mt-4 text-xs font-bold text-gray-400 flex items-center gap-1">
                     <RotateCw className="w-3.5 h-3.5" />
-                    <span>Toca para ver el significado</span>
+                    <span>Toca la tarjeta para ver lecturas y significado</span>
                   </div>
                 </>
               ) : (
                 /* BACK OF CARD */
-                <div className="animate-fade-in flex flex-col items-center">
-                  <div className="text-xl font-bold font-['Noto_Sans_JP'] text-gray-500 mb-1">
-                    {currentCard.furigana}
-                  </div>
-                  <div className="text-2xl md:text-3xl font-black text-gray-800 mb-3">
+                <div className="animate-fade-in flex flex-col items-center w-full">
+                  <div className="text-2xl md:text-3xl font-black text-gray-800 mb-2">
                     {currentCard.spanish}
                   </div>
 
+                  {/* Specific Kanji Readings Display */}
+                  {currentCard.category === 'kanji' && (
+                    <div className="w-full bg-duo-purple-light/30 border border-duo-purple/40 rounded-2xl p-3 my-2 text-left">
+                      {currentCard.onyomi && (
+                        <div className="text-xs mb-1.5 flex items-center justify-between">
+                          <div>
+                            <span className="font-black text-duo-purple-dark mr-1">On'yomi (音読み):</span>
+                            <span className="font-bold text-gray-800 font-['Noto_Sans_JP']">{currentCard.onyomi}</span>
+                          </div>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              sound.speakJapanese(currentCard.onyomi!.split('、')[0]);
+                            }}
+                            className="p-1 hover:bg-duo-purple/20 rounded"
+                            title="Oír lectura On"
+                          >
+                            <Volume2 className="w-3.5 h-3.5 text-duo-purple-dark" />
+                          </button>
+                        </div>
+                      )}
+                      {currentCard.kunyomi && (
+                        <div className="text-xs flex items-center justify-between">
+                          <div>
+                            <span className="font-black text-duo-green-dark mr-1">Kun'yomi (訓読み):</span>
+                            <span className="font-bold text-gray-800 font-['Noto_Sans_JP']">{currentCard.kunyomi}</span>
+                          </div>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              sound.speakJapanese(currentCard.kunyomi!.split('、')[0]);
+                            }}
+                            className="p-1 hover:bg-duo-green/20 rounded"
+                            title="Oír lectura Kun"
+                          >
+                            <Volume2 className="w-3.5 h-3.5 text-duo-green-dark" />
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {/* Kanji Compounds / Palabras compuestas */}
+                  {currentCard.compounds && currentCard.compounds.length > 0 && (
+                    <div className="w-full my-2">
+                      <div className="text-[10px] font-black uppercase text-gray-400 text-left mb-1">
+                        Palabras compuestas comunes:
+                      </div>
+                      <div className="flex flex-col gap-1.5 text-left">
+                        {currentCard.compounds.map((cmp, idx) => (
+                          <div
+                            key={idx}
+                            className="p-2 bg-gray-50 border border-duo-gray-200 rounded-xl flex items-center justify-between"
+                          >
+                            <div>
+                              <span className="font-bold font-['Noto_Sans_JP'] text-gray-800 text-sm mr-1">
+                                {cmp.word}
+                              </span>
+                              <span className="text-[11px] text-gray-400 font-bold font-['Noto_Sans_JP'] mr-1.5">
+                                ({cmp.furigana})
+                              </span>
+                              <span className="text-xs font-bold text-duo-blue">
+                                = {cmp.meaning}
+                              </span>
+                            </div>
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                sound.speakJapanese(cmp.word);
+                              }}
+                              className="p-1 text-gray-400 hover:text-duo-blue"
+                              title="Oír palabra"
+                            >
+                              <Volume2 className="w-3.5 h-3.5" />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Example sentence for vocab & grammar */}
                   {currentCard.exampleSentence && (
                     <div className="mt-2 p-3 bg-gray-50 border border-duo-gray-200 rounded-xl text-left w-full">
-                      <div className="text-xs font-bold font-['Noto_Sans_JP'] text-gray-700">
-                        {currentCard.exampleSentence}
+                      <div className="text-xs font-bold font-['Noto_Sans_JP'] text-gray-700 flex items-center justify-between">
+                        <span>{currentCard.exampleSentence}</span>
+                        <button
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            sound.speakJapanese(currentCard.exampleSentence!);
+                          }}
+                          className="p-1 text-gray-400 hover:text-duo-blue"
+                        >
+                          <Volume2 className="w-3.5 h-3.5" />
+                        </button>
                       </div>
                       <div className="text-[11px] font-medium text-gray-500 mt-0.5">
                         {currentCard.exampleTranslation}
@@ -188,7 +364,7 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
                   )}
 
                   {currentCard.notes && (
-                    <div className="text-[10px] text-gray-400 font-bold mt-2">
+                    <div className="text-[10px] text-gray-400 font-bold mt-2 text-center">
                       💡 {currentCard.notes}
                     </div>
                   )}
@@ -210,7 +386,7 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
           </div>
 
           {/* Rating / SRS Action Buttons */}
-          <div className="grid grid-cols-4 gap-2 w-full mt-3">
+          <div className="grid grid-cols-4 gap-2 w-full mt-2.5">
             <button
               onClick={() => handleRating('again')}
               className="py-2.5 bg-duo-red-light border-2 border-duo-red text-duo-red-dark font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-red hover:text-white transition-all flex flex-col items-center"
@@ -242,7 +418,7 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
           </div>
 
           {/* Prev / Next controls */}
-          <div className="flex justify-between w-full mt-3">
+          <div className="flex justify-between w-full mt-2">
             <button
               onClick={handlePrev}
               className="text-xs font-bold text-gray-500 hover:text-gray-800 p-2"
