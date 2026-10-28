@@ -8,6 +8,7 @@ import { sound } from './services/sound';
 import { TopBar } from './components/TopBar';
 import { BottomNav, NavTab } from './components/BottomNav';
 import { RoadmapPage } from './pages/RoadmapPage';
+import { TheoryPage } from './pages/TheoryPage';
 import { FlashcardsPage } from './pages/FlashcardsPage';
 import { KanaPage } from './pages/KanaPage';
 import { ProfilePage } from './pages/ProfilePage';
@@ -40,6 +41,12 @@ export const App: React.FC = () => {
   const [units, setUnits] = useState<Unit[]>(genkiCurriculum);
   const [flashcards, setFlashcards] = useState<Flashcard[]>(initialFlashcards);
   const [loading, setLoading] = useState(true);
+  const [theoryUnitId, setTheoryUnitId] = useState<number>(0);
+
+  const handleOpenTheory = (unitId: number) => {
+    setTheoryUnitId(unitId);
+    setActiveTab('theory');
+  };
 
   // Initialize SQLite and load user state on mount
   useEffect(() => {
@@ -291,6 +298,13 @@ export const App: React.FC = () => {
                 onCompleteLesson={handleCompleteLesson}
                 onSkipUnit={handleSkipUnit}
                 onDeductHeart={handleDeductHeart}
+                onOpenTheory={handleOpenTheory}
+              />
+            )}
+            {activeTab === 'theory' && (
+              <TheoryPage
+                initialUnitId={theoryUnitId}
+                onBackToRoadmap={() => setActiveTab('roadmap')}
               />
             )}
             {activeTab === 'flashcards' && (

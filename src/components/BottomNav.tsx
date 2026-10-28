@@ -1,8 +1,8 @@
 import React from 'react';
-import { Map, Layers, BookA, User } from 'lucide-react';
+import { Map, BookOpen, Layers, BookA, User } from 'lucide-react';
 import { sound } from '../services/sound';
 
-export type NavTab = 'roadmap' | 'flashcards' | 'kanas' | 'profile';
+export type NavTab = 'roadmap' | 'theory' | 'flashcards' | 'kanas' | 'profile';
 
 interface BottomNavProps {
   activeTab: NavTab;
@@ -12,6 +12,7 @@ interface BottomNavProps {
 export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) => {
   const tabs = [
     { id: 'roadmap' as NavTab, label: 'Aprender', icon: Map },
+    { id: 'theory' as NavTab, label: 'Teoría', icon: BookOpen },
     { id: 'flashcards' as NavTab, label: 'Flashcards', icon: Layers },
     { id: 'kanas' as NavTab, label: 'Kanas', icon: BookA },
     { id: 'profile' as NavTab, label: 'Perfil', icon: User }

@@ -12,6 +12,7 @@ interface RoadmapPageProps {
   onCompleteLesson: (nodeId: string, earnedXp: number, stars: number) => void;
   onSkipUnit: (unitId: number) => void;
   onDeductHeart: () => void;
+  onOpenTheory?: (unitId: number) => void;
 }
 
 export const RoadmapPage: React.FC<RoadmapPageProps> = ({
@@ -19,7 +20,8 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
   userProfile,
   onCompleteLesson,
   onSkipUnit,
-  onDeductHeart
+  onDeductHeart,
+  onOpenTheory
 }) => {
   const [activeQuizLesson, setActiveQuizLesson] = useState<LessonNode | null>(null);
   const [isJumpAheadActive, setIsJumpAheadActive] = useState(false);
@@ -73,6 +75,20 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
 
               <h3 className="text-lg font-black tracking-tight">{unit.title}</h3>
               <p className="text-xs font-bold opacity-90 mt-0.5">{unit.subtitle}</p>
+
+              {/* Theory Guide Pill Button */}
+              <div className="flex items-center justify-between mt-3 pt-2.5 border-t border-white/20">
+                <button
+                  onClick={() => {
+                    sound.playTap();
+                    if (onOpenTheory) onOpenTheory(unit.id);
+                  }}
+                  className="px-3 py-1.5 bg-white/20 hover:bg-white/30 active:translate-y-0.5 rounded-xl font-black text-xs text-white flex items-center gap-1.5 transition-all shadow-sm backdrop-blur-sm"
+                >
+                  <BookOpen className="w-3.5 h-3.5" />
+                  Guía de Teoría y Gramática
+                </button>
+              </div>
             </div>
 
             {/* Serpentine Roadmap Nodes */}
