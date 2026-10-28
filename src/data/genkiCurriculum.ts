@@ -71,10 +71,9 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-0-a4',
             type: 'word-order',
-            prompt: 'Forma la palabra "azul" (あお / ao):',
-            promptSub: 'あお (ao)',
+            prompt: 'Traduce al japonés la palabra "azul":',
             japaneseVoiceText: 'あお',
-            wordBank: ['お', 'あ'],
+            wordBank: ['お', 'あ', 'い', 'え'],
             correctSentence: ['あ', 'お'],
             explanation: '「あ」 (a) + 「お」 (o) = あお (azul en japonés).'
           }
@@ -140,10 +139,9 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-0-k4',
             type: 'word-order',
-            prompt: 'Arma la palabra "estación de tren" (えき / eki):',
-            promptSub: 'えき (eki)',
+            prompt: 'Traduce al japonés la palabra "estación de tren":',
             japaneseVoiceText: 'えき',
-            wordBank: ['き', 'え'],
+            wordBank: ['き', 'え', 'か', 'い'],
             correctSentence: ['え', 'き'],
             explanation: '「え」 + 「き」 = えき (estación de tren en Genki).'
           }
@@ -209,10 +207,9 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-0-s4',
             type: 'word-order',
-            prompt: 'Forma la palabra "allí / ese lugar" (そこ / soko):',
-            promptSub: 'そこ (soko)',
+            prompt: 'Traduce al japonés la palabra "allí / ese lugar":',
             japaneseVoiceText: 'そこ',
-            wordBank: ['こ', 'そ'],
+            wordBank: ['こ', 'そ', 'さ', 'す'],
             correctSentence: ['そ', 'こ'],
             explanation: '「そ」 (so) + 「こ」 (ko) = そこ (soko, allí).'
           }
@@ -277,10 +274,9 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-0-t4',
             type: 'word-order',
-            prompt: 'Forma la palabra "metro / subterráneo" (ちかてつ):',
-            promptSub: 'ちかてつ (chikatetsu)',
+            prompt: 'Traduce al japonés la palabra "metro / subterráneo":',
             japaneseVoiceText: 'ちかてつ',
-            wordBank: ['つ', 'て', 'か', 'ち'],
+            wordBank: ['つ', 'て', 'か', 'ち', 'た', 'す'],
             correctSentence: ['ち', 'か', 'て', 'つ'],
             explanation: 'ち + か + て + つ = ちかてつ (chikatetsu, metro).'
           }
@@ -344,10 +340,9 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-0-n4',
             type: 'word-order',
-            prompt: 'Forma la palabra "nombre" (なまえ / namae):',
-            promptSub: 'なまえ (namae)',
+            prompt: 'Traduce al japonés la palabra "nombre":',
             japaneseVoiceText: 'なまえ',
-            wordBank: ['え', 'ま', 'な'],
+            wordBank: ['え', 'ま', 'な', 'ね', 'み'],
             correctSentence: ['な', 'ま', 'え'],
             explanation: 'な + ま + え = なまえ (nombre de persona).'
           }
@@ -411,10 +406,9 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-0-h4',
             type: 'word-order',
-            prompt: 'Arma la palabra "barco" (ふね / fune):',
-            promptSub: 'ふね (fune)',
+            prompt: 'Traduce al japonés la palabra "barco":',
             japaneseVoiceText: 'ふね',
-            wordBank: ['ね', 'ふ'],
+            wordBank: ['ね', 'ふ', 'ほ', 'へ'],
             correctSentence: ['ふ', 'ね'],
             explanation: '「ふ」 + 「ね」 = ふね (barco).'
           }
@@ -478,10 +472,9 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-0-m4',
             type: 'word-order',
-            prompt: 'Forma la palabra "ciudad" (まち / machi):',
-            promptSub: 'まち (machi)',
+            prompt: 'Traduce al japonés la palabra "ciudad / pueblo":',
             japaneseVoiceText: 'まち',
-            wordBank: ['ち', 'ま'],
+            wordBank: ['ち', 'ま', 'み', 'て'],
             correctSentence: ['ま', 'ち'],
             explanation: '「ま」 + 「ち」 = まち (machi, pueblo / ciudad).'
           }
@@ -544,10 +537,9 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-0-y4',
             type: 'word-order',
-            prompt: 'Arma la palabra "montaña" (やま / yama):',
-            promptSub: 'やま (yama)',
+            prompt: 'Traduce al japonés la palabra "montaña":',
             japaneseVoiceText: 'やま',
-            wordBank: ['ま', 'や'],
+            wordBank: ['ま', 'や', 'ゆ', 'わ'],
             correctSentence: ['や', 'ま'],
             explanation: '「や」 + 「ま」 = やま (montaña, como el Monte Fuji).'
           }
@@ -611,10 +603,9 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-0-r4',
             type: 'word-order',
-            prompt: 'Forma la palabra "manzana" (りんご / ringo):',
-            promptSub: 'りんご (ringo)',
+            prompt: 'Traduce al japonés la palabra "manzana":',
             japaneseVoiceText: 'りんご',
-            wordBank: ['ご', 'ん', 'り'],
+            wordBank: ['ご', 'ん', 'り', 'る', 'れ'],
             correctSentence: ['り', 'ん', 'ご'],
             explanation: 'り + ん + ご = りんご (manzana).'
           }
@@ -667,10 +658,9 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-0-w3',
             type: 'word-order',
-            prompt: 'Forma la palabra "Japón" (にほん / Nihon):',
-            promptSub: 'にほん (nihon)',
+            prompt: 'Traduce al japonés la palabra "Japón":',
             japaneseVoiceText: 'にほん',
-            wordBank: ['ん', 'ほ', 'に'],
+            wordBank: ['ん', 'ほ', 'に', 'は', 'こ'],
             correctSentence: ['に', 'ほ', 'ん'],
             explanation: 'に + ほ + ん = にほん (Nihon, Japón).'
           },
@@ -958,10 +948,9 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-0-kst3',
             type: 'word-order',
-            prompt: 'Forma la palabra "taxi" (タクシー):',
-            promptSub: 'タクシー (takushii)',
+            prompt: 'Traduce al Katakana la palabra "taxi":',
             japaneseVoiceText: 'タクシー',
-            wordBank: ['ー', 'シ', 'ク', 'タ'],
+            wordBank: ['ー', 'シ', 'ク', 'タ', 'ス', 'チ'],
             correctSentence: ['タ', 'ク', 'シ', 'ー'],
             explanation: 'タ + ク + シ + ー = タクシー (taxi con sonido largo).'
           }
@@ -1056,10 +1045,9 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-0-kfin2',
             type: 'word-order',
-            prompt: 'Forma la palabra "café" (コーヒー / koohii):',
-            promptSub: 'コーヒー (koohii)',
+            prompt: 'Traduce al Katakana la palabra "café":',
             japaneseVoiceText: 'コーヒー',
-            wordBank: ['ー', 'ヒ', 'ー', 'コ'],
+            wordBank: ['ー', 'ヒ', 'ー', 'コ', 'カ', 'ホ'],
             correctSentence: ['コ', 'ー', 'ヒ', 'ー'],
             explanation: 'コ + ー + ヒ + ー = コーヒー (café).'
           },
@@ -1136,10 +1124,9 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-1-1-2',
             type: 'word-order',
-            prompt: 'Forma la frase clásica de cierre: "Mucho gusto / Cuento con su favor":',
-            promptSub: 'よろしくおねがいします',
+            prompt: 'Forma la frase: "Mucho gusto / Cuento con su favor":',
             japaneseVoiceText: 'よろしくおねがいします',
-            wordBank: ['おねがいします', 'よろしく'],
+            wordBank: ['おねがいします', 'よろしく', 'こんにちは', 'ありがとう'],
             correctSentence: ['よろしく', 'おねがいします'],
             explanation: '「よろしくお願いします」 es la frase indispensable para cerrar cualquier presentación.'
           },
@@ -1216,9 +1203,8 @@ export const genkiCurriculum: Unit[] = [
             id: 'ex-1-2-3',
             type: 'word-order',
             prompt: 'Del Workbook: Resuelve la suma 8 + 4 = 12 en japonés:',
-            promptSub: 'はち ＋ よん ＝ じゅうに (12)',
             japaneseVoiceText: 'じゅうに',
-            wordBank: ['に', 'じゅう'],
+            wordBank: ['に', 'じゅう', 'さん', 'よん'],
             correctSentence: ['じゅう', 'に'],
             explanation: '10 (じゅう) + 2 (に) = 12 (じゅうに).'
           },
@@ -1282,10 +1268,9 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-1-3-3',
             type: 'word-order',
-            prompt: 'Ordena la pregunta del libro: "¿Qué hora es ahora?":',
-            promptSub: '今、何時ですか。',
+            prompt: 'Traduce al japonés la pregunta: "¿Qué hora es ahora?":',
             japaneseVoiceText: 'いまなんじですか',
-            wordBank: ['か', 'なんじ', 'いま', 'です'],
+            wordBank: ['か', 'なんじ', 'いま', 'です', 'は', 'どこ'],
             correctSentence: ['いま', 'なんじ', 'です', 'か'],
             explanation: 'いま (ahora) + なんじ (qué hora) + ですか (es?).'
           },
@@ -1323,12 +1308,11 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-1-4-1',
             type: 'word-order',
-            prompt: 'Traduce: "Mary es estadounidense."',
-            promptSub: 'メアリーさんはアメリカ人です。',
+            prompt: 'Traduce al japonés: "Mary es estadounidense":',
             japaneseVoiceText: 'メアリーさんはアメリカじんです',
-            wordBank: ['アメリカじん', 'です', 'メアリーさん', 'は'],
+            wordBank: ['アメリカじん', 'です', 'メアリーさん', 'は', 'にほんじん', 'が'],
             correctSentence: ['メアリーさん', 'は', 'アメリカじん', 'です'],
-            explanation: 'País + 人 (じん) = Nacionalidad. メアリーさんはアメリカ人です。'
+            explanation: 'Sujeto + は + País-人 (じん) + です。'
           },
           {
             id: 'ex-1-4-2',
@@ -1401,10 +1385,9 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-1-5-2',
             type: 'word-order',
-            prompt: 'Ordena la pregunta del diálogo de Genki: "¿Takeshi es estudiante?":',
-            promptSub: 'たけしさんは学生ですか。',
+            prompt: 'Traduce al japonés la pregunta: "¿Takeshi es estudiante?":',
             japaneseVoiceText: 'たけしさんはがくせいですか',
-            wordBank: ['か', 'がくせい', 'は', 'です', 'たけしさん'],
+            wordBank: ['か', 'がくせい', 'は', 'です', 'たけしさん', 'せんせい', 'の'],
             correctSentence: ['たけしさん', 'は', 'がくせい', 'です', 'か'],
             explanation: 'Sujeto + は + Atributo + です + か.'
           },
@@ -1479,12 +1462,11 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-1-6-3',
             type: 'word-order',
-            prompt: 'Traduce: "Mi padre es empleado de empresa":',
-            promptSub: '父は会社員です。',
+            prompt: 'Traduce al japonés: "Mi padre es empleado de oficina":',
             japaneseVoiceText: 'ちちはかいしゃいんです',
-            wordBank: ['かいしゃいん', 'は', 'ちち', 'です'],
+            wordBank: ['かいしゃいん', 'は', 'ちち', 'です', 'はは', 'せんせい'],
             correctSentence: ['ちち', 'は', 'かいしゃいん', 'です'],
-            explanation: '会社員 (かいしゃいん / kaishain) = empleado de oficina.'
+            explanation: 'ちち (mi padre) + は + 会社員 (かいしゃいん) + です.'
           }
         ]
       },
@@ -1519,12 +1501,11 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-1-7-2',
             type: 'word-order',
-            prompt: 'Forma la frase de Mary: "Mi especialidad es la lengua japonesa":',
-            promptSub: '専攻は日本語です。',
+            prompt: 'Traduce al japonés: "Mi especialidad es el idioma japonés":',
             japaneseVoiceText: 'せんこうはにほんごです',
-            wordBank: ['にほんご', 'は', 'せんこう', 'です'],
+            wordBank: ['にほんご', 'は', 'せんこう', 'です', 'えいご', 'の'],
             correctSentence: ['せんこう', 'は', 'にほんご', 'です'],
-            explanation: '専攻 (せんこう / senkou) = especialidad / carrera universitaria.'
+            explanation: '専攻 (せんこう / senkou) = especialidad + は + 日本語 + です.'
           },
           {
             id: 'ex-1-7-3',
@@ -1599,12 +1580,11 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-1-8-3',
             type: 'word-order',
-            prompt: 'Ordena la pregunta del Workbook: "¿Cuántos años tienes?":',
-            promptSub: '何歳ですか。',
+            prompt: 'Traduce al japonés la pregunta: "¿Cuántos años tienes?":',
             japaneseVoiceText: 'なんさいですか',
-            wordBank: ['か', 'なんさい', 'です'],
+            wordBank: ['か', 'なんさい', 'です', 'なんじ', 'は'],
             correctSentence: ['なんさい', 'です', 'か'],
-            explanation: '何歳 (なんさい / nansai) = cuántos años.'
+            explanation: '何歳 (なんさい / nansai) + です + か.'
           }
         ]
       },
@@ -1627,12 +1607,11 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-1-9-1',
             type: 'word-order',
-            prompt: 'Traduce: "Estudiante de la Universidad Sakura":',
-            promptSub: 'さくら大学の学生',
+            prompt: 'Traduce al japonés la frase: "Estudiante de la Universidad Sakura":',
             japaneseVoiceText: 'さくらだいがくのがくせい',
-            wordBank: ['がくせい', 'の', 'さくらだいがく'],
+            wordBank: ['がくせい', 'の', 'さくらだいがく', 'は', 'せんせい'],
             correctSentence: ['さくらだいがく', 'の', 'がくせい'],
-            explanation: 'En japonés lo general/institución va primero, seguido de の y la persona.'
+            explanation: 'En japonés la institución/organización va primero, seguida de の y el rol de la persona.'
           },
           {
             id: 'ex-1-9-2',
@@ -1651,12 +1630,11 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-1-9-3',
             type: 'word-order',
-            prompt: 'Del Workbook: Traduce "El amigo de Takeshi":',
-            promptSub: 'たけしさんのともだち',
+            prompt: 'Del Workbook: Traduce al japonés "El amigo de Takeshi":',
             japaneseVoiceText: 'たけしさんのともだち',
-            wordBank: ['ともだち', 'の', 'たけしさん'],
+            wordBank: ['ともだち', 'の', 'たけしさん', 'は', 'わたし'],
             correctSentence: ['たけしさん', 'の', 'ともだち'],
-            explanation: 'Poseedor (Takeshi) + の + posesión/vínculo (amigo).'
+            explanation: 'Poseedor (Takeshi-san) + の + posesión o vínculo (ともだち).'
           },
           {
             id: 'ex-1-9-4',
@@ -1705,12 +1683,11 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-1-10-2',
             type: 'word-order',
-            prompt: 'Ordena la pregunta: "¿Cuál es tu número de teléfono?":',
-            promptSub: '電話番号は何番ですか。',
+            prompt: 'Traduce al japonés la pregunta: "¿Cuál es tu número de teléfono?":',
             japaneseVoiceText: 'でんわばんごうはなんばんですか',
-            wordBank: ['か', 'なんばん', 'でんわばんごう', 'です', 'は'],
+            wordBank: ['か', 'なんばん', 'でんわばんごう', 'です', 'は', 'なんさい', 'ここ'],
             correctSentence: ['でんわばんごう', 'は', 'なんばん', 'です', 'か'],
-            explanation: '何番 (なんばん / nanban) = qué número.'
+            explanation: 'でんわばんごう + は + なんばん + です + か.'
           },
           {
             id: 'ex-1-10-3',
@@ -1803,10 +1780,9 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-1-12-1',
             type: 'word-order',
-            prompt: 'Arma la auto-presentación completa de Takeshi del libro:',
-            promptSub: 'たけしです。さくら大学の学生です。',
+            prompt: 'Arma la auto-presentación: "Soy Takeshi. Estudiante de la Universidad Sakura":',
             japaneseVoiceText: 'たけしですさくらだいがくのがくせいです',
-            wordBank: ['がくせい', 'たけし', 'の', 'さくらだいがく', 'です', 'です'],
+            wordBank: ['がくせい', 'たけし', 'の', 'さくらだいがく', 'です', 'です', 'メアリー', 'は'],
             correctSentence: ['たけし', 'です', 'さくらだいがく', 'の', 'がくせい', 'です'],
             explanation: 'Takeshi desu. Sakura daigaku no gakusei desu.'
           },
@@ -1893,10 +1869,9 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-2-2',
             type: 'word-order',
-            prompt: 'Ordena: "¿Cuánto cuesta este libro?"',
-            promptSub: 'この本はいくらですか。',
+            prompt: 'Traduce al japonés la pregunta: "¿Cuánto cuesta este libro?":',
             japaneseVoiceText: 'このほんはいくらですか',
-            wordBank: ['いくら', 'このほん', 'か', 'は', 'です'],
+            wordBank: ['いくら', 'このほん', 'か', 'は', 'です', 'そのほん', 'どれ'],
             correctSentence: ['このほん', 'は', 'いくら', 'です', 'か'],
             explanation: '「この本」 (este libro) + は + 「いくらですか」 (¿cuánto cuesta?).'
           }
@@ -1919,10 +1894,9 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-2-no1',
             type: 'word-order',
-            prompt: 'Ordena para decir: "El bolso de Mary"',
-            promptSub: 'メアリーさんのかばん',
+            prompt: 'Traduce al japonés la frase: "El bolso de Mary":',
             japaneseVoiceText: 'メアリーさんのかばん',
-            wordBank: ['かばん', 'の', 'メアリーさん'],
+            wordBank: ['かばん', 'の', 'メアリーさん', 'は', 'ほん'],
             correctSentence: ['メアリーさん', 'の', 'かばん'],
             explanation: 'En japonés el poseedor va primero, seguido de 「の」 y el objeto poseído.'
           }
@@ -1974,10 +1948,9 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-3-2',
             type: 'word-order',
-            prompt: 'Ordena: "Bebo café."',
-            promptSub: 'コーヒーを飲みます。',
+            prompt: 'Traduce al japonés: "Bebo café":',
             japaneseVoiceText: 'コーヒーをのみます',
-            wordBank: ['のみます', 'コーヒー', 'を'],
+            wordBank: ['のみます', 'コーヒー', 'を', 'たべます', 'おちゃ'],
             correctSentence: ['コーヒー', 'を', 'のみます'],
             explanation: 'La partícula 「を」 (wo / o) marca el objeto directo sobre el que recae la acción.'
           }

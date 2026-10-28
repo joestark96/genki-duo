@@ -417,13 +417,13 @@ export const QuizModal: React.FC<QuizModalProps> = ({
             {currentExercise.prompt}
           </h2>
 
-          {/* Subtitle / Japanese text if present */}
-          {currentExercise.promptSub && (
+          {/* Subtitle / Japanese text if present (Hidden on word-order so it doesn't give away the answer!) */}
+          {currentExercise.promptSub && currentExercise.type !== 'word-order' && (
             <div className="flex items-center gap-2 mt-2">
               <span className="text-3xl font-bold font-['Noto_Sans_JP'] text-gray-900 bg-gray-100 px-3 py-1.5 rounded-xl border-2 border-gray-200">
                 {currentExercise.promptSub}
               </span>
-              {currentExercise.japaneseVoiceText && (
+              {currentExercise.japaneseVoiceText && currentExercise.type !== 'multiple-choice' && (
                 <button
                   onClick={() => sound.speakJapanese(currentExercise.japaneseVoiceText!)}
                   className="p-2.5 bg-duo-blue text-white rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-blue-dark transition-all"
