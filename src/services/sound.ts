@@ -8,9 +8,15 @@ class SoundService {
 
   constructor() {
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      window.speechSynthesis.onvoiceschanged = () => {
-        // Voices loaded event
-      };
+      // Eagerly trigger voice loading in Chromium/Safari
+      try {
+        window.speechSynthesis.getVoices();
+        window.speechSynthesis.onvoiceschanged = () => {
+          window.speechSynthesis.getVoices();
+        };
+      } catch (e) {
+        console.warn('Error preloading voices:', e);
+      }
     }
   }
 
@@ -36,81 +42,68 @@ class SoundService {
     return this.isEnabled;
   }
 
-  // Speak Japanese using SpeechSynthesis with automatic fallback to high-fidelity Japanese audio stream
+  // Speak Japanese using native SpeechSynthesis with voice auto-selection and anti-GC protection
   public speakJapanese(text: string, rate: number = 0.85) {
     if (!this.isEnabled) return;
     const cleanText = text.replace(/\[.*?\]/g, '').trim();
     if (!cleanText) return;
 
-    // 1. Stop any currently playing audio
+    // 1. Stop any previously playing audio element
     if (this.activeAudio) {
-      this.activeAudio.pause();
-      this.activeAudio.currentTime = 0;
+      try {
+        this.activeAudio.pause();
+        this.activeAudio.currentTime = 0;
+      } catch (_) {}
       this.activeAudio = null;
     }
 
-    // Fallback audio player (free reliable Japanese TTS stream)
-    const playFallbackAudioStream = () => {
-      try {
-        const url = `https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(cleanText)}&tl=ja&client=tw-ob`;
-        const audio = new Audio(url);
-        this.activeAudio = audio;
-        audio.playbackRate = Math.min(1.0, Math.max(0.7, rate));
-
-        const playPromise = audio.play();
-        if (playPromise !== undefined) {
-          playPromise.catch(err => {
-            console.warn('Fallback audio playback error (often requires a user gesture first):', err);
-          });
-        }
-      } catch (e) {
-        console.warn('Fallback audio element failed:', e);
-      }
-    };
-
-    // 2. Try SpeechSynthesis first if native Japanese voice is installed in the OS/Browser
+    // 2. Speak using native SpeechSynthesis (Supported on Chrome, Edge, Safari, Firefox, Android, iOS)
     if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       try {
+        // Chromium workaround: ensure synthesizer is not stuck in paused state
         if (window.speechSynthesis.paused) {
           window.speechSynthesis.resume();
         }
         window.speechSynthesis.cancel();
 
+        const utterance = new SpeechSynthesisUtterance(cleanText);
+
+        // Keep active reference on both instance and window to prevent V8 Garbage Collector bug
+        this.activeUtterance = utterance;
+        (window as unknown as { __duo_active_utterance: SpeechSynthesisUtterance }).__duo_active_utterance = utterance;
+
+        utterance.lang = 'ja-JP';
+        utterance.rate = Math.max(0.5, Math.min(1.2, rate));
+        utterance.pitch = 1.0;
+
+        // Try to match specific Japanese voice if voices list is populated
         const voices = window.speechSynthesis.getVoices();
-        const jaVoice = voices.find(v => {
-          const l = v.lang.toLowerCase();
-          return l.startsWith('ja') || l.includes('jp') || v.name.toLowerCase().includes('japan');
-        });
-
-        if (jaVoice) {
-          const utterance = new SpeechSynthesisUtterance(cleanText);
-          // Retain utterance in instance property so Chrome's Garbage Collector doesn't kill it mid-speech!
-          this.activeUtterance = utterance;
-          utterance.voice = jaVoice;
-          utterance.lang = 'ja-JP';
-          utterance.rate = rate;
-          utterance.pitch = 1.0;
-
-          utterance.onend = () => {
-            this.activeUtterance = null;
-          };
-
-          utterance.onerror = (err) => {
-            console.warn('SpeechSynthesis reported error, attempting online fallback:', err);
-            this.activeUtterance = null;
-            playFallbackAudioStream();
-          };
-
-          window.speechSynthesis.speak(utterance);
-          return;
+        if (voices && voices.length > 0) {
+          const jaVoice = voices.find(v => {
+            const l = (v.lang || '').toLowerCase();
+            const n = (v.name || '').toLowerCase();
+            return l.startsWith('ja') || l.includes('jp') || n.includes('japan') || n.includes('kyoko') || n.includes('otoya');
+          });
+          if (jaVoice) {
+            utterance.voice = jaVoice;
+          }
         }
-      } catch (e) {
-        console.warn('SpeechSynthesis initialization failed, switching to audio stream:', e);
+
+        utterance.onend = () => {
+          this.activeUtterance = null;
+        };
+
+        utterance.onerror = (e) => {
+          console.warn('SpeechSynthesis error:', e);
+          this.activeUtterance = null;
+        };
+
+        window.speechSynthesis.speak(utterance);
+        return;
+      } catch (err) {
+        console.warn('SpeechSynthesis speak failed:', err);
       }
     }
-
-    // 3. If no local Japanese voice installed in Windows or browser, play the high-clarity native audio stream!
-    playFallbackAudioStream();
   }
 
   // Play Duolingo-style chime on correct answer (cheerful high arpeggio)
