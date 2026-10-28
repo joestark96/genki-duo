@@ -116,14 +116,14 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
             {/* Jump Ahead Challenge Card (Only if unit is unlocked and not fully completed) */}
             {isUnitUnlocked && !isUnitCompleted && (
               <div className="w-full mt-6 mb-2 px-1">
-                <div className="bg-white border-2 border-duo-orange/40 rounded-3xl p-4 shadow-duo-card flex flex-col items-center text-center">
-                  <div className="w-12 h-12 bg-duo-orange-light rounded-2xl flex items-center justify-center text-duo-orange-dark mb-2 border-2 border-duo-orange/30">
+                <div className="bg-white dark:bg-[#18272e] border-2 border-duo-orange/40 dark:border-duo-orange/50 rounded-3xl p-4 shadow-duo-card dark:shadow-none flex flex-col items-center text-center transition-colors">
+                  <div className="w-12 h-12 bg-duo-orange-light dark:bg-duo-orange/20 rounded-2xl flex items-center justify-center text-duo-orange-dark dark:text-duo-orange mb-2 border-2 border-duo-orange/30">
                     <FastForward className="w-6 h-6 stroke-[2.5px]" />
                   </div>
-                  <h4 className="text-sm font-black text-gray-800 uppercase tracking-wide">
+                  <h4 className="text-sm font-black text-gray-800 dark:text-gray-100 uppercase tracking-wide">
                     Prueba de Salto de Nivel
                   </h4>
-                  <p className="text-xs font-medium text-gray-500 mt-1 mb-3 max-w-[280px]">
+                  <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mt-1 mb-3 max-w-[280px]">
                     ¿Ya sabes este tema? Demuestra tu nivel en este examen especial. <strong>Si cometes 3 errores, no podrás saltar la unidad.</strong>
                   </p>
 
@@ -141,7 +141,7 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
             {/* Completed Badge */}
             {isUnitCompleted && (
               <div className="w-full flex justify-center mt-6 mb-2">
-                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-duo-green-light border-2 border-duo-green text-duo-green-dark rounded-xl text-xs font-black shadow-sm">
+                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-duo-green-light dark:bg-duo-green/20 border-2 border-duo-green text-duo-green-dark dark:text-duo-green rounded-xl text-xs font-black shadow-sm">
                   <CheckCircle2 className="w-4 h-4 text-duo-green" />
                   <span>¡Unidad Dominada!</span>
                 </div>

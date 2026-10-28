@@ -81,7 +81,7 @@ export const TheoryPage: React.FC<TheoryPageProps> = ({
 
       {/* Unit Dropdown Selector */}
       <div className="w-full mb-4">
-        <label className="block text-[11px] font-black uppercase text-gray-500 tracking-wider mb-1.5 ml-1 flex items-center justify-between">
+        <label className="block text-[11px] font-black uppercase text-gray-500 dark:text-gray-400 tracking-wider mb-1.5 ml-1 flex items-center justify-between">
           <span>Unidad a estudiar:</span>
           <span className="text-duo-blue font-bold">{unitTheories.length} unidades disponibles</span>
         </label>
@@ -92,15 +92,15 @@ export const TheoryPage: React.FC<TheoryPageProps> = ({
               sound.playTap();
               setSelectedUnitId(Number(e.target.value));
             }}
-            className="w-full appearance-none bg-white border-2 border-duo-gray-300 hover:border-duo-blue focus:border-duo-blue rounded-2xl py-3 px-4 pr-10 text-xs md:text-sm font-black text-gray-800 shadow-[0_4px_0_0_#e5e5e5] focus:outline-none transition-all cursor-pointer"
+            className="w-full appearance-none bg-white dark:bg-[#18272e] border-2 border-duo-gray-300 dark:border-[#283842] hover:border-duo-blue focus:border-duo-blue rounded-2xl py-3 px-4 pr-10 text-xs md:text-sm font-black text-gray-800 dark:text-gray-100 shadow-[0_4px_0_0_#e5e5e5] dark:shadow-none focus:outline-none transition-all cursor-pointer"
           >
             {unitTheories.map((unit) => (
-              <option key={unit.unitId} value={unit.unitId} className="py-2 text-xs font-bold text-gray-800">
+              <option key={unit.unitId} value={unit.unitId} className="py-2 text-xs font-bold text-gray-800 dark:text-gray-100 dark:bg-[#18272e]">
                 Unidad {unit.unitId}: {unit.title} ({unit.genkiChapter})
               </option>
             ))}
           </select>
-          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-gray-500">
+          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3.5 text-gray-500 dark:text-gray-400">
             <ChevronDown className="w-5 h-5 stroke-[2.5px]" />
           </div>
         </div>
@@ -114,7 +114,7 @@ export const TheoryPage: React.FC<TheoryPageProps> = ({
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           placeholder="Buscar tema, kanji, partícula (ej. は, です, dakuten)..."
-          className="w-full pl-10 pr-4 py-2.5 bg-white border-2 border-duo-gray-200 rounded-2xl text-xs font-bold text-gray-800 placeholder-gray-400 focus:outline-none focus:border-duo-blue transition-all"
+          className="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-[#18272e] border-2 border-duo-gray-200 dark:border-[#283842] rounded-2xl text-xs font-bold text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-duo-blue transition-all"
         />
         {searchQuery && (
           <button
@@ -145,8 +145,8 @@ export const TheoryPage: React.FC<TheoryPageProps> = ({
               }}
               className={`px-3 py-1.5 rounded-xl font-bold text-[11px] transition-all border ${
                 isCatActive
-                  ? 'bg-gray-800 text-white border-gray-900 shadow-sm'
-                  : 'bg-gray-100 text-gray-600 border-gray-200 hover:bg-gray-200'
+                  ? 'bg-gray-800 dark:bg-duo-green text-white border-gray-900 dark:border-duo-green-dark shadow-sm'
+                  : 'bg-gray-100 dark:bg-[#18272e] text-gray-600 dark:text-gray-300 border-gray-200 dark:border-[#283842] hover:bg-gray-200 dark:hover:bg-gray-800'
               }`}
             >
               {cat.label}
@@ -174,14 +174,14 @@ export const TheoryPage: React.FC<TheoryPageProps> = ({
 // Sub-component for individual theory sections
 const TheorySectionCard: React.FC<{ section: TheorySection }> = ({ section }) => {
   return (
-    <article className="w-full bg-white border-2 border-duo-gray-200 rounded-3xl p-5 shadow-duo-card transition-all">
+    <article className="w-full bg-white dark:bg-[#18272e] border-2 border-duo-gray-200 dark:border-[#283842] rounded-3xl p-5 shadow-duo-card dark:shadow-none transition-all">
       {/* Section Header */}
       <div className="flex items-start justify-between gap-2 mb-2">
         <div>
-          <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-lg bg-gray-100 text-gray-600 border border-gray-200">
+          <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border border-gray-200 dark:border-gray-700">
             {section.category === 'grammar' ? 'Gramática' : section.category === 'writing' ? 'Escritura' : section.category === 'vocabulary' ? 'Vocabulario' : 'Cultura'}
           </span>
-          <h2 className="text-base md:text-lg font-black text-gray-900 mt-1">
+          <h2 className="text-base md:text-lg font-black text-gray-900 dark:text-gray-100 mt-1">
             {section.title}
           </h2>
           {section.japaneseTitle && (
@@ -193,15 +193,15 @@ const TheorySectionCard: React.FC<{ section: TheorySection }> = ({ section }) =>
       </div>
 
       {/* Summary */}
-      <p className="text-xs font-medium text-gray-600 mb-3 leading-relaxed">
+      <p className="text-xs font-medium text-gray-600 dark:text-gray-300 mb-3 leading-relaxed">
         {section.summary}
       </p>
 
       {/* Formula Box (if present) */}
       {section.formula && (
-        <div className="p-3 bg-duo-blue-light/30 border-2 border-duo-blue/40 rounded-2xl mb-4 flex items-center gap-2">
+        <div className="p-3 bg-duo-blue-light/30 dark:bg-duo-blue/10 border-2 border-duo-blue/40 dark:border-duo-blue/30 rounded-2xl mb-4 flex items-center gap-2">
           <Sparkles className="w-4 h-4 text-duo-blue flex-shrink-0" />
-          <div className="text-xs font-black text-duo-blue-dark font-mono">
+          <div className="text-xs font-black text-duo-blue-dark dark:text-duo-blue font-mono">
             {section.formula}
           </div>
         </div>
@@ -210,7 +210,7 @@ const TheorySectionCard: React.FC<{ section: TheorySection }> = ({ section }) =>
       {/* Content bullets */}
       <div className="space-y-1.5 mb-4">
         {section.content.map((paragraph, idx) => (
-          <p key={idx} className="text-xs text-gray-700 leading-relaxed font-medium">
+          <p key={idx} className="text-xs text-gray-700 dark:text-gray-300 leading-relaxed font-medium">
             {paragraph}
           </p>
         ))}
@@ -218,23 +218,23 @@ const TheorySectionCard: React.FC<{ section: TheorySection }> = ({ section }) =>
 
       {/* Table (if present) */}
       {section.table && (
-        <div className="overflow-x-auto my-4 border-2 border-duo-gray-200 rounded-2xl shadow-sm">
-          <div className="bg-gray-100 px-3 py-1.5 border-b-2 border-duo-gray-200 font-black text-[11px] text-gray-700">
+        <div className="overflow-x-auto my-4 border-2 border-duo-gray-200 dark:border-[#283842] rounded-2xl shadow-sm">
+          <div className="bg-gray-100 dark:bg-gray-800 px-3 py-1.5 border-b-2 border-duo-gray-200 dark:border-[#283842] font-black text-[11px] text-gray-700 dark:text-gray-200">
             {section.table.title}
           </div>
           <table className="w-full text-left text-xs border-collapse">
             <thead>
-              <tr className="bg-gray-50 border-b border-gray-200 text-gray-600 font-black">
+              <tr className="bg-gray-50 dark:bg-[#131f24] border-b border-gray-200 dark:border-[#283842] text-gray-600 dark:text-gray-300 font-black">
                 {section.table.headers.map((h, i) => (
                   <th key={i} className="p-2 text-[11px]">{h}</th>
                 ))}
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-100">
+            <tbody className="divide-y divide-gray-100 dark:divide-[#283842]">
               {section.table.rows.map((row, rIdx) => (
-                <tr key={rIdx} className="hover:bg-gray-50/80 transition-colors">
+                <tr key={rIdx} className="hover:bg-gray-50/80 dark:hover:bg-[#131f24]/80 transition-colors">
                   {row.map((cell, cIdx) => (
-                    <td key={cIdx} className="p-2 font-bold text-gray-800 text-[11px] font-['Noto_Sans_JP']">
+                    <td key={cIdx} className="p-2 font-bold text-gray-800 dark:text-gray-200 text-[11px] font-['Noto_Sans_JP']">
                       {cell}
                     </td>
                   ))}
@@ -247,26 +247,26 @@ const TheorySectionCard: React.FC<{ section: TheorySection }> = ({ section }) =>
 
       {/* Example sentences with audio */}
       {section.examples && section.examples.length > 0 && (
-        <div className="mt-4 pt-3 border-t-2 border-gray-100">
-          <h4 className="text-[11px] font-black uppercase text-gray-400 tracking-wider mb-2">
+        <div className="mt-4 pt-3 border-t-2 border-gray-100 dark:border-[#283842]">
+          <h4 className="text-[11px] font-black uppercase text-gray-400 dark:text-gray-500 tracking-wider mb-2">
             Ejemplos y Pronunciación
           </h4>
           <div className="space-y-2">
             {section.examples.map((ex, idx) => (
               <div
                 key={idx}
-                className="p-2.5 bg-gray-50 border border-gray-200 rounded-xl flex items-center justify-between gap-3 group hover:border-duo-blue/50 transition-all"
+                className="p-2.5 bg-gray-50 dark:bg-[#131f24] border border-gray-200 dark:border-[#283842] rounded-xl flex items-center justify-between gap-3 group hover:border-duo-blue/50 transition-all"
               >
                 <div className="flex-1 min-w-0">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-sm font-bold font-['Noto_Sans_JP'] text-gray-900">
+                    <span className="text-sm font-bold font-['Noto_Sans_JP'] text-gray-900 dark:text-gray-100">
                       {ex.japanese}
                     </span>
-                    <span className="text-[11px] text-gray-400 font-normal">
+                    <span className="text-[11px] text-gray-400 dark:text-gray-500 font-normal">
                       ({ex.romaji})
                     </span>
                   </div>
-                  <div className="text-xs font-semibold text-gray-600 mt-0.5">
+                  <div className="text-xs font-semibold text-gray-600 dark:text-gray-300 mt-0.5">
                     {ex.spanish}
                   </div>
                 </div>
@@ -289,10 +289,10 @@ const TheorySectionCard: React.FC<{ section: TheorySection }> = ({ section }) =>
 
       {/* Genki Tip */}
       {section.tip && (
-        <div className="mt-4 p-3 bg-amber-50 border-2 border-amber-200 rounded-2xl flex items-start gap-2.5">
-          <Lightbulb className="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5" />
-          <div className="text-xs text-amber-900 font-medium leading-relaxed">
-            <strong className="font-black text-amber-800">Consejo Genki: </strong>
+        <div className="mt-4 p-3 bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-200 dark:border-amber-800/50 rounded-2xl flex items-start gap-2.5">
+          <Lightbulb className="w-4 h-4 text-amber-600 dark:text-amber-400 flex-shrink-0 mt-0.5" />
+          <div className="text-xs text-amber-900 dark:text-amber-200 font-medium leading-relaxed">
+            <strong className="font-black text-amber-800 dark:text-amber-300">Consejo Genki: </strong>
             {section.tip}
           </div>
         </div>

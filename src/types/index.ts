@@ -104,5 +104,7 @@ export interface UserProfile {
   gems: number;
   soundEnabled: boolean;
   furiganaMode: 'always' | 'on-hover' | 'hidden';
+  showRomaji: boolean;
+  darkMode: boolean;
 }
 

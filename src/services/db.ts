@@ -76,7 +76,9 @@ class DatabaseService {
         maxHearts INTEGER DEFAULT 5,
         gems INTEGER DEFAULT 50,
         soundEnabled INTEGER DEFAULT 1,
-        furiganaMode TEXT DEFAULT 'always'
+        furiganaMode TEXT DEFAULT 'always',
+        showRomaji INTEGER DEFAULT 1,
+        darkMode INTEGER DEFAULT 0
       );
 
       CREATE TABLE IF NOT EXISTS lesson_progress (
@@ -109,6 +111,18 @@ class DatabaseService {
     `;
 
     await this.db.execute(schema);
+
+    // Apply incremental migrations for existing databases
+    try {
+      await this.db.execute('ALTER TABLE user_profile ADD COLUMN showRomaji INTEGER DEFAULT 1;');
+    } catch {
+      // Column may already exist
+    }
+    try {
+      await this.db.execute('ALTER TABLE user_profile ADD COLUMN darkMode INTEGER DEFAULT 0;');
+    } catch {
+      // Column may already exist
+    }
   }
 
   // Fallback storage synchronization (transparently mimics SQLite schema)
@@ -126,7 +140,9 @@ class DatabaseService {
           maxHearts: 5,
           gems: 100,
           soundEnabled: true,
-          furiganaMode: 'always'
+          furiganaMode: 'always',
+          showRomaji: true,
+          darkMode: false
         },
         lessonProgress: {
           'l0-node-1': { nodeId: 'l0-node-1', unitId: 0, unlocked: true, completedSteps: 0, totalSteps: 3, stars: 0 }
@@ -174,7 +190,9 @@ class DatabaseService {
             maxHearts: row.maxHearts,
             gems: row.gems,
             soundEnabled: row.soundEnabled === 1,
-            furiganaMode: row.furiganaMode
+            furiganaMode: row.furiganaMode,
+            showRomaji: row.showRomaji === undefined || row.showRomaji === null ? true : row.showRomaji === 1,
+            darkMode: row.darkMode === 1
           };
         }
       } catch (e) {
@@ -184,7 +202,11 @@ class DatabaseService {
 
     const fb = this.getFallbackData();
     if (fb && fb.profile) {
-      return fb.profile;
+      return {
+        ...fb.profile,
+        showRomaji: fb.profile.showRomaji !== false,
+        darkMode: !!fb.profile.darkMode
+      };
     }
 
     return {
@@ -197,7 +219,9 @@ class DatabaseService {
       maxHearts: 5,
       gems: 100,
       soundEnabled: true,
-      furiganaMode: 'always'
+      furiganaMode: 'always',
+      showRomaji: true,
+      darkMode: false
     };
   }
 
@@ -207,8 +231,8 @@ class DatabaseService {
     if (this.db) {
       try {
         const query = `
-          INSERT OR REPLACE INTO user_profile (id, username, xp, streakDays, lastActiveDate, hearts, maxHearts, gems, soundEnabled, furiganaMode)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          INSERT OR REPLACE INTO user_profile (id, username, xp, streakDays, lastActiveDate, hearts, maxHearts, gems, soundEnabled, furiganaMode, showRomaji, darkMode)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
         `;
         await this.db.run(query, [
           profile.id,
@@ -220,7 +244,9 @@ class DatabaseService {
           profile.maxHearts,
           profile.gems,
           profile.soundEnabled ? 1 : 0,
-          profile.furiganaMode
+          profile.furiganaMode,
+          profile.showRomaji ? 1 : 0,
+          profile.darkMode ? 1 : 0
         ]);
         if (!this.isNative && this.sqlite) {
           await this.sqlite.saveToStore(DB_NAME);

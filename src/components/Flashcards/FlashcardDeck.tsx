@@ -7,17 +7,22 @@ import { sound } from '../../services/sound';
 interface FlashcardDeckProps {
   cards: Flashcard[];
   onRateCard: (cardId: string, category: string, rating: 'again' | 'hard' | 'good' | 'easy') => void;
+  showRomaji?: boolean;
 }
 
-export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard }) => {
+export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard, showRomaji: initialShowRomaji = true }) => {
   const [selectedCategory, setSelectedCategory] = useState<FlashcardCategory | 'all'>('all');
   const [selectedJlpt, setSelectedJlpt] = useState<JLPTLevel | 'all'>('all');
   const [searchQuery, setSearchQuery] = useState('');
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
-  const [showRomaji, setShowRomaji] = useState(true);
+  const [showRomaji, setShowRomaji] = useState(initialShowRomaji);
   const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
+
+  useEffect(() => {
+    setShowRomaji(initialShowRomaji);
+  }, [initialShowRomaji]);
 
   // Filter cards
   const filteredCards = cards.filter(c => {
@@ -139,7 +144,7 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
             className={`px-3 py-1.5 rounded-full text-xs font-black transition-all flex-shrink-0 ${
               selectedCategory === cat.id
                 ? 'bg-duo-green text-white shadow-duo-btn-sm'
-                : 'bg-white border-2 border-duo-gray-200 text-gray-600 hover:bg-gray-100'
+                : 'bg-white dark:bg-[#18272e] border-2 border-duo-gray-200 dark:border-[#283842] text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800'
             }`}
           >
             {cat.label}
@@ -149,7 +154,7 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
 
       {/* JLPT Sub-filters (Shown when Kanjis is active) */}
       {selectedCategory === 'kanji' && (
-        <div className="w-full flex items-center gap-1.5 overflow-x-auto py-2 scrollbar-none border-t border-b border-duo-gray-200 my-1 animate-fade-in">
+        <div className="w-full flex items-center gap-1.5 overflow-x-auto py-2 scrollbar-none border-t border-b border-duo-gray-200 dark:border-[#283842] my-1 animate-fade-in">
           <span className="text-[10px] font-black uppercase text-gray-400 mr-1 flex items-center gap-0.5">
             <Award className="w-3.5 h-3.5 text-duo-purple" />
             JLPT:
@@ -171,7 +176,7 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
               className={`px-2.5 py-1 rounded-lg text-[11px] font-black transition-all flex-shrink-0 ${
                 selectedJlpt === jlpt.id
                   ? 'bg-duo-purple text-white shadow-duo-btn-sm'
-                  : 'bg-white border border-duo-gray-300 text-gray-600 hover:bg-gray-50'
+                  : 'bg-white dark:bg-[#18272e] border border-duo-gray-300 dark:border-[#283842] text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
               }`}
             >
               {jlpt.label}
@@ -196,7 +201,7 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
               ? 'Buscar kanji, on’yomi, kun’yomi o significado...'
               : 'Buscar palabra, kanji o significado...'
           }
-          className="w-full pl-9 pr-3 py-2 text-xs font-bold bg-white border-2 border-duo-gray-200 rounded-xl focus:border-duo-blue focus:outline-none"
+          className="w-full pl-9 pr-3 py-2 text-xs font-bold bg-white dark:bg-[#18272e] border-2 border-duo-gray-200 dark:border-[#283842] text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 rounded-xl focus:border-duo-blue focus:outline-none transition-colors"
         />
       </div>
 
@@ -217,8 +222,8 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
         <div className="w-full my-2 perspective-1000 relative">
           <div
             onClick={handleFlip}
-            className={`w-full min-h-[320px] bg-white border-2 border-duo-gray-300 rounded-3xl p-5 shadow-duo-card cursor-pointer flex flex-col justify-between relative select-none hover:border-duo-blue ${
-              isFlipped ? 'bg-gradient-to-br from-white to-duo-blue-light/20' : ''
+            className={`w-full min-h-[320px] bg-white dark:bg-[#18272e] border-2 border-duo-gray-300 dark:border-[#283842] rounded-3xl p-5 shadow-duo-card dark:shadow-none cursor-pointer flex flex-col justify-between relative select-none hover:border-duo-blue ${
+              isFlipped ? 'bg-gradient-to-br from-white to-duo-blue-light/20 dark:from-[#18272e] dark:to-duo-blue-dark/20' : ''
             } ${
               swipeDirection === 'left'
                 ? 'transform -translate-x-[140%] -rotate-12 opacity-0 transition-all duration-300 ease-in pointer-events-none'
@@ -242,19 +247,19 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
             {/* Top Card Info Bar */}
             <div className="flex justify-between items-center w-full">
               <div className="flex items-center gap-1.5 flex-wrap">
-                <span className="px-2.5 py-1 bg-duo-gray-100 border border-duo-gray-300 text-gray-600 text-[10px] font-black rounded-lg uppercase tracking-wider">
+                <span className="px-2.5 py-1 bg-duo-gray-100 dark:bg-gray-800 border border-duo-gray-300 dark:border-gray-700 text-gray-600 dark:text-gray-300 text-[10px] font-black rounded-lg uppercase tracking-wider">
                   {currentCard.category}
                 </span>
 
                 {currentCard.jlptLevel && (
-                  <span className="px-2 py-0.5 bg-duo-purple-light border border-duo-purple text-duo-purple-dark text-[10px] font-black rounded-lg uppercase flex items-center gap-0.5">
+                  <span className="px-2 py-0.5 bg-duo-purple-light dark:bg-duo-purple/20 border border-duo-purple text-duo-purple-dark dark:text-duo-purple text-[10px] font-black rounded-lg uppercase flex items-center gap-0.5">
                     <Award className="w-3 h-3" />
                     JLPT {currentCard.jlptLevel}
                   </span>
                 )}
 
                 {currentCard.genkiLesson ? (
-                  <span className="px-2 py-0.5 bg-duo-blue-light border border-duo-blue text-duo-blue-dark text-[10px] font-black rounded-lg uppercase flex items-center gap-0.5">
+                  <span className="px-2 py-0.5 bg-duo-blue-light dark:bg-duo-blue/20 border border-duo-blue text-duo-blue-dark dark:text-duo-blue text-[10px] font-black rounded-lg uppercase flex items-center gap-0.5">
                     <BookOpen className="w-3 h-3" />
                     Genki L{currentCard.genkiLesson}
                   </span>
@@ -280,21 +285,21 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
               {!isFlipped ? (
                 /* FRONT OF CARD */
                 <>
-                  <div className={`font-bold font-['Noto_Sans_JP'] text-gray-900 tracking-wide mb-2 ${
+                  <div className={`font-bold font-['Noto_Sans_JP'] text-gray-900 dark:text-gray-100 tracking-wide mb-2 ${
                     currentCard.category === 'kanji' ? 'text-7xl md:text-8xl' : 'text-5xl md:text-6xl'
                   }`}>
                     {currentCard.japanese}
                   </div>
 
                   {currentCard.category === 'kanji' && (
-                    <div className="flex items-center gap-3 text-xs font-bold text-gray-500 mb-2">
+                    <div className="flex items-center gap-3 text-xs font-bold text-gray-500 dark:text-gray-400 mb-2">
                       {currentCard.strokeCount && (
-                        <span className="bg-gray-100 px-2 py-0.5 rounded-md border border-gray-200">
+                        <span className="bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded-md border border-gray-200 dark:border-gray-700">
                           {currentCard.strokeCount} trazos
                         </span>
                       )}
                       {currentCard.radicals && (
-                        <span className="bg-gray-100 px-2 py-0.5 rounded-md border border-gray-200">
+                        <span className="bg-gray-100 dark:bg-gray-800 px-2 py-0.5 rounded-md border border-gray-200 dark:border-gray-700">
                           Radical: {currentCard.radicals}
                         </span>
                       )}
@@ -307,7 +312,7 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
                     </div>
                   )}
 
-                  <div className="mt-4 text-xs font-bold text-gray-400 flex items-center gap-1">
+                  <div className="mt-4 text-xs font-bold text-gray-400 dark:text-gray-500 flex items-center gap-1">
                     <RotateCw className="w-3.5 h-3.5" />
                     <span>Toca la tarjeta para ver lecturas y significado</span>
                   </div>
@@ -315,18 +320,18 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
               ) : (
                 /* BACK OF CARD */
                 <div className="animate-fade-in flex flex-col items-center w-full">
-                  <div className="text-2xl md:text-3xl font-black text-gray-800 mb-2">
+                  <div className="text-2xl md:text-3xl font-black text-gray-800 dark:text-gray-100 mb-2">
                     {currentCard.spanish}
                   </div>
 
                   {/* Specific Kanji Readings Display */}
                   {currentCard.category === 'kanji' && (
-                    <div className="w-full bg-duo-purple-light/30 border border-duo-purple/40 rounded-2xl p-3 my-2 text-left">
+                    <div className="w-full bg-duo-purple-light/30 dark:bg-duo-purple/10 border border-duo-purple/40 rounded-2xl p-3 my-2 text-left">
                       {currentCard.onyomi && (
                         <div className="text-xs mb-1.5 flex items-center justify-between">
                           <div>
-                            <span className="font-black text-duo-purple-dark mr-1">On'yomi (音読み):</span>
-                            <span className="font-bold text-gray-800 font-['Noto_Sans_JP']">{currentCard.onyomi}</span>
+                            <span className="font-black text-duo-purple-dark dark:text-duo-purple mr-1">On'yomi (音読み):</span>
+                            <span className="font-bold text-gray-800 dark:text-gray-200 font-['Noto_Sans_JP']">{currentCard.onyomi}</span>
                           </div>
                           <button
                             onClick={(e) => {
@@ -336,15 +341,15 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
                             className="p-1 hover:bg-duo-purple/20 rounded"
                             title="Oír lectura On"
                           >
-                            <Volume2 className="w-3.5 h-3.5 text-duo-purple-dark" />
+                            <Volume2 className="w-3.5 h-3.5 text-duo-purple-dark dark:text-duo-purple" />
                           </button>
                         </div>
                       )}
                       {currentCard.kunyomi && (
                         <div className="text-xs flex items-center justify-between">
                           <div>
-                            <span className="font-black text-duo-green-dark mr-1">Kun'yomi (訓読み):</span>
-                            <span className="font-bold text-gray-800 font-['Noto_Sans_JP']">{currentCard.kunyomi}</span>
+                            <span className="font-black text-duo-green-dark dark:text-duo-green mr-1">Kun'yomi (訓読み):</span>
+                            <span className="font-bold text-gray-800 dark:text-gray-200 font-['Noto_Sans_JP']">{currentCard.kunyomi}</span>
                           </div>
                           <button
                             onClick={(e) => {
@@ -354,7 +359,7 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
                             className="p-1 hover:bg-duo-green/20 rounded"
                             title="Oír lectura Kun"
                           >
-                            <Volume2 className="w-3.5 h-3.5 text-duo-green-dark" />
+                            <Volume2 className="w-3.5 h-3.5 text-duo-green-dark dark:text-duo-green" />
                           </button>
                         </div>
                       )}
@@ -371,10 +376,10 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
                         {currentCard.compounds.map((cmp, idx) => (
                           <div
                             key={idx}
-                            className="p-2 bg-gray-50 border border-duo-gray-200 rounded-xl flex items-center justify-between"
+                            className="p-2 bg-gray-50 dark:bg-[#131f24] border border-duo-gray-200 dark:border-[#283842] rounded-xl flex items-center justify-between"
                           >
                             <div>
-                              <span className="font-bold font-['Noto_Sans_JP'] text-gray-800 text-sm mr-1">
+                              <span className="font-bold font-['Noto_Sans_JP'] text-gray-800 dark:text-gray-200 text-sm mr-1">
                                 {cmp.word}
                               </span>
                               <span className="text-[11px] text-gray-400 font-bold font-['Noto_Sans_JP'] mr-1.5">
@@ -402,8 +407,8 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
 
                   {/* Example sentence for vocab & grammar */}
                   {currentCard.exampleSentence && (
-                    <div className="mt-2 p-3 bg-gray-50 border border-duo-gray-200 rounded-xl text-left w-full">
-                      <div className="text-xs font-bold font-['Noto_Sans_JP'] text-gray-700 flex items-center justify-between">
+                    <div className="mt-2 p-3 bg-gray-50 dark:bg-[#131f24] border border-duo-gray-200 dark:border-[#283842] rounded-xl text-left w-full">
+                      <div className="text-xs font-bold font-['Noto_Sans_JP'] text-gray-700 dark:text-gray-300 flex items-center justify-between">
                         <span>{currentCard.exampleSentence}</span>
                         <button
                           onClick={(e) => {
@@ -415,7 +420,7 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
                           <Volume2 className="w-3.5 h-3.5" />
                         </button>
                       </div>
-                      <div className="text-[11px] font-medium text-gray-500 mt-0.5">
+                      <div className="text-[11px] font-medium text-gray-500 dark:text-gray-400 mt-0.5">
                         {currentCard.exampleTranslation}
                       </div>
                     </div>

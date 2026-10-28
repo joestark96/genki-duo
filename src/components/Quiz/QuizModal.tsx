@@ -264,25 +264,25 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   // --- JUMP AHEAD PASSED SCREEN ---
   if (status === 'jump-passed') {
     return (
-      <div className="fixed inset-0 z-50 bg-white flex flex-col justify-between p-6 animate-fade-in">
+      <div className="fixed inset-0 z-50 bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between p-6 animate-fade-in">
         <div className="flex-1 flex flex-col items-center justify-center text-center max-w-sm mx-auto">
           <div className="w-24 h-24 bg-duo-green rounded-full flex items-center justify-center mb-6 shadow-duo-btn border-4 border-duo-green-dark animate-bounce">
             <Trophy className="w-12 h-12 text-white stroke-[2.5px]" />
           </div>
-          <h2 className="text-2xl font-black text-gray-800 mb-1">¡Prueba de Salto Superada!</h2>
-          <p className="text-gray-500 font-bold text-sm mb-6">
+          <h2 className="text-2xl font-black text-gray-800 dark:text-gray-100 mb-1">¡Prueba de Salto Superada!</h2>
+          <p className="text-gray-500 dark:text-gray-400 font-bold text-sm mb-6">
             Has demostrado tu dominio con solo {3 - jumpChancesLeft} error(es). ¡Unidad saltada y siguiente nivel desbloqueado!
           </p>
 
           <div className="grid grid-cols-2 gap-4 w-full mb-8">
-            <div className="bg-duo-yellow-light/60 border-2 border-duo-yellow rounded-2xl p-4 flex flex-col items-center">
-              <span className="text-xs font-black text-duo-yellow-dark uppercase">EXP Ganada</span>
-              <span className="text-2xl font-black text-duo-yellow-dark flex items-center gap-1">
+            <div className="bg-duo-yellow-light/60 dark:bg-duo-yellow/10 border-2 border-duo-yellow rounded-2xl p-4 flex flex-col items-center">
+              <span className="text-xs font-black text-duo-yellow-dark dark:text-duo-yellow uppercase">EXP Ganada</span>
+              <span className="text-2xl font-black text-duo-yellow-dark dark:text-duo-yellow flex items-center gap-1">
                 <Sparkles className="w-5 h-5" /> +100 XP
               </span>
             </div>
-            <div className="bg-duo-green-light/60 border-2 border-duo-green rounded-2xl p-4 flex flex-col items-center">
-              <span className="text-xs font-black text-duo-green-dark uppercase">Resultado</span>
+            <div className="bg-duo-green-light/60 dark:bg-duo-green/10 border-2 border-duo-green rounded-2xl p-4 flex flex-col items-center">
+              <span className="text-xs font-black text-duo-green-dark dark:text-duo-green uppercase">Resultado</span>
               <span className="text-xl font-black text-duo-green">
                 ¡Aprobado!
               </span>
@@ -308,16 +308,16 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   // --- JUMP AHEAD FAILED SCREEN (3 ERRORS) ---
   if (status === 'jump-failed') {
     return (
-      <div className="fixed inset-0 z-50 bg-white flex flex-col justify-between p-6 animate-fade-in">
+      <div className="fixed inset-0 z-50 bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between p-6 animate-fade-in">
         <div className="flex-1 flex flex-col items-center justify-center text-center max-w-sm mx-auto">
-          <div className="w-20 h-20 bg-duo-red-light rounded-full flex items-center justify-center mb-6 border-4 border-duo-red shadow-md">
+          <div className="w-20 h-20 bg-duo-red-light dark:bg-duo-red/20 rounded-full flex items-center justify-center mb-6 border-4 border-duo-red shadow-md">
             <ShieldAlert className="w-10 h-10 text-duo-red" />
           </div>
-          <h2 className="text-2xl font-black text-gray-800 mb-2">Prueba de Salto No Superada</h2>
-          <p className="text-gray-600 font-bold text-sm mb-4">
+          <h2 className="text-2xl font-black text-gray-800 dark:text-gray-100 mb-2">Prueba de Salto No Superada</h2>
+          <p className="text-gray-600 dark:text-gray-400 font-bold text-sm mb-4">
             Cometiste 3 errores en el examen. Para saltarte una unidad completa debes demostrar un dominio de los temas.
           </p>
-          <div className="p-4 bg-gray-50 border-2 border-duo-gray-200 rounded-2xl text-xs font-bold text-gray-500 mb-6">
+          <div className="p-4 bg-gray-50 dark:bg-[#18272e] border-2 border-duo-gray-200 dark:border-[#283842] rounded-2xl text-xs font-bold text-gray-500 dark:text-gray-400 mb-6">
             💡 Consejo: Te recomendamos completar las lecciones guiadas del roadmap para dominar el vocabulario y la gramática.
           </div>
         </div>
@@ -335,25 +335,25 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   // --- STANDARD LESSON COMPLETED SCREEN ---
   if (status === 'completed') {
     return (
-      <div className="fixed inset-0 z-50 bg-white flex flex-col justify-between p-6 animate-fade-in">
+      <div className="fixed inset-0 z-50 bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between p-6 animate-fade-in">
         <div className="flex-1 flex flex-col items-center justify-center text-center max-w-sm mx-auto">
           <div className="w-24 h-24 bg-duo-yellow rounded-full flex items-center justify-center mb-6 shadow-duo-btn border-4 border-duo-yellow-dark animate-bounce">
             <Trophy className="w-12 h-12 text-white stroke-[2.5px]" />
           </div>
-          <h2 className="text-2xl font-black text-gray-800 mb-1">¡Lección completada!</h2>
-          <p className="text-gray-500 font-bold text-sm mb-6">
+          <h2 className="text-2xl font-black text-gray-800 dark:text-gray-100 mb-1">¡Lección completada!</h2>
+          <p className="text-gray-500 dark:text-gray-400 font-bold text-sm mb-6">
             Has dominado: {lesson.title}
           </p>
 
           <div className="grid grid-cols-2 gap-4 w-full mb-8">
-            <div className="bg-duo-yellow-light/60 border-2 border-duo-yellow rounded-2xl p-4 flex flex-col items-center">
-              <span className="text-xs font-black text-duo-yellow-dark uppercase">EXP Ganada</span>
-              <span className="text-2xl font-black text-duo-yellow-dark flex items-center gap-1">
+            <div className="bg-duo-yellow-light/60 dark:bg-duo-yellow/10 border-2 border-duo-yellow rounded-2xl p-4 flex flex-col items-center">
+              <span className="text-xs font-black text-duo-yellow-dark dark:text-duo-yellow uppercase">EXP Ganada</span>
+              <span className="text-2xl font-black text-duo-yellow-dark dark:text-duo-yellow flex items-center gap-1">
                 <Sparkles className="w-5 h-5" /> +20 XP
               </span>
             </div>
-            <div className="bg-duo-green-light/60 border-2 border-duo-green rounded-2xl p-4 flex flex-col items-center">
-              <span className="text-xs font-black text-duo-green-dark uppercase">Precisión</span>
+            <div className="bg-duo-green-light/60 dark:bg-duo-green/10 border-2 border-duo-green rounded-2xl p-4 flex flex-col items-center">
+              <span className="text-xs font-black text-duo-green-dark dark:text-duo-green uppercase">Precisión</span>
               <span className="text-2xl font-black text-duo-green">
                 {wrongAttempts === 0 ? '100%' : wrongAttempts === 1 ? '90%' : '80%'}
               </span>
@@ -374,13 +374,13 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   // --- GAME OVER SCREEN (Normal Lesson) ---
   if (status === 'game-over') {
     return (
-      <div className="fixed inset-0 z-50 bg-white flex flex-col justify-between p-6">
+      <div className="fixed inset-0 z-50 bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between p-6">
         <div className="flex-1 flex flex-col items-center justify-center text-center max-w-sm mx-auto">
-          <div className="w-20 h-20 bg-duo-red-light rounded-full flex items-center justify-center mb-6 border-4 border-duo-red">
+          <div className="w-20 h-20 bg-duo-red-light dark:bg-duo-red/20 rounded-full flex items-center justify-center mb-6 border-4 border-duo-red">
             <Heart className="w-10 h-10 text-duo-red" />
           </div>
-          <h2 className="text-2xl font-black text-gray-800 mb-2">¡Te has quedado sin vidas!</h2>
-          <p className="text-gray-500 font-bold text-sm mb-6">
+          <h2 className="text-2xl font-black text-gray-800 dark:text-gray-100 mb-2">¡Te has quedado sin vidas!</h2>
+          <p className="text-gray-500 dark:text-gray-400 font-bold text-sm mb-6">
             Repasa en la sección de Flashcards o recarga tus energías para volver a intentar.
           </p>
         </div>
@@ -396,7 +396,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-white flex flex-col justify-between">
+    <div className="fixed inset-0 z-50 bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between select-none">
       {/* Top Header: Close, Progress bar, Hearts / Chances */}
       <div className="px-4 py-3 flex items-center gap-4 max-w-2xl mx-auto w-full">
         <button
@@ -453,14 +453,14 @@ export const QuizModal: React.FC<QuizModalProps> = ({
       <div className="flex-1 max-w-lg mx-auto w-full px-4 py-4 flex flex-col justify-center overflow-y-auto">
         {/* Exercise Prompt */}
         <div className="mb-6">
-          <h2 className="text-xl md:text-2xl font-black text-gray-800 mb-2">
+          <h2 className="text-xl md:text-2xl font-black text-gray-800 dark:text-gray-100 mb-2">
             {currentExercise.prompt}
           </h2>
 
           {/* Subtitle / Japanese text if present (Hidden on word-order so it doesn't give away the answer!) */}
           {currentExercise.promptSub && currentExercise.type !== 'word-order' && (
             <div className="flex items-center gap-2 mt-2">
-              <span className="text-3xl font-bold font-['Noto_Sans_JP'] text-gray-900 bg-gray-100 px-3 py-1.5 rounded-xl border-2 border-gray-200">
+              <span className="text-3xl font-bold font-['Noto_Sans_JP'] text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-xl border-2 border-gray-200 dark:border-gray-700">
                 {currentExercise.promptSub}
               </span>
               {currentExercise.japaneseVoiceText && currentExercise.type !== 'multiple-choice' && (
@@ -496,7 +496,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                   sound.playTap();
                   sound.speakJapanese(currentExercise.japaneseVoiceText!, 0.55);
                 }}
-                className="w-16 h-16 bg-duo-blue-light/80 border-2 border-duo-blue rounded-2xl flex flex-col items-center justify-center text-duo-blue-dark shadow-[0_4px_0_0_#1cb0f6] active:translate-y-1 active:shadow-none hover:bg-duo-blue-light transition-all"
+                className="w-16 h-16 bg-duo-blue-light/80 dark:bg-duo-blue/20 border-2 border-duo-blue rounded-2xl flex flex-col items-center justify-center text-duo-blue-dark dark:text-duo-blue shadow-[0_4px_0_0_#1cb0f6] active:translate-y-1 active:shadow-none hover:bg-duo-blue-light transition-all"
                 title="Escuchar lento (velocidad tortuga)"
               >
                 <span className="text-2xl leading-none">🐢</span>
@@ -522,8 +522,8 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                   }}
                   className={`w-full text-left p-4 rounded-2xl font-bold border-2 transition-all duration-150 flex items-center justify-between ${
                     isSelected
-                      ? 'bg-duo-blue-light/50 border-duo-blue text-duo-blue-dark shadow-[0_4px_0_0_#1cb0f6]'
-                      : 'bg-white border-duo-gray-200 text-gray-700 shadow-[0_4px_0_0_#e5e5e5] hover:bg-gray-50'
+                      ? 'bg-duo-blue-light/50 dark:bg-duo-blue/20 border-duo-blue text-duo-blue-dark dark:text-duo-blue shadow-[0_4px_0_0_#1cb0f6]'
+                      : 'bg-white dark:bg-[#18272e] border-duo-gray-200 dark:border-[#283842] text-gray-700 dark:text-gray-200 shadow-[0_4px_0_0_#e5e5e5] dark:shadow-none hover:bg-gray-50 dark:hover:bg-gray-800'
                   }`}
                 >
                   <span className="text-base md:text-lg">{option.text}</span>
@@ -531,7 +531,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                     className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
                       isSelected
                         ? 'border-duo-blue bg-duo-blue text-white'
-                        : 'border-duo-gray-300'
+                        : 'border-duo-gray-300 dark:border-gray-600'
                     }`}
                   >
                     {isSelected && <div className="w-2 h-2 bg-white rounded-full" />}
@@ -545,15 +545,15 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         {/* 2. Word-order Exercise */}
         {currentExercise.type === 'word-order' && (
           <div className="flex flex-col gap-6">
-            <div className="min-h-[70px] p-3 bg-gray-50 border-b-2 border-duo-gray-300 rounded-2xl flex flex-wrap gap-2 items-center">
+            <div className="min-h-[70px] p-3 bg-gray-50 dark:bg-[#18272e] border-b-2 border-duo-gray-300 dark:border-[#283842] rounded-2xl flex flex-wrap gap-2 items-center">
               {selectedWords.length === 0 ? (
-                <span className="text-gray-400 text-sm font-bold italic">Toca las palabras para formar la frase...</span>
+                <span className="text-gray-400 dark:text-gray-500 text-sm font-bold italic">Toca las palabras para formar la frase...</span>
               ) : (
                 selectedWords.map((word, idx) => (
                   <button
                     key={`sel-${idx}`}
                     onClick={() => handleDeselectWord(word, idx)}
-                    className="px-3.5 py-2 bg-white border-2 border-duo-gray-300 rounded-xl font-bold text-gray-800 shadow-duo-btn-sm active:translate-y-0.5 hover:bg-gray-100 transition-all font-['Noto_Sans_JP']"
+                    className="px-3.5 py-2 bg-white dark:bg-[#283842] border-2 border-duo-gray-300 dark:border-[#3a4d59] rounded-xl font-bold text-gray-800 dark:text-gray-100 shadow-duo-btn-sm active:translate-y-0.5 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all font-['Noto_Sans_JP']"
                   >
                     {word}
                   </button>
@@ -566,7 +566,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                 <button
                   key={`avail-${idx}`}
                   onClick={() => handleSelectWord(word, idx)}
-                  className="px-4 py-2.5 bg-white border-2 border-duo-gray-300 rounded-xl font-bold text-gray-800 shadow-[0_3px_0_0_#e5e5e5] active:translate-y-0.5 hover:border-duo-blue transition-all font-['Noto_Sans_JP']"
+                  className="px-4 py-2.5 bg-white dark:bg-[#283842] border-2 border-duo-gray-300 dark:border-[#3a4d59] rounded-xl font-bold text-gray-800 dark:text-gray-100 shadow-[0_3px_0_0_#e5e5e5] dark:shadow-none active:translate-y-0.5 hover:border-duo-blue transition-all font-['Noto_Sans_JP']"
                 >
                   {word}
                 </button>
@@ -590,16 +590,16 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                     onClick={() => handleMatchSelect('left', p.id)}
                     className={`p-3.5 rounded-2xl border-2 font-bold text-center transition-all ${
                       isMatched
-                        ? 'opacity-30 border-duo-green bg-duo-green-light/40 text-duo-green-dark cursor-default'
+                        ? 'opacity-30 border-duo-green bg-duo-green-light/40 dark:bg-duo-green/20 text-duo-green-dark dark:text-duo-green cursor-default'
                         : isMismatched
-                        ? 'border-red-500 bg-red-50 text-red-600 shadow-[0_4px_0_0_#ef4444] animate-shake'
+                        ? 'border-red-500 bg-red-50 dark:bg-red-950/30 text-red-600 shadow-[0_4px_0_0_#ef4444] animate-shake'
                         : isSelected
-                        ? 'border-duo-blue bg-duo-blue-light/50 shadow-[0_4px_0_0_#1cb0f6]'
-                        : 'border-duo-gray-200 bg-white shadow-duo-card hover:bg-gray-50'
+                        ? 'border-duo-blue bg-duo-blue-light/50 dark:bg-duo-blue/20 shadow-[0_4px_0_0_#1cb0f6]'
+                        : 'border-duo-gray-200 dark:border-[#283842] bg-white dark:bg-[#18272e] text-gray-800 dark:text-gray-100 shadow-duo-card dark:shadow-none hover:bg-gray-50 dark:hover:bg-gray-800'
                     }`}
                   >
                     <div className="text-lg font-['Noto_Sans_JP']">{p.left}</div>
-                    {p.leftSub && <div className="text-[10px] text-gray-400 font-normal">{p.leftSub}</div>}
+                    {p.leftSub && <div className="text-[10px] text-gray-400 dark:text-gray-500 font-normal">{p.leftSub}</div>}
                   </button>
                 );
               })}
@@ -617,12 +617,12 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                     onClick={() => handleMatchSelect('right', p.id)}
                     className={`p-3.5 rounded-2xl border-2 font-bold text-center transition-all flex items-center justify-center min-h-[64px] ${
                       isMatched
-                        ? 'opacity-30 border-duo-green bg-duo-green-light/40 text-duo-green-dark cursor-default'
+                        ? 'opacity-30 border-duo-green bg-duo-green-light/40 dark:bg-duo-green/20 text-duo-green-dark dark:text-duo-green cursor-default'
                         : isMismatched
-                        ? 'border-red-500 bg-red-50 text-red-600 shadow-[0_4px_0_0_#ef4444] animate-shake'
+                        ? 'border-red-500 bg-red-50 dark:bg-red-950/30 text-red-600 shadow-[0_4px_0_0_#ef4444] animate-shake'
                         : isSelected
-                        ? 'border-duo-blue bg-duo-blue-light/50 shadow-[0_4px_0_0_#1cb0f6]'
-                        : 'border-duo-gray-200 bg-white shadow-duo-card hover:bg-gray-50'
+                        ? 'border-duo-blue bg-duo-blue-light/50 dark:bg-duo-blue/20 shadow-[0_4px_0_0_#1cb0f6]'
+                        : 'border-duo-gray-200 dark:border-[#283842] bg-white dark:bg-[#18272e] text-gray-800 dark:text-gray-100 shadow-duo-card dark:shadow-none hover:bg-gray-50 dark:hover:bg-gray-800'
                     }`}
                   >
                     <span className="text-sm">{p.right}</span>
@@ -638,10 +638,10 @@ export const QuizModal: React.FC<QuizModalProps> = ({
       <div
         className={`p-4 border-t-2 transition-all duration-200 ${
           status === 'correct'
-            ? 'bg-duo-green-light border-duo-green'
+            ? 'bg-duo-green-light dark:bg-duo-green/20 border-duo-green'
             : status === 'incorrect'
-            ? 'bg-duo-red-light border-duo-red'
-            : 'bg-white border-duo-gray-200'
+            ? 'bg-duo-red-light dark:bg-duo-red/20 border-duo-red'
+            : 'bg-white dark:bg-[#18272e] border-duo-gray-200 dark:border-[#283842]'
         }`}
       >
         <div className="max-w-lg mx-auto flex flex-col md:flex-row items-center justify-between gap-4">

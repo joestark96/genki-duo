@@ -35,7 +35,9 @@ export const App: React.FC = () => {
     maxHearts: 5,
     gems: 100,
     soundEnabled: true,
-    furiganaMode: 'always'
+    furiganaMode: 'always',
+    showRomaji: true,
+    darkMode: false
   });
 
   const [units, setUnits] = useState<Unit[]>(genkiCurriculum);
@@ -58,6 +60,11 @@ export const App: React.FC = () => {
         const userProf = await dbService.getUserProfile();
         setProfile(userProf);
         sound.setEnabled(userProf.soundEnabled);
+        if (userProf.darkMode) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
 
         // 2. Load lesson progress and sync with units
         const progressMap = await dbService.getLessonProgress();
@@ -113,6 +120,28 @@ export const App: React.FC = () => {
     sound.setEnabled(newSoundState);
     const updated = { ...profile, soundEnabled: newSoundState };
     setProfile(updated);
+    await dbService.saveUserProfile(updated);
+  };
+
+  // Romaji toggle handler
+  const handleToggleRomaji = async () => {
+    sound.playTap();
+    const updated: UserProfile = { ...profile, showRomaji: !profile.showRomaji };
+    setProfile(updated);
+    await dbService.saveUserProfile(updated);
+  };
+
+  // Dark mode toggle handler
+  const handleToggleDarkMode = async () => {
+    sound.playTap();
+    const newDarkMode = !profile.darkMode;
+    const updated: UserProfile = { ...profile, darkMode: newDarkMode };
+    setProfile(updated);
+    if (newDarkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
     await dbService.saveUserProfile(updated);
   };
 
@@ -284,8 +313,8 @@ export const App: React.FC = () => {
 
   return (
     <IonApp className="font-['Nunito',sans-serif]">
-      <IonContent fullscreen className="bg-gray-50">
-        <div className="min-h-screen bg-gray-50 flex flex-col">
+      <IonContent fullscreen className="bg-gray-50 dark:bg-[#131f24] transition-colors duration-200">
+        <div className="min-h-screen bg-gray-50 dark:bg-[#131f24] text-gray-800 dark:text-gray-100 flex flex-col transition-colors duration-200">
           {/* Top Status Bar (Duolingo style) */}
           <TopBar profile={profile} onSoundToggle={handleSoundToggle} />
 
@@ -308,15 +337,23 @@ export const App: React.FC = () => {
               />
             )}
             {activeTab === 'flashcards' && (
-              <FlashcardsPage cards={flashcards} onRateCard={handleRateCard} />
+              <FlashcardsPage
+                cards={flashcards}
+                onRateCard={handleRateCard}
+                showRomaji={profile.showRomaji}
+              />
             )}
-            {activeTab === 'kanas' && <KanaPage />}
+            {activeTab === 'kanas' && (
+              <KanaPage showRomaji={profile.showRomaji} />
+            )}
             {activeTab === 'profile' && (
               <ProfilePage
                 profile={profile}
                 units={units}
                 onRefillHearts={handleRefillHearts}
                 onResetProgress={handleResetProgress}
+                onToggleRomaji={handleToggleRomaji}
+                onToggleDarkMode={handleToggleDarkMode}
               />
             )}
           </main>

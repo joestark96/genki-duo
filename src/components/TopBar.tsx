@@ -10,7 +10,7 @@ interface TopBarProps {
 
 export const TopBar: React.FC<TopBarProps> = ({ profile, onSoundToggle }) => {
   return (
-    <header className="sticky top-0 z-30 bg-white border-b-2 border-duo-gray-200 px-4 py-2.5 shadow-sm">
+    <header className="sticky top-0 z-30 bg-white dark:bg-[#18272e] border-b-2 border-duo-gray-200 dark:border-[#283842] px-4 py-2.5 shadow-sm transition-colors duration-200">
       <div className="max-w-3xl mx-auto flex items-center justify-between">
         {/* Racha / Streak */}
         <div className="flex items-center gap-1.5 font-extrabold text-duo-orange">
@@ -39,7 +39,7 @@ export const TopBar: React.FC<TopBarProps> = ({ profile, onSoundToggle }) => {
         {/* Sonido Toggle */}
         <button
           onClick={onSoundToggle}
-          className="p-1.5 rounded-xl hover:bg-gray-100 text-gray-500 transition-colors"
+          className="p-1.5 rounded-xl hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-500 dark:text-gray-400 transition-colors"
           title={profile.soundEnabled ? 'Silenciar sonidos' : 'Activar sonidos'}
         >
           {profile.soundEnabled ? (
