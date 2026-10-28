@@ -129,7 +129,7 @@ class DatabaseService {
           furiganaMode: 'always'
         },
         lessonProgress: {
-          'l0-hira-1': { nodeId: 'l0-hira-1', unitId: 0, unlocked: true, completedSteps: 0, totalSteps: 3, stars: 0 }
+          'l0-node-1': { nodeId: 'l0-node-1', unitId: 0, unlocked: true, completedSteps: 0, totalSteps: 3, stars: 0 }
         },
         flashcardSRS: {},
         quizHistory: []
@@ -261,7 +261,7 @@ class DatabaseService {
 
     const fb = this.getFallbackData();
     return fb?.lessonProgress || {
-      'l0-hira-1': { unlocked: true, completedSteps: 0, stars: 0 }
+      'l0-node-1': { unlocked: true, completedSteps: 0, stars: 0 }
     };
   }
 
