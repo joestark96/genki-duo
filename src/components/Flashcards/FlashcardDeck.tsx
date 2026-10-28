@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Volume2, RotateCw, Check, Clock, Eye, Sparkles, Filter, Search, Award, BookOpen } from 'lucide-react';
+import confetti from 'canvas-confetti';
 import { Flashcard, FlashcardCategory, JLPTLevel } from '../../types';
 import { sound } from '../../services/sound';
 
@@ -15,6 +16,8 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFlipped, setIsFlipped] = useState(false);
   const [showRomaji, setShowRomaji] = useState(true);
+  const [swipeDirection, setSwipeDirection] = useState<'left' | 'right' | null>(null);
+  const [isAnimating, setIsAnimating] = useState(false);
 
   // Filter cards
   const filteredCards = cards.filter(c => {
@@ -56,29 +59,59 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
   }, [currentCard]);
 
   const handleFlip = () => {
+    if (isAnimating) return;
     sound.playTap();
     setIsFlipped(!isFlipped);
   };
 
   const handleRating = (rating: 'again' | 'hard' | 'good' | 'easy') => {
-    if (!currentCard) return;
-    sound.playTap();
-    onRateCard(currentCard.id, currentCard.category, rating);
-    setIsFlipped(false);
-    if (currentIndex < filteredCards.length - 1) {
-      setCurrentIndex(prev => prev + 1);
+    if (!currentCard || isAnimating) return;
+    setIsAnimating(true);
+
+    // Left swipe for 'again' / 'hard', Right swipe for 'good' / 'easy'
+    const direction = (rating === 'again' || rating === 'hard') ? 'left' : 'right';
+    setSwipeDirection(direction);
+
+    if (rating === 'again') {
+      sound.playIncorrect();
+    } else if (rating === 'easy') {
+      sound.playCorrect();
+      // Burst celebratory confetti
+      confetti({
+        particleCount: 90,
+        spread: 70,
+        origin: { y: 0.65 },
+        colors: ['#58cc02', '#235390', '#ff9600', '#ce82ff', '#1cb0f6']
+      });
+    } else if (rating === 'good') {
+      sound.playCorrect();
     } else {
-      setCurrentIndex(0);
+      sound.playTap();
     }
+
+    // Advance card after swipe animation
+    setTimeout(() => {
+      onRateCard(currentCard.id, currentCard.category, rating);
+      setIsFlipped(false);
+      setSwipeDirection(null);
+      setIsAnimating(false);
+      if (currentIndex < filteredCards.length - 1) {
+        setCurrentIndex(prev => prev + 1);
+      } else {
+        setCurrentIndex(0);
+      }
+    }, 320);
   };
 
   const handleNext = () => {
+    if (isAnimating) return;
     sound.playTap();
     setIsFlipped(false);
     setCurrentIndex((currentIndex + 1) % filteredCards.length);
   };
 
   const handlePrev = () => {
+    if (isAnimating) return;
     sound.playTap();
     setIsFlipped(false);
     setCurrentIndex((currentIndex - 1 + filteredCards.length) % filteredCards.length);
@@ -179,15 +212,33 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
         </button>
       </div>
 
-      {/* Main Flashcard Container with 3D Flip */}
+      {/* Main Flashcard Container with 3D Flip & Swipe Animation */}
       {currentCard ? (
-        <div className="w-full my-2 perspective-1000">
+        <div className="w-full my-2 perspective-1000 relative">
           <div
             onClick={handleFlip}
-            className={`w-full min-h-[320px] bg-white border-2 border-duo-gray-300 rounded-3xl p-5 shadow-duo-card cursor-pointer flex flex-col justify-between transition-all duration-300 relative select-none hover:border-duo-blue ${
+            className={`w-full min-h-[320px] bg-white border-2 border-duo-gray-300 rounded-3xl p-5 shadow-duo-card cursor-pointer flex flex-col justify-between relative select-none hover:border-duo-blue ${
               isFlipped ? 'bg-gradient-to-br from-white to-duo-blue-light/20' : ''
+            } ${
+              swipeDirection === 'left'
+                ? 'transform -translate-x-[140%] -rotate-12 opacity-0 transition-all duration-300 ease-in pointer-events-none'
+                : swipeDirection === 'right'
+                ? 'transform translate-x-[140%] rotate-12 opacity-0 transition-all duration-300 ease-in pointer-events-none'
+                : 'transform translate-x-0 rotate-0 opacity-100 transition-all duration-300 ease-out'
             }`}
           >
+            {/* Stamp Badge during swipe */}
+            {swipeDirection === 'left' && (
+              <div className="absolute top-8 right-6 z-30 border-4 border-duo-red text-duo-red font-black text-2xl uppercase px-4 py-1.5 rounded-2xl rotate-12 bg-white/95 shadow-xl tracking-wider pointer-events-none animate-pulse">
+                Repetir
+              </div>
+            )}
+            {swipeDirection === 'right' && (
+              <div className="absolute top-8 left-6 z-30 border-4 border-duo-green text-duo-green-dark font-black text-2xl uppercase px-4 py-1.5 rounded-2xl -rotate-12 bg-white/95 shadow-xl tracking-wider pointer-events-none animate-pulse">
+                ¡Fácil! ⭐
+              </div>
+            )}
+
             {/* Top Card Info Bar */}
             <div className="flex justify-between items-center w-full">
               <div className="flex items-center gap-1.5 flex-wrap">
@@ -396,28 +447,32 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
           <div className="grid grid-cols-4 gap-2 w-full mt-2.5">
             <button
               onClick={() => handleRating('again')}
-              className="py-2.5 bg-duo-red-light border-2 border-duo-red text-duo-red-dark font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-red hover:text-white transition-all flex flex-col items-center"
+              disabled={isAnimating}
+              className="py-2.5 bg-duo-red-light border-2 border-duo-red text-duo-red-dark font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-red hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
             >
               <span>Repetir</span>
               <span className="text-[9px] opacity-80">1 día</span>
             </button>
             <button
               onClick={() => handleRating('hard')}
-              className="py-2.5 bg-duo-orange-light border-2 border-duo-orange text-duo-orange-dark font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-orange hover:text-white transition-all flex flex-col items-center"
+              disabled={isAnimating}
+              className="py-2.5 bg-duo-orange-light border-2 border-duo-orange text-duo-orange-dark font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-orange hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
             >
               <span>Difícil</span>
               <span className="text-[9px] opacity-80">2 días</span>
             </button>
             <button
               onClick={() => handleRating('good')}
-              className="py-2.5 bg-duo-blue-light border-2 border-duo-blue text-duo-blue-dark font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-blue hover:text-white transition-all flex flex-col items-center"
+              disabled={isAnimating}
+              className="py-2.5 bg-duo-blue-light border-2 border-duo-blue text-duo-blue-dark font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-blue hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
             >
               <span>Bien</span>
               <span className="text-[9px] opacity-80">4 días</span>
             </button>
             <button
               onClick={() => handleRating('easy')}
-              className="py-2.5 bg-duo-green-light border-2 border-duo-green text-duo-green-dark font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-green hover:text-white transition-all flex flex-col items-center"
+              disabled={isAnimating}
+              className="py-2.5 bg-duo-green-light border-2 border-duo-green text-duo-green-dark font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-green hover:text-white transition-all flex flex-col items-center disabled:opacity-50 disabled:pointer-events-none"
             >
               <span>Fácil</span>
               <span className="text-[9px] opacity-80">7 días</span>
@@ -428,13 +483,15 @@ export const FlashcardDeck: React.FC<FlashcardDeckProps> = ({ cards, onRateCard 
           <div className="flex justify-between w-full mt-2">
             <button
               onClick={handlePrev}
-              className="text-xs font-bold text-gray-500 hover:text-gray-800 p-2"
+              disabled={isAnimating}
+              className="text-xs font-bold text-gray-500 hover:text-gray-800 p-2 disabled:opacity-50 disabled:pointer-events-none"
             >
               ← Anterior
             </button>
             <button
               onClick={handleNext}
-              className="text-xs font-bold text-gray-500 hover:text-gray-800 p-2"
+              disabled={isAnimating}
+              className="text-xs font-bold text-gray-500 hover:text-gray-800 p-2 disabled:opacity-50 disabled:pointer-events-none"
             >
               Siguiente →
             </button>
