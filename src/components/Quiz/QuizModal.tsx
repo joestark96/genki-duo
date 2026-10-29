@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Heart, Volume2, CheckCircle2, AlertCircle, ArrowRight, Trophy, Sparkles, RotateCcw, FastForward, ShieldAlert } from 'lucide-react';
+import { X, Heart, Volume2, CheckCircle2, AlertCircle, ArrowRight, Trophy, Sparkles, RotateCcw, FastForward, ShieldAlert, Dumbbell } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { Exercise, LessonNode, MatchPair, UserProfile } from '../../types';
 import { sound } from '../../services/sound';
@@ -17,6 +17,7 @@ interface QuizModalProps {
   lesson: LessonNode;
   userProfile: UserProfile;
   isJumpAhead?: boolean;
+  isPractice?: boolean;
   onClose: () => void;
   onCompleteLesson: (nodeId: string, earnedXp: number, stars: number) => void;
   onPassJumpAhead?: (unitId: number) => void;
@@ -27,6 +28,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   lesson,
   userProfile,
   isJumpAhead = false,
+  isPractice = false,
   onClose,
   onCompleteLesson,
   onPassJumpAhead,
@@ -142,6 +144,9 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         } else {
           setStatus('incorrect');
         }
+      } else if (isPractice) {
+        // En modo práctica no se restan vidas del perfil general
+        setStatus('incorrect');
       } else {
         const newHearts = Math.max(0, heartsLeft - 1);
         setHeartsLeft(newHearts);
@@ -171,6 +176,9 @@ export const QuizModal: React.FC<QuizModalProps> = ({
 
       if (isJumpAhead) {
         setStatus('jump-passed');
+      } else if (isPractice) {
+        setStatus('completed');
+        onCompleteLesson(lesson.id, 25, 3);
       } else {
         setStatus('completed');
         const stars = wrongAttempts === 0 ? 3 : wrongAttempts <= 2 ? 2 : 1;
@@ -332,30 +340,40 @@ export const QuizModal: React.FC<QuizModalProps> = ({
     );
   }
 
-  // --- STANDARD LESSON COMPLETED SCREEN ---
+  // --- STANDARD LESSON OR PRACTICE COMPLETED SCREEN ---
   if (status === 'completed') {
     return (
       <div className="fixed inset-0 z-50 bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between p-6 animate-fade-in">
         <div className="flex-1 flex flex-col items-center justify-center text-center max-w-sm mx-auto">
-          <div className="w-24 h-24 bg-duo-yellow rounded-full flex items-center justify-center mb-6 shadow-duo-btn border-4 border-duo-yellow-dark animate-bounce">
-            <Trophy className="w-12 h-12 text-white stroke-[2.5px]" />
+          <div className={`w-24 h-24 rounded-full flex items-center justify-center mb-6 shadow-duo-btn border-4 animate-bounce ${
+            isPractice ? 'bg-duo-blue border-duo-blue-dark' : 'bg-duo-yellow border-duo-yellow-dark'
+          }`}>
+            {isPractice ? (
+              <Dumbbell className="w-12 h-12 text-white stroke-[2.5px]" />
+            ) : (
+              <Trophy className="w-12 h-12 text-white stroke-[2.5px]" />
+            )}
           </div>
-          <h2 className="text-2xl font-black text-gray-800 dark:text-gray-100 mb-1">¡Lección completada!</h2>
+          <h2 className="text-2xl font-black text-gray-800 dark:text-gray-100 mb-1">
+            {isPractice ? '¡Entrenamiento completado!' : '¡Lección completada!'}
+          </h2>
           <p className="text-gray-500 dark:text-gray-400 font-bold text-sm mb-6">
-            Has dominado: {lesson.title}
+            {isPractice
+              ? `Has repasado ${lesson.exercises.length} ejercicios de tus lecciones cursadas.`
+              : `Has dominado: ${lesson.title}`}
           </p>
 
           <div className="grid grid-cols-2 gap-4 w-full mb-8">
             <div className="bg-duo-yellow-light/60 dark:bg-duo-yellow/10 border-2 border-duo-yellow rounded-2xl p-4 flex flex-col items-center">
               <span className="text-xs font-black text-duo-yellow-dark dark:text-duo-yellow uppercase">EXP Ganada</span>
               <span className="text-2xl font-black text-duo-yellow-dark dark:text-duo-yellow flex items-center gap-1">
-                <Sparkles className="w-5 h-5" /> +20 XP
+                <Sparkles className="w-5 h-5" /> {isPractice ? '+25 XP' : '+20 XP'}
               </span>
             </div>
             <div className="bg-duo-green-light/60 dark:bg-duo-green/10 border-2 border-duo-green rounded-2xl p-4 flex flex-col items-center">
               <span className="text-xs font-black text-duo-green-dark dark:text-duo-green uppercase">Precisión</span>
               <span className="text-2xl font-black text-duo-green">
-                {wrongAttempts === 0 ? '100%' : wrongAttempts === 1 ? '90%' : '80%'}
+                {wrongAttempts === 0 ? '100%' : `${Math.max(60, Math.round(((lesson.exercises.length - wrongAttempts) / lesson.exercises.length) * 100))}%`}
               </span>
             </div>
           </div>
@@ -397,7 +415,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
 
   return (
     <div className="fixed inset-0 z-50 bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between select-none">
-      {/* Top Header: Close, Progress bar, Hearts / Chances */}
+      {/* Top Header: Close, Progress bar, Hearts / Chances / Practice indicator */}
       <div className="px-4 py-3 flex items-center gap-4 max-w-2xl mx-auto w-full">
         <button
           onClick={onClose}
@@ -407,16 +425,16 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         </button>
 
         {/* Duolingo progress bar */}
-        <div className="flex-1 h-3.5 bg-duo-gray-200 rounded-full overflow-hidden p-0.5">
+        <div className="flex-1 h-3.5 bg-duo-gray-200 dark:bg-gray-700 rounded-full overflow-hidden p-0.5">
           <div
             className={`h-full rounded-full transition-all duration-300 ${
-              isJumpAhead ? 'bg-duo-orange' : 'bg-duo-green'
+              isJumpAhead ? 'bg-duo-orange' : isPractice ? 'bg-duo-blue' : 'bg-duo-green'
             }`}
             style={{ width: `${progressPercent}%` }}
           />
         </div>
 
-        {/* Indicator: Jump Ahead Strikes or Normal Hearts */}
+        {/* Indicator: Jump Ahead Strikes, Practice Badge, or Normal Hearts */}
         {isJumpAhead ? (
           <div className="flex items-center gap-1">
             {[1, 2, 3].map((strikeIdx) => {
@@ -430,6 +448,11 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                 />
               );
             })}
+          </div>
+        ) : isPractice ? (
+          <div className="flex items-center gap-1.5 px-2.5 py-1 bg-duo-blue-light/60 dark:bg-duo-blue/20 rounded-xl border-2 border-duo-blue text-duo-blue dark:text-duo-blue-light font-black text-xs shadow-sm">
+            <Dumbbell className="w-4 h-4 stroke-[2.5px]" />
+            <span>Práctica</span>
           </div>
         ) : (
           <div className="flex items-center gap-1 font-black text-duo-red">
@@ -445,6 +468,16 @@ export const QuizModal: React.FC<QuizModalProps> = ({
           <span className="text-xs font-black text-duo-orange-dark uppercase tracking-wider flex items-center justify-center gap-1.5">
             <FastForward className="w-4 h-4" />
             Prueba de Salto de Unidad • Máximo 3 Errores ({jumpChancesLeft} vidas restantes)
+          </span>
+        </div>
+      )}
+
+      {/* Practice Mode Banner */}
+      {isPractice && (
+        <div className="w-full bg-duo-blue-light/50 dark:bg-duo-blue/20 border-b-2 border-duo-blue/40 py-1.5 px-4 text-center">
+          <span className="text-xs font-black text-duo-blue-dark dark:text-duo-blue uppercase tracking-wider flex items-center justify-center gap-1.5">
+            <Dumbbell className="w-4 h-4" />
+            Entrenamiento de Repaso • Las respuestas incorrectas no restan vidas
           </span>
         </div>
       )}

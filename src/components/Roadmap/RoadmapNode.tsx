@@ -101,7 +101,10 @@ export const RoadmapNode: React.FC<RoadmapNodeProps> = ({
   };
 
   return (
-    <div className={`relative flex flex-col items-center my-4 transition-transform duration-200 ${getOffsetClass()}`}>
+    <div
+      id={`roadmap-node-${node.id}`}
+      className={`relative flex flex-col items-center my-4 transition-transform duration-200 ${getOffsetClass()}`}
+    >
       {/* Floating Callout badge for the active lesson */}
       {isActive && !isCompleted && !isLocked && (
         <div className="absolute -top-11 z-20 animate-bounce">

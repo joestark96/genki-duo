@@ -208,9 +208,11 @@ export const App: React.FC = () => {
 
     setUnits(newUnits);
 
-    // 3. Save completed node to SQLite
+    // 3. Save completed node to SQLite (if it's a curriculum node, not a practice session)
     const currentUnit = units.find(u => u.nodes.some(n => n.id === nodeId));
-    await dbService.saveLessonNodeProgress(nodeId, currentUnit?.id || 0, true, 3, 3, stars);
+    if (currentUnit) {
+      await dbService.saveLessonNodeProgress(nodeId, currentUnit.id, true, 3, 3, stars);
+    }
 
     // 4. Save next unlocked node to SQLite if applicable
     if (nextNodeToUnlock) {

@@ -2,9 +2,10 @@ import React, { useState } from 'react';
 import { Unit, LessonNode, UserProfile } from '../types';
 import { RoadmapNode } from '../components/Roadmap/RoadmapNode';
 import { QuizModal } from '../components/Quiz/QuizModal';
-import { BookOpen, Sparkles, CheckCircle2, FastForward, ShieldAlert, Award } from 'lucide-react';
+import { BookOpen, Sparkles, CheckCircle2, FastForward, ShieldAlert, Award, Dumbbell, Compass } from 'lucide-react';
 import { sound } from '../services/sound';
 import { createJumpAheadLesson } from '../utils/jumpAhead';
+import { createPracticeLesson } from '../utils/practiceLesson';
 
 interface RoadmapPageProps {
   units: Unit[];
@@ -25,6 +26,7 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
 }) => {
   const [activeQuizLesson, setActiveQuizLesson] = useState<LessonNode | null>(null);
   const [isJumpAheadActive, setIsJumpAheadActive] = useState(false);
+  const [isPracticeActive, setIsPracticeActive] = useState(false);
 
   // Determine which node is currently active (the first unlocked but uncompleted node)
   const getActiveNodeId = (): string => {
@@ -35,7 +37,16 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
         }
       }
     }
-    return units[0]?.nodes[0]?.id || '';
+    // If all unlocked nodes are completed, find the last unlocked node
+    let lastUnlockedId = units[0]?.nodes[0]?.id || '';
+    for (const unit of units) {
+      for (const node of unit.nodes) {
+        if (node.unlocked) {
+          lastUnlockedId = node.id;
+        }
+      }
+    }
+    return lastUnlockedId;
   };
 
   const activeNodeId = getActiveNodeId();
@@ -43,12 +54,67 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
   const handleStartJumpAhead = (unit: Unit) => {
     sound.playTap();
     const challengeLesson = createJumpAheadLesson(unit);
+    setIsPracticeActive(false);
     setIsJumpAheadActive(true);
     setActiveQuizLesson(challengeLesson);
   };
 
+  // Scroll to the most recent available lesson node
+  const handleScrollToLatest = () => {
+    sound.playTap();
+    const targetId = getActiveNodeId();
+    if (!targetId) return;
+
+    const element = document.getElementById(`roadmap-node-${targetId}`);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      element.classList.add('scale-105');
+      setTimeout(() => {
+        element.classList.remove('scale-105');
+      }, 600);
+    }
+  };
+
+  // Start a practice session with 10-20 random exercises from studied lessons
+  const handleStartPractice = () => {
+    sound.playTap();
+    const practiceLesson = createPracticeLesson(units);
+    if (practiceLesson) {
+      setIsJumpAheadActive(false);
+      setIsPracticeActive(true);
+      setActiveQuizLesson(practiceLesson);
+    }
+  };
+
   return (
-    <div className="max-w-md mx-auto w-full px-4 pt-4 pb-24 flex flex-col items-center">
+    <div className="max-w-md mx-auto w-full px-4 pt-4 pb-28 flex flex-col items-center relative">
+      {/* Floating Action Buttons */}
+      <div className="fixed bottom-20 right-4 z-20 flex flex-col items-end gap-2.5">
+        {/* Practice Dumbbell Floating Button */}
+        <button
+          onClick={handleStartPractice}
+          title="Entrenamiento de repaso (10 a 20 ejercicios aleatorios)"
+          className="flex items-center gap-2 pl-3 pr-3.5 py-2.5 bg-duo-blue hover:bg-duo-blue-dark active:translate-y-1 active:shadow-none text-white font-black text-xs rounded-2xl shadow-[0_4px_0_0_#1899d6] border-2 border-white/20 transition-all backdrop-blur-md group cursor-pointer"
+        >
+          <div className="w-6 h-6 rounded-xl bg-white/20 flex items-center justify-center group-hover:rotate-12 transition-transform">
+            <Dumbbell className="w-4 h-4 stroke-[2.5px]" />
+          </div>
+          <span className="tracking-wide">Repasar</span>
+        </button>
+
+        {/* Scroll to Latest Available Lesson Floating Button */}
+        <button
+          onClick={handleScrollToLatest}
+          title="Deslizar hasta la lección más reciente disponible"
+          className="flex items-center gap-2 pl-3 pr-3.5 py-2.5 bg-duo-green hover:bg-duo-green-dark active:translate-y-1 active:shadow-none text-white font-black text-xs rounded-2xl shadow-[0_4px_0_0_#46a302] border-2 border-white/20 transition-all backdrop-blur-md group cursor-pointer"
+        >
+          <div className="w-6 h-6 rounded-xl bg-white/20 flex items-center justify-center group-hover:rotate-45 transition-transform">
+            <Compass className="w-4 h-4 stroke-[2.5px]" />
+          </div>
+          <span className="tracking-wide">Actual</span>
+        </button>
+      </div>
+
       {/* Units List */}
       {units.map((unit) => {
         const isUnitUnlocked = unit.nodes.some(n => n.unlocked);
@@ -151,25 +217,29 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
         );
       })}
 
-      {/* Quiz Modal (Supports standard lesson and Jump Ahead exam) */}
+      {/* Quiz Modal (Supports standard lesson, Jump Ahead exam, and Practice mode) */}
       {activeQuizLesson && (
         <QuizModal
           lesson={activeQuizLesson}
           userProfile={userProfile}
           isJumpAhead={isJumpAheadActive}
+          isPractice={isPracticeActive}
           onClose={() => {
             setActiveQuizLesson(null);
             setIsJumpAheadActive(false);
+            setIsPracticeActive(false);
           }}
           onCompleteLesson={(nodeId, xp, stars) => {
             onCompleteLesson(nodeId, xp, stars);
             setActiveQuizLesson(null);
             setIsJumpAheadActive(false);
+            setIsPracticeActive(false);
           }}
           onPassJumpAhead={(unitId) => {
             onSkipUnit(unitId);
             setActiveQuizLesson(null);
             setIsJumpAheadActive(false);
+            setIsPracticeActive(false);
           }}
           onDeductHeart={onDeductHeart}
         />
