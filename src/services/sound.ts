@@ -15,13 +15,13 @@ export interface CharacterVoiceProfile {
 export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
   {
     id: 'mary',
-    name: 'Mary',
+    name: 'Mary (Voz Original)',
     japaneseName: 'メアリー',
     avatar: '👱‍♀️',
-    role: 'Estudiante alegre (Femenina brillante)',
+    role: 'Voz japonesa original natural',
     gender: 'female',
-    pitch: 1.26,
-    rate: 0.94,
+    pitch: 1.0,
+    rate: 0.9,
     samplePhrase: 'こんにちは！メアリーです。よろしくお願いします！'
   },
   {
@@ -213,7 +213,7 @@ class SoundService {
   }
 
   private selectSystemVoiceForCharacter(jaVoices: SpeechSynthesisVoice[], profile: CharacterVoiceProfile): SpeechSynthesisVoice {
-    if (jaVoices.length === 1) return jaVoices[0];
+    if (jaVoices.length === 1 || profile.id === 'mary') return jaVoices[0];
 
     const maleHints = ['ichiro', 'otoya', 'keita', 'takumi', 'male', '男'];
     const femaleHints = ['haruka', 'ayumi', 'nanami', 'kyoko', 'sayaka', 'mizuki', 'female', '女'];
@@ -288,19 +288,27 @@ class SoundService {
         this.activeAudio = audio;
         const charProfile = profile || this.getCharacterProfile();
 
-        // Allow playbackRate to shift pitch slightly so different characters sound distinct even on web audio fallback
         const anyAudio = audio as unknown as {
           preservesPitch?: boolean;
           mozPreservesPitch?: boolean;
           webkitPreservesPitch?: boolean;
         };
-        anyAudio.preservesPitch = false;
-        anyAudio.mozPreservesPitch = false;
-        anyAudio.webkitPreservesPitch = false;
 
-        const pitchFactor = 0.85 + (charProfile.pitch - 0.85) * 0.35;
-        const baseScale = rate / 0.9;
-        audio.playbackRate = Math.max(0.55, Math.min(1.35, pitchFactor * baseScale));
+        if (charProfile.id === 'mary') {
+          anyAudio.preservesPitch = true;
+          anyAudio.mozPreservesPitch = true;
+          anyAudio.webkitPreservesPitch = true;
+          audio.playbackRate = Math.max(0.55, Math.min(1.2, rate));
+        } else {
+          // Allow playbackRate to shift pitch slightly so different characters sound distinct even on web audio fallback
+          anyAudio.preservesPitch = false;
+          anyAudio.mozPreservesPitch = false;
+          anyAudio.webkitPreservesPitch = false;
+
+          const pitchFactor = 0.85 + (charProfile.pitch - 0.85) * 0.35;
+          const baseScale = rate / 0.9;
+          audio.playbackRate = Math.max(0.55, Math.min(1.35, pitchFactor * baseScale));
+        }
         audio.volume = 0.85;
 
         const playPromise = audio.play();
