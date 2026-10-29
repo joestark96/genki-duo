@@ -1177,7 +1177,7 @@ export const genkiCurriculum: Unit[] = [
             id: 'ex-1-2-1',
             type: 'multiple-choice',
             prompt: '¿Cómo se lee el número 45 en japonés?',
-            promptSub: '45 = 40 (よんじゅう) + 5 (ご)',
+            promptSub: '45',
             japaneseVoiceText: 'よんじゅうご',
             options: [
               { id: 'n45-1', text: 'よんじゅうご (yonjuugo)', isCorrect: true },
@@ -1202,11 +1202,11 @@ export const genkiCurriculum: Unit[] = [
           {
             id: 'ex-1-2-3',
             type: 'word-order',
-            prompt: 'Del Workbook: Resuelve la suma 8 + 4 = 12 en japonés:',
+            prompt: 'Del Workbook: Resuelve la suma 8 + 4 en japonés:',
             japaneseVoiceText: 'じゅうに',
             wordBank: ['に', 'じゅう', 'さん', 'よん'],
             correctSentence: ['じゅう', 'に'],
-            explanation: '10 (じゅう) + 2 (に) = 12 (じゅうに).'
+            explanation: '8 + 4 = 12. En japonés 12 se dice: じゅう (10) + に (2) = じゅうに.'
           },
           {
             id: 'ex-1-2-4',
