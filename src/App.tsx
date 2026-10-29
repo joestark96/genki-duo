@@ -11,6 +11,7 @@ import { RoadmapPage } from './pages/RoadmapPage';
 import { TheoryPage } from './pages/TheoryPage';
 import { FlashcardsPage } from './pages/FlashcardsPage';
 import { KanaPage } from './pages/KanaPage';
+import { ReadingsPage } from './pages/ReadingsPage';
 import { ProfilePage } from './pages/ProfilePage';
 
 // Ionic core CSS
@@ -365,6 +366,9 @@ export const App: React.FC = () => {
             )}
             {activeTab === 'kanas' && (
               <KanaPage showRomaji={profile.showRomaji} />
+            )}
+            {activeTab === 'readings' && (
+              <ReadingsPage units={units} showRomaji={profile.showRomaji} />
             )}
             {activeTab === 'profile' && (
               <ProfilePage
