@@ -1,5 +1,10 @@
 import React from 'react';
-import { Check, Lock, Star, Play, Sparkles, MessageCircle, ShoppingBag, Coffee, Heart, Music, Users, Award, Flame, BookOpen, HelpCircle, PhoneCall, Headphones } from 'lucide-react';
+import {
+  Check, Lock, Star, Play, Sparkles, MessageCircle, ShoppingBag, Coffee,
+  Heart, Music, Users, Award, Flame, BookOpen, HelpCircle, PhoneCall,
+  Headphones, MapPin, Compass, Plane, Clock, Calendar, Lightbulb,
+  ShieldAlert, ListFilter, Briefcase, Gift, Train, Utensils, GraduationCap
+} from 'lucide-react';
 import { LessonNode } from '../../types';
 import { sound } from '../../services/sound';
 
@@ -36,6 +41,19 @@ export const RoadmapNode: React.FC<RoadmapNodeProps> = ({
       case 'HelpCircle': return <HelpCircle {...props} />;
       case 'PhoneCall': return <PhoneCall {...props} />;
       case 'Headphones': return <Headphones {...props} />;
+      case 'MapPin': return <MapPin {...props} />;
+      case 'Compass': return <Compass {...props} />;
+      case 'Plane': return <Plane {...props} />;
+      case 'Clock': return <Clock {...props} />;
+      case 'Calendar': return <Calendar {...props} />;
+      case 'Lightbulb': return <Lightbulb {...props} />;
+      case 'ShieldAlert': return <ShieldAlert {...props} />;
+      case 'ListFilter': return <ListFilter {...props} />;
+      case 'Briefcase': return <Briefcase {...props} />;
+      case 'Gift': return <Gift {...props} />;
+      case 'Train': return <Train {...props} />;
+      case 'Utensils': return <Utensils {...props} />;
+      case 'GraduationCap': return <GraduationCap {...props} />;
       default: return <Play {...props} />;
     }
   };

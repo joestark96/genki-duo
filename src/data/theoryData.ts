@@ -1481,5 +1481,723 @@ export const unitTheories: UnitTheory[] = [
         ]
       }
     ]
+  },
+  {
+    "unitId": 13,
+    "title": "Genki Lección 13: Buscando un Trabajo",
+    "genkiChapter": "Genki II - Lesson 13",
+    "subtitle": "Verbos Potenciales, 〜し〜し, 〜そうです (Apariencia) y 〜てみる",
+    "description": "Inicia tu camino hacia el nivel N4 dominando la forma potencial (\"poder hacer\"), la enumeración de razones con 〜し, las apariencias visuales y probar cosas nuevas con 〜てみる.",
+    "themeColor": "#e5a100",
+    "sections": [
+      {
+        "id": "u13-potential-verbs",
+        "title": "Verbos Potenciales (可能動詞): Poder hacer",
+        "japaneseTitle": "可能形（〜られる・〜える・できる）",
+        "category": "grammar",
+        "formula": "Ru-verb: 〜られる | U-verb: vocal -u ➔ -e + る | する➔できる・くる➔こられる",
+        "summary": "Expresa que alguien tiene la habilidad o la posibilidad circunstancial de realizar una acción.",
+        "content": [
+          "• **Reglas de conjugación:**",
+          "   • **Ru-verbs:** Quitar る y añadir **られる** (食べる ➔ **食べられる**, 見る ➔ **見られる**). *(Nota: en japonés hablado se suele abreviar a 〜れる, ej. 食べれる, llamado ら抜き言葉).*",
+          "   • **U-verbs:** Cambiar la vocal final **-u** a la columna **-e** y añadir **る** (話す ➔ **話せる**, 行く ➔ **行ける**, 泳ぐ ➔ **泳げる**, 買う ➔ **買える**, 待つ ➔ **待てる**).",
+          "   • **Irregulares:** する ➔ **できる**, くる ➔ **こられる**.",
+          "• **Cambio de partícula:** El objeto directo que normalmente lleva を suele cambiar a **が** (日本語**が**話せます = Puedo hablar japonés).",
+          "• Todos los verbos potenciales se conjugan como **Ru-verbs** regulares (話せます, 話せない, 話せた)."
+        ],
+        "examples": [
+          {
+            "japanese": "わたしは日本語が少し話せます。",
+            "romaji": "Watashi wa nihongo ga sukoshi hanasemasu.",
+            "spanish": "Puedo hablar un poco de japonés.",
+            "audioText": "わたしはにほんごがすこしはなせます"
+          },
+          {
+            "japanese": "漢字が読めますか。",
+            "romaji": "Kanji ga yomemasu ka.",
+            "spanish": "¿Puedes leer kanji?",
+            "audioText": "かんじがよめますか"
+          }
+        ]
+      },
+      {
+        "id": "u13-shi-sou-temiru",
+        "title": "Razones (〜し), Apariencia (〜そうです) y Probar (〜てみる)",
+        "japaneseTitle": "「〜し、〜し」・様態の「〜そうです」・「〜てみる」",
+        "category": "grammar",
+        "formula": "[Forma corta] + し | [Raíz Adj/Verbo] + そうです | [Forma Te] + みる",
+        "summary": "Enumera múltiples razones, describe cómo luce algo a simple vista e intenta hacer una acción para ver qué pasa.",
+        "content": [
+          "• **〜し、〜し (Además de A, también B):** Va después de la **forma corta** (con だ en sustantivos y な-adjetivos en presente). Sirve para listar varias razones.",
+          "• **〜そうです (Parece que... / Se ve...):**",
+          "   • **い-adjetivos:** Quitar la い final + そうです (おいしい ➔ **おいしそうです** = se ve rico).",
+          "   • **Excepción con いい:** Cambia a **よさそうです** (parece bueno).",
+          "   • **な-adjetivos:** Raíz sin な + そうです (元気 ➔ **元気そうです** = se ve con energía).",
+          "   • **Verbos:** Raíz Masu + そうです = \"está a punto de ocurrir\" (雨が**降りそうです** = está a punto de llover).",
+          "• **〜てみる (Intentar / Probar hacer algo):** Verbo en Forma Te + みます (食べてみます = probaré comerlo)."
+        ],
+        "examples": [
+          {
+            "japanese": "このケーキはおいしそうですね。食べてみます。",
+            "romaji": "Kono keeki wa oishisou desu ne. Tabete mimasu.",
+            "spanish": "Este pastel se ve delicioso, ¿verdad? Probaré comerlo.",
+            "audioText": "このケーキはおいしそうですね。たべてみます"
+          },
+          {
+            "japanese": "雨が降りそうですから、傘を持っていきます。",
+            "romaji": "Ame ga furisou desu kara, kasa o motte ikimasu.",
+            "spanish": "Como parece que está a punto de llover, llevaré paraguas.",
+            "audioText": "あめがふりそうですからかさをもっていきます"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "unitId": 14,
+    "title": "Genki Lección 14: Día de San Valentín",
+    "genkiChapter": "Genki II - Lesson 14",
+    "subtitle": "ほしい, 〜かもしれません y あげる・くれる・もらう",
+    "description": "Domina cómo expresar el deseo de poseer cosas con ほしい, la probabilidad con 〜かもしれません y la direccionalidad de dar y recibir regalos.",
+    "themeColor": "#ff4b4b",
+    "sections": [
+      {
+        "id": "u14-hoshii-kamoshiremasen",
+        "title": "Querer Objetos (ほしい) y Probabilidad (〜かもしれません)",
+        "japaneseTitle": "願望の「ほしい」と推量の「〜かもしれません」",
+        "category": "grammar",
+        "formula": "[Objeto] が ほしいです | [Forma corta (sin だ)] + かもしれません",
+        "summary": "Expresa qué cosas deseas tener y formula suposiciones del tipo \"tal vez / quizás\".",
+        "content": [
+          "• **ほしい (Querer un objeto):** Es un **い-adjetivo** (negativo: ほしくないです, pasado: ほしかったです). El objeto deseado se marca con **が**.",
+          "• **〜かもしれません (Quizás / Tal vez / Puede que...):**",
+          "   • Se une a verbos e い-adjetivos en **forma corta** (雨が降るかもしれません = tal vez llueva).",
+          "   • Con な-adjetivos y sustantivos en presente afirmativo va **sin だ** (元気かもしれません, 学生かもしれません)."
+        ],
+        "examples": [
+          {
+            "japanese": "わたしは新しいパソコンがほしいです。",
+            "romaji": "Watashi wa atarashii pasokon ga hoshii desu.",
+            "spanish": "Quiero una computadora nueva.",
+            "audioText": "わたしはあたらしいパソコンがほしいです"
+          },
+          {
+            "japanese": "あしたは雪が降るかもしれません。",
+            "romaji": "Ashita wa yuki ga furu kamoshiremasen.",
+            "spanish": "Tal vez mañana nieve.",
+            "audioText": "あしたはゆきがふるかもしれません"
+          }
+        ]
+      },
+      {
+        "id": "u14-giving-receiving",
+        "title": "Dar y Recibir Objetos: あげる・くれる・もらう",
+        "japaneseTitle": "授受動詞（あげる・くれる・もらう）と「〜たらどうですか」",
+        "category": "grammar",
+        "formula": "あげる (dar a otro) | くれる (darme a mí) | もらう (recibir de に/から)",
+        "summary": "Los tres verbos fundamentales de transferencia de regalos en japonés según quién da y quién recibe.",
+        "content": [
+          "• **あげる (Dar a otro):** Yo doy a alguien, o un tercero da a otro tercero. **Nunca** se usa cuando el receptor soy yo.",
+          "• **くれる (Darme a mí):** Alguien me da algo **a mí** (o a alguien de mi familia/círculo íntimo).",
+          "• **もらう (Recibir):** Yo (o alguien) recibo algo de otra persona (marcada con **に** o **から**).",
+          "• **〜たらどうですか (¿Qué tal si haces X?):** Verbo en pasado corto (Forma Ta) + らどうですか sirve para sugerir o aconsejar.",
+          "• **Número + も / しか:** **も** enfatiza \"tantos como...\" (5冊も = ¡hasta 5 libros!); **しか + verbo negativo** enfatiza \"solo / nada más que...\" (1冊しか読みませんでした = solo leí un libro)."
+        ],
+        "examples": [
+          {
+            "japanese": "友だちがわたしにプレゼントをくれました。",
+            "romaji": "Tomodachi ga watashi ni purezento o kuremashita.",
+            "spanish": "Mi amigo me dio un regalo.",
+            "audioText": "ともだちがわたしにプレゼントをくれました"
+          },
+          {
+            "japanese": "わたしは山田さんに本をもらいました。",
+            "romaji": "Watashi wa Yamada-san ni hon o moraimashita.",
+            "spanish": "Recibí un libro de parte de Yamada.",
+            "audioText": "わたしはやまださんにほんをもらいました"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "unitId": 15,
+    "title": "Genki Lección 15: Un Viaje a Nagano",
+    "genkiChapter": "Genki II - Lesson 15",
+    "subtitle": "Forma Volitiva (〜よう), 〜ておく y Calificar Sustantivos",
+    "description": "Aprende a hacer propuestas informales con la forma volitiva, dejar preparativos listos con 〜ておく y construir cláusulas relativas complejas.",
+    "themeColor": "#1cb0f6",
+    "sections": [
+      {
+        "id": "u15-volitional-teoku",
+        "title": "Forma Volitiva (意向形) y Preparación (〜ておく)",
+        "japaneseTitle": "意向形（〜よう・〜おう）・「〜ようと思っています」・「〜ておく」",
+        "category": "grammar",
+        "formula": "Ru-verb: 〜よう | U-verb: vocal -u ➔ -o + う | する➔しよう・くる➔こよう",
+        "summary": "El equivalente casual de 〜ましょう para proponer planes entre amigos y expresar intenciones con 〜と思っています.",
+        "content": [
+          "• **Formación de la Forma Volitiva:**",
+          "   • **Ru-verbs:** Quitar る y añadir **よう** (食べる ➔ **食べよう** = ¡comamos!).",
+          "   • **U-verbs:** Cambiar la vocal final **-u** a **-o** + **う** (行く ➔ **行こう**, 飲む ➔ **飲もう**, 話す ➔ **話そう**, 待つ ➔ **待とう**).",
+          "   • **Irregulares:** する ➔ **しよう**, くる ➔ **こよう**.",
+          "• **[Volitiva] + と思っています:** Expresa un plan o intención que ya has venido pensando (\"Estoy pensando en hacer X\").",
+          "• **〜ておく (Preparación anticipada):** Hacer algo por adelantado para estar listo (ホテルを予約しておきます = dejaré reservado el hotel). En conversación se contrae a **〜とく** (予約しとく)."
+        ],
+        "examples": [
+          {
+            "japanese": "いっしょに温泉に行こう！",
+            "romaji": "Issho ni onsen ni ikou!",
+            "spanish": "¡Vayamos juntos a las aguas termales!",
+            "audioText": "いっしょにおんせんにいこう"
+          },
+          {
+            "japanese": "旅行の前に切符を買っておきます。",
+            "romaji": "Ryokou no mae ni kippu o katte okimasu.",
+            "spanish": "Antes del viaje dejaré comprados los boletos por adelantado.",
+            "audioText": "りょこうのまえにきっぷをかっておきます"
+          }
+        ]
+      },
+      {
+        "id": "u15-relative-clauses",
+        "title": "Calificar Sustantivos con Oraciones (Cláusulas Relativas)",
+        "japaneseTitle": "名詞修飾節（きのう買った本・母が作った料理）",
+        "category": "grammar",
+        "formula": "[Oración subordinada en Forma Corta (sujeto con が)] + Sustantivo",
+        "summary": "Cómo decir \"el libro que compré ayer\" o \"la persona que está tomando café\" en japonés.",
+        "content": [
+          "• En japonés **no existen pronombres relativos** como \"que\" o \"quien\".",
+          "• Toda la oración descriptiva se coloca **antes del sustantivo** con su verbo en **forma corta**.",
+          "• **Regla de oro:** El sujeto dentro de la cláusula calificadora se marca con **が** (o の), **nunca con は** (ej. メアリーさん**が**作ったケーキ = el pastel que hizo Mary)."
+        ],
+        "examples": [
+          {
+            "japanese": "これはわたしがきのう買った本です。",
+            "romaji": "Kore wa watashi ga kinou katta hon desu.",
+            "spanish": "Este es el libro que compré ayer.",
+            "audioText": "これはわたしがきのうかったほんです"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "unitId": 16,
+    "title": "Genki Lección 16: Objetos Perdidos",
+    "genkiChapter": "Genki II - Lesson 16",
+    "subtitle": "〜てあげる・〜てくれる・〜てもらう, 〜時 y 〜といいですね",
+    "description": "Expresa favores realizados o recibidos mediante la Forma Te, pide ayuda con distintos grados de cortesía y domina las cláusulas temporales con 時.",
+    "themeColor": "#58cc02",
+    "sections": [
+      {
+        "id": "u16-favors-requests",
+        "title": "Dar y Recibir Favores: 〜てあげる・〜てくれる・〜てもらう",
+        "japaneseTitle": "恩恵の授受と依頼表現（〜ていただけませんか）",
+        "category": "grammar",
+        "formula": "Forma Te + あげる (hacer por otro) / くれる (hacer por mí) / もらう (recibir el favor)",
+        "summary": "Combina cualquier verbo en Forma Te con あげる, くれる y もらう para expresar acciones benéficas y favores.",
+        "content": [
+          "• **〜てあげる:** Yo hago algo en beneficio de otra persona (友だちに宿題を教えてあげました = le enseñé la tarea a mi amigo).",
+          "• **〜てくれる:** Alguien hace algo en mi beneficio (母が弁当を作ってくれました = mi mamá me preparó el bento).",
+          "• **〜てもらう:** Recibo el favor de que alguien haga algo por mí (先生に作文を直してもらいました = recibí el favor de que el profesor corrigiera mi ensayo).",
+          "• **3 niveles para pedir un favor:**",
+          "   1. **〜ていただけませんか:** Muy cortés (a profesores, jefes o desconocidos).",
+          "   2. **〜てくれませんか:** Cortés estándar.",
+          "   3. **〜てくれない？:** Casual entre amigos."
+        ],
+        "examples": [
+          {
+            "japanese": "先生、推薦状を書いていただけませんか。",
+            "romaji": "Sensei, suisenjou o kaite itadakemasen ka.",
+            "spanish": "Profesor, ¿sería tan amable de escribirme una carta de recomendación?",
+            "audioText": "せんせい、すいせんじょうをかいていただけませんか"
+          }
+        ]
+      },
+      {
+        "id": "u16-toii-toki-apology",
+        "title": "Esperanzas (〜といいですね), Tiempo (〜時) y Disculpas",
+        "japaneseTitle": "「〜といいですね」・「〜時（とき）」・「〜てすみませんでした」",
+        "category": "grammar",
+        "formula": "[Forma corta] + といいですね | [Oración corta] + 時 | [Forma Te] + すみませんでした",
+        "summary": "Expresa buenos deseos, distingue entre presente y pasado antes de 時 y pide disculpas por acciones concretas.",
+        "content": [
+          "• **〜といいですね:** \"¡Ojalá que... / Espero que...!\" (deseando suerte a otro). Si el deseo es para uno mismo se usa **〜といいんですが**.",
+          "• **〜時 (とき = cuando...):**",
+          "   • **Verbo Diccionario + 時:** La acción principal ocurre **antes** de completarse el verbo (日本へ**行く時**、かばんを買いました = compré el bolso de camino / antes de llegar a Japón).",
+          "   • **Verbo Forma Ta + 時:** La acción principal ocurre **después** de completarse el verbo (日本へ**行った時**、かばんを買いました = compré el bolso cuando ya estaba en Japón).",
+          "• **〜てすみませんでした:** Pedir disculpas por algo específico (遅れてすみませんでした = perdón por llegar tarde)."
+        ],
+        "examples": [
+          {
+            "japanese": "あしたいい天気だといいですね。",
+            "romaji": "Ashita ii tenki da to ii desu ne.",
+            "spanish": "¡Ojalá que mañana haga buen tiempo!",
+            "audioText": "あしたいい天気だといいですね"
+          },
+          {
+            "japanese": "きのうは連絡しなくてすみませんでした。",
+            "romaji": "Kinou wa renraku shinakute sumimasen deshita.",
+            "spanish": "Perdón por no haberme comunicado ayer.",
+            "audioText": "きのうはれんらくしなくてすみませんでした"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "unitId": 17,
+    "title": "Genki Lección 17: Quejas y Chismes",
+    "genkiChapter": "Genki II - Lesson 17",
+    "subtitle": "Reporte 〜そうです / 〜って, Condicional 〜たら y 〜なくてもいい",
+    "description": "Aprende a transmitir información escuchada de otras fuentes, formular condiciones con 〜たら y expresar ausencia de obligación.",
+    "themeColor": "#ce82ff",
+    "sections": [
+      {
+        "id": "u17-hearsay-tara",
+        "title": "Reporte de Oídas (〜そうです / 〜って) y Condicional 〜たら",
+        "japaneseTitle": "伝聞の「〜そうです」・カジュアル「〜って」・条件「〜たら」",
+        "category": "grammar",
+        "formula": "[Forma corta completa] + そうです | [Pasado corto (Forma Ta)] + ら",
+        "summary": "Reporta lo que escuchaste o leíste y domina el condicional más versátil del japonés: 〜たら.",
+        "content": [
+          "• **〜そうです (Escuché que... / Dicen que...):**",
+          "   • A diferencia de la apariencia visual (L13), el reporte de oídas toma la **oración en forma corta completa** (incluyendo い en い-adjetivos y だ en sustantivos/な-adjetivos): おいしいそうです (escuché que es rico), 暇だそうです (dicen que está libre).",
+          "   • La fuente se marca con **〜によると** (天気予報によると = según el pronóstico del tiempo).",
+          "   • En habla coloquial se reemplaza por **〜って**.",
+          "• **Condicional 〜たら (Si / Cuando...):** Se forma añadiendo **ら** a la forma corta en pasado (**Forma Ta**): 行ったら (si vas), 安かったら (si es barato), 静かだったら (si es tranquilo)."
+        ],
+        "examples": [
+          {
+            "japanese": "ニュースによると、あしたは寒いそうです。",
+            "romaji": "Nyuusu ni yoru to, ashita wa samui sou desu.",
+            "spanish": "Según las noticias, dicen que mañana hará frío.",
+            "audioText": "ニュースによるとあしたはさむいそうです"
+          },
+          {
+            "japanese": "宝くじに当たったら、世界旅行がしたいです。",
+            "romaji": "Takarakuji ni atattara, sekai ryokou ga shitai desu.",
+            "spanish": "Si me ganara la lotería, querría viajar por el mundo.",
+            "audioText": "たからくじにあたったら、せかいりょこうがしたいです"
+          }
+        ]
+      },
+      {
+        "id": "u17-nakutemoii-maeni-tekara",
+        "title": "〜なくてもいいです, 〜みたいです y 〜前に / 〜てから",
+        "japaneseTitle": "「〜なくてもいいです」・「〜みたいです」・「〜前に / 〜てから」",
+        "category": "grammar",
+        "formula": "[Forma ない sin い] + くてもいいです | [Diccionario] + 前に | [Forma Te] + から",
+        "summary": "Expresa que algo no es necesario, haz comparaciones con 〜みたいです y ordena eventos antes y después.",
+        "content": [
+          "• **〜なくてもいいです:** \"No hace falta que... / No es necesario hacer X\" (靴を脱がなくてもいいです = no hace falta quitarse los zapatos).",
+          "• **〜みたいです:** \"Parece que... / Es como...\" después de un sustantivo o verbo en forma corta.",
+          "• **〜前に (Antes de...):** Verbo en **Forma Diccionario** + 前に (寝る前に).",
+          "• **〜てから (Después de haber hecho...):** Verbo en **Forma Te** + から (手を洗ってから)."
+        ],
+        "examples": [
+          {
+            "japanese": "あしたは休みですから、早く起きなくてもいいです。",
+            "romaji": "Ashita wa yasumi desu kara, hayaku okinakute mo ii desu.",
+            "spanish": "Como mañana es descanso, no hace falta levantarse temprano.",
+            "audioText": "あしたはやすみですから、はやくおきなくてもいいです"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "unitId": 18,
+    "title": "Genki Lección 18: El Trabajo de John",
+    "genkiChapter": "Genki II - Lesson 18",
+    "subtitle": "Transitivos vs. Intransitivos, 〜てしまう, 〜と, 〜ながら y 〜ばよかったです",
+    "description": "Distingue acciones voluntarias de estados resultantes con verbos transitivos e intransitivos, expresa accidentes con 〜てしまう y arrepentimientos.",
+    "themeColor": "#ff9600",
+    "sections": [
+      {
+        "id": "u18-trans-intrans-teshimau",
+        "title": "Verbos Transitivos vs. Intransitivos y 〜てしまう",
+        "japaneseTitle": "他動詞と自動詞・結果の状態「〜ています」・「〜てしまう」",
+        "category": "grammar",
+        "formula": "Transitivo: [Objeto] を Verbo | Intransitivo: [Sujeto] が Verbo (〜ています = estado)",
+        "summary": "Comprende cómo el japonés separa la acción causada por alguien (transitivo) del estado en que queda el objeto (intransitivo).",
+        "content": [
+          "• **Verbos Transitivos (他動詞):** Alguien actúa sobre un objeto con **を** (ドア**を**開ける = abrir la puerta; 電気**を**つける = encender la luz; パソコン**を**壊す = romper la PC).",
+          "• **Verbos Intransitivos (自動詞):** El cambio ocurre o se observa en el sujeto con **が** (ドア**が**開く, 電気**が**つく, パソコン**が**壊れる).",
+          "• **Intransitivo + ています:** Describe el **estado actual** del objeto (窓が開いています = la ventana está abierta; 電気がついています = la luz está encendida).",
+          "• **〜てしまう:** Expresa 1) terminar algo por completo, o 2) hacer algo accidentalmente / con lamento (忘れてしまいました = lo olvidé por accidente). En habla coloquial: **〜ちゃう / 〜じゃう**."
+        ],
+        "examples": [
+          {
+            "japanese": "エアコンがついていますから、涼しいです。",
+            "romaji": "Eakon ga tsuite imasu kara, suzushii desu.",
+            "spanish": "Como el aire acondicionado está encendido, está fresco.",
+            "audioText": "エアコンがついていますからすずしいです"
+          },
+          {
+            "japanese": "電車の中にかさを忘れてしまいました。",
+            "romaji": "Densha no naka ni kasa o wasurete shimaimashita.",
+            "spanish": "Dejé olvidado mi paraguas dentro del tren.",
+            "audioText": "でんしゃのなかにかさをわすれてしまいました"
+          }
+        ]
+      },
+      {
+        "id": "u18-to-nagara-bayokatta",
+        "title": "Condicional 〜と, Simultaneidad (〜ながら) y 〜ばよかったです",
+        "japaneseTitle": "「〜と」・「〜ながら」・後悔の「〜ばよかったです」",
+        "category": "grammar",
+        "formula": "[Presente corto] + と | [Raíz Masu] + ながら | [Condicional ば] + よかったです",
+        "summary": "Expresa consecuencias naturales con 〜と, acciones simultáneas con 〜ながら y arrepentimiento con 〜ばよかったです.",
+        "content": [
+          "• **〜と (Siempre que A, ocurre B):** Consecuencia natural, leyes físicas o indicaciones de camino (春になると暖かくなります). La segunda cláusula no puede ser volitiva ni petición.",
+          "• **〜ながら (Mientras...):** Raíz Masu + ながら + Verbo principal indica que una misma persona hace dos cosas al mismo tiempo (音楽を聞きながら勉強します).",
+          "• **〜ばよかったです (Ojalá hubiera...):** Verbo en condicional **〜ば** (o negativo **〜なければ**) + よかったです expresa pesar por el pasado."
+        ],
+        "examples": [
+          {
+            "japanese": "もっと勉強すればよかったです。",
+            "romaji": "Motto benkyou sureba yokatta desu.",
+            "spanish": "Ojalá hubiera estudiado más.",
+            "audioText": "もっとべんきょうすればよかったです"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "unitId": 19,
+    "title": "Genki Lección 19: Conociendo al Jefe",
+    "genkiChapter": "Genki II - Lesson 19",
+    "subtitle": "Lenguaje Honorífico (尊敬語), 〜てくれてありがとう y 〜はずです",
+    "description": "Aprende el lenguaje de respeto japonés (Sonkeigo) para hablar de profesores, jefes o clientes, agradecer favores y expresar expectativas lógicas.",
+    "themeColor": "#00cd9c",
+    "sections": [
+      {
+        "id": "u19-honorifics-sonkeigo",
+        "title": "Lenguaje Honorífico (尊敬語 - Sonkeigo)",
+        "japaneseTitle": "尊敬語（特別動詞と「お＋ます幹＋になります」）",
+        "category": "grammar",
+        "formula": "Verbos especiales (いらっしゃる, 召し上がる...) o お + Raíz Masu + になります",
+        "summary": "El lenguaje honorífico eleva a la persona de quien hablamos (jefe, profesor, cliente) mostrando respeto.",
+        "content": [
+          "• **Verbos Honoríficos Especiales:**",
+          "   • 行く / 来る / いる ➔ **いらっしゃる** (いらっしゃいます)",
+          "   • 食べる / 飲む ➔ **召し上がる** (めしあがります)",
+          "   • 言う ➔ **おっしゃる** (おっしゃいます)",
+          "   • する ➔ **なさる** (なさいます)",
+          "   • 見る ➔ **ご覧になる** (ごらんになります)",
+          "   • 寝る ➔ **お休みになる** (おやすみになります)",
+          "   • くれる ➔ **くださる** (くださいます)",
+          "• **Fórmula Regular:** Para otros verbos, se usa **お + Raíz Masu + になります** (先生はもうお帰りになりました = El profesor ya regresó a casa)."
+        ],
+        "examples": [
+          {
+            "japanese": "先生は何時ごろいらっしゃいますか。",
+            "romaji": "Sensei wa nanji goro irasshaimasu ka.",
+            "spanish": "¿Alrededor de qué hora vendrá el profesor?",
+            "audioText": "せんせいはなんじごろいらっしゃいますか"
+          },
+          {
+            "japanese": "どうぞ召し上がってください。",
+            "romaji": "Douzo meshiagatte kudasai.",
+            "spanish": "Por favor, sírvase / coma con gusto.",
+            "audioText": "どうぞめしあがってください"
+          }
+        ]
+      },
+      {
+        "id": "u19-thanks-teyokatta-hazu",
+        "title": "Agradecimiento, 〜てよかったです y Suposición (〜はずです)",
+        "japaneseTitle": "「〜てくださってありがとう」・「〜てよかったです」・「〜はずです」",
+        "category": "grammar",
+        "formula": "[Forma Te] + くれてありがとう | [Forma Te] + よかったです | [Forma corta] + はずです",
+        "summary": "Agradece favores concretos, alégrate por decisiones tomadas y deduce lo que \"debería ser cierto\" con 〜はずです.",
+        "content": [
+          "• **〜てくれてありがとう** (casual) / **〜てくださってありがとうございました** (muy cortés): \"Gracias por haber hecho X por mí\".",
+          "• **〜てよかったです:** \"¡Qué bueno que hice X! / Me alegra haber hecho X\" (negativo: **〜ないでよかったです** = qué bueno que no hice X).",
+          "• **〜はずです (Se supone que... / Debería...):**",
+          "   • Verbos e い-adjetivos en forma corta + はずです.",
+          "   • な-adjetivos + **な** + はずです (暇なはずです).",
+          "   • Sustantivos + **の** + はずです (今日休みのはずです)."
+        ],
+        "examples": [
+          {
+            "japanese": "日本へ来てほんとうによかったです。",
+            "romaji": "Nihon e kite hontou ni yokatta desu.",
+            "spanish": "¡De verdad qué bueno que vine a Japón!",
+            "audioText": "にほんへきてほんとうによかったです"
+          },
+          {
+            "japanese": "たけしさんはもうすぐ着くはずです。",
+            "romaji": "Takeshi-san wa mousugu tsuku hazu desu.",
+            "spanish": "Se supone que Takeshi llegará muy pronto.",
+            "audioText": "たけしさんはもうすぐつくはずです"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "unitId": 20,
+    "title": "Genki Lección 20: Mary va de Compras",
+    "genkiChapter": "Genki II - Lesson 20",
+    "subtitle": "Lenguaje Humilde (謙譲語), 〜ないで, Preguntas Incrustadas y 〜やすい/にくい",
+    "description": "Completa tu dominio del Keigo con el lenguaje humilde (Kenjougo), aprende a incrustar preguntas dentro de oraciones y usa 〜やすい y 〜にくい.",
+    "themeColor": "#1cb0f6",
+    "sections": [
+      {
+        "id": "u20-humble-kenjougo",
+        "title": "Lenguaje Humilde / Modesto (謙譲語 - Kenjougo)",
+        "japaneseTitle": "謙譲語（参る・いたす・いただく・伺う・申す・お〜します）",
+        "category": "grammar",
+        "formula": "Verbos humildes especiales o お + Raíz Masu + します",
+        "summary": "Se usa cuando el sujeto soy YO (o mi grupo) para rebajar humildemente mis acciones en muestra de respeto al superior.",
+        "content": [
+          "• **Verbos Humildes Especiales:**",
+          "   • 行く / 来る ➔ **参る** (まいります)",
+          "   • いる ➔ **おる** (おります)",
+          "   • 食べる / 飲む / もらう ➔ **いただく** (いただきます)",
+          "   • 言う ➔ **申す** (もうします — ej. 田中と申します = me llamo Tanaka)",
+          "   • する ➔ **いたす** (いたします)",
+          "   • 聞く / 行く (visitar/preguntar) ➔ **伺う** (うかがいます)",
+          "   • 見る ➔ **拝見する** (はいけんします)",
+          "   • あげる ➔ **さしあげる** (さしあげます)",
+          "• **Fórmula Regular:** **お + Raíz Masu + します** (お荷物をお持ちします = yo le llevo su equipaje)."
+        ],
+        "examples": [
+          {
+            "japanese": "はじめまして、マリアと申します。",
+            "romaji": "Hajimemashite, Maria to moushimasu.",
+            "spanish": "Mucho gusto, me llamo María (humilde).",
+            "audioText": "はじめまして、マリアともうします"
+          },
+          {
+            "japanese": "あした先生のオフィスに伺います。",
+            "romaji": "Ashita sensei no ofisu ni ukagaimasu.",
+            "spanish": "Mañana pasaré a visitar la oficina del profesor (humilde).",
+            "audioText": "あしたせんせいのオフィスにうかがいます"
+          }
+        ]
+      },
+      {
+        "id": "u20-naide-embedded-yasui",
+        "title": "〜ないで, Preguntas Incrustadas (〜か / 〜かどうか) y 〜やすい/にくい",
+        "japaneseTitle": "「〜ないで」・埋め込み疑問文・「〜やすい・〜にくい」",
+        "category": "grammar",
+        "formula": "[Forma ない] + で | [Forma corta] + か / かどうか | [Raíz Masu] + やすい / にくい",
+        "summary": "Expresa hacer algo sin hacer otra cosa, incrusta preguntas en oraciones y describe qué tan fácil o difícil es una acción.",
+        "content": [
+          "• **〜ないで (Sin hacer X):** Verbo en forma ない + で (辞書を使わないで読みます = leo sin usar el diccionario).",
+          "• **Preguntas Incrustadas:**",
+          "   • Con palabra interrogativa (だれ, なに, どこ, いつ): [Oración forma corta] + **か** (何時に始まるか知っていますか).",
+          "   • Sin palabra interrogativa (Sí/No): [Oración forma corta] + **かどうか** (おいしいかどうかわかりません = no sé si está rico o no).",
+          "• **〜という [Sustantivo]:** \"Llamado / denominado X\" (「ぽち」という犬).",
+          "• **〜やすい / 〜にくい:** Raíz Masu + **やすい** (fácil de hacer) / **にくい** (difícil de hacer)."
+        ],
+        "examples": [
+          {
+            "japanese": "このペンはとても書きやすいです。",
+            "romaji": "Kono pen wa totemo kakiyasui desu.",
+            "spanish": "Esta pluma es muy cómoda / fácil para escribir.",
+            "audioText": "このペンはとてもかきやすいです"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "unitId": 21,
+    "title": "Genki Lección 21: El Robo",
+    "genkiChapter": "Genki II - Lesson 21",
+    "subtitle": "Forma Pasiva (受身形), 〜てある, 〜間に y 〜てほしい",
+    "description": "Domina la voz pasiva japonesa y la pasiva de adversidad (\"me robaron\", \"me llovió\"), el estado intencional 〜てある y pedir que otros actúen con 〜てほしい.",
+    "themeColor": "#ff4b4b",
+    "sections": [
+      {
+        "id": "u21-passive-ukemi",
+        "title": "La Forma Pasiva (受身形 - Ukemi)",
+        "japaneseTitle": "受身形（〜られる・〜れる・被害の受身）",
+        "category": "grammar",
+        "formula": "Ru-verb: 〜られる | U-verb: vocal -u ➔ -a + れる | する➔される・くる➔こられる",
+        "summary": "Expresa que el sujeto recibe una acción o sufre un inconveniente causado por un tercero.",
+        "content": [
+          "• **Conjugación Pasiva:**",
+          "   • **Ru-verbs:** Quitar る y añadir **られる** (ほめる ➔ **ほめられる**).",
+          "   • **U-verbs:** Cambiar la vocal final **-u** a **-a** y añadir **れる** (書く ➔ **書かれる**, 踏む ➔ **踏まれる**, 盗む ➔ **盗まれる**, 買う ➔ **買われる**).",
+          "   • **Irregulares:** する ➔ **される**, くる ➔ **こられる**.",
+          "• **Pasiva de Adversidad (Pasiva Sufriente):** Muy típica del japonés: [Víctima] は [Agente] に [Objeto] を + Verbo Pasivo (わたしはどろぼうにカメラを盗まれました = Me robaron la cámara)."
+        ],
+        "examples": [
+          {
+            "japanese": "わたしはどろぼうにカメラを盗まれました。",
+            "romaji": "Watashi wa dorobou ni kamera o nusumaremashita.",
+            "spanish": "Un ladrón me robó la cámara (sufrí el robo de mi cámara).",
+            "audioText": "わたしはどろぼうにカメラをぬすまれました"
+          },
+          {
+            "japanese": "きのう、雨に降られました。",
+            "romaji": "Kinou, ame ni furaremashita.",
+            "spanish": "Ayer me llovió encima (y me mojé / me afectó).",
+            "audioText": "きのうあめにふられました"
+          }
+        ]
+      },
+      {
+        "id": "u21-tearu-aidani-tehoshi",
+        "title": "〜てある, 〜間に, Adjetivo + する y 〜てほしい",
+        "japaneseTitle": "「〜てある」・「〜間に」・「〜くする/にする」・「〜てほしい」",
+        "category": "grammar",
+        "formula": "[Verbo Transitivo Te] + ある | [Estado] + 間に | [Persona] に [Forma Te] + ほしい",
+        "summary": "Describe preparativos que ya están hechos con 〜てある, acciones dentro de un intervalo con 〜間に y deseos hacia otras personas con 〜てほしい.",
+        "content": [
+          "• **〜てある:** Se usa con verbos **transitivos** para indicar que algo ha sido dejado hecho intencionalmente como preparación (ホテルが予約してあります = el hotel ya está reservado).",
+          "• **〜間に (あいだに):** \"Mientras dura X, ocurre un evento puntual Y\" (留守の間にどろぼうが入りました = mientras no estaba en casa, entró un ladrón).",
+          "• **Adjetivo + する:** Hacer que algo cambie de estado (部屋を**きれいにする** = limpiar el cuarto; 音を**小さくする** = bajar el volumen).",
+          "• **〜てほしい:** \"Quiero que [otra persona] haga X\" (友だちに手伝ってほしいです)."
+        ],
+        "examples": [
+          {
+            "japanese": "パーティーの料理はもう作ってあります。",
+            "romaji": "Paatii no ryouri wa mou tsukutte arimasu.",
+            "spanish": "La comida de la fiesta ya está preparada (dejada lista).",
+            "audioText": "パーティーのりょうりはもうつくってあります"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "unitId": 22,
+    "title": "Genki Lección 22: Educación en Japón",
+    "genkiChapter": "Genki II - Lesson 22",
+    "subtitle": "Forma Causativa (使役形), 〜なさい, Condicional 〜ば y 〜のに",
+    "description": "Aprende la forma causativa para expresar \"hacer que alguien haga\" o \"dejar hacer\", el condicional 〜ば, el contraste con 〜のに y comparaciones con 〜のように.",
+    "themeColor": "#ce82ff",
+    "sections": [
+      {
+        "id": "u22-causative-shieki",
+        "title": "La Forma Causativa (使役形 - Shieki) y 〜なさい",
+        "japaneseTitle": "使役形（〜させる・〜せる）・「〜させてくれる」・「〜なさい」",
+        "category": "grammar",
+        "formula": "Ru-verb: 〜させる | U-verb: vocal -u ➔ -a + せる | する➔させる・くる➔こさせる",
+        "summary": "Expresa obligar a alguien a hacer algo o, acompañado de くれる/ください, permitir o dejar hacer.",
+        "content": [
+          "• **Conjugación Causativa:**",
+          "   • **Ru-verbs:** Quitar る y añadir **させる** (食べる ➔ **食べさせる**, 着る ➔ **着させる**).",
+          "   • **U-verbs:** Cambiar la vocal final **-u** a **-a** y añadir **せる** (行く ➔ **行かせる**, 読む ➔ **読ませる**, 手伝う ➔ **手伝わせる**).",
+          "   • **Irregulares:** する ➔ **させる**, くる ➔ **こさせる**.",
+          "• **Dejar / Permitir:** Causativa en Forma Te + **あげる / くれる / もらう / ください** significa \"permitir / dejar hacer\" (行かせてください = déjeme ir, por favor).",
+          "• **〜なさい:** Raíz Masu + なさい sirve para dar órdenes de padres a hijos o en exámenes (よく聞きなさい = escucha bien)."
+        ],
+        "examples": [
+          {
+            "japanese": "両親はわたしに日本へ行かせてくれました。",
+            "romaji": "Ryoushin wa watashi ni Nihon e ikasete kuremashita.",
+            "spanish": "Mis padres me permitieron (dejaron) ir a Japón.",
+            "audioText": "りょうしんはわたしににほんへいかせてくれました"
+          },
+          {
+            "japanese": "わたしにこの仕事をさせてください。",
+            "romaji": "Watashi ni kono shigoto o sasete kudasai.",
+            "spanish": "Por favor, déjeme hacer este trabajo.",
+            "audioText": "わたしにこのしごとをさせてください"
+          }
+        ]
+      },
+      {
+        "id": "u22-ba-noni-youna",
+        "title": "Condicional 〜ば, Contraste (〜のに) y 〜のような / 〜のように",
+        "japaneseTitle": "条件「〜ば」・逆接「〜のに」・例示「〜のような / 〜のように」",
+        "category": "grammar",
+        "formula": "Verbo: vocal -u ➔ -e + ば | い-adj: 〜ければ | [Forma corta] + のに",
+        "summary": "Construye condiciones generales con 〜ば, expresa frustración ante resultados inesperados con 〜のに y ejemplifica con 〜のような.",
+        "content": [
+          "• **Condicional 〜ば:**",
+          "   • **Verbos:** Cambiar la vocal final **-u** a **-e** + **ば** (行く ➔ **行けば**, 食べる ➔ **食べれば**, する ➔ **すれば**, くる ➔ **くれば**).",
+          "   • **い-adjetivos:** Quitar い + **ければ** (安い ➔ **安ければ**, いい ➔ **よければ**).",
+          "   • **Negativo:** Forma ない sin い + **ければ** (行かなければ).",
+          "• **〜のに (A pesar de que...):** Oración en forma corta (con **な** en sustantivos y な-adjetivos en presente: 日曜日なのに) + のに.",
+          "• **〜のような + Sustantivo** / **〜のように + Verbo o Adjetivo:** \"Como / Similar a X\"."
+        ],
+        "examples": [
+          {
+            "japanese": "毎日勉強したのに、テストができませんでした。",
+            "romaji": "Mainichi benkyou shita noni, tesuto ga dekimasen deshita.",
+            "spanish": "A pesar de que estudié todos los días, no me fue bien en el examen.",
+            "audioText": "まいにちべんきょうしたのに、テストができませんでした"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "unitId": 23,
+    "title": "Genki Lección 23: ¡Adiós, Japón!",
+    "genkiChapter": "Genki II - Lesson 23",
+    "subtitle": "Causativa-Pasiva (使役受身), 〜ても, 〜ことにする/なる y 〜方",
+    "description": "¡La lección final de Genki II! Domina la forma causativa-pasiva (\"ser obligado a hacer\"), las cláusulas concesivas con 〜ても, las decisiones y el sufijo 〜方.",
+    "themeColor": "#e5a100",
+    "sections": [
+      {
+        "id": "u23-causative-passive",
+        "title": "La Forma Causativa-Pasiva (使役受身形)",
+        "japaneseTitle": "使役受身形（〜させられる・〜される：Ser obligado a hacer）",
+        "category": "grammar",
+        "formula": "Ru-verb: 〜させられる | U-verb (salvo -su): vocal -u ➔ -a + される",
+        "summary": "Expresa que alguien te hizo u obligó a realizar una acción en contra de tu deseo.",
+        "content": [
+          "• **Conjugación Causativa-Pasiva:**",
+          "   • **Ru-verbs:** Quitar る y añadir **させられる** (食べる ➔ **食べさせられる**).",
+          "   • **U-verbs (forma corta estándar, excepto 〜す):** Cambiar la vocal final **-u** a **-a** y añadir **される** (書く ➔ **書かされる**, 待つ ➔ **待たされる**, 飲む ➔ **飲まされる**, 買う ➔ **買わされる**).",
+          "   • **U-verbs terminados en 〜す:** Usar siempre **〜させられる** (話す ➔ **話させられる**).",
+          "   • **Irregulares:** する ➔ **させられる**, くる ➔ **こさせられる**.",
+          "• **Estructura:** [Persona obligada] は [Quien obliga] に [Acción] を + Verbo Causativo-Pasivo."
+        ],
+        "examples": [
+          {
+            "japanese": "子どもの時、母に野菜を食べさせられました。",
+            "romaji": "Kodomo no toki, haha ni yasai o tabesaseraremashita.",
+            "spanish": "Cuando era niño, mi madre me obligaba a comer verduras.",
+            "audioText": "こどものときははにやさいをたべさせられました"
+          },
+          {
+            "japanese": "わたしは友だちに一時間も待たされました。",
+            "romaji": "Watashi wa tomodachi ni ichijikan mo matasaremashita.",
+            "spanish": "Mi amigo me hizo esperar toda una hora.",
+            "audioText": "わたしはともだちにいちじかんもまたされました"
+          }
+        ]
+      },
+      {
+        "id": "u23-temo-kotonisuru-kata",
+        "title": "〜ても, 〜ことにする/なる, 〜まで y 〜方 (かた)",
+        "japaneseTitle": "「〜ても」・「〜ことにする/なる」・「〜まで」・「〜方」",
+        "category": "grammar",
+        "formula": "[Forma Te] + も | [Diccionario/ない] + ことにする・なる | [Raíz Masu] + 方",
+        "summary": "Expresa condiciones concesivas (\"incluso si...\"), decisiones propias o externas, límites temporales con 〜まで y el modo de hacer algo con 〜方.",
+        "content": [
+          "• **〜ても (Incluso si / Aunque...):** Forma Te + も (雨が降っても行きます = aunque llueva, iré; 高くても買います = aunque sea caro, lo compraré). Con **いくら〜ても** significa \"por más que...\".",
+          "• **〜ことにする (Decidir hacer X):** Decisión tomada por la propia voluntad (毎日走ることにしました = decidí correr todos los días). **〜ことにしています** indica un hábito firme.",
+          "• **〜ことになる (Quedar decidido que...):** Decisión tomada por terceros, reglas o circunstancias (来月出張することになりました = se decidió que iré de viaje de negocios el próximo mes).",
+          "• **〜まで:** Verbo en forma diccionario + まで = \"hasta que ocurra X\" (卒業するまで = hasta que me gradúe).",
+          "• **〜方 (かた):** Raíz Masu + 方 = \"la manera / forma de hacer X\" (漢字の書き方 = cómo escribir kanji; お箸の使い方 = cómo usar los palillos)."
+        ],
+        "examples": [
+          {
+            "japanese": "国へ帰っても、日本語の勉強を続けます。",
+            "romaji": "Kuni e kaette mo, nihongo no benkyou o tsuzukemasu.",
+            "spanish": "Incluso si regreso a mi país, continuaré estudiando japonés.",
+            "audioText": "くにへかえってもにほんごのべんきょうをつづけます"
+          },
+          {
+            "japanese": "すしの作り方を教えてください。",
+            "romaji": "Sushi no tsukurikata o oshiete kudasai.",
+            "spanish": "Por favor enséñame cómo preparar sushi.",
+            "audioText": "すしのつくりかたをおしえてください"
+          }
+        ]
+      }
+    ]
   }
 ];
