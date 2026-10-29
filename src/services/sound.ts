@@ -1,4 +1,4 @@
-// Web Audio API synthesizers for Duolingo-style sound effects + Multi-Character Japanese Voice Engine
+// Web Audio API synthesizers for Duolingo-style sound effects + Multi-Character Neural Japanese Voice Engine
 
 export interface CharacterVoiceProfile {
   id: string;
@@ -7,6 +7,7 @@ export interface CharacterVoiceProfile {
   avatar: string;
   role: string;
   gender: 'female' | 'male';
+  neuralVoiceId?: 'jp_001' | 'jp_003' | 'jp_005' | 'jp_006';
   pitch: number;
   rate: number;
   samplePhrase: string;
@@ -18,8 +19,9 @@ export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
     name: 'Mary (Voz Original)',
     japaneseName: 'メアリー',
     avatar: '👱‍♀️',
-    role: 'Voz japonesa original natural',
+    role: 'Voz japonesa original por defecto',
     gender: 'female',
+    neuralVoiceId: undefined, // Keeps 100% original voice
     pitch: 1.0,
     rate: 0.9,
     samplePhrase: 'こんにちは！メアリーです。よろしくお願いします！'
@@ -29,10 +31,11 @@ export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
     name: 'Takeshi',
     japaneseName: 'たけし',
     avatar: '👦',
-    role: 'Universitario relajado (Masculina joven)',
+    role: 'Voz masculina nativa joven',
     gender: 'male',
-    pitch: 0.80,
-    rate: 0.96,
+    neuralVoiceId: 'jp_006',
+    pitch: 1.0,
+    rate: 1.0,
     samplePhrase: 'やあ、ぼくはたけしです。いっしょに勉強しよう！'
   },
   {
@@ -40,10 +43,11 @@ export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
     name: 'Prof. Yamashita',
     japaneseName: '山下先生',
     avatar: '👨‍🏫',
-    role: 'Maestro sabio (Masculina grave y pausada)',
+    role: 'Voz masculina nativa pausada',
     gender: 'male',
-    pitch: 0.64,
-    rate: 0.84,
+    neuralVoiceId: 'jp_006',
+    pitch: 0.95,
+    rate: 0.88,
     samplePhrase: 'みなさん、こんにちは。今日も日本語をがんばりましょう。'
   },
   {
@@ -51,10 +55,11 @@ export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
     name: 'Michiko',
     japaneseName: 'みちこ',
     avatar: '👩',
-    role: 'Amiga amable (Femenina suave y clara)',
+    role: 'Voz femenina cálida y suave',
     gender: 'female',
-    pitch: 1.12,
-    rate: 0.90,
+    neuralVoiceId: 'jp_005',
+    pitch: 1.0,
+    rate: 0.95,
     samplePhrase: 'はじめまして、みちこです。いいお天気ですね。'
   },
   {
@@ -62,10 +67,11 @@ export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
     name: 'Robert',
     japaneseName: 'ロバート',
     avatar: '👱‍♂️',
-    role: 'Compañero entusiasta (Masculina media)',
+    role: 'Voz masculina nativa animada',
     gender: 'male',
-    pitch: 0.74,
-    rate: 0.92,
+    neuralVoiceId: 'jp_006',
+    pitch: 1.03,
+    rate: 0.97,
     samplePhrase: 'こんにちは、ロバートです。日本語がおもしろいです！'
   },
   {
@@ -73,10 +79,11 @@ export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
     name: 'Sora',
     japaneseName: 'ソラ',
     avatar: '👧',
-    role: 'Voz juvenil alegre (Femenina clara y animada)',
+    role: 'Voz femenina juvenil y alegre',
     gender: 'female',
-    pitch: 1.16,
-    rate: 0.94,
+    neuralVoiceId: 'jp_003',
+    pitch: 1.0,
+    rate: 0.96,
     samplePhrase: 'こんにちは！ソラといっしょに楽しく練習しましょう！'
   },
   {
@@ -84,10 +91,11 @@ export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
     name: 'Ken',
     japaneseName: 'けん',
     avatar: '🧑',
-    role: 'Hablante sereno (Masculina estándar)',
+    role: 'Voz masculina nativa serena',
     gender: 'male',
-    pitch: 0.86,
-    rate: 0.90,
+    neuralVoiceId: 'jp_006',
+    pitch: 0.98,
+    rate: 0.93,
     samplePhrase: 'こんにちは、けんです。ゆっくり話しましょう。'
   },
   {
@@ -95,10 +103,11 @@ export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
     name: 'Sue',
     japaneseName: 'スー',
     avatar: '👩‍🦱',
-    role: 'Estudiante aplicada (Femenina calmada)',
+    role: 'Voz femenina clara y tranquila',
     gender: 'female',
-    pitch: 1.02,
-    rate: 0.86,
+    neuralVoiceId: 'jp_001',
+    pitch: 1.0,
+    rate: 0.93,
     samplePhrase: 'こんにちは、スーです。毎日少しずつ練習しています。'
   }
 ];
@@ -212,22 +221,16 @@ class SoundService {
     });
   }
 
-  private selectSystemVoiceForCharacter(jaVoices: SpeechSynthesisVoice[], profile: CharacterVoiceProfile): SpeechSynthesisVoice {
-    if (jaVoices.length === 1 || profile.id === 'mary') return jaVoices[0];
-
-    const maleHints = ['ichiro', 'otoya', 'keita', 'takumi', 'male', '男'];
+  // Only returns a system voice if it genuinely matches the requested gender (never pitch-shifts a female voice to fake a male!)
+  private findNativeSystemVoiceForGender(jaVoices: SpeechSynthesisVoice[], gender: 'male' | 'female'): SpeechSynthesisVoice | null {
+    if (jaVoices.length === 0) return null;
+    const maleHints = ['ichiro', 'otoya', 'keita', 'takumi', 'daichi', 'naoki', 'male', '男'];
     const femaleHints = ['haruka', 'ayumi', 'nanami', 'kyoko', 'sayaka', 'mizuki', 'female', '女'];
 
-    if (profile.gender === 'male') {
-      const foundMale = jaVoices.find(v => maleHints.some(h => v.name.toLowerCase().includes(h)));
-      if (foundMale) return foundMale;
-    } else {
-      const foundFemale = jaVoices.find(v => femaleHints.some(h => v.name.toLowerCase().includes(h)));
-      if (foundFemale) return foundFemale;
+    if (gender === 'male') {
+      return jaVoices.find(v => maleHints.some(h => v.name.toLowerCase().includes(h))) || null;
     }
-
-    const idx = CHARACTER_VOICES.findIndex(c => c.id === profile.id);
-    return jaVoices[Math.max(0, idx) % jaVoices.length];
+    return jaVoices.find(v => femaleHints.some(h => v.name.toLowerCase().includes(h))) || jaVoices[0];
   }
 
   private getAudioContext(): AudioContext | null {
@@ -266,8 +269,55 @@ class SoundService {
     } catch (_) {}
   }
 
-  // Play audio stream from public Japanese pronunciation dictionary with character pitch/rate modulation
-  private playOnlineAudio(text: string, rate: number = 0.9, profile?: CharacterVoiceProfile): Promise<boolean> {
+  // Play neural Japanese voice (real Male jp_006 or distinct Female jp_001/jp_003/jp_005)
+  private async playNeuralCharacterVoice(
+    text: string,
+    rate: number,
+    profile: CharacterVoiceProfile
+  ): Promise<boolean> {
+    if (!profile.neuralVoiceId || text.length > 90) return false;
+
+    const cacheKey = `${profile.neuralVoiceId}:${text}`;
+    try {
+      if (this.activeAudio) {
+        this.activeAudio.pause();
+        this.activeAudio = null;
+      }
+
+      let audio = this.audioCache.get(cacheKey);
+      if (!audio) {
+        const res = await fetch('https://tiktok-tts.weilnet.workers.dev/api/generation', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            text,
+            voice: profile.neuralVoiceId
+          })
+        });
+        if (!res.ok) return false;
+        const data = await res.json();
+        if (!data || !data.success || !data.data) return false;
+
+        audio = new Audio(`data:audio/mp3;base64,${data.data}`);
+        this.audioCache.set(cacheKey, audio);
+      } else {
+        audio.currentTime = 0;
+      }
+
+      this.activeAudio = audio;
+      const baseScale = rate / 0.9;
+      audio.playbackRate = Math.max(0.6, Math.min(1.25, profile.rate * baseScale));
+      audio.volume = 0.9;
+
+      await audio.play();
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  // Play audio stream from public Japanese pronunciation dictionary
+  private playOnlineAudio(text: string, rate: number = 0.9): Promise<boolean> {
     return new Promise((resolve) => {
       try {
         if (this.activeAudio) {
@@ -286,29 +336,7 @@ class SoundService {
         }
 
         this.activeAudio = audio;
-        const charProfile = profile || this.getCharacterProfile();
-
-        const anyAudio = audio as unknown as {
-          preservesPitch?: boolean;
-          mozPreservesPitch?: boolean;
-          webkitPreservesPitch?: boolean;
-        };
-
-        if (charProfile.id === 'mary') {
-          anyAudio.preservesPitch = true;
-          anyAudio.mozPreservesPitch = true;
-          anyAudio.webkitPreservesPitch = true;
-          audio.playbackRate = Math.max(0.55, Math.min(1.2, rate));
-        } else {
-          // Allow playbackRate to shift pitch slightly so different characters sound distinct even on web audio fallback
-          anyAudio.preservesPitch = false;
-          anyAudio.mozPreservesPitch = false;
-          anyAudio.webkitPreservesPitch = false;
-
-          const pitchFactor = 0.85 + (charProfile.pitch - 0.85) * 0.35;
-          const baseScale = rate / 0.9;
-          audio.playbackRate = Math.max(0.55, Math.min(1.35, pitchFactor * baseScale));
-        }
+        audio.playbackRate = Math.max(0.55, Math.min(1.2, rate));
         audio.volume = 0.85;
 
         const playPromise = audio.play();
@@ -329,7 +357,7 @@ class SoundService {
     });
   }
 
-  // Speak Japanese with character-specific voice profile (pitch, speed, and gender voice selection)
+  // Speak Japanese with genuine character voices (real male neural voice for men, original voice for Mary)
   public async speakJapanese(text: string, rate: number = 0.9, speakerOrVoiceId?: string): Promise<void> {
     if (this.sequenceTimer) {
       window.clearTimeout(this.sequenceTimer);
@@ -341,26 +369,41 @@ class SoundService {
 
     this.getAudioContext();
 
-    const charProfile = this.getCharacterProfile(speakerOrVoiceId);
-    const effectiveRate = Math.max(0.5, Math.min(1.4, (rate / 0.9) * charProfile.rate));
-    const jaVoices = this.getAvailableJapaneseVoices();
-
-    // If local system has a Japanese voice, play it immediately with character pitch & rate
-    if (jaVoices.length > 0 && typeof window !== 'undefined' && 'speechSynthesis' in window) {
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
       try {
         window.speechSynthesis.cancel();
+      } catch (_) {}
+    }
+
+    const charProfile = this.getCharacterProfile(speakerOrVoiceId);
+
+    // 1. If the character has a dedicated neural voice (e.g. Takeshi/Yamashita/Robert/Ken male jp_006, or Sora/Michiko/Sue),
+    // play the real neural voice first so male characters sound genuinely male!
+    if (charProfile.neuralVoiceId) {
+      const playedNeural = await this.playNeuralCharacterVoice(cleanText, rate, charProfile);
+      if (playedNeural) return;
+    }
+
+    // 2. For Mary (Original Voice) or fallback when offline/long text: use local system voice if matching gender
+    const jaVoices = this.getAvailableJapaneseVoices();
+    const matchedSystemVoice =
+      charProfile.id === 'mary'
+        ? jaVoices[0] || null
+        : this.findNativeSystemVoiceForGender(jaVoices, charProfile.gender);
+
+    if (matchedSystemVoice && typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      try {
         if (window.speechSynthesis.paused) {
           window.speechSynthesis.resume();
         }
 
-        const chosenVoice = this.selectSystemVoiceForCharacter(jaVoices, charProfile);
         const utterance = new SpeechSynthesisUtterance(cleanText);
         this.activeUtterance = utterance;
         (window as unknown as { __duo_utt: SpeechSynthesisUtterance }).__duo_utt = utterance;
 
-        utterance.voice = chosenVoice;
-        utterance.lang = chosenVoice.lang || 'ja-JP';
-        utterance.rate = effectiveRate;
+        utterance.voice = matchedSystemVoice;
+        utterance.lang = matchedSystemVoice.lang || 'ja-JP';
+        utterance.rate = Math.max(0.55, Math.min(1.25, rate * (charProfile.rate / 0.9)));
         utterance.pitch = charProfile.pitch;
         utterance.volume = 0.85;
 
@@ -370,7 +413,7 @@ class SoundService {
 
         utterance.onerror = () => {
           this.activeUtterance = null;
-          this.playOnlineAudio(cleanText, rate, charProfile);
+          this.playOnlineAudio(cleanText, rate);
         };
 
         window.speechSynthesis.speak(utterance);
@@ -378,7 +421,8 @@ class SoundService {
       } catch (_) {}
     }
 
-    await this.playOnlineAudio(cleanText, rate, charProfile);
+    // 3. Final fallback
+    await this.playOnlineAudio(cleanText, rate);
   }
 
   // Play an entire multi-speaker dialogue sequentially using each character's own voice
@@ -404,7 +448,7 @@ class SoundService {
       onLineStart?.(currentIdx);
       this.speakJapanese(line.audioText, rate, line.speaker);
 
-      const waitMs = Math.max(2400, line.audioText.length * (rate < 0.75 ? 290 : 210) + 700);
+      const waitMs = Math.max(2600, line.audioText.length * (rate < 0.75 ? 290 : 210) + 800);
       currentIdx++;
       this.sequenceTimer = window.setTimeout(playStep, waitMs);
     };
