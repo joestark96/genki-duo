@@ -594,11 +594,14 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                 <button
                   onClick={() => {
                     sound.playTap();
-                    const fullAudio = currentExercise.japaneseVoiceText || currentExercise.dialogueLines!.map(l => l.audioText).join('。');
-                    sound.speakJapanese(fullAudio, 0.9);
+                    sound.speakDialogueSequence(
+                      currentExercise.dialogueLines!,
+                      0.9,
+                      (idx) => setActiveDialogueLineIdx(idx)
+                    );
                   }}
                   className="px-2.5 py-1.5 bg-duo-blue hover:bg-duo-blue-dark text-white rounded-xl font-black text-[11px] flex items-center gap-1 shadow-[0_3px_0_0_#1899d6] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
-                  title="Escuchar todo el diálogo"
+                  title="Escuchar todo el diálogo con voces por personaje"
                 >
                   <Volume2 className="w-3.5 h-3.5" />
                   <span>Escuchar Todo</span>
@@ -607,11 +610,14 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                 <button
                   onClick={() => {
                     sound.playTap();
-                    const fullAudio = currentExercise.japaneseVoiceText || currentExercise.dialogueLines!.map(l => l.audioText).join('。');
-                    sound.speakJapanese(fullAudio, 0.6);
+                    sound.speakDialogueSequence(
+                      currentExercise.dialogueLines!,
+                      0.65,
+                      (idx) => setActiveDialogueLineIdx(idx)
+                    );
                   }}
                   className="px-2 py-1.5 bg-duo-blue-light/80 dark:bg-duo-blue/20 border border-duo-blue text-duo-blue-dark dark:text-duo-blue rounded-xl font-black text-[11px] flex items-center gap-1 hover:brightness-105 transition-all cursor-pointer"
-                  title="Escuchar lento"
+                  title="Escuchar lento con voces por personaje"
                 >
                   <span>🐢</span>
                 </button>
@@ -670,7 +676,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                           key={`dlg-line-${lIdx}`}
                           onClick={() => {
                             setActiveDialogueLineIdx(lIdx);
-                            sound.speakJapanese(line.audioText, 0.9);
+                            sound.speakJapanese(line.audioText, 0.9, line.speaker);
                           }}
                           className={`flex items-start gap-2.5 cursor-pointer group ${
                             theme.isRight ? 'flex-row-reverse' : 'flex-row'
@@ -711,7 +717,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                                   onClick={(e) => {
                                     e.stopPropagation();
                                     setActiveDialogueLineIdx(lIdx);
-                                    sound.speakJapanese(line.audioText, 0.9);
+                                    sound.speakJapanese(line.audioText, 0.9, line.speaker);
                                   }}
                                   className={`p-1.5 rounded-xl transition-colors flex-shrink-0 ${theme.audioBtn}`}
                                   title="Escuchar esta línea"

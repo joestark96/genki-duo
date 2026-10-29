@@ -78,7 +78,8 @@ class DatabaseService {
         soundEnabled INTEGER DEFAULT 1,
         furiganaMode TEXT DEFAULT 'always',
         showRomaji INTEGER DEFAULT 1,
-        darkMode INTEGER DEFAULT 0
+        darkMode INTEGER DEFAULT 0,
+        preferredVoiceId TEXT DEFAULT 'mary'
       );
 
       CREATE TABLE IF NOT EXISTS lesson_progress (
@@ -120,6 +121,11 @@ class DatabaseService {
     }
     try {
       await this.db.execute('ALTER TABLE user_profile ADD COLUMN darkMode INTEGER DEFAULT 0;');
+    } catch {
+      // Column may already exist
+    }
+    try {
+      await this.db.execute("ALTER TABLE user_profile ADD COLUMN preferredVoiceId TEXT DEFAULT 'mary';");
     } catch {
       // Column may already exist
     }
@@ -192,7 +198,8 @@ class DatabaseService {
             soundEnabled: row.soundEnabled === 1,
             furiganaMode: row.furiganaMode,
             showRomaji: row.showRomaji === undefined || row.showRomaji === null ? true : row.showRomaji === 1,
-            darkMode: row.darkMode === 1
+            darkMode: row.darkMode === 1,
+            preferredVoiceId: row.preferredVoiceId || 'mary'
           };
         }
       } catch (e) {
@@ -205,7 +212,8 @@ class DatabaseService {
       return {
         ...fb.profile,
         showRomaji: fb.profile.showRomaji !== false,
-        darkMode: !!fb.profile.darkMode
+        darkMode: !!fb.profile.darkMode,
+        preferredVoiceId: fb.profile.preferredVoiceId || 'mary'
       };
     }
 
@@ -221,7 +229,8 @@ class DatabaseService {
       soundEnabled: true,
       furiganaMode: 'always',
       showRomaji: true,
-      darkMode: false
+      darkMode: false,
+      preferredVoiceId: 'mary'
     };
   }
 
@@ -231,8 +240,8 @@ class DatabaseService {
     if (this.db) {
       try {
         const query = `
-          INSERT OR REPLACE INTO user_profile (id, username, xp, streakDays, lastActiveDate, hearts, maxHearts, gems, soundEnabled, furiganaMode, showRomaji, darkMode)
-          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
+          INSERT OR REPLACE INTO user_profile (id, username, xp, streakDays, lastActiveDate, hearts, maxHearts, gems, soundEnabled, furiganaMode, showRomaji, darkMode, preferredVoiceId)
+          VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);
         `;
         await this.db.run(query, [
           profile.id,
@@ -246,7 +255,8 @@ class DatabaseService {
           profile.soundEnabled ? 1 : 0,
           profile.furiganaMode,
           profile.showRomaji ? 1 : 0,
-          profile.darkMode ? 1 : 0
+          profile.darkMode ? 1 : 0,
+          profile.preferredVoiceId || 'mary'
         ]);
         if (!this.isNative && this.sqlite) {
           await this.sqlite.saveToStore(DB_NAME);

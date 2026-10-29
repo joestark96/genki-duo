@@ -41,7 +41,8 @@ export const App: React.FC = () => {
     soundEnabled: true,
     furiganaMode: 'always',
     showRomaji: true,
-    darkMode: false
+    darkMode: false,
+    preferredVoiceId: 'mary'
   });
 
   const [units, setUnits] = useState<Unit[]>(genkiCurriculum);
@@ -64,6 +65,7 @@ export const App: React.FC = () => {
         const userProf = await dbService.getUserProfile();
         setProfile(userProf);
         sound.setEnabled(userProf.soundEnabled);
+        sound.setDefaultVoice(userProf.preferredVoiceId || 'mary');
         if (userProf.darkMode) {
           document.documentElement.classList.add('dark');
           document.body.classList.add('dark');
@@ -193,6 +195,19 @@ export const App: React.FC = () => {
       ...profile,
       xp: profile.xp + xpReward,
       gems: profile.gems + gemReward
+    };
+    setProfile(updated);
+    await dbService.saveUserProfile(updated);
+  };
+
+  // Change preferred character voice
+  const handleChangeVoice = async (voiceId: string) => {
+    sound.setDefaultVoice(voiceId);
+    const charProf = sound.getCharacterProfile(voiceId);
+    sound.speakJapanese(charProf.samplePhrase, 0.9, voiceId);
+    const updated: UserProfile = {
+      ...profile,
+      preferredVoiceId: voiceId
     };
     setProfile(updated);
     await dbService.saveUserProfile(updated);
@@ -402,6 +417,7 @@ export const App: React.FC = () => {
                 onToggleRomaji={handleToggleRomaji}
                 onToggleDarkMode={handleToggleDarkMode}
                 onClaimQuestReward={handleClaimQuestReward}
+                onChangeVoice={handleChangeVoice}
               />
             )}
           </main>

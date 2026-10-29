@@ -599,7 +599,7 @@ export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = 
                     setRoleplayStep(nextIdx);
                     const nextLine = currentDialogueLines[nextIdx];
                     if (nextLine && nextLine.speaker !== activeRoleSpeaker) {
-                      sound.speakJapanese(nextLine.japanese);
+                      sound.speakJapanese(nextLine.audioText || nextLine.japanese, 0.9, nextLine.speaker);
                     }
                   }}
                   className="px-3 py-1 rounded-xl bg-emerald-500 text-white text-[11px] font-black flex items-center gap-1 cursor-pointer"
@@ -619,7 +619,7 @@ export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = 
                   key={idx}
                   onClick={() => {
                     setRoleplayStep(idx);
-                    sound.speakJapanese(line.japanese);
+                    sound.speakJapanese(line.audioText || line.japanese, 0.9, line.speaker);
                   }}
                   className={`p-3.5 rounded-2xl border-2 transition-all cursor-pointer ${
                     isCurrentStep
@@ -649,7 +649,7 @@ export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = 
 
                     <div className="flex items-center gap-1.5" onClick={e => e.stopPropagation()}>
                       <button
-                        onClick={() => sound.speakJapanese(line.japanese)}
+                        onClick={() => sound.speakJapanese(line.audioText || line.japanese, 0.9, line.speaker)}
                         className="p-1.5 rounded-xl bg-white dark:bg-[#18272e] border border-gray-200 dark:border-[#283842] text-duo-blue hover:bg-duo-blue hover:text-white transition-colors cursor-pointer"
                         title="Escuchar línea"
                       >

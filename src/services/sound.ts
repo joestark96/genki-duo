@@ -1,10 +1,115 @@
-// Web Audio API synthesizers for Duolingo-style sound effects + High-Speed Resilient Japanese Audio & TTS
+// Web Audio API synthesizers for Duolingo-style sound effects + Multi-Character Japanese Voice Engine
+
+export interface CharacterVoiceProfile {
+  id: string;
+  name: string;
+  japaneseName: string;
+  avatar: string;
+  role: string;
+  gender: 'female' | 'male';
+  pitch: number;
+  rate: number;
+  samplePhrase: string;
+}
+
+export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
+  {
+    id: 'mary',
+    name: 'Mary',
+    japaneseName: 'メアリー',
+    avatar: '👱‍♀️',
+    role: 'Estudiante alegre (Femenina brillante)',
+    gender: 'female',
+    pitch: 1.26,
+    rate: 0.94,
+    samplePhrase: 'こんにちは！メアリーです。よろしくお願いします！'
+  },
+  {
+    id: 'takeshi',
+    name: 'Takeshi',
+    japaneseName: 'たけし',
+    avatar: '👦',
+    role: 'Universitario relajado (Masculina joven)',
+    gender: 'male',
+    pitch: 0.80,
+    rate: 0.96,
+    samplePhrase: 'やあ、ぼくはたけしです。いっしょに勉強しよう！'
+  },
+  {
+    id: 'yamashita',
+    name: 'Prof. Yamashita',
+    japaneseName: '山下先生',
+    avatar: '👨‍🏫',
+    role: 'Maestro sabio (Masculina grave y pausada)',
+    gender: 'male',
+    pitch: 0.64,
+    rate: 0.84,
+    samplePhrase: 'みなさん、こんにちは。今日も日本語をがんばりましょう。'
+  },
+  {
+    id: 'michiko',
+    name: 'Michiko',
+    japaneseName: 'みちこ',
+    avatar: '👩',
+    role: 'Amiga amable (Femenina suave y clara)',
+    gender: 'female',
+    pitch: 1.12,
+    rate: 0.90,
+    samplePhrase: 'はじめまして、みちこです。いいお天気ですね。'
+  },
+  {
+    id: 'robert',
+    name: 'Robert',
+    japaneseName: 'ロバート',
+    avatar: '👱‍♂️',
+    role: 'Compañero entusiasta (Masculina media)',
+    gender: 'male',
+    pitch: 0.74,
+    rate: 0.92,
+    samplePhrase: 'こんにちは、ロバートです。日本語がおもしろいです！'
+  },
+  {
+    id: 'sora',
+    name: 'Sora',
+    japaneseName: 'ソラ',
+    avatar: '👧',
+    role: 'Voz enérgica (Femenina aguda y animada)',
+    gender: 'female',
+    pitch: 1.42,
+    rate: 1.0,
+    samplePhrase: 'わあ、すごい！ソラといっしょに練習しましょう！'
+  },
+  {
+    id: 'ken',
+    name: 'Ken',
+    japaneseName: 'けん',
+    avatar: '🧑',
+    role: 'Hablante sereno (Masculina estándar)',
+    gender: 'male',
+    pitch: 0.86,
+    rate: 0.90,
+    samplePhrase: 'こんにちは、けんです。ゆっくり話しましょう。'
+  },
+  {
+    id: 'sue',
+    name: 'Sue',
+    japaneseName: 'スー',
+    avatar: '👩‍🦱',
+    role: 'Estudiante aplicada (Femenina calmada)',
+    gender: 'female',
+    pitch: 1.02,
+    rate: 0.86,
+    samplePhrase: 'こんにちは、スーです。毎日少しずつ練習しています。'
+  }
+];
 
 class SoundService {
   private audioCtx: AudioContext | null = null;
   private isEnabled: boolean = true;
+  private defaultVoiceId: string = 'mary';
   private activeUtterance: SpeechSynthesisUtterance | null = null;
   private activeAudio: HTMLAudioElement | null = null;
+  private sequenceTimer: number | null = null;
   private voices: SpeechSynthesisVoice[] = [];
   // In-memory audio cache for 0ms instantaneous replay
   private audioCache: Map<string, HTMLAudioElement> = new Map();
@@ -24,6 +129,78 @@ class SoundService {
     } catch (_) {}
   }
 
+  public setDefaultVoice(voiceId: string) {
+    if (CHARACTER_VOICES.some(v => v.id === voiceId)) {
+      this.defaultVoiceId = voiceId;
+    }
+  }
+
+  public getDefaultVoice(): string {
+    return this.defaultVoiceId;
+  }
+
+  public getCharacterProfile(speakerOrVoiceId?: string): CharacterVoiceProfile {
+    if (!speakerOrVoiceId) {
+      return CHARACTER_VOICES.find(v => v.id === this.defaultVoiceId) || CHARACTER_VOICES[0];
+    }
+
+    // 1. Direct ID match
+    const direct = CHARACTER_VOICES.find(v => v.id === speakerOrVoiceId.toLowerCase());
+    if (direct) return direct;
+
+    // 2. Match by Genki character name in Japanese or English
+    const s = speakerOrVoiceId.toLowerCase();
+    if (s.includes('メアリー') || s.includes('mary')) return CHARACTER_VOICES.find(v => v.id === 'mary')!;
+    if (s.includes('たけし') || s.includes('takeshi') || s.includes('きむら')) return CHARACTER_VOICES.find(v => v.id === 'takeshi')!;
+    if (
+      s.includes('やました') ||
+      s.includes('先生') ||
+      s.includes('profesor') ||
+      s.includes('ぶちょう') ||
+      s.includes('しゃちょう') ||
+      s.includes('jefe') ||
+      s.includes('いしゃ') ||
+      s.includes('doctor')
+    ) {
+      return CHARACTER_VOICES.find(v => v.id === 'yamashita')!;
+    }
+    if (
+      s.includes('みちこ') ||
+      s.includes('michiko') ||
+      s.includes('おかあさん') ||
+      s.includes('ホストマザー') ||
+      s.includes('madre') ||
+      s.includes('ウェイトレス')
+    ) {
+      return CHARACTER_VOICES.find(v => v.id === 'michiko')!;
+    }
+    if (s.includes('ロバート') || s.includes('robert') || s.includes('ジョン') || s.includes('john')) {
+      return CHARACTER_VOICES.find(v => v.id === 'robert')!;
+    }
+    if (s.includes('ソラ') || s.includes('sora')) {
+      return CHARACTER_VOICES.find(v => v.id === 'sora')!;
+    }
+    if (
+      s.includes('けん') ||
+      s.includes('ken') ||
+      s.includes('てんいん') ||
+      s.includes('えきいん') ||
+      s.includes('どろぼう')
+    ) {
+      return CHARACTER_VOICES.find(v => v.id === 'ken')!;
+    }
+    if (s.includes('スー') || s.includes('sue')) {
+      return CHARACTER_VOICES.find(v => v.id === 'sue')!;
+    }
+
+    // 3. Deterministic hash fallback so any other speaker name gets a consistent distinct voice
+    let hash = 0;
+    for (let i = 0; i < s.length; i++) {
+      hash = (hash * 31 + s.charCodeAt(i)) % CHARACTER_VOICES.length;
+    }
+    return CHARACTER_VOICES[Math.abs(hash) % CHARACTER_VOICES.length];
+  }
+
   public getAvailableJapaneseVoices(): SpeechSynthesisVoice[] {
     if (this.voices.length === 0 && typeof window !== 'undefined' && 'speechSynthesis' in window) {
       this.loadVoices();
@@ -33,6 +210,24 @@ class SoundService {
       const n = (v.name || '').toLowerCase();
       return l.startsWith('ja') || l.includes('jp') || n.includes('japan') || n.includes('kyoko') || n.includes('ichiro') || n.includes('ayumi');
     });
+  }
+
+  private selectSystemVoiceForCharacter(jaVoices: SpeechSynthesisVoice[], profile: CharacterVoiceProfile): SpeechSynthesisVoice {
+    if (jaVoices.length === 1) return jaVoices[0];
+
+    const maleHints = ['ichiro', 'otoya', 'keita', 'takumi', 'male', '男'];
+    const femaleHints = ['haruka', 'ayumi', 'nanami', 'kyoko', 'sayaka', 'mizuki', 'female', '女'];
+
+    if (profile.gender === 'male') {
+      const foundMale = jaVoices.find(v => maleHints.some(h => v.name.toLowerCase().includes(h)));
+      if (foundMale) return foundMale;
+    } else {
+      const foundFemale = jaVoices.find(v => femaleHints.some(h => v.name.toLowerCase().includes(h)));
+      if (foundFemale) return foundFemale;
+    }
+
+    const idx = CHARACTER_VOICES.findIndex(c => c.id === profile.id);
+    return jaVoices[Math.max(0, idx) % jaVoices.length];
   }
 
   private getAudioContext(): AudioContext | null {
@@ -71,8 +266,8 @@ class SoundService {
     } catch (_) {}
   }
 
-  // Play audio stream from public Japanese pronunciation dictionary with instant streaming & memory cache
-  private playOnlineAudio(text: string, rate: number = 0.9): Promise<boolean> {
+  // Play audio stream from public Japanese pronunciation dictionary with character pitch/rate modulation
+  private playOnlineAudio(text: string, rate: number = 0.9, profile?: CharacterVoiceProfile): Promise<boolean> {
     return new Promise((resolve) => {
       try {
         if (this.activeAudio) {
@@ -91,10 +286,23 @@ class SoundService {
         }
 
         this.activeAudio = audio;
-        audio.playbackRate = Math.max(0.55, Math.min(1.2, rate));
-        audio.volume = 0.85; // Pleasant, non-blasting balanced volume
+        const charProfile = profile || this.getCharacterProfile();
 
-        // Call play() immediately to trigger streaming playback without waiting for full download!
+        // Allow playbackRate to shift pitch slightly so different characters sound distinct even on web audio fallback
+        const anyAudio = audio as unknown as {
+          preservesPitch?: boolean;
+          mozPreservesPitch?: boolean;
+          webkitPreservesPitch?: boolean;
+        };
+        anyAudio.preservesPitch = false;
+        anyAudio.mozPreservesPitch = false;
+        anyAudio.webkitPreservesPitch = false;
+
+        const pitchFactor = 0.85 + (charProfile.pitch - 0.85) * 0.35;
+        const baseScale = rate / 0.9;
+        audio.playbackRate = Math.max(0.55, Math.min(1.35, pitchFactor * baseScale));
+        audio.volume = 0.85;
+
         const playPromise = audio.play();
         if (playPromise !== undefined) {
           playPromise
@@ -113,30 +321,39 @@ class SoundService {
     });
   }
 
-  // Speak Japanese with 0ms delay: prefers instant cache / immediate stream if no local voice installed
-  public async speakJapanese(text: string, rate: number = 0.9): Promise<void> {
+  // Speak Japanese with character-specific voice profile (pitch, speed, and gender voice selection)
+  public async speakJapanese(text: string, rate: number = 0.9, speakerOrVoiceId?: string): Promise<void> {
+    if (this.sequenceTimer) {
+      window.clearTimeout(this.sequenceTimer);
+      this.sequenceTimer = null;
+    }
+
     const cleanText = text.replace(/\[.*?\]/g, '').trim();
     if (!cleanText) return;
 
     this.getAudioContext();
 
+    const charProfile = this.getCharacterProfile(speakerOrVoiceId);
+    const effectiveRate = Math.max(0.5, Math.min(1.4, (rate / 0.9) * charProfile.rate));
     const jaVoices = this.getAvailableJapaneseVoices();
 
-    // If local system has a Japanese voice, play it immediately
+    // If local system has a Japanese voice, play it immediately with character pitch & rate
     if (jaVoices.length > 0 && typeof window !== 'undefined' && 'speechSynthesis' in window) {
       try {
+        window.speechSynthesis.cancel();
         if (window.speechSynthesis.paused) {
           window.speechSynthesis.resume();
         }
 
+        const chosenVoice = this.selectSystemVoiceForCharacter(jaVoices, charProfile);
         const utterance = new SpeechSynthesisUtterance(cleanText);
         this.activeUtterance = utterance;
         (window as unknown as { __duo_utt: SpeechSynthesisUtterance }).__duo_utt = utterance;
 
-        utterance.voice = jaVoices[0];
-        utterance.lang = jaVoices[0].lang || 'ja-JP';
-        utterance.rate = rate;
-        utterance.pitch = 1.0;
+        utterance.voice = chosenVoice;
+        utterance.lang = chosenVoice.lang || 'ja-JP';
+        utterance.rate = effectiveRate;
+        utterance.pitch = charProfile.pitch;
         utterance.volume = 0.85;
 
         utterance.onend = () => {
@@ -145,7 +362,7 @@ class SoundService {
 
         utterance.onerror = () => {
           this.activeUtterance = null;
-          this.playOnlineAudio(cleanText, rate);
+          this.playOnlineAudio(cleanText, rate, charProfile);
         };
 
         window.speechSynthesis.speak(utterance);
@@ -153,8 +370,38 @@ class SoundService {
       } catch (_) {}
     }
 
-    // Direct, ultra-fast streaming playback (no 400ms timeout delay!)
-    await this.playOnlineAudio(cleanText, rate);
+    await this.playOnlineAudio(cleanText, rate, charProfile);
+  }
+
+  // Play an entire multi-speaker dialogue sequentially using each character's own voice
+  public speakDialogueSequence(
+    lines: { speaker: string; audioText: string }[],
+    rate: number = 0.9,
+    onLineStart?: (idx: number) => void,
+    onComplete?: () => void
+  ) {
+    if (this.sequenceTimer) {
+      window.clearTimeout(this.sequenceTimer);
+      this.sequenceTimer = null;
+    }
+    if (!lines || lines.length === 0) return;
+
+    let currentIdx = 0;
+    const playStep = () => {
+      if (currentIdx >= lines.length) {
+        onComplete?.();
+        return;
+      }
+      const line = lines[currentIdx];
+      onLineStart?.(currentIdx);
+      this.speakJapanese(line.audioText, rate, line.speaker);
+
+      const waitMs = Math.max(2400, line.audioText.length * (rate < 0.75 ? 290 : 210) + 700);
+      currentIdx++;
+      this.sequenceTimer = window.setTimeout(playStep, waitMs);
+    };
+
+    playStep();
   }
 
   // Play Duolingo-style chime on correct answer (cheerful high arpeggio)

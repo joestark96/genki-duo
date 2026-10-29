@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { User, Flame, Zap, Heart, Gem, Database, RotateCcw, Award, CheckCircle2, Volume2, Moon, Sun, Type, Sparkles, Trophy, Target, Gift } from 'lucide-react';
 import { UserProfile, Unit } from '../types';
-import { sound } from '../services/sound';
+import { sound, CHARACTER_VOICES } from '../services/sound';
 
 interface ProfilePageProps {
   profile: UserProfile;
@@ -11,6 +11,7 @@ interface ProfilePageProps {
   onToggleRomaji: () => void;
   onToggleDarkMode: () => void;
   onClaimQuestReward?: (xp: number, gems: number) => void;
+  onChangeVoice?: (voiceId: string) => void;
 }
 
 export const ProfilePage: React.FC<ProfilePageProps> = ({
@@ -20,7 +21,8 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
   onResetProgress,
   onToggleRomaji,
   onToggleDarkMode,
-  onClaimQuestReward
+  onClaimQuestReward,
+  onChangeVoice
 }) => {
   const todayKey = new Date().toISOString().split('T')[0];
   const [claimedQuests, setClaimedQuests] = useState<Record<string, boolean>>(() => {
@@ -392,41 +394,86 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
         </div>
       </div>
 
-      {/* Audio Engine & Diagnostic Card */}
-      <h3 className="text-sm font-black text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-2">Motor de Audio y Voz</h3>
+      {/* Audio Engine & Character Voice Selector */}
+      <h3 className="text-sm font-black text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-2">
+        Voz por Defecto y Personajes
+      </h3>
       <div className="bg-white dark:bg-[#18272e] p-4 rounded-2xl border-2 border-duo-gray-200 dark:border-[#283842] shadow-duo-card dark:shadow-none mb-5 transition-colors">
-        <div className="flex items-center justify-between mb-2">
+        <div className="flex items-center justify-between mb-1.5">
           <div className="flex items-center gap-2">
             <Volume2 className="w-5 h-5 text-duo-green" />
-            <span className="text-xs font-black text-gray-800 dark:text-gray-100">Reproducción de Audio Japonés</span>
+            <span className="text-xs font-black text-gray-800 dark:text-gray-100">
+              Elige tu Personaje de Voz por Defecto
+            </span>
           </div>
           <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-duo-green-light dark:bg-duo-green/20 text-duo-green-dark dark:text-green-300">
-            {sound.getAvailableJapaneseVoices().length > 0 ? 'Voz Local' : 'Audio Web HD'}
+            {sound.getAvailableJapaneseVoices().length > 0 ? 'Voz Local + Tono' : 'Audio Web + Tono'}
           </span>
         </div>
-        <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-3">
-          {sound.getAvailableJapaneseVoices().length > 0
-            ? `Voz detectada: ${sound.getAvailableJapaneseVoices()[0].name}`
-            : 'Usando motor de pronunciación japonesa en streaming de alta calidad.'}
+        <p className="text-[11px] font-medium text-gray-500 dark:text-gray-400 mb-3">
+          En los diálogos cada personaje usa su propia voz. Aquí puedes elegir qué personaje te hablará por defecto en el resto de la app (Flashcards, Kanas, Vocabulario y Ejercicios):
         </p>
+
+        {/* Character Voices Grid */}
+        <div className="grid grid-cols-2 gap-2 mb-3">
+          {CHARACTER_VOICES.map(charVoice => {
+            const isSelected = (profile.preferredVoiceId || 'mary') === charVoice.id;
+            return (
+              <button
+                key={charVoice.id}
+                type="button"
+                onClick={() => {
+                  sound.playTap();
+                  onChangeVoice?.(charVoice.id);
+                }}
+                className={`p-2.5 rounded-2xl border-2 text-left flex items-center gap-2.5 transition-all cursor-pointer ${
+                  isSelected
+                    ? 'bg-duo-green-light/35 dark:bg-duo-green/20 border-duo-green shadow-xs'
+                    : 'bg-gray-50 dark:bg-[#131f24] border-gray-200 dark:border-[#283842] hover:border-duo-blue'
+                }`}
+              >
+                <div className="w-10 h-10 rounded-xl bg-white dark:bg-[#18272e] border border-gray-200 dark:border-[#283842] flex items-center justify-center text-xl flex-shrink-0 shadow-2xs">
+                  {charVoice.avatar}
+                </div>
+                <div className="min-w-0 flex-1">
+                  <div className="flex items-center justify-between gap-1">
+                    <span className="text-xs font-black text-gray-800 dark:text-gray-100 truncate">
+                      {charVoice.name}
+                    </span>
+                    {isSelected && (
+                      <CheckCircle2 className="w-3.5 h-3.5 text-duo-green flex-shrink-0" />
+                    )}
+                  </div>
+                  <div className="text-[10px] font-bold text-duo-blue truncate">
+                    {charVoice.japaneseName}
+                  </div>
+                  <div className="text-[9px] font-semibold text-gray-400 dark:text-gray-400 leading-tight truncate mt-0.5">
+                    {charVoice.role}
+                  </div>
+                </div>
+              </button>
+            );
+          })}
+        </div>
 
         <div className="grid grid-cols-2 gap-2">
           <button
             onClick={() => {
               sound.playTap();
-              sound.speakJapanese('こんにちは');
+              const activeChar = sound.getCharacterProfile(profile.preferredVoiceId || 'mary');
+              sound.speakJapanese(activeChar.samplePhrase, 0.9, activeChar.id);
             }}
-            className="py-2.5 px-3 bg-duo-blue-light dark:bg-duo-blue/20 border-2 border-duo-blue text-duo-blue-dark dark:text-blue-300 font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-blue hover:text-white transition-all flex items-center justify-center gap-1.5"
+            className="py-2.5 px-3 bg-duo-blue-light dark:bg-duo-blue/20 border-2 border-duo-blue text-duo-blue-dark dark:text-blue-300 font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-blue hover:text-white transition-all flex items-center justify-center gap-1.5 cursor-pointer"
           >
             <Volume2 className="w-4 h-4" />
-            <span>Oír: こんにちは</span>
+            <span>Probar Voz Actual</span>
           </button>
           <button
             onClick={() => {
               sound.playTap();
-              sound.speakJapanese('ありがとうございます');
+              sound.speakJapanese('ありがとうございます', 0.9, profile.preferredVoiceId || 'mary');
             }}
-            className="py-2.5 px-3 bg-duo-green-light dark:bg-duo-green/20 border-2 border-duo-green text-duo-green-dark dark:text-green-300 font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-green hover:text-white transition-all flex items-center justify-center gap-1.5"
+            className="py-2.5 px-3 bg-duo-green-light dark:bg-duo-green/20 border-2 border-duo-green text-duo-green-dark dark:text-green-300 font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-green hover:text-white transition-all flex items-center justify-center gap-1.5 cursor-pointer"
           >
             <Volume2 className="w-4 h-4" />
             <span>Oír: ありがとう</span>

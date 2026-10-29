@@ -117,5 +117,6 @@ export interface UserProfile {
   furiganaMode: 'always' | 'on-hover' | 'hidden';
   showRomaji: boolean;
   darkMode: boolean;
+  preferredVoiceId?: string;
 }
 
