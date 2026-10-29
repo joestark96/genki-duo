@@ -17,6 +17,7 @@ import { Unit } from '../types';
 import { genkiVocabulary } from '../data/vocabularyData';
 import { SpeechPracticeButton } from '../components/SpeechPracticeButton';
 import { sound } from '../services/sound';
+import { speechService } from '../services/speechRecognitionService';
 
 interface SpeakingPageProps {
   units: Unit[];
@@ -283,49 +284,33 @@ export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = 
   // Challenge pool
   const currentChallengePhrase = allPhrases[challengeIndex % allPhrases.length];
 
-  const handleStartChallengeMic = () => {
-    const SpeechRecognitionApi =
-      (window as unknown as { SpeechRecognition?: unknown; webkitSpeechRecognition?: unknown }).SpeechRecognition ||
-      (window as unknown as { webkitSpeechRecognition?: unknown }).webkitSpeechRecognition;
-
-    if (!SpeechRecognitionApi) {
-      setChallengeResult({
-        transcript: '',
-        score: 0,
-        error: 'Tu navegador no soporta reconocimiento de voz (usa Chrome, Edge o Safari).'
-      });
+  const handleStartChallengeMic = async () => {
+    if (isRecordingChallenge) {
+      await speechService.stopListening();
+      setIsRecordingChallenge(false);
       return;
     }
 
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const recognition = new (SpeechRecognitionApi as any)();
-      recognition.lang = 'ja-JP';
-      recognition.interimResults = false;
-      recognition.maxAlternatives = 3;
+    setIsRecordingChallenge(true);
+    setChallengeResult(null);
 
-      setIsRecordingChallenge(true);
-      setChallengeResult(null);
-
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      recognition.onresult = (event: any) => {
-        const alternatives = Array.from(event.results[0] || []) as { transcript: string }[];
-        let bestTranscript = alternatives[0]?.transcript || '';
+    await speechService.startListening(
+      (res) => {
+        let bestTranscript = res.bestTranscript;
         let bestScore = 0;
 
-        alternatives.forEach(alt => {
+        res.matches.forEach(m => {
           const sc = computeSimilarity(
-            alt.transcript,
+            m,
             currentChallengePhrase.japanese,
             currentChallengePhrase.furigana
           );
           if (sc >= bestScore) {
             bestScore = sc;
-            bestTranscript = alt.transcript;
+            bestTranscript = m;
           }
         });
 
-        setIsRecordingChallenge(false);
         setChallengeResult({ transcript: bestTranscript, score: bestScore });
 
         if (bestScore >= 60) {
@@ -336,25 +321,18 @@ export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = 
           sound.playTap();
           setChallengeStreak(0);
         }
-      };
-
-      recognition.onerror = () => {
-        setIsRecordingChallenge(false);
+      },
+      (errorMsg) => {
         setChallengeResult({
           transcript: '',
           score: 0,
-          error: 'No se detectó voz. Intenta acercarte al micrófono.'
+          error: errorMsg
         });
-      };
-
-      recognition.onend = () => {
+      },
+      () => {
         setIsRecordingChallenge(false);
-      };
-
-      recognition.start();
-    } catch {
-      setIsRecordingChallenge(false);
-    }
+      }
+    );
   };
 
   const handleNextChallenge = () => {

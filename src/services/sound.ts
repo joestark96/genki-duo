@@ -327,13 +327,56 @@ class SoundService {
     } catch (_) {}
   }
 
+  // Helper to split complex sentences and reading passages into natural spoken clauses
+  private splitIntoSpeechChunks(text: string, maxLen: number = 80): string[] {
+    const clean = text.replace(/\[.*?\]/g, '').trim();
+    if (!clean) return [];
+    if (clean.length <= maxLen) return [clean];
+
+    // Split by sentence punctuation first
+    const rawParts = clean.split(/([。！？\n]+)/);
+    const sentences: string[] = [];
+    let temp = '';
+
+    for (let i = 0; i < rawParts.length; i++) {
+      temp += rawParts[i];
+      if (i % 2 === 1 || i === rawParts.length - 1) {
+        if (temp.trim()) {
+          sentences.push(temp.trim());
+        }
+        temp = '';
+      }
+    }
+
+    const finalChunks: string[] = [];
+    for (const s of sentences) {
+      if (s.length <= maxLen) {
+        finalChunks.push(s);
+      } else {
+        // Split longer sentences by commas
+        const subParts = s.split(/([、，,]+)/);
+        let subTemp = '';
+        for (let j = 0; j < subParts.length; j++) {
+          subTemp += subParts[j];
+          if (j % 2 === 1 || j === subParts.length - 1) {
+            if (subTemp.trim()) finalChunks.push(subTemp.trim());
+            subTemp = '';
+          }
+        }
+        if (subTemp.trim()) finalChunks.push(subTemp.trim());
+      }
+    }
+
+    return finalChunks.length > 0 ? finalChunks : [clean];
+  }
+
   // Play neural Japanese voice via unlocked Web Audio API with male formant warmth
   private async playNeuralCharacterVoice(
     text: string,
     rate: number,
     profile: CharacterVoiceProfile
   ): Promise<boolean> {
-    if (!profile.neuralVoiceId || text.length > 95) return false;
+    if (!profile.neuralVoiceId || text.length > 120) return false;
 
     const ctx = this.getAudioContext();
     if (!ctx) return false;
@@ -379,89 +422,127 @@ class SoundService {
 
       this.stopActivePlayback();
 
-      const source = ctx.createBufferSource();
-      const gainNode = ctx.createGain();
-      source.buffer = decodedBuffer;
+      return new Promise<boolean>((resolve) => {
+        try {
+          const source = ctx.createBufferSource();
+          const gainNode = ctx.createGain();
+          source.buffer = decodedBuffer!;
 
-      const baseScale = rate / 0.9;
-      source.playbackRate.value = Math.max(0.65, Math.min(1.25, profile.rate * baseScale));
-      if (profile.detuneCents && 'detune' in source) {
-        source.detune.value = profile.detuneCents;
-      }
-      gainNode.gain.value = 0.95;
+          const baseScale = rate / 0.9;
+          source.playbackRate.value = Math.max(0.65, Math.min(1.25, profile.rate * baseScale));
+          if (profile.detuneCents && 'detune' in source) {
+            source.detune.value = profile.detuneCents;
+          }
+          gainNode.gain.value = 0.95;
 
-      // Add warm chest resonance and reduce high nasal frequencies for male voices so they sound deep and masculine
-      if (profile.gender === 'male') {
-        const bassFilter = ctx.createBiquadFilter();
-        bassFilter.type = 'lowshelf';
-        bassFilter.frequency.value = 240;
-        bassFilter.gain.value = 7.5;
+          if (profile.gender === 'male') {
+            const bassFilter = ctx.createBiquadFilter();
+            bassFilter.type = 'lowshelf';
+            bassFilter.frequency.value = 240;
+            bassFilter.gain.value = 7.5;
 
-        const trebleFilter = ctx.createBiquadFilter();
-        trebleFilter.type = 'highshelf';
-        trebleFilter.frequency.value = 3000;
-        trebleFilter.gain.value = -4.5;
+            const trebleFilter = ctx.createBiquadFilter();
+            trebleFilter.type = 'highshelf';
+            trebleFilter.frequency.value = 3000;
+            trebleFilter.gain.value = -4.5;
 
-        source.connect(bassFilter);
-        bassFilter.connect(trebleFilter);
-        trebleFilter.connect(gainNode);
-      } else {
-        source.connect(gainNode);
-      }
+            source.connect(bassFilter);
+            bassFilter.connect(trebleFilter);
+            trebleFilter.connect(gainNode);
+          } else {
+            source.connect(gainNode);
+          }
 
-      gainNode.connect(ctx.destination);
+          gainNode.connect(ctx.destination);
+          this.activeBufferSource = source;
 
-      this.activeBufferSource = source;
-      source.onended = () => {
-        if (this.activeBufferSource === source) {
-          this.activeBufferSource = null;
+          source.onended = () => {
+            if (this.activeBufferSource === source) {
+              this.activeBufferSource = null;
+            }
+            resolve(true);
+          };
+
+          source.start(0);
+        } catch {
+          resolve(false);
         }
-      };
-
-      source.start(0);
-      return true;
+      });
     } catch (err) {
       console.warn('Neural voice fallback notice:', err);
       return false;
     }
   }
 
-  // Play audio stream from public Japanese pronunciation dictionary
-  private playOnlineAudio(text: string, rate: number = 0.9): Promise<boolean> {
+  // Play audio stream from Google Translate or dictionary (supports complete complex sentences)
+  private playOnlineChunk(text: string, rate: number = 0.9): Promise<boolean> {
     return new Promise((resolve) => {
       try {
+        const clean = text.replace(/\[.*?\]/g, '').trim();
+        if (!clean) return resolve(true);
+
         this.stopActivePlayback();
 
-        let audio = this.audioCache.get(text);
+        const isShortWord = clean.length <= 10 && !/[\s、。！？]/.test(clean);
+        const primaryUrl = isShortWord
+          ? `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(clean)}&le=jap`
+          : `https://translate.google.com/translate_tts?ie=UTF-8&tl=ja&client=tw-ob&q=${encodeURIComponent(clean)}`;
+
+        let audio = this.audioCache.get(clean);
         if (!audio) {
-          const url = `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(text)}&le=jap`;
-          audio = new Audio(url);
+          audio = new Audio(primaryUrl);
           audio.preload = 'auto';
-          this.audioCache.set(text, audio);
+          this.audioCache.set(clean, audio);
         } else {
           audio.currentTime = 0;
         }
 
         this.activeAudio = audio;
-        audio.playbackRate = Math.max(0.55, Math.min(1.2, rate));
-        audio.volume = 0.85;
+        audio.playbackRate = Math.max(0.6, Math.min(1.25, rate));
+        audio.volume = 0.9;
+
+        audio.onended = () => {
+          if (this.activeAudio === audio) this.activeAudio = null;
+          resolve(true);
+        };
+
+        audio.onerror = () => {
+          // If primary failed, try the secondary fallback
+          const fallbackUrl = isShortWord
+            ? `https://translate.google.com/translate_tts?ie=UTF-8&tl=ja&client=tw-ob&q=${encodeURIComponent(clean)}`
+            : `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(clean)}&le=jap`;
+          const fbAudio = new Audio(fallbackUrl);
+          this.activeAudio = fbAudio;
+          fbAudio.playbackRate = Math.max(0.6, Math.min(1.25, rate));
+          fbAudio.volume = 0.9;
+          fbAudio.onended = () => {
+            if (this.activeAudio === fbAudio) this.activeAudio = null;
+            resolve(true);
+          };
+          fbAudio.onerror = () => resolve(false);
+          fbAudio.play().catch(() => resolve(false));
+        };
 
         const playPromise = audio.play();
         if (playPromise !== undefined) {
-          playPromise
-            .then(() => resolve(true))
-            .catch((err) => {
-              console.warn('Audio play notice:', err);
-              resolve(false);
-            });
-        } else {
-          resolve(true);
+          playPromise.catch((err) => {
+            console.warn('Audio play notice:', err);
+            resolve(false);
+          });
         }
       } catch (e) {
         console.warn('Online audio exception:', e);
         resolve(false);
       }
     });
+  }
+
+  public async playOnlineAudio(text: string, rate: number = 0.9): Promise<boolean> {
+    const chunks = this.splitIntoSpeechChunks(text, 80);
+    for (const chunk of chunks) {
+      await this.playOnlineChunk(chunk, rate);
+    }
+    return true;
   }
 
   // Speak Japanese with genuine character voices (real male neural voice for men via WebAudio, original voice for Mary)
@@ -474,55 +555,64 @@ class SoundService {
     const cleanText = text.replace(/\[.*?\]/g, '').trim();
     if (!cleanText) return;
 
-    // Unlock AudioContext synchronously during user gesture!
     this.getAudioContext();
     this.stopActivePlayback();
 
     const charProfile = this.getCharacterProfile(speakerOrVoiceId);
+    const chunks = this.splitIntoSpeechChunks(cleanText, 75);
 
-    // 1. If the character has a dedicated neural voice (Takeshi/Yamashita/Robert/Ken male jp_006, or Sora/Michiko/Sue),
-    // decode and play via Web Audio API so it works reliably on all browsers!
-    if (charProfile.neuralVoiceId) {
-      const playedNeural = await this.playNeuralCharacterVoice(cleanText, rate, charProfile);
-      if (playedNeural) return;
-    }
+    for (const chunk of chunks) {
+      // 1. If the character has a dedicated neural voice, try it on this chunk
+      let played = false;
+      if (charProfile.neuralVoiceId) {
+        played = await this.playNeuralCharacterVoice(chunk, rate, charProfile);
+      }
 
-    // 2. For Mary (Original Voice) or fallback when offline/long text: use local system voice
-    const jaVoices = this.getAvailableJapaneseVoices();
-    const chosenVoice = this.findSystemVoiceForCharacter(jaVoices, charProfile);
+      // 2. For Mary or fallback when offline: try system voice
+      if (!played) {
+        const jaVoices = this.getAvailableJapaneseVoices();
+        const chosenVoice = this.findSystemVoiceForCharacter(jaVoices, charProfile);
 
-    if (chosenVoice && typeof window !== 'undefined' && 'speechSynthesis' in window) {
-      try {
-        if (window.speechSynthesis.paused) {
-          window.speechSynthesis.resume();
+        if (chosenVoice && typeof window !== 'undefined' && 'speechSynthesis' in window) {
+          played = await new Promise<boolean>((resolve) => {
+            try {
+              if (window.speechSynthesis.paused) {
+                window.speechSynthesis.resume();
+              }
+
+              const utterance = new SpeechSynthesisUtterance(chunk);
+              this.activeUtterance = utterance;
+              (window as unknown as { __duo_utt: SpeechSynthesisUtterance }).__duo_utt = utterance;
+
+              utterance.voice = chosenVoice;
+              utterance.lang = chosenVoice.lang || 'ja-JP';
+              utterance.rate = Math.max(0.55, Math.min(1.25, rate * (charProfile.rate / 0.9)));
+              utterance.pitch = charProfile.pitch;
+              utterance.volume = 0.85;
+
+              utterance.onend = () => {
+                this.activeUtterance = null;
+                resolve(true);
+              };
+
+              utterance.onerror = () => {
+                this.activeUtterance = null;
+                resolve(false);
+              };
+
+              window.speechSynthesis.speak(utterance);
+            } catch {
+              resolve(false);
+            }
+          });
         }
+      }
 
-        const utterance = new SpeechSynthesisUtterance(cleanText);
-        this.activeUtterance = utterance;
-        (window as unknown as { __duo_utt: SpeechSynthesisUtterance }).__duo_utt = utterance;
-
-        utterance.voice = chosenVoice;
-        utterance.lang = chosenVoice.lang || 'ja-JP';
-        utterance.rate = Math.max(0.55, Math.min(1.25, rate * (charProfile.rate / 0.9)));
-        utterance.pitch = charProfile.pitch;
-        utterance.volume = 0.85;
-
-        utterance.onend = () => {
-          this.activeUtterance = null;
-        };
-
-        utterance.onerror = () => {
-          this.activeUtterance = null;
-          this.playOnlineAudio(cleanText, rate);
-        };
-
-        window.speechSynthesis.speak(utterance);
-        return;
-      } catch (_) {}
+      // 3. Robust online Google Translate TTS / dictionary fallback for full sentence
+      if (!played) {
+        await this.playOnlineChunk(chunk, rate);
+      }
     }
-
-    // 3. Final fallback
-    await this.playOnlineAudio(cleanText, rate);
   }
 
   // Play an entire multi-speaker dialogue sequentially using each character's own voice

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Mic, MicOff, CheckCircle2, RefreshCw } from 'lucide-react';
 import { sound } from '../services/sound';
+import { speechService } from '../services/speechRecognitionService';
 
 interface SpeechPracticeButtonProps {
   targetJapanese: string;
@@ -47,78 +48,49 @@ export const SpeechPracticeButton: React.FC<SpeechPracticeButtonProps> = ({
   const [listening, setListening] = useState(false);
   const [result, setResult] = useState<{ transcript: string; score: number; error?: string } | null>(null);
 
-  const handleStartListening = (e: React.MouseEvent) => {
+  const handleStartListening = async (e: React.MouseEvent) => {
     e.stopPropagation();
 
-    const SpeechRecognitionApi =
-      (window as unknown as { SpeechRecognition?: unknown; webkitSpeechRecognition?: unknown }).SpeechRecognition ||
-      (window as unknown as { webkitSpeechRecognition?: unknown }).webkitSpeechRecognition;
-
-    if (!SpeechRecognitionApi) {
-      setResult({
-        transcript: '',
-        score: 0,
-        error: 'Tu navegador no soporta reconocimiento de voz (usa Chrome, Edge o Safari).'
-      });
+    if (listening) {
+      await speechService.stopListening();
+      setListening(false);
       return;
     }
 
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const recognition = new (SpeechRecognitionApi as any)();
-      recognition.lang = 'ja-JP';
-      recognition.interimResults = false;
-      recognition.maxAlternatives = 3;
+    setListening(true);
+    setResult(null);
 
-      setListening(true);
-      setResult(null);
-
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      recognition.onresult = (event: any) => {
-        const alternatives = Array.from(event.results[0] || []) as { transcript: string }[];
-        let bestTranscript = alternatives[0]?.transcript || '';
+    await speechService.startListening(
+      (res) => {
+        let bestTranscript = res.bestTranscript;
         let bestScore = 0;
 
-        alternatives.forEach(alt => {
-          const sc = computeSimilarity(alt.transcript, targetJapanese, targetFurigana);
+        res.matches.forEach(m => {
+          const sc = computeSimilarity(m, targetJapanese, targetFurigana);
           if (sc >= bestScore) {
             bestScore = sc;
-            bestTranscript = alt.transcript;
+            bestTranscript = m;
           }
         });
 
-        setListening(false);
         setResult({ transcript: bestTranscript, score: bestScore });
-
         if (bestScore >= 60) {
           sound.playCorrect();
         } else {
           sound.playTap();
         }
-      };
-
-      recognition.onerror = () => {
-        setListening(false);
+      },
+      (errorMsg) => {
         setResult({
           transcript: '',
           score: 0,
-          error: 'No se detectó voz. Revisa el permiso del micrófono e intenta de nuevo.'
+          error: errorMsg
         });
-      };
-
-      recognition.onend = () => {
+      },
+      () => {
         setListening(false);
-      };
-
-      recognition.start();
-    } catch {
-      setListening(false);
-      setResult({
-        transcript: '',
-        score: 0,
-        error: 'No se pudo iniciar el micrófono.'
-      });
-    }
+      }
+    );
   };
 
   return (
