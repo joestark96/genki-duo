@@ -71,21 +71,35 @@ export const App: React.FC = () => {
         // 2. Load lesson progress and sync with units
         const progressMap = await dbService.getLessonProgress();
         setUnits(prevUnits => {
-          return prevUnits.map(unit => ({
-            ...unit,
-            nodes: unit.nodes.map(node => {
-              const saved = progressMap[node.id];
-              if (saved) {
-                return {
-                  ...node,
-                  unlocked: saved.unlocked,
-                  completedSteps: saved.completedSteps,
-                  stars: saved.stars
-                };
+          return prevUnits.map(unit => {
+            let maxUnlockedIdx = -1;
+            unit.nodes.forEach((n, i) => {
+              if (progressMap[n.id]?.unlocked || n.unlocked) {
+                maxUnlockedIdx = i;
               }
-              return node;
-            })
-          }));
+            });
+            return {
+              ...unit,
+              nodes: unit.nodes.map((node, idx) => {
+                const saved = progressMap[node.id];
+                if (saved) {
+                  return {
+                    ...node,
+                    unlocked: saved.unlocked || idx <= maxUnlockedIdx,
+                    completedSteps: saved.completedSteps,
+                    stars: saved.stars
+                  };
+                }
+                if (idx <= maxUnlockedIdx) {
+                  return {
+                    ...node,
+                    unlocked: true
+                  };
+                }
+                return node;
+              })
+            };
+          });
         });
 
         // 3. Load flashcard SRS

@@ -1,4 +1,12 @@
-export type ExerciseType = 'multiple-choice' | 'word-order' | 'match-pairs' | 'listening';
+export type ExerciseType = 'multiple-choice' | 'word-order' | 'match-pairs' | 'listening' | 'dialogue-reading';
+
+export interface DialogueLine {
+  speaker: string;
+  japanese: string;
+  romaji?: string;
+  spanish: string;
+  audioText: string;
+}
 
 export interface ExerciseOption {
   id: string;
@@ -26,6 +34,9 @@ export interface Exercise {
   wordBank?: string[];        // For word-order (scrambled words)
   correctSentence?: string[]; // For word-order (target order)
   pairs?: MatchPair[];        // For match-pairs
+  dialogueTitle?: string;     // For dialogue-reading
+  dialogueContext?: string;   // For dialogue-reading
+  dialogueLines?: DialogueLine[]; // For dialogue-reading
   explanation: string;
 }
 

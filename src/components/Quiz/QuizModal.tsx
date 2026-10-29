@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Heart, Volume2, CheckCircle2, AlertCircle, ArrowRight, Trophy, Sparkles, RotateCcw, FastForward, ShieldAlert, Dumbbell } from 'lucide-react';
+import { X, Heart, Volume2, CheckCircle2, AlertCircle, ArrowRight, Trophy, Sparkles, RotateCcw, FastForward, ShieldAlert, Dumbbell, BookOpen, Eye, EyeOff } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { Exercise, LessonNode, MatchPair, UserProfile } from '../../types';
 import { sound } from '../../services/sound';
@@ -55,6 +55,8 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   const [heartsLeft, setHeartsLeft] = useState(userProfile.hearts);
   const [jumpChancesLeft, setJumpChancesLeft] = useState(3); // 3 mistakes allowed in Jump Ahead
   const [wrongAttempts, setWrongAttempts] = useState(0);
+  const [showDialogueTranslation, setShowDialogueTranslation] = useState(true);
+  const [activeDialogueLineIdx, setActiveDialogueLineIdx] = useState<number | null>(null);
 
   const currentExercise: Exercise | undefined = exercises[currentIndex];
   const progressPercent = Math.round(((currentIndex) / exercises.length) * 100);
@@ -66,6 +68,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
       setSelectedLeft(null);
       setSelectedRight(null);
       setMismatchedPair(null);
+      setActiveDialogueLineIdx(null);
       setStatus('answering');
 
       if (currentExercise.type === 'word-order' && currentExercise.wordBank) {
@@ -115,8 +118,8 @@ export const QuizModal: React.FC<QuizModalProps> = ({
 
     let isCorrect = false;
 
-    if (currentExercise.type === 'multiple-choice' || currentExercise.type === 'listening') {
-      isCorrect = selectedOptionId === currentExercise.correctAnswerId;
+    if (currentExercise.type === 'multiple-choice' || currentExercise.type === 'listening' || currentExercise.type === 'dialogue-reading') {
+      isCorrect = currentExercise.options ? selectedOptionId === currentExercise.correctAnswerId : true;
     } else if (currentExercise.type === 'word-order') {
       isCorrect =
         selectedWords.length === currentExercise.correctSentence?.length &&
@@ -259,6 +262,9 @@ export const QuizModal: React.FC<QuizModalProps> = ({
     if (status !== 'answering') return false;
     if (currentExercise?.type === 'multiple-choice' || currentExercise?.type === 'listening') {
       return selectedOptionId !== null;
+    }
+    if (currentExercise?.type === 'dialogue-reading') {
+      return currentExercise.options ? selectedOptionId !== null : true;
     }
     if (currentExercise?.type === 'word-order') {
       return selectedWords.length > 0;
@@ -483,10 +489,126 @@ export const QuizModal: React.FC<QuizModalProps> = ({
       )}
 
       {/* Main Exercise Area */}
-      <div className="flex-1 max-w-lg mx-auto w-full px-4 py-4 flex flex-col justify-center overflow-y-auto">
+      <div className="flex-1 max-w-lg mx-auto w-full px-4 py-4 flex flex-col justify-start md:justify-center overflow-y-auto">
+        {/* Interactive Introductory Dialogue / Reading Box (会話・読み物) */}
+        {currentExercise.dialogueLines && currentExercise.dialogueLines.length > 0 && (
+          <div className="mb-5 bg-gray-50 dark:bg-[#18272e] border-2 border-duo-blue/40 dark:border-[#283842] rounded-3xl p-4 shadow-sm">
+            {/* Dialogue Header & Controls */}
+            <div className="flex flex-wrap items-center justify-between gap-2 pb-3 mb-3 border-b-2 border-gray-200 dark:border-[#283842]">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 rounded-xl bg-duo-blue text-white flex items-center justify-center shadow-sm">
+                  <BookOpen className="w-4 h-4 stroke-[2.5px]" />
+                </div>
+                <div>
+                  <h3 className="text-xs md:text-sm font-black text-duo-blue uppercase tracking-wide">
+                    {currentExercise.dialogueTitle || 'Diálogo Introductorio de la Lección (会話)'}
+                  </h3>
+                  {currentExercise.dialogueContext && (
+                    <p className="text-[11px] font-bold text-gray-500 dark:text-gray-400">
+                      {currentExercise.dialogueContext}
+                    </p>
+                  )}
+                </div>
+              </div>
+
+              <div className="flex items-center gap-1.5">
+                <button
+                  onClick={() => {
+                    sound.playTap();
+                    const fullAudio = currentExercise.japaneseVoiceText || currentExercise.dialogueLines!.map(l => l.audioText).join('。');
+                    sound.speakJapanese(fullAudio, 0.9);
+                  }}
+                  className="px-2.5 py-1.5 bg-duo-blue hover:bg-duo-blue-dark text-white rounded-xl font-black text-[11px] flex items-center gap-1 shadow-[0_3px_0_0_#1899d6] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
+                  title="Escuchar todo el diálogo"
+                >
+                  <Volume2 className="w-3.5 h-3.5" />
+                  <span>Escuchar Todo</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    sound.playTap();
+                    const fullAudio = currentExercise.japaneseVoiceText || currentExercise.dialogueLines!.map(l => l.audioText).join('。');
+                    sound.speakJapanese(fullAudio, 0.6);
+                  }}
+                  className="px-2 py-1.5 bg-duo-blue-light/80 dark:bg-duo-blue/20 border border-duo-blue text-duo-blue-dark dark:text-duo-blue rounded-xl font-black text-[11px] flex items-center gap-1 hover:brightness-105 transition-all cursor-pointer"
+                  title="Escuchar lento"
+                >
+                  <span>🐢</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    sound.playTap();
+                    setShowDialogueTranslation(prev => !prev);
+                  }}
+                  className="px-2 py-1.5 bg-white dark:bg-[#22343d] border border-gray-300 dark:border-[#364954] text-gray-600 dark:text-gray-300 rounded-xl font-bold text-[11px] flex items-center gap-1 hover:border-duo-blue transition-all cursor-pointer"
+                  title="Mostrar u ocultar traducción al español"
+                >
+                  {showDialogueTranslation ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                  <span>{showDialogueTranslation ? 'ES' : 'ES'}</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Dialogue Lines List */}
+            <div className="flex flex-col gap-2.5 max-h-[260px] overflow-y-auto pr-1">
+              {currentExercise.dialogueLines.map((line, lIdx) => {
+                const isActiveLine = activeDialogueLineIdx === lIdx;
+                return (
+                  <div
+                    key={`dlg-line-${lIdx}`}
+                    onClick={() => {
+                      setActiveDialogueLineIdx(lIdx);
+                      sound.speakJapanese(line.audioText, 0.9);
+                    }}
+                    className={`p-3 rounded-2xl border-2 transition-all cursor-pointer flex items-start justify-between gap-2.5 ${
+                      isActiveLine
+                        ? 'bg-duo-blue-light/40 dark:bg-duo-blue/20 border-duo-blue shadow-sm'
+                        : 'bg-white dark:bg-[#131f24] border-gray-200 dark:border-[#283842] hover:border-duo-blue/60'
+                    }`}
+                  >
+                    <div className="flex-1">
+                      <span className="inline-block px-2 py-0.5 rounded-md bg-duo-blue/15 text-duo-blue dark:text-duo-blue-light font-black text-[10px] uppercase tracking-wider mb-1">
+                        {line.speaker}
+                      </span>
+                      <p className="text-base md:text-lg font-bold font-['Noto_Sans_JP'] text-gray-900 dark:text-gray-100 leading-snug">
+                        {line.japanese}
+                      </p>
+                      {line.romaji && userProfile.showRomaji && (
+                        <p className="text-[11px] font-semibold text-duo-blue dark:text-sky-400 mt-0.5">
+                          {line.romaji}
+                        </p>
+                      )}
+                      {showDialogueTranslation && (
+                        <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mt-1">
+                          {line.spanish}
+                        </p>
+                      )}
+                    </div>
+
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActiveDialogueLineIdx(lIdx);
+                        sound.speakJapanese(line.audioText, 0.9);
+                      }}
+                      className="p-2 rounded-xl bg-duo-blue/10 hover:bg-duo-blue hover:text-white text-duo-blue transition-colors flex-shrink-0 mt-1"
+                      title="Escuchar esta línea"
+                    >
+                      <Volume2 className="w-4 h-4" />
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
         {/* Exercise Prompt */}
-        <div className="mb-6">
-          <h2 className="text-xl md:text-2xl font-black text-gray-800 dark:text-gray-100 mb-2">
+        <div className="mb-4">
+          <h2 className="text-lg md:text-2xl font-black text-gray-800 dark:text-gray-100 mb-2">
             {currentExercise.prompt}
           </h2>
 
@@ -539,8 +661,8 @@ export const QuizModal: React.FC<QuizModalProps> = ({
           )}
         </div>
 
-        {/* 1. Multiple-choice & Listening Options */}
-        {(currentExercise.type === 'multiple-choice' || currentExercise.type === 'listening') && (
+        {/* 1. Multiple-choice, Listening & Dialogue-Reading Options */}
+        {(currentExercise.type === 'multiple-choice' || currentExercise.type === 'listening' || currentExercise.type === 'dialogue-reading') && (
           <div className="grid grid-cols-1 gap-3">
             {currentExercise.options?.map((option) => {
               const isSelected = selectedOptionId === option.id;
