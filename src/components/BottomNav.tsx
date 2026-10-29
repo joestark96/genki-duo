@@ -102,53 +102,55 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) 
         <div ref={dropdownRef} className="relative flex flex-col items-center">
           {/* Popover Dropdown Menu */}
           {menuOpen && (
-            <div className="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 w-64 bg-white dark:bg-[#18272e] border-2 border-duo-gray-200 dark:border-[#283842] rounded-3xl shadow-2xl p-2 flex flex-col gap-1.5 animate-fade-in z-50">
-              <div className="px-3 py-1.5 border-b border-gray-100 dark:border-[#283842] flex items-center justify-between">
-                <span className="text-[10px] font-black uppercase tracking-wider text-gray-400 dark:text-gray-500">
-                  Material de Estudio
-                </span>
-                <span className="text-[10px] font-bold text-duo-blue">4 secciones</span>
+            <div className="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 z-50">
+              <div className="w-64 bg-white dark:bg-[#18272e] border-2 border-duo-gray-200 dark:border-[#283842] rounded-3xl shadow-2xl p-2 flex flex-col gap-1.5 animate-fade-in">
+                <div className="px-3 py-1.5 border-b border-gray-100 dark:border-[#283842] flex items-center justify-between">
+                  <span className="text-[10px] font-black uppercase tracking-wider text-gray-400 dark:text-gray-500">
+                    Material de Estudio
+                  </span>
+                  <span className="text-[10px] font-bold text-duo-blue">4 secciones</span>
+                </div>
+
+                {studyOptions.map((option) => {
+                  const OptionIcon = option.icon;
+                  const isSelected = activeTab === option.id;
+                  return (
+                    <button
+                      key={option.id}
+                      onClick={() => {
+                        sound.playTap();
+                        onTabChange(option.id);
+                        setMenuOpen(false);
+                      }}
+                      className={`w-full flex items-center justify-between gap-3 p-2.5 rounded-2xl text-left transition-all cursor-pointer border-2 ${
+                        isSelected
+                          ? 'bg-duo-green-light/30 dark:bg-duo-green/15 border-duo-green text-gray-900 dark:text-white'
+                          : 'bg-transparent border-transparent hover:bg-gray-50 dark:hover:bg-[#131f24] text-gray-700 dark:text-gray-200'
+                      }`}
+                    >
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <div className={`w-9 h-9 rounded-xl border flex items-center justify-center flex-shrink-0 ${option.badgeColor}`}>
+                          <OptionIcon className="w-4 h-4 stroke-[2.5px]" />
+                        </div>
+                        <div className="min-w-0">
+                          <div className="text-xs font-black leading-tight truncate">
+                            {option.label}
+                          </div>
+                          <div className="text-[10px] font-semibold text-gray-400 dark:text-gray-400 truncate">
+                            {option.subtitle}
+                          </div>
+                        </div>
+                      </div>
+
+                      {isSelected && (
+                        <div className="w-5 h-5 rounded-full bg-duo-green text-white flex items-center justify-center flex-shrink-0">
+                          <Check className="w-3 h-3 stroke-[3px]" />
+                        </div>
+                      )}
+                    </button>
+                  );
+                })}
               </div>
-
-              {studyOptions.map((option) => {
-                const OptionIcon = option.icon;
-                const isSelected = activeTab === option.id;
-                return (
-                  <button
-                    key={option.id}
-                    onClick={() => {
-                      sound.playTap();
-                      onTabChange(option.id);
-                      setMenuOpen(false);
-                    }}
-                    className={`w-full flex items-center justify-between gap-3 p-2.5 rounded-2xl text-left transition-all cursor-pointer border-2 ${
-                      isSelected
-                        ? 'bg-duo-green-light/30 dark:bg-duo-green/15 border-duo-green text-gray-900 dark:text-white'
-                        : 'bg-transparent border-transparent hover:bg-gray-50 dark:hover:bg-[#131f24] text-gray-700 dark:text-gray-200'
-                    }`}
-                  >
-                    <div className="flex items-center gap-2.5 min-w-0">
-                      <div className={`w-9 h-9 rounded-xl border flex items-center justify-center flex-shrink-0 ${option.badgeColor}`}>
-                        <OptionIcon className="w-4 h-4 stroke-[2.5px]" />
-                      </div>
-                      <div className="min-w-0">
-                        <div className="text-xs font-black leading-tight truncate">
-                          {option.label}
-                        </div>
-                        <div className="text-[10px] font-semibold text-gray-400 dark:text-gray-400 truncate">
-                          {option.subtitle}
-                        </div>
-                      </div>
-                    </div>
-
-                    {isSelected && (
-                      <div className="w-5 h-5 rounded-full bg-duo-green text-white flex items-center justify-center flex-shrink-0">
-                        <Check className="w-3 h-3 stroke-[3px]" />
-                      </div>
-                    )}
-                  </button>
-                );
-              })}
             </div>
           )}
 
