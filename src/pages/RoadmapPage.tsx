@@ -89,29 +89,25 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
   return (
     <div className="max-w-md mx-auto w-full px-4 pt-4 pb-28 flex flex-col items-center relative">
       {/* Floating Action Buttons */}
-      <div className="fixed bottom-20 right-4 z-20 flex flex-col items-end gap-2.5">
+      <div className="fixed bottom-20 right-4 z-20 flex flex-col items-end gap-3 pointer-events-none">
         {/* Practice Dumbbell Floating Button */}
         <button
           onClick={handleStartPractice}
           title="Entrenamiento de repaso (10 a 20 ejercicios aleatorios)"
-          className="flex items-center gap-2 pl-3 pr-3.5 py-2.5 bg-duo-blue hover:bg-duo-blue-dark active:translate-y-1 active:shadow-none text-white font-black text-xs rounded-2xl shadow-[0_4px_0_0_#1899d6] border-2 border-white/20 transition-all backdrop-blur-md group cursor-pointer"
+          aria-label="Entrenamiento de repaso"
+          className="pointer-events-auto w-12 h-12 rounded-full bg-duo-blue hover:bg-duo-blue-dark active:translate-y-1 active:shadow-none text-white flex items-center justify-center shadow-[0_4px_0_0_#1899d6] border-2 border-white/30 transition-all cursor-pointer group"
         >
-          <div className="w-6 h-6 rounded-xl bg-white/20 flex items-center justify-center group-hover:rotate-12 transition-transform">
-            <Dumbbell className="w-4 h-4 stroke-[2.5px]" />
-          </div>
-          <span className="tracking-wide">Repasar</span>
+          <Dumbbell className="w-5 h-5 stroke-[2.5px] group-hover:rotate-12 transition-transform" />
         </button>
 
         {/* Scroll to Latest Available Lesson Floating Button */}
         <button
           onClick={handleScrollToLatest}
           title="Deslizar hasta la lección más reciente disponible"
-          className="flex items-center gap-2 pl-3 pr-3.5 py-2.5 bg-duo-green hover:bg-duo-green-dark active:translate-y-1 active:shadow-none text-white font-black text-xs rounded-2xl shadow-[0_4px_0_0_#46a302] border-2 border-white/20 transition-all backdrop-blur-md group cursor-pointer"
+          aria-label="Ir a la lección actual"
+          className="pointer-events-auto w-12 h-12 rounded-full bg-duo-green hover:bg-duo-green-dark active:translate-y-1 active:shadow-none text-white flex items-center justify-center shadow-[0_4px_0_0_#46a302] border-2 border-white/30 transition-all cursor-pointer group"
         >
-          <div className="w-6 h-6 rounded-xl bg-white/20 flex items-center justify-center group-hover:rotate-45 transition-transform">
-            <Compass className="w-4 h-4 stroke-[2.5px]" />
-          </div>
-          <span className="tracking-wide">Actual</span>
+          <Compass className="w-5 h-5 stroke-[2.5px] group-hover:rotate-45 transition-transform" />
         </button>
       </div>
 
