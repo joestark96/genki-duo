@@ -297,6 +297,14 @@ class SoundService {
     }
   }
 
+  public stopSpeech() {
+    if (this.sequenceTimer) {
+      window.clearTimeout(this.sequenceTimer);
+      this.sequenceTimer = null;
+    }
+    this.stopActivePlayback();
+  }
+
   public setEnabled(enabled: boolean) {
     this.isEnabled = enabled;
   }

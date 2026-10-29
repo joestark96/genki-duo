@@ -92,6 +92,17 @@ export const ReadingsPage: React.FC<ReadingsPageProps> = ({ units, showRomaji = 
   const [isPodcastPlaying, setIsPodcastPlaying] = useState<boolean>(false);
   const [podcastStepIdx, setPodcastStepIdx] = useState<number>(0);
   const podcastTimerRef = useRef<number | null>(null);
+  const lineRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
+  const stopPodcast = () => {
+    if (podcastTimerRef.current) {
+      window.clearTimeout(podcastTimerRef.current);
+      podcastTimerRef.current = null;
+    }
+    sound.stopSpeech();
+    setIsPodcastPlaying(false);
+    setActiveLineKey(null);
+  };
 
   const currentUnit = readingUnits.find(u => u.id === selectedUnitId) || readingUnits[0];
 
@@ -182,15 +193,22 @@ export const ReadingsPage: React.FC<ReadingsPageProps> = ({ units, showRomaji = 
     }
 
     if (podcastStepIdx >= podcastPlaylist.length) {
-      setIsPodcastPlaying(false);
+      stopPodcast();
       setPodcastStepIdx(0);
-      setActiveLineKey(null);
       return;
     }
 
     const currentItem = podcastPlaylist[podcastStepIdx];
     setActiveLineKey(currentItem.lineKey);
     sound.speakJapanese(currentItem.audioText, 0.88, currentItem.speaker);
+
+    // Smooth auto-scroll to the active dialogue bubble
+    window.setTimeout(() => {
+      const el = lineRefs.current[currentItem.lineKey];
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    }, 80);
 
     // Estimate speaking duration + shadowing pause
     const waitMs = Math.max(3800, currentItem.audioText.length * 260 + 1800);
@@ -205,10 +223,20 @@ export const ReadingsPage: React.FC<ReadingsPageProps> = ({ units, showRomaji = 
     };
   }, [isPodcastPlaying, podcastStepIdx, selectedUnitId]);
 
+  // Stop podcast on unmount
+  useEffect(() => {
+    return () => {
+      if (podcastTimerRef.current) {
+        window.clearTimeout(podcastTimerRef.current);
+      }
+      sound.stopSpeech();
+    };
+  }, []);
+
   const currentPodcastItem = isPodcastPlaying ? podcastPlaylist[podcastStepIdx] : null;
 
   return (
-    <div className="max-w-md mx-auto w-full px-4 pt-4 pb-24 flex flex-col items-center animate-fade-in">
+    <div className="max-w-md mx-auto w-full px-4 pt-4 pb-28 flex flex-col items-center relative">
       {/* Top Badge & Translation Toggle */}
       <div className="w-full flex items-center justify-between mb-4">
         <span className="text-xs font-black uppercase tracking-wider text-duo-blue flex items-center gap-1.5 bg-duo-blue-light/50 dark:bg-duo-blue/20 px-3 py-1 rounded-full border border-duo-blue/30">
@@ -290,9 +318,11 @@ export const ReadingsPage: React.FC<ReadingsPageProps> = ({ units, showRomaji = 
                   onClick={() => {
                     sound.playTap();
                     if (isPodcastPlaying) {
-                      setIsPodcastPlaying(false);
-                      setActiveLineKey(null);
+                      stopPodcast();
                     } else {
+                      if (activeFilter === 'passages') {
+                        setActiveFilter('all');
+                      }
                       setPodcastStepIdx(0);
                       setIsPodcastPlaying(true);
                     }
@@ -328,8 +358,8 @@ export const ReadingsPage: React.FC<ReadingsPageProps> = ({ units, showRomaji = 
             value={selectedUnitId}
             onChange={(e) => {
               sound.playTap();
+              stopPodcast();
               setSelectedUnitId(Number(e.target.value));
-              setActiveLineKey(null);
             }}
             className="w-full appearance-none bg-white dark:bg-[#18272e] border-2 border-duo-gray-300 dark:border-[#283842] hover:border-duo-blue focus:border-duo-blue rounded-2xl py-3 px-4 pr-10 text-xs md:text-sm font-black text-gray-800 dark:text-gray-100 shadow-[0_4px_0_0_#e5e5e5] dark:shadow-none focus:outline-none transition-all cursor-pointer"
           >
@@ -440,7 +470,14 @@ export const ReadingsPage: React.FC<ReadingsPageProps> = ({ units, showRomaji = 
                       sound.speakDialogueSequence(
                         ex.dialogueLines!,
                         0.9,
-                        (idx) => setActiveLineKey(`${ex.id}-line-${idx}`)
+                        (idx) => {
+                          const key = `${ex.id}-line-${idx}`;
+                          setActiveLineKey(key);
+                          const el = lineRefs.current[key];
+                          if (el) {
+                            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                          }
+                        }
                       );
                     }}
                     className="px-2.5 py-1.5 bg-duo-blue hover:bg-duo-blue-dark text-white rounded-xl font-black text-[11px] flex items-center gap-1 shadow-[0_3px_0_0_#1899d6] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
@@ -456,7 +493,14 @@ export const ReadingsPage: React.FC<ReadingsPageProps> = ({ units, showRomaji = 
                       sound.speakDialogueSequence(
                         ex.dialogueLines!,
                         0.65,
-                        (idx) => setActiveLineKey(`${ex.id}-line-${idx}`)
+                        (idx) => {
+                          const key = `${ex.id}-line-${idx}`;
+                          setActiveLineKey(key);
+                          const el = lineRefs.current[key];
+                          if (el) {
+                            el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                          }
+                        }
                       );
                     }}
                     className="px-2 py-1.5 bg-duo-blue-light/80 dark:bg-duo-blue/20 border border-duo-blue text-duo-blue-dark dark:text-duo-blue rounded-xl font-black text-[11px] flex items-center gap-1 hover:brightness-105 transition-all cursor-pointer"
@@ -501,11 +545,14 @@ export const ReadingsPage: React.FC<ReadingsPageProps> = ({ units, showRomaji = 
                   return (
                     <div
                       key={lineKey}
+                      ref={(el) => {
+                        lineRefs.current[lineKey] = el;
+                      }}
                       onClick={() => {
                         setActiveLineKey(lineKey);
                         sound.speakJapanese(line.audioText, 0.9, line.speaker);
                       }}
-                      className={`flex items-start gap-2.5 cursor-pointer group ${
+                      className={`flex items-start gap-2.5 cursor-pointer group scroll-mt-28 ${
                         theme.isRight ? 'flex-row-reverse' : 'flex-row'
                       }`}
                     >
@@ -687,6 +734,54 @@ export const ReadingsPage: React.FC<ReadingsPageProps> = ({ units, showRomaji = 
           </div>
         )}
       </div>
+
+      {/* Floating Podcast Control & Stop Bar */}
+      {isPodcastPlaying && (
+        <div className="fixed bottom-20 left-4 right-4 max-w-md mx-auto z-50 bg-gray-900/95 dark:bg-[#101b21]/95 text-white backdrop-blur-md border-2 border-duo-blue rounded-2xl p-3 shadow-2xl flex items-center justify-between gap-2.5">
+          <div className="flex items-center gap-2.5 min-w-0">
+            <div className="w-9 h-9 rounded-xl bg-duo-blue/25 border border-duo-blue/50 flex items-center justify-center flex-shrink-0 animate-pulse">
+              <Headphones className="w-4 h-4 text-duo-blue" />
+            </div>
+            <div className="min-w-0">
+              <div className="text-xs font-black text-white truncate">
+                {currentPodcastItem
+                  ? `${currentPodcastItem.speaker}: ${currentPodcastItem.japanese}`
+                  : 'Reproduciendo Modo Podcast...'}
+              </div>
+              <div className="text-[10px] font-bold text-gray-300 truncate">
+                {currentPodcastItem
+                  ? `Línea ${podcastStepIdx + 1} de ${podcastPlaylist.length} • ${currentPodcastItem.spanish}`
+                  : ''}
+              </div>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-1.5 flex-shrink-0">
+            <button
+              onClick={() => {
+                sound.playTap();
+                setPodcastStepIdx(prev => prev + 1);
+              }}
+              className="p-2 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer"
+              title="Siguiente línea"
+            >
+              <SkipForward className="w-4 h-4" />
+            </button>
+
+            <button
+              onClick={() => {
+                sound.playTap();
+                stopPodcast();
+              }}
+              className="px-3.5 py-2 rounded-xl bg-duo-red hover:bg-duo-red-dark text-white font-black text-xs flex items-center gap-1.5 shadow-[0_3px_0_0_#d33131] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
+              title="Detener Modo Podcast"
+            >
+              <Square className="w-3.5 h-3.5 fill-white text-white" />
+              <span>Detener</span>
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

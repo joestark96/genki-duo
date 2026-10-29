@@ -304,3 +304,4 @@ export const genkiVocabulary: VocabWord[] = [
   { id: 'v23-5', lesson: 23, japanese: '思い出', furigana: 'おもいで', romaji: 'omoide', spanish: 'Recuerdos entrañables', pos: 'noun' },
   { id: 'v23-6', lesson: 23, japanese: '忘れない', furigana: 'わすれない', romaji: 'wasurenai', spanish: 'Inolvidable / No olvidar', pos: 'expression' }
 ];
+

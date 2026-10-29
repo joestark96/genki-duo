@@ -33,8 +33,8 @@ export const App: React.FC = () => {
     id: 'local_user',
     username: 'Estudiante Genki',
     xp: 0,
-    streakDays: 1,
-    lastActiveDate: new Date().toISOString().split('T')[0],
+    streakDays: 0,
+    lastActiveDate: '',
     hearts: 5,
     maxHearts: 5,
     gems: 100,
@@ -49,6 +49,10 @@ export const App: React.FC = () => {
   const [flashcards, setFlashcards] = useState<Flashcard[]>(initialFlashcards);
   const [loading, setLoading] = useState(true);
   const [theoryUnitId, setTheoryUnitId] = useState<number>(0);
+  const [nextHeartMinutes, setNextHeartMinutes] = useState<number | null>(null);
+
+  const HEART_REGEN_MS = 60 * 60 * 1000; // 1 hour in milliseconds
+  const HEART_REGEN_KEY = 'genki_heart_regen_ts';
 
   const handleOpenTheory = (unitId: number) => {
     setTheoryUnitId(unitId);
@@ -61,8 +65,42 @@ export const App: React.FC = () => {
       try {
         await dbService.init();
 
-        // 1. Load user profile
-        const userProf = await dbService.getUserProfile();
+        // 1. Load user profile & apply offline 1-hour heart regeneration
+        let userProf = await dbService.getUserProfile();
+        if (userProf.hearts < userProf.maxHearts) {
+          const rawTs = localStorage.getItem(HEART_REGEN_KEY);
+          const now = Date.now();
+          if (rawTs) {
+            const lastTs = Number(rawTs);
+            const elapsed = now - lastTs;
+            if (elapsed >= HEART_REGEN_MS) {
+              const recovered = Math.floor(elapsed / HEART_REGEN_MS);
+              const newHearts = Math.min(userProf.maxHearts, userProf.hearts + recovered);
+              userProf = { ...userProf, hearts: newHearts };
+              await dbService.saveUserProfile(userProf);
+              if (newHearts >= userProf.maxHearts) {
+                localStorage.removeItem(HEART_REGEN_KEY);
+              } else {
+                localStorage.setItem(HEART_REGEN_KEY, String(lastTs + recovered * HEART_REGEN_MS));
+              }
+            }
+          } else {
+            localStorage.setItem(HEART_REGEN_KEY, String(now));
+          }
+        } else {
+          localStorage.removeItem(HEART_REGEN_KEY);
+        }
+
+        // 2. Load lesson progress and sync with units
+        const progressMap = await dbService.getLessonProgress();
+
+        // If profile was reset (0 XP and 0 completed stars), ensure streakDays is 0
+        const hasAnyCompleted = Object.values(progressMap).some(p => p.stars > 0);
+        if (userProf.xp === 0 && !hasAnyCompleted && userProf.streakDays > 0) {
+          userProf = { ...userProf, streakDays: 0, lastActiveDate: '' };
+          await dbService.saveUserProfile(userProf);
+        }
+
         setProfile(userProf);
         sound.setEnabled(userProf.soundEnabled);
         sound.setDefaultVoice(userProf.preferredVoiceId || 'mary');
@@ -73,9 +111,6 @@ export const App: React.FC = () => {
           document.documentElement.classList.remove('dark');
           document.body.classList.remove('dark');
         }
-
-        // 2. Load lesson progress and sync with units
-        const progressMap = await dbService.getLessonProgress();
         setUnits(prevUnits => {
           return prevUnits.map(unit => {
             let maxUnlockedIdx = -1;
@@ -169,9 +204,58 @@ export const App: React.FC = () => {
     await dbService.saveUserProfile(updated);
   };
 
+  // Automatic 1-hour heart regeneration check & live countdown
+  useEffect(() => {
+    if (profile.hearts >= profile.maxHearts) {
+      setNextHeartMinutes(null);
+      localStorage.removeItem(HEART_REGEN_KEY);
+      return;
+    }
+
+    const checkRegen = async () => {
+      const now = Date.now();
+      let rawTs = localStorage.getItem(HEART_REGEN_KEY);
+      if (!rawTs) {
+        rawTs = String(now);
+        localStorage.setItem(HEART_REGEN_KEY, rawTs);
+      }
+
+      const lastTs = Number(rawTs);
+      const elapsed = now - lastTs;
+
+      if (elapsed >= HEART_REGEN_MS) {
+        const recovered = Math.floor(elapsed / HEART_REGEN_MS);
+        const newHearts = Math.min(profile.maxHearts, profile.hearts + recovered);
+        const updated = { ...profile, hearts: newHearts };
+        setProfile(updated);
+        await dbService.saveUserProfile(updated);
+
+        if (newHearts >= profile.maxHearts) {
+          localStorage.removeItem(HEART_REGEN_KEY);
+          setNextHeartMinutes(null);
+        } else {
+          const nextStart = lastTs + recovered * HEART_REGEN_MS;
+          localStorage.setItem(HEART_REGEN_KEY, String(nextStart));
+          const remMs = Math.max(0, HEART_REGEN_MS - (now - nextStart));
+          setNextHeartMinutes(Math.max(1, Math.ceil(remMs / 60000)));
+        }
+      } else {
+        const remMs = Math.max(0, HEART_REGEN_MS - elapsed);
+        setNextHeartMinutes(Math.max(1, Math.ceil(remMs / 60000)));
+      }
+    };
+
+    checkRegen();
+    const timer = window.setInterval(checkRegen, 15000);
+    return () => window.clearInterval(timer);
+  }, [profile]);
+
   // Deduct heart on wrong answer
   const handleDeductHeart = async () => {
     if (profile.hearts <= 0) return;
+    if (!localStorage.getItem(HEART_REGEN_KEY)) {
+      localStorage.setItem(HEART_REGEN_KEY, String(Date.now()));
+    }
     const updated = { ...profile, hearts: profile.hearts - 1 };
     setProfile(updated);
     await dbService.saveUserProfile(updated);
@@ -180,6 +264,8 @@ export const App: React.FC = () => {
   // Refill hearts using gems
   const handleRefillHearts = async () => {
     if (profile.gems < 30) return;
+    localStorage.removeItem(HEART_REGEN_KEY);
+    setNextHeartMinutes(null);
     const updated = {
       ...profile,
       hearts: profile.maxHearts,
@@ -215,11 +301,16 @@ export const App: React.FC = () => {
 
   // Complete a lesson node: mark completed, award XP, unlock next node in curriculum
   const handleCompleteLesson = async (nodeId: string, earnedXp: number, stars: number) => {
-    // 1. Update Profile (XP + gems)
+    const today = new Date().toISOString().split('T')[0];
+    const shouldIncrementStreak = profile.streakDays === 0 || profile.lastActiveDate !== today;
+
+    // 1. Update Profile (XP + gems + streak)
     const updatedProfile: UserProfile = {
       ...profile,
       xp: profile.xp + earnedXp,
-      gems: profile.gems + 10
+      gems: profile.gems + 10,
+      streakDays: shouldIncrementStreak ? profile.streakDays + 1 : profile.streakDays,
+      lastActiveDate: today
     };
     setProfile(updatedProfile);
     await dbService.saveUserProfile(updatedProfile);
@@ -308,11 +399,15 @@ export const App: React.FC = () => {
 
     setUnits(newUnits);
 
-    // 3. Award +50 XP and play victory sound
+    // 3. Award +50 XP, update streak, and play victory sound
+    const today = new Date().toISOString().split('T')[0];
+    const shouldIncrementStreak = profile.streakDays === 0 || profile.lastActiveDate !== today;
     const updatedProfile: UserProfile = {
       ...profile,
       xp: profile.xp + 50,
-      gems: profile.gems + 20
+      gems: profile.gems + 20,
+      streakDays: shouldIncrementStreak ? profile.streakDays + 1 : profile.streakDays,
+      lastActiveDate: today
     };
     setProfile(updatedProfile);
     await dbService.saveUserProfile(updatedProfile);
@@ -366,7 +461,11 @@ export const App: React.FC = () => {
       <IonContent fullscreen className="bg-gray-50 dark:bg-[#131f24] transition-colors duration-200">
         <div className="min-h-screen bg-gray-50 dark:bg-[#131f24] text-gray-800 dark:text-gray-100 flex flex-col transition-colors duration-200">
           {/* Top Status Bar (Duolingo style) */}
-          <TopBar profile={profile} onSoundToggle={handleSoundToggle} />
+          <TopBar
+            profile={profile}
+            nextHeartMinutes={nextHeartMinutes}
+            onSoundToggle={handleSoundToggle}
+          />
 
           {/* Active Tab Screen */}
           <main className="flex-1">
@@ -412,6 +511,7 @@ export const App: React.FC = () => {
               <ProfilePage
                 profile={profile}
                 units={units}
+                nextHeartMinutes={nextHeartMinutes}
                 onRefillHearts={handleRefillHearts}
                 onResetProgress={handleResetProgress}
                 onToggleRomaji={handleToggleRomaji}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { User, Flame, Zap, Heart, Gem, Database, RotateCcw, Award, CheckCircle2, Volume2, Moon, Sun, Type, Sparkles, Trophy, Target, Gift } from 'lucide-react';
 import { UserProfile, Unit } from '../types';
 import { sound, CHARACTER_VOICES } from '../services/sound';
@@ -6,6 +6,7 @@ import { sound, CHARACTER_VOICES } from '../services/sound';
 interface ProfilePageProps {
   profile: UserProfile;
   units: Unit[];
+  nextHeartMinutes?: number | null;
   onRefillHearts: () => void;
   onResetProgress: () => void;
   onToggleRomaji: () => void;
@@ -17,6 +18,7 @@ interface ProfilePageProps {
 export const ProfilePage: React.FC<ProfilePageProps> = ({
   profile,
   units,
+  nextHeartMinutes,
   onRefillHearts,
   onResetProgress,
   onToggleRomaji,
@@ -45,6 +47,18 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
     });
   });
 
+  // If progress was reset (0 completed and 0 XP), ensure daily quests are also cleared
+  useEffect(() => {
+    if (completedCount === 0 && profile.xp === 0 && Object.keys(claimedQuests).length > 0) {
+      setClaimedQuests({});
+      try {
+        localStorage.removeItem(`genki_quests_${todayKey}`);
+      } catch {
+        // ignore
+      }
+    }
+  }, [completedCount, profile.xp, claimedQuests, todayKey]);
+
   const kanaUnitCompleted = units[0]?.nodes.some(n => n.stars > 0) || false;
   const genki1Started = units.filter(u => u.id >= 1 && u.id <= 12).some(u => u.nodes.some(n => n.stars > 0));
   const genki2Started = units.filter(u => u.id >= 13).some(u => u.nodes.some(n => n.stars > 0));
@@ -53,11 +67,11 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
     {
       id: 'q-lesson',
       title: 'Avance del Día',
-      desc: 'Domina al menos 1 sección en el Roadmap',
+      desc: 'Domina al menos 1 lección en el Roadmap',
       current: Math.min(completedCount, 1),
       target: 1,
       xpReward: 25,
-      gemReward: 10
+      gemReward: 2
     },
     {
       id: 'q-xp',
@@ -66,16 +80,16 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
       current: Math.min(profile.xp, 40),
       target: 40,
       xpReward: 30,
-      gemReward: 15
+      gemReward: 3
     },
     {
       id: 'q-streak',
       title: 'Constancia Samurai',
-      desc: 'Mantén tu racha activa y al menos 3 corazones',
-      current: profile.hearts >= 3 ? 1 : 0,
+      desc: 'Completa 1 lección manteniendo al menos 3 corazones',
+      current: completedCount >= 1 && profile.hearts >= 3 ? 1 : 0,
       target: 1,
       xpReward: 20,
-      gemReward: 10
+      gemReward: 2
     }
   ];
 
@@ -84,7 +98,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
       id: 'ach-first',
       icon: '🌱',
       title: 'Primer Paso en Japón',
-      desc: 'Completa tu primera sección del curso',
+      desc: 'Completa tu primera lección del curso',
       unlocked: completedCount >= 1
     },
     {
@@ -98,7 +112,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
       id: 'ach-5',
       icon: '🍵',
       title: 'Conversador de Café',
-      desc: 'Domina 5 secciones de ejercicios',
+      desc: 'Domina 5 lecciones de ejercicios',
       unlocked: completedCount >= 5
     },
     {
@@ -133,7 +147,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
       id: 'ach-samurai',
       icon: '🏯',
       title: 'Espíritu Samurai',
-      desc: 'Supera 20 secciones o 400 EXP totales',
+      desc: 'Supera 20 lecciones o 400 EXP totales',
       unlocked: completedCount >= 20 || profile.xp >= 400
     }
   ];
@@ -157,12 +171,14 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
     <div className="max-w-md mx-auto w-full px-4 pt-4 pb-24 animate-fade-in">
       {/* Profile Header */}
       <div className="flex items-center gap-4 bg-white dark:bg-[#18272e] p-5 rounded-3xl border-2 border-duo-gray-200 dark:border-[#283842] shadow-duo-card dark:shadow-none mb-4 transition-colors">
-        <div className="w-16 h-16 rounded-2xl bg-duo-green flex items-center justify-center text-white shadow-duo-btn-sm border-2 border-duo-green-dark">
-          <User className="w-8 h-8 stroke-[2.5px]" />
-        </div>
+        <img
+          src="/app-icon.png"
+          alt="NihonGo! Dojo Mascot"
+          className="w-16 h-16 rounded-2xl shadow-duo-btn-sm border-2 border-duo-blue/40 flex-shrink-0 object-cover"
+        />
         <div>
           <h2 className="text-xl font-black text-gray-800 dark:text-gray-100">{profile.username}</h2>
-          <p className="text-xs font-bold text-gray-400 dark:text-gray-400">Estudiante de Genki 3.ª Edición</p>
+          <p className="text-xs font-bold text-gray-400 dark:text-gray-400">NihonGo! Dojo (日本語道場) • Genki 3.ª Ed.</p>
           <div className="flex items-center gap-1 mt-1 text-xs font-black text-duo-green">
             <CheckCircle2 className="w-4 h-4" />
             <span>{completedCount} de {totalLessons} lecciones dominadas</span>
@@ -193,7 +209,11 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
           <Heart className="w-8 h-8 fill-duo-red text-duo-red flex-shrink-0" />
           <div>
             <div className="text-xl font-black text-gray-800 dark:text-gray-100">{profile.hearts} / {profile.maxHearts}</div>
-            <div className="text-[11px] font-bold text-gray-400 dark:text-gray-400">Corazones</div>
+            <div className="text-[11px] font-bold text-gray-400 dark:text-gray-400">
+              {profile.hearts < profile.maxHearts && nextHeartMinutes
+                ? `+1 ❤️ en ${nextHeartMinutes}m`
+                : 'Corazones'}
+            </div>
           </div>
         </div>
 
@@ -208,10 +228,16 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
 
       {/* Heart Refill Banner */}
       {profile.hearts < profile.maxHearts && (
-        <div className="bg-duo-red-light/60 dark:bg-duo-red-dark/20 border-2 border-duo-red p-4 rounded-2xl mb-5 flex items-center justify-between">
+        <div className="bg-duo-red-light/60 dark:bg-duo-red-dark/20 border-2 border-duo-red p-4 rounded-2xl mb-5 flex items-center justify-between gap-2">
           <div>
-            <h4 className="text-xs font-black text-duo-red-dark dark:text-red-300 uppercase">¿Sin vidas?</h4>
-            <p className="text-xs font-bold text-gray-600 dark:text-gray-300">Recarga todos tus corazones</p>
+            <h4 className="text-xs font-black text-duo-red-dark dark:text-red-300 uppercase">
+              {nextHeartMinutes
+                ? `Regeneración activa (+1 ❤️ en ${nextHeartMinutes} min)`
+                : '¿Recuperar vidas al instante?'}
+            </h4>
+            <p className="text-xs font-bold text-gray-600 dark:text-gray-300">
+              Se regenera 1 corazón cada hora o recarga todos ahora
+            </p>
           </div>
           <button
             onClick={() => {
@@ -219,7 +245,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
               onRefillHearts();
             }}
             disabled={profile.gems < 30}
-            className="py-2 px-3 bg-duo-red text-white text-xs font-black rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-red-dark transition-all flex items-center gap-1"
+            className="py-2 px-3 bg-duo-red text-white text-xs font-black rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-red-dark transition-all flex items-center gap-1 flex-shrink-0 cursor-pointer"
           >
             <Gem className="w-3.5 h-3.5 fill-white" />
             <span>30 Gemas</span>
@@ -235,7 +261,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
       <div className="bg-white dark:bg-[#18272e] p-4 rounded-2xl border-2 border-duo-gray-200 dark:border-[#283842] shadow-duo-card dark:shadow-none mb-5 flex flex-col gap-3 transition-colors">
         {dailyQuests.map(q => {
           const isCompleted = q.current >= q.target;
-          const isClaimed = !!claimedQuests[q.id];
+          const isClaimed = isCompleted && !!claimedQuests[q.id];
           const pct = Math.min(100, Math.round((q.current / q.target) * 100));
 
           return (
@@ -495,6 +521,12 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
           onClick={() => {
             if (window.confirm('¿Estás seguro de que quieres reiniciar todo el progreso de la base de datos?')) {
               sound.playTap();
+              setClaimedQuests({});
+              try {
+                localStorage.removeItem(`genki_quests_${todayKey}`);
+              } catch {
+                // ignore
+              }
               onResetProgress();
             }
           }}

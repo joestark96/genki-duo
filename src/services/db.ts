@@ -70,7 +70,7 @@ class DatabaseService {
         id TEXT PRIMARY KEY,
         username TEXT,
         xp INTEGER DEFAULT 0,
-        streakDays INTEGER DEFAULT 1,
+        streakDays INTEGER DEFAULT 0,
         lastActiveDate TEXT,
         hearts INTEGER DEFAULT 5,
         maxHearts INTEGER DEFAULT 5,
@@ -140,8 +140,8 @@ class DatabaseService {
           id: 'local_user',
           username: 'Estudiante Genki',
           xp: 0,
-          streakDays: 1,
-          lastActiveDate: new Date().toISOString().split('T')[0],
+          streakDays: 0,
+          lastActiveDate: '',
           hearts: 5,
           maxHearts: 5,
           gems: 100,
@@ -221,8 +221,8 @@ class DatabaseService {
       id: 'local_user',
       username: 'Estudiante Genki',
       xp: 0,
-      streakDays: 1,
-      lastActiveDate: new Date().toISOString().split('T')[0],
+      streakDays: 0,
+      lastActiveDate: '',
       hearts: 5,
       maxHearts: 5,
       gems: 100,
@@ -452,6 +452,19 @@ class DatabaseService {
       }
     }
     localStorage.removeItem(this.fallbackKey);
+    localStorage.removeItem('genki_heart_regen_ts');
+    try {
+      const keysToRemove: string[] = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k && k.startsWith('genki_quests_')) {
+          keysToRemove.push(k);
+        }
+      }
+      keysToRemove.forEach(k => localStorage.removeItem(k));
+    } catch {
+      // ignore storage errors
+    }
     this.initFallbackStorage();
   }
 }

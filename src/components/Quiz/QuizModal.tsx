@@ -124,7 +124,9 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   const [shuffledRightPairs, setShuffledRightPairs] = useState<MatchPair[]>([]);
 
   // Status: 'answering' | 'correct' | 'incorrect' | 'completed' | 'game-over' | 'jump-failed' | 'jump-passed'
-  const [status, setStatus] = useState<'answering' | 'correct' | 'incorrect' | 'completed' | 'game-over' | 'jump-failed' | 'jump-passed'>('answering');
+  const [status, setStatus] = useState<'answering' | 'correct' | 'incorrect' | 'completed' | 'game-over' | 'jump-failed' | 'jump-passed'>(
+    !isJumpAhead && userProfile.hearts <= 0 ? 'game-over' : 'answering'
+  );
   const [heartsLeft, setHeartsLeft] = useState(userProfile.hearts);
   const [jumpChancesLeft, setJumpChancesLeft] = useState(3); // 3 mistakes allowed in Jump Ahead
   const [wrongAttempts, setWrongAttempts] = useState(0);
@@ -226,9 +228,6 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         } else {
           setStatus('incorrect');
         }
-      } else if (isPractice) {
-        // En modo práctica no se restan vidas del perfil general
-        setStatus('incorrect');
       } else {
         const newHearts = Math.max(0, heartsLeft - 1);
         setHeartsLeft(newHearts);
@@ -325,6 +324,13 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         setJumpChancesLeft(remaining);
         if (remaining <= 0) {
           setStatus('jump-failed');
+        }
+      } else {
+        const newHearts = Math.max(0, heartsLeft - 1);
+        setHeartsLeft(newHearts);
+        onDeductHeart();
+        if (newHearts === 0) {
+          setStatus('game-over');
         }
       }
 
@@ -534,15 +540,18 @@ export const QuizModal: React.FC<QuizModalProps> = ({
               );
             })}
           </div>
-        ) : isPractice ? (
-          <div className="flex items-center gap-1.5 px-2.5 py-1 bg-duo-blue-light/60 dark:bg-duo-blue/20 rounded-xl border-2 border-duo-blue text-duo-blue dark:text-duo-blue-light font-black text-xs shadow-sm">
-            <Dumbbell className="w-4 h-4 stroke-[2.5px]" />
-            <span>Práctica</span>
-          </div>
         ) : (
-          <div className="flex items-center gap-1 font-black text-duo-red">
-            <Heart className="w-5 h-5 fill-duo-red animate-pulse" />
-            <span>{heartsLeft}</span>
+          <div className="flex items-center gap-2">
+            {isPractice && (
+              <div className="flex items-center gap-1 px-2 py-0.5 bg-duo-blue-light/60 dark:bg-duo-blue/20 rounded-xl border border-duo-blue text-duo-blue dark:text-duo-blue-light font-black text-[11px]">
+                <Dumbbell className="w-3.5 h-3.5 stroke-[2.5px]" />
+                <span>Práctica</span>
+              </div>
+            )}
+            <div className="flex items-center gap-1 font-black text-duo-red">
+              <Heart className="w-5 h-5 fill-duo-red animate-pulse" />
+              <span>{heartsLeft}</span>
+            </div>
           </div>
         )}
       </div>
@@ -562,7 +571,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         <div className="w-full bg-duo-blue-light/50 dark:bg-duo-blue/20 border-b-2 border-duo-blue/40 py-1.5 px-4 text-center">
           <span className="text-xs font-black text-duo-blue-dark dark:text-duo-blue uppercase tracking-wider flex items-center justify-center gap-1.5">
             <Dumbbell className="w-4 h-4" />
-            Entrenamiento de Repaso • Las respuestas incorrectas no restan vidas
+            Entrenamiento de Repaso • Ejercicios aleatorios de tus lecciones
           </span>
         </div>
       )}

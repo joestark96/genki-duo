@@ -1,8 +1,8 @@
 import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.genkiduo.japanese',
-  appName: 'GenkiDuo Japanese',
+  appId: 'com.nihongodojo.app',
+  appName: 'NihonGo! Dojo',
   webDir: 'dist',
   server: {
     androidScheme: 'https'
