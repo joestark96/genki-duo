@@ -1,5 +1,5 @@
-import React from 'react';
-import { User, Flame, Zap, Heart, Gem, Database, RotateCcw, Award, CheckCircle2, Volume2, Moon, Sun, Type, Sparkles } from 'lucide-react';
+import React, { useState } from 'react';
+import { User, Flame, Zap, Heart, Gem, Database, RotateCcw, Award, CheckCircle2, Volume2, Moon, Sun, Type, Sparkles, Trophy, Target, Gift } from 'lucide-react';
 import { UserProfile, Unit } from '../types';
 import { sound } from '../services/sound';
 
@@ -10,6 +10,7 @@ interface ProfilePageProps {
   onResetProgress: () => void;
   onToggleRomaji: () => void;
   onToggleDarkMode: () => void;
+  onClaimQuestReward?: (xp: number, gems: number) => void;
 }
 
 export const ProfilePage: React.FC<ProfilePageProps> = ({
@@ -18,8 +19,19 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
   onRefillHearts,
   onResetProgress,
   onToggleRomaji,
-  onToggleDarkMode
+  onToggleDarkMode,
+  onClaimQuestReward
 }) => {
+  const todayKey = new Date().toISOString().split('T')[0];
+  const [claimedQuests, setClaimedQuests] = useState<Record<string, boolean>>(() => {
+    try {
+      const raw = localStorage.getItem(`genki_quests_${todayKey}`);
+      return raw ? JSON.parse(raw) : {};
+    } catch {
+      return {};
+    }
+  });
+
   // Calculate completed lessons
   let completedCount = 0;
   let totalLessons = 0;
@@ -30,6 +42,114 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
       if (n.stars > 0) completedCount++;
     });
   });
+
+  const kanaUnitCompleted = units[0]?.nodes.some(n => n.stars > 0) || false;
+  const genki1Started = units.filter(u => u.id >= 1 && u.id <= 12).some(u => u.nodes.some(n => n.stars > 0));
+  const genki2Started = units.filter(u => u.id >= 13).some(u => u.nodes.some(n => n.stars > 0));
+
+  const dailyQuests = [
+    {
+      id: 'q-lesson',
+      title: 'Avance del Día',
+      desc: 'Domina al menos 1 sección en el Roadmap',
+      current: Math.min(completedCount, 1),
+      target: 1,
+      xpReward: 25,
+      gemReward: 10
+    },
+    {
+      id: 'q-xp',
+      title: 'Cazador de Experiencia',
+      desc: 'Acumula 40 puntos de EXP estudiando',
+      current: Math.min(profile.xp, 40),
+      target: 40,
+      xpReward: 30,
+      gemReward: 15
+    },
+    {
+      id: 'q-streak',
+      title: 'Constancia Samurai',
+      desc: 'Mantén tu racha activa y al menos 3 corazones',
+      current: profile.hearts >= 3 ? 1 : 0,
+      target: 1,
+      xpReward: 20,
+      gemReward: 10
+    }
+  ];
+
+  const achievements = [
+    {
+      id: 'ach-first',
+      icon: '🌱',
+      title: 'Primer Paso en Japón',
+      desc: 'Completa tu primera sección del curso',
+      unlocked: completedCount >= 1
+    },
+    {
+      id: 'ach-kana',
+      icon: '🔤',
+      title: 'Iniciado en Kanas',
+      desc: 'Completa una lección de Hiragana o Katakana',
+      unlocked: kanaUnitCompleted
+    },
+    {
+      id: 'ach-5',
+      icon: '🍵',
+      title: 'Conversador de Café',
+      desc: 'Domina 5 secciones de ejercicios',
+      unlocked: completedCount >= 5
+    },
+    {
+      id: 'ach-xp100',
+      icon: '⚡',
+      title: 'Centurión de EXP',
+      desc: 'Alcanza 100 puntos de experiencia',
+      unlocked: profile.xp >= 100
+    },
+    {
+      id: 'ach-gems',
+      icon: '💎',
+      title: 'Tesoro de Kioto',
+      desc: 'Reúne 120 gemas o más',
+      unlocked: profile.gems >= 120
+    },
+    {
+      id: 'ach-genki1',
+      icon: '📘',
+      title: 'Aventurero Genki I (N5)',
+      desc: 'Avanza en las lecciones de Genki I (L1–L12)',
+      unlocked: genki1Started
+    },
+    {
+      id: 'ach-genki2',
+      icon: '📗',
+      title: 'Viajero Genki II (N4)',
+      desc: 'Avanza en las lecciones de Genki II (L13–L23)',
+      unlocked: genki2Started
+    },
+    {
+      id: 'ach-samurai',
+      icon: '🏯',
+      title: 'Espíritu Samurai',
+      desc: 'Supera 20 secciones o 400 EXP totales',
+      unlocked: completedCount >= 20 || profile.xp >= 400
+    }
+  ];
+
+  const handleClaimQuest = (questId: string, xpReward: number, gemReward: number) => {
+    if (claimedQuests[questId]) return;
+    sound.playLessonComplete();
+    const updated = { ...claimedQuests, [questId]: true };
+    setClaimedQuests(updated);
+    try {
+      localStorage.setItem(`genki_quests_${todayKey}`, JSON.stringify(updated));
+    } catch {
+      // ignore storage errors
+    }
+    if (onClaimQuestReward) {
+      onClaimQuestReward(xpReward, gemReward);
+    }
+  };
 
   return (
     <div className="max-w-md mx-auto w-full px-4 pt-4 pb-24 animate-fade-in">
@@ -104,6 +224,92 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
           </button>
         </div>
       )}
+
+      {/* Daily Quests (Misiones Diarias) */}
+      <h3 className="text-sm font-black text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+        <Target className="w-4 h-4 text-duo-orange" />
+        <span>Misiones Diarias</span>
+      </h3>
+      <div className="bg-white dark:bg-[#18272e] p-4 rounded-2xl border-2 border-duo-gray-200 dark:border-[#283842] shadow-duo-card dark:shadow-none mb-5 flex flex-col gap-3 transition-colors">
+        {dailyQuests.map(q => {
+          const isCompleted = q.current >= q.target;
+          const isClaimed = !!claimedQuests[q.id];
+          const pct = Math.min(100, Math.round((q.current / q.target) * 100));
+
+          return (
+            <div
+              key={q.id}
+              className="p-3 rounded-2xl bg-gray-50 dark:bg-[#131f24] border border-gray-200 dark:border-[#283842] flex flex-col gap-2"
+            >
+              <div className="flex items-start justify-between gap-2">
+                <div>
+                  <h4 className="text-xs font-black text-gray-800 dark:text-gray-100">{q.title}</h4>
+                  <p className="text-[11px] font-semibold text-gray-500 dark:text-gray-400">{q.desc}</p>
+                </div>
+
+                {isClaimed ? (
+                  <span className="px-2.5 py-1 rounded-xl bg-duo-green/15 text-duo-green font-black text-[10px] flex items-center gap-1 flex-shrink-0">
+                    <CheckCircle2 className="w-3.5 h-3.5" /> Reclamada
+                  </span>
+                ) : isCompleted ? (
+                  <button
+                    onClick={() => handleClaimQuest(q.id, q.xpReward, q.gemReward)}
+                    className="px-2.5 py-1 rounded-xl bg-duo-yellow hover:bg-duo-yellow-dark text-gray-900 font-black text-[10px] flex items-center gap-1 shadow-xs cursor-pointer animate-bounce flex-shrink-0"
+                  >
+                    <Gift className="w-3.5 h-3.5" /> +{q.xpReward} XP / +{q.gemReward} 💎
+                  </button>
+                ) : (
+                  <span className="px-2 py-0.5 rounded-lg bg-gray-200 dark:bg-gray-800 text-gray-500 text-[10px] font-bold flex-shrink-0">
+                    +{q.xpReward} XP
+                  </span>
+                )}
+              </div>
+
+              <div className="w-full h-2.5 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                <div
+                  className="h-full bg-duo-orange rounded-full transition-all duration-300"
+                  style={{ width: `${pct}%` }}
+                />
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      {/* Achievements Gallery (Medallas y Logros) */}
+      <h3 className="text-sm font-black text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-2 flex items-center justify-between">
+        <span className="flex items-center gap-1.5">
+          <Trophy className="w-4 h-4 text-duo-yellow-dark" />
+          <span>Medallas y Logros</span>
+        </span>
+        <span className="text-xs font-bold text-duo-blue">
+          {achievements.filter(a => a.unlocked).length} / {achievements.length}
+        </span>
+      </h3>
+      <div className="grid grid-cols-2 gap-2.5 mb-5">
+        {achievements.map(ach => (
+          <div
+            key={ach.id}
+            className={`p-3 rounded-2xl border-2 flex items-center gap-2.5 transition-all ${
+              ach.unlocked
+                ? 'bg-white dark:bg-[#18272e] border-duo-yellow shadow-sm'
+                : 'bg-gray-100/70 dark:bg-[#18272e]/40 border-gray-200 dark:border-[#283842] opacity-55 grayscale'
+            }`}
+          >
+            <div className="w-10 h-10 rounded-xl bg-duo-yellow/20 border border-duo-yellow/40 flex items-center justify-center text-xl flex-shrink-0">
+              {ach.icon}
+            </div>
+            <div className="min-w-0">
+              <div className="text-xs font-black text-gray-800 dark:text-gray-100 leading-tight truncate">
+                {ach.title}
+              </div>
+              <div className="text-[10px] font-semibold text-gray-500 dark:text-gray-400 leading-tight mt-0.5">
+                {ach.desc}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
 
       {/* Preferences & Visualization Controls (Dark Mode & Romaji Toggle) */}
       <h3 className="text-sm font-black text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">

@@ -1,6 +1,8 @@
 import { Flashcard } from '../types';
+import { kanjiList } from './kanjiData';
+import { genkiVocabulary } from './vocabularyData';
 
-export const initialFlashcards: Flashcard[] = [
+const baseFlashcards: Flashcard[] = [
   // --- HIRAGANA (Gojuon + Dakuten + Yoon) ---
   {
     id: 'hira-a',
@@ -1428,4 +1430,65 @@ export const initialFlashcards: Flashcard[] = [
     "timesReviewed": 0,
     "timesCorrect": 0
   }
+];
+
+const existingKanjiSet = new Set(
+  baseFlashcards.filter(c => c.category === 'kanji').map(c => c.japanese)
+);
+
+const extraKanjiCards: Flashcard[] = kanjiList
+  .filter(k => !existingKanjiSet.has(k.kanji))
+  .map(k => ({
+    id: `fc-${k.id}`,
+    category: 'kanji' as const,
+    jlptLevel: k.jlptLevel,
+    genkiLesson: k.genkiLesson || 1,
+    japanese: k.kanji,
+    furigana: k.kunyomi !== 'ー' ? k.kunyomi.split('、')[0].replace('・', '') : k.onyomi.split('、')[0],
+    romaji: k.compounds?.[0]?.romaji || '',
+    spanish: k.spanish,
+    onyomi: k.onyomi,
+    kunyomi: k.kunyomi,
+    strokeCount: k.strokeCount,
+    radicals: k.radicals,
+    compounds: k.compounds,
+    exampleSentence: k.exampleSentence,
+    exampleTranslation: k.exampleTranslation,
+    notes: k.notes,
+    srsLevel: 0,
+    intervalDays: 1,
+    nextReviewDate: new Date().toISOString(),
+    timesReviewed: 0,
+    timesCorrect: 0
+  }));
+
+const existingVocabSet = new Set(
+  baseFlashcards.filter(c => c.category === 'vocabulary' || c.category === 'phrases').map(c => c.japanese)
+);
+
+const extraVocabCards: Flashcard[] = genkiVocabulary
+  .filter(v => !existingVocabSet.has(v.japanese))
+  .map(v => ({
+    id: `fc-voc-${v.id}`,
+    category: (v.pos === 'expression' ? 'phrases' : 'vocabulary') as 'phrases' | 'vocabulary',
+    jlptLevel: v.lesson <= 12 ? 'N5' : 'N4',
+    genkiLesson: v.lesson,
+    japanese: v.japanese,
+    furigana: v.furigana,
+    romaji: v.romaji,
+    spanish: v.spanish,
+    exampleSentence: v.exampleSentence,
+    exampleTranslation: v.exampleTranslation,
+    notes: `Genki Lección ${v.lesson}`,
+    srsLevel: 0,
+    intervalDays: 1,
+    nextReviewDate: new Date().toISOString(),
+    timesReviewed: 0,
+    timesCorrect: 0
+  }));
+
+export const initialFlashcards: Flashcard[] = [
+  ...baseFlashcards,
+  ...extraKanjiCards,
+  ...extraVocabCards
 ];

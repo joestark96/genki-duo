@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { X, Heart, Volume2, CheckCircle2, AlertCircle, ArrowRight, Trophy, Sparkles, RotateCcw, FastForward, ShieldAlert, Dumbbell, BookOpen, Eye, EyeOff } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { Exercise, ExerciseOption, LessonNode, MatchPair, UserProfile } from '../../types';
+import { SpeechPracticeButton } from '../SpeechPracticeButton';
 import { sound } from '../../services/sound';
 
 function shuffleArray<T>(array: T[]): T[] {
@@ -699,18 +700,25 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                                 {line.speaker}
                               </span>
 
-                              <button
-                                type="button"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  setActiveDialogueLineIdx(lIdx);
-                                  sound.speakJapanese(line.audioText, 0.9);
-                                }}
-                                className={`p-1.5 rounded-xl transition-colors flex-shrink-0 ${theme.audioBtn}`}
-                                title="Escuchar esta línea"
-                              >
-                                <Volume2 className={`w-3.5 h-3.5 ${isActiveLine ? 'animate-pulse' : ''}`} />
-                              </button>
+                              <div className="flex items-center gap-1 flex-shrink-0">
+                                <SpeechPracticeButton
+                                  targetJapanese={line.japanese}
+                                  targetFurigana={line.audioText}
+                                  compact
+                                />
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    setActiveDialogueLineIdx(lIdx);
+                                    sound.speakJapanese(line.audioText, 0.9);
+                                  }}
+                                  className={`p-1.5 rounded-xl transition-colors flex-shrink-0 ${theme.audioBtn}`}
+                                  title="Escuchar esta línea"
+                                >
+                                  <Volume2 className={`w-3.5 h-3.5 ${isActiveLine ? 'animate-pulse' : ''}`} />
+                                </button>
+                              </div>
                             </div>
 
                             {/* Message Body */}

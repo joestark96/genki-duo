@@ -185,6 +185,17 @@ export const App: React.FC = () => {
     await dbService.saveUserProfile(updated);
   };
 
+  // Claim daily quest reward
+  const handleClaimQuestReward = async (xpReward: number, gemReward: number) => {
+    const updated: UserProfile = {
+      ...profile,
+      xp: profile.xp + xpReward,
+      gems: profile.gems + gemReward
+    };
+    setProfile(updated);
+    await dbService.saveUserProfile(updated);
+  };
+
   // Complete a lesson node: mark completed, award XP, unlock next node in curriculum
   const handleCompleteLesson = async (nodeId: string, earnedXp: number, stars: number) => {
     // 1. Update Profile (XP + gems)
@@ -382,6 +393,7 @@ export const App: React.FC = () => {
                 onResetProgress={handleResetProgress}
                 onToggleRomaji={handleToggleRomaji}
                 onToggleDarkMode={handleToggleDarkMode}
+                onClaimQuestReward={handleClaimQuestReward}
               />
             )}
           </main>

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import { X, Volume2, Sparkles, BookOpen, Layers, Info } from 'lucide-react';
 import { KanjiItem } from '../../data/kanjiData';
+import { StrokePracticeCanvas } from './StrokePracticeCanvas';
 import { sound } from '../../services/sound';
 
 interface KanjiDetailModalProps {
@@ -177,6 +178,13 @@ export const KanjiDetailModal: React.FC<KanjiDetailModalProps> = ({
               )}
             </div>
           </div>
+
+          {/* Interactive Stroke Practice Canvas */}
+          <StrokePracticeCanvas
+            character={kanji.kanji}
+            expectedStrokes={kanji.strokeCount}
+            label={`Práctica de Caligrafía (${kanji.kanji})`}
+          />
 
           {/* Compounds / Vocabulary */}
           {kanji.compounds && kanji.compounds.length > 0 && (

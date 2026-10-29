@@ -6198,5 +6198,5847 @@ export const kanjiList: KanjiItem[] = [
     "exampleSentence": "絶対に負けません。",
     "exampleTranslation": "No perderé de ninguna manera.",
     "notes": "Cargar la derrota sobre la espalda."
+  },
+  {
+    "id": "k-exp-179",
+    "kanji": "代",
+    "spanish": "Sustituir / Era / Costo",
+    "english": "Substitute / Age",
+    "onyomi": "ダイ、タイ",
+    "kunyomi": "か・わる、よ",
+    "strokeCount": 5,
+    "radicals": "人 (persona)",
+    "jlptLevel": "N4",
+    "genkiLesson": 14,
+    "compounds": [
+      {
+        "word": "時代",
+        "furigana": "じだい",
+        "romaji": "jidai",
+        "meaning": "Época / Era"
+      }
+    ],
+    "exampleSentence": "新しい時代が始まりました。",
+    "exampleTranslation": "Comenzó una nueva era.",
+    "notes": "Genki Lección 14 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-180",
+    "kanji": "留",
+    "spanish": "Permanecer / Detener",
+    "english": "Detain / Stay",
+    "onyomi": "リュウ、ル",
+    "kunyomi": "と・める",
+    "strokeCount": 10,
+    "radicals": "田 (campo)",
+    "jlptLevel": "N4",
+    "genkiLesson": 14,
+    "compounds": [
+      {
+        "word": "留学",
+        "furigana": "りゅうがく",
+        "romaji": "ryuugaku",
+        "meaning": "Estudiar en el extranjero"
+      }
+    ],
+    "exampleSentence": "来年日本に留学したいです。",
+    "exampleTranslation": "El próximo año quiero estudiar en Japón.",
+    "notes": "Genki Lección 14 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-181",
+    "kanji": "当",
+    "spanish": "Acertar / Este",
+    "english": "Hit / Right",
+    "onyomi": "トウ",
+    "kunyomi": "あ・たる",
+    "strokeCount": 6,
+    "radicals": "小 (pequeño)",
+    "jlptLevel": "N4",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "本当",
+        "furigana": "ほんとう",
+        "romaji": "hontou",
+        "meaning": "Verdad / Realidad"
+      }
+    ],
+    "exampleSentence": "それは本当ですか。",
+    "exampleTranslation": "¿Eso es verdad?",
+    "notes": "Genki Lección 15 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-182",
+    "kanji": "死",
+    "spanish": "Muerte / Morir",
+    "english": "Death / Die",
+    "onyomi": "シ",
+    "kunyomi": "し・ぬ",
+    "strokeCount": 6,
+    "radicals": "歹 (hueso)",
+    "jlptLevel": "N4",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "死ぬ",
+        "furigana": "しぬ",
+        "romaji": "shinu",
+        "meaning": "Morir"
+      }
+    ],
+    "exampleSentence": "虫が死んでしまいました。",
+    "exampleTranslation": "El insecto murió.",
+    "notes": "Genki Lección 15 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-183",
+    "kanji": "意",
+    "spanish": "Idea / Mente / Intención",
+    "english": "Idea / Mind",
+    "onyomi": "イ",
+    "kunyomi": "ー",
+    "strokeCount": 13,
+    "radicals": "心 (corazón)",
+    "jlptLevel": "N4",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "意味",
+        "furigana": "いみ",
+        "romaji": "imi",
+        "meaning": "Significado"
+      }
+    ],
+    "exampleSentence": "この漢字の意味は何ですか。",
+    "exampleTranslation": "¿Cuál es el significado de este kanji?",
+    "notes": "Genki Lección 15 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-184",
+    "kanji": "味",
+    "spanish": "Sabor / Gusto",
+    "english": "Flavor / Taste",
+    "onyomi": "ミ",
+    "kunyomi": "あじ",
+    "strokeCount": 8,
+    "radicals": "口 (boca)",
+    "jlptLevel": "N4",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "趣味",
+        "furigana": "しゅみ",
+        "romaji": "shumi",
+        "meaning": "Pasatiempo / Hobby"
+      }
+    ],
+    "exampleSentence": "私の趣味は読書です。",
+    "exampleTranslation": "Mi pasatiempo es la lectura.",
+    "notes": "Genki Lección 15 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-185",
+    "kanji": "注",
+    "spanish": "Verter / Concentrarse",
+    "english": "Pour / Concentrate",
+    "onyomi": "チュウ",
+    "kunyomi": "そそ・ぐ",
+    "strokeCount": 8,
+    "radicals": "水 (agua)",
+    "jlptLevel": "N4",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "注意",
+        "furigana": "ちゅうい",
+        "romaji": "chuui",
+        "meaning": "Atención / Cuidado"
+      }
+    ],
+    "exampleSentence": "車に注意してください。",
+    "exampleTranslation": "Por favor ten cuidado con los autos.",
+    "notes": "Genki Lección 15 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-186",
+    "kanji": "夏",
+    "spanish": "Verano",
+    "english": "Summer",
+    "onyomi": "カ",
+    "kunyomi": "なつ",
+    "strokeCount": 10,
+    "radicals": "夂 (invierno)",
+    "jlptLevel": "N4",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "夏休み",
+        "furigana": "なつやすみ",
+        "romaji": "natsuyasumi",
+        "meaning": "Vacaciones de verano"
+      }
+    ],
+    "exampleSentence": "夏休みに海へ行きたいです。",
+    "exampleTranslation": "Quiero ir al mar en las vacaciones de verano.",
+    "notes": "Genki Lección 15 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-187",
+    "kanji": "魚",
+    "spanish": "Pez / Pescado",
+    "english": "Fish",
+    "onyomi": "ギョ",
+    "kunyomi": "さかな、うお",
+    "strokeCount": 11,
+    "radicals": "魚 (pez)",
+    "jlptLevel": "N5",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "金魚",
+        "furigana": "きんぎょ",
+        "romaji": "kingyo",
+        "meaning": "Pez dorado"
+      }
+    ],
+    "exampleSentence": "晩ご飯に魚を食べました。",
+    "exampleTranslation": "Comí pescado en la cena.",
+    "notes": "Genki Lección 15 • Nivel JLPT N5"
+  },
+  {
+    "id": "k-exp-188",
+    "kanji": "寺",
+    "spanish": "Templo budista",
+    "english": "Buddhist temple",
+    "onyomi": "ジ",
+    "kunyomi": "てら",
+    "strokeCount": 6,
+    "radicals": "寸 (pulgada)",
+    "jlptLevel": "N4",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "お寺",
+        "furigana": "おてら",
+        "romaji": "otera",
+        "meaning": "Templo budista"
+      }
+    ],
+    "exampleSentence": "京都には古いお寺がたくさんあります。",
+    "exampleTranslation": "En Kioto hay muchos templos antiguos.",
+    "notes": "Genki Lección 15 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-189",
+    "kanji": "広",
+    "spanish": "Amplio / Espacioso",
+    "english": "Wide / Spacious",
+    "onyomi": "コウ",
+    "kunyomi": "ひろ・い",
+    "strokeCount": 5,
+    "radicals": "广 (edificio)",
+    "jlptLevel": "N4",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "広い",
+        "furigana": "ひろい",
+        "romaji": "hiroi",
+        "meaning": "Amplio / Espacioso"
+      }
+    ],
+    "exampleSentence": "この公園はとても広いです。",
+    "exampleTranslation": "Este parque es muy amplio.",
+    "notes": "Genki Lección 15 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-190",
+    "kanji": "転",
+    "spanish": "Rodar / Girar",
+    "english": "Revolve / Turn",
+    "onyomi": "テン",
+    "kunyomi": "ころ・がる",
+    "strokeCount": 11,
+    "radicals": "車 (coche)",
+    "jlptLevel": "N4",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "自転車",
+        "furigana": "じてんしゃ",
+        "romaji": "jitensha",
+        "meaning": "Bicicleta"
+      }
+    ],
+    "exampleSentence": "毎日自転車で大学に行きます。",
+    "exampleTranslation": "Voy a la universidad en bicicleta todos los días.",
+    "notes": "Genki Lección 15 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-191",
+    "kanji": "借",
+    "spanish": "Pedir prestado",
+    "english": "Borrow",
+    "onyomi": "シャク",
+    "kunyomi": "か・りる",
+    "strokeCount": 10,
+    "radicals": "人 (persona)",
+    "jlptLevel": "N4",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "借りる",
+        "furigana": "かりる",
+        "romaji": "kariru",
+        "meaning": "Pedir prestado"
+      }
+    ],
+    "exampleSentence": "図書館で本を借りました。",
+    "exampleTranslation": "Pedí prestado un libro en la biblioteca.",
+    "notes": "Genki Lección 15 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-192",
+    "kanji": "走",
+    "spanish": "Correr",
+    "english": "Run",
+    "onyomi": "ソウ",
+    "kunyomi": "はし・る",
+    "strokeCount": 7,
+    "radicals": "走 (correr)",
+    "jlptLevel": "N4",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "走る",
+        "furigana": "はしる",
+        "romaji": "hashiru",
+        "meaning": "Correr"
+      }
+    ],
+    "exampleSentence": "毎朝公園を走っています。",
+    "exampleTranslation": "Corro en el parque todas las mañanas.",
+    "notes": "Genki Lección 15 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-193",
+    "kanji": "建",
+    "spanish": "Construir / Edificar",
+    "english": "Build",
+    "onyomi": "ケン、コン",
+    "kunyomi": "た・てる",
+    "strokeCount": 9,
+    "radicals": "廴 (marchar)",
+    "jlptLevel": "N4",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "建物",
+        "furigana": "たてもの",
+        "romaji": "tatemono",
+        "meaning": "Edificio"
+      }
+    ],
+    "exampleSentence": "あの白い建物は美術館です。",
+    "exampleTranslation": "Aquel edificio blanco es un museo de arte.",
+    "notes": "Genki Lección 15 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-194",
+    "kanji": "地",
+    "spanish": "Tierra / Suelo",
+    "english": "Ground / Earth",
+    "onyomi": "チ、ジ",
+    "kunyomi": "ー",
+    "strokeCount": 6,
+    "radicals": "土 (tierra)",
+    "jlptLevel": "N4",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "地下鉄",
+        "furigana": "ちかてつ",
+        "romaji": "chikatetsu",
+        "meaning": "Metro / Subterráneo"
+      }
+    ],
+    "exampleSentence": "東京は地下鉄が便利です。",
+    "exampleTranslation": "En Tokio el metro es muy conveniente.",
+    "notes": "Genki Lección 15 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-195",
+    "kanji": "場",
+    "spanish": "Lugar / Plaza",
+    "english": "Place / Location",
+    "onyomi": "ジョウ",
+    "kunyomi": "ば",
+    "strokeCount": 12,
+    "radicals": "土 (tierra)",
+    "jlptLevel": "N4",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "場所",
+        "furigana": "ばしょ",
+        "romaji": "basho",
+        "meaning": "Lugar / Ubicación"
+      }
+    ],
+    "exampleSentence": "パーティーの場所を教えてください。",
+    "exampleTranslation": "Por favor dime el lugar de la fiesta.",
+    "notes": "Genki Lección 15 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-196",
+    "kanji": "足",
+    "spanish": "Pie / Pierna / Suficiente",
+    "english": "Foot / Sufficient",
+    "onyomi": "ソク",
+    "kunyomi": "あし、た・りる",
+    "strokeCount": 7,
+    "radicals": "足 (pie)",
+    "jlptLevel": "N5",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "足りる",
+        "furigana": "たりる",
+        "romaji": "tariru",
+        "meaning": "Ser suficiente"
+      }
+    ],
+    "exampleSentence": "お金が足りません。",
+    "exampleTranslation": "No me alcanza el dinero.",
+    "notes": "Genki Lección 15 • Nivel JLPT N5"
+  },
+  {
+    "id": "k-exp-197",
+    "kanji": "通",
+    "spanish": "Pasar / Concurrir",
+    "english": "Pass through / Commute",
+    "onyomi": "ツウ",
+    "kunyomi": "とお・る、かよ・う",
+    "strokeCount": 10,
+    "radicals": "辵 (camino)",
+    "jlptLevel": "N4",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "通う",
+        "furigana": "かよう",
+        "romaji": "kayou",
+        "meaning": "Asistir regularmente"
+      }
+    ],
+    "exampleSentence": "日本語学校に通っています。",
+    "exampleTranslation": "Asisto a una escuela de japonés.",
+    "notes": "Genki Lección 15 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-198",
+    "kanji": "供",
+    "spanish": "Ofrecer / Acompañante",
+    "english": "Offer / Companion",
+    "onyomi": "キョウ、ク",
+    "kunyomi": "とも",
+    "strokeCount": 8,
+    "radicals": "人 (persona)",
+    "jlptLevel": "N4",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "子供",
+        "furigana": "こども",
+        "romaji": "kodomo",
+        "meaning": "Niño / Hijo"
+      }
+    ],
+    "exampleSentence": "公園で子供たちが遊んでいます。",
+    "exampleTranslation": "Los niños están jugando en el parque.",
+    "notes": "Genki Lección 16 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-199",
+    "kanji": "世",
+    "spanish": "Mundo / Generación",
+    "english": "World / Generation",
+    "onyomi": "セイ、セ",
+    "kunyomi": "よ",
+    "strokeCount": 5,
+    "radicals": "一 (uno)",
+    "jlptLevel": "N4",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "世界",
+        "furigana": "せかい",
+        "romaji": "sekai",
+        "meaning": "El mundo"
+      }
+    ],
+    "exampleSentence": "世界中を旅行したいです。",
+    "exampleTranslation": "Quiero viajar por todo el mundo.",
+    "notes": "Genki Lección 16 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-200",
+    "kanji": "界",
+    "spanish": "Límite / Mundo",
+    "english": "World / Boundary",
+    "onyomi": "カイ",
+    "kunyomi": "ー",
+    "strokeCount": 9,
+    "radicals": "田 (campo)",
+    "jlptLevel": "N4",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "世界",
+        "furigana": "せかい",
+        "romaji": "sekai",
+        "meaning": "Mundo"
+      }
+    ],
+    "exampleSentence": "世界で一番高い山です。",
+    "exampleTranslation": "Es la montaña más alta del mundo.",
+    "notes": "Genki Lección 16 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-201",
+    "kanji": "全",
+    "spanish": "Todo / Completo",
+    "english": "Whole / All",
+    "onyomi": "ゼン",
+    "kunyomi": "まった・く、すべ・て",
+    "strokeCount": 6,
+    "radicals": "入 (entrar)",
+    "jlptLevel": "N4",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "全部",
+        "furigana": "ぜんぶ",
+        "romaji": "zenbu",
+        "meaning": "Todo / Por completo"
+      }
+    ],
+    "exampleSentence": "宿題を全部やりました。",
+    "exampleTranslation": "Hice toda la tarea.",
+    "notes": "Genki Lección 16 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-202",
+    "kanji": "部",
+    "spanish": "Sección / Departamento / Club",
+    "english": "Section / Club",
+    "onyomi": "ブ",
+    "kunyomi": "ー",
+    "strokeCount": 11,
+    "radicals": "邑 (pueblo)",
+    "jlptLevel": "N4",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "部屋",
+        "furigana": "へや",
+        "romaji": "heya",
+        "meaning": "Habitación / Cuarto"
+      }
+    ],
+    "exampleSentence": "私の部屋は二階にあります。",
+    "exampleTranslation": "Mi habitación está en el segundo piso.",
+    "notes": "Genki Lección 16 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-203",
+    "kanji": "始",
+    "spanish": "Comenzar / Empezar",
+    "english": "Begin / Start",
+    "onyomi": "シ",
+    "kunyomi": "はじ・める、はじ・まる",
+    "strokeCount": 8,
+    "radicals": "女 (mujer)",
+    "jlptLevel": "N4",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "始まる",
+        "furigana": "はじまる",
+        "romaji": "hajimaru",
+        "meaning": "Empezar (intransitivo)"
+      }
+    ],
+    "exampleSentence": "授業は九時に始まります。",
+    "exampleTranslation": "La clase empieza a las nueve.",
+    "notes": "Genki Lección 16 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-204",
+    "kanji": "週",
+    "spanish": "Semana",
+    "english": "Week",
+    "onyomi": "シュウ",
+    "kunyomi": "ー",
+    "strokeCount": 11,
+    "radicals": "辵 (camino)",
+    "jlptLevel": "N5",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "来週",
+        "furigana": "らいしゅう",
+        "romaji": "raishuu",
+        "meaning": "La próxima semana"
+      }
+    ],
+    "exampleSentence": "来週テストがあります。",
+    "exampleTranslation": "La próxima semana hay examen.",
+    "notes": "Genki Lección 16 • Nivel JLPT N5"
+  },
+  {
+    "id": "k-exp-205",
+    "kanji": "以",
+    "spanish": "Por medio de / Desde",
+    "english": "By means of / Compared with",
+    "onyomi": "イ",
+    "kunyomi": "ー",
+    "strokeCount": 5,
+    "radicals": "人 (persona)",
+    "jlptLevel": "N4",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "以上",
+        "furigana": "いじょう",
+        "romaji": "ijou",
+        "meaning": "Más de / Eso es todo"
+      }
+    ],
+    "exampleSentence": "質問は以上です。",
+    "exampleTranslation": "Eso es todo en cuanto a preguntas.",
+    "notes": "Genki Lección 16 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-206",
+    "kanji": "考",
+    "spanish": "Pensar / Considerar",
+    "english": "Think / Consider",
+    "onyomi": "コウ",
+    "kunyomi": "かんが・える",
+    "strokeCount": 6,
+    "radicals": "老 (anciano)",
+    "jlptLevel": "N4",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "考える",
+        "furigana": "かんがえる",
+        "romaji": "kangaeru",
+        "meaning": "Pensar / Reflexionar"
+      }
+    ],
+    "exampleSentence": "将来のことを考えています。",
+    "exampleTranslation": "Estoy pensando en mi futuro.",
+    "notes": "Genki Lección 16 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-207",
+    "kanji": "開",
+    "spanish": "Abrir",
+    "english": "Open",
+    "onyomi": "カイ",
+    "kunyomi": "あ・ける、ひら・く",
+    "strokeCount": 12,
+    "radicals": "門 (puerta)",
+    "jlptLevel": "N4",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "開ける",
+        "furigana": "あける",
+        "romaji": "akeru",
+        "meaning": "Abrir"
+      }
+    ],
+    "exampleSentence": "窓を開けてもいいですか。",
+    "exampleTranslation": "¿Puedo abrir la ventana?",
+    "notes": "Genki Lección 16 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-208",
+    "kanji": "屋",
+    "spanish": "Techo / Tienda / Habitación",
+    "english": "Roof / Shop",
+    "onyomi": "オク",
+    "kunyomi": "や",
+    "strokeCount": 9,
+    "radicals": "尸 (cuerpo)",
+    "jlptLevel": "N4",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "本屋",
+        "furigana": "ほんや",
+        "romaji": "hon'ya",
+        "meaning": "Librería"
+      }
+    ],
+    "exampleSentence": "駅前の本屋で雑誌を買いました。",
+    "exampleTranslation": "Compré una revista en la librería frente a la estación.",
+    "notes": "Genki Lección 16 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-209",
+    "kanji": "方",
+    "spanish": "Dirección / Persona / Manera",
+    "english": "Direction / Way / Person",
+    "onyomi": "ホウ",
+    "kunyomi": "かた",
+    "strokeCount": 4,
+    "radicals": "方 (dirección)",
+    "jlptLevel": "N4",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "読み方",
+        "furigana": "よみかた",
+        "romaji": "yomikata",
+        "meaning": "Forma de leer"
+      }
+    ],
+    "exampleSentence": "この漢字の読み方を教えてください。",
+    "exampleTranslation": "Por favor enséñame cómo se lee este kanji.",
+    "notes": "Genki Lección 16 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-210",
+    "kanji": "運",
+    "spanish": "Transportar / Suerte",
+    "english": "Carry / Luck",
+    "onyomi": "ウン",
+    "kunyomi": "はこ・ぶ",
+    "strokeCount": 12,
+    "radicals": "辵 (camino)",
+    "jlptLevel": "N4",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "運動",
+        "furigana": "うんどう",
+        "romaji": "undou",
+        "meaning": "Ejercicio físico"
+      }
+    ],
+    "exampleSentence": "健康のために運動しています。",
+    "exampleTranslation": "Hago ejercicio por mi salud.",
+    "notes": "Genki Lección 16 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-211",
+    "kanji": "動",
+    "spanish": "Moverse",
+    "english": "Move",
+    "onyomi": "ドウ",
+    "kunyomi": "うご・く",
+    "strokeCount": 11,
+    "radicals": "力 (fuerza)",
+    "jlptLevel": "N4",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "動物",
+        "furigana": "どうぶつ",
+        "romaji": "doubutsu",
+        "meaning": "Animal"
+      }
+    ],
+    "exampleSentence": "動物園でパンダを見ました。",
+    "exampleTranslation": "Vi un panda en el zoológico.",
+    "notes": "Genki Lección 16 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-212",
+    "kanji": "教",
+    "spanish": "Enseñar / Religión",
+    "english": "Teach",
+    "onyomi": "キョウ",
+    "kunyomi": "おし・える",
+    "strokeCount": 11,
+    "radicals": "攴 (golpear)",
+    "jlptLevel": "N4",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "教室",
+        "furigana": "きょうしつ",
+        "romaji": "kyoushitsu",
+        "meaning": "Salón de clases"
+      }
+    ],
+    "exampleSentence": "教室に学生が十人います。",
+    "exampleTranslation": "Hay diez estudiantes en el salón de clases.",
+    "notes": "Genki Lección 16 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-213",
+    "kanji": "室",
+    "spanish": "Habitación / Cuarto",
+    "english": "Room",
+    "onyomi": "シツ",
+    "kunyomi": "むろ",
+    "strokeCount": 9,
+    "radicals": "宀 (techo)",
+    "jlptLevel": "N4",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "教室",
+        "furigana": "きょうしつ",
+        "romaji": "kyoushitsu",
+        "meaning": "Aula / Salón"
+      }
+    ],
+    "exampleSentence": "会議室は三階です。",
+    "exampleTranslation": "La sala de juntas está en el tercer piso.",
+    "notes": "Genki Lección 16 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-214",
+    "kanji": "歳",
+    "spanish": "Años de edad",
+    "english": "Years old",
+    "onyomi": "サイ、セイ",
+    "kunyomi": "とし",
+    "strokeCount": 13,
+    "radicals": "止 (detener)",
+    "jlptLevel": "N4",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "二十歳",
+        "furigana": "はたち",
+        "romaji": "hatachi",
+        "meaning": "Veinte años de edad"
+      }
+    ],
+    "exampleSentence": "今年二十歳になりました。",
+    "exampleTranslation": "Este año cumplí veinte años.",
+    "notes": "Genki Lección 17 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-215",
+    "kanji": "習",
+    "spanish": "Aprender / Practicar",
+    "english": "Learn / Practice",
+    "onyomi": "シュウ",
+    "kunyomi": "なら・う",
+    "strokeCount": 11,
+    "radicals": "羽 (plumas)",
+    "jlptLevel": "N4",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "練習",
+        "furigana": "れんしゅう",
+        "romaji": "renshuu",
+        "meaning": "Práctica"
+      }
+    ],
+    "exampleSentence": "毎日漢字を練習しています。",
+    "exampleTranslation": "Practico kanji todos los días.",
+    "notes": "Genki Lección 17 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-216",
+    "kanji": "主",
+    "spanish": "Principal / Dueño / Esposo",
+    "english": "Main / Master",
+    "onyomi": "シュ",
+    "kunyomi": "ぬし、おも",
+    "strokeCount": 5,
+    "radicals": "丶 (punto)",
+    "jlptLevel": "N4",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "ご主人",
+        "furigana": "ごしゅじん",
+        "romaji": "goshujin",
+        "meaning": "Esposo (de otra persona)"
+      }
+    ],
+    "exampleSentence": "ご主人はどんなお仕事をしていますか。",
+    "exampleTranslation": "¿En qué trabaja su esposo?",
+    "notes": "Genki Lección 17 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-217",
+    "kanji": "結",
+    "spanish": "Atar / Concluir",
+    "english": "Tie / Bind",
+    "onyomi": "ケツ",
+    "kunyomi": "むす・ぶ、ゆ・う",
+    "strokeCount": 12,
+    "radicals": "糸 (hilo)",
+    "jlptLevel": "N4",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "結婚",
+        "furigana": "けっこん",
+        "romaji": "kekkon",
+        "meaning": "Matrimonio"
+      }
+    ],
+    "exampleSentence": "姉は来月結婚します。",
+    "exampleTranslation": "Mi hermana mayor se casa el próximo mes.",
+    "notes": "Genki Lección 17 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-218",
+    "kanji": "婚",
+    "spanish": "Matrimonio",
+    "english": "Marriage",
+    "onyomi": "コン",
+    "kunyomi": "ー",
+    "strokeCount": 11,
+    "radicals": "女 (mujer)",
+    "jlptLevel": "N3",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "結婚",
+        "furigana": "けっこん",
+        "romaji": "kekkon",
+        "meaning": "Matrimonio"
+      }
+    ],
+    "exampleSentence": "結婚おめでとうございます。",
+    "exampleTranslation": "Muchas felicidades por su matrimonio.",
+    "notes": "Genki Lección 17 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-219",
+    "kanji": "集",
+    "spanish": "Reunir / Coleccionar",
+    "english": "Gather / Collect",
+    "onyomi": "シュウ",
+    "kunyomi": "あつ・まる、あつ・める",
+    "strokeCount": 12,
+    "radicals": "隹 (pájaro)",
+    "jlptLevel": "N4",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "集める",
+        "furigana": "あつめる",
+        "romaji": "atsumeru",
+        "meaning": "Coleccionar / Reunir"
+      }
+    ],
+    "exampleSentence": "古い切手を集めています。",
+    "exampleTranslation": "Colecciono estampillas antiguas.",
+    "notes": "Genki Lección 17 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-220",
+    "kanji": "発",
+    "spanish": "Partir / Emitir / Publicar",
+    "english": "Departure / Publish",
+    "onyomi": "ハツ、ホツ",
+    "kunyomi": "ー",
+    "strokeCount": 9,
+    "radicals": "癶 (pasos)",
+    "jlptLevel": "N4",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "出発",
+        "furigana": "しゅっぱつ",
+        "romaji": "shuppatsu",
+        "meaning": "Salida / Partida"
+      }
+    ],
+    "exampleSentence": "バスは八時に出発します。",
+    "exampleTranslation": "El autobús sale a las ocho.",
+    "notes": "Genki Lección 17 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-221",
+    "kanji": "表",
+    "spanish": "Superficie / Expresar / Tabla",
+    "english": "Surface / Express",
+    "onyomi": "ヒョウ",
+    "kunyomi": "おもて、あらわ・す",
+    "strokeCount": 8,
+    "radicals": "衣 (ropa)",
+    "jlptLevel": "N4",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "発表",
+        "furigana": "はっぴょう",
+        "romaji": "happyou",
+        "meaning": "Presentación / Anuncio"
+      }
+    ],
+    "exampleSentence": "クラスで日本語で発表しました。",
+    "exampleTranslation": "Hice una presentación en japonés en la clase.",
+    "notes": "Genki Lección 17 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-222",
+    "kanji": "品",
+    "spanish": "Artículo / Producto",
+    "english": "Goods / Article",
+    "onyomi": "ヒン",
+    "kunyomi": "しな",
+    "strokeCount": 9,
+    "radicals": "口 (boca)",
+    "jlptLevel": "N4",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "品物",
+        "furigana": "しなもの",
+        "romaji": "shinamono",
+        "meaning": "Mercancía / Artículo"
+      }
+    ],
+    "exampleSentence": "この店はいい品物を売っています。",
+    "exampleTranslation": "Esta tienda vende buenos artículos.",
+    "notes": "Genki Lección 17 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-223",
+    "kanji": "写",
+    "spanish": "Copiar / Fotografiar",
+    "english": "Copy / Photograph",
+    "onyomi": "シャ",
+    "kunyomi": "うつ・す",
+    "strokeCount": 5,
+    "radicals": "冖 (cubrir)",
+    "jlptLevel": "N4",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "写真",
+        "furigana": "しゃしん",
+        "romaji": "shashin",
+        "meaning": "Fotografía"
+      }
+    ],
+    "exampleSentence": "一緒に写真を撮りましょう。",
+    "exampleTranslation": "Tomémonos una foto juntos.",
+    "notes": "Genki Lección 17 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-224",
+    "kanji": "真",
+    "spanish": "Verdad / Real / Centro",
+    "english": "True / Reality",
+    "onyomi": "シン",
+    "kunyomi": "ま",
+    "strokeCount": 10,
+    "radicals": "目 (ojo)",
+    "jlptLevel": "N4",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "真ん中",
+        "furigana": "まんなか",
+        "romaji": "mannaka",
+        "meaning": "Justo en el centro"
+      }
+    ],
+    "exampleSentence": "テーブルの真ん中に花があります。",
+    "exampleTranslation": "Hay flores en el centro de la mesa.",
+    "notes": "Genki Lección 17 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-225",
+    "kanji": "洋",
+    "spanish": "Océano / Occidental",
+    "english": "Ocean / Western",
+    "onyomi": "ヨウ",
+    "kunyomi": "ー",
+    "strokeCount": 9,
+    "radicals": "水 (agua)",
+    "jlptLevel": "N4",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "洋服",
+        "furigana": "ようふく",
+        "romaji": "youfuku",
+        "meaning": "Ropa occidental"
+      }
+    ],
+    "exampleSentence": "デパートで洋服を買いました。",
+    "exampleTranslation": "Compré ropa en la tienda departamental.",
+    "notes": "Genki Lección 17 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-226",
+    "kanji": "服",
+    "spanish": "Ropa / Vestimenta",
+    "english": "Clothes",
+    "onyomi": "フク",
+    "kunyomi": "ー",
+    "strokeCount": 8,
+    "radicals": "月 (luna)",
+    "jlptLevel": "N4",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "制服",
+        "furigana": "せいふく",
+        "romaji": "seifuku",
+        "meaning": "Uniforme"
+      }
+    ],
+    "exampleSentence": "日本の高校生は制服を着ます。",
+    "exampleTranslation": "Los estudiantes de preparatoria en Japón usan uniforme.",
+    "notes": "Genki Lección 17 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-227",
+    "kanji": "堂",
+    "spanish": "Salón / Edificio público",
+    "english": "Hall",
+    "onyomi": "ドウ",
+    "kunyomi": "ー",
+    "strokeCount": 11,
+    "radicals": "土 (tierra)",
+    "jlptLevel": "N4",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "食堂",
+        "furigana": "しょくどう",
+        "romaji": "shokudou",
+        "meaning": "Comedor / Cafetería"
+      }
+    ],
+    "exampleSentence": "大学の食堂で昼ご飯を食べます。",
+    "exampleTranslation": "Como el almuerzo en la cafetería de la universidad.",
+    "notes": "Genki Lección 17 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-228",
+    "kanji": "力",
+    "spanish": "Fuerza / Poder",
+    "english": "Power / Strength",
+    "onyomi": "リョク、リキ",
+    "kunyomi": "ちから",
+    "strokeCount": 2,
+    "radicals": "力 (fuerza)",
+    "jlptLevel": "N4",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "努力",
+        "furigana": "どりょく",
+        "romaji": "doryoku",
+        "meaning": "Esfuerzo"
+      }
+    ],
+    "exampleSentence": "毎日少しずつ努力しています。",
+    "exampleTranslation": "Me esfuerzo un poco todos los días.",
+    "notes": "Genki Lección 17 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-229",
+    "kanji": "授",
+    "spanish": "Impartir / Conceder",
+    "english": "Impart / Grant",
+    "onyomi": "ジュ",
+    "kunyomi": "さず・ける",
+    "strokeCount": 11,
+    "radicals": "手 (mano)",
+    "jlptLevel": "N3",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "授業",
+        "furigana": "じゅぎょう",
+        "romaji": "jugyou",
+        "meaning": "Clase / Lección escolar"
+      }
+    ],
+    "exampleSentence": "今日の授業はとても面白かったです。",
+    "exampleTranslation": "La clase de hoy estuvo muy interesante.",
+    "notes": "Genki Lección 17 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-230",
+    "kanji": "業",
+    "spanish": "Negocio / Industria / Karma",
+    "english": "Business / Vocation",
+    "onyomi": "ギョウ、ゴウ",
+    "kunyomi": "わざ",
+    "strokeCount": 13,
+    "radicals": "木 (árbol)",
+    "jlptLevel": "N4",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "卒業",
+        "furigana": "そつぎょう",
+        "romaji": "sotsugyou",
+        "meaning": "Graduación"
+      }
+    ],
+    "exampleSentence": "来年大学を卒業します。",
+    "exampleTranslation": "Me gradúo de la universidad el próximo año.",
+    "notes": "Genki Lección 17 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-231",
+    "kanji": "試",
+    "spanish": "Probar / Examen",
+    "english": "Test / Try",
+    "onyomi": "シ",
+    "kunyomi": "こころ・みる、ため・す",
+    "strokeCount": 13,
+    "radicals": "言 (palabra)",
+    "jlptLevel": "N4",
+    "genkiLesson": 18,
+    "compounds": [
+      {
+        "word": "試験",
+        "furigana": "しけん",
+        "romaji": "shiken",
+        "meaning": "Examen / Prueba"
+      }
+    ],
+    "exampleSentence": "来週、日本語の試験があります。",
+    "exampleTranslation": "La próxima semana tengo examen de japonés.",
+    "notes": "Genki Lección 18 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-232",
+    "kanji": "験",
+    "spanish": "Verificar / Efecto / Prueba",
+    "english": "Test / Verify",
+    "onyomi": "ケン",
+    "kunyomi": "ー",
+    "strokeCount": 18,
+    "radicals": "馬 (caballo)",
+    "jlptLevel": "N4",
+    "genkiLesson": 18,
+    "compounds": [
+      {
+        "word": "経験",
+        "furigana": "けいけん",
+        "romaji": "keiken",
+        "meaning": "Experiencia"
+      }
+    ],
+    "exampleSentence": "いい経験になりました。",
+    "exampleTranslation": "Fue una buena experiencia.",
+    "notes": "Genki Lección 18 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-233",
+    "kanji": "貸",
+    "spanish": "Prestar",
+    "english": "Lend",
+    "onyomi": "タイ",
+    "kunyomi": "か・す",
+    "strokeCount": 12,
+    "radicals": "貝 (concha)",
+    "jlptLevel": "N4",
+    "genkiLesson": 18,
+    "compounds": [
+      {
+        "word": "貸す",
+        "furigana": "かす",
+        "romaji": "kasu",
+        "meaning": "Prestar"
+      }
+    ],
+    "exampleSentence": "ペンを貸してください。",
+    "exampleTranslation": "Por favor préstame un bolígrafo.",
+    "notes": "Genki Lección 18 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-234",
+    "kanji": "図",
+    "spanish": "Mapa / Diagrama / Plan",
+    "english": "Map / Drawing",
+    "onyomi": "ズ、ト",
+    "kunyomi": "はか・る",
+    "strokeCount": 7,
+    "radicals": "囗 (recinto)",
+    "jlptLevel": "N4",
+    "genkiLesson": 18,
+    "compounds": [
+      {
+        "word": "図書館",
+        "furigana": "としょかん",
+        "romaji": "toshokan",
+        "meaning": "Biblioteca"
+      }
+    ],
+    "exampleSentence": "図書館で静かに本を読みます。",
+    "exampleTranslation": "Leo libros en silencio en la biblioteca.",
+    "notes": "Genki Lección 18 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-235",
+    "kanji": "館",
+    "spanish": "Edificio público / Pabellón",
+    "english": "Public building",
+    "onyomi": "カン",
+    "kunyomi": "やかた",
+    "strokeCount": 16,
+    "radicals": "食 (comer)",
+    "jlptLevel": "N4",
+    "genkiLesson": 18,
+    "compounds": [
+      {
+        "word": "映画館",
+        "furigana": "えいがかん",
+        "romaji": "eigakan",
+        "meaning": "Cine"
+      }
+    ],
+    "exampleSentence": "週末に映画館へ行きました。",
+    "exampleTranslation": "El fin de semana fui al cine.",
+    "notes": "Genki Lección 18 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-236",
+    "kanji": "終",
+    "spanish": "Terminar / Fin",
+    "english": "End / Finish",
+    "onyomi": "シュウ",
+    "kunyomi": "お・わる、お・える",
+    "strokeCount": 11,
+    "radicals": "糸 (hilo)",
+    "jlptLevel": "N4",
+    "genkiLesson": 18,
+    "compounds": [
+      {
+        "word": "終わる",
+        "furigana": "おわる",
+        "romaji": "owaru",
+        "meaning": "Terminar"
+      }
+    ],
+    "exampleSentence": "仕事がやっと終わりました。",
+    "exampleTranslation": "Por fin terminó el trabajo.",
+    "notes": "Genki Lección 18 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-237",
+    "kanji": "宿",
+    "spanish": "Posada / Alojarse",
+    "english": "Inn / Lodging",
+    "onyomi": "シュク",
+    "kunyomi": "やど",
+    "strokeCount": 11,
+    "radicals": "宀 (techo)",
+    "jlptLevel": "N4",
+    "genkiLesson": 18,
+    "compounds": [
+      {
+        "word": "宿題",
+        "furigana": "しゅくだい",
+        "romaji": "shukudai",
+        "meaning": "Tarea escolar"
+      }
+    ],
+    "exampleSentence": "宿題を忘れてしまいました。",
+    "exampleTranslation": "Olvidé mi tarea por completo.",
+    "notes": "Genki Lección 18 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-238",
+    "kanji": "題",
+    "spanish": "Tema / Título / Problema",
+    "english": "Topic / Problem",
+    "onyomi": "ダイ",
+    "kunyomi": "ー",
+    "strokeCount": 18,
+    "radicals": "頁 (página)",
+    "jlptLevel": "N4",
+    "genkiLesson": 18,
+    "compounds": [
+      {
+        "word": "問題",
+        "furigana": "もんだい",
+        "romaji": "mondai",
+        "meaning": "Problema / Pregunta"
+      }
+    ],
+    "exampleSentence": "この問題は少し難しいです。",
+    "exampleTranslation": "Este problema es un poco difícil.",
+    "notes": "Genki Lección 18 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-239",
+    "kanji": "春",
+    "spanish": "Primavera",
+    "english": "Spring",
+    "onyomi": "シュン",
+    "kunyomi": "はる",
+    "strokeCount": 9,
+    "radicals": "日 (sol)",
+    "jlptLevel": "N4",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "春",
+        "furigana": "はる",
+        "romaji": "haru",
+        "meaning": "Primavera"
+      }
+    ],
+    "exampleSentence": "春になると桜が咲きます。",
+    "exampleTranslation": "Cuando llega la primavera florecen los cerezos.",
+    "notes": "Genki Lección 19 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-240",
+    "kanji": "秋",
+    "spanish": "Otoño",
+    "english": "Autumn / Fall",
+    "onyomi": "シュウ",
+    "kunyomi": "あき",
+    "strokeCount": 9,
+    "radicals": "禾 (grano)",
+    "jlptLevel": "N4",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "秋",
+        "furigana": "あき",
+        "romaji": "aki",
+        "meaning": "Otoño"
+      }
+    ],
+    "exampleSentence": "日本の秋は紅葉がきれいです。",
+    "exampleTranslation": "En el otoño japonés las hojas rojas son hermosas.",
+    "notes": "Genki Lección 19 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-241",
+    "kanji": "冬",
+    "spanish": "Invierno",
+    "english": "Winter",
+    "onyomi": "トウ",
+    "kunyomi": "ふゆ",
+    "strokeCount": 5,
+    "radicals": "冫 (hielo)",
+    "jlptLevel": "N4",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "冬休み",
+        "furigana": "ふゆやすみ",
+        "romaji": "fuyuyasumi",
+        "meaning": "Vacaciones de invierno"
+      }
+    ],
+    "exampleSentence": "冬休みにスキーに行きます。",
+    "exampleTranslation": "En vacaciones de invierno iré a esquiar.",
+    "notes": "Genki Lección 19 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-242",
+    "kanji": "花",
+    "spanish": "Flor",
+    "english": "Flower",
+    "onyomi": "カ",
+    "kunyomi": "はな",
+    "strokeCount": 7,
+    "radicals": "艸 (hierba)",
+    "jlptLevel": "N5",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "花火",
+        "furigana": "はなび",
+        "romaji": "hanabi",
+        "meaning": "Fuegos artificiales"
+      }
+    ],
+    "exampleSentence": "夏に花火を見ました。",
+    "exampleTranslation": "Vi fuegos artificiales en verano.",
+    "notes": "Genki Lección 19 • Nivel JLPT N5"
+  },
+  {
+    "id": "k-exp-243",
+    "kanji": "様",
+    "spanish": "Señor(a) / Manera / Estado",
+    "english": "Mr./Ms. / Manner",
+    "onyomi": "ヨウ",
+    "kunyomi": "さま",
+    "strokeCount": 14,
+    "radicals": "木 (árbol)",
+    "jlptLevel": "N3",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "皆様",
+        "furigana": "みなさま",
+        "romaji": "minasama",
+        "meaning": "Todos ustedes (formal)"
+      }
+    ],
+    "exampleSentence": "皆様、お元気ですか。",
+    "exampleTranslation": "¿Cómo están todos ustedes?",
+    "notes": "Genki Lección 19 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-244",
+    "kanji": "不",
+    "spanish": "No / Prefijo negativo",
+    "english": "Non- / Un-",
+    "onyomi": "フ、ブ",
+    "kunyomi": "ー",
+    "strokeCount": 4,
+    "radicals": "一 (uno)",
+    "jlptLevel": "N4",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "不便",
+        "furigana": "ふべん",
+        "romaji": "fuben",
+        "meaning": "Inconveniente"
+      }
+    ],
+    "exampleSentence": "ここはバスがなくて不便です。",
+    "exampleTranslation": "Aquí es inconveniente porque no hay autobuses.",
+    "notes": "Genki Lección 19 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-245",
+    "kanji": "姉",
+    "spanish": "Hermana mayor",
+    "english": "Older sister",
+    "onyomi": "シ",
+    "kunyomi": "あね",
+    "strokeCount": 8,
+    "radicals": "女 (mujer)",
+    "jlptLevel": "N4",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "お姉さん",
+        "furigana": "おねえさん",
+        "romaji": "oneesan",
+        "meaning": "Hermana mayor"
+      }
+    ],
+    "exampleSentence": "姉は東京で働いています。",
+    "exampleTranslation": "Mi hermana mayor trabaja en Tokio.",
+    "notes": "Genki Lección 19 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-246",
+    "kanji": "兄",
+    "spanish": "Hermano mayor",
+    "english": "Older brother",
+    "onyomi": "ケイ、キョウ",
+    "kunyomi": "あに",
+    "strokeCount": 5,
+    "radicals": "儿 (piernas)",
+    "jlptLevel": "N4",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "兄弟",
+        "furigana": "きょうだい",
+        "romaji": "kyoudai",
+        "meaning": "Hermanos"
+      }
+    ],
+    "exampleSentence": "兄弟が三人います。",
+    "exampleTranslation": "Tengo tres hermanos.",
+    "notes": "Genki Lección 19 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-247",
+    "kanji": "漢",
+    "spanish": "China / Dinastía Han",
+    "english": "Chinese / Han",
+    "onyomi": "カン",
+    "kunyomi": "ー",
+    "strokeCount": 13,
+    "radicals": "水 (agua)",
+    "jlptLevel": "N4",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "漢字",
+        "furigana": "かんじ",
+        "romaji": "kanji",
+        "meaning": "Kanji (caracteres chinos)"
+      }
+    ],
+    "exampleSentence": "漢字の勉強は楽しいです。",
+    "exampleTranslation": "El estudio de los kanjis es divertido.",
+    "notes": "Genki Lección 19 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-248",
+    "kanji": "卒",
+    "spanish": "Graduarse / Soldado",
+    "english": "Graduate",
+    "onyomi": "ソツ",
+    "kunyomi": "ー",
+    "strokeCount": 8,
+    "radicals": "十 (diez)",
+    "jlptLevel": "N3",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "卒業",
+        "furigana": "そつぎょう",
+        "romaji": "sotsugyou",
+        "meaning": "Graduación"
+      }
+    ],
+    "exampleSentence": "大学を卒業したら日本で働きたいです。",
+    "exampleTranslation": "Al graduarme de la universidad quiero trabajar en Japón.",
+    "notes": "Genki Lección 19 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-249",
+    "kanji": "工",
+    "spanish": "Construcción / Artesanía",
+    "english": "Craft / Construction",
+    "onyomi": "コウ、ク",
+    "kunyomi": "ー",
+    "strokeCount": 3,
+    "radicals": "工 (trabajo)",
+    "jlptLevel": "N4",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "工場",
+        "furigana": "こうじょう",
+        "romaji": "koujou",
+        "meaning": "Fábrica"
+      }
+    ],
+    "exampleSentence": "父は車の工場で働いています。",
+    "exampleTranslation": "Mi padre trabaja en una fábrica de autos.",
+    "notes": "Genki Lección 19 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-250",
+    "kanji": "研",
+    "spanish": "Pulir / Investigar",
+    "english": "Polish / Study",
+    "onyomi": "ケン",
+    "kunyomi": "と・ぐ",
+    "strokeCount": 9,
+    "radicals": "石 (piedra)",
+    "jlptLevel": "N4",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "研究",
+        "furigana": "けんきゅう",
+        "romaji": "kenkyuu",
+        "meaning": "Investigación"
+      }
+    ],
+    "exampleSentence": "大学院で経済を研究しています。",
+    "exampleTranslation": "Investigo economía en el posgrado.",
+    "notes": "Genki Lección 19 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-251",
+    "kanji": "究",
+    "spanish": "Investigar a fondo",
+    "english": "Research / Study",
+    "onyomi": "キュウ",
+    "kunyomi": "きわ・める",
+    "strokeCount": 7,
+    "radicals": "穴 (cueva)",
+    "jlptLevel": "N4",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "研究室",
+        "furigana": "けんきゅうしつ",
+        "romaji": "kenkyuushitsu",
+        "meaning": "Oficina del profesor / Laboratorio"
+      }
+    ],
+    "exampleSentence": "先生の研究室に行きました。",
+    "exampleTranslation": "Fui a la oficina del profesor.",
+    "notes": "Genki Lección 19 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-252",
+    "kanji": "質",
+    "spanish": "Calidad / Pregunta",
+    "english": "Quality / Question",
+    "onyomi": "シツ、シチ",
+    "kunyomi": "ー",
+    "strokeCount": 15,
+    "radicals": "貝 (concha)",
+    "jlptLevel": "N4",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "質問",
+        "furigana": "しつもん",
+        "romaji": "shitsumon",
+        "meaning": "Pregunta"
+      }
+    ],
+    "exampleSentence": "先生に質問があります。",
+    "exampleTranslation": "Tengo una pregunta para el profesor.",
+    "notes": "Genki Lección 19 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-253",
+    "kanji": "問",
+    "spanish": "Preguntar / Problema",
+    "english": "Question / Ask",
+    "onyomi": "モン",
+    "kunyomi": "と・う",
+    "strokeCount": 11,
+    "radicals": "門 (puerta)",
+    "jlptLevel": "N4",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "問題",
+        "furigana": "もんだい",
+        "romaji": "mondai",
+        "meaning": "Problema / Cuestión"
+      }
+    ],
+    "exampleSentence": "何も問題はありません。",
+    "exampleTranslation": "No hay ningún problema.",
+    "notes": "Genki Lección 19 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-254",
+    "kanji": "多",
+    "spanish": "Muchos / Abundante",
+    "english": "Many / Much",
+    "onyomi": "タ",
+    "kunyomi": "おお・い",
+    "strokeCount": 6,
+    "radicals": "夕 (tarde)",
+    "jlptLevel": "N5",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "多い",
+        "furigana": "おおい",
+        "romaji": "ooi",
+        "meaning": "Numeroso / Muchos"
+      }
+    ],
+    "exampleSentence": "東京は人がとても多いです。",
+    "exampleTranslation": "En Tokio hay muchísima gente.",
+    "notes": "Genki Lección 19 • Nivel JLPT N5"
+  },
+  {
+    "id": "k-exp-255",
+    "kanji": "皿",
+    "spanish": "Plato",
+    "english": "Plate / Dish",
+    "onyomi": "ベイ",
+    "kunyomi": "さら",
+    "strokeCount": 5,
+    "radicals": "皿 (plato)",
+    "jlptLevel": "N3",
+    "genkiLesson": 20,
+    "compounds": [
+      {
+        "word": "お皿",
+        "furigana": "おさら",
+        "romaji": "osara",
+        "meaning": "Plato"
+      }
+    ],
+    "exampleSentence": "お皿を洗ってください。",
+    "exampleTranslation": "Por favor lava los platos.",
+    "notes": "Genki Lección 20 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-256",
+    "kanji": "声",
+    "spanish": "Voz",
+    "english": "Voice",
+    "onyomi": "セイ、ショウ",
+    "kunyomi": "こえ",
+    "strokeCount": 7,
+    "radicals": "士 (samurái)",
+    "jlptLevel": "N4",
+    "genkiLesson": 20,
+    "compounds": [
+      {
+        "word": "声",
+        "furigana": "こえ",
+        "romaji": "koe",
+        "meaning": "Voz"
+      }
+    ],
+    "exampleSentence": "もう少し大きい声で話してください。",
+    "exampleTranslation": "Por favor habla con voz un poco más fuerte.",
+    "notes": "Genki Lección 20 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-257",
+    "kanji": "茶",
+    "spanish": "Té",
+    "english": "Tea",
+    "onyomi": "チャ、サ",
+    "kunyomi": "ー",
+    "strokeCount": 9,
+    "radicals": "艸 (hierba)",
+    "jlptLevel": "N4",
+    "genkiLesson": 20,
+    "compounds": [
+      {
+        "word": "お茶",
+        "furigana": "おちゃ",
+        "romaji": "ocha",
+        "meaning": "Té verde"
+      }
+    ],
+    "exampleSentence": "温かいお茶をどうぞ。",
+    "exampleTranslation": "Por favor tome té caliente.",
+    "notes": "Genki Lección 20 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-258",
+    "kanji": "止",
+    "spanish": "Detenerse / Parar",
+    "english": "Stop",
+    "onyomi": "シ",
+    "kunyomi": "と・まる、と・める",
+    "strokeCount": 4,
+    "radicals": "止 (detener)",
+    "jlptLevel": "N4",
+    "genkiLesson": 20,
+    "compounds": [
+      {
+        "word": "止まる",
+        "furigana": "とまる",
+        "romaji": "tomaru",
+        "meaning": "Detenerse"
+      }
+    ],
+    "exampleSentence": "ここに車を止めないでください。",
+    "exampleTranslation": "Por favor no estacione el auto aquí.",
+    "notes": "Genki Lección 20 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-259",
+    "kanji": "枚",
+    "spanish": "Contador de objetos planos",
+    "english": "Counter for flat objects",
+    "onyomi": "マイ",
+    "kunyomi": "ー",
+    "strokeCount": 8,
+    "radicals": "木 (árbol)",
+    "jlptLevel": "N3",
+    "genkiLesson": 20,
+    "compounds": [
+      {
+        "word": "三枚",
+        "furigana": "さんまい",
+        "romaji": "sanmai",
+        "meaning": "Tres hojas/boletos"
+      }
+    ],
+    "exampleSentence": "チケットを三枚買いました。",
+    "exampleTranslation": "Compré tres boletos.",
+    "notes": "Genki Lección 20 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-260",
+    "kanji": "両",
+    "spanish": "Ambos",
+    "english": "Both",
+    "onyomi": "リョウ",
+    "kunyomi": "ー",
+    "strokeCount": 6,
+    "radicals": "一 (uno)",
+    "jlptLevel": "N3",
+    "genkiLesson": 20,
+    "compounds": [
+      {
+        "word": "両親",
+        "furigana": "りょうしん",
+        "romaji": "ryoushin",
+        "meaning": "Ambos padres"
+      }
+    ],
+    "exampleSentence": "週末に両親に電話しました。",
+    "exampleTranslation": "El fin de semana llamé a mis padres.",
+    "notes": "Genki Lección 20 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-261",
+    "kanji": "無",
+    "spanish": "Nada / Sin",
+    "english": "Nothing / None",
+    "onyomi": "ム、ブ",
+    "kunyomi": "な・い",
+    "strokeCount": 12,
+    "radicals": "火 (fuego)",
+    "jlptLevel": "N3",
+    "genkiLesson": 20,
+    "compounds": [
+      {
+        "word": "無料",
+        "furigana": "むりょう",
+        "romaji": "muryou",
+        "meaning": "Gratis / Sin costo"
+      }
+    ],
+    "exampleSentence": "このアプリは無料で使えます。",
+    "exampleTranslation": "Esta aplicación se puede usar gratis.",
+    "notes": "Genki Lección 20 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-262",
+    "kanji": "払",
+    "spanish": "Pagar",
+    "english": "Pay",
+    "onyomi": "フツ",
+    "kunyomi": "はら・う",
+    "strokeCount": 5,
+    "radicals": "手 (mano)",
+    "jlptLevel": "N3",
+    "genkiLesson": 20,
+    "compounds": [
+      {
+        "word": "払う",
+        "furigana": "はらう",
+        "romaji": "harau",
+        "meaning": "Pagar"
+      }
+    ],
+    "exampleSentence": "カードで払ってもいいですか。",
+    "exampleTranslation": "¿Puedo pagar con tarjeta?",
+    "notes": "Genki Lección 20 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-263",
+    "kanji": "心",
+    "spanish": "Corazón / Mente / Espíritu",
+    "english": "Heart / Mind",
+    "onyomi": "シン",
+    "kunyomi": "こころ",
+    "strokeCount": 4,
+    "radicals": "心 (corazón)",
+    "jlptLevel": "N4",
+    "genkiLesson": 20,
+    "compounds": [
+      {
+        "word": "安心",
+        "furigana": "あんしん",
+        "romaji": "anshin",
+        "meaning": "Alivio / Tranquilidad"
+      }
+    ],
+    "exampleSentence": "それを聞いて安心しました。",
+    "exampleTranslation": "Me tranquilicé al escuchar eso.",
+    "notes": "Genki Lección 20 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-264",
+    "kanji": "笑",
+    "spanish": "Reír / Sonreír",
+    "english": "Laugh / Smile",
+    "onyomi": "ショウ",
+    "kunyomi": "わら・う、え・む",
+    "strokeCount": 10,
+    "radicals": "竹 (bambú)",
+    "jlptLevel": "N3",
+    "genkiLesson": 20,
+    "compounds": [
+      {
+        "word": "笑う",
+        "furigana": "わらう",
+        "romaji": "warau",
+        "meaning": "Reír / Sonreír"
+      }
+    ],
+    "exampleSentence": "みんなが楽しく笑っています。",
+    "exampleTranslation": "Todos están riendo alegremente.",
+    "notes": "Genki Lección 20 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-265",
+    "kanji": "絶",
+    "spanish": "Absoluto / Cortar",
+    "english": "Absolute / Discontinue",
+    "onyomi": "ゼツ",
+    "kunyomi": "た・える",
+    "strokeCount": 12,
+    "radicals": "糸 (hilo)",
+    "jlptLevel": "N3",
+    "genkiLesson": 20,
+    "compounds": [
+      {
+        "word": "絶対",
+        "furigana": "ぜったい",
+        "romaji": "zettai",
+        "meaning": "Absolutamente / Sin falta"
+      }
+    ],
+    "exampleSentence": "絶対に諦めません。",
+    "exampleTranslation": "De ninguna manera me rendiré.",
+    "notes": "Genki Lección 20 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-266",
+    "kanji": "対",
+    "spanish": "Opuesto / Contra / Hacia",
+    "english": "Opposite / Versus",
+    "onyomi": "タイ、ツイ",
+    "kunyomi": "ー",
+    "strokeCount": 7,
+    "radicals": "寸 (pulgada)",
+    "jlptLevel": "N3",
+    "genkiLesson": 20,
+    "compounds": [
+      {
+        "word": "反対",
+        "furigana": "はんたい",
+        "romaji": "hantai",
+        "meaning": "Opuesto / En contra"
+      }
+    ],
+    "exampleSentence": "私はその意見に反対です。",
+    "exampleTranslation": "Estoy en contra de esa opinión.",
+    "notes": "Genki Lección 20 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-267",
+    "kanji": "痛",
+    "spanish": "Dolor / Doler",
+    "english": "Pain / Hurt",
+    "onyomi": "ツウ",
+    "kunyomi": "いた・い",
+    "strokeCount": 12,
+    "radicals": "疒 (enfermedad)",
+    "jlptLevel": "N3",
+    "genkiLesson": 20,
+    "compounds": [
+      {
+        "word": "痛い",
+        "furigana": "いたい",
+        "romaji": "itai",
+        "meaning": "Doloroso / Duele"
+      }
+    ],
+    "exampleSentence": "朝から頭が痛いです。",
+    "exampleTranslation": "Me duele la cabeza desde la mañana.",
+    "notes": "Genki Lección 20 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-268",
+    "kanji": "最",
+    "spanish": "El más / Extremo",
+    "english": "Most / Extreme",
+    "onyomi": "サイ",
+    "kunyomi": "もっと・も",
+    "strokeCount": 12,
+    "radicals": "日 (sol)",
+    "jlptLevel": "N3",
+    "genkiLesson": 20,
+    "compounds": [
+      {
+        "word": "最高",
+        "furigana": "さいこう",
+        "romaji": "saikou",
+        "meaning": "El mejor / Increíble"
+      }
+    ],
+    "exampleSentence": "今日のコンサートは最高でした。",
+    "exampleTranslation": "El concierto de hoy estuvo increíble.",
+    "notes": "Genki Lección 20 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-269",
+    "kanji": "続",
+    "spanish": "Continuar / Seguir",
+    "english": "Continue",
+    "onyomi": "ゾク",
+    "kunyomi": "つづ・く、つづ・ける",
+    "strokeCount": 13,
+    "radicals": "糸 (hilo)",
+    "jlptLevel": "N3",
+    "genkiLesson": 20,
+    "compounds": [
+      {
+        "word": "続ける",
+        "furigana": "つづける",
+        "romaji": "tsuzukeru",
+        "meaning": "Continuar haciendo"
+      }
+    ],
+    "exampleSentence": "日本語の勉強を続けます。",
+    "exampleTranslation": "Continuaré estudiando japonés.",
+    "notes": "Genki Lección 20 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-270",
+    "kanji": "信",
+    "spanish": "Creer / Confianza / Señal",
+    "english": "Believe / Trust",
+    "onyomi": "シン",
+    "kunyomi": "ー",
+    "strokeCount": 9,
+    "radicals": "人 (persona)",
+    "jlptLevel": "N4",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "信じる",
+        "furigana": "しんじる",
+        "romaji": "shinjiru",
+        "meaning": "Creer / Confiar"
+      }
+    ],
+    "exampleSentence": "自分を信じて頑張ってください。",
+    "exampleTranslation": "Cree en ti mismo y da tu mejor esfuerzo.",
+    "notes": "Genki Lección 21 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-271",
+    "kanji": "経",
+    "spanish": "Pasar por / Sutra / Economía",
+    "english": "Pass / Longitude / Manage",
+    "onyomi": "ケイ、キョウ",
+    "kunyomi": "へ・る",
+    "strokeCount": 11,
+    "radicals": "糸 (hilo)",
+    "jlptLevel": "N3",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "経済",
+        "furigana": "けいざい",
+        "romaji": "keizai",
+        "meaning": "Economía"
+      }
+    ],
+    "exampleSentence": "大学で経済を専攻しています。",
+    "exampleTranslation": "Me especializo en economía en la universidad.",
+    "notes": "Genki Lección 21 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-272",
+    "kanji": "台",
+    "spanish": "Pedestal / Contador de máquinas",
+    "english": "Stand / Machine counter",
+    "onyomi": "ダイ、タイ",
+    "kunyomi": "ー",
+    "strokeCount": 5,
+    "radicals": "口 (boca)",
+    "jlptLevel": "N4",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "台風",
+        "furigana": "たいふう",
+        "romaji": "taifuu",
+        "meaning": "Tifón"
+      }
+    ],
+    "exampleSentence": "強い台風が来ています。",
+    "exampleTranslation": "Viene un tifón fuerte.",
+    "notes": "Genki Lección 21 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-273",
+    "kanji": "風",
+    "spanish": "Viento / Estilo",
+    "english": "Wind / Style",
+    "onyomi": "フウ、フ",
+    "kunyomi": "かぜ",
+    "strokeCount": 9,
+    "radicals": "風 (viento)",
+    "jlptLevel": "N4",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "風邪",
+        "furigana": "かぜ",
+        "romaji": "kaze",
+        "meaning": "Resfriado"
+      }
+    ],
+    "exampleSentence": "風邪をひいてしまいました。",
+    "exampleTranslation": "Me dio un resfriado.",
+    "notes": "Genki Lección 21 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-274",
+    "kanji": "犬",
+    "spanish": "Perro",
+    "english": "Dog",
+    "onyomi": "ケン",
+    "kunyomi": "いぬ",
+    "strokeCount": 4,
+    "radicals": "犬 (perro)",
+    "jlptLevel": "N4",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "子犬",
+        "furigana": "こいぬ",
+        "romaji": "koinu",
+        "meaning": "Cachorro"
+      }
+    ],
+    "exampleSentence": "かわいい犬を飼っています。",
+    "exampleTranslation": "Tengo un perro lindo de mascota.",
+    "notes": "Genki Lección 21 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-275",
+    "kanji": "重",
+    "spanish": "Pesado / Importante / Apilar",
+    "english": "Heavy / Important",
+    "onyomi": "ジュウ、チョウ",
+    "kunyomi": "おも・い、かさ・ねる",
+    "strokeCount": 9,
+    "radicals": "里 (aldea)",
+    "jlptLevel": "N4",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "重い",
+        "furigana": "おもい",
+        "romaji": "omoi",
+        "meaning": "Pesado"
+      }
+    ],
+    "exampleSentence": "この荷物はとても重いです。",
+    "exampleTranslation": "Este equipaje es muy pesado.",
+    "notes": "Genki Lección 21 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-276",
+    "kanji": "初",
+    "spanish": "Primero / Principio",
+    "english": "First / Beginning",
+    "onyomi": "ショ",
+    "kunyomi": "はじ・めて、はつ",
+    "strokeCount": 7,
+    "radicals": "刀 (espada)",
+    "jlptLevel": "N4",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "初めて",
+        "furigana": "はじめて",
+        "romaji": "hajimete",
+        "meaning": "Por primera vez"
+      }
+    ],
+    "exampleSentence": "初めて寿司を作りました。",
+    "exampleTranslation": "Hice sushi por primera vez.",
+    "notes": "Genki Lección 21 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-277",
+    "kanji": "若",
+    "spanish": "Joven",
+    "english": "Young",
+    "onyomi": "ジャク、ニャク",
+    "kunyomi": "わか・い",
+    "strokeCount": 8,
+    "radicals": "艸 (hierba)",
+    "jlptLevel": "N3",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "若い",
+        "furigana": "わかい",
+        "romaji": "wakai",
+        "meaning": "Joven"
+      }
+    ],
+    "exampleSentence": "先生はとても若く見えます。",
+    "exampleTranslation": "El profesor se ve muy joven.",
+    "notes": "Genki Lección 21 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-278",
+    "kanji": "送",
+    "spanish": "Enviar / Despedir",
+    "english": "Send / Escort",
+    "onyomi": "ソウ",
+    "kunyomi": "おく・る",
+    "strokeCount": 9,
+    "radicals": "辵 (camino)",
+    "jlptLevel": "N4",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "送る",
+        "furigana": "おくる",
+        "romaji": "okuru",
+        "meaning": "Enviar / Llevar"
+      }
+    ],
+    "exampleSentence": "母にプレゼントを送りました。",
+    "exampleTranslation": "Le envié un regalo a mi madre.",
+    "notes": "Genki Lección 21 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-279",
+    "kanji": "計",
+    "spanish": "Medir / Planear / Reloj",
+    "english": "Measure / Plan",
+    "onyomi": "ケイ",
+    "kunyomi": "はか・る",
+    "strokeCount": 9,
+    "radicals": "言 (palabra)",
+    "jlptLevel": "N4",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "時計",
+        "furigana": "とけい",
+        "romaji": "tokei",
+        "meaning": "Reloj"
+      }
+    ],
+    "exampleSentence": "新しい腕時計を買いました。",
+    "exampleTranslation": "Compré un reloj de pulsera nuevo.",
+    "notes": "Genki Lección 21 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-280",
+    "kanji": "遅",
+    "spanish": "Tarde / Lento",
+    "english": "Late / Slow",
+    "onyomi": "チ",
+    "kunyomi": "おく・れる、おそ・い",
+    "strokeCount": 12,
+    "radicals": "辵 (camino)",
+    "jlptLevel": "N3",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "遅れる",
+        "furigana": "おくれる",
+        "romaji": "okureru",
+        "meaning": "Llegar tarde / Retrasarse"
+      }
+    ],
+    "exampleSentence": "電車が十分遅れています。",
+    "exampleTranslation": "El tren está retrasado diez minutos.",
+    "notes": "Genki Lección 21 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-281",
+    "kanji": "配",
+    "spanish": "Distribuir / Preocuparse",
+    "english": "Distribute / Worry",
+    "onyomi": "ハイ",
+    "kunyomi": "くば・る",
+    "strokeCount": 10,
+    "radicals": "酉 (sake)",
+    "jlptLevel": "N3",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "心配",
+        "furigana": "しんぱい",
+        "romaji": "shinpai",
+        "meaning": "Preocupación"
+      }
+    ],
+    "exampleSentence": "心配しないでください。",
+    "exampleTranslation": "Por favor no te preocupes.",
+    "notes": "Genki Lección 21 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-282",
+    "kanji": "弟",
+    "spanish": "Hermano menor",
+    "english": "Younger brother",
+    "onyomi": "テイ、ダイ",
+    "kunyomi": "おとうと",
+    "strokeCount": 7,
+    "radicals": "弓 (arco)",
+    "jlptLevel": "N4",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "弟",
+        "furigana": "おとうと",
+        "romaji": "otouto",
+        "meaning": "Hermano menor"
+      }
+    ],
+    "exampleSentence": "弟は高校生です。",
+    "exampleTranslation": "Mi hermano menor es estudiante de preparatoria.",
+    "notes": "Genki Lección 21 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-283",
+    "kanji": "妹",
+    "spanish": "Hermana menor",
+    "english": "Younger sister",
+    "onyomi": "マイ",
+    "kunyomi": "いもうと",
+    "strokeCount": 8,
+    "radicals": "女 (mujer)",
+    "jlptLevel": "N4",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "妹",
+        "furigana": "いもうと",
+        "romaji": "imouto",
+        "meaning": "Hermana menor"
+      }
+    ],
+    "exampleSentence": "妹はピアノが上手です。",
+    "exampleTranslation": "Mi hermana menor es buena tocando el piano.",
+    "notes": "Genki Lección 21 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-284",
+    "kanji": "記",
+    "spanish": "Anotar / Crónica",
+    "english": "Write down / Record",
+    "onyomi": "キ",
+    "kunyomi": "しる・す",
+    "strokeCount": 10,
+    "radicals": "言 (palabra)",
+    "jlptLevel": "N3",
+    "genkiLesson": 22,
+    "compounds": [
+      {
+        "word": "日記",
+        "furigana": "にっき",
+        "romaji": "nikki",
+        "meaning": "Diario personal"
+      }
+    ],
+    "exampleSentence": "毎日日本語で日記を書いています。",
+    "exampleTranslation": "Escribo un diario en japonés todos los días.",
+    "notes": "Genki Lección 22 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-285",
+    "kanji": "銀",
+    "spanish": "Plata",
+    "english": "Silver",
+    "onyomi": "ギン",
+    "kunyomi": "ー",
+    "strokeCount": 14,
+    "radicals": "金 (metal)",
+    "jlptLevel": "N4",
+    "genkiLesson": 22,
+    "compounds": [
+      {
+        "word": "銀行",
+        "furigana": "ぎんこう",
+        "romaji": "ginkou",
+        "meaning": "Banco"
+      }
+    ],
+    "exampleSentence": "銀行でお金を下ろしました。",
+    "exampleTranslation": "Retiré dinero en el banco.",
+    "notes": "Genki Lección 22 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-286",
+    "kanji": "回",
+    "spanish": "Girar / Contador de veces",
+    "english": "Times / Revolve",
+    "onyomi": "カイ",
+    "kunyomi": "まわ・る",
+    "strokeCount": 6,
+    "radicals": "囗 (recinto)",
+    "jlptLevel": "N4",
+    "genkiLesson": 22,
+    "compounds": [
+      {
+        "word": "一回",
+        "furigana": "いっかい",
+        "romaji": "ikkai",
+        "meaning": "Una vez"
+      }
+    ],
+    "exampleSentence": "もう一回言ってください。",
+    "exampleTranslation": "Por favor dígalo una vez más.",
+    "notes": "Genki Lección 22 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-287",
+    "kanji": "夕",
+    "spanish": "Tarde / Atardecer",
+    "english": "Evening",
+    "onyomi": "セキ",
+    "kunyomi": "ゆう",
+    "strokeCount": 3,
+    "radicals": "夕 (tarde)",
+    "jlptLevel": "N4",
+    "genkiLesson": 22,
+    "compounds": [
+      {
+        "word": "夕方",
+        "furigana": "ゆうがた",
+        "romaji": "yuugata",
+        "meaning": "Atardecer"
+      }
+    ],
+    "exampleSentence": "夕方に雨が降りました。",
+    "exampleTranslation": "Llovió al atardecer.",
+    "notes": "Genki Lección 22 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-288",
+    "kanji": "黒",
+    "spanish": "Negro",
+    "english": "Black",
+    "onyomi": "コク",
+    "kunyomi": "くろ、くろ・い",
+    "strokeCount": 11,
+    "radicals": "黒 (negro)",
+    "jlptLevel": "N4",
+    "genkiLesson": 22,
+    "compounds": [
+      {
+        "word": "黒い",
+        "furigana": "くろい",
+        "romaji": "kuroi",
+        "meaning": "Negro"
+      }
+    ],
+    "exampleSentence": "黒い靴を履いています。",
+    "exampleTranslation": "Llevo puestos zapatos negros.",
+    "notes": "Genki Lección 22 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-289",
+    "kanji": "用",
+    "spanish": "Usar / Asunto / Tarea",
+    "english": "Use / Business",
+    "onyomi": "ヨウ",
+    "kunyomi": "もち・いる",
+    "strokeCount": 5,
+    "radicals": "用 (usar)",
+    "jlptLevel": "N4",
+    "genkiLesson": 22,
+    "compounds": [
+      {
+        "word": "用意",
+        "furigana": "ようい",
+        "romaji": "youi",
+        "meaning": "Preparación"
+      }
+    ],
+    "exampleSentence": "晩ご飯の用意ができました。",
+    "exampleTranslation": "La preparación de la cena está lista.",
+    "notes": "Genki Lección 22 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-290",
+    "kanji": "末",
+    "spanish": "Fin / Extremo",
+    "english": "End",
+    "onyomi": "マツ、バツ",
+    "kunyomi": "すえ",
+    "strokeCount": 5,
+    "radicals": "木 (árbol)",
+    "jlptLevel": "N3",
+    "genkiLesson": 22,
+    "compounds": [
+      {
+        "word": "週末",
+        "furigana": "しゅうまつ",
+        "romaji": "shuumatsu",
+        "meaning": "Fin de semana"
+      }
+    ],
+    "exampleSentence": "週末はどこかへ出かけますか。",
+    "exampleTranslation": "¿Sales a algún lugar el fin de semana?",
+    "notes": "Genki Lección 22 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-291",
+    "kanji": "待",
+    "spanish": "Esperar",
+    "english": "Wait",
+    "onyomi": "タイ",
+    "kunyomi": "ま・つ",
+    "strokeCount": 9,
+    "radicals": "彳 (paso)",
+    "jlptLevel": "N4",
+    "genkiLesson": 22,
+    "compounds": [
+      {
+        "word": "待つ",
+        "furigana": "まつ",
+        "romaji": "matsu",
+        "meaning": "Esperar"
+      }
+    ],
+    "exampleSentence": "ここで少し待っていてください。",
+    "exampleTranslation": "Por favor espera aquí un momento.",
+    "notes": "Genki Lección 22 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-292",
+    "kanji": "残",
+    "spanish": "Quedar / Restar",
+    "english": "Remain / Leftover",
+    "onyomi": "ザン",
+    "kunyomi": "のこ・る、のこ・す",
+    "strokeCount": 10,
+    "radicals": "歹 (hueso)",
+    "jlptLevel": "N3",
+    "genkiLesson": 22,
+    "compounds": [
+      {
+        "word": "残念",
+        "furigana": "ざんねん",
+        "romaji": "zannen",
+        "meaning": "Lamentable / Qué lástima"
+      }
+    ],
+    "exampleSentence": "行けなくて本当に残念です。",
+    "exampleTranslation": "Es realmente una lástima no poder ir.",
+    "notes": "Genki Lección 22 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-293",
+    "kanji": "番",
+    "spanish": "Número / Turno",
+    "english": "Number / Turn",
+    "onyomi": "バン",
+    "kunyomi": "ー",
+    "strokeCount": 12,
+    "radicals": "田 (campo)",
+    "jlptLevel": "N4",
+    "genkiLesson": 22,
+    "compounds": [
+      {
+        "word": "一番",
+        "furigana": "いちばん",
+        "romaji": "ichiban",
+        "meaning": "El número uno / El más"
+      }
+    ],
+    "exampleSentence": "果物の中でいちごが一番好きです。",
+    "exampleTranslation": "De las frutas, la fresa es la que más me gusta.",
+    "notes": "Genki Lección 22 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-294",
+    "kanji": "説",
+    "spanish": "Explicar / Teoría",
+    "english": "Explain / Theory",
+    "onyomi": "セツ",
+    "kunyomi": "と・く",
+    "strokeCount": 14,
+    "radicals": "言 (palabra)",
+    "jlptLevel": "N4",
+    "genkiLesson": 22,
+    "compounds": [
+      {
+        "word": "説明",
+        "furigana": "せつめい",
+        "romaji": "setsumei",
+        "meaning": "Explicación"
+      }
+    ],
+    "exampleSentence": "先生が文法を説明してくれました。",
+    "exampleTranslation": "El profesor nos explicó la gramática.",
+    "notes": "Genki Lección 22 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-295",
+    "kanji": "案",
+    "spanish": "Guía / Propuesta",
+    "english": "Guide / Plan",
+    "onyomi": "アン",
+    "kunyomi": "ー",
+    "strokeCount": 10,
+    "radicals": "木 (árbol)",
+    "jlptLevel": "N3",
+    "genkiLesson": 22,
+    "compounds": [
+      {
+        "word": "案内",
+        "furigana": "あんない",
+        "romaji": "annai",
+        "meaning": "Guía / Mostrar el lugar"
+      }
+    ],
+    "exampleSentence": "京都を案内してあげます。",
+    "exampleTranslation": "Te mostraré Kioto como guía.",
+    "notes": "Genki Lección 22 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-296",
+    "kanji": "忘",
+    "spanish": "Olvidar",
+    "english": "Forget",
+    "onyomi": "ボウ",
+    "kunyomi": "わす・れる",
+    "strokeCount": 7,
+    "radicals": "心 (corazón)",
+    "jlptLevel": "N3",
+    "genkiLesson": 22,
+    "compounds": [
+      {
+        "word": "忘れる",
+        "furigana": "わすれる",
+        "romaji": "wasureru",
+        "meaning": "Olvidar"
+      }
+    ],
+    "exampleSentence": "傘を電車に忘れてしまいました。",
+    "exampleTranslation": "Olvidé mi paraguas en el tren.",
+    "notes": "Genki Lección 22 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-297",
+    "kanji": "守",
+    "spanish": "Proteger / Cumplir",
+    "english": "Protect / Obey",
+    "onyomi": "シュ、ス",
+    "kunyomi": "まも・る",
+    "strokeCount": 6,
+    "radicals": "宀 (techo)",
+    "jlptLevel": "N3",
+    "genkiLesson": 22,
+    "compounds": [
+      {
+        "word": "守る",
+        "furigana": "まもる",
+        "romaji": "mamoru",
+        "meaning": "Proteger / Cumplir reglas"
+      }
+    ],
+    "exampleSentence": "約束は必ず守ります。",
+    "exampleTranslation": "Cumpliré la promesa sin falta.",
+    "notes": "Genki Lección 22 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-298",
+    "kanji": "顔",
+    "spanish": "Rostro / Cara",
+    "english": "Face",
+    "onyomi": "ガン",
+    "kunyomi": "かお",
+    "strokeCount": 18,
+    "radicals": "頁 (página)",
+    "jlptLevel": "N4",
+    "genkiLesson": 23,
+    "compounds": [
+      {
+        "word": "笑顔",
+        "furigana": "えがお",
+        "romaji": "egao",
+        "meaning": "Rostro sonriente"
+      }
+    ],
+    "exampleSentence": "素敵な笑顔ですね。",
+    "exampleTranslation": "Qué bonita sonrisa tienes.",
+    "notes": "Genki Lección 23 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-299",
+    "kanji": "情",
+    "spanish": "Sentimiento / Emoción / Situación",
+    "english": "Emotion / Condition",
+    "onyomi": "ジョウ",
+    "kunyomi": "なさ・け",
+    "strokeCount": 11,
+    "radicals": "心 (corazón)",
+    "jlptLevel": "N3",
+    "genkiLesson": 23,
+    "compounds": [
+      {
+        "word": "表情",
+        "furigana": "ひょうじょう",
+        "romaji": "hyoujou",
+        "meaning": "Expresión facial"
+      }
+    ],
+    "exampleSentence": "明るい表情をしています。",
+    "exampleTranslation": "Tiene una expresión alegre.",
+    "notes": "Genki Lección 23 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-300",
+    "kanji": "怒",
+    "spanish": "Enojarse / Ira",
+    "english": "Anger / Get angry",
+    "onyomi": "ド",
+    "kunyomi": "いか・る、おこ・る",
+    "strokeCount": 9,
+    "radicals": "心 (corazón)",
+    "jlptLevel": "N3",
+    "genkiLesson": 23,
+    "compounds": [
+      {
+        "word": "怒る",
+        "furigana": "おこる",
+        "romaji": "okoru",
+        "meaning": "Enojarse"
+      }
+    ],
+    "exampleSentence": "遅刻して先生に怒られました。",
+    "exampleTranslation": "Llegué tarde y el profesor me regañó.",
+    "notes": "Genki Lección 23 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-301",
+    "kanji": "変",
+    "spanish": "Cambiar / Extraño",
+    "english": "Change / Strange",
+    "onyomi": "ヘン",
+    "kunyomi": "か・わる、か・える",
+    "strokeCount": 9,
+    "radicals": "夂 (invierno)",
+    "jlptLevel": "N4",
+    "genkiLesson": 23,
+    "compounds": [
+      {
+        "word": "大変",
+        "furigana": "たいへん",
+        "romaji": "taihen",
+        "meaning": "Muy / Difícil / Grave"
+      }
+    ],
+    "exampleSentence": "引っ越しは大変でした。",
+    "exampleTranslation": "La mudanza fue muy pesada.",
+    "notes": "Genki Lección 23 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-302",
+    "kanji": "相",
+    "spanish": "Mutuo / Aspecto",
+    "english": "Mutual /Minister",
+    "onyomi": "ソウ、ショウ",
+    "kunyomi": "あい",
+    "strokeCount": 9,
+    "radicals": "目 (ojo)",
+    "jlptLevel": "N3",
+    "genkiLesson": 23,
+    "compounds": [
+      {
+        "word": "相談",
+        "furigana": "そうだん",
+        "romaji": "soudan",
+        "meaning": "Consulta / Consejo"
+      }
+    ],
+    "exampleSentence": "友達に相談してみました。",
+    "exampleTranslation": "Intenté pedirle consejo a un amigo.",
+    "notes": "Genki Lección 23 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-303",
+    "kanji": "横",
+    "spanish": "Lado / Horizontal",
+    "english": "Side / Horizontal",
+    "onyomi": "オウ",
+    "kunyomi": "よこ",
+    "strokeCount": 15,
+    "radicals": "木 (árbol)",
+    "jlptLevel": "N3",
+    "genkiLesson": 23,
+    "compounds": [
+      {
+        "word": "横",
+        "furigana": "よこ",
+        "romaji": "yoko",
+        "meaning": "Al lado de / Costado"
+      }
+    ],
+    "exampleSentence": "机の横に本棚があります。",
+    "exampleTranslation": "Al lado del escritorio hay un librero.",
+    "notes": "Genki Lección 23 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-304",
+    "kanji": "比",
+    "spanish": "Comparar",
+    "english": "Compare",
+    "onyomi": "ヒ",
+    "kunyomi": "くら・べる",
+    "strokeCount": 4,
+    "radicals": "比 (comparar)",
+    "jlptLevel": "N3",
+    "genkiLesson": 23,
+    "compounds": [
+      {
+        "word": "比べる",
+        "furigana": "くらべる",
+        "romaji": "kuraberu",
+        "meaning": "Comparar"
+      }
+    ],
+    "exampleSentence": "去年と比べると日本語が上手になりました。",
+    "exampleTranslation": "Comparado con el año pasado, mejoré en japonés.",
+    "notes": "Genki Lección 23 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-305",
+    "kanji": "化",
+    "spanish": "Cambiar / Transformarse",
+    "english": "Change / Transform",
+    "onyomi": "カ、ケ",
+    "kunyomi": "ば・ける",
+    "strokeCount": 4,
+    "radicals": "匕 (cuchara)",
+    "jlptLevel": "N3",
+    "genkiLesson": 23,
+    "compounds": [
+      {
+        "word": "文化",
+        "furigana": "ぶんか",
+        "romaji": "bunka",
+        "meaning": "Cultura"
+      }
+    ],
+    "exampleSentence": "日本の文化に興味があります。",
+    "exampleTranslation": "Tengo interés en la cultura japonesa.",
+    "notes": "Genki Lección 23 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-306",
+    "kanji": "違",
+    "spanish": "Diferir / Equivocarse",
+    "english": "Differ / Mistake",
+    "onyomi": "イ",
+    "kunyomi": "ちが・う",
+    "strokeCount": 13,
+    "radicals": "辵 (camino)",
+    "jlptLevel": "N3",
+    "genkiLesson": 23,
+    "compounds": [
+      {
+        "word": "違う",
+        "furigana": "ちがう",
+        "romaji": "chigau",
+        "meaning": "Ser diferente / Equivocarse"
+      }
+    ],
+    "exampleSentence": "電話番号が違っています。",
+    "exampleTranslation": "El número de teléfono es incorrecto.",
+    "notes": "Genki Lección 23 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-307",
+    "kanji": "悲",
+    "spanish": "Triste / Tristeza",
+    "english": "Sad",
+    "onyomi": "ヒ",
+    "kunyomi": "かな・しい",
+    "strokeCount": 12,
+    "radicals": "心 (corazón)",
+    "jlptLevel": "N3",
+    "genkiLesson": 23,
+    "compounds": [
+      {
+        "word": "悲しい",
+        "furigana": "かなしい",
+        "romaji": "kanashii",
+        "meaning": "Triste"
+      }
+    ],
+    "exampleSentence": "お別れするのは悲しいです。",
+    "exampleTranslation": "Es triste despedirse.",
+    "notes": "Genki Lección 23 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-308",
+    "kanji": "調",
+    "spanish": "Investigar / Tono / Condición",
+    "english": "Investigate / Tone",
+    "onyomi": "チョウ",
+    "kunyomi": "しら・べる",
+    "strokeCount": 15,
+    "radicals": "言 (palabra)",
+    "jlptLevel": "N3",
+    "genkiLesson": 23,
+    "compounds": [
+      {
+        "word": "調べる",
+        "furigana": "しらべる",
+        "romaji": "shiraberu",
+        "meaning": "Investigar / Buscar"
+      }
+    ],
+    "exampleSentence": "辞書で新しい言葉を調べます。",
+    "exampleTranslation": "Busco palabras nuevas en el diccionario.",
+    "notes": "Genki Lección 23 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-309",
+    "kanji": "果",
+    "spanish": "Fruto / Resultado",
+    "english": "Fruit / Result",
+    "onyomi": "カ",
+    "kunyomi": "は・たす",
+    "strokeCount": 8,
+    "radicals": "木 (árbol)",
+    "jlptLevel": "N3",
+    "genkiLesson": 23,
+    "compounds": [
+      {
+        "word": "結果",
+        "furigana": "けっか",
+        "romaji": "kekka",
+        "meaning": "Resultado"
+      }
+    ],
+    "exampleSentence": "試験の結果が楽しみです。",
+    "exampleTranslation": "Espero con ansias el resultado del examen.",
+    "notes": "Genki Lección 23 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-310",
+    "kanji": "感",
+    "spanish": "Sentir / Sensación",
+    "english": "Feel / Emotion",
+    "onyomi": "カン",
+    "kunyomi": "ー",
+    "strokeCount": 13,
+    "radicals": "心 (corazón)",
+    "jlptLevel": "N3",
+    "genkiLesson": 23,
+    "compounds": [
+      {
+        "word": "感謝",
+        "furigana": "かんしゃ",
+        "romaji": "kansha",
+        "meaning": "Gratitud / Agradecimiento"
+      }
+    ],
+    "exampleSentence": "先生に心から感謝しています。",
+    "exampleTranslation": "Agradezco de corazón al profesor.",
+    "notes": "Genki Lección 23 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-311",
+    "kanji": "答",
+    "spanish": "Responder / Respuesta",
+    "english": "Answer",
+    "onyomi": "トウ",
+    "kunyomi": "こた・える、こた・え",
+    "strokeCount": 12,
+    "radicals": "竹 (bambú)",
+    "jlptLevel": "N4",
+    "genkiLesson": 23,
+    "compounds": [
+      {
+        "word": "答え",
+        "furigana": "こたえ",
+        "romaji": "kotae",
+        "meaning": "Respuesta"
+      }
+    ],
+    "exampleSentence": "正しい答えを選んでください。",
+    "exampleTranslation": "Por favor elige la respuesta correcta.",
+    "notes": "Genki Lección 23 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-312",
+    "kanji": "元",
+    "spanish": "Origen / Salud",
+    "english": "Origin / Health",
+    "onyomi": "ゲン、ガン",
+    "kunyomi": "もと",
+    "strokeCount": 4,
+    "radicals": "儿 (piernas)",
+    "jlptLevel": "N4",
+    "genkiLesson": 4,
+    "compounds": [
+      {
+        "word": "元気",
+        "furigana": "げんき",
+        "romaji": "genki",
+        "meaning": "Saludable / Con energía"
+      }
+    ],
+    "exampleSentence": "お元気ですか。",
+    "exampleTranslation": "¿Cómo estás?",
+    "notes": "Genki Lección 4 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-313",
+    "kanji": "々",
+    "spanish": "Marca de repetición kanji",
+    "english": "Kanji repeater",
+    "onyomi": "ー",
+    "kunyomi": "ー",
+    "strokeCount": 3,
+    "radicals": "丿 (trazo)",
+    "jlptLevel": "N5",
+    "genkiLesson": 7,
+    "compounds": [
+      {
+        "word": "人々",
+        "furigana": "ひとびと",
+        "romaji": "hitobito",
+        "meaning": "La gente /Las personas"
+      }
+    ],
+    "exampleSentence": "多くの人々が集まりました。",
+    "exampleTranslation": "Se reunieron muchas personas.",
+    "notes": "Genki Lección 7 • Nivel JLPT N5"
+  },
+  {
+    "id": "k-exp-314",
+    "kanji": "歩",
+    "spanish": "Caminar / Paso",
+    "english": "Walk / Step",
+    "onyomi": "ホ、ブ",
+    "kunyomi": "ある・く、あゆ・む",
+    "strokeCount": 8,
+    "radicals": "止 (detener)",
+    "jlptLevel": "N4",
+    "genkiLesson": 10,
+    "compounds": [
+      {
+        "word": "歩く",
+        "furigana": "あるく",
+        "romaji": "aruku",
+        "meaning": "Caminar"
+      }
+    ],
+    "exampleSentence": "駅から家まで歩いて十分です。",
+    "exampleTranslation": "Son diez minutos caminando de la estación a la casa.",
+    "notes": "Genki Lección 10 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-315",
+    "kanji": "洗",
+    "spanish": "Lavar",
+    "english": "Wash",
+    "onyomi": "セン",
+    "kunyomi": "あら・う",
+    "strokeCount": 9,
+    "radicals": "水 (agua)",
+    "jlptLevel": "N4",
+    "genkiLesson": 8,
+    "compounds": [
+      {
+        "word": "洗濯",
+        "furigana": "せんたく",
+        "romaji": "sentaku",
+        "meaning": "Lavar la ropa"
+      }
+    ],
+    "exampleSentence": "週末に洗濯をします。",
+    "exampleTranslation": "Lavo la ropa el fin de semana.",
+    "notes": "Genki Lección 8 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-316",
+    "kanji": "眠",
+    "spanish": "Dormir / Sueño",
+    "english": "Sleep",
+    "onyomi": "ミン",
+    "kunyomi": "ねむ・る、ねむ・い",
+    "strokeCount": 10,
+    "radicals": "目 (ojo)",
+    "jlptLevel": "N3",
+    "genkiLesson": 12,
+    "compounds": [
+      {
+        "word": "眠い",
+        "furigana": "ねむい",
+        "romaji": "nemui",
+        "meaning": "Somnoliento / Tener sueño"
+      }
+    ],
+    "exampleSentence": "昨日はあまり寝なかったので眠いです。",
+    "exampleTranslation": "Como ayer casi no dormí, tengo sueño.",
+    "notes": "Genki Lección 12 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-317",
+    "kanji": "泣",
+    "spanish": "Llorar",
+    "english": "Cry / Weep",
+    "onyomi": "キュウ",
+    "kunyomi": "な・く",
+    "strokeCount": 8,
+    "radicals": "水 (agua)",
+    "jlptLevel": "N3",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "泣く",
+        "furigana": "なく",
+        "romaji": "naku",
+        "meaning": "Llorar"
+      }
+    ],
+    "exampleSentence": "映画を見て泣いてしまいました。",
+    "exampleTranslation": "Vi la película y terminé llorando.",
+    "notes": "Genki Lección 21 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-318",
+    "kanji": "喜",
+    "spanish": "Alegrarse / Regocijo",
+    "english": "Rejoice / Glad",
+    "onyomi": "キ",
+    "kunyomi": "よろこ・ぶ",
+    "strokeCount": 12,
+    "radicals": "口 (boca)",
+    "jlptLevel": "N3",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "喜ぶ",
+        "furigana": "よろこぶ",
+        "romaji": "yorokobu",
+        "meaning": "Alegrarse"
+      }
+    ],
+    "exampleSentence": "プレゼントをあげたら喜んでくれました。",
+    "exampleTranslation": "Cuando le di el regalo se puso muy contento.",
+    "notes": "Genki Lección 19 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-319",
+    "kanji": "驚",
+    "spanish": "Sorprenderse",
+    "english": "Surprise / Astonish",
+    "onyomi": "キョウ",
+    "kunyomi": "おどろ・く",
+    "strokeCount": 22,
+    "radicals": "馬 (caballo)",
+    "jlptLevel": "N3",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "驚く",
+        "furigana": "おどろく",
+        "romaji": "odoroku",
+        "meaning": "Sorprenderse"
+      }
+    ],
+    "exampleSentence": "そのニュースを聞いて驚きました。",
+    "exampleTranslation": "Me sorprendí al escuchar esa noticia.",
+    "notes": "Genki Lección 21 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-320",
+    "kanji": "困",
+    "spanish": "Estar en problemas",
+    "english": "Trouble / Distress",
+    "onyomi": "コン",
+    "kunyomi": "こま・る",
+    "strokeCount": 7,
+    "radicals": "囗 (recinto)",
+    "jlptLevel": "N3",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "困る",
+        "furigana": "こまる",
+        "romaji": "komaru",
+        "meaning": "Tener problemas / Estar en apuros"
+      }
+    ],
+    "exampleSentence": "財布をなくして困っています。",
+    "exampleTranslation": "Estoy en apuros porque perdí mi cartera.",
+    "notes": "Genki Lección 16 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-321",
+    "kanji": "疲",
+    "spanish": "Cansarse / Fatiga",
+    "english": "Get tired",
+    "onyomi": "ヒ",
+    "kunyomi": "つか・れる",
+    "strokeCount": 10,
+    "radicals": "疒 (enfermedad)",
+    "jlptLevel": "N3",
+    "genkiLesson": 12,
+    "compounds": [
+      {
+        "word": "疲れる",
+        "furigana": "つかれる",
+        "romaji": "tsukareru",
+        "meaning": "Cansarse"
+      }
+    ],
+    "exampleSentence": "たくさん歩いて疲れました。",
+    "exampleTranslation": "Me cansé de tanto caminar.",
+    "notes": "Genki Lección 12 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-322",
+    "kanji": "冷",
+    "spanish": "Frío (al tacto) / Enfriar",
+    "english": "Cold / Cool",
+    "onyomi": "レイ",
+    "kunyomi": "つめ・たい、ひ・える",
+    "strokeCount": 7,
+    "radicals": "冫 (hielo)",
+    "jlptLevel": "N3",
+    "genkiLesson": 5,
+    "compounds": [
+      {
+        "word": "冷たい",
+        "furigana": "つめたい",
+        "romaji": "tsumetai",
+        "meaning": "Frío (cosas/bebidas)"
+      }
+    ],
+    "exampleSentence": "冷たい水を飲みました。",
+    "exampleTranslation": "Bebí agua fría.",
+    "notes": "Genki Lección 5 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-323",
+    "kanji": "温",
+    "spanish": "Cálido / Tibio",
+    "english": "Warm",
+    "onyomi": "オン",
+    "kunyomi": "あたた・かい",
+    "strokeCount": 12,
+    "radicals": "水 (agua)",
+    "jlptLevel": "N3",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "温泉",
+        "furigana": "おんせん",
+        "romaji": "onsen",
+        "meaning": "Aguas termales"
+      }
+    ],
+    "exampleSentence": "箱根の温泉に入りました。",
+    "exampleTranslation": "Entré a las aguas termales de Hakone.",
+    "notes": "Genki Lección 15 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-324",
+    "kanji": "暖",
+    "spanish": "Cálido (clima)",
+    "english": "Warm weather",
+    "onyomi": "ダン",
+    "kunyomi": "あたた・かい",
+    "strokeCount": 13,
+    "radicals": "日 (sol)",
+    "jlptLevel": "N3",
+    "genkiLesson": 10,
+    "compounds": [
+      {
+        "word": "暖かい",
+        "furigana": "あたたかい",
+        "romaji": "atatakai",
+        "meaning": "Cálido (clima)"
+      }
+    ],
+    "exampleSentence": "春になって暖かくなりました。",
+    "exampleTranslation": "Llegó la primavera y el clima se puso cálido.",
+    "notes": "Genki Lección 10 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-325",
+    "kanji": "涼",
+    "spanish": "Fresco (clima)",
+    "english": "Cool / Refreshing",
+    "onyomi": "リョウ",
+    "kunyomi": "すず・しい",
+    "strokeCount": 11,
+    "radicals": "水 (agua)",
+    "jlptLevel": "N3",
+    "genkiLesson": 10,
+    "compounds": [
+      {
+        "word": "涼しい",
+        "furigana": "すずしい",
+        "romaji": "suzushii",
+        "meaning": "Fresco (clima)"
+      }
+    ],
+    "exampleSentence": "秋は涼しくて気持ちがいいです。",
+    "exampleTranslation": "El otoño es fresco y agradable.",
+    "notes": "Genki Lección 10 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-326",
+    "kanji": "甘",
+    "spanish": "Dulce",
+    "english": "Sweet",
+    "onyomi": "カン",
+    "kunyomi": "あま・い",
+    "strokeCount": 5,
+    "radicals": "甘 (dulce)",
+    "jlptLevel": "N3",
+    "genkiLesson": 12,
+    "compounds": [
+      {
+        "word": "甘い",
+        "furigana": "あまい",
+        "romaji": "amai",
+        "meaning": "Dulce"
+      }
+    ],
+    "exampleSentence": "甘いケーキが食べたいです。",
+    "exampleTranslation": "Quiero comer un pastel dulce.",
+    "notes": "Genki Lección 12 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-327",
+    "kanji": "辛",
+    "spanish": "Picante / Duro",
+    "english": "Spicy / Bitter",
+    "onyomi": "シン",
+    "kunyomi": "から・い、つら・い",
+    "strokeCount": 7,
+    "radicals": "辛 (picante)",
+    "jlptLevel": "N3",
+    "genkiLesson": 13,
+    "compounds": [
+      {
+        "word": "辛い",
+        "furigana": "からい",
+        "romaji": "karai",
+        "meaning": "Picante"
+      }
+    ],
+    "exampleSentence": "韓国の料理は辛くて美味しいです。",
+    "exampleTranslation": "La comida coreana es picante y deliciosa.",
+    "notes": "Genki Lección 13 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-328",
+    "kanji": "苦",
+    "spanish": "Amargo / Sufrir",
+    "english": "Bitter / Suffering",
+    "onyomi": "ク",
+    "kunyomi": "くる・しい、にが・い",
+    "strokeCount": 8,
+    "radicals": "艸 (hierba)",
+    "jlptLevel": "N3",
+    "genkiLesson": 13,
+    "compounds": [
+      {
+        "word": "苦手",
+        "furigana": "にがて",
+        "romaji": "nigate",
+        "meaning": "No ser bueno en algo / Punto débil"
+      }
+    ],
+    "exampleSentence": "私は早起きが苦手です。",
+    "exampleTranslation": "Me cuesta trabajo levantarme temprano.",
+    "notes": "Genki Lección 13 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-329",
+    "kanji": "塩",
+    "spanish": "Sal",
+    "english": "Salt",
+    "onyomi": "エン",
+    "kunyomi": "しお",
+    "strokeCount": 13,
+    "radicals": "土 (tierra)",
+    "jlptLevel": "N3",
+    "genkiLesson": 13,
+    "compounds": [
+      {
+        "word": "塩",
+        "furigana": "しお",
+        "romaji": "shio",
+        "meaning": "Sal"
+      }
+    ],
+    "exampleSentence": "少し塩を入れてください。",
+    "exampleTranslation": "Por favor ponle un poco de sal.",
+    "notes": "Genki Lección 13 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-330",
+    "kanji": "砂",
+    "spanish": "Arena",
+    "english": "Sand",
+    "onyomi": "サ、シャ",
+    "kunyomi": "すな",
+    "strokeCount": 9,
+    "radicals": "石 (piedra)",
+    "jlptLevel": "N3",
+    "genkiLesson": 13,
+    "compounds": [
+      {
+        "word": "砂糖",
+        "furigana": "さとう",
+        "romaji": "satou",
+        "meaning": "Azúcar"
+      }
+    ],
+    "exampleSentence": "コーヒーに砂糖を入れますか。",
+    "exampleTranslation": "¿Le pones azúcar al café?",
+    "notes": "Genki Lección 13 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-331",
+    "kanji": "糖",
+    "spanish": "Azúcar",
+    "english": "Sugar",
+    "onyomi": "トウ",
+    "kunyomi": "ー",
+    "strokeCount": 16,
+    "radicals": "米 (arroz)",
+    "jlptLevel": "N3",
+    "genkiLesson": 13,
+    "compounds": [
+      {
+        "word": "砂糖",
+        "furigana": "さとう",
+        "romaji": "satou",
+        "meaning": "Azúcar"
+      }
+    ],
+    "exampleSentence": "砂糖を少しだけ入れました。",
+    "exampleTranslation": "Le puse solo un poquito de azúcar.",
+    "notes": "Genki Lección 13 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-332",
+    "kanji": "野",
+    "spanish": "Campo / Silvestre",
+    "english": "Field / Wild",
+    "onyomi": "ヤ",
+    "kunyomi": "の",
+    "strokeCount": 11,
+    "radicals": "里 (aldea)",
+    "jlptLevel": "N4",
+    "genkiLesson": 8,
+    "compounds": [
+      {
+        "word": "野菜",
+        "furigana": "やさい",
+        "romaji": "yasai",
+        "meaning": "Verdura / Vegetal"
+      }
+    ],
+    "exampleSentence": "毎日野菜をたくさん食べます。",
+    "exampleTranslation": "Como muchas verduras todos los días.",
+    "notes": "Genki Lección 8 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-333",
+    "kanji": "菜",
+    "spanish": "Verdura / Platillo",
+    "english": "Vegetable / Side dish",
+    "onyomi": "サイ",
+    "kunyomi": "な",
+    "strokeCount": 11,
+    "radicals": "艸 (hierba)",
+    "jlptLevel": "N4",
+    "genkiLesson": 8,
+    "compounds": [
+      {
+        "word": "野菜",
+        "furigana": "やさい",
+        "romaji": "yasai",
+        "meaning": "Verduras"
+      }
+    ],
+    "exampleSentence": "新鮮な野菜を買いました。",
+    "exampleTranslation": "Compré verduras frescas.",
+    "notes": "Genki Lección 8 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-334",
+    "kanji": "菓",
+    "spanish": "Dulce / Confitería",
+    "english": "Candy / Pastry",
+    "onyomi": "カ",
+    "kunyomi": "ー",
+    "strokeCount": 11,
+    "radicals": "艸 (hierba)",
+    "jlptLevel": "N3",
+    "genkiLesson": 11,
+    "compounds": [
+      {
+        "word": "お菓子",
+        "furigana": "おかし",
+        "romaji": "okashi",
+        "meaning": "Dulces / Golosinas"
+      }
+    ],
+    "exampleSentence": "日本の伝統的なお菓子を食べました。",
+    "exampleTranslation": "Comí dulces tradicionales japoneses.",
+    "notes": "Genki Lección 11 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-335",
+    "kanji": "酒",
+    "spanish": "Sake / Alcohol",
+    "english": "Alcohol / Sake",
+    "onyomi": "シュ",
+    "kunyomi": "さけ",
+    "strokeCount": 10,
+    "radicals": "酉 (sake)",
+    "jlptLevel": "N3",
+    "genkiLesson": 13,
+    "compounds": [
+      {
+        "word": "お酒",
+        "furigana": "おさけ",
+        "romaji": "osake",
+        "meaning": "Bebida alcohólica / Sake"
+      }
+    ],
+    "exampleSentence": "二十歳になってからお酒を飲みます。",
+    "exampleTranslation": "Se bebe alcohol a partir de cumplir 20 años.",
+    "notes": "Genki Lección 13 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-336",
+    "kanji": "氷",
+    "spanish": "Hielo",
+    "english": "Ice",
+    "onyomi": "ヒョウ",
+    "kunyomi": "こおり",
+    "strokeCount": 5,
+    "radicals": "水 (agua)",
+    "jlptLevel": "N3",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "かき氷",
+        "furigana": "かきごおり",
+        "romaji": "kakigoori",
+        "meaning": "Raspado de hielo"
+      }
+    ],
+    "exampleSentence": "夏はかき氷が美味しいです。",
+    "exampleTranslation": "En verano el raspado de hielo es delicioso.",
+    "notes": "Genki Lección 15 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-337",
+    "kanji": "湯",
+    "spanish": "Agua caliente",
+    "english": "Hot water",
+    "onyomi": "トウ",
+    "kunyomi": "ゆ",
+    "strokeCount": 12,
+    "radicals": "水 (agua)",
+    "jlptLevel": "N3",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "お湯",
+        "furigana": "おゆ",
+        "romaji": "oyu",
+        "meaning": "Agua caliente"
+      }
+    ],
+    "exampleSentence": "お湯を沸かしてお茶を入れます。",
+    "exampleTranslation": "Hiervo agua caliente y preparo té.",
+    "notes": "Genki Lección 15 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-338",
+    "kanji": "箸",
+    "spanish": "Palillos chinos (hashi)",
+    "english": "Chopsticks",
+    "onyomi": "チョ",
+    "kunyomi": "はし",
+    "strokeCount": 15,
+    "radicals": "竹 (bambú)",
+    "jlptLevel": "N3",
+    "genkiLesson": 13,
+    "compounds": [
+      {
+        "word": "お箸",
+        "furigana": "おはし",
+        "romaji": "ohashi",
+        "meaning": "Palillos para comer"
+      }
+    ],
+    "exampleSentence": "お箸の使い方が上手ですね。",
+    "exampleTranslation": "Usas muy bien los palillos.",
+    "notes": "Genki Lección 13 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-339",
+    "kanji": "机",
+    "spanish": "Escritorio",
+    "english": "Desk",
+    "onyomi": "キ",
+    "kunyomi": "つくえ",
+    "strokeCount": 6,
+    "radicals": "木 (árbol)",
+    "jlptLevel": "N3",
+    "genkiLesson": 4,
+    "compounds": [
+      {
+        "word": "机",
+        "furigana": "つくえ",
+        "romaji": "tsukue",
+        "meaning": "Escritorio"
+      }
+    ],
+    "exampleSentence": "机の上にノートがあります。",
+    "exampleTranslation": "Hay un cuaderno sobre el escritorio.",
+    "notes": "Genki Lección 4 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-340",
+    "kanji": "椅",
+    "spanish": "Silla",
+    "english": "Chair",
+    "onyomi": "イ",
+    "kunyomi": "ー",
+    "strokeCount": 12,
+    "radicals": "木 (árbol)",
+    "jlptLevel": "N3",
+    "genkiLesson": 4,
+    "compounds": [
+      {
+        "word": "椅子",
+        "furigana": "いす",
+        "romaji": "isu",
+        "meaning": "Silla"
+      }
+    ],
+    "exampleSentence": "どうぞ椅子に座ってください。",
+    "exampleTranslation": "Por favor siéntese en la silla.",
+    "notes": "Genki Lección 4 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-341",
+    "kanji": "窓",
+    "spanish": "Ventana",
+    "english": "Window",
+    "onyomi": "ソウ",
+    "kunyomi": "まど",
+    "strokeCount": 11,
+    "radicals": "穴 (cueva)",
+    "jlptLevel": "N3",
+    "genkiLesson": 6,
+    "compounds": [
+      {
+        "word": "窓",
+        "furigana": "まど",
+        "romaji": "mado",
+        "meaning": "Ventana"
+      }
+    ],
+    "exampleSentence": "暑いので窓を開けました。",
+    "exampleTranslation": "Como hacía calor, abrí la ventana.",
+    "notes": "Genki Lección 6 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-342",
+    "kanji": "鍵",
+    "spanish": "Llave / Cerrojo",
+    "english": "Key / Lock",
+    "onyomi": "ケン",
+    "kunyomi": "かぎ",
+    "strokeCount": 17,
+    "radicals": "金 (metal)",
+    "jlptLevel": "N3",
+    "genkiLesson": 18,
+    "compounds": [
+      {
+        "word": "鍵",
+        "furigana": "かぎ",
+        "romaji": "kagi",
+        "meaning": "Llave"
+      }
+    ],
+    "exampleSentence": "部屋の鍵を閉めましたか。",
+    "exampleTranslation": "¿Cerraste con llave la habitación?",
+    "notes": "Genki Lección 18 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-343",
+    "kanji": "箱",
+    "spanish": "Caja",
+    "english": "Box",
+    "onyomi": "ソウ",
+    "kunyomi": "はこ",
+    "strokeCount": 15,
+    "radicals": "竹 (bambú)",
+    "jlptLevel": "N3",
+    "genkiLesson": 18,
+    "compounds": [
+      {
+        "word": "ゴミ箱",
+        "furigana": "ごみばこ",
+        "romaji": "gomibako",
+        "meaning": "Bote de basura"
+      }
+    ],
+    "exampleSentence": "大きな箱に本を入れました。",
+    "exampleTranslation": "Metí los libros en una caja grande.",
+    "notes": "Genki Lección 18 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-344",
+    "kanji": "袋",
+    "spanish": "Bolsa / Saco",
+    "english": "Bag / Sack",
+    "onyomi": "タイ",
+    "kunyomi": "ふくろ",
+    "strokeCount": 11,
+    "radicals": "衣 (ropa)",
+    "jlptLevel": "N3",
+    "genkiLesson": 14,
+    "compounds": [
+      {
+        "word": "手袋",
+        "furigana": "てぶくろ",
+        "romaji": "tebukuro",
+        "meaning": "Guantes"
+      }
+    ],
+    "exampleSentence": "レジ袋はいりません。",
+    "exampleTranslation": "No necesito bolsa de plástico.",
+    "notes": "Genki Lección 14 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-345",
+    "kanji": "傘",
+    "spanish": "Paraguas",
+    "english": "Umbrella",
+    "onyomi": "サン",
+    "kunyomi": "かさ",
+    "strokeCount": 12,
+    "radicals": "人 (persona)",
+    "jlptLevel": "N3",
+    "genkiLesson": 2,
+    "compounds": [
+      {
+        "word": "日傘",
+        "furigana": "ひがさ",
+        "romaji": "higasa",
+        "meaning": "Sombrilla"
+      }
+    ],
+    "exampleSentence": "雨が降りそうだから傘を持って行きます。",
+    "exampleTranslation": "Como parece que va a llover, llevaré paraguas.",
+    "notes": "Genki Lección 2 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-346",
+    "kanji": "靴",
+    "spanish": "Zapatos",
+    "english": "Shoes",
+    "onyomi": "カ",
+    "kunyomi": "くつ",
+    "strokeCount": 13,
+    "radicals": "革 (cuero)",
+    "jlptLevel": "N3",
+    "genkiLesson": 2,
+    "compounds": [
+      {
+        "word": "靴下",
+        "furigana": "くつした",
+        "romaji": "kutsushita",
+        "meaning": "Calcetines"
+      }
+    ],
+    "exampleSentence": "玄関で靴を脱ぎます。",
+    "exampleTranslation": "Me quito los zapatos en la entrada.",
+    "notes": "Genki Lección 2 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-347",
+    "kanji": "帽",
+    "spanish": "Sombrero / Gorra",
+    "english": "Hat / Cap",
+    "onyomi": "ボウ",
+    "kunyomi": "ー",
+    "strokeCount": 12,
+    "radicals": "巾 (tela)",
+    "jlptLevel": "N3",
+    "genkiLesson": 2,
+    "compounds": [
+      {
+        "word": "帽子",
+        "furigana": "ぼうし",
+        "romaji": "boushi",
+        "meaning": "Sombrero / Gorra"
+      }
+    ],
+    "exampleSentence": "赤い帽子をかぶっています。",
+    "exampleTranslation": "Lleva puesto un sombrero rojo.",
+    "notes": "Genki Lección 2 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-348",
+    "kanji": "眼",
+    "spanish": "Ojo / Vista",
+    "english": "Eye",
+    "onyomi": "ガン",
+    "kunyomi": "め",
+    "strokeCount": 11,
+    "radicals": "目 (ojo)",
+    "jlptLevel": "N3",
+    "genkiLesson": 7,
+    "compounds": [
+      {
+        "word": "眼鏡",
+        "furigana": "めがね",
+        "romaji": "megane",
+        "meaning": "Lentes / Gafas"
+      }
+    ],
+    "exampleSentence": "田中さんは眼鏡をかけています。",
+    "exampleTranslation": "El Sr. Tanaka lleva puestos lentes.",
+    "notes": "Genki Lección 7 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-349",
+    "kanji": "鏡",
+    "spanish": "Espejo / Lente",
+    "english": "Mirror / Lens",
+    "onyomi": "キョウ",
+    "kunyomi": "かがみ",
+    "strokeCount": 19,
+    "radicals": "金 (metal)",
+    "jlptLevel": "N3",
+    "genkiLesson": 7,
+    "compounds": [
+      {
+        "word": "鏡",
+        "furigana": "かがみ",
+        "romaji": "kagami",
+        "meaning": "Espejo"
+      }
+    ],
+    "exampleSentence": "朝、鏡を見ます。",
+    "exampleTranslation": "Me miro al espejo por la mañana.",
+    "notes": "Genki Lección 7 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-350",
+    "kanji": "髪",
+    "spanish": "Cabello / Pelo",
+    "english": "Hair",
+    "onyomi": "ハツ",
+    "kunyomi": "かみ",
+    "strokeCount": 14,
+    "radicals": "髟 (cabello)",
+    "jlptLevel": "N3",
+    "genkiLesson": 7,
+    "compounds": [
+      {
+        "word": "髪の毛",
+        "furigana": "かみのけ",
+        "romaji": "kaminoke",
+        "meaning": "Cabello"
+      }
+    ],
+    "exampleSentence": "メアリーさんは髪が長いです。",
+    "exampleTranslation": "Mary tiene el cabello largo.",
+    "notes": "Genki Lección 7 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-351",
+    "kanji": "歯",
+    "spanish": "Diente",
+    "english": "Tooth",
+    "onyomi": "シ",
+    "kunyomi": "は",
+    "strokeCount": 12,
+    "radicals": "歯 (diente)",
+    "jlptLevel": "N3",
+    "genkiLesson": 12,
+    "compounds": [
+      {
+        "word": "歯医者",
+        "furigana": "はいしゃ",
+        "romaji": "haisha",
+        "meaning": "Dentista"
+      }
+    ],
+    "exampleSentence": "寝る前に歯を磨きます。",
+    "exampleTranslation": "Me cepillo los dientes antes de dormir.",
+    "notes": "Genki Lección 12 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-352",
+    "kanji": "指",
+    "spanish": "Dedo / Señalar",
+    "english": "Finger / Point",
+    "onyomi": "シ",
+    "kunyomi": "ゆび、さ・す",
+    "strokeCount": 9,
+    "radicals": "手 (mano)",
+    "jlptLevel": "N3",
+    "genkiLesson": 14,
+    "compounds": [
+      {
+        "word": "指輪",
+        "furigana": "ゆびわ",
+        "romaji": "yubiwa",
+        "meaning": "Anillo"
+      }
+    ],
+    "exampleSentence": "きれいな指輪をしていますね。",
+    "exampleTranslation": "Qué bonito anillo llevas puesto.",
+    "notes": "Genki Lección 14 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-353",
+    "kanji": "輪",
+    "spanish": "Anillo / Rueda",
+    "english": "Ring / Wheel",
+    "onyomi": "リン",
+    "kunyomi": "わ",
+    "strokeCount": 15,
+    "radicals": "車 (coche)",
+    "jlptLevel": "N3",
+    "genkiLesson": 14,
+    "compounds": [
+      {
+        "word": "指輪",
+        "furigana": "ゆびわ",
+        "romaji": "yubiwa",
+        "meaning": "Anillo"
+      }
+    ],
+    "exampleSentence": "誕生日に指輪をもらいました。",
+    "exampleTranslation": "Recibí un anillo en mi cumpleaños.",
+    "notes": "Genki Lección 14 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-354",
+    "kanji": "庭",
+    "spanish": "Jardín / Patio",
+    "english": "Garden / Yard",
+    "onyomi": "テイ",
+    "kunyomi": "にわ",
+    "strokeCount": 10,
+    "radicals": "广 (edificio)",
+    "jlptLevel": "N3",
+    "genkiLesson": 4,
+    "compounds": [
+      {
+        "word": "庭",
+        "furigana": "にわ",
+        "romaji": "niwa",
+        "meaning": "Jardín"
+      }
+    ],
+    "exampleSentence": "庭にきれいな花が咲いています。",
+    "exampleTranslation": "En el jardín florecen flores hermosas.",
+    "notes": "Genki Lección 4 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-355",
+    "kanji": "池",
+    "spanish": "Estanque",
+    "english": "Pond",
+    "onyomi": "チ",
+    "kunyomi": "いけ",
+    "strokeCount": 6,
+    "radicals": "水 (agua)",
+    "jlptLevel": "N4",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "電池",
+        "furigana": "でんち",
+        "romaji": "denchi",
+        "meaning": "Batería / Pila"
+      }
+    ],
+    "exampleSentence": "公園の池に鯉がいます。",
+    "exampleTranslation": "Hay carpas en el estanque del parque.",
+    "notes": "Genki Lección 15 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-356",
+    "kanji": "橋",
+    "spanish": "Puente",
+    "english": "Bridge",
+    "onyomi": "キョウ",
+    "kunyomi": "はし",
+    "strokeCount": 16,
+    "radicals": "木 (árbol)",
+    "jlptLevel": "N3",
+    "genkiLesson": 6,
+    "compounds": [
+      {
+        "word": "橋",
+        "furigana": "はし",
+        "romaji": "hashi",
+        "meaning": "Puente"
+      }
+    ],
+    "exampleSentence": "あの橋を渡ると駅があります。",
+    "exampleTranslation": "Cruzando aquel puente está la estación.",
+    "notes": "Genki Lección 6 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-357",
+    "kanji": "角",
+    "spanish": "Esquina / Cuerno / Ángulo",
+    "english": "Corner / Angle",
+    "onyomi": "カク",
+    "kunyomi": "かど、つの",
+    "strokeCount": 7,
+    "radicals": "角 (cuerno)",
+    "jlptLevel": "N3",
+    "genkiLesson": 6,
+    "compounds": [
+      {
+        "word": "曲がり角",
+        "furigana": "まがりかど",
+        "romaji": "magarikado",
+        "meaning": "Esquina para doblar"
+      }
+    ],
+    "exampleSentence": "次の角を右に曲がってください。",
+    "exampleTranslation": "Por favor dobla a la derecha en la siguiente esquina.",
+    "notes": "Genki Lección 6 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-358",
+    "kanji": "交",
+    "spanish": "Cruzar / Intercambiar",
+    "english": "Mix / Intersect",
+    "onyomi": "コウ",
+    "kunyomi": "まじ・わる、か・わす",
+    "strokeCount": 6,
+    "radicals": "亠 (tapa)",
+    "jlptLevel": "N3",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "交番",
+        "furigana": "こうばん",
+        "romaji": "kouban",
+        "meaning": "Caseta de policía (Koban)"
+      }
+    ],
+    "exampleSentence": "交番で道を聞きました。",
+    "exampleTranslation": "Pregunté el camino en el puesto de policía.",
+    "notes": "Genki Lección 16 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-359",
+    "kanji": "警",
+    "spanish": "Amonestar / Vigilar",
+    "english": "Admonish / Police",
+    "onyomi": "ケイ",
+    "kunyomi": "ー",
+    "strokeCount": 19,
+    "radicals": "言 (palabra)",
+    "jlptLevel": "N3",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "警察",
+        "furigana": "けいさつ",
+        "romaji": "keisatsu",
+        "meaning": "Policía"
+      }
+    ],
+    "exampleSentence": "すぐに警察に連絡しました。",
+    "exampleTranslation": "Me comuniqué de inmediato con la policía.",
+    "notes": "Genki Lección 21 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-360",
+    "kanji": "察",
+    "spanish": "Inspeccionar / Adivinar",
+    "english": "Inspect / Guess",
+    "onyomi": "サツ",
+    "kunyomi": "ー",
+    "strokeCount": 14,
+    "radicals": "宀 (techo)",
+    "jlptLevel": "N3",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "警察官",
+        "furigana": "けいさつかん",
+        "romaji": "keisatsukan",
+        "meaning": "Oficial de policía"
+      }
+    ],
+    "exampleSentence": "親切な警察官が助けてくれました。",
+    "exampleTranslation": "Un amable oficial de policía me ayudó.",
+    "notes": "Genki Lección 21 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-361",
+    "kanji": "盗",
+    "spanish": "Robar / Hurtar",
+    "english": "Steal",
+    "onyomi": "トウ",
+    "kunyomi": "ぬす・む",
+    "strokeCount": 11,
+    "radicals": "皿 (plato)",
+    "jlptLevel": "N3",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "盗む",
+        "furigana": "ぬすむ",
+        "romaji": "nusumu",
+        "meaning": "Robar"
+      }
+    ],
+    "exampleSentence": "自転車を盗まれてしまいました。",
+    "exampleTranslation": "Me robaron la bicicleta.",
+    "notes": "Genki Lección 21 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-362",
+    "kanji": "泥",
+    "spanish": "Barro / Lodo",
+    "english": "Mud",
+    "onyomi": "デイ",
+    "kunyomi": "どろ",
+    "strokeCount": 8,
+    "radicals": "水 (agua)",
+    "jlptLevel": "N3",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "泥棒",
+        "furigana": "どろぼう",
+        "romaji": "dorobou",
+        "meaning": "Ladrón"
+      }
+    ],
+    "exampleSentence": "家に泥棒が入りました。",
+    "exampleTranslation": "Un ladrón entró a la casa.",
+    "notes": "Genki Lección 21 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-363",
+    "kanji": "棒",
+    "spanish": "Barra / Palo",
+    "english": "Rod / Stick",
+    "onyomi": "ボウ",
+    "kunyomi": "ー",
+    "strokeCount": 12,
+    "radicals": "木 (árbol)",
+    "jlptLevel": "N3",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "泥棒",
+        "furigana": "どろぼう",
+        "romaji": "dorobou",
+        "meaning": "Ladrón"
+      }
+    ],
+    "exampleSentence": "泥棒が警察に捕まりました。",
+    "exampleTranslation": "El ladrón fue atrapado por la policía.",
+    "notes": "Genki Lección 21 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-364",
+    "kanji": "捕",
+    "spanish": "Atrapar / Capturar",
+    "english": "Catch / Arrest",
+    "onyomi": "ホ",
+    "kunyomi": "つか・まえる、と・らえる",
+    "strokeCount": 10,
+    "radicals": "手 (mano)",
+    "jlptLevel": "N3",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "捕まる",
+        "furigana": "つかまる",
+        "romaji": "tsukamaru",
+        "meaning": "Ser atrapado"
+      }
+    ],
+    "exampleSentence": "犯人が無事に捕まりました。",
+    "exampleTranslation": "El culpable fue capturado sin contratiempos.",
+    "notes": "Genki Lección 21 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-365",
+    "kanji": "逃",
+    "spanish": "Escapar / Huir",
+    "english": "Escape / Flee",
+    "onyomi": "トウ",
+    "kunyomi": "に・げる",
+    "strokeCount": 9,
+    "radicals": "辵 (camino)",
+    "jlptLevel": "N3",
+    "genkiLesson": 21,
+    "compounds": [
+      {
+        "word": "逃げる",
+        "furigana": "にげる",
+        "romaji": "nigeru",
+        "meaning": "Escapar / Huir"
+      }
+    ],
+    "exampleSentence": "鳥が窓から逃げてしまいました。",
+    "exampleTranslation": "El pájaro se escapó por la ventana.",
+    "notes": "Genki Lección 21 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-366",
+    "kanji": "助",
+    "spanish": "Ayudar / Rescatar",
+    "english": "Help / Rescue",
+    "onyomi": "ジョ",
+    "kunyomi": "たす・ける、たす・かる",
+    "strokeCount": 7,
+    "radicals": "力 (fuerza)",
+    "jlptLevel": "N3",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "助ける",
+        "furigana": "たすける",
+        "romaji": "tasukeru",
+        "meaning": "Ayudar / Salvar"
+      }
+    ],
+    "exampleSentence": "友達が仕事を手伝って助けてくれました。",
+    "exampleTranslation": "Mi amigo me ayudó con el trabajo.",
+    "notes": "Genki Lección 16 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-367",
+    "kanji": "呼",
+    "spanish": "Llamar / Invitar",
+    "english": "Call",
+    "onyomi": "コ",
+    "kunyomi": "よ・ぶ",
+    "strokeCount": 8,
+    "radicals": "口 (boca)",
+    "jlptLevel": "N3",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "呼ぶ",
+        "furigana": "よぶ",
+        "romaji": "yobu",
+        "meaning": "Llamar"
+      }
+    ],
+    "exampleSentence": "タクシーを呼びましょうか。",
+    "exampleTranslation": "¿Llamamos un taxi?",
+    "notes": "Genki Lección 16 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-368",
+    "kanji": "届",
+    "spanish": "Entregar / Alcanzar",
+    "english": "Deliver / Reach",
+    "onyomi": "カイ",
+    "kunyomi": "とど・ける、とど・く",
+    "strokeCount": 8,
+    "radicals": "尸 (cuerpo)",
+    "jlptLevel": "N3",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "届く",
+        "furigana": "とどく",
+        "romaji": "todoku",
+        "meaning": "Llegar un envío"
+      }
+    ],
+    "exampleSentence": "日本から荷物が届きました。",
+    "exampleTranslation": "Llegó un paquete desde Japón.",
+    "notes": "Genki Lección 16 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-369",
+    "kanji": "落",
+    "spanish": "Caer / Dejar caer",
+    "english": "Fall / Drop",
+    "onyomi": "ラク",
+    "kunyomi": "お・ちる、お・とす",
+    "strokeCount": 12,
+    "radicals": "艸 (hierba)",
+    "jlptLevel": "N3",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "落とす",
+        "furigana": "おとす",
+        "romaji": "otosu",
+        "meaning": "Dejar caer / Perder"
+      }
+    ],
+    "exampleSentence": "駅で定期券を落としてしまいました。",
+    "exampleTranslation": "Perdí mi pase de tren en la estación.",
+    "notes": "Genki Lección 16 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-370",
+    "kanji": "拾",
+    "spanish": "Recoger / Encontrar",
+    "english": "Pick up",
+    "onyomi": "シュウ",
+    "kunyomi": "ひろ・う",
+    "strokeCount": 9,
+    "radicals": "手 (mano)",
+    "jlptLevel": "N3",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "拾う",
+        "furigana": "ひろう",
+        "romaji": "hirou",
+        "meaning": "Recoger del suelo"
+      }
+    ],
+    "exampleSentence": "道で財布を拾いました。",
+    "exampleTranslation": "Recogí una cartera en la calle.",
+    "notes": "Genki Lección 16 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-371",
+    "kanji": "壊",
+    "spanish": "Romper / Destruir",
+    "english": "Break / Destroy",
+    "onyomi": "カイ",
+    "kunyomi": "こわ・す、こわ・れる",
+    "strokeCount": 16,
+    "radicals": "土 (tierra)",
+    "jlptLevel": "N3",
+    "genkiLesson": 18,
+    "compounds": [
+      {
+        "word": "壊れる",
+        "furigana": "こわれる",
+        "romaji": "kowareru",
+        "meaning": "Romperse / Descomponerse"
+      }
+    ],
+    "exampleSentence": "洗濯機が壊れてしまいました。",
+    "exampleTranslation": "La lavadora se descompuso.",
+    "notes": "Genki Lección 18 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-372",
+    "kanji": "直",
+    "spanish": "Corregir / Reparar / Directo",
+    "english": "Fix / Direct / Straight",
+    "onyomi": "チョク、ジキ",
+    "kunyomi": "なお・す、なお・る、すぐ",
+    "strokeCount": 8,
+    "radicals": "目 (ojo)",
+    "jlptLevel": "N4",
+    "genkiLesson": 18,
+    "compounds": [
+      {
+        "word": "直す",
+        "furigana": "なおす",
+        "romaji": "naosu",
+        "meaning": "Reparar / Corregir"
+      }
+    ],
+    "exampleSentence": "自転車を修理して直しました。",
+    "exampleTranslation": "Reparé la bicicleta.",
+    "notes": "Genki Lección 18 • Nivel JLPT N4"
+  },
+  {
+    "id": "k-exp-373",
+    "kanji": "汚",
+    "spanish": "Ensuciar / Sucio",
+    "english": "Dirty / Pollute",
+    "onyomi": "オ",
+    "kunyomi": "よご・れる、きたな・い",
+    "strokeCount": 6,
+    "radicals": "水 (agua)",
+    "jlptLevel": "N3",
+    "genkiLesson": 18,
+    "compounds": [
+      {
+        "word": "汚い",
+        "furigana": "きたない",
+        "romaji": "kitanai",
+        "meaning": "Sucio / Desordenado"
+      }
+    ],
+    "exampleSentence": "部屋が汚いので掃除します。",
+    "exampleTranslation": "Como el cuarto está sucio, lo limpiaré.",
+    "notes": "Genki Lección 18 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-374",
+    "kanji": "掃",
+    "spanish": "Barrer / Limpiar",
+    "english": "Sweep",
+    "onyomi": "ソウ",
+    "kunyomi": "は・く",
+    "strokeCount": 11,
+    "radicals": "手 (mano)",
+    "jlptLevel": "N3",
+    "genkiLesson": 11,
+    "compounds": [
+      {
+        "word": "掃除",
+        "furigana": "そうじ",
+        "romaji": "souji",
+        "meaning": "Limpieza"
+      }
+    ],
+    "exampleSentence": "毎日部屋を掃除しています。",
+    "exampleTranslation": "Limpio mi habitación todos los días.",
+    "notes": "Genki Lección 11 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-375",
+    "kanji": "除",
+    "spanish": "Eliminar / Quitar",
+    "english": "Exclude / Remove",
+    "onyomi": "ジョ",
+    "kunyomi": "のぞ・く",
+    "strokeCount": 10,
+    "radicals": "阜 (colina)",
+    "jlptLevel": "N3",
+    "genkiLesson": 11,
+    "compounds": [
+      {
+        "word": "掃除機",
+        "furigana": "そうじき",
+        "romaji": "soujiki",
+        "meaning": "Aspiradora"
+      }
+    ],
+    "exampleSentence": "掃除機をかけて部屋をきれいにしました。",
+    "exampleTranslation": "Pasé la aspiradora y dejé limpio el cuarto.",
+    "notes": "Genki Lección 11 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-376",
+    "kanji": "並",
+    "spanish": "Alinear / Hacer fila / Común",
+    "english": "Line up / Ordinary",
+    "onyomi": "ヘイ",
+    "kunyomi": "なら・ぶ、なら・べる",
+    "strokeCount": 8,
+    "radicals": "一 (uno)",
+    "jlptLevel": "N3",
+    "genkiLesson": 18,
+    "compounds": [
+      {
+        "word": "並ぶ",
+        "furigana": "ならぶ",
+        "romaji": "narabu",
+        "meaning": "Hacer fila"
+      }
+    ],
+    "exampleSentence": "人気のラーメン屋に並びました。",
+    "exampleTranslation": "Hice fila en un restaurante popular de ramen.",
+    "notes": "Genki Lección 18 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-377",
+    "kanji": "決",
+    "spanish": "Decidir",
+    "english": "Decide",
+    "onyomi": "ケツ",
+    "kunyomi": "き・める、き・まる",
+    "strokeCount": 7,
+    "radicals": "水 (agua)",
+    "jlptLevel": "N3",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "決める",
+        "furigana": "きめる",
+        "romaji": "kimeru",
+        "meaning": "Decidir"
+      }
+    ],
+    "exampleSentence": "将来の目標を決めました。",
+    "exampleTranslation": "Decidí mi meta para el futuro.",
+    "notes": "Genki Lección 15 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-378",
+    "kanji": "予",
+    "spanish": "De antemano / Previo",
+    "english": "Beforehand",
+    "onyomi": "ヨ",
+    "kunyomi": "あらかじ・め",
+    "strokeCount": 4,
+    "radicals": "亅 (gancho)",
+    "jlptLevel": "N3",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "予定",
+        "furigana": "よてい",
+        "romaji": "yotei",
+        "meaning": "Plan / Agenda"
+      }
+    ],
+    "exampleSentence": "来週の予定を教えてください。",
+    "exampleTranslation": "Por favor dime tus planes para la próxima semana.",
+    "notes": "Genki Lección 15 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-379",
+    "kanji": "約",
+    "spanish": "Promesa / Aproximadamente",
+    "english": "Promise / Approximately",
+    "onyomi": "ヤク",
+    "kunyomi": "ー",
+    "strokeCount": 9,
+    "radicals": "糸 (hilo)",
+    "jlptLevel": "N3",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "予約",
+        "furigana": "よやく",
+        "romaji": "yoyaku",
+        "meaning": "Reservación"
+      }
+    ],
+    "exampleSentence": "インターネットでホテルを予約しました。",
+    "exampleTranslation": "Reservé el hotel por internet.",
+    "notes": "Genki Lección 15 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-380",
+    "kanji": "準",
+    "spanish": "Preparar / Estándar",
+    "english": "Prepare / Semi-",
+    "onyomi": "ジュン",
+    "kunyomi": "ー",
+    "strokeCount": 13,
+    "radicals": "水 (agua)",
+    "jlptLevel": "N3",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "準備",
+        "furigana": "じゅんび",
+        "romaji": "junbi",
+        "meaning": "Preparación"
+      }
+    ],
+    "exampleSentence": "旅行の準備はもう終わりましたか。",
+    "exampleTranslation": "¿Ya terminaste los preparativos del viaje?",
+    "notes": "Genki Lección 15 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-381",
+    "kanji": "備",
+    "spanish": "Equipar / Proveer / Prepararse",
+    "english": "Provide / Prepare",
+    "onyomi": "ビ",
+    "kunyomi": "そな・える",
+    "strokeCount": 12,
+    "radicals": "人 (persona)",
+    "jlptLevel": "N3",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "準備",
+        "furigana": "じゅんび",
+        "romaji": "junbi",
+        "meaning": "Preparativos"
+      }
+    ],
+    "exampleSentence": "試験の準備をしっかりします。",
+    "exampleTranslation": "Haré bien los preparativos para el examen.",
+    "notes": "Genki Lección 15 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-382",
+    "kanji": "談",
+    "spanish": "Conversar / Discutir",
+    "english": "Talk / Discuss",
+    "onyomi": "ダン",
+    "kunyomi": "ー",
+    "strokeCount": 15,
+    "radicals": "言 (palabra)",
+    "jlptLevel": "N3",
+    "genkiLesson": 14,
+    "compounds": [
+      {
+        "word": "冗談",
+        "furigana": "じょうだん",
+        "romaji": "joudan",
+        "meaning": "Broma"
+      }
+    ],
+    "exampleSentence": "冗談を言って友達を笑わせました。",
+    "exampleTranslation": "Dije una broma e hice reír a mis amigos.",
+    "notes": "Genki Lección 14 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-383",
+    "kanji": "絡",
+    "spanish": "Entrelazar / Contactar",
+    "english": "Entwine / Contact",
+    "onyomi": "ラク",
+    "kunyomi": "から・む",
+    "strokeCount": 12,
+    "radicals": "糸 (hilo)",
+    "jlptLevel": "N3",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "連絡先",
+        "furigana": "れんらくさき",
+        "romaji": "renrakusaki",
+        "meaning": "Datos de contacto"
+      }
+    ],
+    "exampleSentence": "連絡先を交換しましょう。",
+    "exampleTranslation": "Intercambiemos nuestros datos de contacto.",
+    "notes": "Genki Lección 16 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-384",
+    "kanji": "報",
+    "spanish": "Informar / Recompensar",
+    "english": "Report / Reward",
+    "onyomi": "ホウ",
+    "kunyomi": "むく・いる",
+    "strokeCount": 12,
+    "radicals": "土 (tierra)",
+    "jlptLevel": "N3",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "情報",
+        "furigana": "じょうほう",
+        "romaji": "jouhou",
+        "meaning": "Información"
+      }
+    ],
+    "exampleSentence": "インターネットで新しい情報を調べます。",
+    "exampleTranslation": "Busco información nueva en internet.",
+    "notes": "Genki Lección 17 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-385",
+    "kanji": "告",
+    "spanish": "Anunciar / Informar",
+    "english": "Tell / Announce",
+    "onyomi": "コク",
+    "kunyomi": "つ・げる",
+    "strokeCount": 7,
+    "radicals": "口 (boca)",
+    "jlptLevel": "N3",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "報告",
+        "furigana": "ほうこく",
+        "romaji": "houkoku",
+        "meaning": "Reporte / Informe"
+      }
+    ],
+    "exampleSentence": "部長に仕事の結果を報告しました。",
+    "exampleTranslation": "Informé el resultado del trabajo al director de área.",
+    "notes": "Genki Lección 17 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-386",
+    "kanji": "放",
+    "spanish": "Soltar / Transmitir",
+    "english": "Release / Broadcast",
+    "onyomi": "ホウ",
+    "kunyomi": "はな・す",
+    "strokeCount": 8,
+    "radicals": "攴 (golpear)",
+    "jlptLevel": "N3",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "放送",
+        "furigana": "ほうそう",
+        "romaji": "housou",
+        "meaning": "Transmisión (TV/Radio)"
+      }
+    ],
+    "exampleSentence": "ニュース番組が放送されています。",
+    "exampleTranslation": "Se está transmitiendo el noticiero.",
+    "notes": "Genki Lección 17 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-387",
+    "kanji": "組",
+    "spanish": "Grupo / Armar / Equipo",
+    "english": "Group / Assemble",
+    "onyomi": "ソ",
+    "kunyomi": "く・む、くみ",
+    "strokeCount": 11,
+    "radicals": "糸 (hilo)",
+    "jlptLevel": "N3",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "番組",
+        "furigana": "ばんぐみ",
+        "romaji": "bangumi",
+        "meaning": "Programa"
+      }
+    ],
+    "exampleSentence": "二人一組になって練習してください。",
+    "exampleTranslation": "Por favor practiquen en parejas de dos.",
+    "notes": "Genki Lección 17 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-388",
+    "kanji": "選",
+    "spanish": "Elegir / Seleccionar",
+    "english": "Choose / Select",
+    "onyomi": "セン",
+    "kunyomi": "えら・ぶ",
+    "strokeCount": 15,
+    "radicals": "辵 (camino)",
+    "jlptLevel": "N3",
+    "genkiLesson": 14,
+    "compounds": [
+      {
+        "word": "選ぶ",
+        "furigana": "えらぶ",
+        "romaji": "erabu",
+        "meaning": "Elegir / Escoger"
+      }
+    ],
+    "exampleSentence": "母へのプレゼントを選びました。",
+    "exampleTranslation": "Elegí un regalo para mi madre.",
+    "notes": "Genki Lección 14 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-389",
+    "kanji": "迷",
+    "spanish": "Perderse / Dudar",
+    "english": "Get lost / Hesitate",
+    "onyomi": "メイ",
+    "kunyomi": "まよ・う",
+    "strokeCount": 9,
+    "radicals": "辵 (camino)",
+    "jlptLevel": "N3",
+    "genkiLesson": 16,
+    "compounds": [
+      {
+        "word": "迷う",
+        "furigana": "まよう",
+        "romaji": "mayou",
+        "meaning": "Perderse / Indeciso"
+      }
+    ],
+    "exampleSentence": "道に迷ってしまいました。",
+    "exampleTranslation": "Me perdí en el camino.",
+    "notes": "Genki Lección 16 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-390",
+    "kanji": "惑",
+    "spanish": "Perplejidad / Tentación",
+    "english": "Delusion / Perplexity",
+    "onyomi": "ワク",
+    "kunyomi": "まど・う",
+    "strokeCount": 12,
+    "radicals": "心 (corazón)",
+    "jlptLevel": "N3",
+    "genkiLesson": 18,
+    "compounds": [
+      {
+        "word": "迷惑",
+        "furigana": "めいわく",
+        "romaji": "meiwaku",
+        "meaning": "Molestia / Inconveniente"
+      }
+    ],
+    "exampleSentence": "周りの人に迷惑をかけないでください。",
+    "exampleTranslation": "Por favor no causes molestias a las personas alrededor.",
+    "notes": "Genki Lección 18 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-391",
+    "kanji": "恥",
+    "spanish": "Vergüenza",
+    "english": "Shame / Embarrassment",
+    "onyomi": "チ",
+    "kunyomi": "は・じる、はずか・しい",
+    "strokeCount": 10,
+    "radicals": "心 (corazón)",
+    "jlptLevel": "N3",
+    "genkiLesson": 18,
+    "compounds": [
+      {
+        "word": "恥ずかしい",
+        "furigana": "はずかしい",
+        "romaji": "hazukashii",
+        "meaning": "Avergonzado / Tímido"
+      }
+    ],
+    "exampleSentence": "大勢の前で話すのは恥ずかしいです。",
+    "exampleTranslation": "Me da pena hablar frente a mucha gente.",
+    "notes": "Genki Lección 18 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-392",
+    "kanji": "怖",
+    "spanish": "Miedo / Aterrador",
+    "english": "Fear / Scary",
+    "onyomi": "フ",
+    "kunyomi": "こわ・い",
+    "strokeCount": 8,
+    "radicals": "心 (corazón)",
+    "jlptLevel": "N3",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "怖い",
+        "furigana": "こわい",
+        "romaji": "kowai",
+        "meaning": "Dar miedo / Aterrador"
+      }
+    ],
+    "exampleSentence": "昨日の夜、怖い夢を見ました。",
+    "exampleTranslation": "Anoche tuve una pesadilla (sueño aterrador).",
+    "notes": "Genki Lección 17 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-393",
+    "kanji": "危",
+    "spanish": "Peligro",
+    "english": "Danger",
+    "onyomi": "キ",
+    "kunyomi": "あぶ・ない、あや・うい",
+    "strokeCount": 6,
+    "radicals": "卩 (sello)",
+    "jlptLevel": "N3",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "危ない",
+        "furigana": "あぶない",
+        "romaji": "abunai",
+        "meaning": "Peligroso / ¡Cuidado!"
+      }
+    ],
+    "exampleSentence": "ここは車が通るので危ないですよ。",
+    "exampleTranslation": "Aquí es peligroso porque pasan autos.",
+    "notes": "Genki Lección 17 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-394",
+    "kanji": "険",
+    "spanish": "Empinado / Peligroso",
+    "english": "Steep / Risky",
+    "onyomi": "ケン",
+    "kunyomi": "けわ・しい",
+    "strokeCount": 11,
+    "radicals": "阜 (colina)",
+    "jlptLevel": "N3",
+    "genkiLesson": 17,
+    "compounds": [
+      {
+        "word": "危険",
+        "furigana": "きけん",
+        "romaji": "kiken",
+        "meaning": "Peligro / Riesgo"
+      }
+    ],
+    "exampleSentence": "危険な場所には入らないでください。",
+    "exampleTranslation": "Por favor no entre a lugares peligrosos.",
+    "notes": "Genki Lección 17 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-395",
+    "kanji": "返",
+    "spanish": "Devolver / Responder",
+    "english": "Return / Answer",
+    "onyomi": "ヘン",
+    "kunyomi": "かえ・す、かえ・る",
+    "strokeCount": 7,
+    "radicals": "辵 (camino)",
+    "jlptLevel": "N3",
+    "genkiLesson": 6,
+    "compounds": [
+      {
+        "word": "返事",
+        "furigana": "へんじ",
+        "romaji": "henji",
+        "meaning": "Respuesta"
+      }
+    ],
+    "exampleSentence": "メールの返事を書きました。",
+    "exampleTranslation": "Escribí la respuesta del correo.",
+    "notes": "Genki Lección 6 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-396",
+    "kanji": "礼",
+    "spanish": "Cortesía / Agradecimiento / Reverencia",
+    "english": "Courtesy / Thanks / Bow",
+    "onyomi": "レイ、ライ",
+    "kunyomi": "ー",
+    "strokeCount": 5,
+    "radicals": "示 (altar)",
+    "jlptLevel": "N3",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "お礼",
+        "furigana": "おれい",
+        "romaji": "orei",
+        "meaning": "Agradecimiento"
+      }
+    ],
+    "exampleSentence": "手伝ってくれた友達にお礼を言いました。",
+    "exampleTranslation": "Le di las gracias al amigo que me ayudó.",
+    "notes": "Genki Lección 19 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-397",
+    "kanji": "祝",
+    "spanish": "Celebrar / Felicitar",
+    "english": "Celebrate / Congratulate",
+    "onyomi": "シュク",
+    "kunyomi": "いわ・う",
+    "strokeCount": 9,
+    "radicals": "示 (altar)",
+    "jlptLevel": "N3",
+    "genkiLesson": 14,
+    "compounds": [
+      {
+        "word": "お祝い",
+        "furigana": "おいわい",
+        "romaji": "oiwai",
+        "meaning": "Celebración / Regalo festivo"
+      }
+    ],
+    "exampleSentence": "卒業のお祝いに時計をもらいました。",
+    "exampleTranslation": "Recibí un reloj para celebrar mi graduación.",
+    "notes": "Genki Lección 14 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-398",
+    "kanji": "願",
+    "spanish": "Desear / Pedir / Rogar",
+    "english": "Wish / Request",
+    "onyomi": "ガン",
+    "kunyomi": "ねが・う",
+    "strokeCount": 19,
+    "radicals": "頁 (página)",
+    "jlptLevel": "N3",
+    "genkiLesson": 1,
+    "compounds": [
+      {
+        "word": "お願い",
+        "furigana": "おねがい",
+        "romaji": "onegai",
+        "meaning": "Petición / Por favor"
+      }
+    ],
+    "exampleSentence": "よろしくお願いします。",
+    "exampleTranslation": "Muchas gracias de antemano / Cuente conmigo.",
+    "notes": "Genki Lección 1 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-399",
+    "kanji": "希",
+    "spanish": "Esperanza / Raro",
+    "english": "Hope / Rare",
+    "onyomi": "キ",
+    "kunyomi": "ー",
+    "strokeCount": 7,
+    "radicals": "巾 (tela)",
+    "jlptLevel": "N3",
+    "genkiLesson": 13,
+    "compounds": [
+      {
+        "word": "希望",
+        "furigana": "きぼう",
+        "romaji": "kibou",
+        "meaning": "Esperanza / Deseo"
+      }
+    ],
+    "exampleSentence": "希望の大学に合格しました。",
+    "exampleTranslation": "Aprobé el ingreso a la universidad que deseaba.",
+    "notes": "Genki Lección 13 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-400",
+    "kanji": "望",
+    "spanish": "Desear / Mirar a lo lejos",
+    "english": "Hope / Look afar",
+    "onyomi": "ボウ、モウ",
+    "kunyomi": "のぞ・む",
+    "strokeCount": 11,
+    "radicals": "月 (luna)",
+    "jlptLevel": "N3",
+    "genkiLesson": 13,
+    "compounds": [
+      {
+        "word": "希望",
+        "furigana": "きぼう",
+        "romaji": "kibou",
+        "meaning": "Esperanza / Aspiración"
+      }
+    ],
+    "exampleSentence": "将来は日本で働くことを望んでいます。",
+    "exampleTranslation": "En el futuro deseo trabajar en Japón.",
+    "notes": "Genki Lección 13 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-401",
+    "kanji": "葉",
+    "spanish": "Hoja / Palabra",
+    "english": "Leaf / Word",
+    "onyomi": "ヨウ",
+    "kunyomi": "は",
+    "strokeCount": 12,
+    "radicals": "艸 (hierba)",
+    "jlptLevel": "N3",
+    "genkiLesson": 8,
+    "compounds": [
+      {
+        "word": "言葉",
+        "furigana": "ことば",
+        "romaji": "kotoba",
+        "meaning": "Palabra / Lenguaje"
+      }
+    ],
+    "exampleSentence": "丁寧な言葉を使って話します。",
+    "exampleTranslation": "Hablo usando palabras corteses.",
+    "notes": "Genki Lección 8 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-402",
+    "kanji": "根",
+    "spanish": "Raíz",
+    "english": "Root",
+    "onyomi": "コン",
+    "kunyomi": "ね",
+    "strokeCount": 10,
+    "radicals": "木 (árbol)",
+    "jlptLevel": "N3",
+    "genkiLesson": 18,
+    "compounds": [
+      {
+        "word": "屋根",
+        "furigana": "やね",
+        "romaji": "yane",
+        "meaning": "Tejado / Techo"
+      }
+    ],
+    "exampleSentence": "赤い屋根の家が私の家です。",
+    "exampleTranslation": "La casa de tejado rojo es mi casa.",
+    "notes": "Genki Lección 18 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-403",
+    "kanji": "咲",
+    "spanish": "Florecer",
+    "english": "Blossom / Bloom",
+    "onyomi": "ショウ",
+    "kunyomi": "さ・く",
+    "strokeCount": 9,
+    "radicals": "口 (boca)",
+    "jlptLevel": "N3",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "咲く",
+        "furigana": "さく",
+        "romaji": "saku",
+        "meaning": "Florecer"
+      }
+    ],
+    "exampleSentence": "公園の桜がきれいに咲きました。",
+    "exampleTranslation": "Los cerezos del parque florecieron hermosamente.",
+    "notes": "Genki Lección 19 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-404",
+    "kanji": "晴",
+    "spanish": "Despejado / Buen clima",
+    "english": "Clear weather",
+    "onyomi": "セイ",
+    "kunyomi": "は・れる",
+    "strokeCount": 12,
+    "radicals": "日 (sol)",
+    "jlptLevel": "N3",
+    "genkiLesson": 8,
+    "compounds": [
+      {
+        "word": "晴れる",
+        "furigana": "はれる",
+        "romaji": "hareru",
+        "meaning": "Despejarse el cielo"
+      }
+    ],
+    "exampleSentence": "明日は晴れるといいですね。",
+    "exampleTranslation": "Ojalá mañana esté despejado.",
+    "notes": "Genki Lección 8 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-405",
+    "kanji": "曇",
+    "spanish": "Nublado",
+    "english": "Cloudy",
+    "onyomi": "ドン",
+    "kunyomi": "くも・る",
+    "strokeCount": 16,
+    "radicals": "日 (sol)",
+    "jlptLevel": "N3",
+    "genkiLesson": 8,
+    "compounds": [
+      {
+        "word": "曇り",
+        "furigana": "くもり",
+        "romaji": "kumori",
+        "meaning": "Nublado"
+      }
+    ],
+    "exampleSentence": "今日は一日中曇りでした。",
+    "exampleTranslation": "Hoy estuvo nublado todo el día.",
+    "notes": "Genki Lección 8 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-406",
+    "kanji": "雲",
+    "spanish": "Nube",
+    "english": "Cloud",
+    "onyomi": "ウン",
+    "kunyomi": "くも",
+    "strokeCount": 12,
+    "radicals": "雨 (lluvia)",
+    "jlptLevel": "N3",
+    "genkiLesson": 8,
+    "compounds": [
+      {
+        "word": "雲",
+        "furigana": "くも",
+        "romaji": "kumo",
+        "meaning": "Nube"
+      }
+    ],
+    "exampleSentence": "空に白い雲が浮かんでいます。",
+    "exampleTranslation": "Flotan nubes blancas en el cielo.",
+    "notes": "Genki Lección 8 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-407",
+    "kanji": "星",
+    "spanish": "Estrella",
+    "english": "Star",
+    "onyomi": "セイ",
+    "kunyomi": "ほし",
+    "strokeCount": 9,
+    "radicals": "日 (sol)",
+    "jlptLevel": "N3",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "星",
+        "furigana": "ほし",
+        "romaji": "hoshi",
+        "meaning": "Estrella"
+      }
+    ],
+    "exampleSentence": "今夜は星がとてもきれいです。",
+    "exampleTranslation": "Esta noche las estrellas están muy hermosas.",
+    "notes": "Genki Lección 15 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-408",
+    "kanji": "光",
+    "spanish": "Luz / Brillar",
+    "english": "Light / Shine",
+    "onyomi": "コウ",
+    "kunyomi": "ひかり、ひか・る",
+    "strokeCount": 6,
+    "radicals": "儿 (piernas)",
+    "jlptLevel": "N3",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "観光",
+        "furigana": "かんこう",
+        "romaji": "kankou",
+        "meaning": "Turismo"
+      }
+    ],
+    "exampleSentence": "週末に京都を観光しました。",
+    "exampleTranslation": "El fin de semana hice turismo en Kioto.",
+    "notes": "Genki Lección 15 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-409",
+    "kanji": "観",
+    "spanish": "Observar / Vista",
+    "english": "Observe / View",
+    "onyomi": "カン",
+    "kunyomi": "み・る",
+    "strokeCount": 18,
+    "radicals": "見 (ver)",
+    "jlptLevel": "N3",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "観光地",
+        "furigana": "かんこうち",
+        "romaji": "kankouchi",
+        "meaning": "Lugar turístico"
+      }
+    ],
+    "exampleSentence": "ここは有名な観光地です。",
+    "exampleTranslation": "Este es un lugar turístico famoso.",
+    "notes": "Genki Lección 15 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-410",
+    "kanji": "景",
+    "spanish": "Paisaje / Escena",
+    "english": "Scenery / View",
+    "onyomi": "ケイ",
+    "kunyomi": "ー",
+    "strokeCount": 12,
+    "radicals": "日 (sol)",
+    "jlptLevel": "N3",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "景色",
+        "furigana": "けしき",
+        "romaji": "keshiki",
+        "meaning": "Paisaje / Vista"
+      }
+    ],
+    "exampleSentence": "山の頂上から見る景色は最高です。",
+    "exampleTranslation": "El paisaje visto desde la cima de la montaña es increíble.",
+    "notes": "Genki Lección 15 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-411",
+    "kanji": "絵",
+    "spanish": "Pintura / Dibujo",
+    "english": "Picture / Painting",
+    "onyomi": "カイ、エ",
+    "kunyomi": "ー",
+    "strokeCount": 12,
+    "radicals": "糸 (hilo)",
+    "jlptLevel": "N3",
+    "genkiLesson": 11,
+    "compounds": [
+      {
+        "word": "絵画",
+        "furigana": "かいが",
+        "romaji": "kaiga",
+        "meaning": "Pintura artística"
+      }
+    ],
+    "exampleSentence": "美術館で有名な絵を見ました。",
+    "exampleTranslation": "Vi una pintura famosa en el museo de arte.",
+    "notes": "Genki Lección 11 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-412",
+    "kanji": "線",
+    "spanish": "Línea / Vía de tren",
+    "english": "Line / Track",
+    "onyomi": "セン",
+    "kunyomi": "ー",
+    "strokeCount": 15,
+    "radicals": "糸 (hilo)",
+    "jlptLevel": "N3",
+    "genkiLesson": 10,
+    "compounds": [
+      {
+        "word": "新幹線",
+        "furigana": "しんかんせん",
+        "romaji": "shinkansen",
+        "meaning": "Tren bala Shinkansen"
+      }
+    ],
+    "exampleSentence": "山手線に乗って新宿へ行きます。",
+    "exampleTranslation": "Tomo la línea Yamanote para ir a Shinjuku.",
+    "notes": "Genki Lección 10 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-413",
+    "kanji": "鉄",
+    "spanish": "Hierro / Ferrocarril",
+    "english": "Iron",
+    "onyomi": "テツ",
+    "kunyomi": "ー",
+    "strokeCount": 13,
+    "radicals": "金 (metal)",
+    "jlptLevel": "N3",
+    "genkiLesson": 10,
+    "compounds": [
+      {
+        "word": "地下鉄",
+        "furigana": "ちかてつ",
+        "romaji": "chikatetsu",
+        "meaning": "Metro"
+      }
+    ],
+    "exampleSentence": "地下鉄は渋滞がないので便利です。",
+    "exampleTranslation": "El metro es práctico porque no hay tráfico.",
+    "notes": "Genki Lección 10 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-414",
+    "kanji": "席",
+    "spanish": "Asiento / Lugar",
+    "english": "Seat",
+    "onyomi": "セキ",
+    "kunyomi": "ー",
+    "strokeCount": 10,
+    "radicals": "巾 (tela)",
+    "jlptLevel": "N3",
+    "genkiLesson": 15,
+    "compounds": [
+      {
+        "word": "自由席",
+        "furigana": "じゆうせき",
+        "romaji": "jiyuuseki",
+        "meaning": "Asiento no reservado"
+      }
+    ],
+    "exampleSentence": "お年寄りに席を譲りました。",
+    "exampleTranslation": "Le cedí el asiento a una persona mayor.",
+    "notes": "Genki Lección 15 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-415",
+    "kanji": "泊",
+    "spanish": "Hospedarse / Pasar la noche",
+    "english": "Stay overnight",
+    "onyomi": "ハク",
+    "kunyomi": "と・まる、と・める",
+    "strokeCount": 8,
+    "radicals": "水 (agua)",
+    "jlptLevel": "N3",
+    "genkiLesson": 10,
+    "compounds": [
+      {
+        "word": "泊まる",
+        "furigana": "とまる",
+        "romaji": "tomaru",
+        "meaning": "Hospedarse"
+      }
+    ],
+    "exampleSentence": "温泉旅館に二泊しました。",
+    "exampleTranslation": "Me hospedé dos noches en un ryokan de aguas termales.",
+    "notes": "Genki Lección 10 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-416",
+    "kanji": "船",
+    "spanish": "Barco / Embarcación",
+    "english": "Ship / Boat",
+    "onyomi": "セン",
+    "kunyomi": "ふね、ふな",
+    "strokeCount": 11,
+    "radicals": "舟 (barco)",
+    "jlptLevel": "N3",
+    "genkiLesson": 10,
+    "compounds": [
+      {
+        "word": "船",
+        "furigana": "ふね",
+        "romaji": "fune",
+        "meaning": "Barco"
+      }
+    ],
+    "exampleSentence": "船で島へ渡りました。",
+    "exampleTranslation": "Crucé a la isla en barco.",
+    "notes": "Genki Lección 10 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-417",
+    "kanji": "飛",
+    "spanish": "Volar",
+    "english": "Fly",
+    "onyomi": "ヒ",
+    "kunyomi": "と・ぶ",
+    "strokeCount": 9,
+    "radicals": "飛 (volar)",
+    "jlptLevel": "N3",
+    "genkiLesson": 10,
+    "compounds": [
+      {
+        "word": "飛行機",
+        "furigana": "ひこうき",
+        "romaji": "hikouki",
+        "meaning": "Avión"
+      }
+    ],
+    "exampleSentence": "飛行機で北海道へ行きました。",
+    "exampleTranslation": "Fui a Hokkaido en avión.",
+    "notes": "Genki Lección 10 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-418",
+    "kanji": "機",
+    "spanish": "Máquina / Oportunidad / Avión",
+    "english": "Machine / Opportunity",
+    "onyomi": "キ",
+    "kunyomi": "はた",
+    "strokeCount": 16,
+    "radicals": "木 (árbol)",
+    "jlptLevel": "N3",
+    "genkiLesson": 10,
+    "compounds": [
+      {
+        "word": "機会",
+        "furigana": "きかい",
+        "romaji": "kikai",
+        "meaning": "Oportunidad"
+      }
+    ],
+    "exampleSentence": "機会があればまた日本へ行きたいです。",
+    "exampleTranslation": "Si tengo la oportunidad, quiero ir otra vez a Japón.",
+    "notes": "Genki Lección 10 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-419",
+    "kanji": "登",
+    "spanish": "Subir / Escalar",
+    "english": "Climb",
+    "onyomi": "トウ、ト",
+    "kunyomi": "のぼ・る",
+    "strokeCount": 12,
+    "radicals": "癶 (pasos)",
+    "jlptLevel": "N3",
+    "genkiLesson": 11,
+    "compounds": [
+      {
+        "word": "登る",
+        "furigana": "のぼる",
+        "romaji": "noboru",
+        "meaning": "Escalar / Subir"
+      }
+    ],
+    "exampleSentence": "いつか富士山に登りたいです。",
+    "exampleTranslation": "Algún día quiero escalar el Monte Fuji.",
+    "notes": "Genki Lección 11 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-420",
+    "kanji": "泳",
+    "spanish": "Nadar",
+    "english": "Swim",
+    "onyomi": "エイ",
+    "kunyomi": "およ・ぐ",
+    "strokeCount": 8,
+    "radicals": "水 (agua)",
+    "jlptLevel": "N3",
+    "genkiLesson": 5,
+    "compounds": [
+      {
+        "word": "泳ぐ",
+        "furigana": "およぐ",
+        "romaji": "oyogu",
+        "meaning": "Nadar"
+      }
+    ],
+    "exampleSentence": "夏に海で泳ぎました。",
+    "exampleTranslation": "En verano nadé en el mar.",
+    "notes": "Genki Lección 5 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-421",
+    "kanji": "遊",
+    "spanish": "Jugar / Divertirse",
+    "english": "Play / Have fun",
+    "onyomi": "ユウ",
+    "kunyomi": "あそ・ぶ",
+    "strokeCount": 12,
+    "radicals": "辵 (camino)",
+    "jlptLevel": "N3",
+    "genkiLesson": 5,
+    "compounds": [
+      {
+        "word": "遊ぶ",
+        "furigana": "あそぶ",
+        "romaji": "asobu",
+        "meaning": "Jugar / Pasar el rato"
+      }
+    ],
+    "exampleSentence": "週末に友達と遊びました。",
+    "exampleTranslation": "El fin de semana salí a divertirme con amigos.",
+    "notes": "Genki Lección 5 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-422",
+    "kanji": "踊",
+    "spanish": "Bailar / Danza",
+    "english": "Dance",
+    "onyomi": "ヨウ",
+    "kunyomi": "おど・る",
+    "strokeCount": 14,
+    "radicals": "足 (pie)",
+    "jlptLevel": "N3",
+    "genkiLesson": 9,
+    "compounds": [
+      {
+        "word": "踊る",
+        "furigana": "おどる",
+        "romaji": "odoru",
+        "meaning": "Bailar"
+      }
+    ],
+    "exampleSentence": "お祭りでみんなで踊りました。",
+    "exampleTranslation": "En el festival todos bailamos juntos.",
+    "notes": "Genki Lección 9 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-423",
+    "kanji": "祭",
+    "spanish": "Festival / Ritual",
+    "english": "Festival",
+    "onyomi": "サイ",
+    "kunyomi": "まつ・り",
+    "strokeCount": 11,
+    "radicals": "示 (altar)",
+    "jlptLevel": "N3",
+    "genkiLesson": 5,
+    "compounds": [
+      {
+        "word": "お祭り",
+        "furigana": "おまつり",
+        "romaji": "omatsuri",
+        "meaning": "Festival tradicional"
+      }
+    ],
+    "exampleSentence": "日本の夏祭りはとても賑やかです。",
+    "exampleTranslation": "Los festivales de verano de Japón son muy animados.",
+    "notes": "Genki Lección 5 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-424",
+    "kanji": "招",
+    "spanish": "Invitar / Hacer señas",
+    "english": "Invite / Beckon",
+    "onyomi": "ショウ",
+    "kunyomi": "まね・く",
+    "strokeCount": 8,
+    "radicals": "手 (mano)",
+    "jlptLevel": "N3",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "招待",
+        "furigana": "しょうたい",
+        "romaji": "shoutai",
+        "meaning": "Invitación"
+      }
+    ],
+    "exampleSentence": "結婚式に招待されました。",
+    "exampleTranslation": "Fui invitado a una ceremonia de boda.",
+    "notes": "Genki Lección 19 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-425",
+    "kanji": "客",
+    "spanish": "Invitado / Cliente / Huésped",
+    "english": "Guest / Customer",
+    "onyomi": "キャク",
+    "kunyomi": "ー",
+    "strokeCount": 9,
+    "radicals": "宀 (techo)",
+    "jlptLevel": "N3",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "お客様",
+        "furigana": "おきゃくさま",
+        "romaji": "okyakusama",
+        "meaning": "Cliente / Invitado (honorífico)"
+      }
+    ],
+    "exampleSentence": "今日、家にお客さんが来ます。",
+    "exampleTranslation": "Hoy vienen invitados a la casa.",
+    "notes": "Genki Lección 19 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-426",
+    "kanji": "挨",
+    "spanish": "Saludar",
+    "english": "Greet",
+    "onyomi": "アイ",
+    "kunyomi": "ー",
+    "strokeCount": 10,
+    "radicals": "手 (mano)",
+    "jlptLevel": "N3",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "挨拶",
+        "furigana": "あいさつ",
+        "romaji": "aisatsu",
+        "meaning": "Saludo"
+      }
+    ],
+    "exampleSentence": "近所の人に元気よく挨拶します。",
+    "exampleTranslation": "Saludo con energía a los vecinos.",
+    "notes": "Genki Lección 19 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-427",
+    "kanji": "拶",
+    "spanish": "Saludar",
+    "english": "Greet",
+    "onyomi": "サツ",
+    "kunyomi": "ー",
+    "strokeCount": 9,
+    "radicals": "手 (mano)",
+    "jlptLevel": "N3",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "挨拶",
+        "furigana": "あいさつ",
+        "romaji": "aisatsu",
+        "meaning": "Saludo"
+      }
+    ],
+    "exampleSentence": "丁寧な挨拶は大切です。",
+    "exampleTranslation": "Un saludo cortés es importante.",
+    "notes": "Genki Lección 19 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-428",
+    "kanji": "尊",
+    "spanish": "Respetar / Venerar / Noble",
+    "english": "Respect / Revered",
+    "onyomi": "ソン",
+    "kunyomi": "とうと・い",
+    "strokeCount": 12,
+    "radicals": "寸 (pulgada)",
+    "jlptLevel": "N3",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "尊敬",
+        "furigana": "そんけい",
+        "romaji": "sonkei",
+        "meaning": "Respeto / Admiración"
+      }
+    ],
+    "exampleSentence": "私は両親を尊敬しています。",
+    "exampleTranslation": "Yo respeto y admiro a mis padres.",
+    "notes": "Genki Lección 19 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-429",
+    "kanji": "敬",
+    "spanish": "Respeto / Reverenciar",
+    "english": "Respect / Honor",
+    "onyomi": "ケイ",
+    "kunyomi": "うやま・う",
+    "strokeCount": 12,
+    "radicals": "攴 (golpear)",
+    "jlptLevel": "N3",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "敬語",
+        "furigana": "けいご",
+        "romaji": "keigo",
+        "meaning": "Lenguaje honorífico (Keigo)"
+      }
+    ],
+    "exampleSentence": "仕事では正しい敬語を使います。",
+    "exampleTranslation": "En el trabajo uso el lenguaje honorífico adecuado.",
+    "notes": "Genki Lección 19 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-430",
+    "kanji": "謙",
+    "spanish": "Modestia / Humildad",
+    "english": "Humble / Modest",
+    "onyomi": "ケン",
+    "kunyomi": "ー",
+    "strokeCount": 17,
+    "radicals": "言 (palabra)",
+    "jlptLevel": "N3",
+    "genkiLesson": 20,
+    "compounds": [
+      {
+        "word": "謙譲語",
+        "furigana": "けんじょうご",
+        "romaji": "kenjougo",
+        "meaning": "Lenguaje humilde (Kenjougo)"
+      }
+    ],
+    "exampleSentence": "謙譲語を使って自己紹介しました。",
+    "exampleTranslation": "Me presenté usando lenguaje humilde.",
+    "notes": "Genki Lección 20 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-431",
+    "kanji": "丁",
+    "spanish": "Cortés / Exacto / Distrito",
+    "english": "Polite / Exact / Ward",
+    "onyomi": "テイ、チョウ",
+    "kunyomi": "ー",
+    "strokeCount": 2,
+    "radicals": "一 (uno)",
+    "jlptLevel": "N3",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "丁寧",
+        "furigana": "ていねい",
+        "romaji": "teinei",
+        "meaning": "Cortés / Cuidadoso"
+      }
+    ],
+    "exampleSentence": "丁寧に説明してくれてありがとうございます。",
+    "exampleTranslation": "Muchas gracias por explicarme tan amablemente.",
+    "notes": "Genki Lección 19 • Nivel JLPT N3"
+  },
+  {
+    "id": "k-exp-432",
+    "kanji": "寧",
+    "spanish": "Cortés / Tranquilidad",
+    "english": "Polite / Peaceful",
+    "onyomi": "ネイ",
+    "kunyomi": "ー",
+    "strokeCount": 14,
+    "radicals": "宀 (techo)",
+    "jlptLevel": "N3",
+    "genkiLesson": 19,
+    "compounds": [
+      {
+        "word": "丁寧語",
+        "furigana": "ていねいご",
+        "romaji": "teineigo",
+        "meaning": "Lenguaje cortés (ます/です)"
+      }
+    ],
+    "exampleSentence": "まずは丁寧語から練習しましょう。",
+    "exampleTranslation": "Practiquemos primero desde el lenguaje cortés.",
+    "notes": "Genki Lección 19 • Nivel JLPT N3"
   }
 ];

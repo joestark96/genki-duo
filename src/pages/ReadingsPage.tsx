@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { BookOpen, Volume2, Search, MessageSquare, FileText, Eye, EyeOff, ChevronDown, HelpCircle, CheckCircle2 } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { BookOpen, Volume2, Search, MessageSquare, FileText, Eye, EyeOff, ChevronDown, HelpCircle, CheckCircle2, Headphones, Square, SkipForward } from 'lucide-react';
 import { Unit, Exercise } from '../types';
+import { SpeechPracticeButton } from '../components/SpeechPracticeButton';
 import { sound } from '../services/sound';
 
 interface ReadingsPageProps {
@@ -88,6 +89,9 @@ export const ReadingsPage: React.FC<ReadingsPageProps> = ({ units, showRomaji = 
   const [showTranslation, setShowTranslation] = useState<boolean>(true);
   const [activeLineKey, setActiveLineKey] = useState<string | null>(null);
   const [revealedQuestions, setRevealedQuestions] = useState<Record<string, boolean>>({});
+  const [isPodcastPlaying, setIsPodcastPlaying] = useState<boolean>(false);
+  const [podcastStepIdx, setPodcastStepIdx] = useState<number>(0);
+  const podcastTimerRef = useRef<number | null>(null);
 
   const currentUnit = readingUnits.find(u => u.id === selectedUnitId) || readingUnits[0];
 
@@ -145,6 +149,64 @@ export const ReadingsPage: React.FC<ReadingsPageProps> = ({ units, showRomaji = 
     );
   });
 
+  // Build Podcast Playlist from all dialogue lines in current lesson
+  const podcastPlaylist: {
+    lineKey: string;
+    dialogueTitle: string;
+    speaker: string;
+    japanese: string;
+    spanish: string;
+    audioText: string;
+  }[] = [];
+
+  filteredDialogues.forEach((ex, dIdx) => {
+    ex.dialogueLines?.forEach((line, lIdx) => {
+      podcastPlaylist.push({
+        lineKey: `${ex.id}-line-${lIdx}`,
+        dialogueTitle: ex.dialogueTitle || `Diálogo ${dIdx + 1}`,
+        speaker: line.speaker,
+        japanese: line.japanese,
+        spanish: line.spanish,
+        audioText: line.audioText
+      });
+    });
+  });
+
+  // Podcast auto-player effect
+  useEffect(() => {
+    if (!isPodcastPlaying) {
+      if (podcastTimerRef.current) {
+        window.clearTimeout(podcastTimerRef.current);
+      }
+      return;
+    }
+
+    if (podcastStepIdx >= podcastPlaylist.length) {
+      setIsPodcastPlaying(false);
+      setPodcastStepIdx(0);
+      setActiveLineKey(null);
+      return;
+    }
+
+    const currentItem = podcastPlaylist[podcastStepIdx];
+    setActiveLineKey(currentItem.lineKey);
+    sound.speakJapanese(currentItem.audioText, 0.88);
+
+    // Estimate speaking duration + shadowing pause
+    const waitMs = Math.max(3800, currentItem.audioText.length * 260 + 1800);
+    podcastTimerRef.current = window.setTimeout(() => {
+      setPodcastStepIdx(prev => prev + 1);
+    }, waitMs);
+
+    return () => {
+      if (podcastTimerRef.current) {
+        window.clearTimeout(podcastTimerRef.current);
+      }
+    };
+  }, [isPodcastPlaying, podcastStepIdx, selectedUnitId]);
+
+  const currentPodcastItem = isPodcastPlaying ? podcastPlaylist[podcastStepIdx] : null;
+
   return (
     <div className="max-w-md mx-auto w-full px-4 pt-4 pb-24 flex flex-col items-center animate-fade-in">
       {/* Top Badge & Translation Toggle */}
@@ -185,9 +247,73 @@ export const ReadingsPage: React.FC<ReadingsPageProps> = ({ units, showRomaji = 
           <h1 className="text-xl md:text-2xl font-black tracking-tight mb-1">
             {currentUnit.title}
           </h1>
-          <p className="text-xs font-bold opacity-90 leading-relaxed">
+          <p className="text-xs font-bold opacity-90 leading-relaxed mb-3">
             {currentUnit.subtitle}
           </p>
+
+          {/* Podcast Hands-Free Bar inside Banner */}
+          {podcastPlaylist.length > 0 && (
+            <div className="p-3 rounded-2xl bg-black/25 backdrop-blur-xs border border-white/20 flex items-center justify-between gap-2">
+              <div className="flex items-center gap-2 min-w-0">
+                <div className={`w-8 h-8 rounded-xl bg-white/20 flex items-center justify-center flex-shrink-0 ${isPodcastPlaying ? 'animate-pulse' : ''}`}>
+                  <Headphones className="w-4 h-4 text-white" />
+                </div>
+                <div className="min-w-0">
+                  <div className="text-xs font-black text-white truncate">
+                    {isPodcastPlaying && currentPodcastItem
+                      ? `${currentPodcastItem.speaker}: ${currentPodcastItem.japanese}`
+                      : 'Modo Podcast / Shadowing Manos Libres'}
+                  </div>
+                  <div className="text-[10px] font-bold text-white/80 truncate">
+                    {isPodcastPlaying && currentPodcastItem
+                      ? `Línea ${podcastStepIdx + 1} de ${podcastPlaylist.length} • ${currentPodcastItem.spanish}`
+                      : `Reproduce las ${podcastPlaylist.length} líneas con pausa para repetir`}
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-1.5 flex-shrink-0">
+                {isPodcastPlaying && (
+                  <button
+                    onClick={() => {
+                      sound.playTap();
+                      setPodcastStepIdx(prev => prev + 1);
+                    }}
+                    className="p-2 rounded-xl bg-white/20 hover:bg-white/30 text-white transition-colors cursor-pointer"
+                    title="Siguiente línea"
+                  >
+                    <SkipForward className="w-4 h-4" />
+                  </button>
+                )}
+
+                <button
+                  onClick={() => {
+                    sound.playTap();
+                    if (isPodcastPlaying) {
+                      setIsPodcastPlaying(false);
+                      setActiveLineKey(null);
+                    } else {
+                      setPodcastStepIdx(0);
+                      setIsPodcastPlaying(true);
+                    }
+                  }}
+                  className="px-3 py-1.5 rounded-xl bg-white text-gray-900 font-black text-xs flex items-center gap-1 shadow-sm hover:brightness-95 transition-all cursor-pointer"
+                >
+                  {isPodcastPlaying ? (
+                    <>
+                      <Square className="w-3.5 h-3.5 fill-red-500 text-red-500" />
+                      <span>Detener</span>
+                    </>
+                  ) : (
+                    <>
+                      <Headphones className="w-3.5 h-3.5 text-duo-blue" />
+                      <span>Podcast</span>
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
@@ -400,18 +526,25 @@ export const ReadingsPage: React.FC<ReadingsPageProps> = ({ units, showRomaji = 
                             {line.speaker}
                           </span>
 
-                          <button
-                            type="button"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setActiveLineKey(lineKey);
-                              sound.speakJapanese(line.audioText, 0.9);
-                            }}
-                            className={`p-1.5 rounded-xl transition-colors flex-shrink-0 ${theme.audioBtn}`}
-                            title="Escuchar esta línea"
-                          >
-                            <Volume2 className={`w-3.5 h-3.5 ${isActiveLine ? 'animate-pulse' : ''}`} />
-                          </button>
+                          <div className="flex items-center gap-1 flex-shrink-0">
+                            <SpeechPracticeButton
+                              targetJapanese={line.japanese}
+                              targetFurigana={line.audioText}
+                              compact
+                            />
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setActiveLineKey(lineKey);
+                                sound.speakJapanese(line.audioText, 0.9);
+                              }}
+                              className={`p-1.5 rounded-xl transition-colors flex-shrink-0 ${theme.audioBtn}`}
+                              title="Escuchar esta línea"
+                            >
+                              <Volume2 className={`w-3.5 h-3.5 ${isActiveLine ? 'animate-pulse' : ''}`} />
+                            </button>
+                          </div>
                         </div>
 
                         <p className="text-base md:text-lg font-bold font-['Noto_Sans_JP'] text-gray-900 dark:text-gray-100 leading-snug mt-0.5">
@@ -551,3 +684,4 @@ export const ReadingsPage: React.FC<ReadingsPageProps> = ({ units, showRomaji = 
     </div>
   );
 };
+

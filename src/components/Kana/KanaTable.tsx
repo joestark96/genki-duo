@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Volume2, Sparkles, BookOpen, Search, X } from 'lucide-react';
+import { Volume2, Sparkles, BookOpen, Search, X, PenTool } from 'lucide-react';
 import { gojuonKanaList, dakutenKanaList, KanaChar } from '../../data/kanaTableData';
 import { kanjiList, KanjiItem } from '../../data/kanjiData';
 import { KanjiDetailModal } from './KanjiDetailModal';
+import { StrokePracticeCanvas } from './StrokePracticeCanvas';
 import { sound } from '../../services/sound';
 
 interface KanaTableProps {
@@ -13,6 +14,7 @@ export const KanaTable: React.FC<KanaTableProps> = ({ showRomaji = true }) => {
   const [scriptType, setScriptType] = useState<'hira' | 'kata' | 'kanji'>('hira');
   const [tableType, setTableType] = useState<'gojuon' | 'dakuten'>('gojuon');
   const [activeChar, setActiveChar] = useState<KanaChar | null>(gojuonKanaList[0]);
+  const [showKanaStrokePad, setShowKanaStrokePad] = useState(false);
 
   // Kanji state
   const [selectedKanji, setSelectedKanji] = useState<KanjiItem | null>(null);
@@ -130,31 +132,58 @@ export const KanaTable: React.FC<KanaTableProps> = ({ showRomaji = true }) => {
 
           {/* Active Character Detail Card */}
           {activeChar && (
-            <div className="w-full bg-white dark:bg-[#18272e] border-2 border-duo-gray-300 dark:border-[#283842] rounded-2xl p-3.5 mb-4 shadow-duo-card dark:shadow-none flex items-center justify-between transition-colors">
-              <div className="flex items-center gap-3">
-                <div className="w-14 h-14 bg-duo-blue-light/50 dark:bg-duo-blue/20 border-2 border-duo-blue rounded-xl flex items-center justify-center text-3xl font-bold font-['Noto_Sans_JP'] text-duo-blue-dark dark:text-duo-blue">
-                  {scriptType === 'hira' ? activeChar.hira : activeChar.kata}
-                </div>
-                <div>
-                  {showRomaji && (
-                    <div className="text-base font-black text-gray-800 dark:text-gray-100">{activeChar.romaji}</div>
-                  )}
-                  <div className="text-xs font-bold text-gray-500 dark:text-gray-300">
-                    Ejemplo: <span className="text-gray-800 dark:text-white font-black font-['Noto_Sans_JP']">{activeChar.example}</span> ({activeChar.exampleMeaning})
+            <div className="w-full flex flex-col gap-3 mb-4">
+              <div className="w-full bg-white dark:bg-[#18272e] border-2 border-duo-gray-300 dark:border-[#283842] rounded-2xl p-3.5 shadow-duo-card dark:shadow-none flex items-center justify-between transition-colors">
+                <div className="flex items-center gap-3">
+                  <div className="w-14 h-14 bg-duo-blue-light/50 dark:bg-duo-blue/20 border-2 border-duo-blue rounded-xl flex items-center justify-center text-3xl font-bold font-['Noto_Sans_JP'] text-duo-blue-dark dark:text-duo-blue">
+                    {scriptType === 'hira' ? activeChar.hira : activeChar.kata}
                   </div>
+                  <div>
+                    {showRomaji && (
+                      <div className="text-base font-black text-gray-800 dark:text-gray-100">{activeChar.romaji}</div>
+                    )}
+                    <div className="text-xs font-bold text-gray-500 dark:text-gray-300">
+                      Ejemplo: <span className="text-gray-800 dark:text-white font-black font-['Noto_Sans_JP']">{activeChar.example}</span> ({activeChar.exampleMeaning})
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => {
+                      sound.playTap();
+                      setShowKanaStrokePad(prev => !prev);
+                    }}
+                    className={`px-3 py-2.5 rounded-xl font-black text-xs flex items-center gap-1.5 border-2 transition-all cursor-pointer ${
+                      showKanaStrokePad
+                        ? 'bg-duo-green text-white border-duo-green-dark shadow-duo-btn-sm'
+                        : 'bg-gray-100 dark:bg-[#283842] text-gray-700 dark:text-gray-200 border-gray-200 dark:border-gray-700 hover:border-duo-blue'
+                    }`}
+                    title="Practicar trazo a mano"
+                  >
+                    <PenTool className="w-4 h-4" />
+                    <span>Trazar</span>
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      const charToSpeak = scriptType === 'hira' ? activeChar.hira : activeChar.kata;
+                      sound.speakJapanese(charToSpeak);
+                    }}
+                    className="p-3 bg-duo-blue text-white rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-blue-dark transition-all cursor-pointer"
+                    title="Escuchar"
+                  >
+                    <Volume2 className="w-5 h-5" />
+                  </button>
                 </div>
               </div>
 
-              <button
-                onClick={() => {
-                  const charToSpeak = scriptType === 'hira' ? activeChar.hira : activeChar.kata;
-                  sound.speakJapanese(charToSpeak);
-                }}
-                className="p-3 bg-duo-blue text-white rounded-xl shadow-duo-btn-sm active:translate-y-0.5 hover:bg-duo-blue-dark transition-all"
-                title="Escuchar"
-              >
-                <Volume2 className="w-5 h-5" />
-              </button>
+              {showKanaStrokePad && (
+                <StrokePracticeCanvas
+                  character={scriptType === 'hira' ? activeChar.hira : activeChar.kata}
+                  label={`Practicar ${scriptType === 'hira' ? 'Hiragana' : 'Katakana'}: ${scriptType === 'hira' ? activeChar.hira : activeChar.kata} (${activeChar.romaji})`}
+                />
+              )}
             </div>
           )}
 
