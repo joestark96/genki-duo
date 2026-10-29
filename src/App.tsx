@@ -12,6 +12,7 @@ import { TheoryPage } from './pages/TheoryPage';
 import { FlashcardsPage } from './pages/FlashcardsPage';
 import { KanaPage } from './pages/KanaPage';
 import { ReadingsPage } from './pages/ReadingsPage';
+import { VocabularyPage } from './pages/VocabularyPage';
 import { ProfilePage } from './pages/ProfilePage';
 
 // Ionic core CSS
@@ -369,6 +370,9 @@ export const App: React.FC = () => {
             )}
             {activeTab === 'readings' && (
               <ReadingsPage units={units} showRomaji={profile.showRomaji} />
+            )}
+            {activeTab === 'vocabulary' && (
+              <VocabularyPage showRomaji={profile.showRomaji} />
             )}
             {activeTab === 'profile' && (
               <ProfilePage
