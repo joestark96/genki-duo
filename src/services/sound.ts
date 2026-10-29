@@ -73,11 +73,11 @@ export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
     name: 'Sora',
     japaneseName: 'ソラ',
     avatar: '👧',
-    role: 'Voz enérgica (Femenina aguda y animada)',
+    role: 'Voz juvenil alegre (Femenina clara y animada)',
     gender: 'female',
-    pitch: 1.42,
-    rate: 1.0,
-    samplePhrase: 'わあ、すごい！ソラといっしょに練習しましょう！'
+    pitch: 1.16,
+    rate: 0.94,
+    samplePhrase: 'こんにちは！ソラといっしょに楽しく練習しましょう！'
   },
   {
     id: 'ken',
