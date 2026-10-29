@@ -13,6 +13,77 @@ function shuffleArray<T>(array: T[]): T[] {
   return arr;
 }
 
+function getSpeakerAvatar(speaker: string, speakerIdx: number): string {
+  const s = speaker.toLowerCase();
+  if (s.includes('メアリー') || s.includes('mary')) return '👱‍♀️';
+  if (s.includes('たけし') || s.includes('takeshi') || s.includes('きむら')) return '👦';
+  if (s.includes('ロバート') || s.includes('robert')) return '👱‍♂️';
+  if (s.includes('やました') || s.includes('先生') || s.includes('profesor')) return '👨‍🏫';
+  if (s.includes('みちこ') || s.includes('michiko')) return '👩';
+  if (s.includes('けん') || s.includes('ken')) return '🧑';
+  if (s.includes('スー') || s.includes('sue')) return '👩‍🦱';
+  if (s.includes('ジョン') || s.includes('john')) return '🧔';
+  if (s.includes('ソラ') || s.includes('sora')) return '👧';
+  if (s.includes('ホストマザー') || s.includes('おかあさん') || s.includes('madre')) return '👩‍🍳';
+  if (s.includes('ぶちょう') || s.includes('しゃちょう') || s.includes('jefe')) return '👔';
+  if (s.includes('いしゃ') || s.includes('doctor')) return '🩺';
+  if (s.includes('どろぼう') || s.includes('ladrón')) return '🥷';
+  if (
+    s.includes('てんいん') ||
+    s.includes('ウェイトレス') ||
+    s.includes('えきいん') ||
+    s.includes('不動産屋') ||
+    s.includes('agente') ||
+    s.includes('emplead') ||
+    s.includes('camarer')
+  ) {
+    return '🧑‍💼';
+  }
+  return ['🗣️', '💬', '🙋', '💁'][speakerIdx % 4];
+}
+
+function getSpeakerChatTheme(speakerIdx: number) {
+  const isRight = speakerIdx % 2 === 1;
+  const themes = [
+    {
+      avatarBg: 'bg-sky-500 border-sky-600 text-white',
+      badge: 'bg-sky-100 dark:bg-sky-900/50 text-sky-700 dark:text-sky-300 border border-sky-300 dark:border-sky-700',
+      bubble: 'bg-white dark:bg-[#15232b] border-sky-200 dark:border-sky-800/80 rounded-2xl rounded-tl-sm',
+      activeBubble: 'bg-sky-50 dark:bg-sky-900/35 border-sky-500 ring-2 ring-sky-400/40 rounded-2xl rounded-tl-sm',
+      romaji: 'text-sky-600 dark:text-sky-400',
+      audioBtn: 'bg-sky-500/10 hover:bg-sky-500 text-sky-600 dark:text-sky-300 hover:text-white'
+    },
+    {
+      avatarBg: 'bg-emerald-500 border-emerald-600 text-white',
+      badge: 'bg-emerald-100 dark:bg-emerald-900/50 text-emerald-800 dark:text-emerald-300 border border-emerald-300 dark:border-emerald-700',
+      bubble: 'bg-emerald-50/90 dark:bg-emerald-950/35 border-emerald-300 dark:border-emerald-800/80 rounded-2xl rounded-tr-sm',
+      activeBubble: 'bg-emerald-100/90 dark:bg-emerald-900/45 border-emerald-500 ring-2 ring-emerald-400/40 rounded-2xl rounded-tr-sm',
+      romaji: 'text-emerald-700 dark:text-emerald-400',
+      audioBtn: 'bg-emerald-500/15 hover:bg-emerald-500 text-emerald-700 dark:text-emerald-300 hover:text-white'
+    },
+    {
+      avatarBg: 'bg-purple-500 border-purple-600 text-white',
+      badge: 'bg-purple-100 dark:bg-purple-900/50 text-purple-700 dark:text-purple-300 border border-purple-300 dark:border-purple-700',
+      bubble: 'bg-purple-50/85 dark:bg-purple-950/30 border-purple-200 dark:border-purple-800/80 rounded-2xl rounded-tl-sm',
+      activeBubble: 'bg-purple-100/90 dark:bg-purple-900/40 border-purple-500 ring-2 ring-purple-400/40 rounded-2xl rounded-tl-sm',
+      romaji: 'text-purple-600 dark:text-purple-400',
+      audioBtn: 'bg-purple-500/10 hover:bg-purple-500 text-purple-600 dark:text-purple-300 hover:text-white'
+    },
+    {
+      avatarBg: 'bg-amber-500 border-amber-600 text-white',
+      badge: 'bg-amber-100 dark:bg-amber-900/50 text-amber-800 dark:text-amber-300 border border-amber-300 dark:border-amber-700',
+      bubble: 'bg-amber-50/90 dark:bg-amber-950/30 border-amber-300 dark:border-amber-800/80 rounded-2xl rounded-tr-sm',
+      activeBubble: 'bg-amber-100/90 dark:bg-amber-900/40 border-amber-500 ring-2 ring-amber-400/40 rounded-2xl rounded-tr-sm',
+      romaji: 'text-amber-700 dark:text-amber-400',
+      audioBtn: 'bg-amber-500/15 hover:bg-amber-500 text-amber-700 dark:text-amber-300 hover:text-white'
+    }
+  ];
+  return {
+    isRight,
+    ...themes[speakerIdx % themes.length]
+  };
+}
+
 interface QuizModalProps {
   lesson: LessonNode;
   userProfile: UserProfile;
@@ -558,58 +629,114 @@ export const QuizModal: React.FC<QuizModalProps> = ({
               </div>
             </div>
 
-            {/* Dialogue Lines List */}
-            <div className="flex flex-col gap-2.5 max-h-[260px] overflow-y-auto pr-1">
-              {currentExercise.dialogueLines.map((line, lIdx) => {
-                const isActiveLine = activeDialogueLineIdx === lIdx;
-                return (
-                  <div
-                    key={`dlg-line-${lIdx}`}
-                    onClick={() => {
-                      setActiveDialogueLineIdx(lIdx);
-                      sound.speakJapanese(line.audioText, 0.9);
-                    }}
-                    className={`p-3 rounded-2xl border-2 transition-all cursor-pointer flex items-start justify-between gap-2.5 ${
-                      isActiveLine
-                        ? 'bg-duo-blue-light/40 dark:bg-duo-blue/20 border-duo-blue shadow-sm'
-                        : 'bg-white dark:bg-[#131f24] border-gray-200 dark:border-[#283842] hover:border-duo-blue/60'
-                    }`}
-                  >
-                    <div className="flex-1">
-                      <span className="inline-block px-2 py-0.5 rounded-md bg-duo-blue/15 text-duo-blue dark:text-duo-blue-light font-black text-[10px] uppercase tracking-wider mb-1">
-                        {line.speaker}
-                      </span>
-                      <p className="text-base md:text-lg font-bold font-['Noto_Sans_JP'] text-gray-900 dark:text-gray-100 leading-snug">
-                        {line.japanese}
-                      </p>
-                      {line.romaji && userProfile.showRomaji && (
-                        <p className="text-[11px] font-semibold text-duo-blue dark:text-sky-400 mt-0.5">
-                          {line.romaji}
-                        </p>
-                      )}
-                      {showDialogueTranslation && (
-                        <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 mt-1">
-                          {line.spanish}
-                        </p>
-                      )}
+            {/* Participants Legend & Chat Thread */}
+            {(() => {
+              const uniqueSpeakers = Array.from(new Set(currentExercise.dialogueLines!.map(l => l.speaker)));
+              return (
+                <>
+                  {/* Participants Bar */}
+                  <div className="flex flex-wrap items-center justify-between gap-2 mb-3 px-1">
+                    <div className="flex flex-wrap items-center gap-1.5">
+                      {uniqueSpeakers.map((spk, sIdx) => {
+                        const theme = getSpeakerChatTheme(sIdx);
+                        const avatar = getSpeakerAvatar(spk, sIdx);
+                        return (
+                          <span
+                            key={`legend-${spk}`}
+                            className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-black shadow-2xs ${theme.badge}`}
+                          >
+                            <span>{avatar}</span>
+                            <span>{spk}</span>
+                          </span>
+                        );
+                      })}
                     </div>
-
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setActiveDialogueLineIdx(lIdx);
-                        sound.speakJapanese(line.audioText, 0.9);
-                      }}
-                      className="p-2 rounded-xl bg-duo-blue/10 hover:bg-duo-blue hover:text-white text-duo-blue transition-colors flex-shrink-0 mt-1"
-                      title="Escuchar esta línea"
-                    >
-                      <Volume2 className="w-4 h-4" />
-                    </button>
+                    <span className="text-[10px] font-bold text-gray-400 dark:text-gray-500">
+                      Toca un mensaje para escucharlo 🔊
+                    </span>
                   </div>
-                );
-              })}
-            </div>
+
+                  {/* Chat Messages Container */}
+                  <div className="flex flex-col gap-3 max-h-[320px] overflow-y-auto p-3 rounded-2xl bg-slate-100/80 dark:bg-[#0f191e] border border-gray-200/80 dark:border-[#24343d]">
+                    {currentExercise.dialogueLines!.map((line, lIdx) => {
+                      const isActiveLine = activeDialogueLineIdx === lIdx;
+                      const speakerIdx = uniqueSpeakers.indexOf(line.speaker);
+                      const theme = getSpeakerChatTheme(speakerIdx >= 0 ? speakerIdx : 0);
+                      const avatar = getSpeakerAvatar(line.speaker, speakerIdx >= 0 ? speakerIdx : 0);
+
+                      return (
+                        <div
+                          key={`dlg-line-${lIdx}`}
+                          onClick={() => {
+                            setActiveDialogueLineIdx(lIdx);
+                            sound.speakJapanese(line.audioText, 0.9);
+                          }}
+                          className={`flex items-start gap-2.5 cursor-pointer group ${
+                            theme.isRight ? 'flex-row-reverse' : 'flex-row'
+                          }`}
+                        >
+                          {/* Speaker Avatar */}
+                          <div
+                            className={`w-9 h-9 rounded-full border-2 flex items-center justify-center text-base shadow-sm flex-shrink-0 mt-0.5 transition-transform group-hover:scale-105 ${theme.avatarBg}`}
+                            title={line.speaker}
+                          >
+                            {avatar}
+                          </div>
+
+                          {/* Chat Bubble */}
+                          <div
+                            className={`max-w-[82%] p-3 border-2 shadow-xs transition-all flex flex-col gap-1 ${
+                              isActiveLine ? theme.activeBubble : `${theme.bubble} hover:brightness-98`
+                            }`}
+                          >
+                            {/* Top Row: Speaker Name + Audio Button */}
+                            <div
+                              className={`flex items-center justify-between gap-3 ${
+                                theme.isRight ? 'flex-row-reverse' : 'flex-row'
+                              }`}
+                            >
+                              <span className={`px-2 py-0.5 rounded-md font-black text-[10px] uppercase tracking-wider ${theme.badge}`}>
+                                {line.speaker}
+                              </span>
+
+                              <button
+                                type="button"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setActiveDialogueLineIdx(lIdx);
+                                  sound.speakJapanese(line.audioText, 0.9);
+                                }}
+                                className={`p-1.5 rounded-xl transition-colors flex-shrink-0 ${theme.audioBtn}`}
+                                title="Escuchar esta línea"
+                              >
+                                <Volume2 className={`w-3.5 h-3.5 ${isActiveLine ? 'animate-pulse' : ''}`} />
+                              </button>
+                            </div>
+
+                            {/* Message Body */}
+                            <p className="text-base md:text-lg font-bold font-['Noto_Sans_JP'] text-gray-900 dark:text-gray-100 leading-snug mt-0.5">
+                              {line.japanese}
+                            </p>
+
+                            {line.romaji && userProfile.showRomaji && (
+                              <p className={`text-[11px] font-bold ${theme.romaji}`}>
+                                {line.romaji}
+                              </p>
+                            )}
+
+                            {showDialogueTranslation && (
+                              <p className="text-xs font-semibold text-gray-500 dark:text-gray-400 pt-1 mt-0.5 border-t border-gray-200/60 dark:border-gray-700/50">
+                                {line.spanish}
+                              </p>
+                            )}
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </>
+              );
+            })()}
           </div>
         )}
 
