@@ -11,28 +11,33 @@ interface StrokePracticeCanvasProps {
   character: string;
   expectedStrokes?: number;
   label?: string;
+  initialShowGuide?: boolean;
+  onEvaluated?: (score: number, passed: boolean) => void;
 }
 
 export const StrokePracticeCanvas: React.FC<StrokePracticeCanvasProps> = ({
   character,
   expectedStrokes,
-  label
+  label,
+  initialShowGuide = true,
+  onEvaluated
 }) => {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const [strokes, setStrokes] = useState<Point[][]>([]);
   const [currentStroke, setCurrentStroke] = useState<Point[]>([]);
   const [isDrawing, setIsDrawing] = useState(false);
-  const [showGuide, setShowGuide] = useState(true);
+  const [showGuide, setShowGuide] = useState(initialShowGuide);
   const [evaluation, setEvaluation] = useState<{ score: number; message: string; passed: boolean } | null>(null);
 
   const canvasSize = 220;
 
-  // Reset when character changes
+  // Reset when character or initialShowGuide changes
   useEffect(() => {
     setStrokes([]);
     setCurrentStroke([]);
     setEvaluation(null);
-  }, [character]);
+    setShowGuide(initialShowGuide);
+  }, [character, initialShowGuide]);
 
   // Render grid, guide character, and user strokes
   const renderCanvas = useCallback(() => {
@@ -264,6 +269,7 @@ export const StrokePracticeCanvas: React.FC<StrokePracticeCanvasProps> = ({
     }
 
     setEvaluation({ score: finalScore, message, passed });
+    onEvaluated?.(finalScore, passed);
   };
 
   return (
@@ -364,3 +370,4 @@ export const StrokePracticeCanvas: React.FC<StrokePracticeCanvasProps> = ({
     </div>
   );
 };
+

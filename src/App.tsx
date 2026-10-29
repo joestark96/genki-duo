@@ -13,6 +13,8 @@ import { FlashcardsPage } from './pages/FlashcardsPage';
 import { KanaPage } from './pages/KanaPage';
 import { ReadingsPage } from './pages/ReadingsPage';
 import { VocabularyPage } from './pages/VocabularyPage';
+import { WritingPage } from './pages/WritingPage';
+import { SpeakingPage } from './pages/SpeakingPage';
 import { ProfilePage } from './pages/ProfilePage';
 
 // Ionic core CSS
@@ -384,6 +386,12 @@ export const App: React.FC = () => {
             )}
             {activeTab === 'vocabulary' && (
               <VocabularyPage showRomaji={profile.showRomaji} />
+            )}
+            {activeTab === 'writing' && (
+              <WritingPage showRomaji={profile.showRomaji} />
+            )}
+            {activeTab === 'speaking' && (
+              <SpeakingPage units={units} showRomaji={profile.showRomaji} />
             )}
             {activeTab === 'profile' && (
               <ProfilePage

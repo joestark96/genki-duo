@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Map, BookOpen, Layers, BookA, MessageSquare, Languages, User, ChevronUp, Library, Check } from 'lucide-react';
+import { Map, BookOpen, Layers, BookA, MessageSquare, Languages, PenTool, Mic, User, ChevronUp, Library, Check } from 'lucide-react';
 import { sound } from '../services/sound';
 
-export type NavTab = 'roadmap' | 'theory' | 'flashcards' | 'kanas' | 'readings' | 'vocabulary' | 'profile';
+export type NavTab = 'roadmap' | 'theory' | 'flashcards' | 'kanas' | 'readings' | 'vocabulary' | 'writing' | 'speaking' | 'profile';
 
 interface BottomNavProps {
   activeTab: NavTab;
@@ -54,6 +54,20 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) 
       subtitle: 'Listas Genki I y II por lección',
       icon: Languages,
       badgeColor: 'bg-rose-500/15 text-rose-600 dark:text-rose-400 border-rose-400/30'
+    },
+    {
+      id: 'writing',
+      label: 'Escritura',
+      subtitle: 'Dojo de trazos y dictado escrito',
+      icon: PenTool,
+      badgeColor: 'bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-400/30'
+    },
+    {
+      id: 'speaking',
+      label: 'Hablar',
+      subtitle: 'Pronunciación con voz y Roleplay',
+      icon: Mic,
+      badgeColor: 'bg-pink-500/15 text-pink-600 dark:text-pink-400 border-pink-400/30'
     }
   ];
 
@@ -110,12 +124,12 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) 
           {/* Popover Dropdown Menu */}
           {menuOpen && (
             <div className="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 z-50">
-              <div className="w-64 bg-white dark:bg-[#18272e] border-2 border-duo-gray-200 dark:border-[#283842] rounded-3xl shadow-2xl p-2 flex flex-col gap-1.5 animate-fade-in">
+              <div className="w-64 max-h-[75vh] overflow-y-auto bg-white dark:bg-[#18272e] border-2 border-duo-gray-200 dark:border-[#283842] rounded-3xl shadow-2xl p-2 flex flex-col gap-1.5 animate-fade-in">
                 <div className="px-3 py-1.5 border-b border-gray-100 dark:border-[#283842] flex items-center justify-between">
                   <span className="text-[10px] font-black uppercase tracking-wider text-gray-400 dark:text-gray-500">
                     Material de Estudio
                   </span>
-                  <span className="text-[10px] font-bold text-duo-blue">5 secciones</span>
+                  <span className="text-[10px] font-bold text-duo-blue">7 secciones</span>
                 </div>
 
                 {studyOptions.map((option) => {
