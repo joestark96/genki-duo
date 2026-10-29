@@ -933,3 +933,4 @@ export const kanjiList: KanjiItem[] = [
     notes: 'Césped en la noche bajo la luna.'
   }
 ];
+

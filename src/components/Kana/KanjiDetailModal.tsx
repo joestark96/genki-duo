@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { X, Volume2, Sparkles, BookOpen, Layers, Info } from 'lucide-react';
 import { KanjiItem } from '../../data/kanjiData';
 import { sound } from '../../services/sound';
@@ -14,6 +15,27 @@ export const KanjiDetailModal: React.FC<KanjiDetailModalProps> = ({
   onClose,
   showRomaji = true
 }) => {
+  // Prevent background scrolling and handle Escape key when modal is open
+  useEffect(() => {
+    if (!kanji) return;
+
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [kanji, onClose]);
+
   if (!kanji) return null;
 
   const handleSpeak = (text: string) => {
@@ -34,9 +56,19 @@ export const KanjiDetailModal: React.FC<KanjiDetailModalProps> = ({
     }
   };
 
-  return (
-    <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 animate-fade-in select-none">
-      <div className="bg-white dark:bg-[#18272e] max-w-md w-full rounded-3xl border-2 border-duo-gray-200 dark:border-[#283842] shadow-2xl overflow-hidden max-h-[90vh] flex flex-col transition-colors">
+  const modalContent = (
+    <div
+      onClick={(e) => {
+        if (e.target === e.currentTarget) {
+          onClose();
+        }
+      }}
+      className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4 select-none animate-fade-in"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="bg-white dark:bg-[#18272e] max-w-md w-full rounded-3xl border-2 border-duo-gray-200 dark:border-[#283842] shadow-2xl overflow-hidden max-h-[85vh] flex flex-col transition-colors"
+      >
         {/* Header */}
         <div className="px-5 py-3.5 border-b border-duo-gray-200 dark:border-[#283842] flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -234,7 +266,7 @@ export const KanjiDetailModal: React.FC<KanjiDetailModalProps> = ({
         <div className="p-4 border-t border-duo-gray-200 dark:border-[#283842] bg-gray-50 dark:bg-[#131f24]">
           <button
             onClick={onClose}
-            className="w-full py-3 bg-duo-green hover:bg-duo-green-dark text-white font-black text-sm rounded-2xl shadow-[0_4px_0_0_#46a302] active:translate-y-1 active:shadow-none transition-all uppercase tracking-wider"
+            className="w-full py-3 bg-duo-green hover:bg-duo-green-dark text-white font-black text-sm rounded-2xl shadow-[0_4px_0_0_#46a302] active:translate-y-1 active:shadow-none transition-all uppercase tracking-wider cursor-pointer"
           >
             Entendido
           </button>
@@ -242,4 +274,7 @@ export const KanjiDetailModal: React.FC<KanjiDetailModalProps> = ({
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 };
+
