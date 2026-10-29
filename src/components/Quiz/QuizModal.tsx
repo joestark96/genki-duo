@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { X, Heart, Volume2, CheckCircle2, AlertCircle, ArrowRight, Trophy, Sparkles, RotateCcw, FastForward, ShieldAlert, Dumbbell, BookOpen, Eye, EyeOff } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { Exercise, LessonNode, MatchPair, UserProfile } from '../../types';
+import { Exercise, ExerciseOption, LessonNode, MatchPair, UserProfile } from '../../types';
 import { sound } from '../../services/sound';
 
 function shuffleArray<T>(array: T[]): T[] {
@@ -37,6 +37,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   const exercises = lesson.exercises;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
+  const [shuffledOptions, setShuffledOptions] = useState<ExerciseOption[]>([]);
 
   // Word-order state
   const [selectedWords, setSelectedWords] = useState<string[]>([]);
@@ -71,8 +72,14 @@ export const QuizModal: React.FC<QuizModalProps> = ({
       setActiveDialogueLineIdx(null);
       setStatus('answering');
 
+      if (currentExercise.options) {
+        setShuffledOptions(shuffleArray(currentExercise.options));
+      } else {
+        setShuffledOptions([]);
+      }
+
       if (currentExercise.type === 'word-order' && currentExercise.wordBank) {
-        setAvailableWords([...currentExercise.wordBank].sort(() => Math.random() - 0.5));
+        setAvailableWords(shuffleArray(currentExercise.wordBank));
         setSelectedWords([]);
       }
 
@@ -664,7 +671,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         {/* 1. Multiple-choice, Listening & Dialogue-Reading Options */}
         {(currentExercise.type === 'multiple-choice' || currentExercise.type === 'listening' || currentExercise.type === 'dialogue-reading') && (
           <div className="grid grid-cols-1 gap-3">
-            {currentExercise.options?.map((option) => {
+            {(shuffledOptions.length > 0 ? shuffledOptions : currentExercise.options)?.map((option) => {
               const isSelected = selectedOptionId === option.id;
               return (
                 <button
