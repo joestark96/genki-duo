@@ -1,4 +1,5 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect, useRef, useCallback } from 'react';
+import confetti from 'canvas-confetti';
 import {
   Mic,
   MicOff,
@@ -281,6 +282,137 @@ export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = 
     ? selectedRoleSpeaker
     : dialogueSpeakers[0] || '';
 
+  // Auto-Roleplay interactive state
+  const [isAutoRoleplay, setIsAutoRoleplay] = useState<boolean>(false);
+  const [autoStatus, setAutoStatus] = useState<'idle' | 'partner-speaking' | 'listening' | 'success' | 'retry'>('idle');
+  const [autoFeedback, setAutoFeedback] = useState<{ transcript: string; score: number; error?: string } | null>(null);
+  const autoTimerRef = useRef<number | null>(null);
+  const roleplayLineRefs = useRef<Record<number, HTMLDivElement | null>>({});
+
+  const stopAutoRoleplay = useCallback(() => {
+    if (autoTimerRef.current) {
+      window.clearTimeout(autoTimerRef.current);
+      autoTimerRef.current = null;
+    }
+    setIsAutoRoleplay(false);
+    setAutoStatus('idle');
+    setAutoFeedback(null);
+    speechService.stopListening();
+    sound.stopSpeech();
+  }, []);
+
+  // Cleanup timers & audio on unmount or tab switch
+  useEffect(() => {
+    return () => {
+      if (autoTimerRef.current) {
+        window.clearTimeout(autoTimerRef.current);
+      }
+      speechService.stopListening();
+      sound.stopSpeech();
+    };
+  }, []);
+
+  // Reset auto roleplay on unit or speaker change
+  useEffect(() => {
+    stopAutoRoleplay();
+  }, [roleplayUnitId, selectedRoleSpeaker, stopAutoRoleplay]);
+
+  // Handle user speech in auto mode
+  const runUserSpeechStep = useCallback(async (line: { japanese: string; audioText?: string }) => {
+    setAutoStatus('listening');
+    setAutoFeedback(null);
+
+    await speechService.startListening(
+      (res) => {
+        let bestTranscript = res.bestTranscript;
+        let bestScore = 0;
+
+        res.matches.forEach(m => {
+          const sc = computeSimilarity(m, line.japanese, line.audioText);
+          if (sc >= bestScore) {
+            bestScore = sc;
+            bestTranscript = m;
+          }
+        });
+
+        if (bestScore >= 60) {
+          sound.playCorrect();
+          setAutoStatus('success');
+          setAutoFeedback({ transcript: bestTranscript, score: bestScore });
+
+          autoTimerRef.current = window.setTimeout(() => {
+            setAutoStatus('idle');
+            setRoleplayStep(prev => prev + 1);
+          }, 1400);
+        } else {
+          sound.playTap();
+          setAutoStatus('retry');
+          setAutoFeedback({
+            transcript: bestTranscript,
+            score: bestScore,
+            error: bestTranscript ? `Se escuchó: 「${bestTranscript}」 (${bestScore}%)` : 'Pronunciación no reconocida'
+          });
+        }
+      },
+      (errorMsg) => {
+        setAutoStatus('retry');
+        setAutoFeedback({
+          transcript: '',
+          score: 0,
+          error: errorMsg || 'Error al capturar voz'
+        });
+      },
+      () => {
+        // Closed mic
+      }
+    );
+  }, []);
+
+  // Coordinator effect for Auto-Roleplay
+  useEffect(() => {
+    if (!isAutoRoleplay) return;
+
+    if (autoTimerRef.current) {
+      window.clearTimeout(autoTimerRef.current);
+      autoTimerRef.current = null;
+    }
+
+    if (roleplayStep >= currentDialogueLines.length) {
+      sound.playLessonComplete();
+      confetti({ particleCount: 90, spread: 75, origin: { y: 0.6 } });
+      stopAutoRoleplay();
+      return;
+    }
+
+    const line = currentDialogueLines[roleplayStep];
+    if (!line) return;
+
+    // Smooth scroll line into view
+    const el = roleplayLineRefs.current[roleplayStep];
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    const isMyTurn = line.speaker === activeRoleSpeaker;
+
+    if (!isMyTurn) {
+      // AI Partner speaks automatically
+      setAutoStatus('partner-speaking');
+      setAutoFeedback(null);
+      sound.speakJapanese(line.audioText || line.japanese, 0.9, line.speaker);
+
+      const textLen = (line.audioText || line.japanese).length;
+      const waitMs = Math.max(2600, textLen * 240 + 900);
+
+      autoTimerRef.current = window.setTimeout(() => {
+        setRoleplayStep(prev => prev + 1);
+      }, waitMs);
+    } else {
+      // User's turn to speak
+      runUserSpeechStep(line);
+    }
+  }, [isAutoRoleplay, roleplayStep, currentDialogueLines, activeRoleSpeaker, runUserSpeechStep, stopAutoRoleplay]);
+
   // Challenge pool
   const currentChallengePhrase = allPhrases[challengeIndex % allPhrases.length];
 
@@ -557,22 +689,53 @@ export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = 
 
           {/* Interactive Dialogue Lines */}
           <div className="bg-white dark:bg-[#18272e] border-2 border-duo-gray-200 dark:border-[#283842] rounded-3xl p-4 shadow-sm flex flex-col gap-3">
-            <div className="flex items-center justify-between border-b border-gray-100 dark:border-[#283842] pb-2.5">
-              <span className="text-xs font-black text-gray-700 dark:text-gray-200">
-                Línea {roleplayStep + 1} de {currentDialogueLines.length}
-              </span>
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-gray-100 dark:border-[#283842] pb-3">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-black text-gray-700 dark:text-gray-200">
+                  Línea {roleplayStep + 1} de {currentDialogueLines.length}
+                </span>
+
+                <button
+                  onClick={() => {
+                    sound.playTap();
+                    if (isAutoRoleplay) {
+                      stopAutoRoleplay();
+                    } else {
+                      if (roleplayStep >= currentDialogueLines.length) {
+                        setRoleplayStep(0);
+                      }
+                      setIsAutoRoleplay(true);
+                    }
+                  }}
+                  className={`px-3 py-1.5 rounded-xl text-xs font-black flex items-center gap-1.5 transition-all cursor-pointer ${
+                    isAutoRoleplay
+                      ? 'bg-purple-600 text-white shadow-[0_3px_0_0_#581c87] ring-2 ring-purple-400/40 animate-pulse'
+                      : 'bg-purple-50 dark:bg-purple-950/40 border-2 border-purple-300 dark:border-purple-800 text-purple-700 dark:text-purple-300 hover:bg-purple-600 hover:text-white'
+                  }`}
+                  title="Modo Automático: La IA habla y espera que digas tu diálogo para avanzar fluidamente"
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>{isAutoRoleplay ? 'Pausar Modo Auto' : 'Modo Automático'}</span>
+                </button>
+              </div>
+
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => {
                     sound.playTap();
+                    if (isAutoRoleplay) stopAutoRoleplay();
                     setRoleplayStep(0);
                   }}
-                  className="px-2.5 py-1 rounded-xl bg-gray-100 dark:bg-[#131f24] text-[11px] font-black text-gray-600 dark:text-gray-300 cursor-pointer"
+                  className="px-2.5 py-1 rounded-xl bg-gray-100 dark:bg-[#131f24] text-[11px] font-black text-gray-600 dark:text-gray-300 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-800"
                 >
                   Reiniciar
                 </button>
                 <button
                   onClick={() => {
+                    if (isAutoRoleplay) {
+                      setRoleplayStep(prev => prev + 1);
+                      return;
+                    }
                     const nextIdx = (roleplayStep + 1) % Math.max(1, currentDialogueLines.length);
                     setRoleplayStep(nextIdx);
                     const nextLine = currentDialogueLines[nextIdx];
@@ -580,13 +743,85 @@ export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = 
                       sound.speakJapanese(nextLine.audioText || nextLine.japanese, 0.9, nextLine.speaker);
                     }
                   }}
-                  className="px-3 py-1 rounded-xl bg-emerald-500 text-white text-[11px] font-black flex items-center gap-1 cursor-pointer"
+                  className="px-3 py-1 rounded-xl bg-emerald-500 text-white text-[11px] font-black flex items-center gap-1 cursor-pointer hover:bg-emerald-600"
                 >
                   <span>Siguiente Línea</span>
                   <SkipForward className="w-3 h-3" />
                 </button>
               </div>
             </div>
+
+            {/* Live Auto-Roleplay Status Banner */}
+            {isAutoRoleplay && (
+              <div
+                className={`p-3 rounded-2xl border-2 transition-all flex flex-col gap-2 ${
+                  autoStatus === 'listening'
+                    ? 'bg-purple-50 dark:bg-purple-950/40 border-purple-400 text-purple-900 dark:text-purple-200 ring-2 ring-purple-300/30'
+                    : autoStatus === 'success'
+                    ? 'bg-emerald-50 dark:bg-emerald-950/40 border-emerald-400 text-emerald-900 dark:text-emerald-200'
+                    : autoStatus === 'retry'
+                    ? 'bg-amber-50 dark:bg-amber-950/40 border-amber-400 text-amber-900 dark:text-amber-200'
+                    : 'bg-sky-50 dark:bg-sky-950/40 border-sky-400 text-sky-900 dark:text-sky-200'
+                }`}
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    {autoStatus === 'partner-speaking' && (
+                      <>
+                        <Volume2 className="w-4 h-4 text-sky-600 animate-pulse flex-shrink-0" />
+                        <span className="text-xs font-black">
+                          💬 {currentDialogueLines[roleplayStep]?.speaker} está hablando... Escucha.
+                        </span>
+                      </>
+                    )}
+                    {autoStatus === 'listening' && (
+                      <>
+                        <div className="w-3 h-3 rounded-full bg-red-500 animate-ping flex-shrink-0" />
+                        <span className="text-xs font-black">
+                          🎙️ ¡Tu turno! Habla en japonés cerca del micrófono...
+                        </span>
+                      </>
+                    )}
+                    {autoStatus === 'success' && (
+                      <>
+                        <CheckCircle2 className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+                        <span className="text-xs font-black">
+                          ¡Excelente pronunciación! 「{autoFeedback?.transcript}」 ({autoFeedback?.score}%) • Continuando...
+                        </span>
+                      </>
+                    )}
+                    {autoStatus === 'retry' && (
+                      <span className="text-xs font-black">
+                        ⚠️ {autoFeedback?.error || 'No se reconoció la frase.'} Intenta de nuevo.
+                      </span>
+                    )}
+                  </div>
+
+                  {autoStatus === 'retry' && (
+                    <div className="flex items-center gap-1.5 flex-shrink-0">
+                      <button
+                        onClick={() => {
+                          const line = currentDialogueLines[roleplayStep];
+                          if (line) runUserSpeechStep(line);
+                        }}
+                        className="px-2.5 py-1 bg-purple-600 text-white rounded-lg font-black text-[10px] flex items-center gap-1 shadow-xs cursor-pointer hover:bg-purple-700"
+                      >
+                        <Mic className="w-3 h-3" />
+                        <span>Reintentar</span>
+                      </button>
+                      <button
+                        onClick={() => {
+                          setRoleplayStep(prev => prev + 1);
+                        }}
+                        className="px-2 py-1 bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200 rounded-lg font-black text-[10px] cursor-pointer hover:bg-gray-300 dark:hover:bg-gray-600"
+                      >
+                        Saltar ⏩
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
 
             {currentDialogueLines.map((line, idx) => {
               const isMyRole = line.speaker === activeRoleSpeaker;
@@ -595,11 +830,14 @@ export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = 
               return (
                 <div
                   key={idx}
+                  ref={(el) => {
+                    roleplayLineRefs.current[idx] = el;
+                  }}
                   onClick={() => {
                     setRoleplayStep(idx);
                     sound.speakJapanese(line.audioText || line.japanese, 0.9, line.speaker);
                   }}
-                  className={`p-3.5 rounded-2xl border-2 transition-all cursor-pointer ${
+                  className={`p-3.5 rounded-2xl border-2 transition-all cursor-pointer scroll-mt-2 ${
                     isCurrentStep
                       ? isMyRole
                         ? 'bg-purple-50 dark:bg-purple-950/35 border-purple-500 ring-2 ring-purple-400/30'
