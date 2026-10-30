@@ -492,7 +492,7 @@ export const ReadingsPage: React.FC<ReadingsPageProps> = ({ units, showRomaji = 
                       sound.playTap();
                       sound.speakDialogueSequence(
                         ex.dialogueLines!,
-                        0.65,
+                        0.55,
                         (idx) => {
                           const key = `${ex.id}-line-${idx}`;
                           setActiveLineKey(key);
@@ -691,7 +691,7 @@ export const ReadingsPage: React.FC<ReadingsPageProps> = ({ units, showRomaji = 
                       <button
                         onClick={() => {
                           sound.playTap();
-                          sound.speakJapanese(exercise.japaneseVoiceText!, 0.9);
+                          sound.speakJapanese(exercise.japaneseVoiceText!, 0.9, 'mary');
                         }}
                         className="px-2.5 py-1.5 bg-duo-blue hover:bg-duo-blue-dark text-white rounded-xl font-black text-[11px] flex items-center gap-1 shadow-[0_3px_0_0_#1899d6] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
                         title="Escuchar lectura"
@@ -702,7 +702,7 @@ export const ReadingsPage: React.FC<ReadingsPageProps> = ({ units, showRomaji = 
                       <button
                         onClick={() => {
                           sound.playTap();
-                          sound.speakJapanese(exercise.japaneseVoiceText!, 0.6);
+                          sound.speakJapanese(exercise.japaneseVoiceText!, 0.55, 'mary');
                         }}
                         className="px-2 py-1.5 bg-duo-blue-light/80 dark:bg-duo-blue/20 border border-duo-blue text-duo-blue-dark dark:text-duo-blue rounded-xl font-black text-[11px] cursor-pointer"
                         title="Escuchar lento"

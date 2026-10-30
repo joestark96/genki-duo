@@ -1,5 +1,6 @@
 import { Capacitor } from '@capacitor/core';
 import { SpeechRecognition } from '@capacitor-community/speech-recognition';
+import { sound } from './sound';
 
 export interface SpeechRecognitionResult {
   matches: string[];
@@ -14,30 +15,101 @@ export class SpeechService {
     onError: (error: string) => void,
     onEnd: () => void
   ): Promise<void> {
-    // 1. Native Android via Capacitor Plugin
+    // Stop any active audio playback so it doesn't feed into the microphone
+    sound.stopSpeech();
+
+    // 1. Native Android / iOS via Capacitor Plugin
     if (Capacitor.isNativePlatform()) {
       try {
-        const { available } = await SpeechRecognition.available();
-        if (!available) {
-          onError('El reconocimiento de voz no está disponible en este dispositivo.');
+        // Stop any lingering previous session
+        try {
+          const { listening } = await SpeechRecognition.isListening();
+          if (listening) {
+            await SpeechRecognition.stop();
+          }
+        } catch (_) {}
+
+        // Safe permission checking
+        let hasPermission = false;
+        try {
+          const perm = await SpeechRecognition.checkPermissions();
+          hasPermission = perm.speechRecognition === 'granted';
+        } catch (_) {}
+
+        if (!hasPermission) {
+          try {
+            const req = await SpeechRecognition.requestPermissions();
+            hasPermission = req.speechRecognition === 'granted';
+          } catch (_) {}
+        }
+
+        if (!hasPermission) {
+          onError('Permiso de micrófono no concedido. Habilítalo en los ajustes.');
           onEnd();
           return;
         }
 
-        const permStatus = await SpeechRecognition.requestPermissions();
-        if (permStatus.speechRecognition !== 'granted') {
-          onError('Permiso de micrófono no concedido.');
-          onEnd();
-          return;
-        }
+        // Check availability
+        let isAvailable = true;
+        try {
+          const check = await SpeechRecognition.available();
+          isAvailable = !!check?.available;
+        } catch (_) {}
 
-        const res = await SpeechRecognition.start({
-          language: 'ja-JP',
-          maxResults: 5,
-          prompt: 'Habla en japonés...',
-          popup: false,
-          partialResults: false
-        });
+        let res: { matches?: string[] } | null = null;
+
+        if (isAvailable) {
+          try {
+            // Attempt in-app recognition first
+            res = await SpeechRecognition.start({
+              language: 'ja-JP',
+              maxResults: 5,
+              prompt: 'Habla en japonés...',
+              popup: false,
+              partialResults: false
+            });
+          } catch (inAppErr: any) {
+            const msg = String(inAppErr?.message || inAppErr || '');
+            if (msg.includes('No match') || msg.includes('No speech input')) {
+              onError('No se detectó voz. Intenta de nuevo hablando claro.');
+              onEnd();
+              return;
+            }
+
+            console.warn('In-app recognition unavailable, launching Google Voice dialog fallback:', inAppErr);
+            // Fallback to native Google Voice Popup dialog
+            try {
+              res = await SpeechRecognition.start({
+                language: 'ja-JP',
+                maxResults: 5,
+                prompt: 'Habla en japonés...',
+                popup: true,
+                partialResults: false
+              });
+            } catch (popupErr: any) {
+              console.error('All native speech recognition modes failed:', popupErr);
+              onError('No se pudo activar el micrófono. Verifica que los Servicios de Google estén habilitados.');
+              onEnd();
+              return;
+            }
+          }
+        } else {
+          // Direct fallback to system Voice Dialog
+          try {
+            res = await SpeechRecognition.start({
+              language: 'ja-JP',
+              maxResults: 5,
+              prompt: 'Habla en japonés...',
+              popup: true,
+              partialResults: false
+            });
+          } catch (popupErr: any) {
+            console.error('Speech recognition not available:', popupErr);
+            onError('El reconocimiento de voz no está disponible en este dispositivo.');
+            onEnd();
+            return;
+          }
+        }
 
         const matches = res?.matches || [];
         if (matches.length > 0) {
@@ -51,8 +123,8 @@ export class SpeechService {
         onEnd();
         return;
       } catch (err: any) {
-        console.warn('Native speech recognition error:', err);
-        onError('Error al capturar voz. Intenta hablar más claro cerca del micrófono.');
+        console.warn('Native speech recognition critical error:', err);
+        onError('Error al inicializar micrófono.');
         onEnd();
         return;
       }
@@ -116,4 +188,3 @@ export class SpeechService {
 }
 
 export const speechService = new SpeechService();
-

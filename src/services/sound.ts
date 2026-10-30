@@ -33,9 +33,9 @@ export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
     name: 'Mary',
     japaneseName: 'メアリー',
     avatar: '👱‍♀️',
-    role: 'Voz femenina dulce y natural (Aoi / Mary)',
+    role: 'Voz femenina dulce y natural (Sakura / Mary)',
     gender: 'female',
-    neuralVoiceId: 'jp_003',
+    neuralVoiceId: 'jp_005',
     detuneCents: 0,
     pitch: 1.0,
     rate: 1.0,
@@ -74,7 +74,7 @@ export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
     avatar: '👩',
     role: 'Voz femenina cálida (Sakura)',
     gender: 'female',
-    neuralVoiceId: 'jp_005',
+    neuralVoiceId: 'jp_001',
     detuneCents: 0,
     pitch: 1.0,
     rate: 1.0,
@@ -449,8 +449,8 @@ class SoundService {
           const gainNode = ctx.createGain();
           source.buffer = decodedBuffer!;
 
-          const baseScale = rate / 0.9;
-          source.playbackRate.value = Math.max(0.65, Math.min(1.25, profile.rate * baseScale));
+          const baseScale = rate < 0.85 ? 0.70 : (rate / 0.9);
+          source.playbackRate.value = Math.max(0.65, Math.min(1.2, profile.rate * baseScale));
           if (profile.detuneCents && 'detune' in source) {
           // No detune - preserve clean native neural voice
           }
@@ -503,7 +503,12 @@ class SoundService {
         }
 
         this.activeAudio = audio;
-        audio.playbackRate = Math.max(0.6, Math.min(1.25, rate));
+        if ('preservesPitch' in audio) audio.preservesPitch = true;
+        if ('webkitPreservesPitch' in audio) (audio as any).webkitPreservesPitch = true;
+        if ('mozPreservesPitch' in audio) (audio as any).mozPreservesPitch = true;
+        const effectiveRate = rate < 0.85 ? 0.70 : Math.min(1.2, rate);
+        audio.defaultPlaybackRate = effectiveRate;
+        audio.playbackRate = effectiveRate;
         audio.volume = 0.9;
 
         audio.onended = () => {
@@ -518,7 +523,10 @@ class SoundService {
             : `https://dict.youdao.com/dictvoice?audio=${encodeURIComponent(clean)}&le=jap`;
           const fbAudio = new Audio(fallbackUrl);
           this.activeAudio = fbAudio;
-          fbAudio.playbackRate = Math.max(0.6, Math.min(1.25, rate));
+          if ('preservesPitch' in fbAudio) (fbAudio as any).preservesPitch = true;
+          const fbRate = rate < 0.85 ? 0.70 : Math.max(0.6, Math.min(1.25, rate));
+          fbAudio.defaultPlaybackRate = fbRate;
+          fbAudio.playbackRate = fbRate;
           fbAudio.volume = 0.9;
           fbAudio.onended = () => {
             if (this.activeAudio === fbAudio) this.activeAudio = null;
@@ -560,18 +568,34 @@ class SoundService {
       try {
         this.stopActivePlayback();
 
-        let audio = this.audioCache.get(audioPath);
+        const cacheBustedPath = audioPath.includes('?') ? audioPath : `${audioPath}?v=sakura`;
+        let audio = this.audioCache.get(cacheBustedPath);
         if (!audio) {
-          audio = new Audio(audioPath);
+          audio = new Audio(cacheBustedPath);
           audio.preload = 'auto';
-          this.audioCache.set(audioPath, audio);
+          this.audioCache.set(cacheBustedPath, audio);
         } else {
+          audio.pause();
           audio.currentTime = 0;
         }
 
         this.activeAudio = audio;
-        audio.playbackRate = Math.max(0.6, Math.min(1.25, rate));
+
+        // 0.70x is the acoustic sweet spot: distinctly slower (~30%), clear and natural, without pitch shift
+        const isSlow = rate < 0.85;
+        const targetRate = isSlow ? 0.70 : 1.0;
+
+        if ('preservesPitch' in audio) (audio as any).preservesPitch = true;
+        if ('webkitPreservesPitch' in audio) (audio as any).webkitPreservesPitch = true;
+        if ('mozPreservesPitch' in audio) (audio as any).mozPreservesPitch = true;
+
+        audio.defaultPlaybackRate = targetRate;
+        audio.playbackRate = targetRate;
         audio.volume = 0.95;
+
+        audio.onplay = () => {
+          audio.playbackRate = targetRate;
+        };
 
         audio.onended = () => {
           if (this.activeAudio === audio) this.activeAudio = null;
@@ -605,42 +629,61 @@ class SoundService {
     this.stopActivePlayback();
 
     const charProfile = this.getCharacterProfile(speakerOrVoiceId);
-    // 0. CHECK PRE-PACKAGED LOCAL OFFLINE MP3 FIRST! (Zero latency, zero network)
+    const isSlow = rate < 0.85;
+
+    // 1. Direct offline match: if the full text has a pre-rendered audio file, play it!
+    // (Works seamlessly for BOTH normal 1.0x and slow 🐢 0.70x with 100% voice fidelity)
+    const slowRate = 0.70;
     const localFullKey = getOfflineAudioKey(charProfile.id, cleanText);
-    const localFullPath = LOCAL_AUDIO_MANIFEST[localFullKey];
+    const localFullPath = LOCAL_AUDIO_MANIFEST[localFullKey] || (charProfile.id !== 'mary' ? LOCAL_AUDIO_MANIFEST[getOfflineAudioKey('mary', cleanText)] : undefined);
     if (localFullPath) {
-      const playedFullLocal = await this.playLocalBundledAudio(localFullPath, rate);
+      const playedFullLocal = await this.playLocalBundledAudio(localFullPath, isSlow ? slowRate : 1.0);
       if (playedFullLocal) return;
     }
 
-    const chunks = this.splitIntoSpeechChunks(cleanText, 75);
+    // In slow mode (turtle 🐢), split into natural spoken clauses (by 。、！？) with pauses between them
+    const chunks = this.splitIntoSpeechChunks(cleanText, isSlow ? 32 : 75);
 
-    for (const chunk of chunks) {
-      // 1. If the character has a dedicated neural voice, try it on this chunk
+    for (let cIdx = 0; cIdx < chunks.length; cIdx++) {
+      const chunk = chunks[cIdx];
       let played = false;
-      if (charProfile.neuralVoiceId) {
-        played = await this.playNeuralCharacterVoice(chunk, rate, charProfile);
+
+      // Check bundled audio for this specific chunk
+      const localChunkKey = getOfflineAudioKey(charProfile.id, chunk);
+      const localChunkPath = LOCAL_AUDIO_MANIFEST[localChunkKey] || (charProfile.id !== 'mary' ? LOCAL_AUDIO_MANIFEST[getOfflineAudioKey('mary', chunk)] : undefined);
+      if (localChunkPath) {
+        played = await this.playLocalBundledAudio(localChunkPath, isSlow ? slowRate : rate);
       }
 
-      // 2. Try browser SpeechSynthesis if available on the system
+      // If chunk had no standalone file, try full text file if there's only 1 chunk
+      if (!played && chunks.length === 1) {
+        const localFullKey = getOfflineAudioKey(charProfile.id, cleanText);
+        const localFullPath = LOCAL_AUDIO_MANIFEST[localFullKey] || (charProfile.id !== 'mary' ? LOCAL_AUDIO_MANIFEST[getOfflineAudioKey('mary', cleanText)] : undefined);
+        if (localFullPath) {
+          played = await this.playLocalBundledAudio(localFullPath, isSlow ? slowRate : rate);
+        }
+      }
+
+      // Fallback 1: Dedicated neural voice
+      if (!played && charProfile.neuralVoiceId) {
+        played = await this.playNeuralCharacterVoice(chunk, isSlow ? slowRate : rate, charProfile);
+      }
+
+      // Fallback 2: Browser SpeechSynthesis
       if (!played) {
         const jaVoices = this.getAvailableJapaneseVoices();
         const chosenVoice = this.findSystemVoiceForCharacter(jaVoices, charProfile);
-
         if (chosenVoice && typeof window !== 'undefined' && 'speechSynthesis' in window) {
           played = await new Promise<boolean>((resolve) => {
             try {
               if (window.speechSynthesis.paused) {
                 window.speechSynthesis.resume();
               }
-
               const utterance = new SpeechSynthesisUtterance(chunk);
               this.activeUtterance = utterance;
-              (window as unknown as { __duo_utt: SpeechSynthesisUtterance }).__duo_utt = utterance;
-
               utterance.voice = chosenVoice;
               utterance.lang = chosenVoice.lang || 'ja-JP';
-              utterance.rate = Math.max(0.55, Math.min(1.25, rate * (charProfile.rate / 0.9)));
+              utterance.rate = isSlow ? slowRate : Math.max(0.7, Math.min(1.25, rate * (charProfile.rate / 0.9)));
               utterance.pitch = charProfile.pitch;
               utterance.volume = 0.85;
 
@@ -648,12 +691,10 @@ class SoundService {
                 this.activeUtterance = null;
                 resolve(true);
               };
-
               utterance.onerror = () => {
                 this.activeUtterance = null;
                 resolve(false);
               };
-
               window.speechSynthesis.speak(utterance);
             } catch {
               resolve(false);
@@ -662,18 +703,14 @@ class SoundService {
         }
       }
 
-      // 3. Fallback neural voice if character had no neuralVoiceId or system voice is not installed
+      // Fallback 3: Online dictionary
       if (!played) {
-        const fallbackProfile: CharacterVoiceProfile = {
-          ...charProfile,
-          neuralVoiceId: (charProfile.gender === 'male' ? 'jp_male_shuichiro' : 'jp_003') as NeuralJapaneseVoiceId
-        };
-        played = await this.playNeuralCharacterVoice(chunk, rate, fallbackProfile);
+        await this.playOnlineChunk(chunk, isSlow ? slowRate : rate);
       }
 
-      // 4. Robust online dictionary fallback
-      if (!played) {
-        await this.playOnlineChunk(chunk, rate);
+      // Natural pause between phrases in slow mode
+      if (isSlow && cIdx < chunks.length - 1) {
+        await new Promise((r) => window.setTimeout(r, 420));
       }
     }
   }
@@ -701,7 +738,7 @@ class SoundService {
       onLineStart?.(currentIdx);
       this.speakJapanese(line.audioText, rate, line.speaker);
 
-      const waitMs = Math.max(2800, line.audioText.length * (rate < 0.75 ? 290 : 210) + 900);
+      const waitMs = Math.max(2800, line.audioText.length * (rate < 0.75 ? 310 : 210) + 900);
       currentIdx++;
       this.sequenceTimer = window.setTimeout(playStep, waitMs);
     };

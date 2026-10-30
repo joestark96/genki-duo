@@ -521,7 +521,7 @@ export const VocabularyPage: React.FC<VocabularyPageProps> = ({ showRomaji = tru
                             type="button"
                             onClick={e => {
                               e.stopPropagation();
-                              sound.speakJapanese(word.audioText || word.furigana, 0.6);
+                              sound.speakJapanese(word.audioText || word.furigana, 0.55);
                             }}
                             className="px-2 py-1.5 bg-rose-50 dark:bg-rose-950/40 border border-rose-300 dark:border-rose-800 text-rose-600 dark:text-rose-400 rounded-xl text-[11px] font-black cursor-pointer hover:brightness-105 transition-all"
                             title="Escuchar lento"
