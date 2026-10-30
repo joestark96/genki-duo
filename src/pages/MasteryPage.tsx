@@ -760,7 +760,7 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
 
       {/* QUICK WEAK REVIEW MODAL */}
       {isReviewModalOpen && reviewItems.length > 0 && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fade-in">
+        <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fade-in">
           <div className="bg-white dark:bg-[#18272e] border-2 border-duo-gray-200 dark:border-[#283842] rounded-3xl max-w-md w-full p-5 shadow-2xl flex flex-col gap-4">
             {/* Modal Header */}
             <div className="flex items-center justify-between border-b border-gray-100 dark:border-[#283842] pb-3">

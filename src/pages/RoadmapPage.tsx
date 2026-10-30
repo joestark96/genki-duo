@@ -267,7 +267,7 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
       {/* Popover de Lección al tocar un nodo del Roadmap */}
       {selectedNodeForPopover && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in"
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in"
           onClick={() => setSelectedNodeForPopover(null)}
         >
           <div

@@ -374,7 +374,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   // --- JUMP AHEAD PASSED SCREEN ---
   if (status === 'jump-passed') {
     return (
-      <div className="fixed inset-0 z-50 bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between p-6 animate-fade-in">
+      <div className="fixed inset-0 z-[100] bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between p-6 animate-fade-in">
         <div className="flex-1 flex flex-col items-center justify-center text-center max-w-sm mx-auto">
           <div className="w-24 h-24 bg-duo-green rounded-full flex items-center justify-center mb-6 shadow-duo-btn border-4 border-duo-green-dark animate-bounce">
             <Trophy className="w-12 h-12 text-white stroke-[2.5px]" />
@@ -418,7 +418,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   // --- JUMP AHEAD FAILED SCREEN (3 ERRORS) ---
   if (status === 'jump-failed') {
     return (
-      <div className="fixed inset-0 z-50 bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between p-6 animate-fade-in">
+      <div className="fixed inset-0 z-[100] bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between p-6 animate-fade-in">
         <div className="flex-1 flex flex-col items-center justify-center text-center max-w-sm mx-auto">
           <div className="w-20 h-20 bg-duo-red-light dark:bg-duo-red/20 rounded-full flex items-center justify-center mb-6 border-4 border-duo-red shadow-md">
             <ShieldAlert className="w-10 h-10 text-duo-red" />
@@ -445,7 +445,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   // --- STANDARD LESSON OR PRACTICE COMPLETED SCREEN ---
   if (status === 'completed') {
     return (
-      <div className="fixed inset-0 z-50 bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between p-6 animate-fade-in">
+      <div className="fixed inset-0 z-[100] bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between p-6 animate-fade-in">
         <div className="flex-1 flex flex-col items-center justify-center text-center max-w-sm mx-auto">
           <div className={`w-24 h-24 rounded-full flex items-center justify-center mb-6 shadow-duo-btn border-4 animate-bounce ${
             isPractice ? 'bg-duo-blue border-duo-blue-dark' : 'bg-duo-yellow border-duo-yellow-dark'
@@ -494,7 +494,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   // --- GAME OVER SCREEN (Normal Lesson) ---
   if (status === 'game-over') {
     return (
-      <div className="fixed inset-0 z-50 bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between p-6">
+      <div className="fixed inset-0 z-[100] bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between p-6">
         <div className="flex-1 flex flex-col items-center justify-center text-center max-w-sm mx-auto">
           <div className="w-20 h-20 bg-duo-red-light dark:bg-duo-red/20 rounded-full flex items-center justify-center mb-6 border-4 border-duo-red">
             <Heart className="w-10 h-10 text-duo-red" />
@@ -516,7 +516,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   }
 
   return (
-    <div className="fixed inset-0 z-50 bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between select-none">
+    <div className="fixed inset-0 z-[100] bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between select-none">
       {/* Top Header: Close, Progress bar, Hearts / Chances / Practice indicator */}
       <div className="px-4 py-3 flex items-center gap-4 max-w-2xl mx-auto w-full">
         <button
