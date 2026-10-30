@@ -1,3 +1,5 @@
+import { LOCAL_AUDIO_MANIFEST } from '../data/localAudioManifest';
+import { getOfflineAudioKey } from '../utils/audioHash';
 // Web Audio API synthesizers for Duolingo-style sound effects + Multi-Character Neural Japanese Voice Engine
 
 export type NeuralJapaneseVoiceId =
@@ -552,6 +554,44 @@ class SoundService {
   }
 
   // Speak Japanese with genuine character voices (real male neural voice for men via WebAudio, original voice for Mary)
+  // Play bundled local MP3 if available in the app package (100% offline)
+  private playLocalBundledAudio(audioPath: string, rate: number = 1.0): Promise<boolean> {
+    return new Promise((resolve) => {
+      try {
+        this.stopActivePlayback();
+
+        let audio = this.audioCache.get(audioPath);
+        if (!audio) {
+          audio = new Audio(audioPath);
+          audio.preload = 'auto';
+          this.audioCache.set(audioPath, audio);
+        } else {
+          audio.currentTime = 0;
+        }
+
+        this.activeAudio = audio;
+        audio.playbackRate = Math.max(0.6, Math.min(1.25, rate));
+        audio.volume = 0.95;
+
+        audio.onended = () => {
+          if (this.activeAudio === audio) this.activeAudio = null;
+          resolve(true);
+        };
+
+        audio.onerror = () => {
+          resolve(false);
+        };
+
+        const playPromise = audio.play();
+        if (playPromise !== undefined) {
+          playPromise.catch(() => resolve(false));
+        }
+      } catch {
+        resolve(false);
+      }
+    });
+  }
+
   public async speakJapanese(text: string, rate: number = 0.9, speakerOrVoiceId?: string): Promise<void> {
     if (this.sequenceTimer) {
       window.clearTimeout(this.sequenceTimer);
@@ -565,6 +605,14 @@ class SoundService {
     this.stopActivePlayback();
 
     const charProfile = this.getCharacterProfile(speakerOrVoiceId);
+    // 0. CHECK PRE-PACKAGED LOCAL OFFLINE MP3 FIRST! (Zero latency, zero network)
+    const localFullKey = getOfflineAudioKey(charProfile.id, cleanText);
+    const localFullPath = LOCAL_AUDIO_MANIFEST[localFullKey];
+    if (localFullPath) {
+      const playedFullLocal = await this.playLocalBundledAudio(localFullPath, rate);
+      if (playedFullLocal) return;
+    }
+
     const chunks = this.splitIntoSpeechChunks(cleanText, 75);
 
     for (const chunk of chunks) {
