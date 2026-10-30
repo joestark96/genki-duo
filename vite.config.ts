@@ -9,7 +9,14 @@ export default defineConfig({
   },
   server: {
     port: 5173,
-    host: true
+    host: true,
+    proxy: {
+      '/api/tts': {
+        target: 'https://ottsy.weilbyte.dev',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api\/tts/, '/api/generation')
+      }
+    }
   }
 });
 

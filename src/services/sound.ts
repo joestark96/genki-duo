@@ -28,12 +28,12 @@ export interface CharacterVoiceProfile {
 export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
   {
     id: 'mary',
-    name: 'Mary (Voz Original)',
+    name: 'Mary',
     japaneseName: 'メアリー',
     avatar: '👱‍♀️',
-    role: 'Voz japonesa original por defecto',
+    role: 'Voz femenina dulce y natural (Aoi / Mary)',
     gender: 'female',
-    neuralVoiceId: undefined, // Keeps 100% original voice
+    neuralVoiceId: 'jp_003',
     detuneCents: 0,
     pitch: 1.0,
     rate: 0.9,
@@ -386,26 +386,45 @@ class SoundService {
       let decodedBuffer = this.neuralBufferCache.get(cacheKey);
 
       if (!decodedBuffer) {
-        const controller = new AbortController();
-        const timeoutId = window.setTimeout(() => controller.abort(), 4000);
+        let fetchedBase64: string | null = null;
+        // Priority endpoints: direct modern ottsy domain with full CORS support + Vite dev server proxy
+        const isLocalDev = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+        const endpoints = isLocalDev
+          ? ['/api/tts', 'https://ottsy.weilbyte.dev/api/generation']
+          : ['https://ottsy.weilbyte.dev/api/generation', '/api/tts'];
 
-        const res = await fetch('https://tiktok-tts.weilnet.workers.dev/api/generation', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            text,
-            voice: profile.neuralVoiceId
-          }),
-          signal: controller.signal
-        });
-        window.clearTimeout(timeoutId);
+        for (const endpoint of endpoints) {
+          try {
+            const controller = new AbortController();
+            const timeoutId = window.setTimeout(() => controller.abort(), 4500);
 
-        if (!res.ok) return false;
-        const json = await res.json();
-        if (!json || !json.success || !json.data) return false;
+            const res = await fetch(endpoint, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                text,
+                voice: profile.neuralVoiceId
+              }),
+              signal: controller.signal
+            });
+            window.clearTimeout(timeoutId);
+
+            if (res.ok) {
+              const json = await res.json();
+              if (json && json.success && json.data) {
+                fetchedBase64 = json.data;
+                break;
+              }
+            }
+          } catch {
+            // Continue to fallback endpoint
+          }
+        }
+
+        if (!fetchedBase64) return false;
 
         // Convert base64 MP3 to ArrayBuffer and decode with Web Audio API
-        const binaryString = window.atob(json.data);
+        const binaryString = window.atob(fetchedBase64);
         const len = binaryString.length;
         const bytes = new Uint8Array(len);
         for (let i = 0; i < len; i++) {
@@ -526,7 +545,10 @@ class SoundService {
         const playPromise = audio.play();
         if (playPromise !== undefined) {
           playPromise.catch((err) => {
-            console.warn('Audio play notice:', err);
+            // Only log if not an expected unsupported source fallback
+            if (err && (err as { name?: string }).name !== 'NotSupportedError') {
+              console.warn('Audio play notice:', err);
+            }
             resolve(false);
           });
         }
@@ -568,7 +590,7 @@ class SoundService {
         played = await this.playNeuralCharacterVoice(chunk, rate, charProfile);
       }
 
-      // 2. For Mary or fallback when offline: try system voice
+      // 2. Try browser SpeechSynthesis if available on the system
       if (!played) {
         const jaVoices = this.getAvailableJapaneseVoices();
         const chosenVoice = this.findSystemVoiceForCharacter(jaVoices, charProfile);
@@ -608,7 +630,16 @@ class SoundService {
         }
       }
 
-      // 3. Robust online Google Translate TTS / dictionary fallback for full sentence
+      // 3. Fallback neural voice if character had no neuralVoiceId or system voice is not installed
+      if (!played) {
+        const fallbackProfile: CharacterVoiceProfile = {
+          ...charProfile,
+          neuralVoiceId: (charProfile.gender === 'male' ? 'jp_male_shuichiro' : 'jp_003') as NeuralJapaneseVoiceId
+        };
+        played = await this.playNeuralCharacterVoice(chunk, rate, fallbackProfile);
+      }
+
+      // 4. Robust online dictionary fallback
       if (!played) {
         await this.playOnlineChunk(chunk, rate);
       }
