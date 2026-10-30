@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Map, BookOpen, Layers, BookA, MessageSquare, Languages, PenTool, Mic, User, ChevronUp, Library, Check } from 'lucide-react';
+import { Map, BookOpen, Layers, BookA, MessageSquare, Languages, PenTool, Mic, User, ChevronUp, Library, Check, Target } from 'lucide-react';
 import { sound } from '../services/sound';
 
-export type NavTab = 'roadmap' | 'theory' | 'flashcards' | 'kanas' | 'readings' | 'vocabulary' | 'writing' | 'speaking' | 'profile';
+export type NavTab = 'roadmap' | 'theory' | 'flashcards' | 'kanas' | 'readings' | 'vocabulary' | 'writing' | 'speaking' | 'profile' | 'mastery';
 
 interface BottomNavProps {
   activeTab: NavTab;
@@ -20,6 +20,13 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) 
     icon: React.FC<{ className?: string }>;
     badgeColor: string;
   }[] = [
+    {
+      id: 'mastery',
+      label: 'Mi Dominio',
+      subtitle: 'Puntuación de palabras y repaso de débiles',
+      icon: Target,
+      badgeColor: 'bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-400/30'
+    },
     {
       id: 'theory',
       label: 'Teoría',
@@ -129,7 +136,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) 
                   <span className="text-[10px] font-black uppercase tracking-wider text-gray-400 dark:text-gray-500">
                     Material de Estudio
                   </span>
-                  <span className="text-[10px] font-bold text-duo-blue">7 secciones</span>
+                  <span className="text-[10px] font-bold text-duo-blue">8 secciones</span>
                 </div>
 
                 {studyOptions.map((option) => {

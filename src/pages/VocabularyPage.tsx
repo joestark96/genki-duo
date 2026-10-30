@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { Languages, Volume2, Search, Eye, EyeOff, ChevronDown, Sparkles, Wand2, BookOpen } from 'lucide-react';
+import { Languages, Volume2, Search, Eye, EyeOff, ChevronDown, Sparkles, Wand2, BookOpen, Target } from 'lucide-react';
 import { genkiVocabulary, VocabWord } from '../data/vocabularyData';
 import { SpeechPracticeButton } from '../components/SpeechPracticeButton';
 import { sound } from '../services/sound';
+import { NavTab } from '../components/BottomNav';
 
 interface VocabularyPageProps {
   showRomaji?: boolean;
+  onNavigateTab?: (tab: NavTab) => void;
 }
 
 interface ConjugationRow {
@@ -161,7 +163,7 @@ function conjugateWord(word: VocabWord): ConjugationRow[] {
   ];
 }
 
-export const VocabularyPage: React.FC<VocabularyPageProps> = ({ showRomaji = true }) => {
+export const VocabularyPage: React.FC<VocabularyPageProps> = ({ showRomaji = true, onNavigateTab }) => {
   const [viewMode, setViewMode] = useState<'vocab' | 'conjugator'>('vocab');
   const [selectedLesson, setSelectedLesson] = useState<number>(-1);
   const [selectedPos, setSelectedPos] = useState<string>('all');
@@ -267,8 +269,21 @@ export const VocabularyPage: React.FC<VocabularyPageProps> = ({ showRomaji = tru
           }`}
         >
           <Wand2 className="w-3.5 h-3.5" />
-          <span>Conjugador Interactivo</span>
+          <span>Conjugador</span>
         </button>
+
+        {onNavigateTab && (
+          <button
+            onClick={() => {
+              sound.playTap();
+              onNavigateTab('mastery');
+            }}
+            className="flex-1 py-2 rounded-xl text-xs font-black flex items-center justify-center gap-1.5 transition-all cursor-pointer text-gray-500 dark:text-gray-400 hover:text-indigo-600 dark:hover:text-indigo-400 hover:bg-white/50 dark:hover:bg-[#283842]/50"
+          >
+            <Target className="w-3.5 h-3.5" />
+            <span>Mi Dominio</span>
+          </button>
+        )}
       </div>
 
       {/* ================================================= */}

@@ -3,6 +3,7 @@ import { User, Flame, Zap, Heart, Gem, Database, RotateCcw, Award, CheckCircle2,
 import { UserProfile, Unit } from '../types';
 import { sound, CHARACTER_VOICES } from '../services/sound';
 import { getLocalDateKey, getDailyQuestStats } from '../utils/dateUtils';
+import { NavTab } from '../components/BottomNav';
 
 interface ProfilePageProps {
   profile: UserProfile;
@@ -14,6 +15,7 @@ interface ProfilePageProps {
   onToggleDarkMode: () => void;
   onClaimQuestReward?: (xp: number, gems: number) => void;
   onChangeVoice?: (voiceId: string) => void;
+  onNavigateTab?: (tab: NavTab) => void;
 }
 
 export const ProfilePage: React.FC<ProfilePageProps> = ({
@@ -25,7 +27,8 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
   onToggleRomaji,
   onToggleDarkMode,
   onClaimQuestReward,
-  onChangeVoice
+  onChangeVoice,
+  onNavigateTab
 }) => {
   const todayKey = getLocalDateKey();
   const [claimedQuests, setClaimedQuests] = useState<Record<string, boolean>>(() => {
@@ -324,6 +327,34 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
           );
         })}
       </div>
+
+      {/* Banco de Dominio y SRS Shortcut */}
+      {onNavigateTab && (
+        <div className="bg-gradient-to-r from-indigo-500/10 via-purple-500/10 to-pink-500/10 border-2 border-indigo-300 dark:border-indigo-800 p-4 rounded-2xl mb-5 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-indigo-600 text-white flex items-center justify-center font-black flex-shrink-0 shadow-sm">
+              <Target className="w-5 h-5" />
+            </div>
+            <div>
+              <h4 className="text-xs font-black text-gray-800 dark:text-gray-100">
+                Banco de Dominio y SRS
+              </h4>
+              <p className="text-[11px] font-medium text-gray-500 dark:text-gray-400">
+                Revisa tus palabras dominadas y refuerza las más débiles.
+              </p>
+            </div>
+          </div>
+          <button
+            onClick={() => {
+              sound.playTap();
+              onNavigateTab('mastery');
+            }}
+            className="py-2 px-3 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black rounded-xl shadow-xs transition-all flex items-center gap-1 flex-shrink-0 cursor-pointer"
+          >
+            <span>Ver Dominio</span>
+          </button>
+        </div>
+      )}
 
       {/* Achievements Gallery (Medallas y Logros) */}
       <h3 className="text-sm font-black text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-2 flex items-center justify-between">

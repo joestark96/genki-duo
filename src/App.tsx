@@ -16,6 +16,7 @@ import { VocabularyPage } from './pages/VocabularyPage';
 import { WritingPage } from './pages/WritingPage';
 import { SpeakingPage } from './pages/SpeakingPage';
 import { ProfilePage } from './pages/ProfilePage';
+import { MasteryPage } from './pages/MasteryPage';
 import { getLocalDateKey, recordDailyLessonActivity } from './utils/dateUtils';
 
 // Ionic core CSS
@@ -502,13 +503,21 @@ export const App: React.FC = () => {
               <ReadingsPage units={units} showRomaji={profile.showRomaji} />
             )}
             {activeTab === 'vocabulary' && (
-              <VocabularyPage showRomaji={profile.showRomaji} />
+              <VocabularyPage showRomaji={profile.showRomaji} onNavigateTab={setActiveTab} />
             )}
             {activeTab === 'writing' && (
               <WritingPage showRomaji={profile.showRomaji} />
             )}
             {activeTab === 'speaking' && (
               <SpeakingPage units={units} showRomaji={profile.showRomaji} />
+            )}
+            {activeTab === 'mastery' && (
+              <MasteryPage
+                cards={flashcards}
+                onRateCard={handleRateCard}
+                showRomaji={profile.showRomaji}
+                onNavigateTab={setActiveTab}
+              />
             )}
             {activeTab === 'profile' && (
               <ProfilePage
@@ -521,6 +530,7 @@ export const App: React.FC = () => {
                 onToggleDarkMode={handleToggleDarkMode}
                 onClaimQuestReward={handleClaimQuestReward}
                 onChangeVoice={handleChangeVoice}
+                onNavigateTab={setActiveTab}
               />
             )}
           </main>
