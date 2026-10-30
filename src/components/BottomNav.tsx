@@ -96,46 +96,70 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) 
     };
   }, [menuOpen]);
 
+  // Evitar que el fondo se mueva/scrollee mientras el menú desplegable está abierto
+  useEffect(() => {
+    if (menuOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
+  }, [menuOpen]);
+
   const ActiveStudyIcon = activeStudyOption ? activeStudyOption.icon : Library;
 
   return (
-    <nav className="fixed bottom-0 left-0 right-0 z-30 bg-white dark:bg-[#18272e] border-t-2 border-duo-gray-200 dark:border-[#283842] py-1.5 px-4 shadow-lg transition-colors duration-200">
-      <div className="max-w-md mx-auto flex items-center justify-around relative">
-        {/* 1. Aprender (Roadmap) */}
-        <button
-          onClick={() => {
-            sound.playTap();
-            setMenuOpen(false);
-            if (activeTab === 'roadmap') {
-              window.dispatchEvent(new CustomEvent('focus-roadmap-active-node'));
-            } else {
-              onTabChange('roadmap');
-            }
+    <>
+      {/* Backdrop overlay que bloquea el scroll de la página de fondo y cierra el menú al pulsar fuera */}
+      {menuOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/40 backdrop-blur-xs transition-opacity"
+          onClick={() => setMenuOpen(false)}
+          onTouchMove={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
           }}
-          className={`flex flex-col items-center justify-center py-1 px-4 rounded-2xl transition-all duration-150 cursor-pointer ${
-            activeTab === 'roadmap'
-              ? 'text-duo-green font-black scale-105'
-              : 'text-gray-400 dark:text-gray-400 font-bold hover:text-gray-600 dark:hover:text-gray-200'
-          }`}
-        >
-          <div
-            className={`p-1.5 rounded-xl transition-all ${
+        />
+      )}
+
+      <nav className="fixed bottom-0 left-0 right-0 z-50 bg-white dark:bg-[#18272e] border-t-2 border-duo-gray-200 dark:border-[#283842] py-1.5 px-4 shadow-lg transition-colors duration-200">
+        <div className="max-w-md mx-auto flex items-center justify-around relative">
+          {/* 1. Aprender (Roadmap) */}
+          <button
+            onClick={() => {
+              sound.playTap();
+              setMenuOpen(false);
+              if (activeTab === 'roadmap') {
+                window.dispatchEvent(new CustomEvent('focus-roadmap-active-node'));
+              } else {
+                onTabChange('roadmap');
+              }
+            }}
+            className={`flex flex-col items-center justify-center py-1 px-4 rounded-2xl transition-all duration-150 cursor-pointer ${
               activeTab === 'roadmap'
-                ? 'bg-duo-green-light/40 dark:bg-duo-green/20 border-2 border-duo-green'
-                : 'border-2 border-transparent'
+                ? 'text-duo-green font-black scale-105'
+                : 'text-gray-400 dark:text-gray-400 font-bold hover:text-gray-600 dark:hover:text-gray-200'
             }`}
           >
-            <Map className={`w-5 h-5 ${activeTab === 'roadmap' ? 'stroke-[2.5px]' : 'stroke-2'}`} />
-          </div>
-          <span className="text-[11px] mt-0.5 tracking-tight">Aprender</span>
-        </button>
+            <div
+              className={`p-1.5 rounded-xl transition-all ${
+                activeTab === 'roadmap'
+                  ? 'bg-duo-green-light/40 dark:bg-duo-green/20 border-2 border-duo-green'
+                  : 'border-2 border-transparent'
+              }`}
+            >
+              <Map className={`w-5 h-5 ${activeTab === 'roadmap' ? 'stroke-[2.5px]' : 'stroke-2'}`} />
+            </div>
+            <span className="text-[11px] mt-0.5 tracking-tight">Aprender</span>
+          </button>
 
-        {/* 2. Estudio / Recursos Dropdown Trigger + Menu */}
-        <div ref={dropdownRef} className="relative flex flex-col items-center">
-          {/* Popover Dropdown Menu */}
-          {menuOpen && (
-            <div className="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 z-50">
-              <div className="w-64 max-h-[75vh] overflow-y-auto bg-white dark:bg-[#18272e] border-2 border-duo-gray-200 dark:border-[#283842] rounded-3xl shadow-2xl p-2 flex flex-col gap-1.5 animate-fade-in">
+          {/* 2. Estudio / Recursos Dropdown Trigger + Menu */}
+          <div ref={dropdownRef} className="relative flex flex-col items-center">
+            {/* Popover Dropdown Menu */}
+            {menuOpen && (
+              <div className="absolute bottom-full mb-3 left-1/2 -translate-x-1/2 z-50">
+                <div className="w-64 max-h-[75vh] overflow-y-auto overscroll-contain bg-white dark:bg-[#18272e] border-2 border-duo-gray-200 dark:border-[#283842] rounded-3xl shadow-2xl p-2 flex flex-col gap-1.5 animate-fade-in">
                 <div className="px-3 py-1.5 border-b border-gray-100 dark:border-[#283842] flex items-center justify-between">
                   <span className="text-[10px] font-black uppercase tracking-wider text-gray-400 dark:text-gray-500">
                     Material de Estudio
@@ -252,5 +276,6 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) 
         </button>
       </div>
     </nav>
+    </>
   );
 };

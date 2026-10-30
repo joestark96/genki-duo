@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Unit, LessonNode, UserProfile } from '../types';
 import { RoadmapNode } from '../components/Roadmap/RoadmapNode';
 import { QuizModal } from '../components/Quiz/QuizModal';
-import { BookOpen, Sparkles, CheckCircle2, FastForward, ShieldAlert, Award, Dumbbell, Compass } from 'lucide-react';
+import { BookOpen, Sparkles, CheckCircle2, FastForward, ShieldAlert, Award, Dumbbell, Compass, X, Star, Play } from 'lucide-react';
 import { sound } from '../services/sound';
 import { createJumpAheadLesson } from '../utils/jumpAhead';
 import { createPracticeLesson } from '../utils/practiceLesson';
@@ -25,6 +25,11 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
   onOpenTheory
 }) => {
   const [activeQuizLesson, setActiveQuizLesson] = useState<LessonNode | null>(null);
+  const [selectedNodeForPopover, setSelectedNodeForPopover] = useState<{
+    node: LessonNode;
+    unitId: number;
+    unitTitle: string;
+  } | null>(null);
   const [isJumpAheadActive, setIsJumpAheadActive] = useState(false);
   const [isPracticeActive, setIsPracticeActive] = useState(false);
 
@@ -210,8 +215,11 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
                     position={position}
                     isActive={isActive}
                     onSelectNode={(selected) => {
-                      setIsJumpAheadActive(false);
-                      setActiveQuizLesson(selected);
+                      setSelectedNodeForPopover({
+                        node: selected,
+                        unitId: unit.id,
+                        unitTitle: `${unit.title} — ${unit.subtitle}`
+                      });
                     }}
                   />
                 );
@@ -255,6 +263,114 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
           </div>
         );
       })}
+
+      {/* Popover de Lección al tocar un nodo del Roadmap */}
+      {selectedNodeForPopover && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-xs animate-fade-in"
+          onClick={() => setSelectedNodeForPopover(null)}
+        >
+          <div
+            className="bg-white dark:bg-[#18272e] border-2 border-duo-gray-200 dark:border-[#283842] rounded-3xl p-5 shadow-2xl max-w-sm w-full flex flex-col gap-4 animate-scale-up relative"
+            onClick={e => e.stopPropagation()}
+          >
+            {/* Botón cerrar */}
+            <button
+              onClick={() => {
+                sound.playTap();
+                setSelectedNodeForPopover(null);
+              }}
+              className="absolute top-4 right-4 p-1.5 rounded-full text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 hover:bg-gray-100 dark:hover:bg-[#20333d] transition-colors cursor-pointer"
+              aria-label="Cerrar ventana"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            {/* Cabecera de la Lección */}
+            <div className="flex items-center gap-3 pr-6">
+              <div
+                className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-md flex-shrink-0 ${
+                  selectedNodeForPopover.node.stars > 0
+                    ? 'bg-duo-yellow shadow-[0_4px_0_0_#e5b400]'
+                    : 'bg-duo-green shadow-[0_4px_0_0_#46a302]'
+                }`}
+              >
+                {selectedNodeForPopover.node.stars > 0 ? (
+                  <Star className="w-7 h-7 fill-white stroke-[2.5px]" />
+                ) : (
+                  <Sparkles className="w-7 h-7 stroke-[2.5px]" />
+                )}
+              </div>
+
+              <div className="min-w-0">
+                <span className="text-[10px] font-black uppercase tracking-wider text-duo-green dark:text-green-400">
+                  {selectedNodeForPopover.unitTitle}
+                </span>
+                <h3 className="text-base font-black text-gray-800 dark:text-gray-100 leading-snug">
+                  {selectedNodeForPopover.node.title}
+                </h3>
+                <p className="text-xs font-bold text-gray-400 dark:text-gray-500">
+                  {selectedNodeForPopover.node.japaneseTitle}
+                </p>
+              </div>
+            </div>
+
+            {/* Indicador de Estado y Estrellas */}
+            <div className="flex items-center justify-between p-2.5 rounded-2xl bg-gray-50 dark:bg-[#131f24] border border-gray-200 dark:border-[#283842]">
+              <span className="text-xs font-black text-gray-600 dark:text-gray-300">
+                {selectedNodeForPopover.node.stars > 0 ? 'Estado: ¡Completada!' : 'Estado: Disponible'}
+              </span>
+              <div className="flex items-center gap-1">
+                {Array.from({ length: 3 }).map((_, i) => (
+                  <Star
+                    key={i}
+                    className={`w-4 h-4 ${
+                      i < selectedNodeForPopover.node.stars
+                        ? 'fill-amber-400 text-amber-500'
+                        : 'text-gray-300 dark:text-gray-600'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+
+            {/* Botones de Acción */}
+            <div className="flex flex-col gap-2.5 mt-1">
+              {/* Botón 1: Iniciar Lección */}
+              <button
+                onClick={() => {
+                  sound.playTap();
+                  const targetLesson = selectedNodeForPopover.node;
+                  setSelectedNodeForPopover(null);
+                  setIsJumpAheadActive(false);
+                  setIsPracticeActive(false);
+                  setActiveQuizLesson(targetLesson);
+                }}
+                className="w-full py-3.5 bg-duo-green hover:bg-duo-green-dark text-white font-black text-xs rounded-2xl shadow-[0_4px_0_0_#46a302] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider"
+              >
+                <Play className="w-4 h-4 fill-white stroke-[2px]" />
+                <span>{selectedNodeForPopover.node.stars > 0 ? 'Repasar Lección' : 'Iniciar Lección'}</span>
+              </button>
+
+              {/* Botón 2: Ver Teoría de la Lección */}
+              <button
+                onClick={() => {
+                  sound.playTap();
+                  const targetUnitId = selectedNodeForPopover.unitId;
+                  setSelectedNodeForPopover(null);
+                  if (onOpenTheory) {
+                    onOpenTheory(targetUnitId);
+                  }
+                }}
+                className="w-full py-3 bg-sky-500 hover:bg-sky-600 text-white font-black text-xs rounded-2xl shadow-[0_4px_0_0_#0284c7] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider"
+              >
+                <BookOpen className="w-4 h-4 stroke-[2.5px]" />
+                <span>Ver Teoría y Gramática</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* Quiz Modal (Supports standard lesson, Jump Ahead exam, and Practice mode) */}
       {activeQuizLesson && (
