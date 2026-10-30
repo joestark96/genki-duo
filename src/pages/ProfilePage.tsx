@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { User, Flame, Zap, Heart, Gem, Database, RotateCcw, Award, CheckCircle2, Volume2, Moon, Sun, Type, Sparkles, Trophy, Target, Gift } from 'lucide-react';
 import { UserProfile, Unit } from '../types';
 import { sound, CHARACTER_VOICES } from '../services/sound';
+import { getLocalDateKey, getDailyQuestStats } from '../utils/dateUtils';
 
 interface ProfilePageProps {
   profile: UserProfile;
@@ -26,7 +27,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
   onClaimQuestReward,
   onChangeVoice
 }) => {
-  const todayKey = new Date().toISOString().split('T')[0];
+  const todayKey = getLocalDateKey();
   const [claimedQuests, setClaimedQuests] = useState<Record<string, boolean>>(() => {
     try {
       const raw = localStorage.getItem(`genki_quests_${todayKey}`);
@@ -35,6 +36,19 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
       return {};
     }
   });
+
+  // Keep claimedQuests in sync whenever todayKey changes (e.g. crossing midnight)
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(`genki_quests_${todayKey}`);
+      setClaimedQuests(raw ? JSON.parse(raw) : {});
+    } catch {
+      setClaimedQuests({});
+    }
+  }, [todayKey]);
+
+  // Load today's activity stats (resets to 0 every day)
+  const dailyStats = getDailyQuestStats(todayKey);
 
   // Calculate completed lessons
   let completedCount = 0;
@@ -67,8 +81,8 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
     {
       id: 'q-lesson',
       title: 'Avance del Día',
-      desc: 'Domina al menos 1 lección en el Roadmap',
-      current: Math.min(completedCount, 1),
+      desc: 'Domina al menos 1 lección en el Roadmap hoy',
+      current: Math.min(dailyStats.lessonsCompleted, 1),
       target: 1,
       xpReward: 25,
       gemReward: 2
@@ -76,8 +90,8 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
     {
       id: 'q-xp',
       title: 'Cazador de Experiencia',
-      desc: 'Acumula 40 puntos de EXP estudiando',
-      current: Math.min(profile.xp, 40),
+      desc: 'Acumula 40 puntos de EXP estudiando hoy',
+      current: Math.min(dailyStats.xpEarned, 40),
       target: 40,
       xpReward: 30,
       gemReward: 3
@@ -85,8 +99,8 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
     {
       id: 'q-streak',
       title: 'Constancia Samurai',
-      desc: 'Completa 1 lección manteniendo al menos 3 corazones',
-      current: completedCount >= 1 && profile.hearts >= 3 ? 1 : 0,
+      desc: 'Completa 1 lección hoy manteniendo al menos 3 corazones',
+      current: dailyStats.maintainedHearts ? 1 : 0,
       target: 1,
       xpReward: 20,
       gemReward: 2
@@ -211,7 +225,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
             <div className="text-xl font-black text-gray-800 dark:text-gray-100">{profile.hearts} / {profile.maxHearts}</div>
             <div className="text-[11px] font-bold text-gray-400 dark:text-gray-400">
               {profile.hearts < profile.maxHearts && nextHeartMinutes
-                ? `+1 ❤️ en ${nextHeartMinutes}m`
+                ? `+1 ❤️ en ${nextHeartMinutes >= 60 ? '1 h' : `${nextHeartMinutes} min`}`
                 : 'Corazones'}
             </div>
           </div>
@@ -231,9 +245,16 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
         <div className="bg-duo-red-light/60 dark:bg-duo-red-dark/20 border-2 border-duo-red p-4 rounded-2xl mb-5 flex items-center justify-between gap-2">
           <div>
             <h4 className="text-xs font-black text-duo-red-dark dark:text-red-300 uppercase">
-              {nextHeartMinutes
-                ? `Regeneración activa (+1 ❤️ en ${nextHeartMinutes} min)`
-                : '¿Recuperar vidas al instante?'}
+              {nextHeartMinutes ? (() => {
+                const missing = Math.max(1, profile.maxHearts - profile.hearts);
+                const totalMins = (missing - 1) * 60 + nextHeartMinutes;
+                const totalHours = Math.ceil(totalMins / 60);
+                const nextStr = nextHeartMinutes >= 60 ? '1 h' : `${nextHeartMinutes} min`;
+                const totalStr = totalHours === 1 ? '1 hora' : `${totalHours} horas`;
+                return missing > 1
+                  ? `Regeneración (+1 ❤️ en ${nextStr} • Lleno en ${totalStr})`
+                  : `Regeneración activa (+1 ❤️ en ${nextStr})`;
+              })() : '¿Recuperar vidas al instante?'}
             </h4>
             <p className="text-xs font-bold text-gray-600 dark:text-gray-300">
               Se regenera 1 corazón cada hora o recarga todos ahora

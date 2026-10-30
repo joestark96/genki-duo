@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { X, Heart, Volume2, CheckCircle2, AlertCircle, ArrowRight, Trophy, Sparkles, RotateCcw, FastForward, ShieldAlert, Dumbbell, BookOpen, Eye, EyeOff } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { Exercise, ExerciseOption, LessonNode, MatchPair, UserProfile } from '../../types';
@@ -132,6 +132,17 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   const [wrongAttempts, setWrongAttempts] = useState(0);
   const [showDialogueTranslation, setShowDialogueTranslation] = useState(true);
   const [activeDialogueLineIdx, setActiveDialogueLineIdx] = useState<number | null>(null);
+  const dialogueLineRefs = useRef<Record<number, HTMLDivElement | null>>({});
+
+  // Auto-scroll chat to active dialogue line during playback
+  useEffect(() => {
+    if (activeDialogueLineIdx !== null && activeDialogueLineIdx >= 0) {
+      const el = dialogueLineRefs.current[activeDialogueLineIdx];
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+  }, [activeDialogueLineIdx]);
 
   const currentExercise: Exercise | undefined = exercises[currentIndex];
   const progressPercent = Math.round(((currentIndex) / exercises.length) * 100);
@@ -606,7 +617,13 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                     sound.speakDialogueSequence(
                       currentExercise.dialogueLines!,
                       0.9,
-                      (idx) => setActiveDialogueLineIdx(idx)
+                      (idx) => {
+                        setActiveDialogueLineIdx(idx);
+                        const el = dialogueLineRefs.current[idx];
+                        if (el) {
+                          el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                      }
                     );
                   }}
                   className="px-2.5 py-1.5 bg-duo-blue hover:bg-duo-blue-dark text-white rounded-xl font-black text-[11px] flex items-center gap-1 shadow-[0_3px_0_0_#1899d6] active:translate-y-0.5 active:shadow-none transition-all cursor-pointer"
@@ -621,8 +638,14 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                     sound.playTap();
                     sound.speakDialogueSequence(
                       currentExercise.dialogueLines!,
-                      0.65,
-                      (idx) => setActiveDialogueLineIdx(idx)
+                      0.70,
+                      (idx) => {
+                        setActiveDialogueLineIdx(idx);
+                        const el = dialogueLineRefs.current[idx];
+                        if (el) {
+                          el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                        }
+                      }
                     );
                   }}
                   className="px-2 py-1.5 bg-duo-blue-light/80 dark:bg-duo-blue/20 border border-duo-blue text-duo-blue-dark dark:text-duo-blue rounded-xl font-black text-[11px] flex items-center gap-1 hover:brightness-105 transition-all cursor-pointer"
@@ -673,7 +696,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                   </div>
 
                   {/* Chat Messages Container */}
-                  <div className="flex flex-col gap-3 max-h-[320px] overflow-y-auto p-3 rounded-2xl bg-slate-100/80 dark:bg-[#0f191e] border border-gray-200/80 dark:border-[#24343d]">
+                  <div className="flex flex-col gap-3 max-h-[320px] overflow-y-auto scroll-smooth p-3 rounded-2xl bg-slate-100/80 dark:bg-[#0f191e] border border-gray-200/80 dark:border-[#24343d]">
                     {currentExercise.dialogueLines!.map((line, lIdx) => {
                       const isActiveLine = activeDialogueLineIdx === lIdx;
                       const speakerIdx = uniqueSpeakers.indexOf(line.speaker);
@@ -683,11 +706,18 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                       return (
                         <div
                           key={`dlg-line-${lIdx}`}
+                          ref={(el) => {
+                            dialogueLineRefs.current[lIdx] = el;
+                          }}
                           onClick={() => {
                             setActiveDialogueLineIdx(lIdx);
                             sound.speakJapanese(line.audioText, 0.9, line.speaker);
+                            const el = dialogueLineRefs.current[lIdx];
+                            if (el) {
+                              el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                            }
                           }}
-                          className={`flex items-start gap-2.5 cursor-pointer group ${
+                          className={`flex items-start gap-2.5 cursor-pointer group scroll-mt-2 ${
                             theme.isRight ? 'flex-row-reverse' : 'flex-row'
                           }`}
                         >
@@ -727,6 +757,10 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                                     e.stopPropagation();
                                     setActiveDialogueLineIdx(lIdx);
                                     sound.speakJapanese(line.audioText, 0.9, line.speaker);
+                                    const el = dialogueLineRefs.current[lIdx];
+                                    if (el) {
+                                      el.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                                    }
                                   }}
                                   className={`p-1.5 rounded-xl transition-colors flex-shrink-0 ${theme.audioBtn}`}
                                   title="Escuchar esta línea"
@@ -806,7 +840,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
               <button
                 onClick={() => {
                   sound.playTap();
-                  sound.speakJapanese(currentExercise.japaneseVoiceText!, 0.55);
+                  sound.speakJapanese(currentExercise.japaneseVoiceText!, 0.70);
                 }}
                 className="w-16 h-16 bg-duo-blue-light/80 dark:bg-duo-blue/20 border-2 border-duo-blue rounded-2xl flex flex-col items-center justify-center text-duo-blue-dark dark:text-duo-blue shadow-[0_4px_0_0_#1cb0f6] active:translate-y-1 active:shadow-none hover:bg-duo-blue-light transition-all"
                 title="Escuchar lento (velocidad tortuga)"

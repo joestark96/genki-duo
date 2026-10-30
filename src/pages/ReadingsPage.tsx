@@ -492,7 +492,7 @@ export const ReadingsPage: React.FC<ReadingsPageProps> = ({ units, showRomaji = 
                       sound.playTap();
                       sound.speakDialogueSequence(
                         ex.dialogueLines!,
-                        0.55,
+                        0.70,
                         (idx) => {
                           const key = `${ex.id}-line-${idx}`;
                           setActiveLineKey(key);
@@ -702,7 +702,7 @@ export const ReadingsPage: React.FC<ReadingsPageProps> = ({ units, showRomaji = 
                       <button
                         onClick={() => {
                           sound.playTap();
-                          sound.speakJapanese(exercise.japaneseVoiceText!, 0.55, 'mary');
+                          sound.speakJapanese(exercise.japaneseVoiceText!, 0.70, 'mary');
                         }}
                         className="px-2 py-1.5 bg-duo-blue-light/80 dark:bg-duo-blue/20 border border-duo-blue text-duo-blue-dark dark:text-duo-blue rounded-xl font-black text-[11px] cursor-pointer"
                         title="Escuchar lento"

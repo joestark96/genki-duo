@@ -44,15 +44,29 @@ export const TopBar: React.FC<TopBarProps> = ({ profile, nextHeartMinutes, onSou
         </div>
 
         {/* Vidas / Corazones */}
-        <div className="flex items-center gap-1.5 font-extrabold text-duo-red" title="Se regenera 1 corazón cada hora">
-          <Heart className="w-5 h-5 fill-duo-red" />
-          <span className="text-sm tracking-wide">{profile.hearts}</span>
-          {profile.hearts < profile.maxHearts && nextHeartMinutes ? (
-            <span className="text-[10px] font-black px-1.5 py-0.5 rounded-md bg-duo-red/10 text-duo-red">
-              +1:{nextHeartMinutes}m
-            </span>
-          ) : null}
-        </div>
+        {(() => {
+          const missingHearts = Math.max(1, profile.maxHearts - profile.hearts);
+          const totalMinutes = nextHeartMinutes ? (missingHearts - 1) * 60 + nextHeartMinutes : 0;
+          const totalHours = Math.ceil(totalMinutes / 60);
+          const nextStr = nextHeartMinutes ? (nextHeartMinutes >= 60 ? '1h' : `${nextHeartMinutes}m`) : '';
+          const tooltip = nextHeartMinutes
+            ? (missingHearts > 1
+                ? `+1 ❤️ en ${nextStr} • Lleno en ${totalHours} horas`
+                : `+1 ❤️ en ${nextStr}`)
+            : 'Vidas al máximo';
+
+          return (
+            <div className="flex items-center gap-1.5 font-extrabold text-duo-red" title={tooltip}>
+              <Heart className="w-5 h-5 fill-duo-red" />
+              <span className="text-sm tracking-wide">{profile.hearts}</span>
+              {profile.hearts < profile.maxHearts && nextHeartMinutes ? (
+                <span className="text-[10px] font-black px-1.5 py-0.5 rounded-md bg-duo-red/10 text-duo-red">
+                  +1 en {nextStr}
+                </span>
+              ) : null}
+            </div>
+          );
+        })()}
 
         {/* Sonido Toggle */}
         <button

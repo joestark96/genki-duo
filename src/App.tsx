@@ -16,6 +16,7 @@ import { VocabularyPage } from './pages/VocabularyPage';
 import { WritingPage } from './pages/WritingPage';
 import { SpeakingPage } from './pages/SpeakingPage';
 import { ProfilePage } from './pages/ProfilePage';
+import { getLocalDateKey, recordDailyLessonActivity } from './utils/dateUtils';
 
 // Ionic core CSS
 import '@ionic/react/css/core.css';
@@ -301,8 +302,9 @@ export const App: React.FC = () => {
 
   // Complete a lesson node: mark completed, award XP, unlock next node in curriculum
   const handleCompleteLesson = async (nodeId: string, earnedXp: number, stars: number) => {
-    const today = new Date().toISOString().split('T')[0];
+    const today = getLocalDateKey();
     const shouldIncrementStreak = profile.streakDays === 0 || profile.lastActiveDate !== today;
+    recordDailyLessonActivity(earnedXp, profile.hearts);
 
     // 1. Update Profile (XP + gems + streak)
     const updatedProfile: UserProfile = {
@@ -400,8 +402,9 @@ export const App: React.FC = () => {
     setUnits(newUnits);
 
     // 3. Award +50 XP, update streak, and play victory sound
-    const today = new Date().toISOString().split('T')[0];
+    const today = getLocalDateKey();
     const shouldIncrementStreak = profile.streakDays === 0 || profile.lastActiveDate !== today;
+    recordDailyLessonActivity(50, profile.hearts);
     const updatedProfile: UserProfile = {
       ...profile,
       xp: profile.xp + 50,
