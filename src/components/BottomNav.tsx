@@ -106,7 +106,11 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) 
           onClick={() => {
             sound.playTap();
             setMenuOpen(false);
-            onTabChange('roadmap');
+            if (activeTab === 'roadmap') {
+              window.dispatchEvent(new CustomEvent('focus-roadmap-active-node'));
+            } else {
+              onTabChange('roadmap');
+            }
           }}
           className={`flex flex-col items-center justify-center py-1 px-4 rounded-2xl transition-all duration-150 cursor-pointer ${
             activeTab === 'roadmap'
@@ -147,8 +151,12 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) 
                       key={option.id}
                       onClick={() => {
                         sound.playTap();
-                        onTabChange(option.id);
                         setMenuOpen(false);
+                        if (activeTab === option.id) {
+                          window.dispatchEvent(new CustomEvent('scroll-to-top'));
+                        } else {
+                          onTabChange(option.id);
+                        }
                       }}
                       className={`w-full flex items-center justify-between gap-3 p-2.5 rounded-2xl text-left transition-all cursor-pointer border-2 ${
                         isSelected
@@ -219,7 +227,11 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) 
           onClick={() => {
             sound.playTap();
             setMenuOpen(false);
-            onTabChange('profile');
+            if (activeTab === 'profile') {
+              window.dispatchEvent(new CustomEvent('scroll-to-top'));
+            } else {
+              onTabChange('profile');
+            }
           }}
           className={`flex flex-col items-center justify-center py-1 px-4 rounded-2xl transition-all duration-150 cursor-pointer ${
             activeTab === 'profile'

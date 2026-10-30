@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Unit, LessonNode, UserProfile } from '../types';
 import { RoadmapNode } from '../components/Roadmap/RoadmapNode';
 import { QuizModal } from '../components/Quiz/QuizModal';
@@ -50,6 +50,49 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
   };
 
   const activeNodeId = getActiveNodeId();
+
+  // Enfocar automáticamente la lección disponible al entrar o cambiar a la pestaña de Roadmap
+  useEffect(() => {
+    let timer1: NodeJS.Timeout;
+    let timer2: NodeJS.Timeout;
+
+    const scrollToAvailableLesson = (behavior: ScrollBehavior = 'smooth') => {
+      if (!activeNodeId) return false;
+      const element = document.getElementById(`roadmap-node-${activeNodeId}`);
+      if (element) {
+        element.scrollIntoView({ behavior, block: 'center' });
+        element.classList.add('scale-105');
+        setTimeout(() => {
+          element.classList.remove('scale-105');
+        }, 700);
+        return true;
+      }
+      return false;
+    };
+
+    // Primer intento tras montar/pintar
+    timer1 = setTimeout(() => {
+      const ok = scrollToAvailableLesson('smooth');
+      if (!ok) {
+        // Segundo intento en caso de que el layout o fuentes tarden unos ms más
+        timer2 = setTimeout(() => {
+          scrollToAvailableLesson('smooth');
+        }, 220);
+      }
+    }, 120);
+
+    const handleFocusEvent = () => {
+      scrollToAvailableLesson('smooth');
+    };
+
+    window.addEventListener('focus-roadmap-active-node', handleFocusEvent);
+
+    return () => {
+      clearTimeout(timer1);
+      clearTimeout(timer2);
+      window.removeEventListener('focus-roadmap-active-node', handleFocusEvent);
+    };
+  }, [activeNodeId]);
 
   const handleStartJumpAhead = (unit: Unit) => {
     sound.playTap();

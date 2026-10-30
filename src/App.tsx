@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { setupIonicReact, IonApp, IonContent } from '@ionic/react';
 import { UserProfile, Unit, Flashcard } from './types';
 import { genkiCurriculum } from './data/genkiCurriculum';
@@ -52,6 +52,41 @@ export const App: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [theoryUnitId, setTheoryUnitId] = useState<number>(0);
   const [nextHeartMinutes, setNextHeartMinutes] = useState<number | null>(null);
+  const ionContentRef = useRef<HTMLIonContentElement>(null);
+
+  // Gestión de scroll: resetear al inicio si nos movemos a otra pestaña distinta del roadmap
+  useEffect(() => {
+    if (activeTab !== 'roadmap') {
+      const resetScrollToTop = () => {
+        ionContentRef.current?.scrollToTop(0);
+        ionContentRef.current?.getScrollElement().then(el => {
+          if (el) el.scrollTop = 0;
+        });
+        window.scrollTo(0, 0);
+        document.documentElement.scrollTop = 0;
+        document.body.scrollTop = 0;
+      };
+
+      resetScrollToTop();
+      const timer = setTimeout(resetScrollToTop, 50);
+      return () => clearTimeout(timer);
+    }
+  }, [activeTab]);
+
+  useEffect(() => {
+    const handleScrollToTop = () => {
+      ionContentRef.current?.scrollToTop(0);
+      ionContentRef.current?.getScrollElement().then(el => {
+        if (el) el.scrollTop = 0;
+      });
+      window.scrollTo(0, 0);
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    };
+
+    window.addEventListener('scroll-to-top', handleScrollToTop);
+    return () => window.removeEventListener('scroll-to-top', handleScrollToTop);
+  }, []);
 
   const HEART_REGEN_MS = 60 * 60 * 1000; // 1 hour in milliseconds
   const HEART_REGEN_KEY = 'genki_heart_regen_ts';
@@ -462,7 +497,7 @@ export const App: React.FC = () => {
 
   return (
     <IonApp className="font-['Nunito',sans-serif]">
-      <IonContent fullscreen className="bg-gray-50 dark:bg-[#131f24] transition-colors duration-200">
+      <IonContent ref={ionContentRef} fullscreen className="bg-gray-50 dark:bg-[#131f24] transition-colors duration-200">
         <div className="min-h-screen bg-gray-50 dark:bg-[#131f24] text-gray-800 dark:text-gray-100 flex flex-col transition-colors duration-200">
           {/* Top Status Bar (Duolingo style) */}
           <TopBar
