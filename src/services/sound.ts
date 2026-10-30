@@ -36,7 +36,7 @@ export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
     neuralVoiceId: 'jp_003',
     detuneCents: 0,
     pitch: 1.0,
-    rate: 0.9,
+    rate: 1.0,
     samplePhrase: 'こんにちは！メアリーです。よろしくお願いします！'
   },
   {
@@ -47,9 +47,9 @@ export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
     role: 'Voz masculina joven (Shuichiro)',
     gender: 'male',
     neuralVoiceId: 'jp_male_shuichiro',
-    detuneCents: -160,
-    pitch: 0.65,
-    rate: 0.96,
+    detuneCents: 0,
+    pitch: 1.0,
+    rate: 1.0,
     samplePhrase: 'やあ、ぼくはたけしです。いっしょに勉強しよう！'
   },
   {
@@ -60,9 +60,9 @@ export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
     role: 'Voz masculina profunda (Osada)',
     gender: 'male',
     neuralVoiceId: 'jp_male_osada',
-    detuneCents: -240,
-    pitch: 0.50,
-    rate: 0.85,
+    detuneCents: 0,
+    pitch: 1.0,
+    rate: 1.0,
     samplePhrase: 'みなさん、こんにちは。今日も日本語をがんばりましょう。'
   },
   {
@@ -74,8 +74,8 @@ export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
     gender: 'female',
     neuralVoiceId: 'jp_005',
     detuneCents: 0,
-    pitch: 1.05,
-    rate: 0.94,
+    pitch: 1.0,
+    rate: 1.0,
     samplePhrase: 'はじめまして、みちこです。いいお天気ですね。'
   },
   {
@@ -86,9 +86,9 @@ export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
     role: 'Voz masculina animada (Matsudake)',
     gender: 'male',
     neuralVoiceId: 'jp_male_matsudake',
-    detuneCents: -230,
-    pitch: 0.57,
-    rate: 0.90,
+    detuneCents: 0,
+    pitch: 1.0,
+    rate: 1.0,
     samplePhrase: 'こんにちは、ロバートです。日本語がおもしろいです！'
   },
   {
@@ -100,8 +100,8 @@ export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
     gender: 'female',
     neuralVoiceId: 'jp_female_rei',
     detuneCents: 0,
-    pitch: 1.12,
-    rate: 0.95,
+    pitch: 1.0,
+    rate: 1.0,
     samplePhrase: 'こんにちは！ソラといっしょに楽しく練習しましょう！'
   },
   {
@@ -112,9 +112,9 @@ export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
     role: 'Voz masculina serena (Ichiro)',
     gender: 'male',
     neuralVoiceId: 'jp_006',
-    detuneCents: -250,
-    pitch: 0.45,
-    rate: 0.94,
+    detuneCents: 0,
+    pitch: 1.0,
+    rate: 1.0,
     samplePhrase: 'こんにちは、けんです。ゆっくり話しましょう。'
   },
   {
@@ -127,7 +127,7 @@ export const CHARACTER_VOICES: CharacterVoiceProfile[] = [
     neuralVoiceId: 'jp_001',
     detuneCents: 0,
     pitch: 1.0,
-    rate: 0.92,
+    rate: 1.0,
     samplePhrase: 'こんにちは、スーです。毎日少しずつ練習しています。'
   }
 ];
@@ -450,27 +450,11 @@ class SoundService {
           const baseScale = rate / 0.9;
           source.playbackRate.value = Math.max(0.65, Math.min(1.25, profile.rate * baseScale));
           if (profile.detuneCents && 'detune' in source) {
-            source.detune.value = profile.detuneCents;
+          // No detune - preserve clean native neural voice
           }
           gainNode.gain.value = 0.95;
 
-          if (profile.gender === 'male') {
-            const bassFilter = ctx.createBiquadFilter();
-            bassFilter.type = 'lowshelf';
-            bassFilter.frequency.value = 240;
-            bassFilter.gain.value = 7.5;
-
-            const trebleFilter = ctx.createBiquadFilter();
-            trebleFilter.type = 'highshelf';
-            trebleFilter.frequency.value = 3000;
-            trebleFilter.gain.value = -4.5;
-
-            source.connect(bassFilter);
-            bassFilter.connect(trebleFilter);
-            trebleFilter.connect(gainNode);
-          } else {
-            source.connect(gainNode);
-          }
+          source.connect(gainNode);
 
           gainNode.connect(ctx.destination);
           this.activeBufferSource = source;
