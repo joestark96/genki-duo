@@ -514,6 +514,7 @@ export const App: React.FC = () => {
             {activeTab === 'mastery' && (
               <MasteryPage
                 cards={flashcards}
+                units={units}
                 onRateCard={handleRateCard}
                 showRomaji={profile.showRomaji}
                 onNavigateTab={setActiveTab}

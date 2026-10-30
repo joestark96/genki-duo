@@ -15,9 +15,10 @@ import {
   X,
   ArrowRight,
   Filter,
-  Check
+  Check,
+  Map
 } from 'lucide-react';
-import { Flashcard, FlashcardCategory } from '../types';
+import { Flashcard, FlashcardCategory, Unit } from '../types';
 import { sound } from '../services/sound';
 import { SpeechPracticeButton } from '../components/SpeechPracticeButton';
 import { NavTab } from '../components/BottomNav';
@@ -63,8 +64,16 @@ export function computeCardMastery(card: Flashcard): { score: number; level: Mas
   return { score, level };
 }
 
+function getItemLesson(item: Flashcard): number {
+  if (item.category === 'hiragana' || item.category === 'katakana') {
+    return 0;
+  }
+  return typeof item.genkiLesson === 'number' ? item.genkiLesson : 1;
+}
+
 interface MasteryPageProps {
   cards: Flashcard[];
+  units?: Unit[];
   onRateCard: (cardId: string, category: string, rating: 'again' | 'hard' | 'good' | 'easy') => Promise<void>;
   showRomaji?: boolean;
   onNavigateTab?: (tab: NavTab) => void;
@@ -72,6 +81,7 @@ interface MasteryPageProps {
 
 export const MasteryPage: React.FC<MasteryPageProps> = ({
   cards,
+  units = [],
   onRateCard,
   showRomaji = true,
   onNavigateTab
@@ -80,9 +90,11 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
   const [selectedStatus, setSelectedStatus] = useState<MasteryFilterStatus>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [sortBy, setSortBy] = useState<'weakest' | 'strongest' | 'lesson'>('weakest');
+  const [onlySeenLessons, setOnlySeenLessons] = useState<boolean>(true);
 
   // Quick Review Modal State
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+  const [reviewScope, setReviewScope] = useState<'roadmap' | 'all'>('roadmap');
   const [reviewItems, setReviewItems] = useState<MasteryItem[]>([]);
   const [reviewIndex, setReviewIndex] = useState(0);
   const [isAnswerRevealed, setIsAnswerRevealed] = useState(false);
@@ -100,16 +112,42 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
     });
   }, [cards]);
 
-  // Overall Statistics Breakdown
+  // Determine which lessons have been unlocked / seen in the Roadmap
+  const seenLessonIds = useMemo(() => {
+    const set = new Set<number>();
+    set.add(0); // Unit 0 (Kanas) always available
+
+    if (units && units.length > 0) {
+      units.forEach(u => {
+        const isSeen = u.nodes.some(n => n.unlocked || n.stars > 0 || n.completedSteps > 0);
+        if (isSeen) {
+          set.add(u.id);
+        }
+      });
+    }
+
+    set.add(1); // Default at least Unit 1
+    return set;
+  }, [units]);
+
+  const maxSeenLesson = useMemo(() => {
+    return Math.max(...Array.from(seenLessonIds));
+  }, [seenLessonIds]);
+
+  // Overall Statistics Breakdown (respects onlySeenLessons if active)
   const stats = useMemo(() => {
-    const total = masteryItems.length;
+    const scopedList = onlySeenLessons
+      ? masteryItems.filter(it => seenLessonIds.has(getItemLesson(it)))
+      : masteryItems;
+
+    const total = scopedList.length;
     let mastered = 0;
     let familiar = 0;
     let learning = 0;
     let weak = 0;
     let unknown = 0;
 
-    masteryItems.forEach(item => {
+    scopedList.forEach(item => {
       switch (item.level) {
         case 'mastered':
           mastered++;
@@ -131,15 +169,25 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
 
     const knownTotal = total - unknown;
     const avgScore = knownTotal > 0
-      ? Math.round(masteryItems.reduce((acc, it) => acc + it.score, 0) / knownTotal)
+      ? Math.round(scopedList.reduce((acc, it) => acc + it.score, 0) / knownTotal)
       : 0;
 
     return { total, mastered, familiar, learning, weak, unknown, avgScore };
-  }, [masteryItems]);
+  }, [masteryItems, onlySeenLessons, seenLessonIds]);
+
+  // Count of weak items strictly in seen lessons
+  const weakInSeenCount = useMemo(() => {
+    return masteryItems.filter(it => seenLessonIds.has(getItemLesson(it)) && it.level === 'weak').length;
+  }, [masteryItems, seenLessonIds]);
 
   // Filtered and Sorted list
   const filteredItems = useMemo(() => {
     let list = masteryItems;
+
+    // Filter by Roadmap seen lessons
+    if (onlySeenLessons) {
+      list = list.filter(item => seenLessonIds.has(getItemLesson(item)));
+    }
 
     // Filter by category
     if (selectedCategory !== 'all') {
@@ -172,34 +220,38 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
     // Sort
     return [...list].sort((a, b) => {
       if (sortBy === 'weakest') {
-        // Show practiced weak items first, then learning, then unknown, then strongest
         if (a.score !== b.score) return a.score - b.score;
         return (b.timesReviewed || 0) - (a.timesReviewed || 0);
       }
       if (sortBy === 'strongest') {
         return b.score - a.score;
       }
-      // By lesson
-      return (a.genkiLesson || 0) - (b.genkiLesson || 0);
+      return (getItemLesson(a)) - (getItemLesson(b));
     });
-  }, [masteryItems, selectedCategory, selectedStatus, searchQuery, sortBy]);
+  }, [masteryItems, onlySeenLessons, seenLessonIds, selectedCategory, selectedStatus, searchQuery, sortBy]);
 
-  // Start Quick Weak Items Review
-  const handleStartWeakReview = () => {
+  // Start Quick Weak Items Review (can be scoped to Roadmap lessons or all)
+  const handleStartWeakReview = (scope: 'roadmap' | 'all' = onlySeenLessons ? 'roadmap' : 'all') => {
     sound.playTap();
-    // Prioritize weak items (<40%), then learning items (<70%), then random
-    let targets = masteryItems.filter(it => it.level === 'weak');
-    if (targets.length === 0) {
-      targets = masteryItems.filter(it => it.level === 'learning');
-    }
-    if (targets.length === 0) {
-      targets = masteryItems.filter(it => it.level === 'unknown');
+    let candidates = masteryItems;
+    if (scope === 'roadmap') {
+      candidates = candidates.filter(it => seenLessonIds.has(getItemLesson(it)));
     }
 
-    // Take up to 10 random weak items
+    // Prioritize weak items (<40%), then learning items (<70%), then unknown (0%)
+    let targets = candidates.filter(it => it.level === 'weak');
+    if (targets.length === 0) {
+      targets = candidates.filter(it => it.level === 'learning');
+    }
+    if (targets.length === 0) {
+      targets = candidates.filter(it => it.level === 'unknown');
+    }
+
+    // Take up to 10 random targets from the chosen pool
     const shuffled = [...targets].sort(() => 0.5 - Math.random()).slice(0, 10);
     if (shuffled.length === 0) return;
 
+    setReviewScope(scope);
     setReviewItems(shuffled);
     setReviewIndex(0);
     setIsAnswerRevealed(false);
@@ -239,13 +291,13 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
         {/* Header Hero */}
         <div className="bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600 rounded-3xl p-5 sm:p-6 text-white shadow-lg relative overflow-hidden">
           <div className="relative z-10">
-            <div className="flex items-center gap-2 mb-2">
+            <div className="flex flex-wrap items-center gap-2 mb-2">
               <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-black uppercase tracking-wider flex items-center gap-1.5">
                 <Target className="w-3.5 h-3.5" />
                 Banco de Dominio y SRS
               </span>
               <span className="px-2.5 py-1 rounded-full bg-yellow-400 text-yellow-950 text-xs font-black">
-                {stats.total} elementos
+                {stats.total} elementos {onlySeenLessons ? `(L0 - L${maxSeenLesson})` : ''}
               </span>
             </div>
 
@@ -334,21 +386,31 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
               </button>
             </div>
 
-            {/* Smart Weak Practice Action Button */}
-            <div className="mt-5 flex flex-wrap items-center gap-3">
+            {/* Smart Practice Action Buttons */}
+            <div className="mt-5 flex flex-wrap items-center gap-2.5">
+              {/* Practice Weak from Roadmap */}
               <button
-                onClick={handleStartWeakReview}
+                onClick={() => handleStartWeakReview('roadmap')}
                 className="px-4 py-2.5 rounded-2xl bg-amber-400 hover:bg-amber-300 text-amber-950 font-black text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-amber-950/20 active:scale-95 transition-all cursor-pointer"
               >
                 <Flame className="w-4 h-4 fill-amber-950" />
                 <span>
-                  {stats.weak > 0
-                    ? `🔥 Reforzar ${stats.weak} palabras débiles`
-                    : stats.learning > 0
-                    ? `⚡ Repasar ${stats.learning} en aprendizaje`
-                    : '✨ Iniciar Sesión de Práctica'}
+                  {weakInSeenCount > 0
+                    ? `🔥 Reforzar ${weakInSeenCount} débiles del Roadmap`
+                    : `⚡ Practicar lecciones vistas (0 - ${maxSeenLesson})`}
                 </span>
               </button>
+
+              {/* Practice All Weak */}
+              {stats.weak > weakInSeenCount && (
+                <button
+                  onClick={() => handleStartWeakReview('all')}
+                  className="px-3.5 py-2.5 rounded-2xl bg-white/15 hover:bg-white/25 border border-white/20 text-white font-black text-xs sm:text-sm flex items-center gap-1.5 transition-all cursor-pointer"
+                >
+                  <Sparkles className="w-3.5 h-3.5" />
+                  <span>Todas las débiles ({stats.weak})</span>
+                </button>
+              )}
 
               {onNavigateTab && (
                 <button
@@ -356,14 +418,55 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
                     sound.playTap();
                     onNavigateTab('flashcards');
                   }}
-                  className="px-4 py-2.5 rounded-2xl bg-white/15 hover:bg-white/25 border border-white/20 text-white font-black text-xs sm:text-sm flex items-center gap-2 transition-all cursor-pointer"
+                  className="px-3.5 py-2.5 rounded-2xl bg-white/15 hover:bg-white/25 border border-white/20 text-white font-black text-xs sm:text-sm flex items-center gap-1.5 transition-all cursor-pointer"
                 >
-                  <Layers className="w-4 h-4" />
-                  <span>Modo Flashcards SRS</span>
+                  <Layers className="w-3.5 h-3.5" />
+                  <span>Flashcards SRS</span>
                 </button>
               )}
             </div>
           </div>
+        </div>
+
+        {/* Roadmap Lessons Scope Filter Toggle Banner */}
+        <div className="bg-white dark:bg-[#18272e] border-2 border-indigo-200 dark:border-indigo-900/60 rounded-2xl p-3.5 shadow-xs flex flex-wrap items-center justify-between gap-3">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-xl bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-black flex-shrink-0">
+              <Map className="w-4 h-4" />
+            </div>
+            <div>
+              <p className="text-xs font-black text-gray-800 dark:text-white">
+                Mostrar solo lecciones vistas en el Roadmap
+              </p>
+              <p className="text-[11px] text-gray-500 dark:text-gray-400 font-medium">
+                {onlySeenLessons
+                  ? `Mostrando solo Kanas y Lecciones 1 a ${maxSeenLesson}. Oculta contenido futuro.`
+                  : 'Mostrando todo el catálogo completo de Genki I y II (Lecciones 0 a 23).'}
+              </p>
+            </div>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => {
+              sound.playTap();
+              setOnlySeenLessons(prev => !prev);
+            }}
+            className={`px-3 py-1.5 rounded-xl font-black text-xs transition-all flex items-center gap-1.5 cursor-pointer border-2 ${
+              onlySeenLessons
+                ? 'bg-indigo-600 text-white border-indigo-600 shadow-xs'
+                : 'bg-gray-100 dark:bg-[#131f24] text-gray-600 dark:text-gray-300 border-gray-300 dark:border-[#283842] hover:border-indigo-400'
+            }`}
+          >
+            {onlySeenLessons ? (
+              <>
+                <Check className="w-3.5 h-3.5" />
+                <span>Activado (L0 - L{maxSeenLesson})</span>
+              </>
+            ) : (
+              <span>Ver Todo el Catálogo</span>
+            )}
+          </button>
         </div>
 
         {/* Filters and Search Bar */}
@@ -399,10 +502,10 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
             })}
           </div>
 
-          {/* Search + Status and Sort Controls */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5">
+          {/* Search + 2 Dropdown Filters (Responsive Grid, Never Overflows) */}
+          <div className="flex flex-col gap-2.5">
             {/* Search Input */}
-            <div className="relative flex-1">
+            <div className="relative w-full">
               <Search className="w-4 h-4 text-gray-400 absolute left-3 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
@@ -421,37 +524,46 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
               )}
             </div>
 
-            {/* Status Filter Dropdown */}
-            <div className="flex items-center gap-2">
-              <select
-                value={selectedStatus}
-                onChange={e => {
-                  sound.playTap();
-                  setSelectedStatus(e.target.value as MasteryFilterStatus);
-                }}
-                className="py-2 px-3 rounded-xl bg-gray-50 dark:bg-[#131f24] border-2 border-gray-200 dark:border-[#283842] text-xs font-black text-gray-700 dark:text-gray-200 cursor-pointer focus:outline-none focus:border-purple-500"
-              >
-                <option value="all">Cualquier Estado ({stats.total})</option>
-                <option value="weak">🔴 Débiles (&lt; 40%) [{stats.weak}]</option>
-                <option value="learning">🟡 En Aprendizaje [{stats.learning}]</option>
-                <option value="familiar">🟢 Familiar [{stats.familiar}]</option>
-                <option value="mastered">💎 Dominadas [{stats.mastered}]</option>
-                <option value="unknown">⚪ Desconocidas (0%) [{stats.unknown}]</option>
-              </select>
+            {/* Dropdown Filters Grid: Full width, perfectly contained without overflow */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 w-full">
+              <div className="w-full min-w-0">
+                <label className="text-[10px] font-black uppercase tracking-wider text-gray-400 block mb-1">
+                  Filtrar por Nivel de Dominio
+                </label>
+                <select
+                  value={selectedStatus}
+                  onChange={e => {
+                    sound.playTap();
+                    setSelectedStatus(e.target.value as MasteryFilterStatus);
+                  }}
+                  className="w-full min-w-0 max-w-full truncate py-2 px-3 rounded-xl bg-gray-50 dark:bg-[#131f24] border-2 border-gray-200 dark:border-[#283842] text-xs font-black text-gray-700 dark:text-gray-200 cursor-pointer focus:outline-none focus:border-purple-500"
+                >
+                  <option value="all">Cualquier Estado ({stats.total})</option>
+                  <option value="weak">🔴 Débiles (&lt; 40%) [{stats.weak}]</option>
+                  <option value="learning">🟡 En Aprendizaje [{stats.learning}]</option>
+                  <option value="familiar">🟢 Familiar [{stats.familiar}]</option>
+                  <option value="mastered">💎 Dominadas [{stats.mastered}]</option>
+                  <option value="unknown">⚪ Desconocidas (0%) [{stats.unknown}]</option>
+                </select>
+              </div>
 
-              {/* Sort Dropdown */}
-              <select
-                value={sortBy}
-                onChange={e => {
-                  sound.playTap();
-                  setSortBy(e.target.value as 'weakest' | 'strongest' | 'lesson');
-                }}
-                className="py-2 px-3 rounded-xl bg-gray-50 dark:bg-[#131f24] border-2 border-gray-200 dark:border-[#283842] text-xs font-black text-gray-700 dark:text-gray-200 cursor-pointer focus:outline-none focus:border-purple-500"
-              >
-                <option value="weakest">Más débiles primero</option>
-                <option value="strongest">Mayor dominio primero</option>
-                <option value="lesson">Por lección Genki</option>
-              </select>
+              <div className="w-full min-w-0">
+                <label className="text-[10px] font-black uppercase tracking-wider text-gray-400 block mb-1">
+                  Ordenar Elementos
+                </label>
+                <select
+                  value={sortBy}
+                  onChange={e => {
+                    sound.playTap();
+                    setSortBy(e.target.value as 'weakest' | 'strongest' | 'lesson');
+                  }}
+                  className="w-full min-w-0 max-w-full truncate py-2 px-3 rounded-xl bg-gray-50 dark:bg-[#131f24] border-2 border-gray-200 dark:border-[#283842] text-xs font-black text-gray-700 dark:text-gray-200 cursor-pointer focus:outline-none focus:border-purple-500"
+                >
+                  <option value="weakest">Más débiles primero</option>
+                  <option value="strongest">Mayor dominio primero</option>
+                  <option value="lesson">Por lección Genki</option>
+                </select>
+              </div>
             </div>
           </div>
         </div>
@@ -461,15 +573,17 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
           <p className="text-xs font-black text-gray-500 dark:text-gray-400">
             Mostrando <span className="text-purple-600 dark:text-purple-400">{filteredItems.length}</span> elementos
             {selectedStatus !== 'all' && ` • Estado: ${selectedStatus.toUpperCase()}`}
+            {onlySeenLessons && ` • Roadmap: L0-L${maxSeenLesson}`}
           </p>
 
-          {(selectedStatus !== 'all' || selectedCategory !== 'all' || searchQuery) && (
+          {(selectedStatus !== 'all' || selectedCategory !== 'all' || searchQuery || !onlySeenLessons) && (
             <button
               onClick={() => {
                 sound.playTap();
                 setSelectedCategory('all');
                 setSelectedStatus('all');
                 setSearchQuery('');
+                setOnlySeenLessons(true);
               }}
               className="text-xs font-black text-purple-600 dark:text-purple-400 hover:underline cursor-pointer"
             >
@@ -486,18 +600,18 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
               No se encontraron elementos con los filtros actuales
             </p>
             <p className="text-xs text-gray-400">
-              Prueba cambiando la categoría o restableciendo los filtros.
+              Prueba cambiando la categoría o desactivando el filtro de lecciones vistas en el Roadmap.
             </p>
           </div>
         ) : (
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {filteredItems.map(item => {
-              // Badge colors based on mastery score
               const isUnknown = item.level === 'unknown';
               const isWeak = item.level === 'weak';
               const isLearning = item.level === 'learning';
               const isFamiliar = item.level === 'familiar';
               const isMastered = item.level === 'mastered';
+              const lessonNum = getItemLesson(item);
 
               return (
                 <div
@@ -517,11 +631,18 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
                   <div>
                     {/* Top line: Tag & Mastery Badge */}
                     <div className="flex items-center justify-between gap-2 mb-2">
-                      <span className="text-[10px] font-black px-2 py-0.5 rounded-md bg-gray-100 dark:bg-[#131f24] text-gray-600 dark:text-gray-300 uppercase tracking-wider">
-                        {item.category === 'vocabulary'
-                          ? `Vocabulario ${item.genkiLesson ? `L${item.genkiLesson}` : ''}`
-                          : item.category}
-                      </span>
+                      <div className="flex items-center gap-1.5 flex-wrap">
+                        <span className="text-[10px] font-black px-2 py-0.5 rounded-md bg-gray-100 dark:bg-[#131f24] text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                          {item.category === 'vocabulary'
+                            ? `Vocabulario ${lessonNum ? `L${lessonNum}` : ''}`
+                            : item.category}
+                        </span>
+                        {lessonNum > 0 && item.category !== 'vocabulary' && (
+                          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-300">
+                            L{lessonNum}
+                          </span>
+                        )}
+                      </div>
 
                       {/* Mastery Pill */}
                       <span
@@ -627,17 +748,21 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
           <div className="bg-white dark:bg-[#18272e] border-2 border-duo-gray-200 dark:border-[#283842] rounded-3xl max-w-md w-full p-5 shadow-2xl flex flex-col gap-4">
             {/* Modal Header */}
             <div className="flex items-center justify-between border-b border-gray-100 dark:border-[#283842] pb-3">
-              <div className="flex items-center gap-2">
-                <span className="w-7 h-7 rounded-xl bg-amber-500/15 text-amber-600 flex items-center justify-center font-black text-sm">
+              <div className="flex items-center gap-2.5">
+                <span className="w-8 h-8 rounded-xl bg-amber-500/15 text-amber-600 flex items-center justify-center font-black text-sm">
                   🔥
                 </span>
                 <div>
                   <h3 className="text-sm font-black text-gray-800 dark:text-white">
                     Reforzando Puntos Débiles
                   </h3>
-                  <p className="text-[10px] text-gray-400 font-bold">
-                    Tarjeta {reviewIndex + 1} de {reviewItems.length}
-                  </p>
+                  <div className="flex items-center gap-1.5 text-[10px] font-bold text-gray-400">
+                    <span>Tarjeta {reviewIndex + 1} de {reviewItems.length}</span>
+                    <span>•</span>
+                    <span className="text-indigo-600 dark:text-indigo-400 font-black">
+                      {reviewScope === 'roadmap' ? `Roadmap (L0 - L${maxSeenLesson})` : 'Todo el Catálogo'}
+                    </span>
+                  </div>
                 </div>
               </div>
 
@@ -652,9 +777,16 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
             {/* Flashcard Item Box */}
             {reviewItems[reviewIndex] && (
               <div className="bg-gray-50 dark:bg-[#131f24] border-2 border-purple-200 dark:border-purple-900/50 rounded-2xl p-6 flex flex-col items-center text-center gap-2 relative">
-                <span className="text-[10px] font-black px-2 py-0.5 rounded-md bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300">
-                  {reviewItems[reviewIndex].category.toUpperCase()}
-                </span>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-[10px] font-black px-2 py-0.5 rounded-md bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300">
+                    {reviewItems[reviewIndex].category.toUpperCase()}
+                  </span>
+                  {typeof getItemLesson(reviewItems[reviewIndex]) === 'number' && (
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300">
+                      {getItemLesson(reviewItems[reviewIndex]) === 0 ? 'Kanas' : `Lección ${getItemLesson(reviewItems[reviewIndex])}`}
+                    </span>
+                  )}
+                </div>
 
                 <p className="text-3xl font-black text-gray-900 dark:text-white mt-1">
                   {reviewItems[reviewIndex].japanese}
