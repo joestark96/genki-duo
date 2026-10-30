@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Mic, MicOff, CheckCircle2, RefreshCw } from 'lucide-react';
 import { sound } from '../services/sound';
 import { speechService } from '../services/speechRecognitionService';
+import { computeJapaneseSpeechMatch } from '../utils/japaneseSpeechMatcher';
 
 interface SpeechPracticeButtonProps {
   targetJapanese: string;
@@ -9,35 +10,8 @@ interface SpeechPracticeButtonProps {
   compact?: boolean;
 }
 
-function normalizeJp(str: string): string {
-  return str
-    .replace(/[。、！？!?\s「」『』（）()・〜~ー-]/g, '')
-    .trim()
-    .toLowerCase();
-}
-
-function computeSimilarity(spoken: string, target1: string, target2?: string): number {
-  const s = normalizeJp(spoken);
-  const t1 = normalizeJp(target1);
-  const t2 = target2 ? normalizeJp(target2) : '';
-
-  if (!s) return 0;
-  if (s === t1 || (t2 && s === t2)) return 100;
-  if (t1.includes(s) || s.includes(t1) || (t2 && (t2.includes(s) || s.includes(t2)))) {
-    return 88;
-  }
-
-  const scoreAgainst = (target: string) => {
-    if (!target) return 0;
-    const chars = Array.from(target);
-    let matched = 0;
-    chars.forEach(ch => {
-      if (s.includes(ch)) matched++;
-    });
-    return Math.round((matched / chars.length) * 100);
-  };
-
-  return Math.max(scoreAgainst(t1), scoreAgainst(t2));
+function computeSimilarity(spoken: string, ...targets: (string | undefined)[]): number {
+  return computeJapaneseSpeechMatch(spoken, targets);
 }
 
 export const SpeechPracticeButton: React.FC<SpeechPracticeButtonProps> = ({

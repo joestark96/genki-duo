@@ -14,11 +14,12 @@ import {
   Play,
   SkipForward
 } from 'lucide-react';
-import { Unit } from '../types';
+import { Unit, DialogueLine } from '../types';
 import { genkiVocabulary } from '../data/vocabularyData';
 import { SpeechPracticeButton } from '../components/SpeechPracticeButton';
 import { sound } from '../services/sound';
 import { speechService } from '../services/speechRecognitionService';
+import { computeJapaneseSpeechMatch } from '../utils/japaneseSpeechMatcher';
 
 interface SpeakingPageProps {
   units: Unit[];
@@ -180,35 +181,8 @@ const SURVIVAL_PHRASES: ConversationalPhrase[] = [
   }
 ];
 
-function normalizeJp(str: string): string {
-  return str
-    .replace(/[。、！？!?\s「」『』（）()・〜~ー-]/g, '')
-    .trim()
-    .toLowerCase();
-}
-
-function computeSimilarity(spoken: string, target1: string, target2?: string): number {
-  const s = normalizeJp(spoken);
-  const t1 = normalizeJp(target1);
-  const t2 = target2 ? normalizeJp(target2) : '';
-
-  if (!s) return 0;
-  if (s === t1 || (t2 && s === t2)) return 100;
-  if (t1.includes(s) || s.includes(t1) || (t2 && (t2.includes(s) || s.includes(t2)))) {
-    return 88;
-  }
-
-  const scoreAgainst = (target: string) => {
-    if (!target) return 0;
-    const chars = Array.from(target);
-    let matched = 0;
-    chars.forEach(ch => {
-      if (s.includes(ch)) matched++;
-    });
-    return Math.round((matched / chars.length) * 100);
-  };
-
-  return Math.max(scoreAgainst(t1), scoreAgainst(t2));
+function computeSimilarity(spoken: string, ...targets: (string | undefined)[]): number {
+  return computeJapaneseSpeechMatch(spoken, targets);
 }
 
 export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = true }) => {
@@ -218,6 +192,7 @@ export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = 
   // Roleplay state
   const dialogueUnits = useMemo(() => units.filter(u => u.id >= 1), [units]);
   const [roleplayUnitId, setRoleplayUnitId] = useState<number>(dialogueUnits[0]?.id || 1);
+  const [selectedDialogueIndex, setSelectedDialogueIndex] = useState<number>(0);
   const [selectedRoleSpeaker, setSelectedRoleSpeaker] = useState<string>('');
   const [roleplayStep, setRoleplayStep] = useState<number>(0);
 
@@ -256,19 +231,28 @@ export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = 
     return allPhrases.filter(p => p.category === selectedCategory);
   }, [allPhrases, selectedCategory]);
 
-  // Extract current unit's first dialogue for Roleplay
-  const currentDialogueLines = useMemo(() => {
+  // Extract ALL dialogues available in the selected unit
+  const unitDialogues = useMemo(() => {
     const unit = dialogueUnits.find(u => u.id === roleplayUnitId) || dialogueUnits[0];
     if (!unit) return [];
-    for (const node of unit.nodes) {
-      for (const ex of node.exercises) {
+    const list: { id: string; title: string; context?: string; lines: DialogueLine[] }[] = [];
+    unit.nodes.forEach(node => {
+      node.exercises.forEach((ex, exIdx) => {
         if (ex.dialogueLines && ex.dialogueLines.length > 0) {
-          return ex.dialogueLines;
+          list.push({
+            id: ex.id || `dlg-${unit.id}-${exIdx}`,
+            title: ex.dialogueTitle || node.title || `Diálogo ${list.length + 1}`,
+            context: ex.dialogueContext,
+            lines: ex.dialogueLines
+          });
         }
-      }
-    }
-    return [];
+      });
+    });
+    return list;
   }, [dialogueUnits, roleplayUnitId]);
+
+  const activeDialogue = unitDialogues[selectedDialogueIndex] || unitDialogues[0];
+  const currentDialogueLines = activeDialogue?.lines || [];
 
   const dialogueSpeakers = useMemo(() => {
     const list: string[] = [];
@@ -312,13 +296,13 @@ export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = 
     };
   }, []);
 
-  // Reset auto roleplay on unit or speaker change
+  // Reset auto roleplay on unit, dialogue or speaker change
   useEffect(() => {
     stopAutoRoleplay();
-  }, [roleplayUnitId, selectedRoleSpeaker, stopAutoRoleplay]);
+  }, [roleplayUnitId, selectedDialogueIndex, selectedRoleSpeaker, stopAutoRoleplay]);
 
   // Handle user speech in auto mode
-  const runUserSpeechStep = useCallback(async (line: { japanese: string; audioText?: string }) => {
+  const runUserSpeechStep = useCallback(async (line: { japanese: string; audioText?: string; romaji?: string; furigana?: string }) => {
     setAutoStatus('listening');
     setAutoFeedback(null);
 
@@ -328,7 +312,7 @@ export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = 
         let bestScore = 0;
 
         res.matches.forEach(m => {
-          const sc = computeSimilarity(m, line.japanese, line.audioText);
+          const sc = computeSimilarity(m, line.japanese, line.audioText, line.romaji, line.furigana);
           if (sc >= bestScore) {
             bestScore = sc;
             bestTranscript = m;
@@ -435,7 +419,8 @@ export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = 
           const sc = computeSimilarity(
             m,
             currentChallengePhrase.japanese,
-            currentChallengePhrase.furigana
+            currentChallengePhrase.furigana,
+            currentChallengePhrase.romaji
           );
           if (sc >= bestScore) {
             bestScore = sc;
@@ -641,7 +626,9 @@ export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = 
                 value={roleplayUnitId}
                 onChange={e => {
                   sound.playTap();
+                  stopAutoRoleplay();
                   setRoleplayUnitId(Number(e.target.value));
+                  setSelectedDialogueIndex(0);
                   setSelectedRoleSpeaker('');
                   setRoleplayStep(0);
                 }}
@@ -655,10 +642,59 @@ export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = 
               </select>
             </div>
 
+            {/* 2. Selector de Diálogo / Escena */}
+            {unitDialogues.length > 1 && (
+              <div>
+                <label className="text-[10px] font-black uppercase tracking-wider text-gray-400 block mb-1.5">
+                  2. Elige el Diálogo / Escena ({unitDialogues.length} disponibles)
+                </label>
+                <div className="flex flex-col gap-1.5">
+                  {unitDialogues.map((dlg, dIdx) => {
+                    const isSelected = selectedDialogueIndex === dIdx || (!unitDialogues[selectedDialogueIndex] && dIdx === 0);
+                    return (
+                      <button
+                        key={dlg.id}
+                        type="button"
+                        onClick={() => {
+                          sound.playTap();
+                          stopAutoRoleplay();
+                          setSelectedDialogueIndex(dIdx);
+                          setSelectedRoleSpeaker('');
+                          setRoleplayStep(0);
+                        }}
+                        className={`p-2.5 rounded-xl text-left border-2 transition-all cursor-pointer flex items-center justify-between gap-2 ${
+                          isSelected
+                            ? 'bg-purple-50 dark:bg-purple-950/40 border-purple-500 text-purple-900 dark:text-purple-200 font-black ring-1 ring-purple-300'
+                            : 'bg-gray-50 dark:bg-[#131f24] border-gray-200 dark:border-[#283842] text-gray-700 dark:text-gray-300 font-bold hover:border-purple-300'
+                        }`}
+                      >
+                        <div className="flex items-center gap-2 truncate">
+                          <span className={`w-6 h-6 rounded-lg flex items-center justify-center text-xs font-black flex-shrink-0 ${
+                            isSelected ? 'bg-purple-600 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
+                          }`}>
+                            {dIdx + 1}
+                          </span>
+                          <div className="truncate">
+                            <p className="text-xs truncate">{dlg.title}</p>
+                            {dlg.context && (
+                              <p className="text-[10px] text-gray-400 dark:text-gray-500 truncate font-normal">{dlg.context}</p>
+                            )}
+                          </div>
+                        </div>
+                        <span className="text-[10px] px-2 py-0.5 rounded-md bg-gray-200/60 dark:bg-gray-700/60 flex-shrink-0 font-black">
+                          {dlg.lines.length} líneas
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
             {dialogueSpeakers.length > 0 && (
               <div>
                 <label className="text-[10px] font-black uppercase tracking-wider text-gray-400 block mb-1.5">
-                  2. ¿Qué personaje quieres interpretar tú?
+                  {unitDialogues.length > 1 ? '3.' : '2.'} ¿Qué personaje quieres interpretar tú?
                 </label>
                 <div className="flex flex-wrap gap-2">
                   {dialogueSpeakers.map(sp => {
@@ -668,6 +704,7 @@ export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = 
                         key={sp}
                         onClick={() => {
                           sound.playTap();
+                          stopAutoRoleplay();
                           setSelectedRoleSpeaker(sp);
                           setRoleplayStep(0);
                         }}
