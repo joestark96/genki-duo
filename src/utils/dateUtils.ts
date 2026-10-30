@@ -53,3 +53,4 @@ export function recordDailyLessonActivity(earnedXp: number, currentHearts: numbe
   }
   return updated;
 }
+
