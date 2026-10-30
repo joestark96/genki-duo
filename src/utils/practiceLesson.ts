@@ -91,3 +91,59 @@ export function createPracticeLesson(units: Unit[]): LessonNode | null {
   };
 }
 
+/**
+ * Creates a randomized review lesson specifically for a single completed/studied unit.
+ */
+export function createUnitReviewLesson(unit: Unit): LessonNode | null {
+  let pool: Exercise[] = [];
+  unit.nodes.forEach(node => {
+    node.exercises.forEach(ex => pool.push(ex));
+  });
+
+  if (pool.length === 0) {
+    return null;
+  }
+
+  // Pick between 8 and 15 exercises for unit review
+  const targetCount = Math.min(pool.length, Math.floor(Math.random() * 8) + 8);
+
+  let selected: Exercise[] = [];
+  if (pool.length >= targetCount) {
+    selected = shuffle(pool).slice(0, targetCount);
+  } else {
+    selected = shuffle(pool);
+  }
+
+  const randomizedExercises: Exercise[] = selected.map((ex, idx) => {
+    const clone = {
+      ...ex,
+      id: `review-${unit.id}-${idx}-${ex.id}-${Math.random().toString(36).substring(2, 6)}`
+    };
+    if (
+      (clone.type === 'multiple-choice' || clone.type === 'listening') &&
+      clone.options &&
+      clone.options.length > 1
+    ) {
+      clone.options = shuffle(clone.options);
+    }
+    return clone;
+  });
+
+  return {
+    id: `unit-review-${unit.id}-${Date.now()}`,
+    unitId: unit.id,
+    lessonNumber: 0,
+    title: `Repaso: ${unit.title}`,
+    japaneseTitle: `${unit.subtitle} (復習)`,
+    description: `Repaso completo de los ejercicios de la ${unit.title}.`,
+    icon: 'Sparkles',
+    color: 'orange',
+    totalSteps: randomizedExercises.length,
+    unlocked: true,
+    completedSteps: 0,
+    stars: 3,
+    exercises: randomizedExercises
+  };
+}
+
+

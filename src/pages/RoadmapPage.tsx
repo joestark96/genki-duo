@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Unit, LessonNode, UserProfile } from '../types';
 import { RoadmapNode } from '../components/Roadmap/RoadmapNode';
 import { QuizModal } from '../components/Quiz/QuizModal';
-import { BookOpen, Sparkles, CheckCircle2, FastForward, ShieldAlert, Award, Dumbbell, Compass, X, Star, Play } from 'lucide-react';
+import { BookOpen, Sparkles, CheckCircle2, FastForward, ShieldAlert, Award, Dumbbell, Compass, X, Star, Play, RotateCcw } from 'lucide-react';
 import { sound } from '../services/sound';
 import { createJumpAheadLesson } from '../utils/jumpAhead';
-import { createPracticeLesson } from '../utils/practiceLesson';
+import { createPracticeLesson, createUnitReviewLesson } from '../utils/practiceLesson';
 
 interface RoadmapPageProps {
   units: Unit[];
@@ -134,6 +134,17 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
     }
   };
 
+  // Start a review session specifically for a completed unit
+  const handleStartUnitReview = (unit: Unit) => {
+    sound.playTap();
+    const reviewLesson = createUnitReviewLesson(unit);
+    if (reviewLesson) {
+      setIsJumpAheadActive(false);
+      setIsPracticeActive(true);
+      setActiveQuizLesson(reviewLesson);
+    }
+  };
+
   return (
     <div className="max-w-md mx-auto w-full px-4 pt-4 pb-28 flex flex-col items-center relative">
       {/* Floating Action Buttons */}
@@ -251,13 +262,19 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
               </div>
             )}
 
-            {/* Completed Badge */}
+            {/* Botón de Repaso de la Unidad (reemplaza 'Unidad Dominada') */}
             {isUnitCompleted && (
-              <div className="w-full flex justify-center mt-6 mb-2">
-                <div className="flex items-center gap-1.5 px-3 py-1.5 bg-duo-green-light dark:bg-duo-green/20 border-2 border-duo-green text-duo-green-dark dark:text-duo-green rounded-xl text-xs font-black shadow-sm">
-                  <CheckCircle2 className="w-4 h-4 text-duo-green" />
-                  <span>¡Unidad Dominada!</span>
-                </div>
+              <div className="w-full mt-5 mb-2 px-1">
+                <button
+                  onClick={() => handleStartUnitReview(unit)}
+                  className="w-full py-3.5 px-4 bg-duo-yellow hover:bg-duo-yellow-dark text-white font-black text-xs rounded-2xl shadow-[0_4px_0_0_#e5b400] active:translate-y-1 active:shadow-none transition-all uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer group"
+                >
+                  <RotateCcw className="w-4 h-4 stroke-[2.5px] group-hover:-rotate-45 transition-transform" />
+                  <span>Repasar {unit.title}</span>
+                  <span className="px-2 py-0.5 rounded-lg bg-black/15 text-[10px] lowercase font-black tracking-normal">
+                    +20 XP
+                  </span>
+                </button>
               </div>
             )}
           </div>
