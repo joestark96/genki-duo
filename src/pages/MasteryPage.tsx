@@ -94,6 +94,7 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
 
   // Quick Review Modal State
   const [isReviewModalOpen, setIsReviewModalOpen] = useState(false);
+  const [reviewMode, setReviewMode] = useState<'mastery' | 'weak'>('mastery');
   const [reviewScope, setReviewScope] = useState<'roadmap' | 'all'>('roadmap');
   const [reviewItems, setReviewItems] = useState<MasteryItem[]>([]);
   const [reviewIndex, setReviewIndex] = useState(0);
@@ -230,27 +231,40 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
     });
   }, [masteryItems, onlySeenLessons, seenLessonIds, selectedCategory, selectedStatus, searchQuery, sortBy]);
 
-  // Start Quick Weak Items Review (can be scoped to Roadmap lessons or all)
-  const handleStartWeakReview = (scope: 'roadmap' | 'all' = onlySeenLessons ? 'roadmap' : 'all') => {
+  // Start Practice / Review Session
+  const handleStartPracticeSession = (
+    mode: 'mastery' | 'weak',
+    scope: 'roadmap' | 'all' = onlySeenLessons ? 'roadmap' : 'all'
+  ) => {
     sound.playTap();
     let candidates = masteryItems;
     if (scope === 'roadmap') {
       candidates = candidates.filter(it => seenLessonIds.has(getItemLesson(it)));
     }
 
-    // Prioritize weak items (<40%), then learning items (<70%), then unknown (0%)
-    let targets = candidates.filter(it => it.level === 'weak');
-    if (targets.length === 0) {
-      targets = candidates.filter(it => it.level === 'learning');
-    }
-    if (targets.length === 0) {
-      targets = candidates.filter(it => it.level === 'unknown');
+    let targets: MasteryItem[] = [];
+
+    if (mode === 'weak') {
+      // Prioritize weak items (<40%), then learning (<70%), then unknown (0%)
+      targets = candidates.filter(it => it.level === 'weak');
+      if (targets.length === 0) targets = candidates.filter(it => it.level === 'learning');
+      if (targets.length === 0) targets = candidates.filter(it => it.level === 'unknown');
+    } else {
+      // General Mastery Session: focus on learning & unknown to advance them to mastered!
+      const notMastered = candidates.filter(it => it.level !== 'mastered');
+      targets = notMastered.length > 0 ? notMastered : candidates;
+      // Shuffle prioritizing weaker & learning items
+      targets.sort((a, b) => {
+        const order: Record<MasteryLevel, number> = { weak: 1, learning: 2, unknown: 3, familiar: 4, mastered: 5 };
+        return order[a.level] - order[b.level];
+      });
     }
 
     // Take up to 10 random targets from the chosen pool
     const shuffled = [...targets].sort(() => 0.5 - Math.random()).slice(0, 10);
     if (shuffled.length === 0) return;
 
+    setReviewMode(mode);
     setReviewScope(scope);
     setReviewItems(shuffled);
     setReviewIndex(0);
@@ -388,29 +402,31 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
 
             {/* Smart Practice Action Buttons */}
             <div className="mt-5 flex flex-wrap items-center gap-2.5">
-              {/* Practice Weak from Roadmap */}
+              {/* 1. Botón Principal: Iniciar Sesión de Dominio */}
               <button
-                onClick={() => handleStartWeakReview('roadmap')}
+                onClick={() => handleStartPracticeSession('mastery')}
                 className="px-4 py-2.5 rounded-2xl bg-amber-400 hover:bg-amber-300 text-amber-950 font-black text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-amber-950/20 active:scale-95 transition-all cursor-pointer"
               >
-                <Flame className="w-4 h-4 fill-amber-950" />
-                <span>
-                  {weakInSeenCount > 0
-                    ? `🔥 Reforzar ${weakInSeenCount} débiles del Roadmap`
-                    : `⚡ Practicar lecciones vistas (0 - ${maxSeenLesson})`}
-                </span>
+                <Sparkles className="w-4 h-4 fill-amber-950" />
+                <span>✨ Iniciar Sesión de Dominio</span>
               </button>
 
-              {/* Practice All Weak */}
-              {stats.weak > weakInSeenCount && (
-                <button
-                  onClick={() => handleStartWeakReview('all')}
-                  className="px-3.5 py-2.5 rounded-2xl bg-white/15 hover:bg-white/25 border border-white/20 text-white font-black text-xs sm:text-sm flex items-center gap-1.5 transition-all cursor-pointer"
-                >
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>Todas las débiles ({stats.weak})</span>
-                </button>
-              )}
+              {/* 2. Botón Reforzar Débiles */}
+              <button
+                onClick={() => handleStartPracticeSession('weak')}
+                className={`px-3.5 py-2.5 rounded-2xl font-black text-xs sm:text-sm flex items-center gap-1.5 transition-all cursor-pointer border ${
+                  weakInSeenCount > 0
+                    ? 'bg-red-500 hover:bg-red-600 text-white border-red-400 shadow-md shadow-red-950/20'
+                    : 'bg-white/15 hover:bg-white/25 border-white/20 text-white'
+                }`}
+              >
+                <Flame className={`w-4 h-4 ${weakInSeenCount > 0 ? 'fill-white' : ''}`} />
+                <span>
+                  {weakInSeenCount > 0
+                    ? `🔥 Reforzar Débiles (${weakInSeenCount})`
+                    : '🔥 Reforzar Débiles'}
+                </span>
+              </button>
 
               {onNavigateTab && (
                 <button
@@ -749,12 +765,14 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
             {/* Modal Header */}
             <div className="flex items-center justify-between border-b border-gray-100 dark:border-[#283842] pb-3">
               <div className="flex items-center gap-2.5">
-                <span className="w-8 h-8 rounded-xl bg-amber-500/15 text-amber-600 flex items-center justify-center font-black text-sm">
-                  🔥
+                <span className={`w-8 h-8 rounded-xl flex items-center justify-center font-black text-sm ${
+                  reviewMode === 'weak' ? 'bg-red-500/15 text-red-600' : 'bg-amber-500/15 text-amber-600'
+                }`}>
+                  {reviewMode === 'weak' ? '🔥' : '✨'}
                 </span>
                 <div>
                   <h3 className="text-sm font-black text-gray-800 dark:text-white">
-                    Reforzando Puntos Débiles
+                    {reviewMode === 'weak' ? 'Reforzando Puntos Débiles' : 'Sesión de Dominio de Palabras'}
                   </h3>
                   <div className="flex items-center gap-1.5 text-[10px] font-bold text-gray-400">
                     <span>Tarjeta {reviewIndex + 1} de {reviewItems.length}</span>
