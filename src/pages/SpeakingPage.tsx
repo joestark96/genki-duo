@@ -725,68 +725,115 @@ export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = 
           </div>
 
           {/* Interactive Dialogue Lines */}
-          <div className="bg-white dark:bg-[#18272e] border-2 border-duo-gray-200 dark:border-[#283842] rounded-3xl p-4 shadow-sm flex flex-col gap-3">
-            <div className="flex flex-wrap items-center justify-between gap-2 border-b border-gray-100 dark:border-[#283842] pb-3">
-              <div className="flex items-center gap-2">
-                <span className="text-xs font-black text-gray-700 dark:text-gray-200">
-                  Línea {roleplayStep + 1} de {currentDialogueLines.length}
-                </span>
+          {(() => {
+            const isRoleplayComplete = currentDialogueLines.length > 0 && roleplayStep >= currentDialogueLines.length;
 
-                <button
-                  onClick={() => {
-                    sound.playTap();
-                    if (isAutoRoleplay) {
-                      stopAutoRoleplay();
-                    } else {
-                      if (roleplayStep >= currentDialogueLines.length) {
+            return (
+              <div className="bg-white dark:bg-[#18272e] border-2 border-duo-gray-200 dark:border-[#283842] rounded-3xl p-4 shadow-sm flex flex-col gap-3">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-gray-100 dark:border-[#283842] pb-3">
+                  <div className="flex items-center gap-2">
+                    {isRoleplayComplete ? (
+                      <span className="text-xs font-black text-emerald-600 dark:text-emerald-400 flex items-center gap-1 bg-emerald-50 dark:bg-emerald-950/40 px-2.5 py-1 rounded-xl border border-emerald-300 dark:border-emerald-800">
+                        <CheckCircle2 className="w-3.5 h-3.5" />
+                        <span>¡Completado! ({currentDialogueLines.length} de {currentDialogueLines.length})</span>
+                      </span>
+                    ) : (
+                      <span className="text-xs font-black text-gray-700 dark:text-gray-200">
+                        Línea {Math.min(roleplayStep + 1, currentDialogueLines.length)} de {currentDialogueLines.length}
+                      </span>
+                    )}
+
+                    <button
+                      onClick={() => {
+                        sound.playTap();
+                        if (isAutoRoleplay) {
+                          stopAutoRoleplay();
+                        } else {
+                          if (roleplayStep >= currentDialogueLines.length) {
+                            setRoleplayStep(0);
+                          }
+                          setIsAutoRoleplay(true);
+                        }
+                      }}
+                      className={`px-3 py-1.5 rounded-xl text-xs font-black flex items-center gap-1.5 transition-all cursor-pointer ${
+                        isAutoRoleplay
+                          ? 'bg-purple-600 text-white shadow-[0_3px_0_0_#581c87] ring-2 ring-purple-400/40 animate-pulse'
+                          : 'bg-purple-50 dark:bg-purple-950/40 border-2 border-purple-300 dark:border-purple-800 text-purple-700 dark:text-purple-300 hover:bg-purple-600 hover:text-white'
+                      }`}
+                      title="Modo Automático: La IA habla y espera que digas tu diálogo para avanzar fluidamente"
+                    >
+                      <Sparkles className="w-3.5 h-3.5" />
+                      <span>{isAutoRoleplay ? 'Pausar Modo Auto' : 'Modo Automático'}</span>
+                    </button>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => {
+                        sound.playTap();
+                        if (isAutoRoleplay) stopAutoRoleplay();
                         setRoleplayStep(0);
-                      }
-                      setIsAutoRoleplay(true);
-                    }
-                  }}
-                  className={`px-3 py-1.5 rounded-xl text-xs font-black flex items-center gap-1.5 transition-all cursor-pointer ${
-                    isAutoRoleplay
-                      ? 'bg-purple-600 text-white shadow-[0_3px_0_0_#581c87] ring-2 ring-purple-400/40 animate-pulse'
-                      : 'bg-purple-50 dark:bg-purple-950/40 border-2 border-purple-300 dark:border-purple-800 text-purple-700 dark:text-purple-300 hover:bg-purple-600 hover:text-white'
-                  }`}
-                  title="Modo Automático: La IA habla y espera que digas tu diálogo para avanzar fluidamente"
-                >
-                  <Sparkles className="w-3.5 h-3.5" />
-                  <span>{isAutoRoleplay ? 'Pausar Modo Auto' : 'Modo Automático'}</span>
-                </button>
-              </div>
+                      }}
+                      className="px-2.5 py-1 rounded-xl bg-gray-100 dark:bg-[#131f24] text-[11px] font-black text-gray-600 dark:text-gray-300 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-800"
+                    >
+                      Reiniciar
+                    </button>
+                    <button
+                      onClick={() => {
+                        sound.playTap();
+                        if (isRoleplayComplete) {
+                          if (isAutoRoleplay) stopAutoRoleplay();
+                          setRoleplayStep(0);
+                          return;
+                        }
+                        if (isAutoRoleplay) {
+                          setRoleplayStep(prev => prev + 1);
+                          return;
+                        }
+                        const nextIdx = (roleplayStep + 1) % Math.max(1, currentDialogueLines.length);
+                        setRoleplayStep(nextIdx);
+                        const nextLine = currentDialogueLines[nextIdx];
+                        if (nextLine && nextLine.speaker !== activeRoleSpeaker) {
+                          sound.speakJapanese(nextLine.audioText || nextLine.japanese, 0.9, nextLine.speaker);
+                        }
+                      }}
+                      className={`px-3 py-1 rounded-xl text-[11px] font-black flex items-center gap-1 cursor-pointer transition-colors ${
+                        isRoleplayComplete
+                          ? 'bg-purple-600 text-white hover:bg-purple-700'
+                          : 'bg-emerald-500 text-white hover:bg-emerald-600'
+                      }`}
+                    >
+                      <span>{isRoleplayComplete ? 'Repetir Diálogo' : 'Siguiente Línea'}</span>
+                      {isRoleplayComplete ? <RefreshCw className="w-3 h-3" /> : <SkipForward className="w-3 h-3" />}
+                    </button>
+                  </div>
+                </div>
 
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => {
-                    sound.playTap();
-                    if (isAutoRoleplay) stopAutoRoleplay();
-                    setRoleplayStep(0);
-                  }}
-                  className="px-2.5 py-1 rounded-xl bg-gray-100 dark:bg-[#131f24] text-[11px] font-black text-gray-600 dark:text-gray-300 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-800"
-                >
-                  Reiniciar
-                </button>
-                <button
-                  onClick={() => {
-                    if (isAutoRoleplay) {
-                      setRoleplayStep(prev => prev + 1);
-                      return;
-                    }
-                    const nextIdx = (roleplayStep + 1) % Math.max(1, currentDialogueLines.length);
-                    setRoleplayStep(nextIdx);
-                    const nextLine = currentDialogueLines[nextIdx];
-                    if (nextLine && nextLine.speaker !== activeRoleSpeaker) {
-                      sound.speakJapanese(nextLine.audioText || nextLine.japanese, 0.9, nextLine.speaker);
-                    }
-                  }}
-                  className="px-3 py-1 rounded-xl bg-emerald-500 text-white text-[11px] font-black flex items-center gap-1 cursor-pointer hover:bg-emerald-600"
-                >
-                  <span>Siguiente Línea</span>
-                  <SkipForward className="w-3 h-3" />
-                </button>
-              </div>
-            </div>
+                {/* Banner de felicitaciones al completar el diálogo */}
+                {isRoleplayComplete && (
+                  <div className="p-3.5 rounded-2xl bg-emerald-50 dark:bg-emerald-950/30 border-2 border-emerald-400 dark:border-emerald-700/60 text-emerald-900 dark:text-emerald-200 flex items-center justify-between gap-3 animate-fade-in">
+                    <div className="flex items-center gap-2.5">
+                      <div className="w-7 h-7 rounded-full bg-emerald-500 text-white flex items-center justify-center font-black text-xs flex-shrink-0 shadow-xs">
+                        ✓
+                      </div>
+                      <div>
+                        <p className="text-xs font-black">🎉 ¡Felicidades! Has completado todas las líneas</p>
+                        <p className="text-[10px] text-emerald-700 dark:text-emerald-300 font-medium">
+                          Puedes volver a practicarlo, cambiar de personaje o elegir otra escena.
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      onClick={() => {
+                        sound.playTap();
+                        setRoleplayStep(0);
+                      }}
+                      className="px-3 py-1.5 rounded-xl bg-emerald-600 text-white text-[11px] font-black cursor-pointer hover:bg-emerald-700 shadow-xs flex-shrink-0"
+                    >
+                      Repetir
+                    </button>
+                  </div>
+                )}
 
             {/* Live Auto-Roleplay Status Banner */}
             {isAutoRoleplay && (
@@ -930,7 +977,9 @@ export const SpeakingPage: React.FC<SpeakingPageProps> = ({ units, showRomaji = 
                 </div>
               );
             })}
-          </div>
+              </div>
+            );
+          })()}
         </div>
       )}
 
