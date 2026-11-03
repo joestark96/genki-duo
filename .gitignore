@@ -1,0 +1,14 @@
+node_modules
+dist
+dist-ssr
+*.local
+.vscode
+.idea
+.DS_Store
+*.apk
+!public/downloads/*.apk
+!releases/*.apk
+.jdk
+archive/
+
+
