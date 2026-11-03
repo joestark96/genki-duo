@@ -17,6 +17,9 @@ import { WritingPage } from './pages/WritingPage';
 import { SpeakingPage } from './pages/SpeakingPage';
 import { ProfilePage } from './pages/ProfilePage';
 import { MasteryPage } from './pages/MasteryPage';
+import { GlobalDownloadBanner } from './components/Audio/GlobalDownloadBanner';
+import { LandingPage } from './pages/LandingPage';
+import { Capacitor } from '@capacitor/core';
 import { getLocalDateKey, recordDailyLessonActivity } from './utils/dateUtils';
 
 // Ionic core CSS
@@ -30,6 +33,34 @@ setupIonicReact({
 });
 
 export const App: React.FC = () => {
+  const isNative = Capacitor.isNativePlatform();
+  const [viewMode, setViewMode] = useState<'app' | 'landing'>(() => {
+    if (isNative) return 'app';
+    if (typeof window !== 'undefined') {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('app') === 'true' || window.location.hash === '#app') {
+        return 'app';
+      }
+      const saved = localStorage.getItem('nihongo_view_mode');
+      if (saved === 'app') return 'app';
+    }
+    return 'landing';
+  });
+
+  const handleEnterApp = () => {
+    setViewMode('app');
+    try {
+      localStorage.setItem('nihongo_view_mode', 'app');
+    } catch {}
+  };
+
+  const handleReturnToLanding = () => {
+    setViewMode('landing');
+    try {
+      localStorage.setItem('nihongo_view_mode', 'landing');
+    } catch {}
+  };
+
   const [activeTab, setActiveTab] = useState<NavTab>('roadmap');
   const [profile, setProfile] = useState<UserProfile>({
     id: 'local_user',
@@ -495,6 +526,10 @@ export const App: React.FC = () => {
     window.location.reload();
   };
 
+  if (viewMode === 'landing') {
+    return <LandingPage onEnterApp={handleEnterApp} />;
+  }
+
   return (
     <IonApp className="font-['Nunito',sans-serif]">
       <IonContent ref={ionContentRef} fullscreen className="bg-gray-50 dark:bg-[#131f24] transition-colors duration-200">
@@ -504,6 +539,7 @@ export const App: React.FC = () => {
             profile={profile}
             nextHeartMinutes={nextHeartMinutes}
             onSoundToggle={handleSoundToggle}
+            onOpenLanding={!isNative ? handleReturnToLanding : undefined}
           />
 
           {/* Active Tab Screen */}
@@ -570,6 +606,12 @@ export const App: React.FC = () => {
               />
             )}
           </main>
+
+          {/* Persistent Background Download Banner across all tabs */}
+          <GlobalDownloadBanner
+            currentTab={activeTab}
+            onNavigateToProfile={() => setActiveTab('profile')}
+          />
 
           {/* Bottom Navigation */}
           <BottomNav activeTab={activeTab} onTabChange={setActiveTab} />

@@ -6,6 +6,8 @@ dist-ssr
 .idea
 .DS_Store
 *.apk
+!public/downloads/*.apk
+!releases/*.apk
 .jdk
 archive/
 

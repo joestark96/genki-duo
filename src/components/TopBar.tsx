@@ -7,22 +7,32 @@ interface TopBarProps {
   profile: UserProfile;
   nextHeartMinutes?: number | null;
   onSoundToggle: () => void;
+  onOpenLanding?: () => void;
 }
 
-export const TopBar: React.FC<TopBarProps> = ({ profile, nextHeartMinutes, onSoundToggle }) => {
+export const TopBar: React.FC<TopBarProps> = ({ profile, nextHeartMinutes, onSoundToggle, onOpenLanding }) => {
   return (
     <header className="sticky top-0 z-30 bg-white dark:bg-[#18272e] border-b-2 border-duo-gray-200 dark:border-[#283842] px-3 py-2 shadow-sm transition-colors duration-200">
       <div className="max-w-3xl mx-auto flex items-center justify-between gap-2">
         {/* App Brand Logo */}
-        <div className="flex items-center gap-1.5">
+        <div
+          className={`flex items-center gap-1.5 ${onOpenLanding ? 'cursor-pointer hover:opacity-80 transition-opacity' : ''}`}
+          onClick={onOpenLanding}
+          title={onOpenLanding ? 'Ver Landing Page y Descargas' : undefined}
+        >
           <img
-            src="/app-icon.png"
+            src="./app-icon.png"
             alt="NihonGo! Dojo"
             className="w-7 h-7 rounded-lg shadow-2xs flex-shrink-0 object-cover"
           />
           <span className="hidden sm:inline text-xs font-black tracking-tight text-gray-800 dark:text-gray-100">
             Nihon<span className="text-duo-orange">Go!</span>
           </span>
+          {onOpenLanding && (
+            <span className="hidden md:inline text-[9px] font-black uppercase tracking-wider px-1.5 py-0.5 rounded-md bg-gray-100 dark:bg-gray-800 text-gray-400">
+              Web
+            </span>
+          )}
         </div>
 
         {/* Racha / Streak */}

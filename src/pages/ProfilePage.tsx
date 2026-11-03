@@ -190,7 +190,7 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
       {/* Profile Header */}
       <div className="flex items-center gap-4 bg-white dark:bg-[#18272e] p-5 rounded-3xl border-2 border-duo-gray-200 dark:border-[#283842] shadow-duo-card dark:shadow-none mb-4 transition-colors">
         <img
-          src="/app-icon.png"
+          src="./app-icon.png"
           alt="NihonGo! Dojo Mascot"
           className="w-16 h-16 rounded-2xl shadow-duo-btn-sm border-2 border-duo-blue/40 flex-shrink-0 object-cover"
         />

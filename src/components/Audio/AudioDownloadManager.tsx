@@ -1,6 +1,7 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Download, CheckCircle2, Trash2, HardDrive, RefreshCw, AlertCircle, XCircle } from 'lucide-react';
 import { audioStorage, AudioStorageStats } from '../../services/audioStorage';
+import { audioDownloadQueue, DownloadQueueState } from '../../services/audioDownloadQueue';
 import { Unit } from '../../types';
 import { sound } from '../../services/sound';
 
@@ -11,14 +12,8 @@ interface AudioDownloadManagerProps {
 export const AudioDownloadManager: React.FC<AudioDownloadManagerProps> = ({ units }) => {
   const [stats, setStats] = useState<AudioStorageStats>({ count: 0, totalSizeBytes: 0, totalSizeMb: '0.0' });
   const [selectedUnitId, setSelectedUnitId] = useState<number>(1);
-  const [isDownloading, setIsDownloading] = useState<boolean>(false);
-  const [downloadProgress, setDownloadProgress] = useState<{ completed: number; total: number; currentText: string }>({
-    completed: 0,
-    total: 0,
-    currentText: ''
-  });
-  const [statusMessage, setStatusMessage] = useState<string | null>(null);
-  const abortControllerRef = useRef<AbortController | null>(null);
+  const [queueState, setQueueState] = useState<DownloadQueueState>(() => audioDownloadQueue.getState());
+  const [localMessage, setLocalMessage] = useState<string | null>(null);
 
   const refreshStats = async () => {
     try {
@@ -31,56 +26,35 @@ export const AudioDownloadManager: React.FC<AudioDownloadManagerProps> = ({ unit
 
   useEffect(() => {
     refreshStats();
+    const unsubscribe = audioDownloadQueue.subscribe((st) => {
+      setQueueState(st);
+      if (st.status === 'completed') {
+        refreshStats();
+      }
+    });
+    return unsubscribe;
   }, []);
 
   const handleDownloadUnit = async (targetUnitId?: number) => {
     const unitToDownload = targetUnitId !== undefined ? targetUnitId : selectedUnitId;
     sound.playTap();
+    setLocalMessage(null);
 
     const tasks = unitToDownload === -1
       ? units.flatMap(u => audioStorage.getUnitAudioTasks(u.id))
       : audioStorage.getUnitAudioTasks(unitToDownload);
 
-    if (tasks.length === 0) {
-      setStatusMessage('No se encontraron audios nuevos para descargar en esta unidad.');
-      return;
-    }
+    const unitObj = units.find(u => u.id === unitToDownload);
+    const unitTitle = unitToDownload === -1
+      ? 'Todas las Unidades'
+      : (unitObj ? `Unidad ${unitObj.id}: ${unitObj.title}` : `Unidad ${unitToDownload}`);
 
-    const abortController = new AbortController();
-    abortControllerRef.current = abortController;
-    setIsDownloading(true);
-    setStatusMessage(null);
-    setDownloadProgress({ completed: 0, total: tasks.length, currentText: 'Iniciando...' });
-
-    try {
-      const res = await audioStorage.downloadBatch(
-        tasks,
-        (completed, total, currentText) => {
-          setDownloadProgress({ completed, total, currentText });
-        },
-        abortController.signal
-      );
-
-      await refreshStats();
-
-      if (abortController.signal.aborted) {
-        setStatusMessage('Descarga cancelada.');
-      } else {
-        setStatusMessage(`¡Descarga lista! ${res.succeeded} audios guardados localmente.`);
-      }
-    } catch {
-      setStatusMessage('Ocurrió un error durante la descarga. Intenta de nuevo con conexión.');
-    } finally {
-      setIsDownloading(false);
-      abortControllerRef.current = null;
-    }
+    await audioDownloadQueue.startDownload(tasks, unitToDownload, unitTitle);
   };
 
   const handleCancelDownload = () => {
     sound.playTap();
-    if (abortControllerRef.current) {
-      abortControllerRef.current.abort();
-    }
+    audioDownloadQueue.cancelDownload();
   };
 
   const handleClearStorage = async () => {
@@ -88,12 +62,16 @@ export const AudioDownloadManager: React.FC<AudioDownloadManagerProps> = ({ unit
     if (window.confirm('¿Seguro que deseas borrar los audios descargados? Las lecturas precargadas en el APK seguirán intactas.')) {
       await audioStorage.clearAll();
       await refreshStats();
-      setStatusMessage('Almacenamiento de audios liberado.');
+      setLocalMessage('Almacenamiento de audios liberado.');
+      audioDownloadQueue.clearStatusMessage();
     }
   };
 
-  const progressPercent = downloadProgress.total > 0
-    ? Math.round((downloadProgress.completed / downloadProgress.total) * 100)
+  const { isDownloading, progress, statusMessage } = queueState;
+  const displayMessage = localMessage || statusMessage;
+
+  const progressPercent = progress.total > 0
+    ? Math.round((progress.completed / progress.total) * 100)
     : 0;
 
   return (
@@ -152,13 +130,13 @@ export const AudioDownloadManager: React.FC<AudioDownloadManagerProps> = ({ unit
         </div>
       </div>
 
-      {/* Progress Bar (Visible while downloading) */}
+      {/* Progress Bar (Visible while downloading in background) */}
       {isDownloading && (
         <div className="mb-4 p-3 rounded-2xl bg-blue-50 dark:bg-[#131f24] border border-blue-200 dark:border-[#283842]">
           <div className="flex items-center justify-between text-xs font-black text-gray-700 dark:text-gray-200 mb-1.5">
             <span className="flex items-center gap-1.5 min-w-0">
               <RefreshCw className="w-3.5 h-3.5 text-duo-blue animate-spin flex-shrink-0" />
-              <span className="truncate">Descargando ({downloadProgress.completed}/{downloadProgress.total})</span>
+              <span className="truncate">Descargando ({progress.completed}/{progress.total})</span>
             </span>
             <span className="text-duo-blue flex-shrink-0 ml-2">{progressPercent}%</span>
           </div>
@@ -172,8 +150,8 @@ export const AudioDownloadManager: React.FC<AudioDownloadManagerProps> = ({ unit
           </div>
 
           <div className="flex items-center justify-between gap-2">
-            <span className="text-[10px] text-gray-500 dark:text-gray-400 truncate font-['Noto_Sans_JP']">
-              {downloadProgress.currentText || 'Descargando...'}
+            <span className="text-[10px] text-gray-500 dark:text-gray-400 truncate font-['Noto_Sans_JP'] max-w-[200px]">
+              {progress.currentText || 'Descargando audios...'}
             </span>
             <button
               type="button"
@@ -188,10 +166,10 @@ export const AudioDownloadManager: React.FC<AudioDownloadManagerProps> = ({ unit
       )}
 
       {/* Status message */}
-      {statusMessage && !isDownloading && (
+      {displayMessage && !isDownloading && (
         <div className="mb-3 p-2.5 rounded-xl bg-gray-100 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 text-xs font-bold text-gray-700 dark:text-gray-300 flex items-center gap-2">
           <AlertCircle className="w-4 h-4 text-duo-blue flex-shrink-0" />
-          <span className="break-words flex-1">{statusMessage}</span>
+          <span className="break-words flex-1">{displayMessage}</span>
         </div>
       )}
 
@@ -201,7 +179,7 @@ export const AudioDownloadManager: React.FC<AudioDownloadManagerProps> = ({ unit
           value={selectedUnitId}
           onChange={(e) => setSelectedUnitId(parseInt(e.target.value))}
           disabled={isDownloading}
-          className="w-full min-w-0 px-3 py-2.5 bg-gray-50 dark:bg-[#131f24] border border-gray-300 dark:border-[#283842] rounded-xl text-xs font-bold text-gray-800 dark:text-gray-100 focus:outline-none focus:border-duo-blue"
+          className="w-full min-w-0 px-3 py-2.5 bg-gray-50 dark:bg-[#131f24] border border-gray-300 dark:border-[#283842] rounded-xl text-xs font-bold text-gray-800 dark:text-gray-100 focus:outline-none focus:border-duo-blue disabled:opacity-60"
         >
           <option value={-1}>🌟 Todas las Unidades (1 al 23)</option>
           {units.filter(u => u.id >= 1).map(u => (
@@ -218,7 +196,7 @@ export const AudioDownloadManager: React.FC<AudioDownloadManagerProps> = ({ unit
           className="w-full py-2.5 px-4 bg-duo-blue border-b-2 border-duo-blue-dark text-white rounded-xl text-xs font-black shadow-duo-btn-sm active:translate-y-0.5 hover:bg-blue-400 transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
         >
           <Download className="w-4 h-4" />
-          <span>Descargar Audios de la Unidad</span>
+          <span>{isDownloading ? 'Descargando en segundo plano...' : 'Descargar Audios de la Unidad'}</span>
         </button>
 
         {/* Clear Storage Button */}
@@ -237,9 +215,8 @@ export const AudioDownloadManager: React.FC<AudioDownloadManagerProps> = ({ unit
 
       {/* Note */}
       <p className="text-[10px] text-gray-400 dark:text-gray-500 mt-2 italic text-center sm:text-left">
-        💡 Cada audio que escuches en tus lecciones con internet también se guardará automáticamente en tu dispositivo para siempre.
+        💡 Las descargas continúan automáticamente aunque cambies de pantalla o salgas de la app.
       </p>
     </div>
   );
 };
-

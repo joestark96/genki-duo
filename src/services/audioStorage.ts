@@ -229,7 +229,7 @@ class AudioStorageService {
     try {
       const endpoint = 'https://ottsy.weilbyte.dev/api/generation';
       const controller = new AbortController();
-      const timeoutId = window.setTimeout(() => controller.abort(), 7000);
+      const timeoutId = window.setTimeout(() => controller.abort(), 12000);
 
       if (abortSignal) {
         abortSignal.addEventListener('abort', () => controller.abort());
