@@ -12,6 +12,16 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
   </head>
   <body class="bg-gray-50 text-gray-800 select-none notranslate" translate="no">
+    <script>
+      // Si GitHub Pages sirve este index.html sin compilar (tiene main.tsx en vez del bundle)
+      if (window.location.hostname.endsWith('github.io') && !window.location.pathname.includes('/docs')) {
+        var isUnbundled = document.querySelector('script[src*="main.tsx"]');
+        if (isUnbundled) {
+          var base = window.location.pathname.replace(/\/$/, '');
+          window.location.replace(base + '/docs/' + window.location.search + window.location.hash);
+        }
+      }
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
