@@ -648,13 +648,13 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
                     {/* Top line: Tag & Mastery Badge */}
                     <div className="flex items-center justify-between gap-2 mb-2">
                       <div className="flex items-center gap-1.5 flex-wrap">
-                        <span className="text-[10px] font-black px-2 py-0.5 rounded-md bg-gray-100 dark:bg-[#131f24] text-gray-600 dark:text-gray-300 uppercase tracking-wider">
+                        <span className="text-[10px] font-black px-2 py-0.5 rounded-md bg-gray-100 dark:bg-[#131f24] text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-[#283842] uppercase tracking-wider">
                           {item.category === 'vocabulary'
                             ? `Vocabulario ${lessonNum ? `L${lessonNum}` : ''}`
                             : item.category}
                         </span>
                         {lessonNum > 0 && item.category !== 'vocabulary' && (
-                          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/40 text-indigo-600 dark:text-indigo-300">
+                          <span className="text-[10px] font-bold px-1.5 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800/60">
                             L{lessonNum}
                           </span>
                         )}
@@ -662,16 +662,16 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
 
                       {/* Mastery Pill */}
                       <span
-                        className={`text-[10px] font-black px-2 py-0.5 rounded-full flex items-center gap-1 ${
+                        className={`text-[10px] font-black px-2 py-0.5 rounded-full flex items-center gap-1 border ${
                           isUnknown
-                            ? 'bg-gray-100 dark:bg-gray-800 text-gray-500'
+                            ? 'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 border-gray-300 dark:border-gray-700'
                             : isWeak
-                            ? 'bg-red-100 dark:bg-red-950/60 text-red-600 dark:text-red-400'
+                            ? 'bg-red-100 dark:bg-red-950/70 text-red-700 dark:text-red-300 border-red-300 dark:border-red-800/70'
                             : isLearning
-                            ? 'bg-amber-100 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400'
+                            ? 'bg-amber-100 dark:bg-amber-950/70 text-amber-800 dark:text-amber-300 border-amber-300 dark:border-amber-800/70'
                             : isFamiliar
-                            ? 'bg-sky-100 dark:bg-sky-950/60 text-sky-700 dark:text-sky-300'
-                            : 'bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300'
+                            ? 'bg-sky-100 dark:bg-sky-950/70 text-sky-800 dark:text-sky-300 border-sky-300 dark:border-sky-800/70'
+                            : 'bg-emerald-100 dark:bg-emerald-950/70 text-emerald-800 dark:text-emerald-300 border-emerald-300 dark:border-emerald-800/70'
                         }`}
                       >
                         {isUnknown && '⚪ 0% Desconocida'}
@@ -796,11 +796,11 @@ export const MasteryPage: React.FC<MasteryPageProps> = ({
             {reviewItems[reviewIndex] && (
               <div className="bg-gray-50 dark:bg-[#131f24] border-2 border-purple-200 dark:border-purple-900/50 rounded-2xl p-6 flex flex-col items-center text-center gap-2 relative">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[10px] font-black px-2 py-0.5 rounded-md bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-300">
+                  <span className="text-[10px] font-black px-2 py-0.5 rounded-md bg-purple-100 dark:bg-purple-950/80 text-purple-700 dark:text-purple-300 border border-purple-300 dark:border-purple-800/60">
                     {reviewItems[reviewIndex].category.toUpperCase()}
                   </span>
                   {typeof getItemLesson(reviewItems[reviewIndex]) === 'number' && (
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-100 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300">
+                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-100 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-300 border border-indigo-300 dark:border-indigo-800/60">
                       {getItemLesson(reviewItems[reviewIndex]) === 0 ? 'Kanas' : `Lección ${getItemLesson(reviewItems[reviewIndex])}`}
                     </span>
                   )}

@@ -307,7 +307,7 @@ export const KanaTable: React.FC<KanaTableProps> = ({ showRomaji = true }) => {
                   className="flex flex-col items-center justify-between p-2.5 rounded-2xl border-2 border-duo-gray-200 dark:border-[#283842] bg-white dark:bg-[#18272e] hover:border-duo-purple hover:shadow-duo-card dark:hover:border-duo-purple/80 transition-all active:translate-y-0.5 group cursor-pointer"
                 >
                   {/* Top Level Pill */}
-                  <span className="self-end text-[9px] font-black px-1.5 py-0.2 rounded-md bg-gray-100 dark:bg-[#283842] text-gray-500 dark:text-gray-400">
+                  <span className="self-end text-[9px] font-black px-1.5 py-0.5 rounded-md bg-gray-100 dark:bg-[#203038] text-gray-600 dark:text-gray-200 border border-gray-200 dark:border-[#334652]">
                     {item.jlptLevel}
                   </span>
 

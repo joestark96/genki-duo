@@ -4,6 +4,7 @@ import { UserProfile, Unit } from '../types';
 import { sound, CHARACTER_VOICES } from '../services/sound';
 import { getLocalDateKey, getDailyQuestStats } from '../utils/dateUtils';
 import { NavTab } from '../components/BottomNav';
+import { AudioDownloadManager } from '../components/Audio/AudioDownloadManager';
 
 interface ProfilePageProps {
   profile: UserProfile;
@@ -558,6 +559,10 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
           </button>
         </div>
       </div>
+
+      {/* Audio Download Manager (Offline voices stored in device storage) */}
+      <h3 className="text-sm font-black text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-2">Voces Offline</h3>
+      <AudioDownloadManager units={units} />
 
       {/* SQLite Local Persistence Section */}
       <h3 className="text-sm font-black text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-2">Persistencia de Datos</h3>

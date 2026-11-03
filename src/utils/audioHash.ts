@@ -153,6 +153,8 @@ function md5(string: string): string {
 export function getOfflineAudioKey(charId: string, text: string): string {
   const clean = (text || '')
     .replace(/\[.*?\]/g, '')
+    .replace(/\(.*?\)/g, '')
+    .replace(/（.*?）/g, '')
     .replace(/[。、！？!?\s「」『』（）()・〜~ー-]/g, '')
     .trim()
     .toLowerCase();

@@ -85,6 +85,39 @@ function getSpeakerChatTheme(speakerIdx: number) {
   };
 }
 
+function formatQuizOptionText(
+  text: string,
+  exerciseType: string,
+  prompt: string,
+  isIntroLesson: boolean
+): string {
+  let cleaned = text;
+
+  // 1. Strip '(Correcta)' or '(Incorrecta)' or '(Uso incorrecto...)' markers
+  cleaned = cleaned.replace(/\s*\((?:Correcta|Incorrecta|Uso incorrecto[^)]*)\)/gi, '');
+
+  // 2. In listening exercises or questions asking to listen to audio,
+  // strip Japanese readings in parentheses from options (e.g. "Cafetería tradicional (きっさてん)" -> "Cafetería tradicional")
+  const isListeningOrAudio = exerciseType === 'listening' || /escucha|audio/i.test(prompt);
+  if (isListeningOrAudio && /[a-zA-ZáéíóúñÁÉÍÓÚÑ]/.test(cleaned)) {
+    cleaned = cleaned
+      .replace(/\s*\([^\)]*[\u3040-\u30ff\u4e00-\u9faf][^\)]*\)/g, '')
+      .replace(/\s*（[^）]*[\u3040-\u30ff\u4e00-\u9faf][^）]*）/g, '');
+  }
+
+  // 3. For non-intro lessons (Lesson 1+ and Unit jumps):
+  // If option text contains Japanese and has trailing romaji in parentheses (e.g. "(tabemasen deshita)"),
+  // strip it unless the prompt specifically asks about romaji or pronunciation.
+  if (!isIntroLesson) {
+    const isRomajiQuestion = /romaji|lectura|pronuncia|cómo se lee|como se lee/i.test(prompt);
+    if (!isRomajiQuestion && /[\u3040-\u30ff\u4e00-\u9faf]/.test(cleaned)) {
+      cleaned = cleaned.replace(/\s*\([a-zA-Z\s~-]+\)$/, '');
+    }
+  }
+
+  return cleaned.trim();
+}
+
 interface QuizModalProps {
   lesson: LessonNode;
   userProfile: UserProfile;
@@ -111,9 +144,9 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   const [selectedOptionId, setSelectedOptionId] = useState<string | null>(null);
   const [shuffledOptions, setShuffledOptions] = useState<ExerciseOption[]>([]);
 
-  // Word-order state
-  const [selectedWords, setSelectedWords] = useState<string[]>([]);
-  const [availableWords, setAvailableWords] = useState<string[]>([]);
+  // Word-order state (chip bank maintains fixed slots, selected items stay as references)
+  const [wordChips, setWordChips] = useState<{ id: string; word: string }[]>([]);
+  const [selectedChipIds, setSelectedChipIds] = useState<string[]>([]);
 
   // Match-pairs state
   const [matchedPairs, setMatchedPairs] = useState<string[]>([]);
@@ -148,7 +181,14 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   const progressPercent = Math.round(((currentIndex) / exercises.length) * 100);
 
   // Reset exercise state when moving to next
+  const handleClose = () => {
+    sound.stopSpeech();
+    onClose();
+  };
+
+  // Reset exercise state when moving to next and stop previous speech
   useEffect(() => {
+    sound.stopSpeech();
     if (currentExercise) {
       setSelectedOptionId(null);
       setSelectedLeft(null);
@@ -164,8 +204,12 @@ export const QuizModal: React.FC<QuizModalProps> = ({
       }
 
       if (currentExercise.type === 'word-order' && currentExercise.wordBank) {
-        setAvailableWords(shuffleArray(currentExercise.wordBank));
-        setSelectedWords([]);
+        const chips = shuffleArray(currentExercise.wordBank).map((w, idx) => ({
+          id: `chip-${idx}-${w}`,
+          word: w
+        }));
+        setWordChips(chips);
+        setSelectedChipIds([]);
       }
 
       if (currentExercise.type === 'match-pairs' && currentExercise.pairs) {
@@ -198,6 +242,9 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         }, 150);
       }
     }
+    return () => {
+      sound.stopSpeech();
+    };
   }, [currentIndex, currentExercise]);
 
   if (!currentExercise && status !== 'completed' && status !== 'game-over' && status !== 'jump-failed' && status !== 'jump-passed') {
@@ -213,6 +260,10 @@ export const QuizModal: React.FC<QuizModalProps> = ({
     if (currentExercise.type === 'multiple-choice' || currentExercise.type === 'listening' || currentExercise.type === 'dialogue-reading') {
       isCorrect = currentExercise.options ? selectedOptionId === currentExercise.correctAnswerId : true;
     } else if (currentExercise.type === 'word-order') {
+      const selectedWords = selectedChipIds
+        .map(id => wordChips.find(c => c.id === id)?.word)
+        .filter((w): w is string => Boolean(w));
+
       isCorrect =
         selectedWords.length === currentExercise.correctSentence?.length &&
         selectedWords.every((word, idx) => word === currentExercise.correctSentence![idx]);
@@ -255,6 +306,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
 
   // Continue to next question or complete
   const handleContinue = () => {
+    sound.stopSpeech();
     if (currentIndex < exercises.length - 1) {
       setCurrentIndex(prev => prev + 1);
     } else {
@@ -279,32 +331,39 @@ export const QuizModal: React.FC<QuizModalProps> = ({
     }
   };
 
-  // Word order tap handlers
-  const handleSelectWord = (word: string, index: number) => {
+  // Word order tap handlers: selections keep bank chips in place as deactivated placeholders
+  const handleSelectChip = (chipId: string) => {
+    if (status !== 'answering') return;
     sound.playTap();
-    const newAvail = [...availableWords];
-    newAvail.splice(index, 1);
-    setAvailableWords(newAvail);
-    setSelectedWords(prev => [...prev, word]);
+    setSelectedChipIds(prev => [...prev, chipId]);
   };
 
-  const handleDeselectWord = (word: string, index: number) => {
+  const handleDeselectChip = (chipId: string) => {
+    if (status !== 'answering') return;
     sound.playTap();
-    const newSelected = [...selectedWords];
-    newSelected.splice(index, 1);
-    setSelectedWords(newSelected);
-    setAvailableWords(prev => [...prev, word]);
+    setSelectedChipIds(prev => prev.filter(id => id !== chipId));
   };
 
-  // Match pairs tap handler
+  // Match pairs tap handler (plays native Japanese audio when selecting left option)
   const handleMatchSelect = (type: 'left' | 'right', id: string) => {
-    sound.playTap();
     if (type === 'left') {
+      const pair = shuffledLeftPairs.find(p => p.id === id);
+      if (pair && pair.left) {
+        const cleanSpoken = pair.left
+          .replace(/\[.*?\]/g, '')
+          .replace(/\(.*?\)/g, '')
+          .replace(/（.*?）/g, '')
+          .trim();
+        sound.speakJapanese(cleanSpoken);
+      } else {
+        sound.playTap();
+      }
       setSelectedLeft(id);
       if (selectedRight) {
         checkPairMatch(id, selectedRight);
       }
     } else {
+      sound.playTap();
       setSelectedRight(id);
       if (selectedLeft) {
         checkPairMatch(selectedLeft, id);
@@ -363,12 +422,38 @@ export const QuizModal: React.FC<QuizModalProps> = ({
       return currentExercise.options ? selectedOptionId !== null : true;
     }
     if (currentExercise?.type === 'word-order') {
-      return selectedWords.length > 0;
+      return selectedChipIds.length > 0;
     }
     if (currentExercise?.type === 'match-pairs') {
       return matchedPairs.length === currentExercise.pairs?.length;
     }
     return false;
+  };
+
+  // Helper to extract clean correct answer text for feedback display
+  const getCorrectAnswerDisplay = (): string | null => {
+    if (!currentExercise) return null;
+    if (currentExercise.type === 'word-order' && currentExercise.correctSentence) {
+      return currentExercise.correctSentence.join(' ');
+    }
+    if (
+      currentExercise.type === 'multiple-choice' ||
+      currentExercise.type === 'listening' ||
+      currentExercise.type === 'dialogue-reading'
+    ) {
+      const correctOpt = currentExercise.options?.find(
+        (o) => o.isCorrect || o.id === currentExercise.correctAnswerId
+      );
+      if (correctOpt) {
+        return formatQuizOptionText(
+          correctOpt.text,
+          currentExercise.type,
+          currentExercise.prompt,
+          lesson.lessonNumber === 0 && !isJumpAhead
+        );
+      }
+    }
+    return null;
   };
 
   // --- JUMP AHEAD PASSED SCREEN ---
@@ -406,6 +491,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
               onPassJumpAhead(lesson.unitId);
             }
             onClose();
+            handleClose();
           }}
           className="w-full max-w-sm mx-auto py-3.5 bg-duo-green hover:bg-duo-green-dark text-white font-black text-lg rounded-2xl shadow-[0_5px_0_0_#46a302] active:translate-y-1 active:shadow-none transition-all uppercase tracking-wider"
         >
@@ -433,7 +519,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         </div>
 
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="w-full max-w-sm mx-auto py-3.5 bg-duo-blue text-white font-black text-lg rounded-2xl shadow-[0_5px_0_0_#1899d6] active:translate-y-1 active:shadow-none transition-all uppercase tracking-wider flex items-center justify-center gap-2"
         >
           <RotateCcw className="w-5 h-5" /> Volver a Practicar en la Unidad
@@ -482,7 +568,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         </div>
 
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="w-full max-w-sm mx-auto py-3.5 bg-duo-green hover:bg-duo-green-dark text-white font-black text-lg rounded-2xl shadow-[0_5px_0_0_#46a302] active:translate-y-1 active:shadow-none transition-all uppercase tracking-wider"
         >
           Continuar
@@ -506,7 +592,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         </div>
 
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="w-full max-w-sm mx-auto py-3.5 bg-duo-blue text-white font-black text-lg rounded-2xl shadow-[0_5px_0_0_#1899d6] active:translate-y-1 active:shadow-none transition-all uppercase tracking-wider flex items-center justify-center gap-2"
         >
           <RotateCcw className="w-5 h-5" /> Entendido
@@ -520,7 +606,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
       {/* Top Header: Close, Progress bar, Hearts / Chances / Practice indicator */}
       <div className="px-4 py-3 flex items-center gap-4 max-w-2xl mx-auto w-full">
         <button
-          onClick={onClose}
+          onClick={handleClose}
           className="p-1 rounded-xl text-gray-400 hover:text-gray-600 transition-colors"
         >
           <X className="w-6 h-6 stroke-[2.5px]" />
@@ -803,8 +889,8 @@ export const QuizModal: React.FC<QuizModalProps> = ({
             {currentExercise.prompt}
           </h2>
 
-          {/* Subtitle / Japanese text if present (Hidden on word-order so it doesn't give away the answer!) */}
-          {currentExercise.promptSub && currentExercise.type !== 'word-order' && (
+          {/* Subtitle / Japanese text if present (Hidden on word-order & listening so it doesn't give away the answer!) */}
+          {currentExercise.promptSub && currentExercise.type !== 'word-order' && currentExercise.type !== 'listening' && (
             <div className="flex items-center gap-2 mt-2">
               <span className="text-3xl font-bold font-['Noto_Sans_JP'] text-gray-900 dark:text-gray-100 bg-gray-100 dark:bg-gray-800 px-3 py-1.5 rounded-xl border-2 border-gray-200 dark:border-gray-700">
                 {currentExercise.promptSub}
@@ -872,7 +958,14 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                       : 'bg-white dark:bg-[#18272e] border-duo-gray-200 dark:border-[#283842] text-gray-700 dark:text-gray-200 shadow-[0_4px_0_0_#e5e5e5] dark:shadow-none hover:bg-gray-50 dark:hover:bg-gray-800'
                   }`}
                 >
-                  <span className="text-base md:text-lg">{option.text}</span>
+                  <span className="text-base md:text-lg">
+                    {formatQuizOptionText(
+                      option.text,
+                      currentExercise.type,
+                      currentExercise.prompt,
+                      lesson.lessonNumber === 0 && !isJumpAhead
+                    )}
+                  </span>
                   <div
                     className={`w-6 h-6 rounded-full border-2 flex items-center justify-center ${
                       isSelected
@@ -892,31 +985,45 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         {currentExercise.type === 'word-order' && (
           <div className="flex flex-col gap-6">
             <div className="min-h-[70px] p-3 bg-gray-50 dark:bg-[#18272e] border-b-2 border-duo-gray-300 dark:border-[#283842] rounded-2xl flex flex-wrap gap-2 items-center">
-              {selectedWords.length === 0 ? (
+              {selectedChipIds.length === 0 ? (
                 <span className="text-gray-400 dark:text-gray-500 text-sm font-bold italic">Toca las palabras para formar la frase...</span>
               ) : (
-                selectedWords.map((word, idx) => (
-                  <button
-                    key={`sel-${idx}`}
-                    onClick={() => handleDeselectWord(word, idx)}
-                    className="px-3.5 py-2 bg-white dark:bg-[#283842] border-2 border-duo-gray-300 dark:border-[#3a4d59] rounded-xl font-bold text-gray-800 dark:text-gray-100 shadow-duo-btn-sm active:translate-y-0.5 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all font-['Noto_Sans_JP']"
-                  >
-                    {word}
-                  </button>
-                ))
+                selectedChipIds.map((chipId) => {
+                  const chip = wordChips.find(c => c.id === chipId);
+                  if (!chip) return null;
+                  return (
+                    <button
+                      key={`sel-${chip.id}`}
+                      disabled={status !== 'answering'}
+                      onClick={() => handleDeselectChip(chip.id)}
+                      className="px-3.5 py-2 bg-white dark:bg-[#283842] border-2 border-duo-gray-300 dark:border-[#3a4d59] rounded-xl font-bold text-gray-800 dark:text-gray-100 shadow-duo-btn-sm active:translate-y-0.5 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all font-['Noto_Sans_JP'] cursor-pointer"
+                    >
+                      {chip.word}
+                    </button>
+                  );
+                })
               )}
             </div>
 
+            {/* Word bank: words stay in their fixed spot, deactivated as dashed placeholders when selected */}
             <div className="flex flex-wrap gap-2.5 justify-center py-4">
-              {availableWords.map((word, idx) => (
-                <button
-                  key={`avail-${idx}`}
-                  onClick={() => handleSelectWord(word, idx)}
-                  className="px-4 py-2.5 bg-white dark:bg-[#283842] border-2 border-duo-gray-300 dark:border-[#3a4d59] rounded-xl font-bold text-gray-800 dark:text-gray-100 shadow-[0_3px_0_0_#e5e5e5] dark:shadow-none active:translate-y-0.5 hover:border-duo-blue transition-all font-['Noto_Sans_JP']"
-                >
-                  {word}
-                </button>
-              ))}
+              {wordChips.map((chip) => {
+                const isSelected = selectedChipIds.includes(chip.id);
+                return (
+                  <button
+                    key={chip.id}
+                    disabled={isSelected || status !== 'answering'}
+                    onClick={() => handleSelectChip(chip.id)}
+                    className={`px-4 py-2.5 rounded-xl font-bold font-['Noto_Sans_JP'] transition-all ${
+                      isSelected
+                        ? 'bg-gray-100 dark:bg-[#18272e]/60 border-2 border-dashed border-gray-300 dark:border-[#283842] text-gray-300 dark:text-gray-600 shadow-none cursor-default select-none'
+                        : 'bg-white dark:bg-[#283842] border-2 border-duo-gray-300 dark:border-[#3a4d59] text-gray-800 dark:text-gray-100 shadow-[0_3px_0_0_#e5e5e5] dark:shadow-none active:translate-y-0.5 hover:border-duo-blue cursor-pointer'
+                    }`}
+                  >
+                    {chip.word}
+                  </button>
+                );
+              })}
             </div>
           </div>
         )}
@@ -944,7 +1051,10 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                         : 'border-duo-gray-200 dark:border-[#283842] bg-white dark:bg-[#18272e] text-gray-800 dark:text-gray-100 shadow-duo-card dark:shadow-none hover:bg-gray-50 dark:hover:bg-gray-800'
                     }`}
                   >
-                    <div className="text-lg font-['Noto_Sans_JP']">{p.left}</div>
+                    <div className="flex items-center justify-center gap-1.5">
+                      <span className="text-lg font-['Noto_Sans_JP']">{p.left}</span>
+                      <Volume2 className="w-3.5 h-3.5 text-duo-blue/70 dark:text-blue-400/70 flex-shrink-0" />
+                    </div>
                     {p.leftSub && <div className="text-[10px] text-gray-400 dark:text-gray-500 font-normal">{p.leftSub}</div>}
                   </button>
                 );
@@ -1028,9 +1138,17 @@ export const QuizModal: React.FC<QuizModalProps> = ({
             <div className="w-full flex items-center justify-between gap-4 animate-fade-in">
               <div className="flex items-center gap-3">
                 <AlertCircle className="w-8 h-8 text-duo-red flex-shrink-0" />
-                <div>
-                  <h4 className="text-lg font-black text-duo-red-dark">Respuesta incorrecta</h4>
-                  <p className="text-xs font-bold text-duo-red-dark/80">{currentExercise.explanation}</p>
+                <div className="flex flex-col gap-0.5">
+                  <h4 className="text-base md:text-lg font-black text-duo-red-dark">Respuesta incorrecta</h4>
+                  {getCorrectAnswerDisplay() && (
+                    <p className="text-xs md:text-sm font-bold text-red-950 dark:text-red-200">
+                      <span className="font-black text-duo-red-dark underline">Solución:</span>{' '}
+                      <span className="font-['Noto_Sans_JP']">{getCorrectAnswerDisplay()}</span>
+                    </p>
+                  )}
+                  {currentExercise.explanation && (
+                    <p className="text-[11px] md:text-xs font-semibold text-duo-red-dark/90 mt-0.5">{currentExercise.explanation}</p>
+                  )}
                 </div>
               </div>
               <button

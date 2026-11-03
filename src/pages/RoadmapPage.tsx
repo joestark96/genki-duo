@@ -6,6 +6,7 @@ import { BookOpen, Sparkles, CheckCircle2, FastForward, ShieldAlert, Award, Dumb
 import { sound } from '../services/sound';
 import { createJumpAheadLesson } from '../utils/jumpAhead';
 import { createPracticeLesson, createUnitReviewLesson } from '../utils/practiceLesson';
+import { expandLessonExercises } from '../utils/lessonExpander';
 
 interface RoadmapPageProps {
   units: Unit[];
@@ -357,7 +358,8 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
               <button
                 onClick={() => {
                   sound.playTap();
-                  const targetLesson = selectedNodeForPopover.node;
+                  const parentUnit = units.find(u => u.id === selectedNodeForPopover.unitId);
+                  const targetLesson = expandLessonExercises(selectedNodeForPopover.node, parentUnit);
                   setSelectedNodeForPopover(null);
                   setIsJumpAheadActive(false);
                   setIsPracticeActive(false);

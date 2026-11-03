@@ -1,5 +1,6 @@
 import { LOCAL_AUDIO_MANIFEST } from '../data/localAudioManifest';
 import { getOfflineAudioKey } from '../utils/audioHash';
+import { audioStorage } from './audioStorage';
 // Web Audio API synthesizers for Duolingo-style sound effects + Multi-Character Neural Japanese Voice Engine
 
 export type NeuralJapaneseVoiceId =
@@ -143,6 +144,8 @@ class SoundService {
   private activeBufferSource: AudioBufferSourceNode | null = null;
   private sequenceTimer: number | null = null;
   private voices: SpeechSynthesisVoice[] = [];
+  private currentSpeechId: number = 0;
+  private activeAbortController: AbortController | null = null;
   // In-memory caches for 0ms instantaneous replay
   private audioCache: Map<string, HTMLAudioElement> = new Map();
   private neuralBufferCache: Map<string, AudioBuffer> = new Map();
@@ -279,6 +282,13 @@ class SoundService {
   }
 
   private stopActivePlayback() {
+    this.currentSpeechId++;
+    if (this.activeAbortController) {
+      try {
+        this.activeAbortController.abort();
+      } catch (_) {}
+      this.activeAbortController = null;
+    }
     if (this.activeBufferSource) {
       try {
         this.activeBufferSource.stop();
@@ -289,6 +299,7 @@ class SoundService {
     if (this.activeAudio) {
       try {
         this.activeAudio.pause();
+        this.activeAudio.currentTime = 0;
       } catch (_) {}
       this.activeAudio = null;
     }
@@ -331,7 +342,11 @@ class SoundService {
 
   // Helper to split complex sentences and reading passages into natural spoken clauses
   private splitIntoSpeechChunks(text: string, maxLen: number = 80): string[] {
-    const clean = text.replace(/\[.*?\]/g, '').trim();
+    const clean = text
+      .replace(/\[.*?\]/g, '')
+      .replace(/\(.*?\)/g, '')
+      .replace(/（.*?）/g, '')
+      .trim();
     if (!clean) return [];
     if (clean.length <= maxLen) return [clean];
 
@@ -376,9 +391,11 @@ class SoundService {
   private async playNeuralCharacterVoice(
     text: string,
     rate: number,
-    profile: CharacterVoiceProfile
+    profile: CharacterVoiceProfile,
+    speechId?: number
   ): Promise<boolean> {
     if (!profile.neuralVoiceId || text.length > 120) return false;
+    if (speechId !== undefined && this.currentSpeechId !== speechId) return false;
 
     const ctx = this.getAudioContext();
     if (!ctx) return false;
@@ -396,9 +413,13 @@ class SoundService {
           : ['https://ottsy.weilbyte.dev/api/generation', '/api/tts'];
 
         for (const endpoint of endpoints) {
+          if (speechId !== undefined && this.currentSpeechId !== speechId) return false;
           try {
             const controller = new AbortController();
             const timeoutId = window.setTimeout(() => controller.abort(), 4500);
+            if (this.activeAbortController) {
+              this.activeAbortController.signal.addEventListener('abort', () => controller.abort());
+            }
 
             const res = await fetch(endpoint, {
               method: 'POST',
@@ -424,6 +445,11 @@ class SoundService {
         }
 
         if (!fetchedBase64) return false;
+        if (speechId !== undefined && this.currentSpeechId !== speechId) return false;
+
+        // Auto-cache into device IndexedDB storage for permanent offline availability!
+        const offlineKey = getOfflineAudioKey(profile.id, text);
+        audioStorage.saveBase64Audio(offlineKey, fetchedBase64, text, profile.id).catch(() => {});
 
         // Convert base64 MP3 to ArrayBuffer and decode with Web Audio API
         const binaryString = window.atob(fetchedBase64);
@@ -437,23 +463,29 @@ class SoundService {
         this.neuralBufferCache.set(cacheKey, decodedBuffer);
       }
 
+      if (speechId !== undefined && this.currentSpeechId !== speechId) return false;
+
       if (ctx.state === 'suspended') {
         await ctx.resume();
       }
 
       this.stopActivePlayback();
+      if (speechId !== undefined) {
+        // Restore speechId for this active playback after stopping previous
+        this.currentSpeechId = speechId;
+      }
 
       return new Promise<boolean>((resolve) => {
         try {
+          if (speechId !== undefined && this.currentSpeechId !== speechId) {
+            return resolve(false);
+          }
           const source = ctx.createBufferSource();
           const gainNode = ctx.createGain();
           source.buffer = decodedBuffer!;
 
           const baseScale = rate < 0.85 ? 0.70 : (rate / 0.9);
           source.playbackRate.value = Math.max(0.65, Math.min(1.2, profile.rate * baseScale));
-          if (profile.detuneCents && 'detune' in source) {
-          // No detune - preserve clean native neural voice
-          }
           gainNode.gain.value = 0.95;
 
           source.connect(gainNode);
@@ -563,12 +595,20 @@ class SoundService {
 
   // Speak Japanese with genuine character voices (real male neural voice for men via WebAudio, original voice for Mary)
   // Play bundled local MP3 if available in the app package (100% offline)
-  private playLocalBundledAudio(audioPath: string, rate: number = 1.0): Promise<boolean> {
+  private playLocalBundledAudio(audioPath: string, rate: number = 1.0, speechId?: number): Promise<boolean> {
     return new Promise((resolve) => {
       try {
+        if (speechId !== undefined && this.currentSpeechId !== speechId) {
+          return resolve(false);
+        }
         this.stopActivePlayback();
+        if (speechId !== undefined) {
+          this.currentSpeechId = speechId;
+        }
 
-        const cacheBustedPath = audioPath.includes('?') ? audioPath : `${audioPath}?v=sakura`;
+        const cacheBustedPath = audioPath.startsWith('blob:')
+          ? audioPath
+          : (audioPath.includes('?') ? audioPath : `${audioPath}?v=sakura`);
         let audio = this.audioCache.get(cacheBustedPath);
         if (!audio) {
           audio = new Audio(cacheBustedPath);
@@ -606,6 +646,10 @@ class SoundService {
           resolve(false);
         };
 
+        if (speechId !== undefined && this.currentSpeechId !== speechId) {
+          return resolve(false);
+        }
+
         const playPromise = audio.play();
         if (playPromise !== undefined) {
           playPromise.catch(() => resolve(false));
@@ -622,22 +666,36 @@ class SoundService {
       this.sequenceTimer = null;
     }
 
-    const cleanText = text.replace(/\[.*?\]/g, '').trim();
+    // Strip square brackets [Furigana] and parentheses translations (e.g. "みます (veo)" -> "みます")
+    const cleanText = text
+      .replace(/\[.*?\]/g, '')
+      .replace(/\(.*?\)/g, '')
+      .replace(/（.*?）/g, '')
+      .trim();
     if (!cleanText) return;
 
     this.getAudioContext();
     this.stopActivePlayback();
 
+    const speechId = ++this.currentSpeechId;
+    const abortController = new AbortController();
+    this.activeAbortController = abortController;
+
     const charProfile = this.getCharacterProfile(speakerOrVoiceId);
     const isSlow = rate < 0.85;
 
-    // 1. Direct offline match: if the full text has a pre-rendered audio file, play it!
+    // 1. Direct offline match: if the character has a pre-rendered audio file in APK or device storage, play it!
     // (Works seamlessly for BOTH normal 1.0x and slow 🐢 0.70x with 100% voice fidelity)
     const slowRate = 0.70;
     const localFullKey = getOfflineAudioKey(charProfile.id, cleanText);
-    const localFullPath = LOCAL_AUDIO_MANIFEST[localFullKey] || (charProfile.id !== 'mary' ? LOCAL_AUDIO_MANIFEST[getOfflineAudioKey('mary', cleanText)] : undefined);
+    let localFullPath = LOCAL_AUDIO_MANIFEST[localFullKey];
+    if (!localFullPath) {
+      const storedUrl = await audioStorage.getAudioUrl(localFullKey);
+      if (storedUrl) localFullPath = storedUrl;
+    }
     if (localFullPath) {
-      const playedFullLocal = await this.playLocalBundledAudio(localFullPath, isSlow ? slowRate : 1.0);
+      const playedFullLocal = await this.playLocalBundledAudio(localFullPath, isSlow ? slowRate : 1.0, speechId);
+      if (this.currentSpeechId !== speechId) return;
       if (playedFullLocal) return;
     }
 
@@ -645,37 +703,43 @@ class SoundService {
     const chunks = this.splitIntoSpeechChunks(cleanText, isSlow ? 32 : 75);
 
     for (let cIdx = 0; cIdx < chunks.length; cIdx++) {
+      if (this.currentSpeechId !== speechId) return;
       const chunk = chunks[cIdx];
       let played = false;
 
-      // Check bundled audio for this specific chunk
+      // Check bundled audio in APK or device storage for this specific character
       const localChunkKey = getOfflineAudioKey(charProfile.id, chunk);
-      const localChunkPath = LOCAL_AUDIO_MANIFEST[localChunkKey] || (charProfile.id !== 'mary' ? LOCAL_AUDIO_MANIFEST[getOfflineAudioKey('mary', chunk)] : undefined);
-      if (localChunkPath) {
-        played = await this.playLocalBundledAudio(localChunkPath, isSlow ? slowRate : rate);
+      let localChunkPath = LOCAL_AUDIO_MANIFEST[localChunkKey];
+      if (!localChunkPath) {
+        const storedChunk = await audioStorage.getAudioUrl(localChunkKey);
+        if (storedChunk) localChunkPath = storedChunk;
       }
+      if (localChunkPath) {
+        played = await this.playLocalBundledAudio(localChunkPath, isSlow ? slowRate : rate, speechId);
+      }
+      if (this.currentSpeechId !== speechId) return;
 
       // If chunk had no standalone file, try full text file if there's only 1 chunk
-      if (!played && chunks.length === 1) {
-        const localFullKey = getOfflineAudioKey(charProfile.id, cleanText);
-        const localFullPath = LOCAL_AUDIO_MANIFEST[localFullKey] || (charProfile.id !== 'mary' ? LOCAL_AUDIO_MANIFEST[getOfflineAudioKey('mary', cleanText)] : undefined);
-        if (localFullPath) {
-          played = await this.playLocalBundledAudio(localFullPath, isSlow ? slowRate : rate);
-        }
+      if (!played && chunks.length === 1 && localFullPath) {
+        played = await this.playLocalBundledAudio(localFullPath, isSlow ? slowRate : rate, speechId);
       }
+      if (this.currentSpeechId !== speechId) return;
 
-      // Fallback 1: Dedicated neural voice
+      // Fallback 1: Dedicated character neural voice (Takeshi, Yamashita, Michiko, etc.)
       if (!played && charProfile.neuralVoiceId) {
-        played = await this.playNeuralCharacterVoice(chunk, isSlow ? slowRate : rate, charProfile);
+        played = await this.playNeuralCharacterVoice(chunk, isSlow ? slowRate : rate, charProfile, speechId);
       }
+      if (this.currentSpeechId !== speechId) return;
 
-      // Fallback 2: Browser SpeechSynthesis
+      // Fallback 2: Browser/System SpeechSynthesis (matches character gender and tone)
       if (!played) {
         const jaVoices = this.getAvailableJapaneseVoices();
         const chosenVoice = this.findSystemVoiceForCharacter(jaVoices, charProfile);
         if (chosenVoice && typeof window !== 'undefined' && 'speechSynthesis' in window) {
+          if (this.currentSpeechId !== speechId) return;
           played = await new Promise<boolean>((resolve) => {
             try {
+              if (this.currentSpeechId !== speechId) return resolve(false);
               if (window.speechSynthesis.paused) {
                 window.speechSynthesis.resume();
               }
@@ -702,16 +766,33 @@ class SoundService {
           });
         }
       }
+      if (this.currentSpeechId !== speechId) return;
+
+      // Fallback 3: Emergency offline audio (Mary fallback to avoid silence if device has no TTS)
+      if (!played && charProfile.id !== 'mary') {
+        const maryKey = getOfflineAudioKey('mary', chunk);
+        let maryPath = LOCAL_AUDIO_MANIFEST[maryKey] || (chunks.length === 1 ? LOCAL_AUDIO_MANIFEST[getOfflineAudioKey('mary', cleanText)] : undefined);
+        if (!maryPath) {
+          const storedMary = await audioStorage.getAudioUrl(maryKey);
+          if (storedMary) maryPath = storedMary;
+        }
+        if (maryPath) {
+          played = await this.playLocalBundledAudio(maryPath, isSlow ? slowRate : rate, speechId);
+        }
+      }
+      if (this.currentSpeechId !== speechId) return;
 
       // Fallback 3: Online dictionary
       if (!played) {
         await this.playOnlineChunk(chunk, isSlow ? slowRate : rate);
       }
+      if (this.currentSpeechId !== speechId) return;
 
       // Natural pause between phrases in slow mode
       if (isSlow && cIdx < chunks.length - 1) {
         await new Promise((r) => window.setTimeout(r, 420));
       }
+      if (this.currentSpeechId !== speechId) return;
     }
   }
 

@@ -220,21 +220,21 @@ export const VocabularyPage: React.FC<VocabularyPageProps> = ({ showRomaji = tru
   const getPosBadge = (pos: VocabWord['pos']) => {
     switch (pos) {
       case 'noun':
-        return { label: 'Sustantivo', color: 'bg-blue-100 text-blue-700 dark:bg-blue-900/40 dark:text-blue-300' };
+        return { label: 'Sustantivo', color: 'bg-blue-100 text-blue-700 border border-blue-200 dark:bg-blue-950/80 dark:text-blue-200 dark:border-blue-700/60' };
       case 'verb-u':
-        return { label: 'Verbo U (五段)', color: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300' };
+        return { label: 'Verbo U (五段)', color: 'bg-emerald-100 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/80 dark:text-emerald-200 dark:border-emerald-700/60' };
       case 'verb-ru':
-        return { label: 'Verbo Ru (一段)', color: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-900/40 dark:text-emerald-300' };
+        return { label: 'Verbo Ru (一段)', color: 'bg-emerald-100 text-emerald-700 border border-emerald-200 dark:bg-emerald-950/80 dark:text-emerald-200 dark:border-emerald-700/60' };
       case 'verb-irr':
-        return { label: 'Verbo Irreg.', color: 'bg-teal-100 text-teal-700 dark:bg-teal-900/40 dark:text-teal-300' };
+        return { label: 'Verbo Irreg.', color: 'bg-teal-100 text-teal-700 border border-teal-200 dark:bg-teal-950/80 dark:text-teal-200 dark:border-teal-700/60' };
       case 'adj-i':
-        return { label: 'Adj. い', color: 'bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300' };
+        return { label: 'Adj. い', color: 'bg-amber-100 text-amber-700 border border-amber-200 dark:bg-amber-950/80 dark:text-amber-200 dark:border-amber-700/60' };
       case 'adj-na':
-        return { label: 'Adj. な', color: 'bg-orange-100 text-orange-700 dark:bg-orange-900/40 dark:text-orange-300' };
+        return { label: 'Adj. な', color: 'bg-orange-100 text-orange-700 border border-orange-200 dark:bg-orange-950/80 dark:text-orange-200 dark:border-orange-700/60' };
       case 'adverb':
-        return { label: 'Adverbio', color: 'bg-purple-100 text-purple-700 dark:bg-purple-900/40 dark:text-purple-300' };
+        return { label: 'Adverbio', color: 'bg-purple-100 text-purple-700 border border-purple-200 dark:bg-purple-950/80 dark:text-purple-200 dark:border-purple-700/60' };
       default:
-        return { label: 'Expresión', color: 'bg-rose-100 text-rose-700 dark:bg-rose-900/40 dark:text-rose-300' };
+        return { label: 'Expresión', color: 'bg-rose-100 text-rose-700 border border-rose-200 dark:bg-rose-950/80 dark:text-rose-200 dark:border-rose-700/60' };
     }
   };
 
@@ -443,7 +443,7 @@ export const VocabularyPage: React.FC<VocabularyPageProps> = ({ showRomaji = tru
                     <div className="flex items-start justify-between gap-3">
                       <div className="flex-1 min-w-0">
                         <div className="flex flex-wrap items-center gap-1.5 mb-1">
-                          <span className="px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-gray-700">
+                          <span className="px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider bg-gray-100 dark:bg-[#131f24] text-gray-600 dark:text-gray-200 border border-gray-200 dark:border-[#283842]">
                             {word.lesson === 0 ? 'Intro' : `L${word.lesson}`}
                           </span>
                           <span className={`px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider ${badge.color}`}>
@@ -456,7 +456,7 @@ export const VocabularyPage: React.FC<VocabularyPageProps> = ({ showRomaji = tru
                                 e.stopPropagation();
                                 handleOpenInConjugator(word.id);
                               }}
-                              className="px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider bg-duo-purple/15 text-duo-purple hover:bg-duo-purple hover:text-white transition-colors flex items-center gap-1 cursor-pointer"
+                              className="px-2 py-0.5 rounded-md text-[9px] font-black uppercase tracking-wider bg-purple-50 dark:bg-purple-950/80 text-duo-purple dark:text-purple-300 border border-purple-200 dark:border-purple-700/60 hover:bg-duo-purple hover:text-white transition-colors flex items-center gap-1 cursor-pointer"
                             >
                               <Wand2 className="w-2.5 h-2.5" />
                               <span>Conjugar</span>

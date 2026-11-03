@@ -1831,16 +1831,16 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "d1-1-a",
-                "text": "Son las 12:30 (じゅうにじはん)",
+                "text": "Son las 12:30",
                 "isCorrect": true
               },
               {
                 "id": "d1-1-b",
-                "text": "Son las 2:30 (にじはん)"
+                "text": "Son las 2:30"
               },
               {
                 "id": "d1-1-c",
-                "text": "Son las 10:00 (じゅうじ)"
+                "text": "Son las 10:00"
               }
             ],
             "correctAnswerId": "d1-1-a",
@@ -1885,7 +1885,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "d1-2-a",
-                "text": "Estudia japonés y está en segundo año (にねんせい)",
+                "text": "Estudia japonés y está en segundo año",
                 "isCorrect": true
               },
               {
@@ -3116,12 +3116,12 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "wb-21",
-                "text": "21 años (にじゅういっさい)",
+                "text": "21 años",
                 "isCorrect": true
               },
               {
                 "id": "wb-20",
-                "text": "20 años (はたち)"
+                "text": "20 años"
               },
               {
                 "id": "wb-22",
@@ -3179,16 +3179,16 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "err-1",
-                "text": "メアリーさん は アメリカ人 の です。(Uso incorrecto de の al final)",
+                "text": "メアリーさん は アメリカ人 の です。",
                 "isCorrect": true
               },
               {
                 "id": "err-2",
-                "text": "メアリーさんはアメリカ人です。(Correcta)"
+                "text": "メアリーさんはアメリカ人です。"
               },
               {
                 "id": "err-3",
-                "text": "メアリーさんは学生ですか。(Correcta)"
+                "text": "メアリーさんは学生ですか。"
               }
             ],
             "correctAnswerId": "err-1",
@@ -3317,12 +3317,12 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "d2-1-a",
-                "text": "3,000 yenes (さんぜんえん)",
+                "text": "3,000 yenes",
                 "isCorrect": true
               },
               {
                 "id": "d2-1-b",
-                "text": "300 yenes (さんびゃくえん)"
+                "text": "300 yenes"
               },
               {
                 "id": "d2-1-c",
@@ -3371,7 +3371,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "d2-2-a",
-                "text": "Tonkatsu, que es carne de cerdo (ぶたにく)",
+                "text": "Tonkatsu, que es carne de cerdo",
                 "isCorrect": true
               },
               {
@@ -3511,16 +3511,16 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "l-shin",
-                "text": "Periódico (しんぶん)",
+                "text": "Periódico",
                 "isCorrect": true
               },
               {
                 "id": "l-hon",
-                "text": "Libro (ほん)"
+                "text": "Libro"
               },
               {
                 "id": "l-zash",
-                "text": "Revista (ざっし)"
+                "text": "Revista"
               }
             ],
             "correctAnswerId": "l-shin",
@@ -4147,7 +4147,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "neg-ja",
-                "text": "肉じゃありません (Niku ja arimasen)",
+                "text": "肉じゃありません",
                 "isCorrect": true
               },
               {
@@ -4328,7 +4328,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "wb2-blue-umb",
-                "text": "El paraguas azul (あおいかさ)",
+                "text": "El paraguas azul",
                 "isCorrect": true
               },
               {
@@ -4567,7 +4567,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "d3-2-a",
-                "text": "En Kioto a las 11:30 (じゅういちじはん)",
+                "text": "En Kioto a las 11:30",
                 "isCorrect": true
               },
               {
@@ -4662,16 +4662,16 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "l-ben",
-                "text": "Estudiar (べんきょうします)",
+                "text": "Estudiar",
                 "isCorrect": true
               },
               {
                 "id": "l-kai",
-                "text": "Comprar (かいます)"
+                "text": "Comprar"
               },
               {
                 "id": "l-han",
-                "text": "Hablar (はなします)"
+                "text": "Hablar"
               }
             ],
             "correctAnswerId": "l-ben",
@@ -4829,23 +4829,23 @@ export const genkiCurriculum: Unit[] = [
             "pairs": [
               {
                 "id": "c-n1",
-                "left": "のみます (bebo)",
-                "right": "のみません (no bebo)"
+                "left": "のみます",
+                "right": "のみません"
               },
               {
                 "id": "c-n2",
-                "left": "みます (veo)",
-                "right": "みません (no veo)"
+                "left": "みます",
+                "right": "みません"
               },
               {
                 "id": "c-n3",
-                "left": "いきます (voy)",
-                "right": "いきません (no voy)"
+                "left": "いきます",
+                "right": "いきません"
               },
               {
                 "id": "c-n4",
-                "left": "します (hago)",
-                "right": "しません (no hago)"
+                "left": "します",
+                "right": "しません"
               }
             ],
             "explanation": "〜ます ➔ 〜ません es la regla universal."
@@ -5284,7 +5284,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "inv-cof",
-                "text": "コーヒーをのみませんか。(Koohii o nomimasen ka)",
+                "text": "コーヒーをのみませんか。",
                 "isCorrect": true
               },
               {
@@ -5578,7 +5578,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "d4-1-a",
-                "text": "Porque Takeshi estaba en la salida norte (きたぐち) y Mary en la salida sur (みなみぐち)",
+                "text": "Porque Takeshi estaba en la salida norte y Mary en la salida sur",
                 "isCorrect": true
               },
               {
@@ -5625,7 +5625,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "d4-2-a",
-                "text": "Cerca de la estación, al lado de la tienda departamental (デパートのとなり)",
+                "text": "Cerca de la estación, al lado de la tienda departamental",
                 "isCorrect": true
               },
               {
@@ -5714,7 +5714,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "l4-cafe",
-                "text": "Cafetería tradicional (きっさてん)",
+                "text": "Cafetería tradicional",
                 "isCorrect": true
               },
               {
@@ -5788,22 +5788,22 @@ export const genkiCurriculum: Unit[] = [
             "pairs": [
               {
                 "id": "ep1",
-                "left": "いぬ (perro)",
+                "left": "いぬ",
                 "right": "います"
               },
               {
                 "id": "ep2",
-                "left": "本 (libro)",
+                "left": "ほん",
                 "right": "あります"
               },
               {
                 "id": "ep3",
-                "left": "学生 (estudiante)",
+                "left": "がくせい",
                 "right": "います"
               },
               {
                 "id": "ep4",
-                "left": "机 (escritorio)",
+                "left": "つくえ",
                 "right": "あります"
               }
             ],
@@ -6014,7 +6014,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "pst-ben",
-                "text": "きのう 日本語を 勉強しました (benkyou shimashita)",
+                "text": "きのう 日本語を 勉強しました",
                 "isCorrect": true
               },
               {
@@ -6036,7 +6036,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "pst-neg-tab",
-                "text": "あさごはんを たべませんでした (tabemasen deshita)",
+                "text": "あさごはんを たべませんでした",
                 "isCorrect": true
               },
               {
@@ -6096,7 +6096,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "pst-deshita",
-                "text": "きのうは 日曜日でした (nichiyoubi deshita)",
+                "text": "きのうは 日曜日でした",
                 "isCorrect": true
               },
               {
@@ -6696,7 +6696,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "l5-fun-pst",
-                "text": "Fue muy divertido (たのしかったです).",
+                "text": "Fue muy divertido.",
                 "isCorrect": true
               },
               {
@@ -6897,7 +6897,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "i-pst-muz",
-                "text": "きのうのテストは むずかしかったです (muzukashikatta desu)",
+                "text": "きのうのテストは むずかしかったです",
                 "isCorrect": true
               },
               {
@@ -6919,7 +6919,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "i-pst-neg-at",
-                "text": "あつくなかったです (atsukunakatta desu)",
+                "text": "あつくなかったです",
                 "isCorrect": true
               },
               {
@@ -7155,7 +7155,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "mashou-go",
-                "text": "いっしょに いきましょう！ (Ikimashou)",
+                "text": "いっしょに いきましょう！",
                 "isCorrect": true
               },
               {
@@ -7872,7 +7872,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "perm-shashin",
-                "text": "しゃしんをとってもいいですか。(Shashin o totte mo ii desu ka)",
+                "text": "しゃしんをとってもいいですか。",
                 "isCorrect": true
               },
               {
@@ -7894,7 +7894,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "prohib-wa",
-                "text": "ここに入ってはいけません。(Haitte wa ikemasen - No debes entrar)",
+                "text": "ここに入ってはいけません。",
                 "isCorrect": true
               },
               {
@@ -8130,7 +8130,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "tb6-1",
-                "text": "まどを しめましょうか (Mado o shimemashou ka)",
+                "text": "まどを しめましょうか",
                 "isCorrect": true
               },
               {
@@ -8742,16 +8742,16 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "l7-sis",
-                "text": "Hermana menor (いもうと)",
+                "text": "Hermana menor",
                 "isCorrect": true
               },
               {
                 "id": "l7-bro",
-                "text": "Hermano menor (おとうと)"
+                "text": "Hermano menor"
               },
               {
                 "id": "l7-mom",
-                "text": "Madre (はは)"
+                "text": "Madre"
               }
             ],
             "correctAnswerId": "l7-sis",
@@ -8942,7 +8942,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "desc-se",
-                "text": "メアリーさんは せが たかいです (Mary-san wa se ga takai desu)",
+                "text": "メアリーさんは せが たかいです",
                 "isCorrect": true
               },
               {
@@ -9213,12 +9213,12 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "w7-4stu",
-                "text": "En esta clase hay 4 estudiantes (よにん).",
+                "text": "En esta clase hay 4 estudiantes.",
                 "isCorrect": true
               },
               {
                 "id": "w7-4stu2",
-                "text": "En esta clase hay 2 estudiantes (ふたり)."
+                "text": "En esta clase hay 2 estudiantes."
               },
               {
                 "id": "w7-4stu3",
@@ -11131,7 +11131,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "w9l-1",
-                "text": "El examen de ayer no estuvo muy difícil (あまりむずかしくなかった).",
+                "text": "El examen de ayer no estuvo muy difícil.",
                 "isCorrect": true
               },
               {
@@ -11153,7 +11153,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "yoku-na",
-                "text": "よくなかった (yokunakatta)",
+                "text": "よくなかった",
                 "isCorrect": true
               },
               {
@@ -12023,7 +12023,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "w10l-1",
-                "text": "Pregunta cuál le gusta más entre sushi y tempura; responde que le gustan ambos (どちらも好きです).",
+                "text": "Pregunta cuál le gusta más entre sushi y tempura; responde que le gustan ambos.",
                 "isCorrect": true
               },
               {
@@ -14889,12 +14889,12 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "l14-cat3",
-                "text": "Cría / tiene 3 gatos (さんびき).",
+                "text": "Cría / tiene 3 gatos.",
                 "isCorrect": true
               },
               {
                 "id": "l14-cat1",
-                "text": "Tiene 1 gato (いっぴき)."
+                "text": "Tiene 1 gato."
               },
               {
                 "id": "l14-cat2",
@@ -15138,7 +15138,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "l14-mo-5",
-                "text": "¡Leyó nada menos que 5 libros esta semana! (ごさつも)",
+                "text": "¡Leyó nada menos que 5 libros esta semana!",
                 "isCorrect": true
               },
               {
@@ -16777,7 +16777,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "toii-1",
-                "text": "みつかるといいですね (Mitsukaru to ii desu ne)",
+                "text": "みつかるといいですね",
                 "isCorrect": true
               },
               {
@@ -17734,7 +17734,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "naku-1",
-                "text": "はらわなくてもいいです (harawanakute mo ii desu)",
+                "text": "はらわなくてもいいです",
                 "isCorrect": true
               },
               {
@@ -18476,7 +18476,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "l18-ice",
-                "text": "Mi hermano menor se comió todito el helado (たべちゃった).",
+                "text": "Mi hermano menor se comió todito el helado.",
                 "isCorrect": true
               },
               {
@@ -18599,7 +18599,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "bayo-1",
-                "text": "もっと 勉強すれば よかったです (benkyou sureba yokatta desu)",
+                "text": "もっと 勉強すれば よかったです",
                 "isCorrect": true
               },
               {
@@ -19688,7 +19688,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "w19-pres",
-                "text": "El presidente de la compañía ya se retiró / regresó a casa (お帰りになりました).",
+                "text": "El presidente de la compañía ya se retiró / regresó a casa.",
                 "isCorrect": true
               },
               {
@@ -19939,7 +19939,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "l19-wb-1",
-                "text": "¿Dónde vive usted, profesor? (すんでいらっしゃいますか)",
+                "text": "¿Dónde vive usted, profesor?",
                 "isCorrect": true
               },
               {
@@ -20760,7 +20760,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "mousu-1",
-                "text": "田中と申します (Tanaka to moushimasu)",
+                "text": "田中と申します",
                 "isCorrect": true
               },
               {
@@ -21008,7 +21008,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "l21-step",
-                "text": "En el tren, la persona de al lado le pisó el pie (あしをふまれました).",
+                "text": "En el tren, la persona de al lado le pisó el pie.",
                 "isCorrect": true
               },
               {
@@ -21431,7 +21431,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "w21-tbl",
-                "text": "Los platos ya han sido colocados / acomodados sobre la mesa (ならべてあります).",
+                "text": "Los platos ya han sido colocados / acomodados sobre la mesa.",
                 "isCorrect": true
               },
               {
@@ -21881,7 +21881,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "l22-nasai",
-                "text": "¡Haz tu tarea rápido! (Orden de padres/maestros con 〜なさい).",
+                "text": "¡Haz tu tarea rápido! (Orden de padres/maestros).",
                 "isCorrect": true
               },
               {
@@ -22048,7 +22048,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "l22-dou",
-                "text": "Perdí mi llave. ¿Qué debería hacer? (どうすればいいですか).",
+                "text": "Perdí mi llave. ¿Qué debería hacer?",
                 "isCorrect": true
               },
               {
@@ -22171,7 +22171,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "letme-1",
-                "text": "ぜひ わたしに 行かせてください (Watashi ni ikasete kudasai)",
+                "text": "ぜひ わたしに 行かせてください",
                 "isCorrect": true
               },
               {
