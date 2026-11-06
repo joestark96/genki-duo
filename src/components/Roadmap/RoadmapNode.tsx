@@ -137,14 +137,11 @@ export const RoadmapNode: React.FC<RoadmapNodeProps> = ({
       {/* 3D Round Node Button */}
       <button
         onClick={() => {
-          if (!isLocked) {
-            sound.playTap();
-            onSelectNode(node);
-          }
+          sound.playTap();
+          onSelectNode(node);
         }}
-        disabled={isLocked}
-        className={`relative w-20 h-20 rounded-full flex items-center justify-center transition-all duration-150 active:translate-y-1 active:shadow-none ${colors.bg} ${colors.shadow} ${
-          isLocked ? 'cursor-not-allowed opacity-80' : 'cursor-pointer hover:brightness-105'
+        className={`relative w-20 h-20 rounded-full flex items-center justify-center transition-all duration-150 active:translate-y-1 active:shadow-none cursor-pointer hover:brightness-105 ${colors.bg} ${colors.shadow} ${
+          isLocked ? 'opacity-90' : ''
         }`}
       >
         {/* Pulsing halo ring for active node */}

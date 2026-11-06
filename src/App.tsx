@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { setupIonicReact, IonApp, IonContent } from '@ionic/react';
-import { UserProfile, Unit, Flashcard } from './types';
+import { UserProfile, Unit, Flashcard, LessonNode } from './types';
 import { genkiCurriculum } from './data/genkiCurriculum';
 import { initialFlashcards } from './data/flashcardsData';
 import { dbService } from './services/db';
@@ -431,66 +431,135 @@ export const App: React.FC = () => {
     }
   };
 
-  // Skip a unit and immediately unlock the next one
-  const handleSkipUnit = async (unitId: number) => {
-    const unitIndex = units.findIndex(u => u.id === unitId);
-    if (unitIndex === -1) return;
+  // Skip a unit or multiple units/lessons up to target
+  const handleSkipUnit = async (unitId: number, targetNodeId?: string, skippedNodeIds?: string[]) => {
+    const toSkipSet = new Set(skippedNodeIds || []);
+    let nodesToPersist: { node: LessonNode; unitId: number }[] = [];
+    let unlockedTargetNodeId: string | null = null;
+    let unlockedTargetUnitId: number | null = null;
+    let newUnits: Unit[] = [];
 
-    const targetUnit = units[unitIndex];
-    const isUnlocked = targetUnit.nodes.some(n => n.unlocked);
-    if (!isUnlocked) return;
+    if (toSkipSet.size > 0) {
+      newUnits = units.map(unit => {
+        let unitChanged = false;
+        const newNodes = unit.nodes.map(node => {
+          if (toSkipSet.has(node.id)) {
+            unitChanged = true;
+            const updated: LessonNode = {
+              ...node,
+              unlocked: true,
+              completedSteps: node.totalSteps,
+              stars: Math.max(node.stars, 1)
+            };
+            nodesToPersist.push({ node: updated, unitId: unit.id });
+            return updated;
+          }
+          if (targetNodeId && node.id === targetNodeId) {
+            unitChanged = true;
+            unlockedTargetNodeId = node.id;
+            unlockedTargetUnitId = unit.id;
+            const updated: LessonNode = { ...node, unlocked: true };
+            nodesToPersist.push({ node: updated, unitId: unit.id });
+            return updated;
+          }
+          return node;
+        });
 
-    // 1. Mark all nodes in this unit as completed with at least 1 star
-    const updatedNodes = targetUnit.nodes.map(n => ({
-      ...n,
-      unlocked: true,
-      completedSteps: n.totalSteps,
-      stars: Math.max(n.stars, 1)
-    }));
+        // Si la unidad es la objetivo y no se especificó un nodo individual, desbloquear su primer nodo
+        if (!targetNodeId && unit.id === unitId) {
+          if (newNodes.length > 0 && !newNodes[0].unlocked) {
+            unitChanged = true;
+            unlockedTargetNodeId = newNodes[0].id;
+            unlockedTargetUnitId = unit.id;
+            newNodes[0] = { ...newNodes[0], unlocked: true };
+            nodesToPersist.push({ node: newNodes[0], unitId: unit.id });
+          }
+        }
 
-    // 2. Unlock the first node of the next unit if it exists
-    let nextUnitFirstNodeId: string | null = null;
-    let nextUnitId: number | null = null;
+        return unitChanged ? { ...unit, nodes: newNodes } : unit;
+      });
+    } else {
+      // Fallback: saltar una sola unidad desbloqueada
+      const unitIndex = units.findIndex(u => u.id === unitId);
+      if (unitIndex === -1) return;
 
-    const newUnits = units.map((unit, idx) => {
-      if (idx === unitIndex) {
-        return { ...unit, nodes: updatedNodes };
-      }
-      if (idx === unitIndex + 1 && unit.nodes.length > 0) {
-        nextUnitFirstNodeId = unit.nodes[0].id;
-        nextUnitId = unit.id;
-        const newNodes = [...unit.nodes];
-        newNodes[0] = { ...newNodes[0], unlocked: true };
-        return { ...unit, nodes: newNodes };
-      }
-      return unit;
-    });
+      const targetUnit = units[unitIndex];
+      const isUnlocked = targetUnit.nodes.some(n => n.unlocked);
+      if (!isUnlocked) return;
+
+      const updatedNodes = targetUnit.nodes.map(n => ({
+        ...n,
+        unlocked: true,
+        completedSteps: n.totalSteps,
+        stars: Math.max(n.stars, 1)
+      }));
+
+      newUnits = units.map((unit, idx) => {
+        if (idx === unitIndex) {
+          return { ...unit, nodes: updatedNodes };
+        }
+        if (idx === unitIndex + 1 && unit.nodes.length > 0) {
+          unlockedTargetNodeId = unit.nodes[0].id;
+          unlockedTargetUnitId = unit.id;
+          const newNodes = [...unit.nodes];
+          newNodes[0] = { ...newNodes[0], unlocked: true };
+          return { ...unit, nodes: newNodes };
+        }
+        return unit;
+      });
+
+      updatedNodes.forEach(n => nodesToPersist.push({ node: n, unitId }));
+    }
 
     setUnits(newUnits);
 
-    // 3. Award +50 XP, update streak, and play victory sound
+    // Persistir nodos actualizados a SQLite
+    for (const item of nodesToPersist) {
+      await dbService.saveLessonNodeProgress(
+        item.node.id,
+        item.unitId,
+        true,
+        item.node.completedSteps,
+        item.node.totalSteps,
+        item.node.stars
+      );
+    }
+    if (unlockedTargetNodeId && unlockedTargetUnitId !== null) {
+      await dbService.saveLessonNodeProgress(
+        unlockedTargetNodeId,
+        unlockedTargetUnitId,
+        true,
+        0,
+        3,
+        0
+      );
+    }
+
+    // Calcular XP y gemas según el alcance del salto
+    const skippedCount = toSkipSet.size > 0 ? toSkipSet.size : 1;
+    const gainedXp = Math.min(350, Math.max(50, skippedCount * 25));
+    const gainedGems = Math.min(100, Math.max(20, Math.floor(skippedCount * 5)));
+
     const today = getLocalDateKey();
     const shouldIncrementStreak = profile.streakDays === 0 || profile.lastActiveDate !== today;
-    recordDailyLessonActivity(50, profile.hearts);
+    recordDailyLessonActivity(gainedXp, profile.hearts);
+
     const updatedProfile: UserProfile = {
       ...profile,
-      xp: profile.xp + 50,
-      gems: profile.gems + 20,
+      xp: profile.xp + gainedXp,
+      gems: profile.gems + gainedGems,
       streakDays: shouldIncrementStreak ? profile.streakDays + 1 : profile.streakDays,
       lastActiveDate: today
     };
     setProfile(updatedProfile);
     await dbService.saveUserProfile(updatedProfile);
 
-    // 4. Persist to SQLite
-    for (const node of updatedNodes) {
-      await dbService.saveLessonNodeProgress(node.id, unitId, true, node.totalSteps, node.totalSteps, node.stars);
-    }
-    if (nextUnitFirstNodeId && nextUnitId !== null) {
-      await dbService.saveLessonNodeProgress(nextUnitFirstNodeId, nextUnitId, true, 0, 3, 0);
-    }
-
     sound.playLessonComplete();
+
+    // Notificar al roadmap para enfocar la nueva lección disponible
+    setTimeout(() => {
+      window.dispatchEvent(new CustomEvent('focus-roadmap-active-node'));
+    }, 400);
   };
 
   // Rate a flashcard in SRS

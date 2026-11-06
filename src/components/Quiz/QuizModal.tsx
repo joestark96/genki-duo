@@ -125,7 +125,7 @@ interface QuizModalProps {
   isPractice?: boolean;
   onClose: () => void;
   onCompleteLesson: (nodeId: string, earnedXp: number, stars: number) => void;
-  onPassJumpAhead?: (unitId: number) => void;
+  onPassJumpAhead?: (unitId: number, targetNodeId?: string, skippedNodeIds?: string[]) => void;
   onDeductHeart: () => void;
 }
 
@@ -458,22 +458,32 @@ export const QuizModal: React.FC<QuizModalProps> = ({
 
   // --- JUMP AHEAD PASSED SCREEN ---
   if (status === 'jump-passed') {
+    const multi = lesson as any;
+    const skippedCount = multi.skippedNodeIds ? multi.skippedNodeIds.length : 1;
+    const isMultiUnit = multi.isMultiUnit || skippedCount > 1;
+    const earnedXp = isMultiUnit ? Math.min(300, skippedCount * 25 + 50) : 100;
+
     return (
       <div className="fixed inset-0 z-[100] bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between p-6 animate-fade-in">
         <div className="flex-1 flex flex-col items-center justify-center text-center max-w-sm mx-auto">
           <div className="w-24 h-24 bg-duo-green rounded-full flex items-center justify-center mb-6 shadow-duo-btn border-4 border-duo-green-dark animate-bounce">
             <Trophy className="w-12 h-12 text-white stroke-[2.5px]" />
           </div>
-          <h2 className="text-2xl font-black text-gray-800 dark:text-gray-100 mb-1">¡Prueba de Salto Superada!</h2>
+          <h2 className="text-2xl font-black text-gray-800 dark:text-gray-100 mb-1">
+            {isMultiUnit ? '¡Salto Multilección Superado!' : '¡Prueba de Salto Superada!'}
+          </h2>
           <p className="text-gray-500 dark:text-gray-400 font-bold text-sm mb-6">
-            Has demostrado tu dominio con solo {3 - jumpChancesLeft} error(es). ¡Unidad saltada y siguiente nivel desbloqueado!
+            Has demostrado tu dominio con solo {3 - jumpChancesLeft} error(es).
+            {isMultiUnit
+              ? ` ¡Completaste ${skippedCount} lecciones pendientes y desbloqueaste tu objetivo!`
+              : ' ¡Unidad saltada y siguiente nivel desbloqueado!'}
           </p>
 
           <div className="grid grid-cols-2 gap-4 w-full mb-8">
             <div className="bg-duo-yellow-light/60 dark:bg-duo-yellow/10 border-2 border-duo-yellow rounded-2xl p-4 flex flex-col items-center">
               <span className="text-xs font-black text-duo-yellow-dark dark:text-duo-yellow uppercase">EXP Ganada</span>
               <span className="text-2xl font-black text-duo-yellow-dark dark:text-duo-yellow flex items-center gap-1">
-                <Sparkles className="w-5 h-5" /> +100 XP
+                <Sparkles className="w-5 h-5" /> +{earnedXp} XP
               </span>
             </div>
             <div className="bg-duo-green-light/60 dark:bg-duo-green/10 border-2 border-duo-green rounded-2xl p-4 flex flex-col items-center">
@@ -488,14 +498,18 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         <button
           onClick={() => {
             if (onPassJumpAhead) {
-              onPassJumpAhead(lesson.unitId);
+              onPassJumpAhead(
+                multi.targetUnitId ?? lesson.unitId,
+                multi.targetNodeId,
+                multi.skippedNodeIds
+              );
             }
             onClose();
             handleClose();
           }}
-          className="w-full max-w-sm mx-auto py-3.5 bg-duo-green hover:bg-duo-green-dark text-white font-black text-lg rounded-2xl shadow-[0_5px_0_0_#46a302] active:translate-y-1 active:shadow-none transition-all uppercase tracking-wider"
+          className="w-full max-w-sm mx-auto py-3.5 bg-duo-green hover:bg-duo-green-dark text-white font-black text-lg rounded-2xl shadow-[0_5px_0_0_#46a302] active:translate-y-1 active:shadow-none transition-all uppercase tracking-wider cursor-pointer"
         >
-          Desbloquear Siguiente Unidad
+          {isMultiUnit ? 'Ir a las Nuevas Lecciones' : 'Desbloquear Siguiente Unidad'}
         </button>
       </div>
     );
@@ -503,6 +517,9 @@ export const QuizModal: React.FC<QuizModalProps> = ({
 
   // --- JUMP AHEAD FAILED SCREEN (3 ERRORS) ---
   if (status === 'jump-failed') {
+    const multi = lesson as any;
+    const isMultiUnit = multi.isMultiUnit || (multi.skippedNodeIds && multi.skippedNodeIds.length > 1);
+
     return (
       <div className="fixed inset-0 z-[100] bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between p-6 animate-fade-in">
         <div className="flex-1 flex flex-col items-center justify-center text-center max-w-sm mx-auto">
@@ -511,7 +528,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
           </div>
           <h2 className="text-2xl font-black text-gray-800 dark:text-gray-100 mb-2">Prueba de Salto No Superada</h2>
           <p className="text-gray-600 dark:text-gray-400 font-bold text-sm mb-4">
-            Cometiste 3 errores en el examen. Para saltarte una unidad completa debes demostrar un dominio de los temas.
+            Cometiste 3 errores en el examen. {isMultiUnit ? 'Para saltarte múltiples lecciones debes demostrar un dominio sólido de todos los temas previos.' : 'Para saltarte una unidad completa debes demostrar un dominio de los temas.'}
           </p>
           <div className="p-4 bg-gray-50 dark:bg-[#18272e] border-2 border-duo-gray-200 dark:border-[#283842] rounded-2xl text-xs font-bold text-gray-500 dark:text-gray-400 mb-6">
             💡 Consejo: Te recomendamos completar las lecciones guiadas del roadmap para dominar el vocabulario y la gramática.
@@ -520,9 +537,9 @@ export const QuizModal: React.FC<QuizModalProps> = ({
 
         <button
           onClick={handleClose}
-          className="w-full max-w-sm mx-auto py-3.5 bg-duo-blue text-white font-black text-lg rounded-2xl shadow-[0_5px_0_0_#1899d6] active:translate-y-1 active:shadow-none transition-all uppercase tracking-wider flex items-center justify-center gap-2"
+          className="w-full max-w-sm mx-auto py-3.5 bg-duo-blue text-white font-black text-lg rounded-2xl shadow-[0_5px_0_0_#1899d6] active:translate-y-1 active:shadow-none transition-all uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer"
         >
-          <RotateCcw className="w-5 h-5" /> Volver a Practicar en la Unidad
+          <RotateCcw className="w-5 h-5" /> Volver al Roadmap
         </button>
       </div>
     );

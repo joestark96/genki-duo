@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Unit, LessonNode, UserProfile } from '../types';
 import { RoadmapNode } from '../components/Roadmap/RoadmapNode';
 import { QuizModal } from '../components/Quiz/QuizModal';
-import { BookOpen, Sparkles, CheckCircle2, FastForward, ShieldAlert, Award, Dumbbell, Compass, X, Star, Play, RotateCcw } from 'lucide-react';
+import { BookOpen, Sparkles, CheckCircle2, FastForward, ShieldAlert, Award, Dumbbell, Compass, X, Star, Play, RotateCcw, Lock } from 'lucide-react';
 import { sound } from '../services/sound';
-import { createJumpAheadLesson } from '../utils/jumpAhead';
+import { createJumpAheadLesson, createMultiUnitJumpAheadLesson } from '../utils/jumpAhead';
 import { createPracticeLesson, createUnitReviewLesson } from '../utils/practiceLesson';
 import { expandLessonExercises } from '../utils/lessonExpander';
 
@@ -12,7 +12,7 @@ interface RoadmapPageProps {
   units: Unit[];
   userProfile: UserProfile;
   onCompleteLesson: (nodeId: string, earnedXp: number, stars: number) => void;
-  onSkipUnit: (unitId: number) => void;
+  onSkipUnit: (unitId: number, targetNodeId?: string, skippedNodeIds?: string[]) => void;
   onDeductHeart: () => void;
   onOpenTheory?: (unitId: number) => void;
 }
@@ -102,10 +102,29 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
 
   const handleStartJumpAhead = (unit: Unit) => {
     sound.playTap();
-    const challengeLesson = createJumpAheadLesson(unit);
-    setIsPracticeActive(false);
-    setIsJumpAheadActive(true);
-    setActiveQuizLesson(challengeLesson);
+    const challengeLesson = createMultiUnitJumpAheadLesson({
+      units,
+      targetUnitId: unit.id
+    });
+    if (challengeLesson) {
+      setIsPracticeActive(false);
+      setIsJumpAheadActive(true);
+      setActiveQuizLesson(challengeLesson);
+    }
+  };
+
+  const handleStartMultiJump = (targetUnitId: number, targetNodeId?: string) => {
+    sound.playTap();
+    const challengeLesson = createMultiUnitJumpAheadLesson({
+      units,
+      targetUnitId,
+      targetNodeId
+    });
+    if (challengeLesson) {
+      setIsPracticeActive(false);
+      setIsJumpAheadActive(true);
+      setActiveQuizLesson(challengeLesson);
+    }
   };
 
   // Scroll to the most recent available lesson node
@@ -210,6 +229,17 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
                   <BookOpen className="w-3.5 h-3.5" />
                   Guía de Teoría y Gramática
                 </button>
+
+                {!isUnitUnlocked && (
+                  <button
+                    onClick={() => handleStartMultiJump(unit.id)}
+                    className="px-3 py-1.5 bg-duo-orange hover:bg-duo-orange-dark active:translate-y-0.5 rounded-xl font-black text-xs text-white flex items-center gap-1.5 transition-all shadow-sm border border-white/20 cursor-pointer"
+                    title={`Saltar hasta ${unit.title}`}
+                  >
+                    <FastForward className="w-3.5 h-3.5 stroke-[2.5px]" />
+                    <span>Saltar a esta unidad</span>
+                  </button>
+                )}
               </div>
             </div>
 
@@ -253,11 +283,60 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
                   </p>
 
                   <button
-                    onClick={() => handleStartJumpAhead(unit)}
-                    className="w-full py-3 bg-duo-orange hover:bg-duo-orange-dark text-white font-black text-xs rounded-2xl shadow-[0_4px_0_0_#e08500] active:translate-y-1 active:shadow-none transition-all uppercase tracking-wider flex items-center justify-center gap-2"
+                    onClick={() => handleStartMultiJump(unit.id)}
+                    className="w-full py-3 bg-duo-orange hover:bg-duo-orange-dark text-white font-black text-xs rounded-2xl shadow-[0_4px_0_0_#e08500] active:translate-y-1 active:shadow-none transition-all uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer"
                   >
                     <FastForward className="w-4 h-4" />
-                    <span>Iniciar Examen de Salto (Máx 3 Errores)</span>
+                    <span>Saltar esta unidad ({unit.title.split(':')[0]})</span>
+                  </button>
+
+                  {/* Selector rápido para saltar varias unidades hacia adelante */}
+                  {units.some(u => u.id > unit.id && !u.nodes.some(n => n.unlocked)) && (
+                    <div className="w-full mt-3.5 pt-3 border-t border-gray-100 dark:border-[#283842] flex flex-col items-center">
+                      <span className="text-[11px] font-black text-gray-500 dark:text-gray-400 mb-2">
+                        ⚡ O salta varias lecciones hasta otra unidad:
+                      </span>
+                      <div className="flex flex-wrap items-center justify-center gap-1.5 w-full">
+                        {units
+                          .filter(u => u.id > unit.id && !u.nodes.some(n => n.unlocked))
+                          .slice(0, 6)
+                          .map(targetU => (
+                            <button
+                              key={targetU.id}
+                              onClick={() => handleStartMultiJump(targetU.id)}
+                              className="px-2.5 py-1.5 rounded-xl bg-duo-orange/10 hover:bg-duo-orange hover:text-white dark:bg-duo-orange/20 text-duo-orange-dark dark:text-duo-orange font-black text-[11px] border border-duo-orange/30 transition-all cursor-pointer active:scale-95"
+                              title={`Hacer examen para saltar hasta ${targetU.title}`}
+                            >
+                              Hasta {targetU.title.split(':')[0]}
+                            </button>
+                          ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* Tarjeta de Salto en Unidades Bloqueadas */}
+            {!isUnitUnlocked && (
+              <div className="w-full mt-4 mb-2 px-1">
+                <div className="bg-white dark:bg-[#18272e] border-2 border-gray-200 dark:border-[#283842] hover:border-duo-orange/40 rounded-3xl p-4 shadow-sm flex flex-col items-center text-center transition-colors">
+                  <div className="w-10 h-10 bg-amber-50 dark:bg-amber-950/30 rounded-2xl flex items-center justify-center text-amber-600 dark:text-amber-400 mb-2 border border-amber-200 dark:border-amber-800/40">
+                    <FastForward className="w-5 h-5 stroke-[2.5px]" />
+                  </div>
+                  <h4 className="text-xs font-black text-gray-700 dark:text-gray-200 uppercase tracking-wide">
+                    ¿Quieres saltarte hasta aquí?
+                  </h4>
+                  <p className="text-[11px] font-medium text-gray-500 dark:text-gray-400 mt-0.5 mb-2.5 max-w-[280px]">
+                    Desbloquea directamente la <strong>{unit.title}</strong> con una prueba que evalúa los temas pendientes desde donde estás. (Máximo 3 errores).
+                  </p>
+
+                  <button
+                    onClick={() => handleStartMultiJump(unit.id)}
+                    className="w-full py-2.5 bg-gradient-to-r from-amber-500 to-duo-orange hover:brightness-105 text-white font-black text-xs rounded-2xl shadow-[0_3px_0_0_#d97706] active:translate-y-0.5 active:shadow-none transition-all uppercase tracking-wider flex items-center justify-center gap-2 cursor-pointer"
+                  >
+                    <FastForward className="w-4 h-4" />
+                    <span>Hacer Examen de Salto hasta {unit.title.split(':')[0]}</span>
                   </button>
                 </div>
               </div>
@@ -308,12 +387,16 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
             <div className="flex items-center gap-3 pr-6">
               <div
                 className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-md flex-shrink-0 ${
-                  selectedNodeForPopover.node.stars > 0
+                  !selectedNodeForPopover.node.unlocked
+                    ? 'bg-amber-500 shadow-[0_4px_0_0_#d97706]'
+                    : selectedNodeForPopover.node.stars > 0
                     ? 'bg-duo-yellow shadow-[0_4px_0_0_#e5b400]'
                     : 'bg-duo-green shadow-[0_4px_0_0_#46a302]'
                 }`}
               >
-                {selectedNodeForPopover.node.stars > 0 ? (
+                {!selectedNodeForPopover.node.unlocked ? (
+                  <Lock className="w-7 h-7 stroke-[2.5px]" />
+                ) : selectedNodeForPopover.node.stars > 0 ? (
                   <Star className="w-7 h-7 fill-white stroke-[2.5px]" />
                 ) : (
                   <Sparkles className="w-7 h-7 stroke-[2.5px]" />
@@ -336,14 +419,18 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
             {/* Indicador de Estado y Estrellas */}
             <div className="flex items-center justify-between p-2.5 rounded-2xl bg-gray-50 dark:bg-[#131f24] border border-gray-200 dark:border-[#283842]">
               <span className="text-xs font-black text-gray-600 dark:text-gray-300">
-                {selectedNodeForPopover.node.stars > 0 ? 'Estado: ¡Completada!' : 'Estado: Disponible'}
+                {!selectedNodeForPopover.node.unlocked
+                  ? '🔒 Estado: Bloqueada'
+                  : selectedNodeForPopover.node.stars > 0
+                  ? 'Estado: ¡Completada!'
+                  : 'Estado: Disponible'}
               </span>
               <div className="flex items-center gap-1">
                 {Array.from({ length: 3 }).map((_, i) => (
                   <Star
                     key={i}
                     className={`w-4 h-4 ${
-                      i < selectedNodeForPopover.node.stars
+                      selectedNodeForPopover.node.unlocked && i < selectedNodeForPopover.node.stars
                         ? 'fill-amber-400 text-amber-500'
                         : 'text-gray-300 dark:text-gray-600'
                     }`}
@@ -353,40 +440,88 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
             </div>
 
             {/* Botones de Acción */}
-            <div className="flex flex-col gap-2.5 mt-1">
-              {/* Botón 1: Iniciar Lección */}
-              <button
-                onClick={() => {
-                  sound.playTap();
-                  const parentUnit = units.find(u => u.id === selectedNodeForPopover.unitId);
-                  const targetLesson = expandLessonExercises(selectedNodeForPopover.node, parentUnit);
-                  setSelectedNodeForPopover(null);
-                  setIsJumpAheadActive(false);
-                  setIsPracticeActive(false);
-                  setActiveQuizLesson(targetLesson);
-                }}
-                className="w-full py-3.5 bg-duo-green hover:bg-duo-green-dark text-white font-black text-xs rounded-2xl shadow-[0_4px_0_0_#46a302] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider"
-              >
-                <Play className="w-4 h-4 fill-white stroke-[2px]" />
-                <span>{selectedNodeForPopover.node.stars > 0 ? 'Repasar Lección' : 'Iniciar Lección'}</span>
-              </button>
+            {!selectedNodeForPopover.node.unlocked ? (
+              <div className="flex flex-col gap-2.5 mt-1">
+                <div className="p-3 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/40 rounded-2xl text-xs font-bold text-amber-800 dark:text-amber-300">
+                  ⚡ Esta lección está bloqueada. Puedes saltar directamente hasta aquí aprobando un examen especial con los temas pendientes. (Máx 3 errores).
+                </div>
 
-              {/* Botón 2: Ver Teoría de la Lección */}
-              <button
-                onClick={() => {
-                  sound.playTap();
-                  const targetUnitId = selectedNodeForPopover.unitId;
-                  setSelectedNodeForPopover(null);
-                  if (onOpenTheory) {
-                    onOpenTheory(targetUnitId);
-                  }
-                }}
-                className="w-full py-3 bg-sky-500 hover:bg-sky-600 text-white font-black text-xs rounded-2xl shadow-[0_4px_0_0_#0284c7] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider"
-              >
-                <BookOpen className="w-4 h-4 stroke-[2.5px]" />
-                <span>Ver Teoría y Gramática</span>
-              </button>
-            </div>
+                <button
+                  onClick={() => {
+                    const uId = selectedNodeForPopover.unitId;
+                    const nId = selectedNodeForPopover.node.id;
+                    setSelectedNodeForPopover(null);
+                    handleStartMultiJump(uId, nId);
+                  }}
+                  className="w-full py-3.5 bg-gradient-to-r from-amber-500 to-duo-orange hover:brightness-105 text-white font-black text-xs rounded-2xl shadow-[0_4px_0_0_#d97706] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider"
+                >
+                  <FastForward className="w-4 h-4 stroke-[2.5px]" />
+                  <span>Hacer Examen y Saltar hasta aquí</span>
+                </button>
+
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    onClick={() => {
+                      sound.playTap();
+                      const targetUnitId = selectedNodeForPopover.unitId;
+                      setSelectedNodeForPopover(null);
+                      if (onOpenTheory) onOpenTheory(targetUnitId);
+                    }}
+                    className="py-2.5 px-3 bg-sky-500 hover:bg-sky-600 text-white font-black text-xs rounded-xl shadow-[0_3px_0_0_#0284c7] active:translate-y-0.5 active:shadow-none transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <BookOpen className="w-3.5 h-3.5" />
+                    <span>Ver Teoría</span>
+                  </button>
+
+                  <button
+                    onClick={() => {
+                      sound.playTap();
+                      setSelectedNodeForPopover(null);
+                      handleScrollToLatest();
+                    }}
+                    className="py-2.5 px-3 bg-gray-100 hover:bg-gray-200 dark:bg-gray-800 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 font-black text-xs rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+                  >
+                    <Compass className="w-3.5 h-3.5" />
+                    <span>Lección actual</span>
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="flex flex-col gap-2.5 mt-1">
+                {/* Botón 1: Iniciar Lección */}
+                <button
+                  onClick={() => {
+                    sound.playTap();
+                    const parentUnit = units.find(u => u.id === selectedNodeForPopover.unitId);
+                    const targetLesson = expandLessonExercises(selectedNodeForPopover.node, parentUnit);
+                    setSelectedNodeForPopover(null);
+                    setIsJumpAheadActive(false);
+                    setIsPracticeActive(false);
+                    setActiveQuizLesson(targetLesson);
+                  }}
+                  className="w-full py-3.5 bg-duo-green hover:bg-duo-green-dark text-white font-black text-xs rounded-2xl shadow-[0_4px_0_0_#46a302] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider"
+                >
+                  <Play className="w-4 h-4 fill-white stroke-[2px]" />
+                  <span>{selectedNodeForPopover.node.stars > 0 ? 'Repasar Lección' : 'Iniciar Lección'}</span>
+                </button>
+
+                {/* Botón 2: Ver Teoría de la Lección */}
+                <button
+                  onClick={() => {
+                    sound.playTap();
+                    const targetUnitId = selectedNodeForPopover.unitId;
+                    setSelectedNodeForPopover(null);
+                    if (onOpenTheory) {
+                      onOpenTheory(targetUnitId);
+                    }
+                  }}
+                  className="w-full py-3 bg-sky-500 hover:bg-sky-600 text-white font-black text-xs rounded-2xl shadow-[0_4px_0_0_#0284c7] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider"
+                >
+                  <BookOpen className="w-4 h-4 stroke-[2.5px]" />
+                  <span>Ver Teoría y Gramática</span>
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}
@@ -409,8 +544,8 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
             setIsJumpAheadActive(false);
             setIsPracticeActive(false);
           }}
-          onPassJumpAhead={(unitId) => {
-            onSkipUnit(unitId);
+          onPassJumpAhead={(unitId, targetNodeId, skippedNodeIds) => {
+            onSkipUnit(unitId, targetNodeId, skippedNodeIds);
             setActiveQuizLesson(null);
             setIsJumpAheadActive(false);
             setIsPracticeActive(false);
