@@ -621,19 +621,19 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   return (
     <div className="fixed inset-0 z-[100] bg-white dark:bg-[#131f24] dark:text-gray-100 flex flex-col justify-between select-none">
       {/* Top Header: Close, Progress bar, Hearts / Chances / Practice indicator */}
-      <div className="px-4 py-3 flex items-center gap-4 max-w-2xl mx-auto w-full">
+      <div className="px-4 py-3 flex items-center gap-4 max-w-2xl mx-auto w-full bg-white dark:bg-[#18272e] border-b border-gray-200 dark:border-[#283842] shadow-xs">
         <button
           onClick={handleClose}
-          className="p-1 rounded-xl text-gray-400 hover:text-gray-600 transition-colors"
+          className="p-1.5 rounded-xl text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 transition-colors cursor-pointer"
         >
           <X className="w-6 h-6 stroke-[2.5px]" />
         </button>
 
         {/* Duolingo progress bar */}
-        <div className="flex-1 h-3.5 bg-duo-gray-200 dark:bg-gray-700 rounded-full overflow-hidden p-0.5">
+        <div className="flex-1 h-3.5 bg-gray-200 dark:bg-[#10171a] border border-gray-300 dark:border-gray-700/80 rounded-full overflow-hidden p-0.5">
           <div
             className={`h-full rounded-full transition-all duration-300 ${
-              isJumpAhead ? 'bg-duo-orange' : isPractice ? 'bg-duo-blue' : 'bg-duo-green'
+              isJumpAhead ? 'bg-gradient-to-r from-amber-400 to-duo-orange' : isPractice ? 'bg-duo-blue' : 'bg-duo-green'
             }`}
             style={{ width: `${progressPercent}%` }}
           />
@@ -641,14 +641,16 @@ export const QuizModal: React.FC<QuizModalProps> = ({
 
         {/* Indicator: Jump Ahead Strikes, Practice Badge, or Normal Hearts */}
         {isJumpAhead ? (
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-1.5">
             {[1, 2, 3].map((strikeIdx) => {
               const isLost = strikeIdx > jumpChancesLeft;
               return (
                 <Heart
                   key={strikeIdx}
                   className={`w-5 h-5 transition-all ${
-                    isLost ? 'text-gray-300 fill-gray-200' : 'text-duo-red fill-duo-red animate-pulse'
+                    isLost
+                      ? 'text-gray-400 dark:text-gray-600 fill-gray-200 dark:fill-gray-800 opacity-40'
+                      : 'text-duo-red fill-duo-red animate-pulse'
                   }`}
                 />
               );
@@ -657,7 +659,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
         ) : (
           <div className="flex items-center gap-2">
             {isPractice && (
-              <div className="flex items-center gap-1 px-2 py-0.5 bg-duo-blue-light/60 dark:bg-duo-blue/20 rounded-xl border border-duo-blue text-duo-blue dark:text-duo-blue-light font-black text-[11px]">
+              <div className="flex items-center gap-1 px-2.5 py-1 bg-duo-blue/15 dark:bg-duo-blue/20 rounded-xl border border-duo-blue/40 text-duo-blue dark:text-sky-300 font-black text-[11px]">
                 <Dumbbell className="w-3.5 h-3.5 stroke-[2.5px]" />
                 <span>Práctica</span>
               </div>
@@ -672,20 +674,20 @@ export const QuizModal: React.FC<QuizModalProps> = ({
 
       {/* Jump Ahead Banner */}
       {isJumpAhead && (
-        <div className="w-full bg-duo-orange-light/50 border-b-2 border-duo-orange/40 py-1.5 px-4 text-center">
-          <span className="text-xs font-black text-duo-orange-dark uppercase tracking-wider flex items-center justify-center gap-1.5">
-            <FastForward className="w-4 h-4" />
-            Prueba de Salto de Unidad • Máximo 3 Errores ({jumpChancesLeft} vidas restantes)
+        <div className="w-full bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 text-white py-2 px-4 text-center shadow-md border-b border-amber-600">
+          <span className="text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 drop-shadow-xs">
+            <FastForward className="w-4 h-4 stroke-[2.5px]" />
+            <span>Prueba de Salto • Máximo 3 Errores ({jumpChancesLeft} {jumpChancesLeft === 1 ? 'vida restante' : 'vidas restantes'})</span>
           </span>
         </div>
       )}
 
       {/* Practice Mode Banner */}
       {isPractice && (
-        <div className="w-full bg-duo-blue-light/50 dark:bg-duo-blue/20 border-b-2 border-duo-blue/40 py-1.5 px-4 text-center">
-          <span className="text-xs font-black text-duo-blue-dark dark:text-duo-blue uppercase tracking-wider flex items-center justify-center gap-1.5">
-            <Dumbbell className="w-4 h-4" />
-            Entrenamiento de Repaso • Ejercicios aleatorios de tus lecciones
+        <div className="w-full bg-gradient-to-r from-sky-500 to-duo-blue text-white py-2 px-4 text-center shadow-md border-b border-sky-600">
+          <span className="text-xs font-black uppercase tracking-wider flex items-center justify-center gap-2 drop-shadow-xs">
+            <Dumbbell className="w-4 h-4 stroke-[2.5px]" />
+            <span>Entrenamiento de Repaso • Ejercicios aleatorios de tus lecciones</span>
           </span>
         </div>
       )}

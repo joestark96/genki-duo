@@ -7232,7 +7232,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "tb5-1",
-                "text": "Estuvo bueno (よかったです = pasado de いい)",
+                "text": "Estuvo bueno",
                 "isCorrect": true
               },
               {
@@ -7791,7 +7791,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "te-kuda-rule",
-                "text": "Verbo en forma Te + ください (あけてください)",
+                "text": "Verbo en forma Te + ください",
                 "isCorrect": true
               },
               {
@@ -7953,7 +7953,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "seq-tense-last",
-                "text": "Solo en el ÚLTIMO verbo de la oración (los anteriores quedan en forma Te)",
+                "text": "Solo en el último verbo de la oración",
                 "isCorrect": true
               },
               {
@@ -8780,7 +8780,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "te-iru-rule",
-                "text": "Forma Te del verbo + います (ej. たべています)",
+                "text": "Forma Te del verbo + います",
                 "isCorrect": true
               },
               {
@@ -9155,7 +9155,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "cnt-peo",
-                "text": "1 persona = ひとり (一人), 2 personas = ふたり (二人), de 3 en adelante = 〜にん (さんにん)",
+                "text": "ひとり (一人) y ふたり (二人)",
                 "isCorrect": true
               },
               {
@@ -9315,7 +9315,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "ii-te",
-                "text": "よくて (yokute — ej. 頭がよくて、やさしいです = es inteligente y amable)",
+                "text": "よくて (yokute)",
                 "isCorrect": true
               },
               {
@@ -9532,7 +9532,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "d8-2-a",
-                "text": "うん = Sí (informal de はい) / ううん = No (informal de いいえ)",
+                "text": "うん es Sí y ううん es No",
                 "isCorrect": true
               },
               {
@@ -9656,7 +9656,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "sf-dic",
-                "text": "Su forma de diccionario original: 食べる (taberu)",
+                "text": "La forma de diccionario: 食べる",
                 "isCorrect": true
               },
               {
@@ -9832,7 +9832,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "omo-form",
-                "text": "SIEMPRE la forma corta informal (ショートフォーム)",
+                "text": "La forma corta informal (ショートフォーム)",
                 "isCorrect": true
               },
               {
@@ -9914,7 +9914,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "quote-cor",
-                "text": "ロバートさんは 肉を食べない と言っていました (en forma corta ない)",
+                "text": "ロバートさんは 肉を食べない と言っていました",
                 "isCorrect": true
               },
               {
@@ -9997,7 +9997,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "naide-rule",
-                "text": "Verbo en forma ない + でください (ej. 行かないでください)",
+                "text": "Verbo en forma ない + でください",
                 "isCorrect": true
               },
               {
@@ -10624,7 +10624,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "ta-rule",
-                "text": "Es idéntica a la forma Te, cambiando -te por -ta y -de por -da (たべて➔たべた, のんで➔のんだ)",
+                "text": "Es idéntica a la forma Te, cambiando -te por -ta y -de por -da",
                 "isCorrect": true
               },
               {
@@ -10709,7 +10709,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "rel-before",
-                "text": "SIEMPRE antes del sustantivo, en forma corta (きのう買った 本)",
+                "text": "Antes del sustantivo, en forma corta",
                 "isCorrect": true
               },
               {
@@ -10799,7 +10799,7 @@ export const genkiCurriculum: Unit[] = [
               },
               {
                 "id": "mada-te-mash",
-                "text": "いいえ、食べませんでした (error: significa que decidiste no comer)"
+                "text": "いいえ、食べませんでした"
               },
               {
                 "id": "mada-te-nai",
@@ -11770,7 +11770,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "tsu-form",
-                "text": "Verbo en forma corta de diccionario (ej. 行く つもりです)",
+                "text": "Verbo en forma de diccionario",
                 "isCorrect": true
               },
               {
@@ -12102,7 +12102,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "no-pron",
-                "text": "La partícula の (あかいのを持っています = tengo uno rojo)",
+                "text": "Usando la partícula の como pronombre",
                 "isCorrect": true
               },
               {
@@ -12472,7 +12472,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "tari-rule",
-                "text": "Forma Ta de los verbos + り + します (ej. 本を読んだり、音楽を聞いたりします)",
+                "text": "Forma Ta de los verbos + り + します",
                 "isCorrect": true
               },
               {
@@ -12553,7 +12553,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "koto-rule",
-                "text": "Verbo en forma Ta (pasado informal) + ことがあります (ej. 行った ことがあります)",
+                "text": "Verbo en forma Ta + ことがあります",
                 "isCorrect": true
               },
               {
@@ -13414,7 +13414,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "ob-rule",
-                "text": "Se quita la い de la forma ない y se añade ければいけません (ej. いかなければいけません)",
+                "text": "Se quita la い de la forma ない y se añade ければいけません",
                 "isCorrect": true
               },
               {
@@ -14049,7 +14049,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "shi-short",
-                "text": "Forma corta (con だ para sustantivos y な-adjetivos en presente afirmativo)",
+                "text": "Forma corta (con だ para sustantivos y な-adjetivos)",
                 "isCorrect": true
               },
               {
@@ -14216,7 +14216,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "tb13-1",
-                "text": "漢字を 読むことが できます (Forma diccionario + ことができます)",
+                "text": "漢字を 読むことが できます",
                 "isCorrect": true
               },
               {
@@ -14301,7 +14301,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "tb13-2a",
-                "text": "No se veía delicioso (negativo pasado de apariencia 〜そうです)",
+                "text": "No se veía delicioso",
                 "isCorrect": true
               },
               {
@@ -16059,7 +16059,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "vol-off",
-                "text": "てつだおうか (Tetsudaou ka - Forma Volitiva + か)",
+                "text": "てつだおうか",
                 "isCorrect": true
               },
               {
@@ -17567,7 +17567,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "sou-diff",
-                "text": "Apariencia quita la い (おいしそうです); Reporte conserva la forma corta completa (おいしいそうです)",
+                "text": "Apariencia quita la い (おいしそう); Reporte conserva la palabra completa (おいしいそう)",
                 "isCorrect": true
               },
               {
@@ -17649,7 +17649,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "tara-rule",
-                "text": "Tomando la forma corta en PASADO (Forma Ta) y añadiendo ら (ej. 行ったら、安かったら、雨だったら)",
+                "text": "Tomando la forma corta en pasado (Forma Ta) y añadiendo ら",
                 "isCorrect": true
               },
               {
@@ -18144,7 +18144,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "mae-dic",
-                "text": "Siempre el verbo en Forma Diccionario (ej. 寝る前に本を読みました)",
+                "text": "Siempre el verbo en Forma Diccionario",
                 "isCorrect": true
               },
               {
@@ -19181,7 +19181,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "d19-2-a",
-                "text": "なさいますか (de なさる = honorífico de する)",
+                "text": "なさいますか",
                 "isCorrect": true
               },
               {
@@ -20177,7 +20177,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "naide-1",
-                "text": "Verbo A en forma ない + で + Verbo B (ej. 朝ご飯を食べないで来ました)",
+                "text": "Verbo A en forma ない + で + Verbo B",
                 "isCorrect": true
               },
               {
@@ -20259,7 +20259,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "kadouka-1",
-                "text": "Oración en forma corta + かどうか (ej. 明日クラスがあるかどうかわかりません)",
+                "text": "Oración en forma corta + かどうか",
                 "isCorrect": true
               },
               {
@@ -22802,7 +22802,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "temo-1",
-                "text": "Forma Te + も (Verb: 行っても, い-adj: 高くても, な-adj/Sust: 静かでも / 雨でも)",
+                "text": "Forma Te + も",
                 "isCorrect": true
               },
               {
@@ -22885,7 +22885,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "koto-diff",
-                "text": "ことにしました = YO decidí ir por mi propia voluntad; ことになりました = quedó decidido que iré (por mi empresa, beca o circunstancia)",
+                "text": "ことにしました es decisión personal; ことになりました es decisión externa",
                 "isCorrect": true
               },
               {
