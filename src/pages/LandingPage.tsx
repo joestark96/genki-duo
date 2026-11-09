@@ -28,18 +28,25 @@ interface LandingPageProps {
 
 export const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
   const [downloadStarted, setDownloadStarted] = useState(false);
+  const APK_DOWNLOAD_URL = 'https://github.com/joestark96/genki-duo/raw/main/releases/nihongo-v1.1.apk';
 
   const handleDownloadApk = () => {
     setDownloadStarted(true);
-    // Direct download trigger
+    // 1. Direct GitHub release raw URL download
     const link = document.createElement('a');
-    link.href = './downloads/nihongo-v1.1.apk';
-    link.download = 'nihongo-v1.1.apk';
+    link.href = APK_DOWNLOAD_URL;
+    link.setAttribute('download', 'nihongo-v1.1.apk');
+    link.target = '_blank';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
 
-    setTimeout(() => setDownloadStarted(false), 4000);
+    // 2. Direct browser navigation fallback for mobile Chrome/Android
+    setTimeout(() => {
+      window.location.href = APK_DOWNLOAD_URL;
+    }, 300);
+
+    setTimeout(() => setDownloadStarted(false), 4500);
   };
 
   return (
@@ -383,6 +390,19 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
                   <Github className="w-4 h-4" />
                   <span>Releases en GitHub</span>
                   <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+              </div>
+
+              {/* Direct fallback link */}
+              <div className="mt-3">
+                <a
+                  href={APK_DOWNLOAD_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-bold text-duo-green dark:text-green-400 hover:underline flex items-center gap-1"
+                >
+                  <Download className="w-3.5 h-3.5" />
+                  <span>¿No inició automáticamente? Clic aquí para descarga directa inmediata (16 MB)</span>
                 </a>
               </div>
             </div>

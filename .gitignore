@@ -9,6 +9,8 @@ dist-ssr
 !public/downloads/*.apk
 !releases/*.apk
 !docs/downloads/*.apk
+!dist/downloads/*.apk
+!downloads/*.apk
 .jdk
 archive/
 

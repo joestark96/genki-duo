@@ -627,6 +627,10 @@ export const App: React.FC = () => {
               <TheoryPage
                 initialUnitId={theoryUnitId}
                 onBackToRoadmap={() => setActiveTab('roadmap')}
+                units={units}
+                userProfile={profile}
+                onCompleteLesson={handleCompleteLesson}
+                onDeductHeart={handleDeductHeart}
               />
             )}
             {activeTab === 'flashcards' && (

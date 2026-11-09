@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Unit, LessonNode, UserProfile } from '../types';
 import { RoadmapNode } from '../components/Roadmap/RoadmapNode';
 import { QuizModal } from '../components/Quiz/QuizModal';
-import { BookOpen, Sparkles, CheckCircle2, FastForward, ShieldAlert, Award, Dumbbell, Compass, X, Star, Play, RotateCcw, Lock } from 'lucide-react';
+import { BookOpen, Sparkles, CheckCircle2, FastForward, ShieldAlert, Award, Dumbbell, Compass, X, Star, Play, RotateCcw, Lock, BookMarked } from 'lucide-react';
 import { sound } from '../services/sound';
 import { createJumpAheadLesson, createMultiUnitJumpAheadLesson } from '../utils/jumpAhead';
 import { createPracticeLesson, createUnitReviewLesson } from '../utils/practiceLesson';
@@ -230,6 +230,30 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
                   Guía de Teoría y Gramática
                 </button>
 
+                {/* Botón de acceso rápido a ejercicios del Workbook */}
+                {unit.nodes.some(n => n.title.toLowerCase().includes('workbook')) && (
+                  <button
+                    onClick={() => {
+                      sound.playTap();
+                      const firstWb = unit.nodes.find(n => n.title.toLowerCase().includes('workbook'));
+                      if (firstWb) {
+                        setSelectedNodeForPopover({
+                          node: firstWb,
+                          unitId: unit.id,
+                          unitTitle: `${unit.title} — ${unit.subtitle}`
+                        });
+                        const el = document.getElementById(`roadmap-node-${firstWb.id}`);
+                        el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                      }
+                    }}
+                    className="px-3 py-1.5 bg-indigo-600/90 hover:bg-indigo-700 active:translate-y-0.5 rounded-xl font-black text-xs text-white flex items-center gap-1.5 transition-all shadow-sm border border-white/20 cursor-pointer"
+                    title={`Ver ejercicios del Workbook de ${unit.title}`}
+                  >
+                    <BookMarked className="w-3.5 h-3.5 stroke-[2.5px]" />
+                    <span>Workbook ({unit.nodes.filter(n => n.title.toLowerCase().includes('workbook')).length})</span>
+                  </button>
+                )}
+
                 {!isUnitUnlocked && (
                   <button
                     onClick={() => handleStartMultiJump(unit.id)}
@@ -382,6 +406,17 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
             >
               <X className="w-5 h-5" />
             </button>
+
+            {/* Si es ejercicio de Workbook, mostrar cintillo distintivo */}
+            {(selectedNodeForPopover.node.title.toLowerCase().includes('workbook') || selectedNodeForPopover.node.id.includes('wb')) && (
+              <div className="bg-gradient-to-r from-indigo-500 via-purple-600 to-indigo-600 text-white px-3 py-1.5 rounded-xl font-black text-xs uppercase tracking-wider flex items-center justify-between shadow-xs mt-1">
+                <span className="flex items-center gap-1.5">
+                  <BookMarked className="w-4 h-4 stroke-[2.5px]" />
+                  <span>Genki Workbook • Cuaderno Oficial</span>
+                </span>
+                <span className="text-[10px] bg-white/20 px-1.5 py-0.5 rounded-md font-black">Práctica</span>
+              </div>
+            )}
 
             {/* Cabecera de la Lección */}
             <div className="flex items-center gap-3 pr-6">

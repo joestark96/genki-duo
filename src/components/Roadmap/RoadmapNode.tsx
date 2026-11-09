@@ -3,7 +3,8 @@ import {
   Check, Lock, Star, Play, Sparkles, MessageCircle, ShoppingBag, Coffee,
   Heart, Music, Users, Award, Flame, BookOpen, HelpCircle, PhoneCall,
   Headphones, MapPin, Compass, Plane, Clock, Calendar, Lightbulb,
-  ShieldAlert, ListFilter, Briefcase, Gift, Train, Utensils, GraduationCap
+  ShieldAlert, ListFilter, Briefcase, Gift, Train, Utensils, GraduationCap,
+  BookMarked
 } from 'lucide-react';
 import { LessonNode } from '../../types';
 import { sound } from '../../services/sound';
@@ -23,14 +24,19 @@ export const RoadmapNode: React.FC<RoadmapNodeProps> = ({
 }) => {
   const isCompleted = node.stars > 0 || node.completedSteps >= node.totalSteps;
   const isLocked = !node.unlocked;
+  const isWorkbook = node.title.toLowerCase().includes('workbook') || node.id.includes('wb') || (node.description && node.description.toLowerCase().includes('workbook'));
 
   // Icon mapping
   const renderIcon = () => {
     const props = { className: 'w-7 h-7 text-white stroke-[2.5px]' };
+    if (isWorkbook && (!node.icon || node.icon === 'Play' || node.icon === 'BookOpen')) {
+      return <BookMarked {...props} />;
+    }
     switch (node.icon) {
       case 'Sparkles': return <Sparkles {...props} />;
       case 'Flame': return <Flame {...props} />;
       case 'BookOpen': return <BookOpen {...props} />;
+      case 'BookMarked': return <BookMarked {...props} />;
       case 'MessageCircle': return <MessageCircle {...props} />;
       case 'ShoppingBag': return <ShoppingBag {...props} />;
       case 'Coffee': return <Coffee {...props} />;
@@ -54,7 +60,7 @@ export const RoadmapNode: React.FC<RoadmapNodeProps> = ({
       case 'Train': return <Train {...props} />;
       case 'Utensils': return <Utensils {...props} />;
       case 'GraduationCap': return <GraduationCap {...props} />;
-      default: return <Play {...props} />;
+      default: return isWorkbook ? <BookMarked {...props} /> : <Play {...props} />;
     }
   };
 
@@ -72,6 +78,13 @@ export const RoadmapNode: React.FC<RoadmapNodeProps> = ({
         bg: 'bg-duo-yellow',
         border: 'border-duo-yellow-dark',
         shadow: 'shadow-[0_6px_0_0_#e5b400]'
+      };
+    }
+    if (isWorkbook) {
+      return {
+        bg: 'bg-gradient-to-tr from-indigo-600 to-purple-600',
+        border: 'border-indigo-700',
+        shadow: 'shadow-[0_6px_0_0_#3730a3]'
       };
     }
     switch (node.color) {
@@ -134,6 +147,14 @@ export const RoadmapNode: React.FC<RoadmapNodeProps> = ({
         </div>
       )}
 
+      {/* Distinct Workbook Pill Badge */}
+      {isWorkbook && !isActive && !isLocked && (
+        <div className="absolute -top-3 z-10 px-2 py-0.5 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-black text-[9px] uppercase tracking-wider shadow-sm border border-indigo-300/40 flex items-center gap-1 pointer-events-none">
+          <BookMarked className="w-2.5 h-2.5" />
+          <span>Workbook</span>
+        </div>
+      )}
+
       {/* 3D Round Node Button */}
       <button
         onClick={() => {
@@ -169,7 +190,12 @@ export const RoadmapNode: React.FC<RoadmapNodeProps> = ({
       </button>
 
       {/* Label under node */}
-      <div className="mt-2 text-center max-w-[140px]">
+      <div className="mt-2 text-center max-w-[140px] flex flex-col items-center">
+        {isWorkbook && (
+          <span className="inline-block px-1.5 py-0.5 mb-1 rounded-md text-[8px] font-black uppercase tracking-wider bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 border border-indigo-400/30">
+            Cuaderno
+          </span>
+        )}
         <div className="text-xs font-black text-gray-800 dark:text-gray-100 line-clamp-1">{node.title}</div>
         <div className="text-[10px] font-bold text-gray-500 dark:text-gray-400 line-clamp-1">{node.japaneseTitle}</div>
       </div>
