@@ -239,7 +239,7 @@ class AudioStorageService {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          text: cleanText,
+          text: cleanText.replace(/(^|[^ぁ-んァ-ン一-龥])はは([^ぁ-んァ-ン一-龥]|$)/g, '$1ハハ$2'),
           voice: voiceId
         }),
         signal: controller.signal

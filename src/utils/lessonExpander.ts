@@ -77,6 +77,16 @@ export function expandLessonExercises(node: LessonNode, unit?: Unit, targetCount
   const isSpanishTranslation = (str: string) => Boolean(str) && !/[\u3040-\u30ff\u4e00-\u9faf]/.test(str);
   const isJapaneseText = (str: string) => Boolean(str) && /[\u3040-\u30ff\u4e00-\u9faf]/.test(str);
 
+  const getCategory = (pos?: string): string => {
+    if (!pos) return 'other';
+    if (pos.startsWith('adj')) return 'adjective';
+    if (pos.startsWith('verb')) return 'verb';
+    if (pos === 'noun') return 'noun';
+    if (pos === 'adverb') return 'adverb';
+    if (pos === 'expression') return 'expression';
+    return 'other';
+  };
+
   // Clean parenthesized translations from Japanese words (e.g. "学生 (estudiante)" -> "学生")
   const cleanJapanese = (str: string) => {
     return str
@@ -122,8 +132,14 @@ export function expandLessonExercises(node: LessonNode, unit?: Unit, targetCount
     const cleanRight = pair.right.replace(/\s*\([^\)]*\)/g, '').trim();
 
     if (cleanLeft && cleanRight) {
+      // Prioritize distractors from the same node's pairs if at least 3 exist
+      const nodeRightDistractors = nodeVocabPairs
+        .map(p => p.right.replace(/\s*\([^\)]*\)/g, '').trim())
+        .filter(r => r && r !== cleanRight);
+      const rightPool = nodeRightDistractors.length >= 3 ? nodeRightDistractors : allRightOptions;
+
       // A) Listening exercise for pair: Hear Japanese, pick translation
-      const options = buildOptions(cleanRight, allRightOptions);
+      const options = buildOptions(cleanRight, rightPool);
       const correctOpt = options.find(o => o.isCorrect)!;
       generatedExercises.push({
         id: `gen-listen-${node.id}-${idx}-${pair.id}`,
@@ -137,7 +153,12 @@ export function expandLessonExercises(node: LessonNode, unit?: Unit, targetCount
       });
 
       // B) Reverse question: "Cómo se dice en japonés: [Español]"
-      const leftOptions = buildOptions(cleanLeft, allLeftOptions);
+      const nodeLeftDistractors = nodeVocabPairs
+        .map(p => cleanJapanese(p.left))
+        .filter(l => l && l !== cleanLeft);
+      const leftPool = nodeLeftDistractors.length >= 3 ? nodeLeftDistractors : allLeftOptions;
+
+      const leftOptions = buildOptions(cleanLeft, leftPool);
       const correctLeftOpt = leftOptions.find(o => o.isCorrect)!;
       generatedExercises.push({
         id: `gen-mc-rev-${node.id}-${idx}-${pair.id}`,
@@ -175,8 +196,26 @@ export function expandLessonExercises(node: LessonNode, unit?: Unit, targetCount
   if (lessonVocab.length > 0) {
     const shuffledVocab = shuffle(lessonVocab);
     shuffledVocab.slice(0, 4).forEach((v, idx) => {
+      const vCat = getCategory(v.pos);
+      // Select candidate distractors strictly of the same grammatical category (e.g. adjectives with adjectives)
+      const sameCategorySameLesson = lessonVocab
+        .filter(w => w.id !== v.id && getCategory(w.pos) === vCat)
+        .map(w => w.spanish.trim());
+      const sameCategoryAllLessons = genkiVocabulary
+        .filter(w => w.id !== v.id && getCategory(w.pos) === vCat)
+        .map(w => w.spanish.trim());
+
+      const targetPool = Array.from(new Set([
+        ...sameCategorySameLesson,
+        ...sameCategoryAllLessons
+      ])).filter(Boolean);
+
+      const poolToUse = targetPool.length >= 3
+        ? targetPool
+        : (allRightOptions.length >= 4 ? allRightOptions : lessonVocab.map(w => w.spanish));
+
       // Direct vocabulary meaning
-      const options = buildOptions(v.spanish, allRightOptions.length >= 4 ? allRightOptions : lessonVocab.map(w => w.spanish));
+      const options = buildOptions(v.spanish, poolToUse);
       const correctOpt = options.find(o => o.isCorrect)!;
       generatedExercises.push({
         id: `gen-vocab-${node.id}-${idx}-${v.id}`,

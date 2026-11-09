@@ -8615,7 +8615,7 @@ export const genkiCurriculum: Unit[] = [
               },
               {
                 "id": "fam7-4",
-                "left": "이もうと (mi hermana menor)",
+                "left": "いもうと (mi hermana menor)",
                 "right": "いもうとさん (la hermana menor de otro)"
               }
             ],
@@ -8628,7 +8628,7 @@ export const genkiCurriculum: Unit[] = [
             "options": [
               {
                 "id": "v7-st",
-                "text": "Ponerse de pie: たつ (立つ) / Sentarse: すわる (座る)",
+                "text": "Ponerse de pie: たつ / Sentarse: すわる",
                 "isCorrect": true
               },
               {

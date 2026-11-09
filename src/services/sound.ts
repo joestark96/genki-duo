@@ -387,6 +387,11 @@ class SoundService {
     return finalChunks.length > 0 ? finalChunks : [clean];
   }
 
+  // Normalize phonetics for Japanese TTS engines (prevents morphological misreadings like 'はは' being parsed as topic particles 'wa-wa')
+  private normalizeJapanesePhonetics(input: string): string {
+    return input.replace(/(^|[^ぁ-んァ-ン一-龥])はは([^ぁ-んァ-ン一-龥]|$)/g, '$1ハハ$2');
+  }
+
   // Play neural Japanese voice via unlocked Web Audio API with male formant warmth
   private async playNeuralCharacterVoice(
     text: string,
@@ -412,6 +417,8 @@ class SoundService {
           ? ['/api/tts', 'https://ottsy.weilbyte.dev/api/generation']
           : ['https://ottsy.weilbyte.dev/api/generation', '/api/tts'];
 
+        const spokenPayload = this.normalizeJapanesePhonetics(text);
+
         for (const endpoint of endpoints) {
           if (speechId !== undefined && this.currentSpeechId !== speechId) return false;
           try {
@@ -425,7 +432,7 @@ class SoundService {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
-                text,
+                text: spokenPayload,
                 voice: profile.neuralVoiceId
               }),
               signal: controller.signal
@@ -515,7 +522,7 @@ class SoundService {
   private playOnlineChunk(text: string, rate: number = 0.9): Promise<boolean> {
     return new Promise((resolve) => {
       try {
-        const clean = text.replace(/\[.*?\]/g, '').trim();
+        const clean = this.normalizeJapanesePhonetics(text.replace(/\[.*?\]/g, '').trim());
         if (!clean) return resolve(true);
 
         this.stopActivePlayback();
@@ -743,7 +750,8 @@ class SoundService {
               if (window.speechSynthesis.paused) {
                 window.speechSynthesis.resume();
               }
-              const utterance = new SpeechSynthesisUtterance(chunk);
+              const spokenChunk = this.normalizeJapanesePhonetics(chunk);
+              const utterance = new SpeechSynthesisUtterance(spokenChunk);
               this.activeUtterance = utterance;
               utterance.voice = chosenVoice;
               utterance.lang = chosenVoice.lang || 'ja-JP';
