@@ -210,7 +210,7 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
       </div>
 
       {/* Selector de Modo del Roadmap: Libro de Texto vs Cuaderno (Workbook) */}
-      <div className="w-full max-w-sm mx-auto mb-6 p-1.5 bg-gray-200/80 dark:bg-[#18272e] rounded-2xl border-2 border-duo-gray-200 dark:border-[#283842] flex items-center gap-1.5 shadow-sm sticky top-2 z-30 backdrop-blur-md">
+      <div className="w-full max-w-sm mx-auto mb-6 p-1.5 bg-gray-200/90 dark:bg-[#18272e] rounded-2xl border-2 border-duo-gray-200 dark:border-[#283842] flex items-center gap-1.5 shadow-sm relative z-10">
         <button
           onClick={() => handleModeChange('textbook')}
           className={`flex-1 py-2.5 px-3 rounded-xl font-black text-xs flex items-center justify-center gap-2 transition-all cursor-pointer ${

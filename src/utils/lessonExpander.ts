@@ -20,12 +20,14 @@ function shuffle<T>(array: T[]): T[] {
  * 5. Sister node reinforcement exercises from the same unit.
  */
 export function expandLessonExercises(node: LessonNode, unit?: Unit, targetCount: number = 8): LessonNode {
-  // Las lecciones de "Lectura Inicial" y diálogos de lectura se mantienen 100% en su formato original
-  const isLecturaInicial =
+  // Las lecciones de "Lectura Inicial", diálogos de lectura y ejercicios del Workbook oficial se mantienen 100% en su formato original
+  const isDedicatedOriginal =
     node.title.toLowerCase().includes('lectura inicial') ||
+    node.title.toLowerCase().includes('workbook') ||
+    node.id.includes('wb') ||
     node.exercises.some(ex => ex.type === 'dialogue-reading');
 
-  if (isLecturaInicial) {
+  if (isDedicatedOriginal) {
     return {
       ...node,
       totalSteps: node.exercises.length,

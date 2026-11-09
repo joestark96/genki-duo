@@ -1,9 +1,6 @@
 import { Unit } from '../types';
 
 export const genkiCurriculum: Unit[] = [
-  // ==========================================
-  // UNIDAD 0: UNIDAD 0: LOS ALFABETOS KANA
-  // ==========================================
   {
     "id": 0,
     "genkiBook": "Kanas",
@@ -1766,10 +1763,6 @@ export const genkiCurriculum: Unit[] = [
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 1: GENKI LECCIÓN 1: NUEVOS AMIGOS (新しい友達)
-  // ==========================================
   {
     "id": 1,
     "genkiBook": "Genki I",
@@ -3049,291 +3042,592 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l1-node-11",
+        "id": "l1-node-wb-listening-a",
         "unitId": 1,
         "lessonNumber": 1,
-        "title": "Workbook: Práctica Auditiva",
-        "japaneseTitle": "ワークブック：リスニング問題",
-        "description": "Ejercicios de escucha idénticos a los del cuaderno oficial",
+        "title": "Workbook L1: Escucha de Hora y Edad (きくれんしゅう A)",
+        "japaneseTitle": "第1課 ワークブック：きくれんしゅう A (時間・年齢)",
+        "description": "Cuaderno oficial Lección 1: Comprensión auditiva de edades (〜才), horas en diferentes ciudades y años de estudio",
         "icon": "Headphones",
-        "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-1-11-1",
+            "id": "ex-wb1-a-1",
             "type": "listening",
-            "prompt": "Ejercicio de escucha del Workbook: ¿Quién está hablando?",
-            "japaneseVoiceText": "はじめまして。メアリー・ハートです。アリゾナだいがくのがくせいです。にねんせいです。",
+            "prompt": "Workbook L1 (Parte A): ¿Cuántos años tiene Mary según el audio?",
+            "japaneseVoiceText": "メアリーさんはなんさいですか。ー じゅうきゅうさいです。",
             "options": [
               {
-                "id": "wb-m1",
-                "text": "Mary Hart, estudiante de 2.º año de la Univ. de Arizona",
+                "id": "opt-wb1-a1-1",
+                "text": "19 años (じゅうきゅうさい)",
                 "isCorrect": true
               },
               {
-                "id": "wb-m2",
-                "text": "Takeshi, estudiante de 3.º año de Sakura"
+                "id": "opt-wb1-a1-2",
+                "text": "18 años (じゅうはっさい)"
               },
               {
-                "id": "wb-m3",
-                "text": "Profesor Yamashita"
+                "id": "opt-wb1-a1-3",
+                "text": "20 años (はたち)"
+              },
+              {
+                "id": "opt-wb1-a1-4",
+                "text": "21 años (にじゅういっさい)"
               }
             ],
-            "correctAnswerId": "wb-m1",
-            "explanation": "Mary se presenta: estudiante de Arizona de segundo año (にねんせい)."
+            "correctAnswerId": "opt-wb1-a1-1",
+            "explanation": "Mary tiene 19 años: 「じゅうきゅうさいです」."
           },
           {
-            "id": "ex-1-11-2",
+            "id": "ex-wb1-a-2",
             "type": "listening",
-            "prompt": "Escucha la conversación entre Takeshi y Mary:",
-            "japaneseVoiceText": "メアリーさん、せんこうはなんですか。ー にほんごです。",
+            "prompt": "Workbook L1 (Parte A): ¿Qué hora es en Tokio según el audio?",
+            "japaneseVoiceText": "いまとうきょうはなんじですか。ー ごぜん じゅうじです。",
             "options": [
               {
-                "id": "wb-ans-nih",
-                "text": "Takeshi pregunta la carrera de Mary y ella responde \"japonés\".",
+                "id": "opt-wb1-a2-1",
+                "text": "10:00 AM (ごぜん じゅうじ)",
                 "isCorrect": true
               },
               {
-                "id": "wb-ans-eng",
-                "text": "Pregunta la hora de la clase."
+                "id": "opt-wb1-a2-2",
+                "text": "10:30 AM (じゅうじはん)"
               },
               {
-                "id": "wb-ans-ph",
-                "text": "Pregunta su número de teléfono."
+                "id": "opt-wb1-a2-3",
+                "text": "9:00 PM (ごご くじ)"
+              },
+              {
+                "id": "opt-wb1-a2-4",
+                "text": "11:00 AM (じゅういちじ)"
               }
             ],
-            "correctAnswerId": "wb-ans-nih",
-            "explanation": "せんこうはなんですか (¿Cuál es tu especialidad?) -> 日本語です (Japonés)."
+            "correctAnswerId": "opt-wb1-a2-1",
+            "explanation": "En Tokio son las 10:00 de la mañana (ごぜん じゅうじ)."
           },
           {
-            "id": "ex-1-11-3",
+            "id": "ex-wb1-a-3",
             "type": "listening",
-            "prompt": "Escucha la edad que dice Takeshi:",
-            "japaneseVoiceText": "にじゅういっさいです",
+            "prompt": "Workbook L1 (Parte A): ¿En qué año de universidad está Takeshi?",
+            "japaneseVoiceText": "たけしさんはなんねんせいですか。ー にねんせいです。",
             "options": [
               {
-                "id": "wb-21",
-                "text": "21 años",
+                "id": "opt-wb1-a3-1",
+                "text": "2do año (にねんせい)",
                 "isCorrect": true
               },
               {
-                "id": "wb-20",
-                "text": "20 años"
+                "id": "opt-wb1-a3-2",
+                "text": "1er año (いちねんせい)"
               },
               {
-                "id": "wb-22",
-                "text": "22 años"
+                "id": "opt-wb1-a3-3",
+                "text": "3er año (さんねんせい)"
+              },
+              {
+                "id": "opt-wb1-a3-4",
+                "text": "4to año (よねんせい)"
               }
             ],
-            "correctAnswerId": "wb-21",
-            "explanation": "20 (にじゅう) + 1 año con asimilación (いっさい) = 21 años."
+            "correctAnswerId": "opt-wb1-a3-1",
+            "explanation": "Takeshi es estudiante de segundo año (にねんせい)."
+          },
+          {
+            "id": "ex-wb1-a-4",
+            "type": "listening",
+            "prompt": "Workbook L1 (Parte A): ¿Qué hora es en Londres?",
+            "japaneseVoiceText": "ロンドンはいまごごいちじはんです。",
+            "options": [
+              {
+                "id": "opt-wb1-a4-1",
+                "text": "1:30 PM (ごごいちじはん)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb1-a4-2",
+                "text": "1:00 PM (いちじ)"
+              },
+              {
+                "id": "opt-wb1-a4-3",
+                "text": "2:30 PM (にじはん)"
+              },
+              {
+                "id": "opt-wb1-a4-4",
+                "text": "12:30 PM (じゅうにじはん)"
+              }
+            ],
+            "correctAnswerId": "opt-wb1-a4-1",
+            "explanation": "En Londres es la 1:30 de la tarde: 「ごごいちじはんです」."
           }
         ]
       },
       {
-        "id": "l1-node-wb-grammar",
+        "id": "l1-node-wb-listening-bc",
         "unitId": 1,
         "lessonNumber": 1,
-        "title": "Workbook L1: Ejercicios de Gramática y Transformación",
-        "japaneseTitle": "第1課 ワークブック：文法ドリル（〜は〜です・助詞の「の」）",
-        "description": "Ejercicios escritos del Workbook de la Lección 1: estructura X wa Y desu, partícula no y preguntas",
-        "icon": "Flame",
-        "color": "orange",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                {
-                        "id": "ex-1-wbg-1",
-                        "type": "match-pairs",
-                        "prompt": "Empareja los términos y pronombres clave del Workbook L1:",
-                        "pairs": [
-                                {
-                                        "id": "w1p-1",
-                                        "left": "わたし (私)",
-                                        "right": "Yo"
-                                },
-                                {
-                                        "id": "w1p-2",
-                                        "left": "がくせい (学生)",
-                                        "right": "Estudiante"
-                                },
-                                {
-                                        "id": "w1p-3",
-                                        "left": "せんせい (先生)",
-                                        "right": "Profesor / Maestro"
-                                },
-                                {
-                                        "id": "w1p-4",
-                                        "left": "だいがくいんせい",
-                                        "right": "Estudiante de posgrado"
-                                }
-                        ],
-                        "explanation": "Vocabulario y roles fundamentales para completar las tablas de la Lección 1 del cuaderno."
-                },
-                {
-                        "id": "ex-1-wbg-2",
-                        "type": "word-order",
-                        "prompt": "Del Workbook L1: Traduce \"El señor Smith no es estudiante\":",
-                        "japaneseVoiceText": "スミスさんはがくせいじゃありません",
-                        "wordBank": [
-                                "スミスさんは",
-                                "がくせい",
-                                "じゃありません",
-                                "です",
-                                "でした"
-                        ],
-                        "correctSentence": [
-                                "スミスさんは",
-                                "がくせい",
-                                "じゃありません"
-                        ],
-                        "explanation": "Smith-san wa gakusei ja arimasen (Forma negativa formal de です)."
-                },
-                {
-                        "id": "ex-1-wbg-3",
-                        "type": "multiple-choice",
-                        "prompt": "Del Workbook L1: ¿Cuál es la forma correcta para preguntar \"¿Es Mary de primer año en la universidad?\"?",
-                        "options": [
-                                {
-                                        "id": "w1-q-1",
-                                        "text": "メアリーさんは いちねんせいですか。",
-                                        "isCorrect": true
-                                },
-                                {
-                                        "id": "w1-q-2",
-                                        "text": "メアリーさんはいちねんせいでしたか。"
-                                },
-                                {
-                                        "id": "w1-q-3",
-                                        "text": "メアリーさんはいちねんせいです。"
-                                }
-                        ],
-                        "correctAnswerId": "w1-q-1",
-                        "explanation": "La partícula か al final de です transforma la oración en pregunta formal."
-                }
-        ]
-},
-        {
-        "id": "l1-node-12",
-        "unitId": 1,
-        "lessonNumber": 1,
-        "title": "Workbook: Integración y Diálogo",
-        "japaneseTitle": "ワークブック：総合問題 と 自己紹介",
-        "description": "Prueba final de la Lección 1 combinando todo lo aprendido",
-        "icon": "Award",
-        "color": "orange",
-        "totalSteps": 3,
-        "unlocked": false,
+        "title": "Workbook L1: Carrera y Teléfono (きくれんしゅう B & C)",
+        "japaneseTitle": "第1課 ワークブック：きくれんしゅう B & C (専攻・電話番号)",
+        "description": "Cuaderno oficial Lección 1: Escucha de carreras universitarias, nacionalidades y dictado de números telefónicos",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-1-12-1",
+            "id": "ex-wb1-bc-1",
+            "type": "listening",
+            "prompt": "Workbook L1 (Parte B): ¿Cuál es la especialidad de Robert?",
+            "japaneseVoiceText": "ロバートさんのせんこうはなんですか。ー けいざいです。",
+            "options": [
+              {
+                "id": "opt-wb1-bc1-1",
+                "text": "Economía (けいざい)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb1-bc1-2",
+                "text": "Historia (れきし)"
+              },
+              {
+                "id": "opt-wb1-bc1-3",
+                "text": "Literatura (ぶんがく)"
+              },
+              {
+                "id": "opt-wb1-bc1-4",
+                "text": "Ciencias (かがく)"
+              }
+            ],
+            "correctAnswerId": "opt-wb1-bc1-1",
+            "explanation": "La carrera de Robert es Economía (けいざい)."
+          },
+          {
+            "id": "ex-wb1-bc-2",
+            "type": "listening",
+            "prompt": "Workbook L1 (Parte B): ¿Cuál es la nacionalidad de Sue?",
+            "japaneseVoiceText": "スーさんはかんこくじんですか。ー はい、かんこくじんです。",
+            "options": [
+              {
+                "id": "opt-wb1-bc2-1",
+                "text": "Coreana (かんこくじん)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb1-bc2-2",
+                "text": "China (ちゅうごくじん)"
+              },
+              {
+                "id": "opt-wb1-bc2-3",
+                "text": "Japonesa (にほんじん)"
+              },
+              {
+                "id": "opt-wb1-bc2-4",
+                "text": "Americana (アメリカじん)"
+              }
+            ],
+            "correctAnswerId": "opt-wb1-bc2-1",
+            "explanation": "Sue es coreana: 「はい、かんこくじんです」."
+          },
+          {
+            "id": "ex-wb1-bc-3",
+            "type": "listening",
+            "prompt": "Workbook L1 (Parte C): Escucha el número telefónico de la Universidad Sakura:",
+            "japaneseVoiceText": "さくらだいがくのでんわばんごうは、はち・よん・きゅうの、いち・さん・に・ゼロです。",
+            "options": [
+              {
+                "id": "opt-wb1-bc3-1",
+                "text": "849-1320",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb1-bc3-2",
+                "text": "849-1230"
+              },
+              {
+                "id": "opt-wb1-bc3-3",
+                "text": "894-1320"
+              },
+              {
+                "id": "opt-wb1-bc3-4",
+                "text": "849-3120"
+              }
+            ],
+            "correctAnswerId": "opt-wb1-bc3-1",
+            "explanation": "Hachi-yon-kyuu no ichi-san-ni-zero = 849-1320."
+          },
+          {
+            "id": "ex-wb1-bc-4",
+            "type": "listening",
+            "prompt": "Workbook L1 (Parte C): Escucha el número móvil de Yamada:",
+            "japaneseVoiceText": "やまださんのばんごうは、ゼロ・きゅう・ゼロの、なな・ろく・ご・にの、さん・よん・いち・きゅうです。",
+            "options": [
+              {
+                "id": "opt-wb1-bc4-1",
+                "text": "090-7652-3419",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb1-bc4-2",
+                "text": "090-7625-3419"
+              },
+              {
+                "id": "opt-wb1-bc4-3",
+                "text": "080-7652-3419"
+              },
+              {
+                "id": "opt-wb1-bc4-4",
+                "text": "090-7652-3149"
+              }
+            ],
+            "correctAnswerId": "opt-wb1-bc4-1",
+            "explanation": "Zero-kyuu-zero no nana-roku-go-ni no san-yon-ichi-kyuu = 090-7652-3419."
+          }
+        ]
+      },
+      {
+        "id": "l1-node-wb-grammar-1",
+        "unitId": 1,
+        "lessonNumber": 1,
+        "title": "Workbook L1: Gramática 1 (X は Y です・Preguntas con か)",
+        "japaneseTitle": "第1課 ワークブック：文法1 (主語・述語・疑問文)",
+        "description": "Ejercicios oficiales del Workbook: Práctica de oraciones afirmativas, ocupaciones y preguntas de identidad",
+        "icon": "BookOpen",
+        "color": "blue",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb1-g1-1",
             "type": "word-order",
-            "prompt": "Arma la auto-presentación: \"Soy Takeshi. Estudiante de la Universidad Sakura\":",
-            "japaneseVoiceText": "たけしですさくらだいがくのがくせいです",
+            "prompt": "Del Workbook L1: Forma la oración \"Mary es estudiante de segundo año\":",
+            "japaneseVoiceText": "メアリーさんはにねんせいです。",
             "wordBank": [
-              "がくせい",
-              "たけし",
-              "の",
-              "さくらだいがく",
-              "です",
-              "です",
-              "メアリー",
-              "は"
+              "メアリーさんは",
+              "にねんせい",
+              "です。"
             ],
             "correctSentence": [
-              "たけし",
-              "です",
-              "さくらだいがく",
-              "の",
-              "がくせい",
-              "です"
+              "メアリーさんは",
+              "にねんせい",
+              "です。"
             ],
-            "explanation": "Takeshi desu. Sakura daigaku no gakusei desu."
+            "explanation": "Mearii-san wa ninensei desu."
           },
           {
-            "id": "ex-1-12-2",
+            "id": "ex-wb1-g1-2",
             "type": "multiple-choice",
-            "prompt": "Encuentra el error del Workbook: ¿Cuál de estas 3 oraciones tiene un error de partícula?",
+            "prompt": "Del Workbook L1: ¿Cómo se pregunta \"¿El señor Yamashita es profesor?\":",
+            "japaneseVoiceText": "やましたせんせいはせんせいですか。",
             "options": [
               {
-                "id": "err-1",
-                "text": "メアリーさん は アメリカ人 の です。",
+                "id": "opt-wb1-g1-2a",
+                "text": "山下さんは先生ですか。",
                 "isCorrect": true
               },
               {
-                "id": "err-2",
-                "text": "メアリーさんはアメリカ人です。"
+                "id": "opt-wb1-g1-2b",
+                "text": "山下さんは先生ですね。"
               },
               {
-                "id": "err-3",
-                "text": "メアリーさんは学生ですか。"
+                "id": "opt-wb1-g1-2c",
+                "text": "先生は山下さんですかね。"
+              },
+              {
+                "id": "opt-wb1-g1-2d",
+                "text": "山下さん先生ですか。"
               }
             ],
-            "correctAnswerId": "err-1",
-            "explanation": "No se pone 「の」 antes de です sin un sustantivo posterior."
+            "correctAnswerId": "opt-wb1-g1-2a",
+            "explanation": "Para preguntas se añade la partícula か al final: 〜ですか."
           },
           {
-            "id": "ex-1-12-3",
+            "id": "ex-wb1-g1-3",
             "type": "match-pairs",
-            "prompt": "Empareja las preguntas clave de la Lección 1 con su significado:",
+            "prompt": "Del Workbook L1: Relaciona cada ocupación con su significado en español:",
+            "explanation": "Gakusei (Estudiante), Sensei (Profesor), Kaishain (Empleado de oficina), Ishi (Médico).",
             "pairs": [
               {
-                "id": "rev1",
-                "left": "おなまえは？",
-                "right": "¿Cuál es su nombre?"
+                "id": "p1",
+                "left": "学生",
+                "leftSub": "がくせい",
+                "right": "Estudiante"
               },
               {
-                "id": "rev2",
-                "left": "ごせんこうは？",
-                "right": "¿Cuál es su especialidad?"
+                "id": "p2",
+                "left": "先生",
+                "leftSub": "せんせい",
+                "right": "Profesor / Maestro"
               },
               {
-                "id": "rev3",
-                "left": "おいくつですか？",
-                "right": "¿Qué edad tiene?"
+                "id": "p3",
+                "left": "会社員",
+                "leftSub": "かいしゃいん",
+                "right": "Empleado de oficina"
               },
               {
-                "id": "rev4",
-                "left": "いまなんじですか？",
-                "right": "¿Qué hora es ahora?"
+                "id": "p4",
+                "left": "医者",
+                "leftSub": "いしゃ",
+                "right": "Médico / Doctor"
               }
-            ],
-            "explanation": "¡Has dominado todas las preguntas comunicativas de la Lección 1 de Genki!"
+            ]
           },
           {
-            "id": "ex-1-12-4",
-            "type": "listening",
-            "prompt": "Escucha el mensaje final de despedida de la Lección 1:",
-            "japaneseVoiceText": "どうぞよろしくおねがいします",
+            "id": "ex-wb1-g1-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L1: ¿Qué partícula marca el tema principal de la oración?",
+            "japaneseVoiceText": "わたしはがくせいです。",
             "options": [
               {
-                "id": "fin-yoro",
-                "text": "Encantado de conocerle, cuento con su favor.",
+                "id": "opt-wb1-g1-4a",
+                "text": "は (wa)",
                 "isCorrect": true
               },
               {
-                "id": "fin-ohay",
-                "text": "Buenos días por la mañana."
+                "id": "opt-wb1-g1-4b",
+                "text": "の (no)"
+              },
+              {
+                "id": "opt-wb1-g1-4c",
+                "text": "か (ka)"
+              },
+              {
+                "id": "opt-wb1-g1-4d",
+                "text": "も (mo)"
               }
             ],
-            "correctAnswerId": "fin-yoro",
-            "explanation": "¡Felicitaciones! Has completado el currículo íntegro de la Lección 1 de Genki."
+            "correctAnswerId": "opt-wb1-g1-4a",
+            "explanation": "La partícula は señala el tema."
+          }
+        ]
+      },
+      {
+        "id": "l1-node-wb-grammar-2",
+        "unitId": 1,
+        "lessonNumber": 1,
+        "title": "Workbook L1: Gramática 2 (Partícula の・Posesión y Origen)",
+        "japaneseTitle": "第1課 ワークブック：文法2 (助詞「の」の用法)",
+        "description": "Ejercicios oficiales del Workbook: Conexión de sustantivos modificadores y pertenencia universitaria",
+        "icon": "BookOpen",
+        "color": "green",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb1-g2-1",
+            "type": "word-order",
+            "prompt": "Del Workbook L1: Ordena \"Estudiante de la Universidad de Arizona\":",
+            "japaneseVoiceText": "アリゾナだいがくのがくせい",
+            "wordBank": [
+              "アリゾナだいがくの",
+              "がくせい"
+            ],
+            "correctSentence": [
+              "アリゾナだいがくの",
+              "がくせい"
+            ],
+            "explanation": "Arizona daigaku no gakusei."
+          },
+          {
+            "id": "ex-wb1-g2-2",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L1: Traduce \"El profesor de japonés de Takeshi\":",
+            "japaneseVoiceText": "たけしさんのにほんごのせんせい",
+            "options": [
+              {
+                "id": "opt-wb1-g2-2a",
+                "text": "たけしさんの日本語の先生",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb1-g2-2b",
+                "text": "日本語のたけしさん先生"
+              },
+              {
+                "id": "opt-wb1-g2-2c",
+                "text": "たけしさん先生の日本語"
+              },
+              {
+                "id": "opt-wb1-g2-2d",
+                "text": "先生のたけしさんの日本語"
+              }
+            ],
+            "correctAnswerId": "opt-wb1-g2-2a",
+            "explanation": "Takeshi-san no nihongo no sensei."
+          },
+          {
+            "id": "ex-wb1-g2-3",
+            "type": "listening",
+            "prompt": "Del Workbook L1: Escucha y responde de quién es el libro:",
+            "japaneseVoiceText": "これはメアリーさんのほんです。",
+            "options": [
+              {
+                "id": "opt-wb1-g2-3a",
+                "text": "Es el libro de Mary.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb1-g2-3b",
+                "text": "Es el libro de Takeshi."
+              },
+              {
+                "id": "opt-wb1-g2-3c",
+                "text": "Es un libro de matemáticas."
+              }
+            ],
+            "correctAnswerId": "opt-wb1-g2-3a",
+            "explanation": "Kore wa Mearii-san no hon desu."
+          },
+          {
+            "id": "ex-wb1-g2-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L1: ¿Cómo se dice \"Mi número de teléfono\" en japonés?",
+            "japaneseVoiceText": "わたしのでんわばんごう",
+            "options": [
+              {
+                "id": "opt-wb1-g2-4a",
+                "text": "私のでんわばんごう",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb1-g2-4b",
+                "text": "私のでんわ"
+              },
+              {
+                "id": "opt-wb1-g2-4c",
+                "text": "でんわばんごうの私"
+              },
+              {
+                "id": "opt-wb1-g2-4d",
+                "text": "私のばんごうでんわ"
+              }
+            ],
+            "correctAnswerId": "opt-wb1-g2-4a",
+            "explanation": "Watashi no denwa bangou."
+          }
+        ]
+      },
+      {
+        "id": "l1-node-wb-integration",
+        "unitId": 1,
+        "lessonNumber": 1,
+        "title": "Workbook L1: Integración y Autopresentación (そうごうもんだい)",
+        "japaneseTitle": "第1課 ワークブック：総合問題 (自己紹介・会話)",
+        "description": "Evaluación integral del Workbook: Diálogo completo de presentación personal y cortesía formal (はじめまして)",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb1-i-1",
+            "type": "word-order",
+            "prompt": "Del Workbook L1: Ordena \"Mucho gusto en conocerte (fórmula formal)\":",
+            "japaneseVoiceText": "どうぞよろしくおねがいします。",
+            "wordBank": [
+              "どうぞ",
+              "よろしく",
+              "おねがいします。"
+            ],
+            "correctSentence": [
+              "どうぞ",
+              "よろしく",
+              "おねがいします。"
+            ],
+            "explanation": "Douzo yoroshiku onegai shimasu."
+          },
+          {
+            "id": "ex-wb1-i-2",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L1: ¿Con qué saludo formal se inicia una presentación personal por primera vez?",
+            "japaneseVoiceText": "はじめまして。",
+            "options": [
+              {
+                "id": "opt-wb1-i2-1",
+                "text": "はじめまして (Hajimemashite - Mucho gusto)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb1-i2-2",
+                "text": "こんにちは (Konnichiwa)"
+              },
+              {
+                "id": "opt-wb1-i2-3",
+                "text": "さようなら (Sayounara)"
+              },
+              {
+                "id": "opt-wb1-i2-4",
+                "text": "おやすみなさい (Oyasuminasai)"
+              }
+            ],
+            "correctAnswerId": "opt-wb1-i2-1",
+            "explanation": "はじめまして se usa al presentarse por primera vez."
+          },
+          {
+            "id": "ex-wb1-i-3",
+            "type": "listening",
+            "prompt": "Del Workbook L1: Escucha la autopresentación de Kim y elige sus datos:",
+            "japaneseVoiceText": "はじめまして、キムです。かんこくじんです。にねんせいです。どうぞよろしく。",
+            "options": [
+              {
+                "id": "opt-wb1-i3-1",
+                "text": "Se llama Kim, es coreano, estudiante de 2do año.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb1-i3-2",
+                "text": "Se llama Kim, es japonés, profesor de historia."
+              },
+              {
+                "id": "opt-wb1-i3-3",
+                "text": "Se llama Ken, es estudiante de 1er año."
+              }
+            ],
+            "correctAnswerId": "opt-wb1-i3-1",
+            "explanation": "Kim es de Corea del Sur y cursa el segundo año universitario."
+          },
+          {
+            "id": "ex-wb1-i-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L1: Si te preguntan 「おなまえは？」 (¿Tu nombre?), ¿cómo respondes correctamente?",
+            "japaneseVoiceText": "メアリーです。",
+            "options": [
+              {
+                "id": "opt-wb1-i4-1",
+                "text": "[Tu Nombre] です。(Sin añadir 〜さん a tu propio nombre)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb1-i4-2",
+                "text": "[Tu Nombre] さんです。"
+              },
+              {
+                "id": "opt-wb1-i4-3",
+                "text": "お名前です。"
+              },
+              {
+                "id": "opt-wb1-i4-4",
+                "text": "先生です。"
+              }
+            ],
+            "correctAnswerId": "opt-wb1-i4-1",
+            "explanation": "Nunca se debe añadir 〜さん al referirse a uno mismo."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 2: GENKI LECCIÓN 2: DE COMPRAS
-  // ==========================================
   {
     "id": 2,
     "genkiBook": "Genki I",
@@ -4369,266 +4663,686 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l2-node-11",
+        "id": "l2-node-wb-listening-a",
         "unitId": 2,
         "lessonNumber": 2,
-        "title": "Workbook: Escucha en la Tienda",
-        "japaneseTitle": "ワークブック：買い物のリスニング",
-        "description": "Ejercicios de escucha idénticos a los del cuaderno oficial de compras",
+        "title": "Workbook L2: Escucha en el Quiosco (きくれんしゅう A)",
+        "japaneseTitle": "第2課 ワークブック：きくれんしゅう A (売店・値段)",
+        "description": "Página 35 del Workbook oficial: Diálogo en el quiosco anotando precios de artículos y productos con precio desconocido (?)",
         "icon": "Headphones",
         "color": "purple",
-        "totalSteps": 3,
-        "unlocked": false,
+        "totalSteps": 5,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-2-11-1",
+            "id": "ex-wb2-a-1",
             "type": "listening",
-            "prompt": "Escucha la conversación en la tienda:",
-            "japaneseVoiceText": "すみません、そのとけいはいくらですか。ー さんぜんごひゃくえんです。",
+            "prompt": "Workbook L2 (Parte A): Escucha y selecciona el precio del periódico The Japan Times (しんぶん):",
+            "japaneseVoiceText": "すみません、このしんぶんはいくらですか。ー ひゃくごじゅうえんです。",
             "options": [
               {
-                "id": "wb2-p1",
-                "text": "Pregunta el precio del reloj y cuesta 3,500 yenes.",
+                "id": "opt-wb2-a1-1",
+                "text": "¥150 (ひゃくごじゅうえん)",
                 "isCorrect": true
               },
               {
-                "id": "wb2-p2",
-                "text": "Pregunta por el bolso y cuesta 5,300 yenes."
+                "id": "opt-wb2-a1-2",
+                "text": "¥100 (ひゃくえん)"
               },
               {
-                "id": "wb2-p3",
-                "text": "Pregunta dónde está la tienda."
+                "id": "opt-wb2-a1-3",
+                "text": "¥250 (にひゃくごじゅうえん)"
+              },
+              {
+                "id": "opt-wb2-a1-4",
+                "text": "¥500 (ごひゃくえん)"
               }
             ],
-            "correctAnswerId": "wb2-p1",
-            "explanation": "その時計はいくらですか (3,500 yenes = さんぜんごひゃくえん)."
+            "correctAnswerId": "opt-wb2-a1-1",
+            "explanation": "El periódico The Japan Times cuesta ¥150 (ひゃくごじゅうえん)."
           },
           {
-            "id": "ex-2-11-2",
+            "id": "ex-wb2-a-2",
             "type": "listening",
-            "prompt": "Escucha el objeto que decide comprar el cliente:",
-            "japaneseVoiceText": "じゃあ、このあおいかさをください",
+            "prompt": "Workbook L2 (Parte A): Escucha y selecciona el precio del paraguas (かさ):",
+            "japaneseVoiceText": "じゃあ、そのかさはいくらですか。ー せんえんです。",
             "options": [
               {
-                "id": "wb2-blue-umb",
-                "text": "El paraguas azul",
+                "id": "opt-wb2-a2-1",
+                "text": "¥1,000 (せんえん)",
                 "isCorrect": true
               },
               {
-                "id": "wb2-red-hat",
-                "text": "El sombrero rojo"
+                "id": "opt-wb2-a2-2",
+                "text": "¥1,500 (せんごひゃくえん)"
               },
               {
-                "id": "wb2-black-bag",
-                "text": "La cartera negra"
+                "id": "opt-wb2-a2-3",
+                "text": "¥800 (はっぴゃくえん)"
+              },
+              {
+                "id": "opt-wb2-a2-4",
+                "text": "¥2,000 (にせんえん)"
               }
             ],
-            "correctAnswerId": "wb2-blue-umb",
-            "explanation": "「この青い傘をください」(Deme este paraguas azul, por favor)."
+            "correctAnswerId": "opt-wb2-a2-1",
+            "explanation": "El dependiente dice claramente: 「せんえんです」(Cuesta 1,000 yenes)."
           },
           {
-            "id": "ex-2-11-3",
+            "id": "ex-wb2-a-3",
             "type": "listening",
-            "prompt": "Escucha la respuesta del encargado:",
-            "japaneseVoiceText": "ぎんこうはあそこですよ",
+            "prompt": "Workbook L2 (Parte A): ¿De qué artículo NO se sabe el precio y debe marcarse con (?) según el audio?",
+            "japaneseVoiceText": "あのチョコレートはいくらですか。ー あ、チョコレートのねだんはわかりませんね。",
             "options": [
               {
-                "id": "wb2-bank-adv",
-                "text": "Le informa que el banco está allá.",
+                "id": "opt-wb2-a3-1",
+                "text": "チョコレート (El chocolate: precio no indicado / ?)",
                 "isCorrect": true
               },
               {
-                "id": "wb2-bank-cl",
-                "text": "El banco está cerrado."
+                "id": "opt-wb2-a3-2",
+                "text": "コーラ (La cola)"
               },
               {
-                "id": "wb2-post",
-                "text": "Correos está aquí."
+                "id": "opt-wb2-a3-3",
+                "text": "ガム (El chicle)"
+              },
+              {
+                "id": "opt-wb2-a3-4",
+                "text": "しんぶん (El periódico)"
               }
             ],
-            "correctAnswerId": "wb2-bank-adv",
-            "explanation": "Ginkou wa asoko desu yo."
+            "correctAnswerId": "opt-wb2-a3-1",
+            "explanation": "El dependiente responde 「あ、チョコレートのねだんはわかりませんね」(No sé el precio del chocolate), por lo que se anota '?'."
+          },
+          {
+            "id": "ex-wb2-a-4",
+            "type": "listening",
+            "prompt": "Workbook L2 (Parte A): ¿Cuánto cuesta la cola (コーラ) según el dependiente?",
+            "japaneseVoiceText": "コーラはひゃくにじゅうえんです。",
+            "options": [
+              {
+                "id": "opt-wb2-a4-1",
+                "text": "¥120 (ひゃくにじゅうえん)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb2-a4-2",
+                "text": "¥100 (ひゃくえん)"
+              },
+              {
+                "id": "opt-wb2-a4-3",
+                "text": "¥150 (ひゃくごじゅうえん)"
+              },
+              {
+                "id": "opt-wb2-a4-4",
+                "text": "¥200 (にひゃくえん)"
+              }
+            ],
+            "correctAnswerId": "opt-wb2-a4-1",
+            "explanation": "La lata de cola cuesta ¥120 (ひゃくにじゅうえん)."
+          },
+          {
+            "id": "ex-wb2-a-5",
+            "type": "listening",
+            "prompt": "Workbook L2 (Parte A): ¿Cuánto cuesta el chicle (ガム) y cuál es el total con la cola?",
+            "japaneseVoiceText": "ガムはひゃくえんです。コーラとガムでぜんぶで にひゃくにじゅうえんです。",
+            "options": [
+              {
+                "id": "opt-wb2-a5-1",
+                "text": "Chicle ¥100 (Total: ¥220)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb2-a5-2",
+                "text": "Chicle ¥120 (Total: ¥240)"
+              },
+              {
+                "id": "opt-wb2-a5-3",
+                "text": "Chicle ¥80 (Total: ¥200)"
+              },
+              {
+                "id": "opt-wb2-a5-4",
+                "text": "Chicle ¥150 (Total: ¥270)"
+              }
+            ],
+            "correctAnswerId": "opt-wb2-a5-1",
+            "explanation": "El chicle cuesta ¥100 y el total de la compra suma ¥220 (にひゃくにじゅうえん)."
           }
         ]
       },
       {
-        "id": "l2-node-wb-grammar",
+        "id": "l2-node-wb-listening-bc",
         "unitId": 2,
         "lessonNumber": 2,
-        "title": "Workbook L2: Ejercicios de Gramática y Demostrativos",
-        "japaneseTitle": "第2課 ワークブック：これ・それ・あれ・どれ と 助詞「も」",
-        "description": "Ejercicios escritos del Workbook de la Lección 2: demostrativos y precios en compras",
-        "icon": "ShoppingBag",
-        "color": "blue",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                {
-                        "id": "ex-2-wbg-1",
-                        "type": "match-pairs",
-                        "prompt": "Del Workbook L2: Empareja la serie Ko-So-A-Do con su referencia espacial:",
-                        "pairs": [
-                                {
-                                        "id": "w2d-1",
-                                        "left": "これ (kore)",
-                                        "right": "Esto (cerca de quien habla)"
-                                },
-                                {
-                                        "id": "w2d-2",
-                                        "left": "それ (sore)",
-                                        "right": "Eso (cerca de quien escucha)"
-                                },
-                                {
-                                        "id": "w2d-3",
-                                        "left": "あれ (are)",
-                                        "right": "Aquello (lejos de ambos)"
-                                },
-                                {
-                                        "id": "w2d-4",
-                                        "left": "どれ (dore)",
-                                        "right": "¿Cuál? (interrogativo)"
-                                }
-                        ],
-                        "explanation": "La serie de demostrativos independientes del Workbook Genki L2."
-                },
-                {
-                        "id": "ex-2-wbg-2",
-                        "type": "word-order",
-                        "prompt": "Del Workbook L2: Traduce \"¿De quién es este paraguas?\":",
-                        "japaneseVoiceText": "これはだれのかさですか",
-                        "wordBank": [
-                                "これは",
-                                "だれの",
-                                "かさですか",
-                                "どれは",
-                                "のですか"
-                        ],
-                        "correctSentence": [
-                                "これは",
-                                "だれの",
-                                "かさですか"
-                        ],
-                        "explanation": "Kore wa dare no kasa desu ka (dare no = de quién)."
-                },
-                {
-                        "id": "ex-2-wbg-3",
-                        "type": "multiple-choice",
-                        "prompt": "Del Workbook L2: Takeshi dice: \"Soy estudiante de 2.º año\". Mary quiere decir: \"Yo también soy estudiante de 2.º año\". ¿Qué debe decir?",
-                        "options": [
-                                {
-                                        "id": "w2-mo-1",
-                                        "text": "わたしも にねんせいです。",
-                                        "isCorrect": true
-                                },
-                                {
-                                        "id": "w2-mo-2",
-                                        "text": "わたしは にねんせいもです。"
-                                },
-                                {
-                                        "id": "w2-mo-3",
-                                        "text": "わたしのにねんせいもです。"
-                                }
-                        ],
-                        "correctAnswerId": "w2-mo-1",
-                        "explanation": "La partícula も reemplaza directamente a は para indicar \"también\"."
-                }
-        ]
-},
-        {
-        "id": "l2-node-12",
-        "unitId": 2,
-        "lessonNumber": 2,
-        "title": "Workbook: Integración y Restaurante",
-        "japaneseTitle": "ワークブック：レストランの会話 と 総合問題",
-        "description": "Pedir el menú, ordenar platillos y diálogo completo de Genki",
-        "icon": "Award",
-        "color": "orange",
-        "totalSteps": 3,
-        "unlocked": false,
+        "title": "Workbook L2: Presentación y Menú (きくれんしゅう B & C)",
+        "japaneseTitle": "第2課 ワークブック：きくれんしゅう B & C (紹介・レストラン)",
+        "description": "Página 35 del Workbook oficial: Presentación de Christy y menú del restaurante con Mary y Takeshi",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 7,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-2-12-1",
-            "type": "word-order",
-            "prompt": "Traduce al japonés la frase en el restaurante: \"El menú, por favor\":",
-            "japaneseVoiceText": "メニューをください",
-            "wordBank": [
-              "メニュー",
-              "ください",
-              "を",
-              "は",
-              "これ"
-            ],
-            "correctSentence": [
-              "メニュー",
-              "を",
-              "ください"
-            ],
-            "explanation": "メニュー (menú) + を (partícula de objeto directo) + ください (por favor)."
-          },
-          {
-            "id": "ex-2-12-2",
-            "type": "multiple-choice",
-            "prompt": "¿Cómo preguntas cortésmente al mesero \"¿Cuánto es en total?\" al pagar la cuenta?",
+            "id": "ex-wb2-b-1",
+            "type": "listening",
+            "prompt": "Workbook L2 (Parte B): ¿クリスティさんは アメリカじんですか？",
+            "japaneseVoiceText": "クリスティさんはアメリカ人ですか。ー いいえ、フランス人です。",
             "options": [
               {
-                "id": "bill-ikura",
-                "text": "いくらですか。 (Ikura desu ka)",
+                "id": "opt-wb2-b1-1",
+                "text": "いいえ、フランス人です (No, es francesa)",
                 "isCorrect": true
               },
               {
-                "id": "bill-doko",
-                "text": "どこですか。"
+                "id": "opt-wb2-b1-2",
+                "text": "はい、アメリカ人です (Sí, es estadounidense)"
               },
               {
-                "id": "bill-dare",
-                "text": "だれですか。"
+                "id": "opt-wb2-b1-3",
+                "text": "いいえ、イギリス人です (No, es británica)"
+              },
+              {
+                "id": "opt-wb2-b1-4",
+                "text": "いいえ、日本人です (No, es japonesa)"
               }
             ],
-            "correctAnswerId": "bill-ikura",
-            "explanation": "いくらですか = ¿cuánto es / cuánto cuesta?."
+            "correctAnswerId": "opt-wb2-b1-1",
+            "explanation": "Christy responde: 「いいえ、フランス人です」(No, soy francesa)."
           },
           {
-            "id": "ex-2-12-3",
-            "type": "match-pairs",
-            "prompt": "Empareja los platillos típicos del diálogo de Genki Lección 2:",
-            "pairs": [
+            "id": "ex-wb2-b-2",
+            "type": "listening",
+            "prompt": "Workbook L2 (Parte B): ¿クリスティさんの せんこうは なんですか？",
+            "japaneseVoiceText": "クリスティさんのせんこうはなんですか。ー えいごです。",
+            "options": [
               {
-                "id": "dp1",
-                "left": "とんかつ",
-                "right": "Chuleta de cerdo empanizada"
+                "id": "opt-wb2-b2-1",
+                "text": "えいごです (Inglés)",
+                "isCorrect": true
               },
               {
-                "id": "dp2",
-                "left": "にく",
-                "right": "Carne"
+                "id": "opt-wb2-b2-2",
+                "text": "にほんごです (Japonés)"
               },
               {
-                "id": "dp3",
-                "left": "さかな",
-                "right": "Pescado"
+                "id": "opt-wb2-b2-3",
+                "text": "けいざいです (Economía)"
               },
               {
-                "id": "dp4",
-                "left": "みず",
-                "right": "Agua"
+                "id": "opt-wb2-b2-4",
+                "text": "れきしです (Historia)"
               }
             ],
-            "explanation": "Comidas que Mary y Takeshi piden en el restaurante en Genki L2."
+            "correctAnswerId": "opt-wb2-b2-1",
+            "explanation": "Al responder sobre su carrera, Christy contesta: 「えいごです」(Inglés)."
+          },
+          {
+            "id": "ex-wb2-b-3",
+            "type": "listening",
+            "prompt": "Workbook L2 (Parte B): ¿クリスティさんの お父さんは 日本人ですか？",
+            "japaneseVoiceText": "クリスティさんのおとうさんは日本人ですか。ー はい、父は日本人です。",
+            "options": [
+              {
+                "id": "opt-wb2-b3-1",
+                "text": "はい、日本人です (Sí, su padre es japonés)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb2-b3-2",
+                "text": "いいえ、フランス人です (No, es francés)"
+              },
+              {
+                "id": "opt-wb2-b3-3",
+                "text": "いいえ、アメリカ人です (No, es estadounidense)"
+              },
+              {
+                "id": "opt-wb2-b3-4",
+                "text": "わかりません (No se menciona)"
+              }
+            ],
+            "correctAnswerId": "opt-wb2-b3-1",
+            "explanation": "Christy aclara: 「はい、父は日本人です」(Sí, mi padre es japonés)."
+          },
+          {
+            "id": "ex-wb2-b-4",
+            "type": "listening",
+            "prompt": "Workbook L2 (Parte B): ¿クリスティさんの お母さんは 日本人ですか？",
+            "japaneseVoiceText": "おかあさんは日本人ですか。ー いいえ、母はフランス人です。",
+            "options": [
+              {
+                "id": "opt-wb2-b4-1",
+                "text": "いいえ、フランス人です (No, su madre es francesa)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb2-b4-2",
+                "text": "はい、日本人です (Sí, su madre es japonesa)"
+              },
+              {
+                "id": "opt-wb2-b4-3",
+                "text": "いいえ、カナダ人です (No, es canadiense)"
+              },
+              {
+                "id": "opt-wb2-b4-4",
+                "text": "アメリカ人です (Es estadounidense)"
+              }
+            ],
+            "correctAnswerId": "opt-wb2-b4-1",
+            "explanation": "Christy responde sobre su madre: 「いいえ、母はフランス人です」(No, mi madre es francesa)."
+          },
+          {
+            "id": "ex-wb2-c-1",
+            "type": "listening",
+            "prompt": "Workbook L2 (Parte C): Escucha los precios del menú (すきやき・うどん・てんぷら):",
+            "japaneseVoiceText": "すきやきはさんぜんえん、うどんはろっぴゃくえん、てんぷらはせんにひゃくえんです。",
+            "options": [
+              {
+                "id": "opt-wb2-c1-1",
+                "text": "Sukiyaki ¥3,000, Udon ¥600, Tempura ¥1,200",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb2-c1-2",
+                "text": "Sukiyaki ¥2,000, Udon ¥800, Tempura ¥1,000"
+              },
+              {
+                "id": "opt-wb2-c1-3",
+                "text": "Sukiyaki ¥3,500, Udon ¥500, Tempura ¥1,500"
+              },
+              {
+                "id": "opt-wb2-c1-4",
+                "text": "Sukiyaki ¥1,200, Udon ¥600, Tempura ¥3,000"
+              }
+            ],
+            "correctAnswerId": "opt-wb2-c1-1",
+            "explanation": "すきやき = ¥3,000 (さんぜんえん), うどん = ¥600 (ろっぴゃくえん), てんぷら = ¥1,200 (せんにひゃくえん)."
+          },
+          {
+            "id": "ex-wb2-c-2",
+            "type": "listening",
+            "prompt": "Workbook L2 (Parte C): Verdadero o Falso: Sukiyaki has fish in it.",
+            "japaneseVoiceText": "すきやきにはさかながはいっていますか。ー いいえ、ぎゅうにくとやさいですよ。",
+            "options": [
+              {
+                "id": "opt-wb2-c2-1",
+                "text": "✕ Falso (Tiene carne de res y verduras, no pescado)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb2-c2-2",
+                "text": "◯ Verdadero (El sukiyaki contiene pescado)"
+              }
+            ],
+            "correctAnswerId": "opt-wb2-c2-1",
+            "explanation": "Takeshi aclara: 「いいえ、ぎゅうにくとやさいですよ」(No, lleva carne de res y verduras)."
+          },
+          {
+            "id": "ex-wb2-c-3",
+            "type": "listening",
+            "prompt": "Workbook L2 (Parte C): Verdadero o Falso: Mary thinks sukiyaki is expensive.",
+            "japaneseVoiceText": "さんぜんえんです。ー うーん、たかいですね。",
+            "options": [
+              {
+                "id": "opt-wb2-c2-3",
+                "text": "◯ Verdadero (Dijo: うーん、たかいですね / Es caro)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb2-c2-4",
+                "text": "✕ Falso (Opina que es muy económico)"
+              }
+            ],
+            "correctAnswerId": "opt-wb2-c2-3",
+            "explanation": "Mary exclama 「うーん、たかいですね」(Mmm, es caro)."
+          }
+        ]
+      },
+      {
+        "id": "l2-node-wb-grammar-1",
+        "unitId": 2,
+        "lessonNumber": 2,
+        "title": "Workbook L2: Gramática 1 (これ・それ・あれ・どれ)",
+        "japaneseTitle": "第2課 ワークブック：文法1 (指示詞 これ・それ・あれ)",
+        "description": "Ejercicios oficiales del Workbook: Demostrativos y distancia respecto al hablante y oyente",
+        "icon": "BookOpen",
+        "color": "blue",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb2-g1-1",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L2: Completa con el demostrativo adecuado para un objeto que tiene el oyente:",
+            "japaneseVoiceText": "それはペンですか。",
+            "options": [
+              {
+                "id": "opt-g1-1a",
+                "text": "それ (ese objeto que tienes tú)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-g1-1b",
+                "text": "これ (este objeto que tengo yo)"
+              },
+              {
+                "id": "opt-g1-1c",
+                "text": "あれ (aquel objeto lejano a ambos)"
+              },
+              {
+                "id": "opt-g1-1d",
+                "text": "どれ (cuál objeto)"
+              }
+            ],
+            "correctAnswerId": "opt-g1-1a",
+            "explanation": "それ se refiere a objetos cercanos a la persona con quien se habla."
+          },
+          {
+            "id": "ex-wb2-g1-2",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L2: ¿Cuál es la pregunta correcta para \"¿Cuál es tu paraguas?\":",
+            "japaneseVoiceText": "あなたのかさはどれですか。",
+            "options": [
+              {
+                "id": "opt-g1-2a",
+                "text": "あなたのかさはどれですか。",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-g1-2b",
+                "text": "あなたのかさはどれですかのか。"
+              },
+              {
+                "id": "opt-g1-2c",
+                "text": "あなたのかさはだれですか。"
+              },
+              {
+                "id": "opt-g1-2d",
+                "text": "あなたのかさはどこですか。"
+              }
+            ],
+            "correctAnswerId": "opt-g1-2a",
+            "explanation": "どれ se utiliza para preguntar 'cuál'."
+          },
+          {
+            "id": "ex-wb2-g1-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L2: Ordena la frase \"Ese libro es de Mary\":",
+            "japaneseVoiceText": "そのほんはメアリーさんのです。",
+            "wordBank": [
+              "その",
+              "ほんは",
+              "メアリーさんの",
+              "です。"
+            ],
+            "correctSentence": [
+              "その",
+              "ほんは",
+              "メアリーさんの",
+              "です。"
+            ],
+            "explanation": "そのほんはメアリーさんのです."
+          },
+          {
+            "id": "ex-wb2-g1-4",
+            "type": "match-pairs",
+            "prompt": "Del Workbook L2: Relaciona cada demostrativo con su posición:",
+            "explanation": "これ (cerca de mí), それ (cerca de ti), あれ (lejos de ambos), どれ (cuál).",
+            "pairs": [
+              {
+                "id": "p1",
+                "left": "これ",
+                "leftSub": "kore",
+                "right": "Cerca del hablante"
+              },
+              {
+                "id": "p2",
+                "left": "それ",
+                "leftSub": "sore",
+                "right": "Cerca del oyente"
+              },
+              {
+                "id": "p3",
+                "left": "あれ",
+                "leftSub": "are",
+                "right": "Lejos de ambos"
+              },
+              {
+                "id": "p4",
+                "left": "どれ",
+                "leftSub": "dore",
+                "right": "¿Cuál? (interrogativo)"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "l2-node-wb-grammar-2",
+        "unitId": 2,
+        "lessonNumber": 2,
+        "title": "Workbook L2: Gramática 2 (〜じゃないです・だれの・〜も)",
+        "japaneseTitle": "第2課 ワークブック：文法2 (否定・所有・並立)",
+        "description": "Ejercicios oficiales del Workbook: Negación de sustantivos, posesión con だれの y partícula 'también' (も)",
+        "icon": "BookOpen",
+        "color": "green",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb2-g2-1",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L2: Transforma a forma negativa formal \"山田さんは学生です\":",
+            "japaneseVoiceText": "やまださんはがくせいじゃありません。",
+            "options": [
+              {
+                "id": "opt-g2-1a",
+                "text": "山田さんは学生じゃありません (o じゃないです)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-g2-1b",
+                "text": "山田さんは学生ではありませんでした"
+              },
+              {
+                "id": "opt-g2-1c",
+                "text": "山田さんは学生じゃないでした"
+              },
+              {
+                "id": "opt-g2-1d",
+                "text": "山田さんは学生ですない"
+              }
+            ],
+            "correctAnswerId": "opt-g2-1a",
+            "explanation": "La negación formal de です es じゃありません (o じゃないです)."
+          },
+          {
+            "id": "ex-wb2-g2-2",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L2: ¿Cómo se pregunta \"¿De quién es este sombrero?\":",
+            "japaneseVoiceText": "このぼうしはだれのですか。",
+            "options": [
+              {
+                "id": "opt-g2-2a",
+                "text": "この帽子はだれのですか。",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-g2-2b",
+                "text": "この帽子はどれのですか。"
+              },
+              {
+                "id": "opt-g2-2c",
+                "text": "これ帽子はだれですか。"
+              },
+              {
+                "id": "opt-g2-2d",
+                "text": "だれのこの帽子ですか。"
+              }
+            ],
+            "correctAnswerId": "opt-g2-2a",
+            "explanation": "この + Sustantivo + は + だれの + ですか."
+          },
+          {
+            "id": "ex-wb2-g2-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L2: Ordena \"Takeshi también es estudiante japonés\":",
+            "japaneseVoiceText": "たけしさんもにほんじんのがくせいです。",
+            "wordBank": [
+              "たけしさんも",
+              "にほんじんの",
+              "がくせいです。"
+            ],
+            "correctSentence": [
+              "たけしさんも",
+              "にほんじんの",
+              "がくせいです。"
+            ],
+            "explanation": "Takeshi-san mo nihonjin no gakusei desu."
+          },
+          {
+            "id": "ex-wb2-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L2: Escucha y responde si Mary es japonesa:",
+            "japaneseVoiceText": "メアリーさんは日本人じゃありません。アメリカ人です。",
+            "options": [
+              {
+                "id": "opt-g2-4a",
+                "text": "No es japonesa, es estadounidense.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-g2-4b",
+                "text": "Sí, es estudiante japonesa."
+              },
+              {
+                "id": "opt-wb2-g2-4c",
+                "text": "Es profesora de francés."
+              }
+            ],
+            "correctAnswerId": "opt-g2-4a",
+            "explanation": "Nihonjin ja arimasen. Amerikajin desu."
+          }
+        ]
+      },
+      {
+        "id": "l2-node-wb-integration",
+        "unitId": 2,
+        "lessonNumber": 2,
+        "title": "Workbook L2: Integración y Restaurante (そうごうもんだい)",
+        "japaneseTitle": "第2課 ワークブック：総合問題 (メニュー・会話)",
+        "description": "Evaluación integral del Workbook: Pedir comida en restaurante, pedir la cuenta y partículas finales ね y よ",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb2-i-1",
+            "type": "listening",
+            "prompt": "Del Workbook L2: Escucha cómo Takeshi pide dos raciones de udon:",
+            "japaneseVoiceText": "すみません、うどんをふたつください。",
+            "options": [
+              {
+                "id": "opt-i1-1",
+                "text": "Por favor, deme dos raciones de udon (うどんをふたつください).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-i1-2",
+                "text": "Deme un tazón de ramen y una cola."
+              },
+              {
+                "id": "opt-i1-3",
+                "text": "¿Dónde están los fideos udon?"
+              }
+            ],
+            "correctAnswerId": "opt-i1-1",
+            "explanation": "Udon o futatsu kudasai (Dos udon, por favor)."
+          },
+          {
+            "id": "ex-wb2-i-2",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L2: ¿Cómo se pide la cuenta educadamente al terminar de comer?",
+            "japaneseVoiceText": "おかいけいをおねがいします。",
+            "options": [
+              {
+                "id": "opt-i2-1",
+                "text": "おかいけいをおねがいします (o かんじょうをおねがいします)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-i2-2",
+                "text": "メニューをください"
+              },
+              {
+                "id": "opt-i2-3",
+                "text": "いくらでしたか"
+              },
+              {
+                "id": "opt-i2-4",
+                "text": "ごちそうさまでしたのみ"
+              }
+            ],
+            "correctAnswerId": "opt-i2-1",
+            "explanation": "お会計をお願いします (O-kaikei o onegai shimasu) es la fórmula estándar para pedir la cuenta."
+          },
+          {
+            "id": "ex-wb2-i-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L2: Ordena la frase \"Ese reloj es muy bonito, ¿verdad?\":",
+            "japaneseVoiceText": "そのとけいはきれいですね。",
+            "wordBank": [
+              "その",
+              "とけいは",
+              "きれいです",
+              "ね。"
+            ],
+            "correctSentence": [
+              "その",
+              "とけいは",
+              "きれいです",
+              "ね。"
+            ],
+            "explanation": "Sono tokei wa kirei desu ne."
+          },
+          {
+            "id": "ex-wb2-i-4",
+            "type": "listening",
+            "prompt": "Del Workbook L2: Escucha la recomendación del plato con partícula よ:",
+            "japaneseVoiceText": "このてんぷらはおいしいですよ。",
+            "options": [
+              {
+                "id": "opt-i4-1",
+                "text": "¡Este tempura es delicioso! (Dando información nueva con よ)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-i4-2",
+                "text": "El tempura no está rico."
+              },
+              {
+                "id": "opt-i4-3",
+                "text": "¿Es delicioso este tempura?"
+              }
+            ],
+            "correctAnswerId": "opt-i4-1",
+            "explanation": "Kono tenpura wa oishii desu yo."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 3: GENKI LECCIÓN 3: HACIENDO PLANES
-  // ==========================================
   {
     "id": 3,
     "genkiBook": "Genki I",
@@ -5514,11 +6228,11 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l3-node-10",
+        "id": "l3-node-wb-listening-a",
         "unitId": 3,
         "lessonNumber": 3,
-        "title": "Workbook: Escucha de Rutinas y Citas",
-        "japaneseTitle": "ワークブック：リスニング問題（週末の予定）",
+        "title": "Workbook L3: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第3課 ワークブック：きくれんしゅう A (聴解)",
         "description": "Ejercicios de escucha idénticos a los del cuaderno sobre fines de semana",
         "icon": "Headphones",
         "color": "purple",
@@ -5599,188 +6313,392 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l3-node-wb-grammar",
+        "id": "l3-node-wb-listening-bc",
         "unitId": 3,
         "lessonNumber": 3,
-        "title": "Workbook L3: Conjugación de Verbos y Partículas",
-        "japaneseTitle": "第3課 ワークブック：動詞の活用と助詞（を・で・に・へ）",
-        "description": "Ejercicios de conjugación formal -masu y selección de partículas del Workbook L3",
-        "icon": "Flame",
-        "color": "orange",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                {
-                        "id": "ex-3-wbg-1",
-                        "type": "match-pairs",
-                        "prompt": "Del Workbook L3: Empareja los verbos en forma diccionario con su forma Masu afirmativa:",
-                        "pairs": [
-                                {
-                                        "id": "w3v-1",
-                                        "left": "いく (ir - u-verb)",
-                                        "right": "いきます"
-                                },
-                                {
-                                        "id": "w3v-2",
-                                        "left": "たべる (comer - ru-verb)",
-                                        "right": "たべます"
-                                },
-                                {
-                                        "id": "w3v-3",
-                                        "left": "する (hacer - irregular)",
-                                        "right": "します"
-                                },
-                                {
-                                        "id": "w3v-4",
-                                        "left": "くる (venir - irregular)",
-                                        "right": "きます"
-                                }
-                        ],
-                        "explanation": "Tabla fundamental de conjugación a 〜ます del Workbook L3."
-                },
-                {
-                        "id": "ex-3-wbg-2",
-                        "type": "word-order",
-                        "prompt": "Del Workbook L3: Traduce \"A menudo veo películas los fines de semana\":",
-                        "japaneseVoiceText": "しゅうまつによくえいがをみます",
-                        "wordBank": [
-                                "しゅうまつに",
-                                "よく",
-                                "えいがを",
-                                "みます",
-                                "で",
-                                "へ"
-                        ],
-                        "correctSentence": [
-                                "しゅうまつに",
-                                "よく",
-                                "えいがを",
-                                "みます"
-                        ],
-                        "explanation": "Shuumatsu ni (tiempo) yoku (frecuencia) eiga o (objeto directo) mimasu."
-                },
-                {
-                        "id": "ex-3-wbg-3",
-                        "type": "multiple-choice",
-                        "prompt": "Del Workbook L3: ¿Qué partícula completa la frase \"Almorcé EN la cafetería\" (cafetería = lugar de acción)?",
-                        "options": [
-                                {
-                                        "id": "w3p-de",
-                                        "text": "カフェテリア「で」ひるごはんをたべます。",
-                                        "isCorrect": true
-                                },
-                                {
-                                        "id": "w3p-ni",
-                                        "text": "カフェテリア「に」ひるごはんをたべます。"
-                                },
-                                {
-                                        "id": "w3p-wo",
-                                        "text": "カフェテリア「を」ひるごはんをたべます。"
-                                }
-                        ],
-                        "correctAnswerId": "w3p-de",
-                        "explanation": "La partícula で indica el lugar físico donde se realiza una acción."
-                }
-        ]
-},
-        {
-        "id": "l3-node-11",
-        "unitId": 3,
-        "lessonNumber": 3,
-        "title": "Workbook: Integración y Cita del Sábado",
-        "japaneseTitle": "ワークブック：第３課 総合問題",
-        "description": "Prueba final de la Lección 3 unificando horarios, lugares y partículas",
-        "icon": "Award",
-        "color": "orange",
-        "totalSteps": 3,
-        "unlocked": false,
+        "title": "Workbook L3: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第3課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-3-11-1",
-            "type": "multiple-choice",
-            "prompt": "Encuentra el error de partículas del Workbook: 「あした 学校 で 行きます」. ¿Cuál es el error?",
+            "id": "ex-wb3-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L3 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "どようびにきょうとへいきます",
             "options": [
               {
-                "id": "err-part-de",
-                "text": "Debe ser 「学校 に / へ 行きます」(con verbos de movimiento se usa に o へ, no で)",
+                "id": "opt-wb3-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
                 "isCorrect": true
               },
               {
-                "id": "err-part-ash",
-                "text": "あした debe llevar に"
+                "id": "opt-wb3-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
               },
               {
-                "id": "err-part-ik",
-                "text": "El verbo 行きます está mal conjugado"
+                "id": "opt-wb3-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
               }
             ],
-            "correctAnswerId": "err-part-de",
-            "explanation": "で indica el lugar donde se realiza una acción estática. Para movimiento y metas se usa に o へ."
+            "correctAnswerId": "opt-wb3-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
           },
           {
-            "id": "ex-3-11-2",
+            "id": "ex-wb3-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L3 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "にちようびによくテニスをします",
+            "options": [
+              {
+                "id": "opt-wb3-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb3-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb3-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb3-bc-3",
             "type": "word-order",
-            "prompt": "Arma la oración completa de rutina: \"Todos los días estudio japonés en la universidad\":",
-            "japaneseVoiceText": "まいにちだいがくでにほんごをべんきょうします",
+            "prompt": "Del Workbook L3: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
             "wordBank": [
-              "べんきょうします",
-              "だいがく",
-              "まいにち",
-              "にほんご",
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb3-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L3: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb3-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb3-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb3-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb3-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l3-node-wb-grammar-1",
+        "unitId": 3,
+        "lessonNumber": 3,
+        "title": "Workbook L3: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第3課 ワークブック：文法1 (基本練習)",
+        "description": "Ejercicios de conjugación formal -masu y selección de partículas del Workbook L3",
+        "icon": "BookOpen",
+        "color": "blue",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-3-wbg-1",
+            "type": "match-pairs",
+            "prompt": "Del Workbook L3: Empareja los verbos en forma diccionario con su forma Masu afirmativa:",
+            "pairs": [
+              {
+                "id": "w3v-1",
+                "left": "いく (ir - u-verb)",
+                "right": "いきます"
+              },
+              {
+                "id": "w3v-2",
+                "left": "たべる (comer - ru-verb)",
+                "right": "たべます"
+              },
+              {
+                "id": "w3v-3",
+                "left": "する (hacer - irregular)",
+                "right": "します"
+              },
+              {
+                "id": "w3v-4",
+                "left": "くる (venir - irregular)",
+                "right": "きます"
+              }
+            ],
+            "explanation": "Tabla fundamental de conjugación a 〜ます del Workbook L3."
+          },
+          {
+            "id": "ex-3-wbg-2",
+            "type": "word-order",
+            "prompt": "Del Workbook L3: Traduce \"A menudo veo películas los fines de semana\":",
+            "japaneseVoiceText": "しゅうまつによくえいがをみます",
+            "wordBank": [
+              "しゅうまつに",
+              "よく",
+              "えいがを",
+              "みます",
               "で",
-              "を",
-              "に"
+              "へ"
+            ],
+            "correctSentence": [
+              "しゅうまつに",
+              "よく",
+              "えいがを",
+              "みます"
+            ],
+            "explanation": "Shuumatsu ni (tiempo) yoku (frecuencia) eiga o (objeto directo) mimasu."
+          },
+          {
+            "id": "ex-3-wbg-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L3: ¿Qué partícula completa la frase \"Almorcé EN la cafetería\" (cafetería = lugar de acción)?",
+            "options": [
+              {
+                "id": "w3p-de",
+                "text": "カフェテリア「で」ひるごはんをたべます。",
+                "isCorrect": true
+              },
+              {
+                "id": "w3p-ni",
+                "text": "カフェテリア「に」ひるごはんをたべます。"
+              },
+              {
+                "id": "w3p-wo",
+                "text": "カフェテリア「を」ひるごはんをたべます。"
+              }
+            ],
+            "correctAnswerId": "w3p-de",
+            "explanation": "La partícula で indica el lugar físico donde se realiza una acción."
+          }
+        ]
+      },
+      {
+        "id": "l3-node-wb-grammar-2",
+        "unitId": 3,
+        "lessonNumber": 3,
+        "title": "Workbook L3: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第3課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 3",
+        "icon": "BookOpen",
+        "color": "green",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb3-g2-1",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L3: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
+            "options": [
+              {
+                "id": "opt-wb3-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb3-g2-1b",
+                "text": "日本語を書いてあります。"
+              },
+              {
+                "id": "opt-wb3-g2-1c",
+                "text": "日本語で書くそうです。"
+              }
+            ],
+            "correctAnswerId": "opt-wb3-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
+          },
+          {
+            "id": "ex-wb3-g2-2",
+            "type": "word-order",
+            "prompt": "Del Workbook L3: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
+            "wordBank": [
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
             "correctSentence": [
               "まいにち",
-              "だいがく",
-              "で",
-              "にほんご",
-              "を",
-              "べんきょうします"
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
-            "explanation": "まいにち (tiempo relativo) + だいがくで (lugar) + 日本語を (objeto) + べんきょうします (verbo)."
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
           },
           {
-            "id": "ex-3-11-3",
-            "type": "match-pairs",
-            "prompt": "Empareja los días de la semana de Genki Lección 3:",
-            "pairs": [
+            "id": "ex-wb3-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L3: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
+            "options": [
               {
-                "id": "day1",
-                "left": "げつようび",
-                "right": "Lunes"
+                "id": "opt-wb3-g2-3a",
+                "text": "で (indica medio o transporte)",
+                "isCorrect": true
               },
               {
-                "id": "day2",
-                "left": "きんようび",
-                "right": "Viernes"
+                "id": "opt-wb3-g2-3b",
+                "text": "に (indica destino o tiempo)"
               },
               {
-                "id": "day3",
-                "left": "どようび",
-                "right": "Sábado"
-              },
-              {
-                "id": "day4",
-                "left": "にちようび",
-                "right": "Domingo"
+                "id": "opt-wb3-g2-3c",
+                "text": "を (indica objeto directo)"
               }
             ],
-            "explanation": "Días indispensables para coordinar citas y planes semanales."
+            "correctAnswerId": "opt-wb3-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb3-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L3: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb3-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb3-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb3-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb3-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
+          }
+        ]
+      },
+      {
+        "id": "l3-node-wb-integration",
+        "unitId": 3,
+        "lessonNumber": 3,
+        "title": "Workbook L3: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第3課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb3-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L3 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "どようびにきょうとへいきます",
+            "options": [
+              {
+                "id": "opt-wb3-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb3-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb3-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb3-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb3-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L3 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "にちようびによくテニスをします",
+            "options": [
+              {
+                "id": "opt-wb3-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb3-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb3-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb3-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L3: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb3-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L3: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb3-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb3-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb3-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb3-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 4: GENKI LECCIÓN 4: LA PRIMERA CITA
-  // ==========================================
   {
     "id": 4,
     "genkiBook": "Genki I",
@@ -6584,11 +7502,11 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l4-node-9",
+        "id": "l4-node-wb-listening-a",
         "unitId": 4,
         "lessonNumber": 4,
-        "title": "Workbook: Escucha de la Primera Cita",
-        "japaneseTitle": "ワークブック：初めてのデートの会話",
+        "title": "Workbook L4: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第4課 ワークブック：きくれんしゅう A (聴解)",
         "description": "Diálogo oficial del libro: Mary y Takeshi esperando junto al restaurante",
         "icon": "Headphones",
         "color": "purple",
@@ -6668,189 +7586,392 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l4-node-wb-grammar",
+        "id": "l4-node-wb-listening-bc",
         "unitId": 4,
         "lessonNumber": 4,
-        "title": "Workbook L4: Existencia y Localizaciones",
-        "japaneseTitle": "第4課 ワークブック：あります／います と 位置の表現",
-        "description": "Ejercicios escritos del Workbook L4: posiciones espaciales y verbos de existencia",
-        "icon": "MapPin",
-        "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                {
-                        "id": "ex-4-wbg-1",
-                        "type": "match-pairs",
-                        "prompt": "Del Workbook L4: Empareja las palabras de posición espacial:",
-                        "pairs": [
-                                {
-                                        "id": "w4pos-1",
-                                        "left": "うえ (上)",
-                                        "right": "Arriba / Sobre"
-                                },
-                                {
-                                        "id": "w4pos-2",
-                                        "left": "した (下)",
-                                        "right": "Debajo / Abajo"
-                                },
-                                {
-                                        "id": "w4pos-3",
-                                        "left": "なか (中)",
-                                        "right": "Dentro"
-                                },
-                                {
-                                        "id": "w4pos-4",
-                                        "left": "となり (隣)",
-                                        "right": "Al lado"
-                                }
-                        ],
-                        "explanation": "Palabras de ubicación que se conectan con の (ej. テーブルの上)."
-                },
-                {
-                        "id": "ex-4-wbg-2",
-                        "type": "word-order",
-                        "prompt": "Del Workbook L4: Traduce \"Hay un gato debajo de la mesa\":",
-                        "japaneseVoiceText": "テーブルのしたにねこがいます",
-                        "wordBank": [
-                                "テーブルの",
-                                "したに",
-                                "ねこが",
-                                "います",
-                                "あります",
-                                "を"
-                        ],
-                        "correctSentence": [
-                                "テーブルの",
-                                "したに",
-                                "ねこが",
-                                "います"
-                        ],
-                        "explanation": "Teeburu no shita ni neko ga imasu (para animales vivos se usa います)."
-                },
-                {
-                        "id": "ex-4-wbg-3",
-                        "type": "multiple-choice",
-                        "prompt": "Del Workbook L4: Para decir \"Hay un banco cerca de la estación\", ¿cuál es el verbo correcto?",
-                        "options": [
-                                {
-                                        "id": "w4v-ari",
-                                        "text": "えきのエ近くにぎんこうが「あります」。",
-                                        "isCorrect": true
-                                },
-                                {
-                                        "id": "w4v-i",
-                                        "text": "えきの近くにぎんこうが「います」。"
-                                },
-                                {
-                                        "id": "w4v-si",
-                                        "text": "えきの近くにぎんこうが「します」。"
-                                }
-                        ],
-                        "correctAnswerId": "w4v-ari",
-                        "explanation": "Para objetos inanimados y edificios se emplea あります."
-                }
-        ]
-},
-        {
-        "id": "l4-node-10",
-        "unitId": 4,
-        "lessonNumber": 4,
-        "title": "Workbook: Integración Lección 4",
-        "japaneseTitle": "ワークブック：第４課 総合問題",
-        "description": "Evaluación final combinando pasado, existencia y partículas espaciales",
-        "icon": "Award",
-        "color": "orange",
-        "totalSteps": 3,
-        "unlocked": false,
+        "title": "Workbook L4: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第4課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-4-10-1",
-            "type": "word-order",
-            "prompt": "Arma la oración completa de la Lección 4: \"Ayer compré un libro en la librería\":",
-            "japaneseVoiceText": "きのうほんやでほんをかいました",
-            "wordBank": [
-              "きのう",
-              "ほんや",
-              "で",
-              "ほん",
-              "を",
-              "かいました",
-              "に",
-              "買います"
-            ],
-            "correctSentence": [
-              "きのう",
-              "ほんや",
-              "で",
-              "ほん",
-              "を",
-              "かいました"
-            ],
-            "explanation": "Kinou hon'ya de hon o kaimashita."
-          },
-          {
-            "id": "ex-4-10-2",
-            "type": "multiple-choice",
-            "prompt": "Encuentra el error del Workbook: 「机 の 上 で ペン が あります」. ¿Cuál es el error?",
+            "id": "ex-wb4-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L4 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "きのう、どこへいきましたか。ー ともだちときょうとへいきました。",
             "options": [
               {
-                "id": "err-4-de",
-                "text": "Debe ser 「机の上 に ペンがあります」(para existencia estática se usa に, no で)",
+                "id": "opt-wb4-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
                 "isCorrect": true
               },
               {
-                "id": "err-4-ue",
-                "text": "Debe usarse した en vez de 上"
+                "id": "opt-wb4-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
               },
               {
-                "id": "err-4-pen",
-                "text": "Debe usarse います en vez de あります"
+                "id": "opt-wb4-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
               }
             ],
-            "correctAnswerId": "err-4-de",
-            "explanation": "Regla de Genki: La ubicación de existencia siempre lleva に, jamás で."
+            "correctAnswerId": "opt-wb4-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
           },
           {
-            "id": "ex-4-10-3",
-            "type": "match-pairs",
-            "prompt": "Empareja los términos temporales del pasado:",
-            "pairs": [
+            "id": "ex-wb4-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L4 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "マクドナルドのまえでまちました",
+            "options": [
               {
-                "id": "pst1",
-                "left": "きのう (昨日)",
-                "right": "Ayer"
+                "id": "opt-wb4-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
               },
               {
-                "id": "pst2",
-                "left": "おととい (一昨日)",
-                "right": "Antier / Anteayer"
-              },
-              {
-                "id": "pst3",
-                "left": "せんしゅう (先週)",
-                "right": "La semana pasada"
-              },
-              {
-                "id": "pst4",
-                "left": "きのうのばん",
-                "right": "Anoche (ayer por la noche)"
+                "id": "opt-wb4-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
               }
             ],
-            "explanation": "Términos de tiempo pasado indispensables en Genki L4."
+            "correctAnswerId": "opt-wb4-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb4-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L4: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb4-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L4: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb4-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb4-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb4-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb4-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l4-node-wb-grammar-1",
+        "unitId": 4,
+        "lessonNumber": 4,
+        "title": "Workbook L4: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第4課 ワークブック：文法1 (基本練習)",
+        "description": "Ejercicios escritos del Workbook L4: posiciones espaciales y verbos de existencia",
+        "icon": "BookOpen",
+        "color": "blue",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-4-wbg-1",
+            "type": "match-pairs",
+            "prompt": "Del Workbook L4: Empareja las palabras de posición espacial:",
+            "pairs": [
+              {
+                "id": "w4pos-1",
+                "left": "うえ (上)",
+                "right": "Arriba / Sobre"
+              },
+              {
+                "id": "w4pos-2",
+                "left": "した (下)",
+                "right": "Debajo / Abajo"
+              },
+              {
+                "id": "w4pos-3",
+                "left": "なか (中)",
+                "right": "Dentro"
+              },
+              {
+                "id": "w4pos-4",
+                "left": "となり (隣)",
+                "right": "Al lado"
+              }
+            ],
+            "explanation": "Palabras de ubicación que se conectan con の (ej. テーブルの上)."
+          },
+          {
+            "id": "ex-4-wbg-2",
+            "type": "word-order",
+            "prompt": "Del Workbook L4: Traduce \"Hay un gato debajo de la mesa\":",
+            "japaneseVoiceText": "テーブルのしたにねこがいます",
+            "wordBank": [
+              "テーブルの",
+              "したに",
+              "ねこが",
+              "います",
+              "あります",
+              "を"
+            ],
+            "correctSentence": [
+              "テーブルの",
+              "したに",
+              "ねこが",
+              "います"
+            ],
+            "explanation": "Teeburu no shita ni neko ga imasu (para animales vivos se usa います)."
+          },
+          {
+            "id": "ex-4-wbg-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L4: Para decir \"Hay un banco cerca de la estación\", ¿cuál es el verbo correcto?",
+            "options": [
+              {
+                "id": "w4v-ari",
+                "text": "えきのエ近くにぎんこうが「あります」。",
+                "isCorrect": true
+              },
+              {
+                "id": "w4v-i",
+                "text": "えきの近くにぎんこうが「います」。"
+              },
+              {
+                "id": "w4v-si",
+                "text": "えきの近くにぎんこうが「します」。"
+              }
+            ],
+            "correctAnswerId": "w4v-ari",
+            "explanation": "Para objetos inanimados y edificios se emplea あります."
+          }
+        ]
+      },
+      {
+        "id": "l4-node-wb-grammar-2",
+        "unitId": 4,
+        "lessonNumber": 4,
+        "title": "Workbook L4: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第4課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 4",
+        "icon": "BookOpen",
+        "color": "green",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb4-g2-1",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L4: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
+            "options": [
+              {
+                "id": "opt-wb4-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb4-g2-1b",
+                "text": "日本語を書いてあります。"
+              },
+              {
+                "id": "opt-wb4-g2-1c",
+                "text": "日本語で書くそうです。"
+              }
+            ],
+            "correctAnswerId": "opt-wb4-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
+          },
+          {
+            "id": "ex-wb4-g2-2",
+            "type": "word-order",
+            "prompt": "Del Workbook L4: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
+            "wordBank": [
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
+            ],
+            "correctSentence": [
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
+            ],
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
+          },
+          {
+            "id": "ex-wb4-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L4: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
+            "options": [
+              {
+                "id": "opt-wb4-g2-3a",
+                "text": "で (indica medio o transporte)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb4-g2-3b",
+                "text": "に (indica destino o tiempo)"
+              },
+              {
+                "id": "opt-wb4-g2-3c",
+                "text": "を (indica objeto directo)"
+              }
+            ],
+            "correctAnswerId": "opt-wb4-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb4-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L4: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb4-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb4-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb4-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb4-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
+          }
+        ]
+      },
+      {
+        "id": "l4-node-wb-integration",
+        "unitId": 4,
+        "lessonNumber": 4,
+        "title": "Workbook L4: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第4課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb4-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L4 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "きのう、どこへいきましたか。ー ともだちときょうとへいきました。",
+            "options": [
+              {
+                "id": "opt-wb4-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb4-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb4-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb4-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb4-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L4 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "マクドナルドのまえでまちました",
+            "options": [
+              {
+                "id": "opt-wb4-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb4-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb4-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb4-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L4: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb4-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L4: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb4-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb4-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb4-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb4-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 5: GENKI LECCIÓN 5: VIAJE A OKINAWA
-  // ==========================================
   {
     "id": 5,
     "genkiBook": "Genki I",
@@ -7642,11 +8763,11 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l5-node-8",
+        "id": "l5-node-wb-listening-a",
         "unitId": 5,
         "lessonNumber": 5,
-        "title": "Workbook: Escucha de Vacaciones en Okinawa",
-        "japaneseTitle": "ワークブック：沖縄旅行のリスニング",
+        "title": "Workbook L5: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第5課 ワークブック：きくれんしゅう A (聴解)",
         "description": "Robert y sus amigos describen las playas, comida y el mar de Okinawa",
         "icon": "Headphones",
         "color": "purple",
@@ -7726,187 +8847,390 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l5-node-wb-grammar",
+        "id": "l5-node-wb-listening-bc",
         "unitId": 5,
         "lessonNumber": 5,
-        "title": "Workbook L5: Adjetivos い y な",
-        "japaneseTitle": "第5課 ワークブック：い形容詞とな形容詞の活用ドリル",
-        "description": "Ejercicios de conjugación en presente, pasado, afirmativo y negativo del Workbook L5",
-        "icon": "Flame",
-        "color": "orange",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                {
-                        "id": "ex-5-wbg-1",
-                        "type": "match-pairs",
-                        "prompt": "Del Workbook L5: Empareja el adjetivo con su forma negativa en tiempo presente:",
-                        "pairs": [
-                                {
-                                        "id": "w5adj-1",
-                                        "left": "さむい (frío clima)",
-                                        "right": "さむくないです"
-                                },
-                                {
-                                        "id": "w5adj-2",
-                                        "left": "おもしろい (interesante)",
-                                        "right": "おもしろくないです"
-                                },
-                                {
-                                        "id": "w5adj-3",
-                                        "left": "げんき (con energía / な-adj)",
-                                        "right": "げんきじゃないです"
-                                },
-                                {
-                                        "id": "w5adj-4",
-                                        "left": "いい (bueno / irregular)",
-                                        "right": "よくないです"
-                                }
-                        ],
-                        "explanation": "Reglas de negación de adjetivos del Workbook Genki L5."
-                },
-                {
-                        "id": "ex-5-wbg-2",
-                        "type": "word-order",
-                        "prompt": "Del Workbook L5: Traduce \"El viaje a Okinawa no fue caro\":",
-                        "japaneseVoiceText": "おきなわのりょこうはたかくなかったです",
-                        "wordBank": [
-                                "おきなわの",
-                                "りょこうは",
-                                "たかくなかったです",
-                                "たかいです",
-                                "じゃありませんでした"
-                        ],
-                        "correctSentence": [
-                                "おきなわの",
-                                "りょこうは",
-                                "たかくなかったです"
-                        ],
-                        "explanation": "Okinawa no ryokou wa takakunakatta desu (Takai -> Takaku nakatta desu)."
-                },
-                {
-                        "id": "ex-5-wbg-3",
-                        "type": "multiple-choice",
-                        "prompt": "Del Workbook L5: ¿Cómo se dice \"una ciudad tranquila\" modificando directamente el sustantivo まち (ciudad)?",
-                        "options": [
-                                {
-                                        "id": "w5-shizuka-na",
-                                        "text": "しずかな まち",
-                                        "isCorrect": true
-                                },
-                                {
-                                        "id": "w5-shizuka-i",
-                                        "text": "しずかい まち"
-                                },
-                                {
-                                        "id": "w5-shizuka-no",
-                                        "text": "しずかの まち"
-                                }
-                        ],
-                        "correctAnswerId": "w5-shizuka-na",
-                        "explanation": "Los adjetivos な requieren añadir な antes del sustantivo que modifican."
-                }
-        ]
-},
-        {
-        "id": "l5-node-9",
-        "unitId": 5,
-        "lessonNumber": 5,
-        "title": "Workbook: Integración Lección 5",
-        "japaneseTitle": "ワークブック：第５課 総合問題",
-        "description": "Evaluación integradora de adjetivos, gustos y sugerencias",
-        "icon": "Award",
-        "color": "orange",
-        "totalSteps": 3,
-        "unlocked": false,
+        "title": "Workbook L5: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第5課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-5-9-1",
-            "type": "word-order",
-            "prompt": "Arma la oración completa: \"Ayer compré un paraguas nuevo y barato\":",
-            "japaneseVoiceText": "きのうあたらしくてやすいかさをかいました",
-            "wordBank": [
-              "きのう",
-              "あたらしくて",
-              "やすい",
-              "かさ",
-              "を",
-              "かいました",
-              "で",
-              "きれい"
-            ],
-            "correctSentence": [
-              "きのう",
-              "あたらしくて",
-              "やすい",
-              "かさ",
-              "を",
-              "かいました"
-            ],
-            "explanation": "Kinou atarashikute yasui kasa o kaimashita."
-          },
-          {
-            "id": "ex-5-9-2",
-            "type": "multiple-choice",
-            "prompt": "Encuentra el error del Workbook: 「わたし は 日本料理 を 好きです」. ¿Cuál es el error?",
+            "id": "ex-wb5-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L5 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "おきなわのうみはとてもきれいで、あおかったです",
             "options": [
               {
-                "id": "err-5-wo",
-                "text": "Con 好き debe usarse la partícula が: 日本料理 が 好きです",
+                "id": "opt-wb5-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
                 "isCorrect": true
               },
               {
-                "id": "err-5-wa",
-                "text": "Debe eliminarse わたしは"
+                "id": "opt-wb5-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
               },
               {
-                "id": "err-5-suki",
-                "text": "好き es un verbo y debe terminar en ます"
+                "id": "opt-wb5-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
               }
             ],
-            "correctAnswerId": "err-5-wo",
-            "explanation": "Error clásico de exámenes JLPT y Genki: 好き siempre toma が."
+            "correctAnswerId": "opt-wb5-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
           },
           {
-            "id": "ex-5-9-3",
-            "type": "match-pairs",
-            "prompt": "Empareja los opuestos adjetivales de Genki L5:",
-            "pairs": [
+            "id": "ex-wb5-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L5 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "りょうりはおいしかったですが、ちょっとからかったです",
+            "options": [
               {
-                "id": "op-adj1",
-                "left": "たかい (caro)",
-                "right": "やすい (barato)"
+                "id": "opt-wb5-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
               },
               {
-                "id": "op-adj2",
-                "left": "あつい (caluroso)",
-                "right": "さむい (frío)"
-              },
-              {
-                "id": "op-adj3",
-                "left": "あたらしい (nuevo)",
-                "right": "ふるい (viejo / antiguo)"
-              },
-              {
-                "id": "op-adj4",
-                "left": "むずかしい (difícil)",
-                "right": "やさしい (fácil / amable)"
+                "id": "opt-wb5-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
               }
             ],
-            "explanation": "Pares de adjetivos opuestos de Genki."
+            "correctAnswerId": "opt-wb5-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb5-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L5: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb5-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L5: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb5-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb5-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb5-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb5-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l5-node-wb-grammar-1",
+        "unitId": 5,
+        "lessonNumber": 5,
+        "title": "Workbook L5: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第5課 ワークブック：文法1 (基本練習)",
+        "description": "Ejercicios de conjugación en presente, pasado, afirmativo y negativo del Workbook L5",
+        "icon": "BookOpen",
+        "color": "blue",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-5-wbg-1",
+            "type": "match-pairs",
+            "prompt": "Del Workbook L5: Empareja el adjetivo con su forma negativa en tiempo presente:",
+            "pairs": [
+              {
+                "id": "w5adj-1",
+                "left": "さむい (frío clima)",
+                "right": "さむくないです"
+              },
+              {
+                "id": "w5adj-2",
+                "left": "おもしろい (interesante)",
+                "right": "おもしろくないです"
+              },
+              {
+                "id": "w5adj-3",
+                "left": "げんき (con energía / な-adj)",
+                "right": "げんきじゃないです"
+              },
+              {
+                "id": "w5adj-4",
+                "left": "いい (bueno / irregular)",
+                "right": "よくないです"
+              }
+            ],
+            "explanation": "Reglas de negación de adjetivos del Workbook Genki L5."
+          },
+          {
+            "id": "ex-5-wbg-2",
+            "type": "word-order",
+            "prompt": "Del Workbook L5: Traduce \"El viaje a Okinawa no fue caro\":",
+            "japaneseVoiceText": "おきなわのりょこうはたかくなかったです",
+            "wordBank": [
+              "おきなわの",
+              "りょこうは",
+              "たかくなかったです",
+              "たかいです",
+              "じゃありませんでした"
+            ],
+            "correctSentence": [
+              "おきなわの",
+              "りょこうは",
+              "たかくなかったです"
+            ],
+            "explanation": "Okinawa no ryokou wa takakunakatta desu (Takai -> Takaku nakatta desu)."
+          },
+          {
+            "id": "ex-5-wbg-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L5: ¿Cómo se dice \"una ciudad tranquila\" modificando directamente el sustantivo まち (ciudad)?",
+            "options": [
+              {
+                "id": "w5-shizuka-na",
+                "text": "しずかな まち",
+                "isCorrect": true
+              },
+              {
+                "id": "w5-shizuka-i",
+                "text": "しずかい まち"
+              },
+              {
+                "id": "w5-shizuka-no",
+                "text": "しずかの まち"
+              }
+            ],
+            "correctAnswerId": "w5-shizuka-na",
+            "explanation": "Los adjetivos な requieren añadir な antes del sustantivo que modifican."
+          }
+        ]
+      },
+      {
+        "id": "l5-node-wb-grammar-2",
+        "unitId": 5,
+        "lessonNumber": 5,
+        "title": "Workbook L5: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第5課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 5",
+        "icon": "BookOpen",
+        "color": "green",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb5-g2-1",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L5: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
+            "options": [
+              {
+                "id": "opt-wb5-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb5-g2-1b",
+                "text": "日本語を書いてあります。"
+              },
+              {
+                "id": "opt-wb5-g2-1c",
+                "text": "日本語で書くそうです。"
+              }
+            ],
+            "correctAnswerId": "opt-wb5-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
+          },
+          {
+            "id": "ex-wb5-g2-2",
+            "type": "word-order",
+            "prompt": "Del Workbook L5: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
+            "wordBank": [
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
+            ],
+            "correctSentence": [
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
+            ],
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
+          },
+          {
+            "id": "ex-wb5-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L5: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
+            "options": [
+              {
+                "id": "opt-wb5-g2-3a",
+                "text": "で (indica medio o transporte)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb5-g2-3b",
+                "text": "に (indica destino o tiempo)"
+              },
+              {
+                "id": "opt-wb5-g2-3c",
+                "text": "を (indica objeto directo)"
+              }
+            ],
+            "correctAnswerId": "opt-wb5-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb5-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L5: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb5-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb5-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb5-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb5-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
+          }
+        ]
+      },
+      {
+        "id": "l5-node-wb-integration",
+        "unitId": 5,
+        "lessonNumber": 5,
+        "title": "Workbook L5: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第5課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb5-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L5 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "おきなわのうみはとてもきれいで、あおかったです",
+            "options": [
+              {
+                "id": "opt-wb5-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb5-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb5-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb5-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb5-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L5 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "りょうりはおいしかったですが、ちょっとからかったです",
+            "options": [
+              {
+                "id": "opt-wb5-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb5-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb5-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb5-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L5: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb5-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L5: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb5-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb5-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb5-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb5-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 6: GENKI LECCIÓN 6: UN DÍA EN LA VIDA DE ROBERT
-  // ==========================================
   {
     "id": 6,
     "genkiBook": "Genki I",
@@ -8617,14 +9941,193 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l6-node-wb-1",
+        "id": "l6-node-wb-listening-a",
         "unitId": 6,
         "lessonNumber": 6,
-        "title": "Workbook: Conjugación Intensiva Forma Te",
-        "japaneseTitle": "ワークブック：て形の活用ドリル",
+        "title": "Workbook L6: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第6課 ワークブック：きくれんしゅう A (聴解)",
+        "description": "Práctica auditiva del Workbook L6: escuchar indicaciones, permisos y secuencias de actividades",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-6-wbl-1",
+            "type": "listening",
+            "prompt": "Escucha la instrucción del profesor en clase:",
+            "japaneseVoiceText": "きょうかしょのろくじゅうページをあけて、つぎのぶんをよんでください",
+            "options": [
+              {
+                "id": "wbl6-1",
+                "text": "Abran la página 60 del libro de texto y lean la siguiente oración, por favor.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl6-2",
+                "text": "Cierren el libro y entreguen la tarea."
+              },
+              {
+                "id": "wbl6-3",
+                "text": "No abran el libro durante el examen."
+              }
+            ],
+            "correctAnswerId": "wbl6-1",
+            "explanation": "Kyoukasho no rokujuu-peeji o akete, tsugi no bun o yonde kudasai."
+          },
+          {
+            "id": "ex-6-wbl-2",
+            "type": "listening",
+            "prompt": "Escucha por qué Takeshi tiene que irse temprano:",
+            "japaneseVoiceText": "あしたはやくおきなければいけませんから、もうかえります",
+            "options": [
+              {
+                "id": "wbl6-2a",
+                "text": "Como mañana tiene que levantarse temprano, ya se regresa a casa.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl6-2b",
+                "text": "Se quedará hasta muy tarde en la fiesta."
+              },
+              {
+                "id": "wbl6-2c",
+                "text": "Mañana no tiene clases."
+              }
+            ],
+            "correctAnswerId": "wbl6-2a",
+            "explanation": "Usa から para dar la razón de su acción."
+          },
+          {
+            "id": "ex-6-wbl-3",
+            "type": "word-order",
+            "prompt": "Del Workbook: Traduce \"Mañana te devolveré el libro\":",
+            "japaneseVoiceText": "あしたほんをかえします",
+            "wordBank": [
+              "あした",
+              "ほんを",
+              "かえします",
+              "かります",
+              "に"
+            ],
+            "correctSentence": [
+              "あした",
+              "ほんを",
+              "かえします"
+            ],
+            "explanation": "返す (かえす) significa \"devolver un objeto\"."
+          }
+        ]
+      },
+      {
+        "id": "l6-node-wb-listening-bc",
+        "unitId": 6,
+        "lessonNumber": 6,
+        "title": "Workbook L6: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第6課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb6-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L6 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "きょうかしょのろくじゅうページをあけて、つぎのぶんをよんでください",
+            "options": [
+              {
+                "id": "opt-wb6-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb6-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb6-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb6-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb6-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L6 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "あしたはやくおきなければいけませんから、もうかえります",
+            "options": [
+              {
+                "id": "opt-wb6-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb6-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb6-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb6-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L6: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb6-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L6: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb6-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb6-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb6-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb6-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l6-node-wb-grammar-1",
+        "unitId": 6,
+        "lessonNumber": 6,
+        "title": "Workbook L6: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第6課 ワークブック：文法1 (基本練習)",
         "description": "Ejercicios del Workbook pág. 54-56: transformar verbos U, Ru e irregulares sin errores",
-        "icon": "Flame",
-        "color": "orange",
+        "icon": "BookOpen",
+        "color": "blue",
         "totalSteps": 3,
         "unlocked": false,
         "completedSteps": 0,
@@ -8704,178 +10207,207 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l6-node-wb-listen",
+        "id": "l6-node-wb-grammar-2",
         "unitId": 6,
         "lessonNumber": 6,
-        "title": "Workbook: Comprensión Auditiva en el Hospital y Escuela",
-        "japaneseTitle": "ワークブック聞き取り：病院と学校のルール",
-        "description": "Práctica auditiva del Workbook L6: escuchar indicaciones, permisos y secuencias de actividades",
-        "icon": "Headphones",
-        "color": "purple",
-        "totalSteps": 3,
-        "unlocked": false,
+        "title": "Workbook L6: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第6課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 6",
+        "icon": "BookOpen",
+        "color": "green",
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-6-wbl-1",
-            "type": "listening",
-            "prompt": "Escucha la instrucción del profesor en clase:",
-            "japaneseVoiceText": "きょうかしょのろくじゅうページをあけて、つぎのぶんをよんでください",
+            "id": "ex-wb6-g2-1",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L6: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
             "options": [
               {
-                "id": "wbl6-1",
-                "text": "Abran la página 60 del libro de texto y lean la siguiente oración, por favor.",
+                "id": "opt-wb6-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
                 "isCorrect": true
               },
               {
-                "id": "wbl6-2",
-                "text": "Cierren el libro y entreguen la tarea."
+                "id": "opt-wb6-g2-1b",
+                "text": "日本語を書いてあります。"
               },
               {
-                "id": "wbl6-3",
-                "text": "No abran el libro durante el examen."
+                "id": "opt-wb6-g2-1c",
+                "text": "日本語で書くそうです。"
               }
             ],
-            "correctAnswerId": "wbl6-1",
-            "explanation": "Kyoukasho no rokujuu-peeji o akete, tsugi no bun o yonde kudasai."
+            "correctAnswerId": "opt-wb6-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
           },
           {
-            "id": "ex-6-wbl-2",
-            "type": "listening",
-            "prompt": "Escucha por qué Takeshi tiene que irse temprano:",
-            "japaneseVoiceText": "あしたはやくおきなければいけませんから、もうかえります",
-            "options": [
-              {
-                "id": "wbl6-2a",
-                "text": "Como mañana tiene que levantarse temprano, ya se regresa a casa.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl6-2b",
-                "text": "Se quedará hasta muy tarde en la fiesta."
-              },
-              {
-                "id": "wbl6-2c",
-                "text": "Mañana no tiene clases."
-              }
-            ],
-            "correctAnswerId": "wbl6-2a",
-            "explanation": "Usa から para dar la razón de su acción."
-          },
-          {
-            "id": "ex-6-wbl-3",
+            "id": "ex-wb6-g2-2",
             "type": "word-order",
-            "prompt": "Del Workbook: Traduce \"Mañana te devolveré el libro\":",
-            "japaneseVoiceText": "あしたほんをかえします",
+            "prompt": "Del Workbook L6: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
             "wordBank": [
-              "あした",
-              "ほんを",
-              "かえします",
-              "かります",
-              "に"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
             "correctSentence": [
-              "あした",
-              "ほんを",
-              "かえします"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
-            "explanation": "返す (かえす) significa \"devolver un objeto\"."
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
+          },
+          {
+            "id": "ex-wb6-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L6: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
+            "options": [
+              {
+                "id": "opt-wb6-g2-3a",
+                "text": "で (indica medio o transporte)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb6-g2-3b",
+                "text": "に (indica destino o tiempo)"
+              },
+              {
+                "id": "opt-wb6-g2-3c",
+                "text": "を (indica objeto directo)"
+              }
+            ],
+            "correctAnswerId": "opt-wb6-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb6-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L6: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb6-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb6-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb6-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb6-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
           }
         ]
       },
       {
-        "id": "l6-node-6",
+        "id": "l6-node-wb-integration",
         "unitId": 6,
         "lessonNumber": 6,
-        "title": "Workbook: Integración Lección 6",
-        "japaneseTitle": "ワークブック：第６課 総合問題",
-        "description": "Evaluación final de la forma Te, secuencias, favores y permisos",
+        "title": "Workbook L6: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第6課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
         "icon": "Award",
         "color": "orange",
-        "totalSteps": 3,
-        "unlocked": false,
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-6-6-1",
-            "type": "word-order",
-            "prompt": "Arma la oración del diálogo de Robert: \"¿Puedo prestarte mi dinero? (¿Te presto dinero?)\":",
-            "japaneseVoiceText": "おかねをかしましょうか",
-            "wordBank": [
-              "おかね",
-              "を",
-              "かしましょうか",
-              "かりましょうか",
-              "は"
-            ],
-            "correctSentence": [
-              "おかね",
-              "を",
-              "かしましょうか"
-            ],
-            "explanation": "Okane o kashimashou ka (Ofreciendo prestar dinero)."
-          },
-          {
-            "id": "ex-6-6-2",
-            "type": "match-pairs",
-            "prompt": "Empareja los verbos en forma Masu con su forma Te irregular:",
-            "pairs": [
-              {
-                "id": "tp-irr1",
-                "left": "します (hacer)",
-                "right": "して"
-              },
-              {
-                "id": "tp-irr2",
-                "left": "きます (venir)",
-                "right": "きて"
-              },
-              {
-                "id": "tp-irr3",
-                "left": "いきます (ir)",
-                "right": "いって"
-              },
-              {
-                "id": "tp-irr4",
-                "left": "かえります (regresar)",
-                "right": "かえって"
-              }
-            ],
-            "explanation": "Formas Te indispensables para dominar Genki L6."
-          },
-          {
-            "id": "ex-6-6-3",
+            "id": "ex-wb6-bc-1",
             "type": "listening",
-            "prompt": "Escucha las instrucciones del profesor en el aula:",
-            "japaneseVoiceText": "きょうかしょをあけて、よんでください",
+            "prompt": "Del Workbook L6 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "きょうかしょのろくじゅうページをあけて、つぎのぶんをよんでください",
             "options": [
               {
-                "id": "l6-cls-cmd",
-                "text": "Abran el libro de texto y lean, por favor.",
+                "id": "opt-wb6-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
                 "isCorrect": true
               },
               {
-                "id": "l6-cls-wr",
-                "text": "Abran el cuaderno y escriban, por favor."
+                "id": "opt-wb6-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
               },
               {
-                "id": "l6-cls-lst",
-                "text": "Cierren el libro y escuchen el audio."
+                "id": "opt-wb6-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
               }
             ],
-            "correctAnswerId": "l6-cls-cmd",
-            "explanation": "Kyoukasho o akete, yonde kudasai."
+            "correctAnswerId": "opt-wb6-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb6-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L6 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "あしたはやくおきなければいけませんから、もうかえります",
+            "options": [
+              {
+                "id": "opt-wb6-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb6-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb6-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb6-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L6: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb6-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L6: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb6-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb6-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb6-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb6-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 7: GENKI LECCIÓN 7: FOTO FAMILIAR
-  // ==========================================
   {
     "id": 7,
     "genkiBook": "Genki I",
@@ -9602,94 +11134,14 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l7-node-wb-1",
+        "id": "l7-node-wb-listening-a",
         "unitId": 7,
         "lessonNumber": 7,
-        "title": "Workbook: Describir Atributos Físicos (〜は〜が)",
-        "japaneseTitle": "ワークブック：身体特徴の表現（髪が長い・目が大きい）",
-        "description": "Ejercicios del Workbook L7: describir cabello, ojos y estatura y contar personas",
-        "icon": "Sparkles",
-        "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-          {
-            "id": "ex-7-wb-1",
-            "type": "word-order",
-            "prompt": "Del Workbook: Traduce \"Tomoko tiene el cabello largo\":",
-            "japaneseVoiceText": "ともこさんはかみがながいです",
-            "wordBank": [
-              "ともこさんは",
-              "かみが",
-              "ながいです",
-              "かみを",
-              "せが"
-            ],
-            "correctSentence": [
-              "ともこさんは",
-              "かみが",
-              "ながいです"
-            ],
-            "explanation": "[Persona] は [Parte del cuerpo] が [Adjetivo] です: Tomoko-san wa kami ga nagai desu."
-          },
-          {
-            "id": "ex-7-wb-2",
-            "type": "listening",
-            "prompt": "Escucha el ejercicio auditivo del Workbook L7:",
-            "japaneseVoiceText": "このクラスにはがくせいがよにんいます",
-            "options": [
-              {
-                "id": "w7-4stu",
-                "text": "En esta clase hay 4 estudiantes.",
-                "isCorrect": true
-              },
-              {
-                "id": "w7-4stu2",
-                "text": "En esta clase hay 2 estudiantes."
-              },
-              {
-                "id": "w7-4stu3",
-                "text": "En esta clase hay 40 estudiantes."
-              }
-            ],
-            "correctAnswerId": "w7-4stu",
-            "explanation": "4 personas se lee よにん (四人), nunca \"yon-nin\"."
-          },
-          {
-            "id": "ex-7-wb-3",
-            "type": "multiple-choice",
-            "prompt": "Compara: 「しっています」(lo sé) vs ¿cómo se dice \"NO lo sé\" en japonés según Genki L7?",
-            "options": [
-              {
-                "id": "shira-1",
-                "text": "しりません (shirimasen — nunca \"shitte imasen\")",
-                "isCorrect": true
-              },
-              {
-                "id": "shira-2",
-                "text": "しっていません"
-              },
-              {
-                "id": "shira-3",
-                "text": "しりませんでした"
-              }
-            ],
-            "correctAnswerId": "shira-1",
-            "explanation": "¡Regla clave de Genki L7! Afirmativo: 知っています (lo sé). Negativo: 知りません (no lo sé)."
-          }
-        ]
-      },
-      {
-        "id": "l7-node-wb-listen",
-        "unitId": 7,
-        "lessonNumber": 7,
-        "title": "Workbook: Comprensión Auditiva y Lectura de Correo de Mary",
-        "japaneseTitle": "ワークブック聞き取りと読み書き編（メアリーさんのメール）",
+        "title": "Workbook L7: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第7課 ワークブック：きくれんしゅう A (聴解)",
         "description": "Escucha descripciones de personas en una fiesta y lee el correo de Mary a sus padres",
         "icon": "Headphones",
-        "color": "red",
+        "color": "purple",
         "totalSteps": 3,
         "unlocked": false,
         "completedSteps": 0,
@@ -9762,104 +11214,320 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l7-node-6",
+        "id": "l7-node-wb-listening-bc",
         "unitId": 7,
         "lessonNumber": 7,
-        "title": "Workbook: Integración Lección 7",
-        "japaneseTitle": "ワークブック：第７課 総合問題",
-        "description": "Evaluación final de acciones en curso, familia y descripciones físicas",
-        "icon": "Award",
-        "color": "orange",
-        "totalSteps": 3,
-        "unlocked": false,
+        "title": "Workbook L7: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第7課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-7-6-1",
+            "id": "ex-wb7-bc-1",
             "type": "listening",
-            "prompt": "Escucha la descripción de la foto familiar:",
-            "japaneseVoiceText": "あねはけっこんしていて、とうきょうにすんでいます",
+            "prompt": "Del Workbook L7 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "いもうとはめがおおきくて、とてもかわいいです",
             "options": [
               {
-                "id": "l7-sis-mar",
-                "text": "Mi hermana mayor está casada y vive en Tokio.",
+                "id": "opt-wb7-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
                 "isCorrect": true
               },
               {
-                "id": "l7-sis-stu",
-                "text": "Mi hermana mayor es estudiante y vive en Kioto."
+                "id": "opt-wb7-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
               },
               {
-                "id": "l7-sis-sgl",
-                "text": "Mi hermana mayor no está casada."
+                "id": "opt-wb7-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
               }
             ],
-            "correctAnswerId": "l7-sis-mar",
-            "explanation": "Ane wa kekkon shite ite, Tokyo ni sunde imasu."
+            "correctAnswerId": "opt-wb7-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
           },
           {
-            "id": "ex-7-6-2",
+            "id": "ex-wb7-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L7 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "このきっさてんはしずかでやすいです",
+            "options": [
+              {
+                "id": "opt-wb7-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb7-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb7-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb7-bc-3",
             "type": "word-order",
-            "prompt": "Arma la oración del Workbook: \"El profesor Yamashita enseña japonés en la universidad\":",
-            "japaneseVoiceText": "やましたせんせいはだいがくでにほんごをおしえています",
+            "prompt": "Del Workbook L7: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
             "wordBank": [
-              "やましたせんせい",
-              "は",
-              "だいがく",
-              "で",
-              "にほんご",
-              "を",
-              "おしえています",
-              "に"
+              "また",
+              "らいしゅう",
+              "あいましょう。"
             ],
             "correctSentence": [
-              "やましたせんせい",
-              "は",
-              "だいがく",
-              "で",
-              "にほんご",
-              "を",
-              "おしえています"
+              "また",
+              "らいしゅう",
+              "あいましょう。"
             ],
-            "explanation": "Yamashita-sensei wa daigaku de nihongo o oshiete imasu."
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
           },
           {
-            "id": "ex-7-6-3",
-            "type": "match-pairs",
-            "prompt": "Empareja los contadores de personas de Genki L7:",
-            "pairs": [
+            "id": "ex-wb7-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L7: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
               {
-                "id": "cnt1",
-                "left": "ひとり (一人)",
-                "right": "1 persona (irregular)"
+                "id": "opt-wb7-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
               },
               {
-                "id": "cnt2",
-                "left": "ふたり (二人)",
-                "right": "2 personas (irregular)"
+                "id": "opt-wb7-bc4-2",
+                "text": "いいえ、ちがいます"
               },
               {
-                "id": "cnt3",
-                "left": "さんにん (三人)",
-                "right": "3 personas"
-              },
-              {
-                "id": "cnt4",
-                "left": "よにん (四人)",
-                "right": "4 personas (irregular fonético)"
+                "id": "opt-wb7-bc4-3",
+                "text": "どういたしまして"
               }
             ],
-            "explanation": "Contadores esenciales de personas."
+            "correctAnswerId": "opt-wb7-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l7-node-wb-grammar-1",
+        "unitId": 7,
+        "lessonNumber": 7,
+        "title": "Workbook L7: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第7課 ワークブック：文法1 (基本練習)",
+        "description": "Ejercicios de conjugación y formación gramatical del Workbook L7",
+        "icon": "BookOpen",
+        "color": "blue",
+        "totalSteps": 3,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": []
+      },
+      {
+        "id": "l7-node-wb-grammar-2",
+        "unitId": 7,
+        "lessonNumber": 7,
+        "title": "Workbook L7: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第7課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 7",
+        "icon": "BookOpen",
+        "color": "green",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb7-g2-1",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L7: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
+            "options": [
+              {
+                "id": "opt-wb7-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb7-g2-1b",
+                "text": "日本語を書いてあります。"
+              },
+              {
+                "id": "opt-wb7-g2-1c",
+                "text": "日本語で書くそうです。"
+              }
+            ],
+            "correctAnswerId": "opt-wb7-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
+          },
+          {
+            "id": "ex-wb7-g2-2",
+            "type": "word-order",
+            "prompt": "Del Workbook L7: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
+            "wordBank": [
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
+            ],
+            "correctSentence": [
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
+            ],
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
+          },
+          {
+            "id": "ex-wb7-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L7: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
+            "options": [
+              {
+                "id": "opt-wb7-g2-3a",
+                "text": "で (indica medio o transporte)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb7-g2-3b",
+                "text": "に (indica destino o tiempo)"
+              },
+              {
+                "id": "opt-wb7-g2-3c",
+                "text": "を (indica objeto directo)"
+              }
+            ],
+            "correctAnswerId": "opt-wb7-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb7-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L7: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb7-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb7-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb7-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb7-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
+          }
+        ]
+      },
+      {
+        "id": "l7-node-wb-integration",
+        "unitId": 7,
+        "lessonNumber": 7,
+        "title": "Workbook L7: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第7課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb7-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L7 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "いもうとはめがおおきくて、とてもかわいいです",
+            "options": [
+              {
+                "id": "opt-wb7-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb7-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb7-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb7-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb7-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L7 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "このきっさてんはしずかでやすいです",
+            "options": [
+              {
+                "id": "opt-wb7-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb7-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb7-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb7-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L7: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb7-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L7: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb7-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb7-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb7-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb7-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 8: GENKI LECCIÓN 8: BARBECUE
-  // ==========================================
   {
     "id": 8,
     "genkiBook": "Genki I",
@@ -10576,86 +12244,6 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l8-node-wb-1",
-        "unitId": 8,
-        "lessonNumber": 8,
-        "title": "Workbook: Diálogos Informales y なにか / なにも",
-        "japaneseTitle": "ワークブック：普通体の会話と「何か・何も」",
-        "description": "Ejercicios del Workbook L8: preguntas en habla casual y pronombres indefinidos",
-        "icon": "Headphones",
-        "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-          {
-            "id": "ex-8-wb-1",
-            "type": "multiple-choice",
-            "prompt": "Del Workbook L8: En una pregunta informal con un な-adjetivo o sustantivo (ej. \"¿Hoy estás libre?\"), ¿qué pasa con 「だ」?",
-            "options": [
-              {
-                "id": "w8-da",
-                "text": "Se elimina だ en la pregunta: 「今日、ひま？」 (nunca \"ひまだ？\")",
-                "isCorrect": true
-              },
-              {
-                "id": "w8-da2",
-                "text": "Se agrega だか al final"
-              },
-              {
-                "id": "w8-da3",
-                "text": "Se cambia a です"
-              }
-            ],
-            "correctAnswerId": "w8-da",
-            "explanation": "En preguntas informales se omite だ y se sube la entonación: 今日ひま？"
-          },
-          {
-            "id": "ex-8-wb-2",
-            "type": "word-order",
-            "prompt": "Del Workbook: Traduce \"Esta mañana no comí nada\":",
-            "japaneseVoiceText": "けさはなにもたべませんでした",
-            "wordBank": [
-              "けさは",
-              "なにも",
-              "たべませんでした",
-              "なにかを",
-              "たべました"
-            ],
-            "correctSentence": [
-              "けさは",
-              "なにも",
-              "たべませんでした"
-            ],
-            "explanation": "なにも (nada) va sin partícula を/が y exige verbo en negativo: Kesa wa nani mo tabemasen deshita."
-          },
-          {
-            "id": "ex-8-wb-3",
-            "type": "listening",
-            "prompt": "Escucha el ejercicio auditivo del Workbook L8:",
-            "japaneseVoiceText": "わたしはまいあさしんぶんをよむのがすきです",
-            "options": [
-              {
-                "id": "w8-news",
-                "text": "Me gusta leer el periódico todas las mañanas.",
-                "isCorrect": true
-              },
-              {
-                "id": "w8-news2",
-                "text": "Olvidé leer el periódico esta mañana."
-              },
-              {
-                "id": "w8-news3",
-                "text": "Por favor no tires el periódico."
-              }
-            ],
-            "correctAnswerId": "w8-news",
-            "explanation": "Shinbun o yomu no ga suki desu (Verbo diccionario + のがすきです)."
-          }
-        ]
-      },
-      {
         "id": "l8-node-tb-reading",
         "unitId": 8,
         "lessonNumber": 8,
@@ -10734,185 +12322,403 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l8-node-wb-listening",
+        "id": "l8-node-wb-listening-a",
         "unitId": 8,
         "lessonNumber": 8,
-        "title": "Workbook L8: Comprensión Auditiva de Conversación Casual",
-        "japaneseTitle": "第8課 ワークブック：日常会話と予定の聞き取り",
+        "title": "Workbook L8: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第8課 ワークブック：きくれんしゅう A (聴解)",
         "description": "Comprensión auditiva oficial del Workbook L8: diálogos entre amigos en forma corta",
         "icon": "Headphones",
-        "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                {
-                        "id": "ex-8-wbl-1",
-                        "type": "listening",
-                        "prompt": "Escucha la invitación informal entre Mary y Takeshi:",
-                        "japaneseVoiceText": "こんばん、いっしょにごはんをたべない？ー うん、いいね。なにをたべる？",
-                        "options": [
-                                {
-                                        "id": "w8l-1a",
-                                        "text": "Mary invita a Takeshi a cenar juntos y él acepta con gusto.",
-                                        "isCorrect": true
-                                },
-                                {
-                                        "id": "w8l-1b",
-                                        "text": "Takeshi rechaza la invitación porque tiene trabajo."
-                                },
-                                {
-                                        "id": "w8l-1c",
-                                        "text": "Quedaron en verse mañana para almorzar."
-                                }
-                        ],
-                        "correctAnswerId": "w8l-1a",
-                        "explanation": "Konban, issho ni gohan o tabenai? (Forma corta negativa de invitación) - Un, ii ne (Aceptación informal)."
-                },
-                {
-                        "id": "ex-8-wbl-2",
-                        "type": "listening",
-                        "prompt": "Escucha los planes que cuenta Robert para el fin de semana:",
-                        "japaneseVoiceText": "あしたはテストがあるから、どこにもいかないでべんきょうする",
-                        "options": [
-                                {
-                                        "id": "w8l-2a",
-                                        "text": "No irá a ningún lado y se quedará estudiando porque mañana tiene examen.",
-                                        "isCorrect": true
-                                },
-                                {
-                                        "id": "w8l-2b",
-                                        "text": "Irá a esquiar a la montaña con sus amigos."
-                                },
-                                {
-                                        "id": "w8l-2c",
-                                        "text": "Ya terminó de estudiar para el examen de mañana."
-                                }
-                        ],
-                        "correctAnswerId": "w8l-2a",
-                        "explanation": "Doko ni mo ikanaide benkyou suru (Dokonimo + negativo = a ningún lado)."
-                },
-                {
-                        "id": "ex-8-wbl-3",
-                        "type": "word-order",
-                        "prompt": "Del Workbook L8: Traduce \"Takeshi dijo que no fuma cigarrillos\":",
-                        "japaneseVoiceText": "たけしさんはたばこをすわないといいました",
-                        "wordBank": [
-                                "たけしさんは",
-                                "たばこを",
-                                "すわないと",
-                                "いいました",
-                                "すいませんと",
-                                "言いました"
-                        ],
-                        "correctSentence": [
-                                "たけしさんは",
-                                "たばこを",
-                                "すわないと",
-                                "いいました"
-                        ],
-                        "explanation": "Takeshi-san wa tabako o suwanai (forma corta) to iimashita."
-                }
-        ]
-},
-        {
-        "id": "l8-node-6",
-        "unitId": 8,
-        "lessonNumber": 8,
-        "title": "Workbook: Integración Lección 8",
-        "japaneseTitle": "ワークブック：第８課 総合問題",
-        "description": "Evaluación de estilo informal, citas, opiniones y peticiones negativas",
-        "icon": "Award",
-        "color": "orange",
+        "color": "purple",
         "totalSteps": 3,
         "unlocked": false,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-8-6-1",
-            "type": "word-order",
-            "prompt": "Arma la oración completa de afición: \"Me gusta cocinar comida japonesa\":",
-            "japaneseVoiceText": "にほんりょうりをつくるのがすきです",
-            "wordBank": [
-              "にほんりょうり",
-              "を",
-              "つくる",
-              "の",
-              "が",
-              "すきです",
-              "は",
-              "つくります"
-            ],
-            "correctSentence": [
-              "にほんりょうり",
-              "を",
-              "つくる",
-              "の",
-              "が",
-              "すきです"
-            ],
-            "explanation": "Nihon ryouri o tsukuru no ga suki desu (Forma diccionario + の nominalizador)."
-          },
-          {
-            "id": "ex-8-6-2",
-            "type": "multiple-choice",
-            "prompt": "En conversación informal con amigos íntimos, ¿cómo dices \"¿Vamos?\" sin です ni ます?",
+            "id": "ex-8-wbl-1",
+            "type": "listening",
+            "prompt": "Escucha la invitación informal entre Mary y Takeshi:",
+            "japaneseVoiceText": "こんばん、いっしょにごはんをたべない？ー うん、いいね。なにをたべる？",
             "options": [
               {
-                "id": "cas-ikou",
-                "text": "行く？ (Iku? - con entonación ascendente y omitiendo か)",
+                "id": "w8l-1a",
+                "text": "Mary invita a Takeshi a cenar juntos y él acepta con gusto.",
                 "isCorrect": true
               },
               {
-                "id": "cas-ikuka",
-                "text": "行くか。"
+                "id": "w8l-1b",
+                "text": "Takeshi rechaza la invitación porque tiene trabajo."
               },
               {
-                "id": "cas-ikimasu",
-                "text": "行きますか。"
+                "id": "w8l-1c",
+                "text": "Quedaron en verse mañana para almorzar."
               }
             ],
-            "correctAnswerId": "cas-ikou",
-            "explanation": "En estilo informal las preguntas se hacen con forma diccionario y entonación hacia arriba."
+            "correctAnswerId": "w8l-1a",
+            "explanation": "Konban, issho ni gohan o tabenai? (Forma corta negativa de invitación) - Un, ii ne (Aceptación informal)."
           },
           {
-            "id": "ex-8-6-3",
-            "type": "match-pairs",
-            "prompt": "Empareja los verbos formales con su forma negativa corta ない:",
-            "pairs": [
+            "id": "ex-8-wbl-2",
+            "type": "listening",
+            "prompt": "Escucha los planes que cuenta Robert para el fin de semana:",
+            "japaneseVoiceText": "あしたはテストがあるから、どこにもいかないでべんきょうする",
+            "options": [
               {
-                "id": "np-irr1",
-                "left": "ありません (no hay/objeto)",
-                "right": "ない (la forma corta de ありません es simplemente ない)"
+                "id": "w8l-2a",
+                "text": "No irá a ningún lado y se quedará estudiando porque mañana tiene examen.",
+                "isCorrect": true
               },
               {
-                "id": "np-irr2",
-                "left": "いません (no hay/ser vivo)",
-                "right": "いない"
+                "id": "w8l-2b",
+                "text": "Irá a esquiar a la montaña con sus amigos."
               },
               {
-                "id": "np-irr3",
-                "left": "しません (no hago)",
-                "right": "しない"
-              },
-              {
-                "id": "np-irr4",
-                "left": "きません (no vengo)",
-                "right": "こない"
+                "id": "w8l-2c",
+                "text": "Ya terminó de estudiar para el examen de mañana."
               }
             ],
-            "explanation": "Negativos informales imprescindibles."
+            "correctAnswerId": "w8l-2a",
+            "explanation": "Doko ni mo ikanaide benkyou suru (Dokonimo + negativo = a ningún lado)."
+          },
+          {
+            "id": "ex-8-wbl-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L8: Traduce \"Takeshi dijo que no fuma cigarrillos\":",
+            "japaneseVoiceText": "たけしさんはたばこをすわないといいました",
+            "wordBank": [
+              "たけしさんは",
+              "たばこを",
+              "すわないと",
+              "いいました",
+              "すいませんと",
+              "言いました"
+            ],
+            "correctSentence": [
+              "たけしさんは",
+              "たばこを",
+              "すわないと",
+              "いいました"
+            ],
+            "explanation": "Takeshi-san wa tabako o suwanai (forma corta) to iimashita."
+          }
+        ]
+      },
+      {
+        "id": "l8-node-wb-listening-bc",
+        "unitId": 8,
+        "lessonNumber": 8,
+        "title": "Workbook L8: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第8課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb8-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L8 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "こんばん、いっしょにごはんをたべない？ー うん、いいね。なにをたべる？",
+            "options": [
+              {
+                "id": "opt-wb8-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb8-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb8-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb8-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb8-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L8 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "あしたはテストがあるから、どこにもいかないでべんきょうする",
+            "options": [
+              {
+                "id": "opt-wb8-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb8-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb8-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb8-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L8: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb8-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L8: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb8-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb8-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb8-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb8-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l8-node-wb-grammar-1",
+        "unitId": 8,
+        "lessonNumber": 8,
+        "title": "Workbook L8: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第8課 ワークブック：文法1 (基本練習)",
+        "description": "Ejercicios de conjugación y formación gramatical del Workbook L8",
+        "icon": "BookOpen",
+        "color": "blue",
+        "totalSteps": 3,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": []
+      },
+      {
+        "id": "l8-node-wb-grammar-2",
+        "unitId": 8,
+        "lessonNumber": 8,
+        "title": "Workbook L8: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第8課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 8",
+        "icon": "BookOpen",
+        "color": "green",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb8-g2-1",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L8: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
+            "options": [
+              {
+                "id": "opt-wb8-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb8-g2-1b",
+                "text": "日本語を書いてあります。"
+              },
+              {
+                "id": "opt-wb8-g2-1c",
+                "text": "日本語で書くそうです。"
+              }
+            ],
+            "correctAnswerId": "opt-wb8-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
+          },
+          {
+            "id": "ex-wb8-g2-2",
+            "type": "word-order",
+            "prompt": "Del Workbook L8: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
+            "wordBank": [
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
+            ],
+            "correctSentence": [
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
+            ],
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
+          },
+          {
+            "id": "ex-wb8-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L8: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
+            "options": [
+              {
+                "id": "opt-wb8-g2-3a",
+                "text": "で (indica medio o transporte)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb8-g2-3b",
+                "text": "に (indica destino o tiempo)"
+              },
+              {
+                "id": "opt-wb8-g2-3c",
+                "text": "を (indica objeto directo)"
+              }
+            ],
+            "correctAnswerId": "opt-wb8-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb8-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L8: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb8-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb8-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb8-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb8-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
+          }
+        ]
+      },
+      {
+        "id": "l8-node-wb-integration",
+        "unitId": 8,
+        "lessonNumber": 8,
+        "title": "Workbook L8: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第8課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb8-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L8 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "こんばん、いっしょにごはんをたべない？ー うん、いいね。なにをたべる？",
+            "options": [
+              {
+                "id": "opt-wb8-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb8-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb8-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb8-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb8-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L8 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "あしたはテストがあるから、どこにもいかないでべんきょうする",
+            "options": [
+              {
+                "id": "opt-wb8-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb8-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb8-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb8-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L8: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb8-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L8: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb8-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb8-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb8-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb8-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 9: GENKI LECCIÓN 9: TEATRO KABUKI
-  // ==========================================
   {
     "id": 9,
     "genkiBook": "Genki I",
@@ -11533,103 +13339,14 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l9-node-wb-1",
+        "id": "l9-node-wb-listening-a",
         "unitId": 9,
         "lessonNumber": 9,
-        "title": "Workbook: Práctica Escrita de Cláusulas y Contadores 〜つ",
-        "japaneseTitle": "ワークブック：名詞修飾と「ひとつ・ふたつ」の練習",
-        "description": "Ejercicios del Workbook L9 pág. 83-88: identificar personas por sus acciones y contar con 〜つ",
-        "icon": "ListFilter",
-        "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-          {
-            "id": "ex-9-wb1-1",
-            "type": "match-pairs",
-            "prompt": "Del Workbook L9: Empareja los números nativos del 5 al 8 (〜つ):",
-            "pairs": [
-              {
-                "id": "ts9-5",
-                "left": "いつつ (五つ)",
-                "right": "5 cosas"
-              },
-              {
-                "id": "ts9-6",
-                "left": "むっつ (六つ)",
-                "right": "6 cosas"
-              },
-              {
-                "id": "ts9-7",
-                "left": "ななつ (七つ)",
-                "right": "7 cosas"
-              },
-              {
-                "id": "ts9-8",
-                "left": "やっつ (八つ)",
-                "right": "8 cosas"
-              }
-            ],
-            "explanation": "5 = いつつ, 6 = むっつ, 7 = ななつ, 8 = やっつ, 9 = ここのつ, 10 = とお."
-          },
-          {
-            "id": "ex-9-wb1-2",
-            "type": "word-order",
-            "prompt": "Del Workbook: Traduce \"Nos trajeron tres cafés y dos pasteles\":",
-            "japaneseVoiceText": "コーヒーをみっつとケーキをふたつください",
-            "wordBank": [
-              "コーヒーを",
-              "みっつと",
-              "ケーキを",
-              "ふたつ",
-              "ください",
-              "に"
-            ],
-            "correctSentence": [
-              "コーヒーを",
-              "みっつと",
-              "ケーキを",
-              "ふたつ",
-              "ください"
-            ],
-            "explanation": "Koohii o mittsu to keeki o futatsu kudasai."
-          },
-          {
-            "id": "ex-9-wb1-3",
-            "type": "listening",
-            "prompt": "Comprensión auditiva del Workbook L9:",
-            "japaneseVoiceText": "きのうはあたまがいたかったから、早くねました",
-            "options": [
-              {
-                "id": "wbl9-1",
-                "text": "Como ayer me dolía la cabeza, me dormí temprano.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl9-2",
-                "text": "Ayer estudié hasta muy tarde."
-              },
-              {
-                "id": "wbl9-3",
-                "text": "Hoy me duele el estómago."
-              }
-            ],
-            "correctAnswerId": "wbl9-1",
-            "explanation": "Kinou wa atama ga itakatta kara, hayaku nemashita."
-          }
-        ]
-      },
-      {
-        "id": "l9-node-wb-2",
-        "unitId": 9,
-        "lessonNumber": 9,
-        "title": "Workbook: Comprensión Auditiva de Conversación Casual",
-        "japaneseTitle": "ワークブック聞き取り：過去形のカジュアル会話",
+        "title": "Workbook L9: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第9課 ワークブック：きくれんしゅう A (聴解)",
         "description": "Escucha diálogos entre amigos sobre el fin de semana pasado en forma corta",
         "icon": "Headphones",
-        "color": "orange",
+        "color": "purple",
         "totalSteps": 3,
         "unlocked": false,
         "completedSteps": 0,
@@ -11703,104 +13420,320 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l9-node-4",
+        "id": "l9-node-wb-listening-bc",
         "unitId": 9,
         "lessonNumber": 9,
-        "title": "Workbook: Integración Lección 9",
-        "japaneseTitle": "ワークブック：第９課 総合問題",
-        "description": "Evaluación de oraciones relativas, pasado informal y formas Ta",
-        "icon": "Award",
-        "color": "orange",
-        "totalSteps": 3,
-        "unlocked": false,
+        "title": "Workbook L9: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第9課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-9-4-1",
-            "type": "word-order",
-            "prompt": "Arma la oración completa de la obra Kabuki: \"El boleto de Kabuki que compré ayer era caro\":",
-            "japaneseVoiceText": "きのうかったかぶきのきっぷはたかかったです",
-            "wordBank": [
-              "きのう",
-              "かった",
-              "かぶき",
-              "の",
-              "きっぷ",
-              "は",
-              "たかかったです",
-              "たかいでした"
-            ],
-            "correctSentence": [
-              "きのう",
-              "かった",
-              "かぶき",
-              "の",
-              "きっぷ",
-              "は",
-              "たかかったです"
-            ],
-            "explanation": "Kinou katta kabuki no kippu wa takakatta desu."
-          },
-          {
-            "id": "ex-9-4-2",
-            "type": "match-pairs",
-            "prompt": "Empareja los términos culturales del teatro japonés de Genki L9:",
-            "pairs": [
-              {
-                "id": "kb1",
-                "left": "かぶき (歌舞伎)",
-                "right": "Teatro tradicional dramático japonés"
-              },
-              {
-                "id": "kb2",
-                "left": "きっぷ (切符)",
-                "right": "Boleto / Entrada"
-              },
-              {
-                "id": "kb3",
-                "left": "おんせん (温泉)",
-                "right": "Aguas termales naturales"
-              },
-              {
-                "id": "kb4",
-                "left": "え (絵)",
-                "right": "Pintura / Cuadro de arte"
-              }
-            ],
-            "explanation": "Vocabulario cultural de Genki L9."
-          },
-          {
-            "id": "ex-9-4-3",
+            "id": "ex-wb9-bc-1",
             "type": "listening",
-            "prompt": "Escucha la descripción de la persona con anteojos:",
-            "japaneseVoiceText": "めがねをかけているひとは山下先生です",
+            "prompt": "Del Workbook L9 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "きのうのしけん、あまりむずかしくなかったよ",
             "options": [
               {
-                "id": "l9-gls-sensei",
-                "text": "La persona que lleva anteojos/lentes es el profesor Yamashita.",
+                "id": "opt-wb9-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
                 "isCorrect": true
               },
               {
-                "id": "l9-gls-take",
-                "text": "La persona que lleva sombrero es Takeshi."
+                "id": "opt-wb9-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
               },
               {
-                "id": "l9-gls-mary",
-                "text": "La persona de camisa blanca es Mary."
+                "id": "opt-wb9-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
               }
             ],
-            "correctAnswerId": "l9-gls-sensei",
-            "explanation": "Megane o kakete iru hito wa Yamashita-sensei desu."
+            "correctAnswerId": "opt-wb9-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb9-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L9 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "こんしゅうまつはともだちといっしょにえいがをみにいきます。",
+            "options": [
+              {
+                "id": "opt-wb9-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb9-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb9-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb9-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L9: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb9-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L9: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb9-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb9-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb9-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb9-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l9-node-wb-grammar-1",
+        "unitId": 9,
+        "lessonNumber": 9,
+        "title": "Workbook L9: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第9課 ワークブック：文法1 (基本練習)",
+        "description": "Ejercicios de conjugación y formación gramatical del Workbook L9",
+        "icon": "BookOpen",
+        "color": "blue",
+        "totalSteps": 3,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": []
+      },
+      {
+        "id": "l9-node-wb-grammar-2",
+        "unitId": 9,
+        "lessonNumber": 9,
+        "title": "Workbook L9: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第9課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 9",
+        "icon": "BookOpen",
+        "color": "green",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb9-g2-1",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L9: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
+            "options": [
+              {
+                "id": "opt-wb9-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb9-g2-1b",
+                "text": "日本語を書いてあります。"
+              },
+              {
+                "id": "opt-wb9-g2-1c",
+                "text": "日本語で書くそうです。"
+              }
+            ],
+            "correctAnswerId": "opt-wb9-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
+          },
+          {
+            "id": "ex-wb9-g2-2",
+            "type": "word-order",
+            "prompt": "Del Workbook L9: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
+            "wordBank": [
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
+            ],
+            "correctSentence": [
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
+            ],
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
+          },
+          {
+            "id": "ex-wb9-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L9: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
+            "options": [
+              {
+                "id": "opt-wb9-g2-3a",
+                "text": "で (indica medio o transporte)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb9-g2-3b",
+                "text": "に (indica destino o tiempo)"
+              },
+              {
+                "id": "opt-wb9-g2-3c",
+                "text": "を (indica objeto directo)"
+              }
+            ],
+            "correctAnswerId": "opt-wb9-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb9-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L9: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb9-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb9-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb9-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb9-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
+          }
+        ]
+      },
+      {
+        "id": "l9-node-wb-integration",
+        "unitId": 9,
+        "lessonNumber": 9,
+        "title": "Workbook L9: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第9課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb9-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L9 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "きのうのしけん、あまりむずかしくなかったよ",
+            "options": [
+              {
+                "id": "opt-wb9-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb9-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb9-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb9-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb9-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L9 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "こんしゅうまつはともだちといっしょにえいがをみにいきます。",
+            "options": [
+              {
+                "id": "opt-wb9-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb9-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb9-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb9-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L9: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb9-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L9: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb9-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb9-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb9-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb9-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 10: GENKI LECCIÓN 10: PLANES DE VACACIONES
-  // ==========================================
   {
     "id": 10,
     "genkiBook": "Genki I",
@@ -12514,254 +14447,6 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l10-node-wb-grammar",
-        "unitId": 10,
-        "lessonNumber": 10,
-        "title": "Workbook L10: Comparaciones y Superlativos",
-        "japaneseTitle": "第10課 ワークブック：比較（〜のほうが）と最上級（いちばん）",
-        "description": "Ejercicios escritos de comparación entre dos alternativas y superlativos del Workbook L10",
-        "icon": "Flame",
-        "color": "orange",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                {
-                        "id": "ex-10-wbg-1",
-                        "type": "match-pairs",
-                        "prompt": "Del Workbook L10: Empareja las estructuras de comparación:",
-                        "pairs": [
-                                {
-                                        "id": "w10c-1",
-                                        "left": "A のほうが (A no hou ga)",
-                                        "right": "A es más... (alternativa elegida)"
-                                },
-                                {
-                                        "id": "w10c-2",
-                                        "left": "B より (B yori)",
-                                        "right": "Más que B / En comparación con B"
-                                },
-                                {
-                                        "id": "w10c-3",
-                                        "left": "どちら (dochira)",
-                                        "right": "¿Cuál de los dos?"
-                                },
-                                {
-                                        "id": "w10c-4",
-                                        "left": "いちばん (ichiban)",
-                                        "right": "El más... / El número uno (superlativo)"
-                                }
-                        ],
-                        "explanation": "Patrones comparativos fundamentales de Genki L10."
-                },
-                {
-                        "id": "ex-10-wbg-2",
-                        "type": "word-order",
-                        "prompt": "Del Workbook L10: Traduce \"El autobús es más barato que el tren\":",
-                        "japaneseVoiceText": "バスはでんしゃよりやすいです",
-                        "wordBank": [
-                                "バスは",
-                                "でんしゃより",
-                                "やすいです",
-                                "のほうが",
-                                "たかいです"
-                        ],
-                        "correctSentence": [
-                                "バスは",
-                                "でんしゃより",
-                                "やすいです"
-                        ],
-                        "explanation": "Basu wa densha yori yasui desu."
-                },
-                {
-                        "id": "ex-10-wbg-3",
-                        "type": "multiple-choice",
-                        "prompt": "Del Workbook L10: ¿Cómo se pregunta \"¿Qué estación del año te gusta más?\"?",
-                        "options": [
-                                {
-                                        "id": "w10s-1",
-                                        "text": "きせつのなかで どのきせつがいちばんすきですか。",
-                                        "isCorrect": true
-                                },
-                                {
-                                        "id": "w10s-2",
-                                        "text": "きせつのなかで どのきせつがどちらすきですか。"
-                                },
-                                {
-                                        "id": "w10s-3",
-                                        "text": "きせつのなかで どのきせつがほうすきですか。"
-                                }
-                        ],
-                        "correctAnswerId": "w10s-1",
-                        "explanation": "Estructura superlativa: [Grupo] のなかで [Interrogativo] がいちばんすきですか。"
-                }
-        ]
-},
-        {
-        "id": "l10-node-wb-listening",
-        "unitId": 10,
-        "lessonNumber": 10,
-        "title": "Workbook L10: Comprensión Auditiva de Viajes y Estaciones",
-        "japaneseTitle": "第10課 ワークブック：旅行プランと季節のリスニング",
-        "description": "Comprensión auditiva oficial del Workbook L10: diálogos de transporte y preferencias",
-        "icon": "Headphones",
-        "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                {
-                        "id": "ex-10-wbl-1",
-                        "type": "listening",
-                        "prompt": "Escucha la conversación sobre el medio de transporte para el viaje a Hokkaido:",
-                        "japaneseVoiceText": "ひこうきのほうがしんかんせんよりはやいですから、ひこうきでいきましょう",
-                        "options": [
-                                {
-                                        "id": "w10l-1a",
-                                        "text": "Decidieron ir en avión porque es más rápido que el tren bala.",
-                                        "isCorrect": true
-                                },
-                                {
-                                        "id": "w10l-1b",
-                                        "text": "Prefieren el tren bala para disfrutar del paisaje."
-                                },
-                                {
-                                        "id": "w10l-1c",
-                                        "text": "Cancelaron el viaje a Hokkaido por mal tiempo."
-                                }
-                        ],
-                        "correctAnswerId": "w10l-1a",
-                        "explanation": "Hikouki no hou ga shinkansen yori hayai desu kara, hikouki de ikimashou."
-                },
-                {
-                        "id": "ex-10-wbl-2",
-                        "type": "listening",
-                        "prompt": "Escucha cuál estación del año le gusta más a Mary y por qué:",
-                        "japaneseVoiceText": "きせつのなかであきがいちばんすきです。もみじがきれいですから。",
-                        "options": [
-                                {
-                                        "id": "w10l-2a",
-                                        "text": "Le gusta más el otoño porque las hojas de otoño son muy hermosas.",
-                                        "isCorrect": true
-                                },
-                                {
-                                        "id": "w10l-2b",
-                                        "text": "Le gusta el verano por ir a la playa."
-                                },
-                                {
-                                        "id": "w10l-2c",
-                                        "text": "Le gusta la primavera por el calor."
-                                }
-                        ],
-                        "correctAnswerId": "w10l-2a",
-                        "explanation": "Aki ga ichiban suki desu. Momiji ga kirei desu kara."
-                },
-                {
-                        "id": "ex-10-wbl-3",
-                        "type": "word-order",
-                        "prompt": "Del Workbook L10: Traduce \"Tengo la intención de ir a Kioto el próximo año\":",
-                        "japaneseVoiceText": "らいねんきょうとへいくつもりです",
-                        "wordBank": [
-                                "らいねん",
-                                "きょうとへ",
-                                "いく",
-                                "つもりです",
-                                "いきました",
-                                "たいです"
-                        ],
-                        "correctSentence": [
-                                "らいねん",
-                                "きょうとへ",
-                                "いく",
-                                "つもりです"
-                        ],
-                        "explanation": "Rainen Kyouto e iku (forma corta) tsumori desu (intención planeada)."
-                }
-        ]
-},
-        {
-        "id": "l10-node-wb-1",
-        "unitId": 10,
-        "lessonNumber": 10,
-        "title": "Workbook: Integración y Comprensión Auditiva L10",
-        "japaneseTitle": "ワークブック総合：比較・最上級・つもりです",
-        "description": "Ejercicios del Workbook L10: comparar ciudades, planes con つもり y duración de viajes",
-        "icon": "Headphones",
-        "color": "orange",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-          {
-            "id": "ex-10-wb-1",
-            "type": "listening",
-            "prompt": "Escucha la comparación entre dos platillos en el Workbook L10:",
-            "japaneseVoiceText": "すしとてんぷらとどちらがすきですか。ー どちらもすきです。",
-            "options": [
-              {
-                "id": "w10l-1",
-                "text": "Pregunta cuál le gusta más entre sushi y tempura; responde que le gustan ambos.",
-                "isCorrect": true
-              },
-              {
-                "id": "w10l-2",
-                "text": "Dice que no le gusta ninguno de los dos."
-              },
-              {
-                "id": "w10l-3",
-                "text": "Prefiere el ramen."
-              }
-            ],
-            "correctAnswerId": "w10l-1",
-            "explanation": "どちらも significa \"ambos\" (tanto con verbos afirmativos como negativos)."
-          },
-          {
-            "id": "ex-10-wb-2",
-            "type": "word-order",
-            "prompt": "Del Workbook: Traduce \"No tengo intención de comprar un coche\":",
-            "japaneseVoiceText": "くるまをかわないつもりです",
-            "wordBank": [
-              "くるまを",
-              "かわない",
-              "つもりです",
-              "かうない",
-              "に"
-            ],
-            "correctSentence": [
-              "くるまを",
-              "かわない",
-              "つもりです"
-            ],
-            "explanation": "Verbo en Forma Nai + つもりです = tener la intención de NO hacer X."
-          },
-          {
-            "id": "ex-10-wb-3",
-            "type": "multiple-choice",
-            "prompt": "Elige la oración correcta para decir \"Mi habitación se volvió limpia\":",
-            "options": [
-              {
-                "id": "cln10-1",
-                "text": "部屋が きれいに なりました (な-adjetivo + になる)",
-                "isCorrect": true
-              },
-              {
-                "id": "cln10-2",
-                "text": "部屋が きれく なりました"
-              },
-              {
-                "id": "cln10-3",
-                "text": "部屋が きれいだ なりました"
-              }
-            ],
-            "correctAnswerId": "cln10-1",
-            "explanation": "きれい es un な-adjetivo, por lo que lleva に antes de なる (きれいになる)."
-          }
-        ]
-      },
-      {
         "id": "l10-node-tb-1",
         "unitId": 10,
         "lessonNumber": 10,
@@ -12840,13 +14525,475 @@ export const genkiCurriculum: Unit[] = [
             "explanation": "Uchi kara eki made basu de juugofun kakarimasu."
           }
         ]
+      },
+      {
+        "id": "l10-node-wb-listening-a",
+        "unitId": 10,
+        "lessonNumber": 10,
+        "title": "Workbook L10: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第10課 ワークブック：きくれんしゅう A (聴解)",
+        "description": "Comprensión auditiva oficial del Workbook L10: diálogos de transporte y preferencias",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-10-wbl-1",
+            "type": "listening",
+            "prompt": "Escucha la conversación sobre el medio de transporte para el viaje a Hokkaido:",
+            "japaneseVoiceText": "ひこうきのほうがしんかんせんよりはやいですから、ひこうきでいきましょう",
+            "options": [
+              {
+                "id": "w10l-1a",
+                "text": "Decidieron ir en avión porque es más rápido que el tren bala.",
+                "isCorrect": true
+              },
+              {
+                "id": "w10l-1b",
+                "text": "Prefieren el tren bala para disfrutar del paisaje."
+              },
+              {
+                "id": "w10l-1c",
+                "text": "Cancelaron el viaje a Hokkaido por mal tiempo."
+              }
+            ],
+            "correctAnswerId": "w10l-1a",
+            "explanation": "Hikouki no hou ga shinkansen yori hayai desu kara, hikouki de ikimashou."
+          },
+          {
+            "id": "ex-10-wbl-2",
+            "type": "listening",
+            "prompt": "Escucha cuál estación del año le gusta más a Mary y por qué:",
+            "japaneseVoiceText": "きせつのなかであきがいちばんすきです。もみじがきれいですから。",
+            "options": [
+              {
+                "id": "w10l-2a",
+                "text": "Le gusta más el otoño porque las hojas de otoño son muy hermosas.",
+                "isCorrect": true
+              },
+              {
+                "id": "w10l-2b",
+                "text": "Le gusta el verano por ir a la playa."
+              },
+              {
+                "id": "w10l-2c",
+                "text": "Le gusta la primavera por el calor."
+              }
+            ],
+            "correctAnswerId": "w10l-2a",
+            "explanation": "Aki ga ichiban suki desu. Momiji ga kirei desu kara."
+          },
+          {
+            "id": "ex-10-wbl-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L10: Traduce \"Tengo la intención de ir a Kioto el próximo año\":",
+            "japaneseVoiceText": "らいねんきょうとへいくつもりです",
+            "wordBank": [
+              "らいねん",
+              "きょうとへ",
+              "いく",
+              "つもりです",
+              "いきました",
+              "たいです"
+            ],
+            "correctSentence": [
+              "らいねん",
+              "きょうとへ",
+              "いく",
+              "つもりです"
+            ],
+            "explanation": "Rainen Kyouto e iku (forma corta) tsumori desu (intención planeada)."
+          }
+        ]
+      },
+      {
+        "id": "l10-node-wb-listening-bc",
+        "unitId": 10,
+        "lessonNumber": 10,
+        "title": "Workbook L10: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第10課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb10-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L10 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "ひこうきのほうがしんかんせんよりはやいですから、ひこうきでいきましょう",
+            "options": [
+              {
+                "id": "opt-wb10-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb10-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb10-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb10-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb10-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L10 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "きせつのなかであきがいちばんすきです。もみじがきれいですから。",
+            "options": [
+              {
+                "id": "opt-wb10-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb10-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb10-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb10-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L10: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb10-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L10: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb10-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb10-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb10-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb10-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l10-node-wb-grammar-1",
+        "unitId": 10,
+        "lessonNumber": 10,
+        "title": "Workbook L10: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第10課 ワークブック：文法1 (基本練習)",
+        "description": "Ejercicios escritos de comparación entre dos alternativas y superlativos del Workbook L10",
+        "icon": "BookOpen",
+        "color": "blue",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-10-wbg-1",
+            "type": "match-pairs",
+            "prompt": "Del Workbook L10: Empareja las estructuras de comparación:",
+            "pairs": [
+              {
+                "id": "w10c-1",
+                "left": "A のほうが (A no hou ga)",
+                "right": "A es más... (alternativa elegida)"
+              },
+              {
+                "id": "w10c-2",
+                "left": "B より (B yori)",
+                "right": "Más que B / En comparación con B"
+              },
+              {
+                "id": "w10c-3",
+                "left": "どちら (dochira)",
+                "right": "¿Cuál de los dos?"
+              },
+              {
+                "id": "w10c-4",
+                "left": "いちばん (ichiban)",
+                "right": "El más... / El número uno (superlativo)"
+              }
+            ],
+            "explanation": "Patrones comparativos fundamentales de Genki L10."
+          },
+          {
+            "id": "ex-10-wbg-2",
+            "type": "word-order",
+            "prompt": "Del Workbook L10: Traduce \"El autobús es más barato que el tren\":",
+            "japaneseVoiceText": "バスはでんしゃよりやすいです",
+            "wordBank": [
+              "バスは",
+              "でんしゃより",
+              "やすいです",
+              "のほうが",
+              "たかいです"
+            ],
+            "correctSentence": [
+              "バスは",
+              "でんしゃより",
+              "やすいです"
+            ],
+            "explanation": "Basu wa densha yori yasui desu."
+          },
+          {
+            "id": "ex-10-wbg-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L10: ¿Cómo se pregunta \"¿Qué estación del año te gusta más?\"?",
+            "options": [
+              {
+                "id": "w10s-1",
+                "text": "きせつのなかで どのきせつがいちばんすきですか。",
+                "isCorrect": true
+              },
+              {
+                "id": "w10s-2",
+                "text": "きせつのなかで どのきせつがどちらすきですか。"
+              },
+              {
+                "id": "w10s-3",
+                "text": "きせつのなかで どのきせつがほうすきですか。"
+              }
+            ],
+            "correctAnswerId": "w10s-1",
+            "explanation": "Estructura superlativa: [Grupo] のなかで [Interrogativo] がいちばんすきですか。"
+          }
+        ]
+      },
+      {
+        "id": "l10-node-wb-grammar-2",
+        "unitId": 10,
+        "lessonNumber": 10,
+        "title": "Workbook L10: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第10課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 10",
+        "icon": "BookOpen",
+        "color": "green",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb10-g2-1",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L10: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
+            "options": [
+              {
+                "id": "opt-wb10-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb10-g2-1b",
+                "text": "日本語を書いてあります。"
+              },
+              {
+                "id": "opt-wb10-g2-1c",
+                "text": "日本語で書くそうです。"
+              }
+            ],
+            "correctAnswerId": "opt-wb10-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
+          },
+          {
+            "id": "ex-wb10-g2-2",
+            "type": "word-order",
+            "prompt": "Del Workbook L10: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
+            "wordBank": [
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
+            ],
+            "correctSentence": [
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
+            ],
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
+          },
+          {
+            "id": "ex-wb10-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L10: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
+            "options": [
+              {
+                "id": "opt-wb10-g2-3a",
+                "text": "で (indica medio o transporte)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb10-g2-3b",
+                "text": "に (indica destino o tiempo)"
+              },
+              {
+                "id": "opt-wb10-g2-3c",
+                "text": "を (indica objeto directo)"
+              }
+            ],
+            "correctAnswerId": "opt-wb10-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb10-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L10: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb10-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb10-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb10-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb10-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
+          }
+        ]
+      },
+      {
+        "id": "l10-node-wb-integration",
+        "unitId": 10,
+        "lessonNumber": 10,
+        "title": "Workbook L10: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第10課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb10-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L10 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "ひこうきのほうがしんかんせんよりはやいですから、ひこうきでいきましょう",
+            "options": [
+              {
+                "id": "opt-wb10-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb10-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb10-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb10-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb10-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L10 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "きせつのなかであきがいちばんすきです。もみじがきれいですから。",
+            "options": [
+              {
+                "id": "opt-wb10-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb10-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb10-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb10-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L10: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb10-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L10: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb10-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb10-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb10-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb10-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 11: GENKI LECCIÓN 11: DESPUÉS DE VACACIONES
-  // ==========================================
   {
     "id": 11,
     "genkiBook": "Genki I",
@@ -13462,254 +15609,403 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l11-node-wb-2",
+        "id": "l11-node-wb-listening-a",
         "unitId": 11,
         "lessonNumber": 11,
-        "title": "Workbook: Evaluación Integradora Lección 11",
-        "japaneseTitle": "ワークブック総合問題：〜たい・〜たり・〜ことがある",
-        "description": "Repaso completo del Workbook L11: combinar deseos, experiencias pasadas y listas de actividades",
-        "icon": "Award",
-        "color": "red",
+        "title": "Workbook L11: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第11課 ワークブック：きくれんしゅう A (聴解)",
+        "description": "Comprensión auditiva oficial del Workbook L11: deseos con 〜たい y listas de actividades 〜たり〜たり",
+        "icon": "Headphones",
+        "color": "purple",
         "totalSteps": 3,
         "unlocked": false,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-11-wb2-1",
+            "id": "ex-11-wbl-1",
+            "type": "listening",
+            "prompt": "Escucha lo que desea hacer Takeshi en las vacaciones de verano:",
+            "japaneseVoiceText": "ことしのなつやすみはおきなわにいって、うみでおよぎたいです",
+            "options": [
+              {
+                "id": "w11l-1a",
+                "text": "En las vacaciones de este año quiere ir a Okinawa y nadar en el mar.",
+                "isCorrect": true
+              },
+              {
+                "id": "w11l-1b",
+                "text": "Quiere quedarse descansando en su casa de Tokio."
+              },
+              {
+                "id": "w11l-1c",
+                "text": "Quiere subir al monte Fuji con sus amigos."
+              }
+            ],
+            "correctAnswerId": "w11l-1a",
+            "explanation": "Okinawa ni itte, umi de oyogitai desu (oyogu -> oyogitai = desear nadar)."
+          },
+          {
+            "id": "ex-11-wbl-2",
+            "type": "listening",
+            "prompt": "Escucha qué hizo Mary durante el fin de semana (〜たり〜たりする):",
+            "japaneseVoiceText": "きのうはへやをそうじしたり、せんたくしたりしました",
+            "options": [
+              {
+                "id": "w11l-2a",
+                "text": "Ayer limpió su habitación y lavó la ropa, entre otras tareas.",
+                "isCorrect": true
+              },
+              {
+                "id": "w11l-2b",
+                "text": "Fue de compras al centro comercial y cocinó."
+              },
+              {
+                "id": "w11l-2c",
+                "text": "Se fue de fiesta todo el día."
+              }
+            ],
+            "correctAnswerId": "w11l-2a",
+            "explanation": "Heya o souji shitari, sentaku shitari shimashita (lista no exhaustiva de acciones en tiempo pasado)."
+          },
+          {
+            "id": "ex-11-wbl-3",
             "type": "word-order",
-            "prompt": "Del Workbook: Traduce \"Cuando era niño, quería convertirme en astronauta (宇宙飛行士)\":",
-            "japaneseVoiceText": "こどものときうちゅうひこうしになりたかったです",
+            "prompt": "Del Workbook L11: Traduce \"¿Alguna vez has subido al monte Fuji?\":",
+            "japaneseVoiceText": "ふじさんにのぼったことがありますか",
             "wordBank": [
-              "こどものとき",
-              "うちゅうひこうしに",
-              "なりたかったです",
-              "なりたいです"
+              "ふじさんに",
+              "のぼった",
+              "ことが",
+              "ありますか",
+              "のぼりますか",
+              "でしたか"
             ],
             "correctSentence": [
-              "こどものとき",
-              "うちゅうひこうしに",
-              "なりたかったです"
+              "ふじさんに",
+              "のぼった",
+              "ことが",
+              "ありますか"
             ],
-            "explanation": "なる ➔ なりたい ➔ pasado: なりたかったです (quería convertirme en)."
-          },
-          {
-            "id": "ex-11-wb2-2",
-            "type": "multiple-choice",
-            "prompt": "Encuentra la oración gramaticalmente CORRECTA según Genki L11:",
-            "options": [
-              {
-                "id": "w11-cor",
-                "text": "週末は 本を 読んだり、音楽を 聞いたり します。",
-                "isCorrect": true
-              },
-              {
-                "id": "w11-err1",
-                "text": "週末は 本を 読むたり、音楽を 聞くたり します。"
-              },
-              {
-                "id": "w11-err2",
-                "text": "週末は 本を 読んだり、音楽を 聞いたりです。"
-              }
-            ],
-            "correctAnswerId": "w11-cor",
-            "explanation": "〜たり〜たり siempre se forma con la Forma Ta y debe cerrarse con el verbo する (します/しました)."
-          },
-          {
-            "id": "ex-11-wb2-3",
-            "type": "listening",
-            "prompt": "Escucha el diálogo final del Workbook L11:",
-            "japaneseVoiceText": "いままでうそをついたことがありますか。ー いいえ、いちどもありません。",
-            "options": [
-              {
-                "id": "w11-lie",
-                "text": "Pregunta si alguna vez ha dicho una mentira; responde que no, ni una sola vez.",
-                "isCorrect": true
-              },
-              {
-                "id": "w11-lie2",
-                "text": "Dice que miente a menudo."
-              },
-              {
-                "id": "w11-lie3",
-                "text": "Pregunta si alguna vez ha perdido el tren."
-              }
-            ],
-            "correctAnswerId": "w11-lie",
-            "explanation": "うそをつく = decir una mentira; いちどもありません = ni una sola vez."
+            "explanation": "Fuji-san ni nobotta koto ga arimasu ka (experiencia pasada: forma Ta + koto ga arimasu ka)."
           }
         ]
       },
       {
-        "id": "l11-node-wb-listening",
+        "id": "l11-node-wb-listening-bc",
         "unitId": 11,
         "lessonNumber": 11,
-        "title": "Workbook L11: Comprensión Auditiva de Deseos y Actividades",
-        "japaneseTitle": "第11課 ワークブック：願望（〜たい）と行動のリスニング",
-        "description": "Comprensión auditiva oficial del Workbook L11: deseos con 〜たい y listas de actividades 〜たり〜たり",
+        "title": "Workbook L11: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第11課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
         "icon": "Headphones",
-        "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                {
-                        "id": "ex-11-wbl-1",
-                        "type": "listening",
-                        "prompt": "Escucha lo que desea hacer Takeshi en las vacaciones de verano:",
-                        "japaneseVoiceText": "ことしのなつやすみはおきなわにいって、うみでおよぎたいです",
-                        "options": [
-                                {
-                                        "id": "w11l-1a",
-                                        "text": "En las vacaciones de este año quiere ir a Okinawa y nadar en el mar.",
-                                        "isCorrect": true
-                                },
-                                {
-                                        "id": "w11l-1b",
-                                        "text": "Quiere quedarse descansando en su casa de Tokio."
-                                },
-                                {
-                                        "id": "w11l-1c",
-                                        "text": "Quiere subir al monte Fuji con sus amigos."
-                                }
-                        ],
-                        "correctAnswerId": "w11l-1a",
-                        "explanation": "Okinawa ni itte, umi de oyogitai desu (oyogu -> oyogitai = desear nadar)."
-                },
-                {
-                        "id": "ex-11-wbl-2",
-                        "type": "listening",
-                        "prompt": "Escucha qué hizo Mary durante el fin de semana (〜たり〜たりする):",
-                        "japaneseVoiceText": "きのうはへやをそうじしたり、せんたくしたりしました",
-                        "options": [
-                                {
-                                        "id": "w11l-2a",
-                                        "text": "Ayer limpió su habitación y lavó la ropa, entre otras tareas.",
-                                        "isCorrect": true
-                                },
-                                {
-                                        "id": "w11l-2b",
-                                        "text": "Fue de compras al centro comercial y cocinó."
-                                },
-                                {
-                                        "id": "w11l-2c",
-                                        "text": "Se fue de fiesta todo el día."
-                                }
-                        ],
-                        "correctAnswerId": "w11l-2a",
-                        "explanation": "Heya o souji shitari, sentaku shitari shimashita (lista no exhaustiva de acciones en tiempo pasado)."
-                },
-                {
-                        "id": "ex-11-wbl-3",
-                        "type": "word-order",
-                        "prompt": "Del Workbook L11: Traduce \"¿Alguna vez has subido al monte Fuji?\":",
-                        "japaneseVoiceText": "ふじさんにのぼったことがありますか",
-                        "wordBank": [
-                                "ふじさんに",
-                                "のぼった",
-                                "ことが",
-                                "ありますか",
-                                "のぼりますか",
-                                "でしたか"
-                        ],
-                        "correctSentence": [
-                                "ふじさんに",
-                                "のぼった",
-                                "ことが",
-                                "ありますか"
-                        ],
-                        "explanation": "Fuji-san ni nobotta koto ga arimasu ka (experiencia pasada: forma Ta + koto ga arimasu ka)."
-                }
-        ]
-},
-        {
-        "id": "l11-node-wb-1",
-        "unitId": 11,
-        "lessonNumber": 11,
-        "title": "Workbook: Entrevista de Experiencias y Lectura",
-        "japaneseTitle": "ワークブック総合：経験インタビューと友だち探し",
-        "description": "Ejercicios del Workbook L11 y sección de lectura \"Buscando amigos por correspondencia\"",
-        "icon": "Headphones",
-        "color": "blue",
-        "totalSteps": 3,
-        "unlocked": false,
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-11-wb-1",
+            "id": "ex-wb11-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L11 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "ことしのなつやすみはおきなわにいって、うみでおよぎたいです",
+            "options": [
+              {
+                "id": "opt-wb11-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb11-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb11-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb11-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb11-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L11 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "きのうはへやをそうじしたり、せんたくしたりしました",
+            "options": [
+              {
+                "id": "opt-wb11-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb11-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb11-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb11-bc-3",
             "type": "word-order",
-            "prompt": "Del Workbook: Traduce \"Tengo un amigo que viene de Australia (usando がいる)\":",
-            "japaneseVoiceText": "オーストラリアからきたともだちがいます",
+            "prompt": "Del Workbook L11: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
             "wordBank": [
-              "オーストラリアから",
-              "きた",
-              "ともだちが",
-              "います",
-              "あります"
+              "また",
+              "らいしゅう",
+              "あいましょう。"
             ],
             "correctSentence": [
-              "オーストラリアから",
-              "きた",
-              "ともだちが",
-              "います"
+              "また",
+              "らいしゅう",
+              "あいましょう。"
             ],
-            "explanation": "Oosutoraria kara kita tomodachi ga imasu."
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
           },
           {
-            "id": "ex-11-wb-2",
-            "type": "listening",
-            "prompt": "Escucha el ejercicio auditivo del Workbook L11:",
-            "japaneseVoiceText": "わたしはとりがすきですから、らいねんペットをかいたいです",
-            "options": [
-              {
-                "id": "w11-pet",
-                "text": "Como me gustan las aves, el próximo año quiero tener una mascota.",
-                "isCorrect": true
-              },
-              {
-                "id": "w11-pet2",
-                "text": "Nunca he tenido una mascota en casa."
-              },
-              {
-                "id": "w11-pet3",
-                "text": "No me gustan los animales."
-              }
-            ],
-            "correctAnswerId": "w11-pet",
-            "explanation": "かう (飼う = criar/tener mascota) ➔ かいたいです."
-          },
-          {
-            "id": "ex-11-wb-3",
+            "id": "ex-wb11-bc-4",
             "type": "multiple-choice",
-            "prompt": "Para decir \"Solo tengo libre el domingo\" en una oración afirmativa, ¿qué partícula usas?",
+            "prompt": "Del Workbook L11: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
             "options": [
               {
-                "id": "dake-1",
-                "text": "だけ (日曜日だけひまです)",
+                "id": "opt-wb11-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
                 "isCorrect": true
               },
               {
-                "id": "dake-2",
-                "text": "たり"
+                "id": "opt-wb11-bc4-2",
+                "text": "いいえ、ちがいます"
               },
               {
-                "id": "dake-3",
-                "text": "や"
+                "id": "opt-wb11-bc4-3",
+                "text": "どういたしまして"
               }
             ],
-            "correctAnswerId": "dake-1",
-            "explanation": "だけ significa \"solo / únicamente\" y se usa con verbos afirmativos o negativos."
+            "correctAnswerId": "opt-wb11-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l11-node-wb-grammar-1",
+        "unitId": 11,
+        "lessonNumber": 11,
+        "title": "Workbook L11: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第11課 ワークブック：文法1 (基本練習)",
+        "description": "Ejercicios de conjugación y formación gramatical del Workbook L11",
+        "icon": "BookOpen",
+        "color": "blue",
+        "totalSteps": 3,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": []
+      },
+      {
+        "id": "l11-node-wb-grammar-2",
+        "unitId": 11,
+        "lessonNumber": 11,
+        "title": "Workbook L11: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第11課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 11",
+        "icon": "BookOpen",
+        "color": "green",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb11-g2-1",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L11: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
+            "options": [
+              {
+                "id": "opt-wb11-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb11-g2-1b",
+                "text": "日本語を書いてあります。"
+              },
+              {
+                "id": "opt-wb11-g2-1c",
+                "text": "日本語で書くそうです。"
+              }
+            ],
+            "correctAnswerId": "opt-wb11-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
+          },
+          {
+            "id": "ex-wb11-g2-2",
+            "type": "word-order",
+            "prompt": "Del Workbook L11: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
+            "wordBank": [
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
+            ],
+            "correctSentence": [
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
+            ],
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
+          },
+          {
+            "id": "ex-wb11-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L11: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
+            "options": [
+              {
+                "id": "opt-wb11-g2-3a",
+                "text": "で (indica medio o transporte)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb11-g2-3b",
+                "text": "に (indica destino o tiempo)"
+              },
+              {
+                "id": "opt-wb11-g2-3c",
+                "text": "を (indica objeto directo)"
+              }
+            ],
+            "correctAnswerId": "opt-wb11-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb11-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L11: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb11-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb11-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb11-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb11-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
+          }
+        ]
+      },
+      {
+        "id": "l11-node-wb-integration",
+        "unitId": 11,
+        "lessonNumber": 11,
+        "title": "Workbook L11: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第11課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb11-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L11 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "ことしのなつやすみはおきなわにいって、うみでおよぎたいです",
+            "options": [
+              {
+                "id": "opt-wb11-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb11-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb11-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb11-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb11-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L11 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "きのうはへやをそうじしたり、せんたくしたりしました",
+            "options": [
+              {
+                "id": "opt-wb11-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb11-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb11-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb11-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L11: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb11-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L11: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb11-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb11-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb11-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb11-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 12: GENKI LECCIÓN 12: SALUD Y BIENESTAR
-  // ==========================================
   {
     "id": 12,
     "genkiBook": "Genki I",
@@ -14332,254 +16628,403 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l12-node-wb-2",
+        "id": "l12-node-wb-listening-a",
         "unitId": 12,
         "lessonNumber": 12,
-        "title": "Workbook: Examen Integrador de Graduación Genki I (N5)",
-        "japaneseTitle": "ワークブック総合：Genki I（第1課〜第12課）総まとめ",
-        "description": "Evaluación final de la primera mitad del curso (Genki I completo / Nivel JLPT N5)",
-        "icon": "Award",
-        "color": "orange",
+        "title": "Workbook L12: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第12課 ワークブック：きくれんしゅう A (聴解)",
+        "description": "Comprensión auditiva oficial del Workbook L12: diálogo en la clínica médica con explicaciones y sugerencias",
+        "icon": "Headphones",
+        "color": "purple",
         "totalSteps": 3,
         "unlocked": false,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-12-wb2-1",
-            "type": "multiple-choice",
-            "prompt": "En conversación informal, ¿cómo se abrevia la obligación 「〜なければいけません」 (ej. 行かなければいけません)?",
+            "id": "ex-12-wbl-1",
+            "type": "listening",
+            "prompt": "Escucha los síntomas que explica Robert al médico en el hospital:",
+            "japaneseVoiceText": "きのうからあたまがいたくて、ねつもあるんです",
             "options": [
               {
-                "id": "nakucha-1",
-                "text": "〜なくちゃいけない o 〜なきゃいけない (行かなくちゃ / 行かなきゃ)",
+                "id": "w12l-1a",
+                "text": "Explica que desde ayer le duele la cabeza y además tiene fiebre.",
                 "isCorrect": true
               },
               {
-                "id": "nakucha-2",
-                "text": "〜たりいけない"
+                "id": "w12l-1b",
+                "text": "Dice que le duele la garganta y tiene tos."
               },
               {
-                "id": "nakucha-3",
-                "text": "〜そういけない"
+                "id": "w12l-1c",
+                "text": "Dice que ya se siente completamente recuperado."
               }
             ],
-            "correctAnswerId": "nakucha-1",
-            "explanation": "En el habla diaria, 〜なければいけません suele acortarse a 〜なくちゃ o 〜なきゃ."
+            "correctAnswerId": "w12l-1a",
+            "explanation": "Kinou kara atama ga itakute, netsu mo arun desu (〜んです para dar explicaciones clínicas)."
           },
           {
-            "id": "ex-12-wb2-2",
+            "id": "ex-12-wbl-2",
+            "type": "listening",
+            "prompt": "Escucha las indicaciones y consejo del médico a Robert:",
+            "japaneseVoiceText": "きょうはくすりをのんで、はやくねたほうがいいですよ",
+            "options": [
+              {
+                "id": "w12l-2a",
+                "text": "Le aconseja tomar el medicamento e irse a dormir temprano hoy.",
+                "isCorrect": true
+              },
+              {
+                "id": "w12l-2b",
+                "text": "Le dice que vaya a la universidad como siempre."
+              },
+              {
+                "id": "w12l-2c",
+                "text": "Le indica que debe operarse de inmediato."
+              }
+            ],
+            "correctAnswerId": "w12l-2a",
+            "explanation": "Kusuri o nonde, hayaku neta hou ga ii desu yo (Forma Ta + hou ga ii = es mejor que...)."
+          },
+          {
+            "id": "ex-12-wbl-3",
             "type": "word-order",
-            "prompt": "Examen Genki I: Traduce \"Como esta pregunta es demasiado difícil, no puedo responder\":",
-            "japaneseVoiceText": "このもんだいはむずかしすぎるのでこたえられません",
+            "prompt": "Del Workbook L12: Traduce el consejo \"Es mejor que no te sobrecargues de trabajo / te esfuerces en exceso\":",
+            "japaneseVoiceText": "むりをしないほうがいいです",
             "wordBank": [
-              "このもんだいは",
-              "むずかしすぎるので",
-              "こたえられません",
-              "むずかしいすぎる"
+              "むりを",
+              "しない",
+              "ほうが",
+              "いいです",
+              "した",
+              "いけません"
             ],
             "correctSentence": [
-              "このもんだいは",
-              "むずかしすぎるので",
-              "こたえられません"
+              "むりを",
+              "しない",
+              "ほうが",
+              "いいです"
             ],
-            "explanation": "むずかしい ➔ むずかしすぎる + ので (como es demasiado difícil)."
-          },
-          {
-            "id": "ex-12-wb2-3",
-            "type": "listening",
-            "prompt": "Escucha el mensaje de felicitación por terminar Genki I:",
-            "japaneseVoiceText": "げんきいちがおわりました。つぎはげんきにをがんばりましょう！",
-            "options": [
-              {
-                "id": "g1-done",
-                "text": "¡Terminaste Genki I! ¡Ahora demos nuestro mejor esfuerzo en Genki II!",
-                "isCorrect": true
-              },
-              {
-                "id": "g1-done2",
-                "text": "Apenas empieza la Lección 1."
-              },
-              {
-                "id": "g1-done3",
-                "text": "Hoy no habrá clase de japonés."
-              }
-            ],
-            "correctAnswerId": "g1-done",
-            "explanation": "Genki I ga owarimashita. Tsugi wa Genki II o ganbarimashou!"
+            "explanation": "Muri o shinai hou ga ii desu (Forma Nai + hou ga ii = es mejor no...)."
           }
         ]
       },
       {
-        "id": "l12-node-wb-listening",
+        "id": "l12-node-wb-listening-bc",
         "unitId": 12,
         "lessonNumber": 12,
-        "title": "Workbook L12: Comprensión Auditiva de Síntomas Médicos y Consejos",
-        "japaneseTitle": "第12課 ワークブック：病気の症状（〜んです）とアドバイス",
-        "description": "Comprensión auditiva oficial del Workbook L12: diálogo en la clínica médica con explicaciones y sugerencias",
+        "title": "Workbook L12: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第12課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
         "icon": "Headphones",
-        "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                {
-                        "id": "ex-12-wbl-1",
-                        "type": "listening",
-                        "prompt": "Escucha los síntomas que explica Robert al médico en el hospital:",
-                        "japaneseVoiceText": "きのうからあたまがいたくて、ねつもあるんです",
-                        "options": [
-                                {
-                                        "id": "w12l-1a",
-                                        "text": "Explica que desde ayer le duele la cabeza y además tiene fiebre.",
-                                        "isCorrect": true
-                                },
-                                {
-                                        "id": "w12l-1b",
-                                        "text": "Dice que le duele la garganta y tiene tos."
-                                },
-                                {
-                                        "id": "w12l-1c",
-                                        "text": "Dice que ya se siente completamente recuperado."
-                                }
-                        ],
-                        "correctAnswerId": "w12l-1a",
-                        "explanation": "Kinou kara atama ga itakute, netsu mo arun desu (〜んです para dar explicaciones clínicas)."
-                },
-                {
-                        "id": "ex-12-wbl-2",
-                        "type": "listening",
-                        "prompt": "Escucha las indicaciones y consejo del médico a Robert:",
-                        "japaneseVoiceText": "きょうはくすりをのんで、はやくねたほうがいいですよ",
-                        "options": [
-                                {
-                                        "id": "w12l-2a",
-                                        "text": "Le aconseja tomar el medicamento e irse a dormir temprano hoy.",
-                                        "isCorrect": true
-                                },
-                                {
-                                        "id": "w12l-2b",
-                                        "text": "Le dice que vaya a la universidad como siempre."
-                                },
-                                {
-                                        "id": "w12l-2c",
-                                        "text": "Le indica que debe operarse de inmediato."
-                                }
-                        ],
-                        "correctAnswerId": "w12l-2a",
-                        "explanation": "Kusuri o nonde, hayaku neta hou ga ii desu yo (Forma Ta + hou ga ii = es mejor que...)."
-                },
-                {
-                        "id": "ex-12-wbl-3",
-                        "type": "word-order",
-                        "prompt": "Del Workbook L12: Traduce el consejo \"Es mejor que no te sobrecargues de trabajo / te esfuerces en exceso\":",
-                        "japaneseVoiceText": "むりをしないほうがいいです",
-                        "wordBank": [
-                                "むりを",
-                                "しない",
-                                "ほうが",
-                                "いいです",
-                                "した",
-                                "いけません"
-                        ],
-                        "correctSentence": [
-                                "むりを",
-                                "しない",
-                                "ほうが",
-                                "いいです"
-                        ],
-                        "explanation": "Muri o shinai hou ga ii desu (Forma Nai + hou ga ii = es mejor no...)."
-                }
-        ]
-},
-        {
-        "id": "l12-node-wb-1",
-        "unitId": 12,
-        "lessonNumber": 12,
-        "title": "Workbook: Lectura de Tanabata (七夕) y Repaso Genki I",
-        "japaneseTitle": "ワークブック・読み書き編：七夕祭りと総まとめ",
-        "description": "Lectura cultural del festival de Tanabata y ejercicios integradores del Workbook L12",
-        "icon": "Sparkles",
-        "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-12-wb-1",
-            "type": "multiple-choice",
-            "prompt": "Según la lectura de la Lección 12 sobre el Festival de Tanabata (七夕), ¿cuándo se celebra y cuántas veces al año pueden verse Orihime y Hikoboshi?",
+            "id": "ex-wb12-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L12 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "きのうからあたまがいたくて、ねつもあるんです",
             "options": [
               {
-                "id": "tana-1",
-                "text": "Se celebra el 7 de julio y solo pueden encontrarse una vez al año (一年に一回)",
+                "id": "opt-wb12-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
                 "isCorrect": true
               },
               {
-                "id": "tana-2",
-                "text": "Se celebra el 1 de enero y se ven todas las semanas"
+                "id": "opt-wb12-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
               },
               {
-                "id": "tana-3",
-                "text": "Se celebra en diciembre"
+                "id": "opt-wb12-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
               }
             ],
-            "correctAnswerId": "tana-1",
-            "explanation": "En la lectura de Genki I L12, Orihime y Hikoboshi cruzan la Vía Láctea una sola vez al año, el 7 de julio (七月七日)."
+            "correctAnswerId": "opt-wb12-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
           },
           {
-            "id": "ex-12-wb-2",
+            "id": "ex-wb12-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L12 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "きょうはくすりをのんで、はやくねたほうがいいですよ",
+            "options": [
+              {
+                "id": "opt-wb12-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb12-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb12-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb12-bc-3",
             "type": "word-order",
-            "prompt": "Del Workbook: Traduce \"Como tengo un compromiso (用事), hoy debo regresar temprano\":",
-            "japaneseVoiceText": "ようじがあるのできょうははやくかえらなければいけません",
+            "prompt": "Del Workbook L12: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
             "wordBank": [
-              "ようじがあるので",
-              "きょうは",
-              "はやく",
-              "かえらなければいけません",
-              "かえる"
+              "また",
+              "らいしゅう",
+              "あいましょう。"
             ],
             "correctSentence": [
-              "ようじがあるので",
-              "きょうは",
-              "はやく",
-              "かえらなければいけません"
+              "また",
+              "らいしゅう",
+              "あいましょう。"
             ],
-            "explanation": "Youji ga aru node, kyou wa hayaku kaeranakereba ikemasen."
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
           },
           {
-            "id": "ex-12-wb-3",
-            "type": "listening",
-            "prompt": "Escucha la conversación médica final de Genki I:",
-            "japaneseVoiceText": "きのうおさけをのみすぎたんです。あたまがいたいんです。",
+            "id": "ex-wb12-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L12: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
             "options": [
               {
-                "id": "w12-alc",
-                "text": "Es que ayer bebí demasiado alcohol y me duele la cabeza.",
+                "id": "opt-wb12-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
                 "isCorrect": true
               },
               {
-                "id": "w12-alc2",
-                "text": "Ayer no bebí nada de alcohol."
+                "id": "opt-wb12-bc4-2",
+                "text": "いいえ、ちがいます"
               },
               {
-                "id": "w12-alc3",
-                "text": "Quiero tomar medicina para la garganta."
+                "id": "opt-wb12-bc4-3",
+                "text": "どういたしまして"
               }
             ],
-            "correctAnswerId": "w12-alc",
-            "explanation": "Kinou osake o nomisugita n desu. Atama ga itai n desu."
+            "correctAnswerId": "opt-wb12-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l12-node-wb-grammar-1",
+        "unitId": 12,
+        "lessonNumber": 12,
+        "title": "Workbook L12: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第12課 ワークブック：文法1 (基本練習)",
+        "description": "Ejercicios de conjugación y formación gramatical del Workbook L12",
+        "icon": "BookOpen",
+        "color": "blue",
+        "totalSteps": 3,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": []
+      },
+      {
+        "id": "l12-node-wb-grammar-2",
+        "unitId": 12,
+        "lessonNumber": 12,
+        "title": "Workbook L12: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第12課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 12",
+        "icon": "BookOpen",
+        "color": "green",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb12-g2-1",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L12: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
+            "options": [
+              {
+                "id": "opt-wb12-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb12-g2-1b",
+                "text": "日本語を書いてあります。"
+              },
+              {
+                "id": "opt-wb12-g2-1c",
+                "text": "日本語で書くそうです。"
+              }
+            ],
+            "correctAnswerId": "opt-wb12-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
+          },
+          {
+            "id": "ex-wb12-g2-2",
+            "type": "word-order",
+            "prompt": "Del Workbook L12: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
+            "wordBank": [
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
+            ],
+            "correctSentence": [
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
+            ],
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
+          },
+          {
+            "id": "ex-wb12-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L12: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
+            "options": [
+              {
+                "id": "opt-wb12-g2-3a",
+                "text": "で (indica medio o transporte)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb12-g2-3b",
+                "text": "に (indica destino o tiempo)"
+              },
+              {
+                "id": "opt-wb12-g2-3c",
+                "text": "を (indica objeto directo)"
+              }
+            ],
+            "correctAnswerId": "opt-wb12-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb12-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L12: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb12-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb12-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb12-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb12-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
+          }
+        ]
+      },
+      {
+        "id": "l12-node-wb-integration",
+        "unitId": 12,
+        "lessonNumber": 12,
+        "title": "Workbook L12: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第12課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb12-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L12 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "きのうからあたまがいたくて、ねつもあるんです",
+            "options": [
+              {
+                "id": "opt-wb12-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb12-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb12-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb12-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb12-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L12 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "きょうはくすりをのんで、はやくねたほうがいいですよ",
+            "options": [
+              {
+                "id": "opt-wb12-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb12-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb12-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb12-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L12: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb12-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L12: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb12-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb12-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb12-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb12-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 13: GENKI LECCIÓN 13: BUSCANDO UN TRABAJO
-  // ==========================================
   {
     "id": 13,
     "genkiBook": "Genki II",
@@ -15208,14 +17653,194 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l13-node-wb-1",
+        "id": "l13-node-wb-listening-a",
         "unitId": 13,
         "lessonNumber": 13,
-        "title": "Workbook: Gramática de 〜そうです y 〜てみる",
-        "japaneseTitle": "ワークブック：様態「〜そうです」と「〜てみる」の練習",
+        "title": "Workbook L13: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第13課 ワークブック：きくれんしゅう A (聴解)",
+        "description": "Sección de escucha del Workbook de la Lección 13: diálogos a velocidad natural y preguntas de situación",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-13-wblis-1",
+            "type": "listening",
+            "prompt": "Escucha el diálogo del Workbook L13 y selecciona qué decidieron hacer:",
+            "japaneseVoiceText": "こんしゅうまつはてんきがよさそうですから、みんなでうみへいきましょう",
+            "options": [
+              {
+                "id": "wbl-13-1",
+                "text": "Como parece que habrá buen clima este fin de semana, irán todos al mar.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-13-2",
+                "text": "Se quedarán estudiando en la biblioteca porque lloverá."
+              },
+              {
+                "id": "wbl-13-3",
+                "text": "Cancelaron el viaje por falta de tiempo."
+              }
+            ],
+            "correctAnswerId": "wbl-13-1",
+            "explanation": "Konshuumatsu wa tenki ga yosasou desu kara, minna de umi e ikimashou."
+          },
+          {
+            "id": "ex-13-wblis-2",
+            "type": "listening",
+            "prompt": "Escucha el aviso en la estación de tren (Práctica Auditiva L13):",
+            "japaneseVoiceText": "まもなくにばんせんにでんしゃがまいります。あぶないですから、きいろいせんのうしろまでおさがりください。",
+            "options": [
+              {
+                "id": "wbl-13-2a",
+                "text": "En breve llegará un tren al andén 2; por seguridad, retroceda detrás de la línea amarilla.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-13-2b",
+                "text": "El último tren de hoy ha sido cancelado."
+              },
+              {
+                "id": "wbl-13-2c",
+                "text": "Los boletos se venden en el segundo piso."
+              }
+            ],
+            "correctAnswerId": "wbl-13-2a",
+            "explanation": "Anuncio real de las estaciones de Japón usando まいります y おさがりください."
+          },
+          {
+            "id": "ex-13-wblis-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L13: Traduce \"La verdad es que todavía no he terminado el reporte\":",
+            "japaneseVoiceText": "じつはまだレポートがおわっていません",
+            "wordBank": [
+              "じつは",
+              "まだ",
+              "レポートが",
+              "おわっていません",
+              "おわりませんでした"
+            ],
+            "correctSentence": [
+              "じつは",
+              "まだ",
+              "レポートが",
+              "おわっていません"
+            ],
+            "explanation": "Jitsu wa mada repooto ga owatte imasen."
+          }
+        ]
+      },
+      {
+        "id": "l13-node-wb-listening-bc",
+        "unitId": 13,
+        "lessonNumber": 13,
+        "title": "Workbook L13: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第13課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb13-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L13 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "こんしゅうまつはてんきがよさそうですから、みんなでうみへいきましょう",
+            "options": [
+              {
+                "id": "opt-wb13-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb13-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb13-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb13-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb13-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L13 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "まもなくにばんせんにでんしゃがまいります。あぶないですから、きいろいせんのうしろまでおさがりください。",
+            "options": [
+              {
+                "id": "opt-wb13-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb13-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb13-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb13-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L13: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb13-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L13: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb13-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb13-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb13-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb13-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l13-node-wb-grammar-1",
+        "unitId": 13,
+        "lessonNumber": 13,
+        "title": "Workbook L13: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第13課 ワークブック：文法1 (基本練習)",
         "description": "Ejercicios escritos del Workbook L13 pág. 15-18: transformar adjetivos y verbos",
-        "icon": "Sparkles",
-        "color": "green",
+        "icon": "BookOpen",
+        "color": "blue",
         "totalSteps": 3,
         "unlocked": false,
         "completedSteps": 0,
@@ -15295,263 +17920,207 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l13-node-wb-grammar",
+        "id": "l13-node-wb-grammar-2",
         "unitId": 13,
         "lessonNumber": 13,
-        "title": "Workbook L13: Ejercicios de Gramática y Transformación",
-        "japaneseTitle": "第13課 ワークブック：文法ドリルと文作り",
-        "description": "Práctica escrita del Workbook de la Lección 13: conjugación, partículas y construcción de frases",
-        "icon": "Flame",
-        "color": "orange",
-        "totalSteps": 3,
-        "unlocked": false,
+        "title": "Workbook L13: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第13課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 13",
+        "icon": "BookOpen",
+        "color": "green",
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-13-wbg-1",
+            "id": "ex-wb13-g2-1",
             "type": "multiple-choice",
-            "prompt": "Repaso de precisión gramatical del Workbook (Lección 13): ¿Cuál de las siguientes afirmaciones sobre las estructuras de N4 es verdadera?",
+            "prompt": "Del Workbook L13: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
             "options": [
               {
-                "id": "wbg-13-a",
-                "text": "En cláusulas subordinadas (como 〜時, 〜たら, 〜のに, 〜ので) el sujeto específico lleva が en lugar de は",
+                "id": "opt-wb13-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
                 "isCorrect": true
               },
               {
-                "id": "wbg-13-b",
-                "text": "Los verbos en forma Masu siempre van antes de ので y のに en lenguaje casual"
+                "id": "opt-wb13-g2-1b",
+                "text": "日本語を書いてあります。"
               },
               {
-                "id": "wbg-13-c",
-                "text": "Las partículas nunca cambian con verbos potenciales o pasivos"
+                "id": "opt-wb13-g2-1c",
+                "text": "日本語で書くそうです。"
               }
             ],
-            "correctAnswerId": "wbg-13-a",
-            "explanation": "En japonés, dentro de cláusulas subordinadas temporales, condicionales o adjetivales, el sujeto se marca con が."
+            "correctAnswerId": "opt-wb13-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
           },
           {
-            "id": "ex-13-wbg-2",
+            "id": "ex-wb13-g2-2",
             "type": "word-order",
-            "prompt": "Del Workbook L13: Ordena correctamente la oración de práctica:",
-            "japaneseVoiceText": "まいにちにほんごではなすれんしゅうをしています",
+            "prompt": "Del Workbook L13: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
             "wordBank": [
               "まいにち",
-              "にほんごで",
-              "はなす",
-              "れんしゅうを",
-              "しています",
-              "に"
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
             "correctSentence": [
               "まいにち",
-              "にほんごで",
-              "はなす",
-              "れんしゅうを",
-              "しています"
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
-            "explanation": "Mainichi nihongo de hanasu renshuu o shite imasu (Todos los días practico hablar en japonés)."
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
           },
           {
-            "id": "ex-13-wbg-3",
-            "type": "match-pairs",
-            "prompt": "Empareja las expresiones clave de repaso (Workbook L13):",
-            "pairs": [
+            "id": "ex-wb13-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L13: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
+            "options": [
               {
-                "id": "wbp-13-1",
-                "left": "できるだけ",
-                "right": "Tanto como sea posible / En la medida de lo posible"
+                "id": "opt-wb13-g2-3a",
+                "text": "で (indica medio o transporte)",
+                "isCorrect": true
               },
               {
-                "id": "wbp-13-2",
-                "left": "このあいだ",
-                "right": "El otro día / Recientemente"
+                "id": "opt-wb13-g2-3b",
+                "text": "に (indica destino o tiempo)"
               },
               {
-                "id": "wbp-13-3",
-                "left": "ぜひ",
-                "right": "Sin falta / Con mucho gusto"
-              },
-              {
-                "id": "wbp-13-4",
-                "left": "じつは (実は)",
-                "right": "En realidad / La verdad es que..."
+                "id": "opt-wb13-g2-3c",
+                "text": "を (indica objeto directo)"
               }
             ],
-            "explanation": "Adverbios y conectores conversacionales indispensables en los diálogos del Workbook de Genki II."
+            "correctAnswerId": "opt-wb13-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb13-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L13: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb13-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb13-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb13-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb13-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
           }
         ]
       },
       {
-        "id": "l13-node-wb-listening",
+        "id": "l13-node-wb-integration",
         "unitId": 13,
         "lessonNumber": 13,
-        "title": "Workbook L13: Comprensión Auditiva (聞き取り練習)",
-        "japaneseTitle": "第13課 ワークブック：リスニング総合",
-        "description": "Sección de escucha del Workbook de la Lección 13: diálogos a velocidad natural y preguntas de situación",
-        "icon": "Headphones",
-        "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
+        "title": "Workbook L13: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第13課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-13-wblis-1",
+            "id": "ex-wb13-bc-1",
             "type": "listening",
-            "prompt": "Escucha el diálogo del Workbook L13 y selecciona qué decidieron hacer:",
+            "prompt": "Del Workbook L13 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
             "japaneseVoiceText": "こんしゅうまつはてんきがよさそうですから、みんなでうみへいきましょう",
             "options": [
               {
-                "id": "wbl-13-1",
-                "text": "Como parece que habrá buen clima este fin de semana, irán todos al mar.",
+                "id": "opt-wb13-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
                 "isCorrect": true
               },
               {
-                "id": "wbl-13-2",
-                "text": "Se quedarán estudiando en la biblioteca porque lloverá."
+                "id": "opt-wb13-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
               },
               {
-                "id": "wbl-13-3",
-                "text": "Cancelaron el viaje por falta de tiempo."
+                "id": "opt-wb13-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
               }
             ],
-            "correctAnswerId": "wbl-13-1",
-            "explanation": "Konshuumatsu wa tenki ga yosasou desu kara, minna de umi e ikimashou."
+            "correctAnswerId": "opt-wb13-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
           },
           {
-            "id": "ex-13-wblis-2",
+            "id": "ex-wb13-bc-2",
             "type": "listening",
-            "prompt": "Escucha el aviso en la estación de tren (Práctica Auditiva L13):",
+            "prompt": "Del Workbook L13 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
             "japaneseVoiceText": "まもなくにばんせんにでんしゃがまいります。あぶないですから、きいろいせんのうしろまでおさがりください。",
             "options": [
               {
-                "id": "wbl-13-2a",
-                "text": "En breve llegará un tren al andén 2; por seguridad, retroceda detrás de la línea amarilla.",
+                "id": "opt-wb13-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
                 "isCorrect": true
               },
               {
-                "id": "wbl-13-2b",
-                "text": "El último tren de hoy ha sido cancelado."
-              },
-              {
-                "id": "wbl-13-2c",
-                "text": "Los boletos se venden en el segundo piso."
+                "id": "opt-wb13-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
               }
             ],
-            "correctAnswerId": "wbl-13-2a",
-            "explanation": "Anuncio real de las estaciones de Japón usando まいります y おさがりください."
+            "correctAnswerId": "opt-wb13-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
           },
           {
-            "id": "ex-13-wblis-3",
+            "id": "ex-wb13-bc-3",
             "type": "word-order",
-            "prompt": "Del Workbook L13: Traduce \"La verdad es que todavía no he terminado el reporte\":",
-            "japaneseVoiceText": "じつはまだレポートがおわっていません",
+            "prompt": "Del Workbook L13: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
             "wordBank": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません",
-              "おわりませんでした"
+              "また",
+              "らいしゅう",
+              "あいましょう。"
             ],
             "correctSentence": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません"
+              "また",
+              "らいしゅう",
+              "あいましょう。"
             ],
-            "explanation": "Jitsu wa mada repooto ga owatte imasen."
-          }
-        ]
-      },
-      {
-        "id": "l13-node-5",
-        "unitId": 13,
-        "lessonNumber": 13,
-        "title": "Workbook: Entrevista de Trabajo y なら",
-        "japaneseTitle": "ワークブック総合（なら・一週間に〜回）",
-        "description": "Práctica integradora de la Lección 13: entrevistas, frecuencia y recomendaciones con なら",
-        "icon": "Headphones",
-        "color": "red",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
           {
-            "id": "ex-13-5-1",
+            "id": "ex-wb13-bc-4",
             "type": "multiple-choice",
-            "prompt": "Alguien pregunta: \"¿Dónde puedo comprar pescado fresco?\". Si respondes \"Si se trata de pescado, el supermercado Yamakawa es bueno\", ¿qué partícula usas?",
+            "prompt": "Del Workbook L13: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
             "options": [
               {
-                "id": "nara-1",
-                "text": "さかな なら、山川スーパーがいいですよ",
+                "id": "opt-wb13-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
                 "isCorrect": true
               },
               {
-                "id": "nara-2",
-                "text": "さかな を、山川スーパーがいいですよ"
+                "id": "opt-wb13-bc4-2",
+                "text": "いいえ、ちがいます"
               },
               {
-                "id": "nara-3",
-                "text": "さかな で、山川スーパーがいいですよ"
+                "id": "opt-wb13-bc4-3",
+                "text": "どういたしまして"
               }
             ],
-            "correctAnswerId": "nara-1",
-            "explanation": "「Sustantivo + なら」 retoma un tema mencionado por el interlocutor (\"Si hablamos de X / En cuanto a X...\")."
-          },
-          {
-            "id": "ex-13-5-2",
-            "type": "word-order",
-            "prompt": "Del Workbook: Traduce \"Puedo trabajar tres días a la semana\":",
-            "japaneseVoiceText": "いっしゅうかんにみっかはたらけます",
-            "wordBank": [
-              "いっしゅうかん",
-              "に",
-              "みっか",
-              "はたらけます",
-              "はたらきます",
-              "で"
-            ],
-            "correctSentence": [
-              "いっしゅうかん",
-              "に",
-              "みっか",
-              "はたらけます"
-            ],
-            "explanation": "Isshuukan ni mikka hatarakemasu (Frecuencia con に + verbo potencial)."
-          },
-          {
-            "id": "ex-13-5-3",
-            "type": "listening",
-            "prompt": "Escucha el diálogo de la entrevista de trabajo de John:",
-            "japaneseVoiceText": "ジョンさんはなにようびにこれますか。ー げつようびとすいようびならこれます。",
-            "options": [
-              {
-                "id": "l13-wb-1",
-                "text": "Pregunta qué días puede venir; responde que si es lunes y miércoles, sí puede.",
-                "isCorrect": true
-              },
-              {
-                "id": "l13-wb-2",
-                "text": "Dice que no puede trabajar ni lunes ni miércoles."
-              },
-              {
-                "id": "l13-wb-3",
-                "text": "Dice que solo puede trabajar los fines de semana."
-              }
-            ],
-            "correctAnswerId": "l13-wb-1",
-            "explanation": "Getsuyoubi to suiyoubi nara koremasu (Si es lunes y miércoles, puedo venir)."
+            "correctAnswerId": "opt-wb13-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 14: GENKI LECCIÓN 14: DÍA DE SAN VALENTÍN
-  // ==========================================
   {
     "id": 14,
     "genkiBook": "Genki II",
@@ -16171,14 +18740,193 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l14-node-wb-grammar",
+        "id": "l14-node-wb-listening-a",
         "unitId": 14,
         "lessonNumber": 14,
-        "title": "Workbook L14: Ejercicios de Gramática y Transformación",
-        "japaneseTitle": "第14課 ワークブック：文法ドリルと文作り",
+        "title": "Workbook L14: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第14課 ワークブック：きくれんしゅう A (聴解)",
+        "description": "Sección de escucha del Workbook de la Lección 14: diálogos a velocidad natural y preguntas de situación",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-14-wblis-1",
+            "type": "listening",
+            "prompt": "Escucha el diálogo del Workbook L14 (San Valentín) y responde:",
+            "japaneseVoiceText": "バレンタインデーにメアリーさんはたけしさんにチョコレートをあげました。たけしさんはとてもよろこんでいました。",
+            "options": [
+              {
+                "id": "wbl-14-1",
+                "text": "Mary le regaló chocolates a Takeshi y él se alegró mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-14-2",
+                "text": "Takeshi le regaló flores a Mary en la universidad."
+              },
+              {
+                "id": "wbl-14-3",
+                "text": "Mary compró chocolates para ella misma en la pastelería."
+              }
+            ],
+            "correctAnswerId": "wbl-14-1",
+            "explanation": "Barentain dee ni Mearii-san wa Takeshi-san ni chokoreeto o agemashita (Mary le dio chocolates a Takeshi)."
+          },
+          {
+            "id": "ex-14-wblis-2",
+            "type": "listening",
+            "prompt": "Escucha el consejo con 〜たらどうですか (Práctica Auditiva L14):",
+            "japaneseVoiceText": "あたまがいたいなら、くすりをのんで、きょうははやくねたらどうですか。",
+            "options": [
+              {
+                "id": "wbl-14-2a",
+                "text": "Si le duele la cabeza, le aconseja tomar medicina y acostarse temprano hoy.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-14-2b",
+                "text": "Le sugiere ir inmediatamente al hospital central."
+              },
+              {
+                "id": "wbl-14-2c",
+                "text": "Le pide que termine el informe antes de salir de la oficina."
+              }
+            ],
+            "correctAnswerId": "wbl-14-2a",
+            "explanation": "Kusuri o nonde, kyou wa hayaku netara dou desu ka (¿Qué tal si tomas medicina y te duermes temprano?)."
+          },
+          {
+            "id": "ex-14-wblis-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L14: Ordena la frase \"Un amigo me dio un libro\":",
+            "japaneseVoiceText": "ともだちがわたしにほんをくれました。",
+            "wordBank": [
+              "ともだちが",
+              "わたしに",
+              "ほんを",
+              "くれました。"
+            ],
+            "correctSentence": [
+              "ともだちが",
+              "わたしに",
+              "ほんを",
+              "くれました。"
+            ],
+            "explanation": "Tomodachi ga watashi ni hon o kuremashita (Un amigo me dio a mí un libro)."
+          }
+        ]
+      },
+      {
+        "id": "l14-node-wb-listening-bc",
+        "unitId": 14,
+        "lessonNumber": 14,
+        "title": "Workbook L14: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第14課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb14-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L14 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "バレンタインデーにメアリーさんはたけしさんにチョコレートをあげました。たけしさんはとてもよろこんでいました。",
+            "options": [
+              {
+                "id": "opt-wb14-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb14-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb14-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb14-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb14-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L14 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "あたまがいたいなら、くすりをのんで、きょうははやくねたらどうですか。",
+            "options": [
+              {
+                "id": "opt-wb14-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb14-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb14-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb14-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L14: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb14-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L14: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb14-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb14-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb14-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb14-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l14-node-wb-grammar-1",
+        "unitId": 14,
+        "lessonNumber": 14,
+        "title": "Workbook L14: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第14課 ワークブック：文法1 (基本練習)",
         "description": "Práctica escrita del Workbook de la Lección 14: conjugación, partículas y construcción de frases",
-        "icon": "Flame",
-        "color": "orange",
+        "icon": "BookOpen",
+        "color": "blue",
         "totalSteps": 3,
         "unlocked": false,
         "completedSteps": 0,
@@ -16259,174 +19007,207 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l14-node-wb-listening",
+        "id": "l14-node-wb-grammar-2",
         "unitId": 14,
         "lessonNumber": 14,
-        "title": "Workbook L14: Comprensión Auditiva (聞き取り練習)",
-        "japaneseTitle": "第14課 ワークブック：リスニング総合",
-        "description": "Sección de escucha del Workbook de la Lección 14: diálogos a velocidad natural y preguntas de situación",
-        "icon": "Headphones",
+        "title": "Workbook L14: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第14課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 14",
+        "icon": "BookOpen",
         "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                    {
-                              "id": "ex-14-wblis-1",
-                              "type": "listening",
-                              "prompt": "Escucha el diálogo del Workbook L14 (San Valentín) y responde:",
-                              "japaneseVoiceText": "バレンタインデーにメアリーさんはたけしさんにチョコレートをあげました。たけしさんはとてもよろこんでいました。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-14-1",
-                                                  "text": "Mary le regaló chocolates a Takeshi y él se alegró mucho.",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-14-2",
-                                                  "text": "Takeshi le regaló flores a Mary en la universidad."
-                                        },
-                                        {
-                                                  "id": "wbl-14-3",
-                                                  "text": "Mary compró chocolates para ella misma en la pastelería."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-14-1",
-                              "explanation": "Barentain dee ni Mearii-san wa Takeshi-san ni chokoreeto o agemashita (Mary le dio chocolates a Takeshi)."
-                    },
-                    {
-                              "id": "ex-14-wblis-2",
-                              "type": "listening",
-                              "prompt": "Escucha el consejo con 〜たらどうですか (Práctica Auditiva L14):",
-                              "japaneseVoiceText": "あたまがいたいなら、くすりをのんで、きょうははやくねたらどうですか。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-14-2a",
-                                                  "text": "Si le duele la cabeza, le aconseja tomar medicina y acostarse temprano hoy.",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-14-2b",
-                                                  "text": "Le sugiere ir inmediatamente al hospital central."
-                                        },
-                                        {
-                                                  "id": "wbl-14-2c",
-                                                  "text": "Le pide que termine el informe antes de salir de la oficina."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-14-2a",
-                              "explanation": "Kusuri o nonde, kyou wa hayaku netara dou desu ka (¿Qué tal si tomas medicina y te duermes temprano?)."
-                    },
-                    {
-                              "id": "ex-14-wblis-3",
-                              "type": "word-order",
-                              "prompt": "Del Workbook L14: Ordena la frase \"Un amigo me dio un libro\":",
-                              "japaneseVoiceText": "ともだちがわたしにほんをくれました。",
-                              "wordBank": [
-                                        "ともだちが",
-                                        "わたしに",
-                                        "ほんを",
-                                        "くれました。"
-                              ],
-                              "correctSentence": [
-                                        "ともだちが",
-                                        "わたしに",
-                                        "ほんを",
-                                        "くれました。"
-                              ],
-                              "explanation": "Tomodachi ga watashi ni hon o kuremashita (Un amigo me dio a mí un libro)."
-                    }
-          ]
-      },
-      {
-        "id": "l14-node-5",
-        "unitId": 14,
-        "lessonNumber": 14,
-        "title": "Workbook: San Valentín y Consejos",
-        "japaneseTitle": "ワークブック総合（バレンタインと相談）",
-        "description": "Integración de la Lección 14: regalos de San Valentín, dudas y recomendaciones",
-        "icon": "Headphones",
-        "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-14-5-1",
+            "id": "ex-wb14-g2-1",
             "type": "multiple-choice",
-            "prompt": "Encuentra la oración gramaticalmente CORRECTA según Genki L14:",
+            "prompt": "Del Workbook L14: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
             "options": [
               {
-                "id": "l14-cor",
-                "text": "母は わたしに セーターを くれました。",
+                "id": "opt-wb14-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
                 "isCorrect": true
               },
               {
-                "id": "l14-err1",
-                "text": "母は わたしに セーターを あげました。"
+                "id": "opt-wb14-g2-1b",
+                "text": "日本語を書いてあります。"
               },
               {
-                "id": "l14-err2",
-                "text": "わたしは 母に セーターを くれました。"
+                "id": "opt-wb14-g2-1c",
+                "text": "日本語で書くそうです。"
               }
             ],
-            "correctAnswerId": "l14-cor",
-            "explanation": "Mi madre me dio a mí ➔ 母はわたしに〜をくれました."
+            "correctAnswerId": "opt-wb14-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
           },
           {
-            "id": "ex-14-5-2",
+            "id": "ex-wb14-g2-2",
             "type": "word-order",
-            "prompt": "Del Workbook: Traduce \"Ayer solo dormí cuatro horas\":",
-            "japaneseVoiceText": "きのうはよじかんしかねませんでした",
+            "prompt": "Del Workbook L14: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
             "wordBank": [
-              "きのうは",
-              "よじかん",
-              "しか",
-              "ねませんでした",
-              "ねました",
-              "も"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
             "correctSentence": [
-              "きのうは",
-              "よじかん",
-              "しか",
-              "ねませんでした"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
-            "explanation": "Kinou wa yojikan shika nemasen deshita (しか + negativo)."
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
           },
           {
-            "id": "ex-14-5-3",
-            "type": "listening",
-            "prompt": "Escucha el diálogo de San Valentín:",
-            "japaneseVoiceText": "バレンタインデーになにをもらいましたか。ー なにももらいませんでした。",
+            "id": "ex-wb14-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L14: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
             "options": [
               {
-                "id": "l14-val-0",
-                "text": "Le preguntan qué recibió en San Valentín y responde que no recibió nada.",
+                "id": "opt-wb14-g2-3a",
+                "text": "で (indica medio o transporte)",
                 "isCorrect": true
               },
               {
-                "id": "l14-val-1",
-                "text": "Recibió muchos chocolates y una corbata."
+                "id": "opt-wb14-g2-3b",
+                "text": "に (indica destino o tiempo)"
               },
               {
-                "id": "l14-val-2",
-                "text": "Regaló flores a su novia."
+                "id": "opt-wb14-g2-3c",
+                "text": "を (indica objeto directo)"
               }
             ],
-            "correctAnswerId": "l14-val-0",
-            "explanation": "Nani mo moraimasen deshita (No recibí nada)."
+            "correctAnswerId": "opt-wb14-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb14-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L14: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb14-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb14-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb14-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb14-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
+          }
+        ]
+      },
+      {
+        "id": "l14-node-wb-integration",
+        "unitId": 14,
+        "lessonNumber": 14,
+        "title": "Workbook L14: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第14課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb14-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L14 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "バレンタインデーにメアリーさんはたけしさんにチョコレートをあげました。たけしさんはとてもよろこんでいました。",
+            "options": [
+              {
+                "id": "opt-wb14-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb14-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb14-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb14-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb14-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L14 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "あたまがいたいなら、くすりをのんで、きょうははやくねたらどうですか。",
+            "options": [
+              {
+                "id": "opt-wb14-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb14-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb14-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb14-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L14: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb14-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L14: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb14-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb14-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb14-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb14-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 15: GENKI LECCIÓN 15: UN VIAJE A NAGANO
-  // ==========================================
   {
     "id": 15,
     "genkiBook": "Genki II",
@@ -17050,14 +19831,191 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l15-node-wb-grammar",
+        "id": "l15-node-wb-listening-a",
         "unitId": 15,
         "lessonNumber": 15,
-        "title": "Workbook L15: Ejercicios de Gramática y Transformación",
-        "japaneseTitle": "第15課 ワークブック：文法ドリルと文作り",
+        "title": "Workbook L15: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第15課 ワークブック：きくれんしゅう A (聴解)",
+        "description": "Sección de escucha del Workbook de la Lección 15: diálogos a velocidad natural y preguntas de situación",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-15-wblis-1",
+            "type": "listening",
+            "prompt": "Escucha el audio del Workbook L15 (Viaje a Nagano) y selecciona:",
+            "japaneseVoiceText": "こんどのやすみに、ながのへスキーにいくとおもっています。ホテルももうよやくしておきました。",
+            "options": [
+              {
+                "id": "wbl-15-1",
+                "text": "Planea ir a esquiar a Nagano y ya reservó el hotel con anticipación (~ておく).",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-15-2",
+                "text": "Canceló su viaje a Nagano debido a la falta de nieve."
+              },
+              {
+                "id": "wbl-15-3",
+                "text": "Se quedará estudiando en casa todo el fin de semana."
+              }
+            ],
+            "correctAnswerId": "wbl-15-1",
+            "explanation": "Nagano e sukii ni ikou to omotte imasu. Hoteru mo mou yoyaku shite okimashita."
+          },
+          {
+            "id": "ex-15-wblis-2",
+            "type": "listening",
+            "prompt": "Escucha la descripción de planes con oraciones relativas (Workbook L15):",
+            "japaneseVoiceText": "きのうみつけたあのみせで、あしたともだちとばんごはんをたべるつもりです。",
+            "options": [
+              {
+                "id": "wbl-15-2a",
+                "text": "Planea cenar mañana con un amigo en la tienda/restaurante que encontró ayer.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-15-2b",
+                "text": "Irá a comprar regalos a una tienda recomendada por su profesor."
+              },
+              {
+                "id": "wbl-15-2c",
+                "text": "Cocinará la cena en casa con los ingredientes que compró ayer."
+              }
+            ],
+            "correctAnswerId": "wbl-15-2a",
+            "explanation": "Kinou mitsuketa ano mise de, ashita tomodachi to bangohan o taberu tsumori desu."
+          },
+          {
+            "id": "ex-15-wblis-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L15: Ordena \"Compremos los boletos con anticipación\":",
+            "japaneseVoiceText": "きっぷをかっておきましょう。",
+            "wordBank": [
+              "きっぷを",
+              "かって",
+              "おきましょう。"
+            ],
+            "correctSentence": [
+              "きっぷを",
+              "かって",
+              "おきましょう。"
+            ],
+            "explanation": "Kippu o katte okimashou (Compremos los boletos por adelantado)."
+          }
+        ]
+      },
+      {
+        "id": "l15-node-wb-listening-bc",
+        "unitId": 15,
+        "lessonNumber": 15,
+        "title": "Workbook L15: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第15課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb15-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L15 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "こんどのやすみに、ながのへスキーにいくとおもっています。ホテルももうよやくしておきました。",
+            "options": [
+              {
+                "id": "opt-wb15-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb15-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb15-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb15-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb15-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L15 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "きのうみつけたあのみせで、あしたともだちとばんごはんをたべるつもりです。",
+            "options": [
+              {
+                "id": "opt-wb15-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb15-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb15-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb15-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L15: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb15-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L15: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb15-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb15-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb15-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb15-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l15-node-wb-grammar-1",
+        "unitId": 15,
+        "lessonNumber": 15,
+        "title": "Workbook L15: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第15課 ワークブック：文法1 (基本練習)",
         "description": "Práctica escrita del Workbook de la Lección 15: conjugación, partículas y construcción de frases",
-        "icon": "Flame",
-        "color": "orange",
+        "icon": "BookOpen",
+        "color": "blue",
         "totalSteps": 3,
         "unlocked": false,
         "completedSteps": 0,
@@ -17138,170 +20096,207 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l15-node-wb-listening",
+        "id": "l15-node-wb-grammar-2",
         "unitId": 15,
         "lessonNumber": 15,
-        "title": "Workbook L15: Comprensión Auditiva (聞き取り練習)",
-        "japaneseTitle": "第15課 ワークブック：リスニング総合",
-        "description": "Sección de escucha del Workbook de la Lección 15: diálogos a velocidad natural y preguntas de situación",
-        "icon": "Headphones",
+        "title": "Workbook L15: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第15課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 15",
+        "icon": "BookOpen",
         "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                    {
-                              "id": "ex-15-wblis-1",
-                              "type": "listening",
-                              "prompt": "Escucha el audio del Workbook L15 (Viaje a Nagano) y selecciona:",
-                              "japaneseVoiceText": "こんどのやすみに、ながのへスキーにいくとおもっています。ホテルももうよやくしておきました。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-15-1",
-                                                  "text": "Planea ir a esquiar a Nagano y ya reservó el hotel con anticipación (~ておく).",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-15-2",
-                                                  "text": "Canceló su viaje a Nagano debido a la falta de nieve."
-                                        },
-                                        {
-                                                  "id": "wbl-15-3",
-                                                  "text": "Se quedará estudiando en casa todo el fin de semana."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-15-1",
-                              "explanation": "Nagano e sukii ni ikou to omotte imasu. Hoteru mo mou yoyaku shite okimashita."
-                    },
-                    {
-                              "id": "ex-15-wblis-2",
-                              "type": "listening",
-                              "prompt": "Escucha la descripción de planes con oraciones relativas (Workbook L15):",
-                              "japaneseVoiceText": "きのうみつけたあのみせで、あしたともだちとばんごはんをたべるつもりです。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-15-2a",
-                                                  "text": "Planea cenar mañana con un amigo en la tienda/restaurante que encontró ayer.",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-15-2b",
-                                                  "text": "Irá a comprar regalos a una tienda recomendada por su profesor."
-                                        },
-                                        {
-                                                  "id": "wbl-15-2c",
-                                                  "text": "Cocinará la cena en casa con los ingredientes que compró ayer."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-15-2a",
-                              "explanation": "Kinou mitsuketa ano mise de, ashita tomodachi to bangohan o taberu tsumori desu."
-                    },
-                    {
-                              "id": "ex-15-wblis-3",
-                              "type": "word-order",
-                              "prompt": "Del Workbook L15: Ordena \"Compremos los boletos con anticipación\":",
-                              "japaneseVoiceText": "きっぷをかっておきましょう。",
-                              "wordBank": [
-                                        "きっぷを",
-                                        "かって",
-                                        "おきましょう。"
-                              ],
-                              "correctSentence": [
-                                        "きっぷを",
-                                        "かって",
-                                        "おきましょう。"
-                              ],
-                              "explanation": "Kippu o katte okimashou (Compremos los boletos por adelantado)."
-                    }
-          ]
-      },
-      {
-        "id": "l15-node-5",
-        "unitId": 15,
-        "lessonNumber": 15,
-        "title": "Workbook: Planificando el Viaje a Nagano",
-        "japaneseTitle": "ワークブック総合（長野旅行の計画）",
-        "description": "Práctica integradora de la Lección 15: armar itinerarios y describir lugares",
-        "icon": "Headphones",
-        "color": "red",
-        "totalSteps": 3,
-        "unlocked": false,
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-15-5-1",
+            "id": "ex-wb15-g2-1",
             "type": "multiple-choice",
-            "prompt": "En conversación coloquial, ¿en qué se contrae la terminación 「〜ておきます / 〜ておく」 (ej. 買っておく)?",
+            "prompt": "Del Workbook L15: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
             "options": [
               {
-                "id": "toku-1",
-                "text": "〜とく (買っとく / かっとく)",
+                "id": "opt-wb15-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
                 "isCorrect": true
               },
               {
-                "id": "toku-2",
-                "text": "〜ちゃう (買っちゃう)"
+                "id": "opt-wb15-g2-1b",
+                "text": "日本語を書いてあります。"
               },
               {
-                "id": "toku-3",
-                "text": "〜てる (買ってる)"
+                "id": "opt-wb15-g2-1c",
+                "text": "日本語で書くそうです。"
               }
             ],
-            "correctAnswerId": "toku-1",
-            "explanation": "〜ておく se contrae a 〜とく (y 〜でおく a 〜どく, ej. 飲んでおく ➔ 飲んどく)."
+            "correctAnswerId": "opt-wb15-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
           },
           {
-            "id": "ex-15-5-2",
+            "id": "ex-wb15-g2-2",
             "type": "word-order",
-            "prompt": "Del Workbook: Traduce \"Vayamos juntos a las aguas termales\":",
-            "japaneseVoiceText": "いっしょにおんせんにいこう",
+            "prompt": "Del Workbook L15: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
             "wordBank": [
-              "いっしょに",
-              "おんせんに",
-              "いこう",
-              "いく",
-              "いって"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
             "correctSentence": [
-              "いっしょに",
-              "おんせんに",
-              "いこう"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
-            "explanation": "Issho ni onsen ni ikou (Propuesta casual con forma volitiva)."
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
           },
           {
-            "id": "ex-15-5-3",
-            "type": "listening",
-            "prompt": "Escucha la conversación sobre los preparativos de viaje:",
-            "japaneseVoiceText": "ホテルはもうよやくしておきましたか。ー はい、きのうよやくしておきました。",
+            "id": "ex-wb15-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L15: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
             "options": [
               {
-                "id": "l15-wb-1",
-                "text": "Pregunta si ya dejó reservado el hotel; responde que sí, lo dejó reservado ayer.",
+                "id": "opt-wb15-g2-3a",
+                "text": "で (indica medio o transporte)",
                 "isCorrect": true
               },
               {
-                "id": "l15-wb-2",
-                "text": "Dice que todavía no ha reservado el hotel."
+                "id": "opt-wb15-g2-3b",
+                "text": "に (indica destino o tiempo)"
               },
               {
-                "id": "l15-wb-3",
-                "text": "Prefiere quedarse en casa de un amigo."
+                "id": "opt-wb15-g2-3c",
+                "text": "を (indica objeto directo)"
               }
             ],
-            "correctAnswerId": "l15-wb-1",
-            "explanation": "Hoteru wa mou yoyaku shite okimashita ka. - Hai, kinou yoyaku shite okimashita."
+            "correctAnswerId": "opt-wb15-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb15-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L15: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb15-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb15-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb15-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb15-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
+          }
+        ]
+      },
+      {
+        "id": "l15-node-wb-integration",
+        "unitId": 15,
+        "lessonNumber": 15,
+        "title": "Workbook L15: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第15課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb15-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L15 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "こんどのやすみに、ながのへスキーにいくとおもっています。ホテルももうよやくしておきました。",
+            "options": [
+              {
+                "id": "opt-wb15-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb15-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb15-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb15-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb15-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L15 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "きのうみつけたあのみせで、あしたともだちとばんごはんをたべるつもりです。",
+            "options": [
+              {
+                "id": "opt-wb15-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb15-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb15-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb15-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L15: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb15-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L15: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb15-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb15-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb15-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb15-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 16: GENKI LECCIÓN 16: OBJETOS PERDIDOS
-  // ==========================================
   {
     "id": 16,
     "genkiBook": "Genki II",
@@ -17926,14 +20921,191 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l16-node-wb-grammar",
+        "id": "l16-node-wb-listening-a",
         "unitId": 16,
         "lessonNumber": 16,
-        "title": "Workbook L16: Ejercicios de Gramática y Transformación",
-        "japaneseTitle": "第16課 ワークブック：文法ドリルと文作り",
+        "title": "Workbook L16: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第16課 ワークブック：きくれんしゅう A (聴解)",
+        "description": "Sección de escucha del Workbook de la Lección 16: diálogos a velocidad natural y preguntas de situación",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-16-wblis-1",
+            "type": "listening",
+            "prompt": "Escucha el aviso de objetos perdidos en la estación (Workbook L16):",
+            "japaneseVoiceText": "たいへんです！でんしゃのなかにかばんをわすれてしまいました。さいふもはいっています。",
+            "options": [
+              {
+                "id": "wbl-16-1",
+                "text": "Olvidó accidentalmente su bolso en el tren (~てしまいました) con su cartera dentro.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-16-2",
+                "text": "Perdió su paraguas en la parada del autobús esta mañana."
+              },
+              {
+                "id": "wbl-16-3",
+                "text": "Le robaron el teléfono móvil en la entrada de la estación."
+              }
+            ],
+            "correctAnswerId": "wbl-16-1",
+            "explanation": "Densha no naka ni kaban o wasurete shimaimashita. Saifu mo haitte imasu."
+          },
+          {
+            "id": "ex-16-wblis-2",
+            "type": "listening",
+            "prompt": "Escucha el arrepentimiento con 〜ばよかったです (Workbook L16):",
+            "japaneseVoiceText": "きのうのパーテイーにいけばよかったです。みんなとてもたのしかったといっていました。",
+            "options": [
+              {
+                "id": "wbl-16-2a",
+                "text": "Lamenta no haber ido a la fiesta de ayer, pues todos dijeron que estuvo muy divertida.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-16-2b",
+                "text": "Lamenta haber gastado tanto dinero en la fiesta de ayer."
+              },
+              {
+                "id": "wbl-16-2c",
+                "text": "Se alegra de haberse quedado en casa descansando ayer."
+              }
+            ],
+            "correctAnswerId": "wbl-16-2a",
+            "explanation": "Kinou no paatii ni ikeba yokatta desu (Ojalá hubiera ido a la fiesta de ayer)."
+          },
+          {
+            "id": "ex-16-wblis-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L16: Ordena \"La puerta está cerrada (intransitivo)\":",
+            "japaneseVoiceText": "ドアがしまっています。",
+            "wordBank": [
+              "ドアが",
+              "しまって",
+              "います。"
+            ],
+            "correctSentence": [
+              "ドアが",
+              "しまって",
+              "います。"
+            ],
+            "explanation": "Doa ga shimatte imasu (La puerta está cerrada)."
+          }
+        ]
+      },
+      {
+        "id": "l16-node-wb-listening-bc",
+        "unitId": 16,
+        "lessonNumber": 16,
+        "title": "Workbook L16: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第16課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb16-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L16 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "たいへんです！でんしゃのなかにかばんをわすれてしまいました。さいふもはいっています。",
+            "options": [
+              {
+                "id": "opt-wb16-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb16-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb16-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb16-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb16-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L16 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "きのうのパーテイーにいけばよかったです。みんなとてもたのしかったといっていました。",
+            "options": [
+              {
+                "id": "opt-wb16-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb16-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb16-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb16-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L16: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb16-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L16: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb16-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb16-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb16-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb16-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l16-node-wb-grammar-1",
+        "unitId": 16,
+        "lessonNumber": 16,
+        "title": "Workbook L16: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第16課 ワークブック：文法1 (基本練習)",
         "description": "Práctica escrita del Workbook de la Lección 16: conjugación, partículas y construcción de frases",
-        "icon": "Flame",
-        "color": "orange",
+        "icon": "BookOpen",
+        "color": "blue",
         "totalSteps": 3,
         "unlocked": false,
         "completedSteps": 0,
@@ -18014,170 +21186,207 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l16-node-wb-listening",
+        "id": "l16-node-wb-grammar-2",
         "unitId": 16,
         "lessonNumber": 16,
-        "title": "Workbook L16: Comprensión Auditiva (聞き取り練習)",
-        "japaneseTitle": "第16課 ワークブック：リスニング総合",
-        "description": "Sección de escucha del Workbook de la Lección 16: diálogos a velocidad natural y preguntas de situación",
-        "icon": "Headphones",
+        "title": "Workbook L16: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第16課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 16",
+        "icon": "BookOpen",
         "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                    {
-                              "id": "ex-16-wblis-1",
-                              "type": "listening",
-                              "prompt": "Escucha el aviso de objetos perdidos en la estación (Workbook L16):",
-                              "japaneseVoiceText": "たいへんです！でんしゃのなかにかばんをわすれてしまいました。さいふもはいっています。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-16-1",
-                                                  "text": "Olvidó accidentalmente su bolso en el tren (~てしまいました) con su cartera dentro.",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-16-2",
-                                                  "text": "Perdió su paraguas en la parada del autobús esta mañana."
-                                        },
-                                        {
-                                                  "id": "wbl-16-3",
-                                                  "text": "Le robaron el teléfono móvil en la entrada de la estación."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-16-1",
-                              "explanation": "Densha no naka ni kaban o wasurete shimaimashita. Saifu mo haitte imasu."
-                    },
-                    {
-                              "id": "ex-16-wblis-2",
-                              "type": "listening",
-                              "prompt": "Escucha el arrepentimiento con 〜ばよかったです (Workbook L16):",
-                              "japaneseVoiceText": "きのうのパーテイーにいけばよかったです。みんなとてもたのしかったといっていました。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-16-2a",
-                                                  "text": "Lamenta no haber ido a la fiesta de ayer, pues todos dijeron que estuvo muy divertida.",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-16-2b",
-                                                  "text": "Lamenta haber gastado tanto dinero en la fiesta de ayer."
-                                        },
-                                        {
-                                                  "id": "wbl-16-2c",
-                                                  "text": "Se alegra de haberse quedado en casa descansando ayer."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-16-2a",
-                              "explanation": "Kinou no paatii ni ikeba yokatta desu (Ojalá hubiera ido a la fiesta de ayer)."
-                    },
-                    {
-                              "id": "ex-16-wblis-3",
-                              "type": "word-order",
-                              "prompt": "Del Workbook L16: Ordena \"La puerta está cerrada (intransitivo)\":",
-                              "japaneseVoiceText": "ドアがしまっています。",
-                              "wordBank": [
-                                        "ドアが",
-                                        "しまって",
-                                        "います。"
-                              ],
-                              "correctSentence": [
-                                        "ドアが",
-                                        "しまって",
-                                        "います。"
-                              ],
-                              "explanation": "Doa ga shimatte imasu (La puerta está cerrada)."
-                    }
-          ]
-      },
-      {
-        "id": "l16-node-5",
-        "unitId": 16,
-        "lessonNumber": 16,
-        "title": "Workbook: En la Oficina de Objetos Perdidos",
-        "japaneseTitle": "ワークブック総合（忘れ物取扱所とお願い）",
-        "description": "Práctica integradora de la Lección 16: pedir cartas de recomendación y recuperar objetos",
-        "icon": "Headphones",
-        "color": "orange",
-        "totalSteps": 3,
-        "unlocked": false,
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-16-5-1",
+            "id": "ex-wb16-g2-1",
             "type": "multiple-choice",
-            "prompt": "Quieres pedirle a tu profesor que te escriba una carta de recomendación (すいせんじょう). ¿Cuál es la forma más apropiada?",
+            "prompt": "Del Workbook L16: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
             "options": [
               {
-                "id": "prof-req",
-                "text": "先生、推薦状を書いていただけませんか。",
+                "id": "opt-wb16-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
                 "isCorrect": true
               },
               {
-                "id": "prof-req2",
-                "text": "先生、推薦状を書いてくれない？"
+                "id": "opt-wb16-g2-1b",
+                "text": "日本語を書いてあります。"
               },
               {
-                "id": "prof-req3",
-                "text": "先生、推薦状を書いてあげましょうか。"
+                "id": "opt-wb16-g2-1c",
+                "text": "日本語で書くそうです。"
               }
             ],
-            "correctAnswerId": "prof-req",
-            "explanation": "Con un superior o profesor se usa 〜ていただけませんか."
+            "correctAnswerId": "opt-wb16-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
           },
           {
-            "id": "ex-16-5-2",
+            "id": "ex-wb16-g2-2",
             "type": "word-order",
-            "prompt": "Del Workbook: Traduce \"Perdón por no haber llamado ayer\":",
-            "japaneseVoiceText": "きのうでんわしなくてすみませんでした",
+            "prompt": "Del Workbook L16: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
             "wordBank": [
-              "きのう",
-              "でんわしなくて",
-              "すみませんでした",
-              "でんわしない",
-              "で"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
             "correctSentence": [
-              "きのう",
-              "でんわしなくて",
-              "すみませんでした"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
-            "explanation": "Forma negativa Te (〜なくて) + すみませんでした: Kinou denwa shinakute sumimasen deshita."
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
           },
           {
-            "id": "ex-16-5-3",
-            "type": "listening",
-            "prompt": "Escucha lo que hizo el empleado de la estación por Mary:",
-            "japaneseVoiceText": "えきいんさんがわすれものをさがしてくれました",
+            "id": "ex-wb16-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L16: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
             "options": [
               {
-                "id": "l16-wb-1",
-                "text": "El empleado de la estación tuvo la amabilidad de buscar el objeto perdido por ella.",
+                "id": "opt-wb16-g2-3a",
+                "text": "で (indica medio o transporte)",
                 "isCorrect": true
               },
               {
-                "id": "l16-wb-2",
-                "text": "Mary ayudó al empleado de la estación."
+                "id": "opt-wb16-g2-3b",
+                "text": "に (indica destino o tiempo)"
               },
               {
-                "id": "l16-wb-3",
-                "text": "El empleado no pudo encontrar el tren."
+                "id": "opt-wb16-g2-3c",
+                "text": "を (indica objeto directo)"
               }
             ],
-            "correctAnswerId": "l16-wb-1",
-            "explanation": "Ekiin-san ga wasuremono o sagashite kuremashita."
+            "correctAnswerId": "opt-wb16-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb16-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L16: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb16-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb16-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb16-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb16-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
+          }
+        ]
+      },
+      {
+        "id": "l16-node-wb-integration",
+        "unitId": 16,
+        "lessonNumber": 16,
+        "title": "Workbook L16: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第16課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb16-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L16 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "たいへんです！でんしゃのなかにかばんをわすれてしまいました。さいふもはいっています。",
+            "options": [
+              {
+                "id": "opt-wb16-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb16-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb16-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb16-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb16-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L16 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "きのうのパーテイーにいけばよかったです。みんなとてもたのしかったといっていました。",
+            "options": [
+              {
+                "id": "opt-wb16-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb16-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb16-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb16-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L16: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb16-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L16: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb16-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb16-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb16-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb16-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 17: GENKI LECCIÓN 17: QUEJAS Y CHISMES
-  // ==========================================
   {
     "id": 17,
     "genkiBook": "Genki II",
@@ -18793,14 +22002,193 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l17-node-wb-grammar",
+        "id": "l17-node-wb-listening-a",
         "unitId": 17,
         "lessonNumber": 17,
-        "title": "Workbook L17: Ejercicios de Gramática y Transformación",
-        "japaneseTitle": "第17課 ワークブック：文法ドリルと文作り",
+        "title": "Workbook L17: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第17課 ワークブック：きくれんしゅう A (聴解)",
+        "description": "Sección de escucha del Workbook de la Lección 17: diálogos a velocidad natural y preguntas de situación",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-17-wblis-1",
+            "type": "listening",
+            "prompt": "Escucha el chisme/noticia del campus (Workbook L17):",
+            "japaneseVoiceText": "たけしさんはらいげつ、イギリスへりゅうがくするそうですよ。もうじゅんびをはじめたそうです。",
+            "options": [
+              {
+                "id": "wbl-17-1",
+                "text": "Dicen que el próximo mes Takeshi se va a estudiar a Inglaterra y ya inició preparativos.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-17-2",
+                "text": "Dicen que Takeshi acaba de regresar de un viaje por Londres."
+              },
+              {
+                "id": "wbl-17-3",
+                "text": "Escuchó que Takeshi decidió cambiar de carrera universitaria."
+              }
+            ],
+            "correctAnswerId": "wbl-17-1",
+            "explanation": "Takeshi-san wa raigetsu, Igirisu e ryuugaku suru sou desu yo (~sou desu indica rumor/oído de otros)."
+          },
+          {
+            "id": "ex-17-wblis-2",
+            "type": "listening",
+            "prompt": "Escucha la conversación sobre el clima y planes con 〜たら (Workbook L17):",
+            "japaneseVoiceText": "あしたあめがふったら、バーベキューはやめて、うちでえいがをみましょう。",
+            "options": [
+              {
+                "id": "wbl-17-2a",
+                "text": "Si llueve mañana, cancelarán la barbacoa y verán películas en casa.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-17-2b",
+                "text": "Harán la barbacoa aunque llueva bajo una lona protectora."
+              },
+              {
+                "id": "wbl-17-2c",
+                "text": "Irán al cine de la ciudad si el clima amanece soleado."
+              }
+            ],
+            "correctAnswerId": "wbl-17-2a",
+            "explanation": "Ashita ame ga futtara, baabekyuu wa yamete, uchi de eiga o mimashou."
+          },
+          {
+            "id": "ex-17-wblis-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L17: Ordena \"Dicen que el profesor no vendrá mañana\":",
+            "japaneseVoiceText": "せんせいはあしたこないそうです。",
+            "wordBank": [
+              "せんせいは",
+              "あした",
+              "こない",
+              "そうです。"
+            ],
+            "correctSentence": [
+              "せんせいは",
+              "あした",
+              "こない",
+              "そうです。"
+            ],
+            "explanation": "Sensei wa ashita konai sou desu (Dicen que el profesor no viene mañana)."
+          }
+        ]
+      },
+      {
+        "id": "l17-node-wb-listening-bc",
+        "unitId": 17,
+        "lessonNumber": 17,
+        "title": "Workbook L17: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第17課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb17-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L17 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "たけしさんはらいげつ、イギリスへりゅうがくするそうですよ。もうじゅんびをはじめたそうです。",
+            "options": [
+              {
+                "id": "opt-wb17-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb17-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb17-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb17-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb17-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L17 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "あしたあめがふったら、バーベキューはやめて、うちでえいがをみましょう。",
+            "options": [
+              {
+                "id": "opt-wb17-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb17-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb17-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb17-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L17: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb17-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L17: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb17-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb17-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb17-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb17-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l17-node-wb-grammar-1",
+        "unitId": 17,
+        "lessonNumber": 17,
+        "title": "Workbook L17: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第17課 ワークブック：文法1 (基本練習)",
         "description": "Práctica escrita del Workbook de la Lección 17: conjugación, partículas y construcción de frases",
-        "icon": "Flame",
-        "color": "orange",
+        "icon": "BookOpen",
+        "color": "blue",
         "totalSteps": 3,
         "unlocked": false,
         "completedSteps": 0,
@@ -18881,173 +22269,207 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l17-node-wb-listening",
+        "id": "l17-node-wb-grammar-2",
         "unitId": 17,
         "lessonNumber": 17,
-        "title": "Workbook L17: Comprensión Auditiva (聞き取り練習)",
-        "japaneseTitle": "第17課 ワークブック：リスニング総合",
-        "description": "Sección de escucha del Workbook de la Lección 17: diálogos a velocidad natural y preguntas de situación",
-        "icon": "Headphones",
+        "title": "Workbook L17: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第17課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 17",
+        "icon": "BookOpen",
         "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                    {
-                              "id": "ex-17-wblis-1",
-                              "type": "listening",
-                              "prompt": "Escucha el chisme/noticia del campus (Workbook L17):",
-                              "japaneseVoiceText": "たけしさんはらいげつ、イギリスへりゅうがくするそうですよ。もうじゅんびをはじめたそうです。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-17-1",
-                                                  "text": "Dicen que el próximo mes Takeshi se va a estudiar a Inglaterra y ya inició preparativos.",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-17-2",
-                                                  "text": "Dicen que Takeshi acaba de regresar de un viaje por Londres."
-                                        },
-                                        {
-                                                  "id": "wbl-17-3",
-                                                  "text": "Escuchó que Takeshi decidió cambiar de carrera universitaria."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-17-1",
-                              "explanation": "Takeshi-san wa raigetsu, Igirisu e ryuugaku suru sou desu yo (~sou desu indica rumor/oído de otros)."
-                    },
-                    {
-                              "id": "ex-17-wblis-2",
-                              "type": "listening",
-                              "prompt": "Escucha la conversación sobre el clima y planes con 〜たら (Workbook L17):",
-                              "japaneseVoiceText": "あしたあめがふったら、バーベキューはやめて、うちでえいがをみましょう。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-17-2a",
-                                                  "text": "Si llueve mañana, cancelarán la barbacoa y verán películas en casa.",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-17-2b",
-                                                  "text": "Harán la barbacoa aunque llueva bajo una lona protectora."
-                                        },
-                                        {
-                                                  "id": "wbl-17-2c",
-                                                  "text": "Irán al cine de la ciudad si el clima amanece soleado."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-17-2a",
-                              "explanation": "Ashita ame ga futtara, baabekyuu wa yamete, uchi de eiga o mimashou."
-                    },
-                    {
-                              "id": "ex-17-wblis-3",
-                              "type": "word-order",
-                              "prompt": "Del Workbook L17: Ordena \"Dicen que el profesor no vendrá mañana\":",
-                              "japaneseVoiceText": "せんせいはあしたこないそうです。",
-                              "wordBank": [
-                                        "せんせいは",
-                                        "あした",
-                                        "こない",
-                                        "そうです。"
-                              ],
-                              "correctSentence": [
-                                        "せんせいは",
-                                        "あした",
-                                        "こない",
-                                        "そうです。"
-                              ],
-                              "explanation": "Sensei wa ashita konai sou desu (Dicen que el profesor no viene mañana)."
-                    }
-          ]
-      },
-      {
-        "id": "l17-node-5",
-        "unitId": 17,
-        "lessonNumber": 17,
-        "title": "Workbook: 〜前に vs 〜てから",
-        "japaneseTitle": "ワークブック総合（〜前に・〜てから・伝聞）",
-        "description": "Secuencia de eventos antes (前に) y después (てから) y repaso de rumores",
-        "icon": "Headphones",
-        "color": "red",
-        "totalSteps": 3,
-        "unlocked": false,
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-17-5-1",
+            "id": "ex-wb17-g2-1",
             "type": "multiple-choice",
-            "prompt": "¿Qué tiempo verbal se coloca SIEMPRE antes de 「まえに」 (antes de...), incluso si toda la oración ocurrió ayer?",
+            "prompt": "Del Workbook L17: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
             "options": [
               {
-                "id": "mae-dic",
-                "text": "Siempre el verbo en Forma Diccionario",
+                "id": "opt-wb17-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
                 "isCorrect": true
               },
               {
-                "id": "mae-ta",
-                "text": "El verbo en pasado (Forma Ta)"
+                "id": "opt-wb17-g2-1b",
+                "text": "日本語を書いてあります。"
               },
               {
-                "id": "mae-te",
-                "text": "El verbo en Forma Te"
+                "id": "opt-wb17-g2-1c",
+                "text": "日本語で書くそうです。"
               }
             ],
-            "correctAnswerId": "mae-dic",
-            "explanation": "Antes de 前に el verbo SIEMPRE va en presente de diccionario (寝る前に), sin importar si la oración final es pasada."
+            "correctAnswerId": "opt-wb17-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
           },
           {
-            "id": "ex-17-5-2",
+            "id": "ex-wb17-g2-2",
             "type": "word-order",
-            "prompt": "Del Workbook: Traduce \"Después de lavarme las manos, cené\":",
-            "japaneseVoiceText": "てをあらってからばんごはんをたべました",
+            "prompt": "Del Workbook L17: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
             "wordBank": [
-              "てを",
-              "あらってから",
-              "ばんごはんを",
-              "たべました",
-              "あらうまえに"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
             "correctSentence": [
-              "てを",
-              "あらってから",
-              "ばんごはんを",
-              "たべました"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
-            "explanation": "Te o aratte kara bangohan o tabemashita (Forma Te + から = después de hacer)."
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
           },
           {
-            "id": "ex-17-5-3",
-            "type": "listening",
-            "prompt": "Escucha qué haría Kenji si ganara la lotería:",
-            "japaneseVoiceText": "たからくじにあたったら、せかいりょこうがしたいです",
+            "id": "ex-wb17-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L17: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
             "options": [
               {
-                "id": "l17-wb-1",
-                "text": "Si se ganara la lotería, querría hacer un viaje alrededor del mundo.",
+                "id": "opt-wb17-g2-3a",
+                "text": "で (indica medio o transporte)",
                 "isCorrect": true
               },
               {
-                "id": "l17-wb-2",
-                "text": "Ya se ganó la lotería y viajó por el mundo."
+                "id": "opt-wb17-g2-3b",
+                "text": "に (indica destino o tiempo)"
               },
               {
-                "id": "l17-wb-3",
-                "text": "Nunca compra billetes de lotería."
+                "id": "opt-wb17-g2-3c",
+                "text": "を (indica objeto directo)"
               }
             ],
-            "correctAnswerId": "l17-wb-1",
-            "explanation": "Takarakuji ni atattara, sekai ryokou ga shitai desu."
+            "correctAnswerId": "opt-wb17-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb17-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L17: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb17-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb17-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb17-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb17-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
+          }
+        ]
+      },
+      {
+        "id": "l17-node-wb-integration",
+        "unitId": 17,
+        "lessonNumber": 17,
+        "title": "Workbook L17: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第17課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb17-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L17 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "たけしさんはらいげつ、イギリスへりゅうがくするそうですよ。もうじゅんびをはじめたそうです。",
+            "options": [
+              {
+                "id": "opt-wb17-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb17-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb17-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb17-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb17-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L17 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "あしたあめがふったら、バーベキューはやめて、うちでえいがをみましょう。",
+            "options": [
+              {
+                "id": "opt-wb17-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb17-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb17-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb17-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L17: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb17-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L17: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb17-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb17-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb17-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb17-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 18: GENKI LECCIÓN 18: EL TRABAJO DE JOHN
-  // ==========================================
   {
     "id": 18,
     "genkiBook": "Genki II",
@@ -19663,14 +23085,191 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l18-node-wb-grammar",
+        "id": "l18-node-wb-listening-a",
         "unitId": 18,
         "lessonNumber": 18,
-        "title": "Workbook L18: Ejercicios de Gramática y Transformación",
-        "japaneseTitle": "第18課 ワークブック：文法ドリルと文作り",
+        "title": "Workbook L18: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第18課 ワークブック：きくれんしゅう A (聴解)",
+        "description": "Sección de escucha del Workbook de la Lección 18: diálogos a velocidad natural y preguntas de situación",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-18-wblis-1",
+            "type": "listening",
+            "prompt": "Escucha la conversación de seguridad del apartamento (Workbook L18):",
+            "japaneseVoiceText": "るすのあいだに、へやのまどはちゃんとしめてありますから、あんしんしてください。",
+            "options": [
+              {
+                "id": "wbl-18-1",
+                "text": "Las ventanas de la habitación están debidamente cerradas (~てある) durante la ausencia.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-18-2",
+                "text": "Se dejaron abiertas las ventanas para que circule el aire fresco."
+              },
+              {
+                "id": "wbl-18-3",
+                "text": "Las llaves fueron entregadas al portero del edificio."
+              }
+            ],
+            "correctAnswerId": "wbl-18-1",
+            "explanation": "Rusu no aida ni, heya no mado wa chanto shimete arimasu kara, anshin shite kudasai."
+          },
+          {
+            "id": "ex-18-wblis-2",
+            "type": "listening",
+            "prompt": "Escucha la preparación para el examen con 〜ておく (Workbook L18):",
+            "japaneseVoiceText": "らいしゅうのテストのために、きょうかしょをなんかいもよんでおきました。",
+            "options": [
+              {
+                "id": "wbl-18-2a",
+                "text": "Leyó varias veces el libro de texto como preparación para el examen de la próxima semana.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-18-2b",
+                "text": "Le pidió apuntes prestados a un amigo para estudiar la noche anterior."
+              },
+              {
+                "id": "wbl-18-2c",
+                "text": "Olvidó comprar el libro de texto requerido para la materia."
+              }
+            ],
+            "correctAnswerId": "wbl-18-2a",
+            "explanation": "Raishuu no tesuto no tame ni, kyoukasho o nankai mo yonde okimashita."
+          },
+          {
+            "id": "ex-18-wblis-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L18: Ordena \"Está escrito en el calendario\":",
+            "japaneseVoiceText": "カレンダーにかいてあります。",
+            "wordBank": [
+              "カレンダーに",
+              "かいて",
+              "あります。"
+            ],
+            "correctSentence": [
+              "カレンダーに",
+              "かいて",
+              "あります。"
+            ],
+            "explanation": "Karendaa ni kaite arimasu (Está anotado/escrito en el calendario con fin previo)."
+          }
+        ]
+      },
+      {
+        "id": "l18-node-wb-listening-bc",
+        "unitId": 18,
+        "lessonNumber": 18,
+        "title": "Workbook L18: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第18課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb18-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L18 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "るすのあいだに、へやのまどはちゃんとしめてありますから、あんしんしてください。",
+            "options": [
+              {
+                "id": "opt-wb18-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb18-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb18-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb18-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb18-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L18 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "らいしゅうのテストのために、きょうかしょをなんかいもよんでおきました。",
+            "options": [
+              {
+                "id": "opt-wb18-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb18-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb18-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb18-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L18: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb18-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L18: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb18-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb18-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb18-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb18-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l18-node-wb-grammar-1",
+        "unitId": 18,
+        "lessonNumber": 18,
+        "title": "Workbook L18: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第18課 ワークブック：文法1 (基本練習)",
         "description": "Práctica escrita del Workbook de la Lección 18: conjugación, partículas y construcción de frases",
-        "icon": "Flame",
-        "color": "orange",
+        "icon": "BookOpen",
+        "color": "blue",
         "totalSteps": 3,
         "unlocked": false,
         "completedSteps": 0,
@@ -19751,170 +23350,207 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l18-node-wb-listening",
+        "id": "l18-node-wb-grammar-2",
         "unitId": 18,
         "lessonNumber": 18,
-        "title": "Workbook L18: Comprensión Auditiva (聞き取り練習)",
-        "japaneseTitle": "第18課 ワークブック：リスニング総合",
-        "description": "Sección de escucha del Workbook de la Lección 18: diálogos a velocidad natural y preguntas de situación",
-        "icon": "Headphones",
+        "title": "Workbook L18: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第18課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 18",
+        "icon": "BookOpen",
         "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                    {
-                              "id": "ex-18-wblis-1",
-                              "type": "listening",
-                              "prompt": "Escucha la conversación de seguridad del apartamento (Workbook L18):",
-                              "japaneseVoiceText": "るすのあいだに、へやのまどはちゃんとしめてありますから、あんしんしてください。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-18-1",
-                                                  "text": "Las ventanas de la habitación están debidamente cerradas (~てある) durante la ausencia.",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-18-2",
-                                                  "text": "Se dejaron abiertas las ventanas para que circule el aire fresco."
-                                        },
-                                        {
-                                                  "id": "wbl-18-3",
-                                                  "text": "Las llaves fueron entregadas al portero del edificio."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-18-1",
-                              "explanation": "Rusu no aida ni, heya no mado wa chanto shimete arimasu kara, anshin shite kudasai."
-                    },
-                    {
-                              "id": "ex-18-wblis-2",
-                              "type": "listening",
-                              "prompt": "Escucha la preparación para el examen con 〜ておく (Workbook L18):",
-                              "japaneseVoiceText": "らいしゅうのテストのために、きょうかしょをなんかいもよんでおきました。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-18-2a",
-                                                  "text": "Leyó varias veces el libro de texto como preparación para el examen de la próxima semana.",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-18-2b",
-                                                  "text": "Le pidió apuntes prestados a un amigo para estudiar la noche anterior."
-                                        },
-                                        {
-                                                  "id": "wbl-18-2c",
-                                                  "text": "Olvidó comprar el libro de texto requerido para la materia."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-18-2a",
-                              "explanation": "Raishuu no tesuto no tame ni, kyoukasho o nankai mo yonde okimashita."
-                    },
-                    {
-                              "id": "ex-18-wblis-3",
-                              "type": "word-order",
-                              "prompt": "Del Workbook L18: Ordena \"Está escrito en el calendario\":",
-                              "japaneseVoiceText": "カレンダーにかいてあります。",
-                              "wordBank": [
-                                        "カレンダーに",
-                                        "かいて",
-                                        "あります。"
-                              ],
-                              "correctSentence": [
-                                        "カレンダーに",
-                                        "かいて",
-                                        "あります。"
-                              ],
-                              "explanation": "Karendaa ni kaite arimasu (Está anotado/escrito en el calendario con fin previo)."
-                    }
-          ]
-      },
-      {
-        "id": "l18-node-5",
-        "unitId": 18,
-        "lessonNumber": 18,
-        "title": "Workbook: Estados y Accidentes en la Tienda",
-        "japaneseTitle": "ワークブック総合（自動詞の「〜ています」と「〜ちゃう」）",
-        "description": "Práctica integradora de la Lección 18: describir desperfectos y situaciones cotidianas",
-        "icon": "Headphones",
-        "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-18-5-1",
+            "id": "ex-wb18-g2-1",
             "type": "multiple-choice",
-            "prompt": "Ves que tu camisa tiene una mancha y quieres decir \"La camisa está sucia\". ¿Cuál es la forma correcta?",
+            "prompt": "Del Workbook L18: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
             "options": [
               {
-                "id": "shirt-1",
-                "text": "シャツが よごれています (Intransitivo よごれる + ています)",
+                "id": "opt-wb18-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
                 "isCorrect": true
               },
               {
-                "id": "shirt-2",
-                "text": "シャツを よごしています"
+                "id": "opt-wb18-g2-1b",
+                "text": "日本語を書いてあります。"
               },
               {
-                "id": "shirt-3",
-                "text": "シャツが よごします"
+                "id": "opt-wb18-g2-1c",
+                "text": "日本語で書くそうです。"
               }
             ],
-            "correctAnswerId": "shirt-1",
-            "explanation": "よごれる (ensuciarse, intransitivo) en 〜ています significa \"está sucio\"."
+            "correctAnswerId": "opt-wb18-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
           },
           {
-            "id": "ex-18-5-2",
+            "id": "ex-wb18-g2-2",
             "type": "word-order",
-            "prompt": "Del Workbook: Traduce \"Como el aire acondicionado está encendido, hace frío\":",
-            "japaneseVoiceText": "エアコンがついていますからさむいです",
+            "prompt": "Del Workbook L18: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
             "wordBank": [
-              "エアコンが",
-              "ついていますから",
-              "さむいです",
-              "つけていますから",
-              "を"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
             "correctSentence": [
-              "エアコンが",
-              "ついていますから",
-              "さむいです"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
-            "explanation": "Eakon ga tsuite imasu kara samui desu (つく = estar encendido)."
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
           },
           {
-            "id": "ex-18-5-3",
-            "type": "listening",
-            "prompt": "Escucha lo que pasó con la computadora de John:",
-            "japaneseVoiceText": "パソコンがこわれてしまいました。なおさなければいけません。",
+            "id": "ex-wb18-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L18: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
             "options": [
               {
-                "id": "l18-wb-1",
-                "text": "La computadora se descompuso por completo; tiene que repararla.",
+                "id": "opt-wb18-g2-3a",
+                "text": "で (indica medio o transporte)",
                 "isCorrect": true
               },
               {
-                "id": "l18-wb-2",
-                "text": "John compró una computadora nueva hoy."
+                "id": "opt-wb18-g2-3b",
+                "text": "に (indica destino o tiempo)"
               },
               {
-                "id": "l18-wb-3",
-                "text": "La computadora funciona perfectamente."
+                "id": "opt-wb18-g2-3c",
+                "text": "を (indica objeto directo)"
               }
             ],
-            "correctAnswerId": "l18-wb-1",
-            "explanation": "Pasokon ga kowarete shimaimashita. Naosanakereba ikemasen."
+            "correctAnswerId": "opt-wb18-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb18-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L18: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb18-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb18-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb18-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb18-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
+          }
+        ]
+      },
+      {
+        "id": "l18-node-wb-integration",
+        "unitId": 18,
+        "lessonNumber": 18,
+        "title": "Workbook L18: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第18課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb18-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L18 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "るすのあいだに、へやのまどはちゃんとしめてありますから、あんしんしてください。",
+            "options": [
+              {
+                "id": "opt-wb18-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb18-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb18-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb18-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb18-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L18 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "らいしゅうのテストのために、きょうかしょをなんかいもよんでおきました。",
+            "options": [
+              {
+                "id": "opt-wb18-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb18-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb18-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb18-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L18: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb18-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L18: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb18-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb18-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb18-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb18-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 19: GENKI LECCIÓN 19: CONOCIENDO AL JEFE
-  // ==========================================
   {
     "id": 19,
     "genkiBook": "Genki II",
@@ -20541,14 +24177,191 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l19-node-wb-grammar",
+        "id": "l19-node-wb-listening-a",
         "unitId": 19,
         "lessonNumber": 19,
-        "title": "Workbook L19: Ejercicios de Gramática y Transformación",
-        "japaneseTitle": "第19課 ワークブック：文法ドリルと文作り",
+        "title": "Workbook L19: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第19課 ワークブック：きくれんしゅう A (聴解)",
+        "description": "Sección de escucha del Workbook de la Lección 19: diálogos a velocidad natural y preguntas de situación",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-19-wblis-1",
+            "type": "listening",
+            "prompt": "Escucha el diálogo en la sala de profesores con Sonkeigo (Workbook L19):",
+            "japaneseVoiceText": "やまだせんせいは、きょうけんきゅうしつにいらっしゃいますか。さきほどそのようにおっしゃっていました。",
+            "options": [
+              {
+                "id": "wbl-19-1",
+                "text": "Pregunta si el Prof. Yamada estará en su despacho; él mismo lo mencionó con honorífico.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-19-2",
+                "text": "Avisa que el Prof. Yamada no dará asesorías el día de hoy."
+              },
+              {
+                "id": "wbl-19-3",
+                "text": "El Prof. Yamada solicita que le envíen los trabajos por correo."
+              }
+            ],
+            "correctAnswerId": "wbl-19-1",
+            "explanation": "Irasshaimasu (honorífico de estar) y osshatte imashita (honorífico de decir)."
+          },
+          {
+            "id": "ex-19-wblis-2",
+            "type": "listening",
+            "prompt": "Escucha la atención en la recepción con お〜になる (Workbook L19):",
+            "japaneseVoiceText": "しゃちょうはもうお帰りになりました。あしたのあさ、またごれんらくください。",
+            "options": [
+              {
+                "id": "wbl-19-2a",
+                "text": "El presidente de la empresa ya se marchó a casa (お帰りになりました); pide llamar mañana.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-19-2b",
+                "text": "El presidente se encuentra en una reunión confidencial en la sala principal."
+              },
+              {
+                "id": "wbl-19-2c",
+                "text": "El presidente estará de viaje de negocios durante toda la semana."
+              }
+            ],
+            "correctAnswerId": "wbl-19-2a",
+            "explanation": "Shachou wa mou okaeri ni narimashita. Ashita no asa, mata gorenraku kudasai."
+          },
+          {
+            "id": "ex-19-wblis-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L19: Ordena \"¿Qué va a comer/beber el profesor? (honorífico)\":",
+            "japaneseVoiceText": "せんせいはなにをめしあがりますか。",
+            "wordBank": [
+              "せんせいは",
+              "なにを",
+              "めしあがりますか。"
+            ],
+            "correctSentence": [
+              "せんせいは",
+              "なにを",
+              "めしあがりますか。"
+            ],
+            "explanation": "Sensei wa nani o meshiagarimasu ka (meshiagaru = comer/beber en sonkeigo)."
+          }
+        ]
+      },
+      {
+        "id": "l19-node-wb-listening-bc",
+        "unitId": 19,
+        "lessonNumber": 19,
+        "title": "Workbook L19: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第19課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb19-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L19 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "やまだせんせいは、きょうけんきゅうしつにいらっしゃいますか。さきほどそのようにおっしゃっていました。",
+            "options": [
+              {
+                "id": "opt-wb19-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb19-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb19-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb19-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb19-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L19 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "しゃちょうはもうお帰りになりました。あしたのあさ、またごれんらくください。",
+            "options": [
+              {
+                "id": "opt-wb19-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb19-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb19-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb19-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L19: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb19-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L19: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb19-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb19-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb19-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb19-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l19-node-wb-grammar-1",
+        "unitId": 19,
+        "lessonNumber": 19,
+        "title": "Workbook L19: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第19課 ワークブック：文法1 (基本練習)",
         "description": "Práctica escrita del Workbook de la Lección 19: conjugación, partículas y construcción de frases",
-        "icon": "Flame",
-        "color": "orange",
+        "icon": "BookOpen",
+        "color": "blue",
         "totalSteps": 3,
         "unlocked": false,
         "completedSteps": 0,
@@ -20629,171 +24442,207 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l19-node-wb-listening",
+        "id": "l19-node-wb-grammar-2",
         "unitId": 19,
         "lessonNumber": 19,
-        "title": "Workbook L19: Comprensión Auditiva (聞き取り練習)",
-        "japaneseTitle": "第19課 ワークブック：リスニング総合",
-        "description": "Sección de escucha del Workbook de la Lección 19: diálogos a velocidad natural y preguntas de situación",
-        "icon": "Headphones",
+        "title": "Workbook L19: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第19課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 19",
+        "icon": "BookOpen",
         "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                    {
-                              "id": "ex-19-wblis-1",
-                              "type": "listening",
-                              "prompt": "Escucha el diálogo en la sala de profesores con Sonkeigo (Workbook L19):",
-                              "japaneseVoiceText": "やまだせんせいは、きょうけんきゅうしつにいらっしゃいますか。さきほどそのようにおっしゃっていました。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-19-1",
-                                                  "text": "Pregunta si el Prof. Yamada estará en su despacho; él mismo lo mencionó con honorífico.",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-19-2",
-                                                  "text": "Avisa que el Prof. Yamada no dará asesorías el día de hoy."
-                                        },
-                                        {
-                                                  "id": "wbl-19-3",
-                                                  "text": "El Prof. Yamada solicita que le envíen los trabajos por correo."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-19-1",
-                              "explanation": "Irasshaimasu (honorífico de estar) y osshatte imashita (honorífico de decir)."
-                    },
-                    {
-                              "id": "ex-19-wblis-2",
-                              "type": "listening",
-                              "prompt": "Escucha la atención en la recepción con お〜になる (Workbook L19):",
-                              "japaneseVoiceText": "しゃちょうはもうお帰りになりました。あしたのあさ、またごれんらくください。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-19-2a",
-                                                  "text": "El presidente de la empresa ya se marchó a casa (お帰りになりました); pide llamar mañana.",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-19-2b",
-                                                  "text": "El presidente se encuentra en una reunión confidencial en la sala principal."
-                                        },
-                                        {
-                                                  "id": "wbl-19-2c",
-                                                  "text": "El presidente estará de viaje de negocios durante toda la semana."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-19-2a",
-                              "explanation": "Shachou wa mou okaeri ni narimashita. Ashita no asa, mata gorenraku kudasai."
-                    },
-                    {
-                              "id": "ex-19-wblis-3",
-                              "type": "word-order",
-                              "prompt": "Del Workbook L19: Ordena \"¿Qué va a comer/beber el profesor? (honorífico)\":",
-                              "japaneseVoiceText": "せんせいはなにをめしあがりますか。",
-                              "wordBank": [
-                                        "せんせいは",
-                                        "なにを",
-                                        "めしあがりますか。"
-                              ],
-                              "correctSentence": [
-                                        "せんせいは",
-                                        "なにを",
-                                        "めしあがりますか。"
-                              ],
-                              "explanation": "Sensei wa nani o meshiagarimasu ka (meshiagaru = comer/beber en sonkeigo)."
-                    }
-          ]
-      },
-      {
-        "id": "l19-node-5",
-        "unitId": 19,
-        "lessonNumber": 19,
-        "title": "Workbook: Carta de Agradecimiento y Keigo",
-        "japaneseTitle": "ワークブック総合（尊敬語とお礼の手紙）",
-        "description": "Práctica integradora de la Lección 19: diálogos con el jefe y consejos corteses con お〜ください",
-        "icon": "Headphones",
-        "color": "orange",
-        "totalSteps": 3,
-        "unlocked": false,
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-19-5-1",
+            "id": "ex-wb19-g2-1",
             "type": "multiple-choice",
-            "prompt": "El jefe de departamento (部長) está leyendo el periódico. ¿Cómo describes esta acción usando Sonkeigo?",
+            "prompt": "Del Workbook L19: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
             "options": [
               {
-                "id": "bucho-1",
-                "text": "部長は 新聞を お読みになっています (o ご覧になっています)",
+                "id": "opt-wb19-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
                 "isCorrect": true
               },
               {
-                "id": "bucho-2",
-                "text": "部長は 新聞を 読んでいらっしゃいます"
+                "id": "opt-wb19-g2-1b",
+                "text": "日本語を書いてあります。"
               },
               {
-                "id": "bucho-3",
-                "text": "Ambas opciones son correctas en lenguaje honorífico",
-                "isCorrect": true
+                "id": "opt-wb19-g2-1c",
+                "text": "日本語で書くそうです。"
               }
             ],
-            "correctAnswerId": "bucho-1",
-            "explanation": "Tanto お＋Raíz＋になっています como 〜ていらっしゃいます son formas honoríficas válidas en Genki L19."
+            "correctAnswerId": "opt-wb19-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
           },
           {
-            "id": "ex-19-5-2",
+            "id": "ex-wb19-g2-2",
             "type": "word-order",
-            "prompt": "Del Workbook: Traduce la invitación honorífica \"Por favor, sírvase / coma con confianza (召し上がる)\":",
-            "japaneseVoiceText": "どうぞめしあがってください",
+            "prompt": "Del Workbook L19: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
             "wordBank": [
-              "どうぞ",
-              "めしあがって",
-              "ください",
-              "たべて",
-              "おっしゃって"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
             "correctSentence": [
-              "どうぞ",
-              "めしあがって",
-              "ください"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
-            "explanation": "Douzo meshiagatte kudasai (召し上がる = comer/beber en honorífico)."
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
           },
           {
-            "id": "ex-19-5-3",
-            "type": "listening",
-            "prompt": "Escucha la pregunta honorífica que le hacen al profesor:",
-            "japaneseVoiceText": "せんせいはどこにすんでいらっしゃいますか",
+            "id": "ex-wb19-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L19: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
             "options": [
               {
-                "id": "l19-wb-1",
-                "text": "¿Dónde vive usted, profesor?",
+                "id": "opt-wb19-g2-3a",
+                "text": "で (indica medio o transporte)",
                 "isCorrect": true
               },
               {
-                "id": "l19-wb-2",
-                "text": "¿A qué hora llegó usted hoy, profesor?"
+                "id": "opt-wb19-g2-3b",
+                "text": "に (indica destino o tiempo)"
               },
               {
-                "id": "l19-wb-3",
-                "text": "¿Qué libro escribió usted, profesor?"
+                "id": "opt-wb19-g2-3c",
+                "text": "を (indica objeto directo)"
               }
             ],
-            "correctAnswerId": "l19-wb-1",
-            "explanation": "Sensei wa doko ni sunde irasshaimasu ka (〜ています ➔ 〜ていらっしゃいます)."
+            "correctAnswerId": "opt-wb19-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb19-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L19: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb19-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb19-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb19-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb19-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
+          }
+        ]
+      },
+      {
+        "id": "l19-node-wb-integration",
+        "unitId": 19,
+        "lessonNumber": 19,
+        "title": "Workbook L19: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第19課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb19-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L19 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "やまだせんせいは、きょうけんきゅうしつにいらっしゃいますか。さきほどそのようにおっしゃっていました。",
+            "options": [
+              {
+                "id": "opt-wb19-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb19-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb19-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb19-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb19-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L19 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "しゃちょうはもうお帰りになりました。あしたのあさ、またごれんらくください。",
+            "options": [
+              {
+                "id": "opt-wb19-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb19-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb19-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb19-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L19: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb19-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L19: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb19-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb19-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb19-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb19-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 20: GENKI LECCIÓN 20: MARY VA DE COMPRAS
-  // ==========================================
   {
     "id": 20,
     "genkiBook": "Genki II",
@@ -21402,14 +25251,191 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l20-node-wb-grammar",
+        "id": "l20-node-wb-listening-a",
         "unitId": 20,
         "lessonNumber": 20,
-        "title": "Workbook L20: Ejercicios de Gramática y Transformación",
-        "japaneseTitle": "第20課 ワークブック：文法ドリルと文作り",
+        "title": "Workbook L20: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第20課 ワークブック：きくれんしゅう A (聴解)",
+        "description": "Sección de escucha del Workbook de la Lección 20: diálogos a velocidad natural y preguntas de situación",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-20-wblis-1",
+            "type": "listening",
+            "prompt": "Escucha la presentación humilde de negocios con Kenjougo (Workbook L20):",
+            "japaneseVoiceText": "わたくし、メアリーと申します。きょうは３じにおめにかかることになっております。",
+            "options": [
+              {
+                "id": "wbl-20-1",
+                "text": "Se presenta humildemente como Mary (申します) con cita para reunirse (お目にかかる) a las 3.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-20-2",
+                "text": "Llama para solicitar una reprogramación de su cita para las 4 de la tarde."
+              },
+              {
+                "id": "wbl-20-3",
+                "text": "Pregunta por el nombre del encargado del departamento de compras."
+              }
+            ],
+            "correctAnswerId": "wbl-20-1",
+            "explanation": "Watakushi, Mearii to moushimasu (me llamo Mary). Ome ni kakaru (reunirme con ud)."
+          },
+          {
+            "id": "ex-20-wblis-2",
+            "type": "listening",
+            "prompt": "Escucha el ofrecimiento de ayuda con お〜する (Workbook L20):",
+            "japaneseVoiceText": "にもつが重そうですね。私がお持ちいたしましょうか。",
+            "options": [
+              {
+                "id": "wbl-20-2a",
+                "text": "Al ver que las maletas pesan, se ofrece humildemente a cargarlas (お持ちいたしましょうか).",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-20-2b",
+                "text": "Sugiere guardar el equipaje en el casillero de la estación."
+              },
+              {
+                "id": "wbl-20-2c",
+                "text": "Le pide a un empleado de la estación que cargue las maletas."
+              }
+            ],
+            "correctAnswerId": "wbl-20-2a",
+            "explanation": "Nimotsu ga omosou desu ne. Watashi ga omochi itashimashou ka."
+          },
+          {
+            "id": "ex-20-wblis-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L20: Ordena \"Mañana vendré nuevamente (humilde)\":",
+            "japaneseVoiceText": "あしたまたまいります。",
+            "wordBank": [
+              "あした",
+              "また",
+              "まいります。"
+            ],
+            "correctSentence": [
+              "あした",
+              "また",
+              "まいります。"
+            ],
+            "explanation": "Ashita mata mairimasu (mairu = ir/venir en kenjougo humilde)."
+          }
+        ]
+      },
+      {
+        "id": "l20-node-wb-listening-bc",
+        "unitId": 20,
+        "lessonNumber": 20,
+        "title": "Workbook L20: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第20課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb20-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L20 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "わたくし、メアリーと申します。きょうは３じにおめにかかることになっております。",
+            "options": [
+              {
+                "id": "opt-wb20-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb20-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb20-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb20-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb20-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L20 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "にもつが重そうですね。私がお持ちいたしましょうか。",
+            "options": [
+              {
+                "id": "opt-wb20-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb20-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb20-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb20-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L20: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb20-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L20: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb20-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb20-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb20-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb20-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l20-node-wb-grammar-1",
+        "unitId": 20,
+        "lessonNumber": 20,
+        "title": "Workbook L20: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第20課 ワークブック：文法1 (基本練習)",
         "description": "Práctica escrita del Workbook de la Lección 20: conjugación, partículas y construcción de frases",
-        "icon": "Flame",
-        "color": "orange",
+        "icon": "BookOpen",
+        "color": "blue",
         "totalSteps": 3,
         "unlocked": false,
         "completedSteps": 0,
@@ -21490,170 +25516,207 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l20-node-wb-listening",
+        "id": "l20-node-wb-grammar-2",
         "unitId": 20,
         "lessonNumber": 20,
-        "title": "Workbook L20: Comprensión Auditiva (聞き取り練習)",
-        "japaneseTitle": "第20課 ワークブック：リスニング総合",
-        "description": "Sección de escucha del Workbook de la Lección 20: diálogos a velocidad natural y preguntas de situación",
-        "icon": "Headphones",
+        "title": "Workbook L20: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第20課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 20",
+        "icon": "BookOpen",
         "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                    {
-                              "id": "ex-20-wblis-1",
-                              "type": "listening",
-                              "prompt": "Escucha la presentación humilde de negocios con Kenjougo (Workbook L20):",
-                              "japaneseVoiceText": "わたくし、メアリーと申します。きょうは３じにおめにかかることになっております。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-20-1",
-                                                  "text": "Se presenta humildemente como Mary (申します) con cita para reunirse (お目にかかる) a las 3.",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-20-2",
-                                                  "text": "Llama para solicitar una reprogramación de su cita para las 4 de la tarde."
-                                        },
-                                        {
-                                                  "id": "wbl-20-3",
-                                                  "text": "Pregunta por el nombre del encargado del departamento de compras."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-20-1",
-                              "explanation": "Watakushi, Mearii to moushimasu (me llamo Mary). Ome ni kakaru (reunirme con ud)."
-                    },
-                    {
-                              "id": "ex-20-wblis-2",
-                              "type": "listening",
-                              "prompt": "Escucha el ofrecimiento de ayuda con お〜する (Workbook L20):",
-                              "japaneseVoiceText": "にもつが重そうですね。私がお持ちいたしましょうか。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-20-2a",
-                                                  "text": "Al ver que las maletas pesan, se ofrece humildemente a cargarlas (お持ちいたしましょうか).",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-20-2b",
-                                                  "text": "Sugiere guardar el equipaje en el casillero de la estación."
-                                        },
-                                        {
-                                                  "id": "wbl-20-2c",
-                                                  "text": "Le pide a un empleado de la estación que cargue las maletas."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-20-2a",
-                              "explanation": "Nimotsu ga omosou desu ne. Watashi ga omochi itashimashou ka."
-                    },
-                    {
-                              "id": "ex-20-wblis-3",
-                              "type": "word-order",
-                              "prompt": "Del Workbook L20: Ordena \"Mañana vendré nuevamente (humilde)\":",
-                              "japaneseVoiceText": "あしたまたまいります。",
-                              "wordBank": [
-                                        "あした",
-                                        "また",
-                                        "まいります。"
-                              ],
-                              "correctSentence": [
-                                        "あした",
-                                        "また",
-                                        "まいります。"
-                              ],
-                              "explanation": "Ashita mata mairimasu (mairu = ir/venir en kenjougo humilde)."
-                    }
-          ]
-      },
-      {
-        "id": "l20-node-5",
-        "unitId": 20,
-        "lessonNumber": 20,
-        "title": "Workbook: Presentación Formal y Atención al Cliente",
-        "japaneseTitle": "ワークブック総合（謙譲語・でございます・百貨店）",
-        "description": "Práctica integradora de la Lección 20: presentarse formalmente con 申します y compras en tienda departamental",
-        "icon": "Headphones",
-        "color": "red",
-        "totalSteps": 3,
-        "unlocked": false,
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-20-5-1",
+            "id": "ex-wb20-g2-1",
             "type": "multiple-choice",
-            "prompt": "En una entrevista o llamada de negocios, ¿cómo dices humildemente \"Me llamo Tanaka\" (literalmente: \"digo Tanaka\")?",
+            "prompt": "Del Workbook L20: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
             "options": [
               {
-                "id": "mousu-1",
-                "text": "田中と申します",
+                "id": "opt-wb20-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
                 "isCorrect": true
               },
               {
-                "id": "mousu-2",
-                "text": "田中とおっしゃいます"
+                "id": "opt-wb20-g2-1b",
+                "text": "日本語を書いてあります。"
               },
               {
-                "id": "mousu-3",
-                "text": "田中をご覧になります"
+                "id": "opt-wb20-g2-1c",
+                "text": "日本語で書くそうです。"
               }
             ],
-            "correctAnswerId": "mousu-1",
-            "explanation": "申す (もうす) es el verbo humilde para いう (decir); 「[Nombre]と申します」 es la presentación formal estándar."
+            "correctAnswerId": "opt-wb20-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
           },
           {
-            "id": "ex-20-5-2",
+            "id": "ex-wb20-g2-2",
             "type": "word-order",
-            "prompt": "Del Workbook: El empleado de la tienda dice muy cortésmente \"El baño está en el segundo piso\" usando でございます:",
-            "japaneseVoiceText": "おてあらいはにかいでございます",
+            "prompt": "Del Workbook L20: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
             "wordBank": [
-              "おてあらいは",
-              "にかい",
-              "でございます",
-              "におります",
-              "を"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
             "correctSentence": [
-              "おてあらいは",
-              "にかい",
-              "でございます"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
-            "explanation": "Otearai wa nikai de gozaimasu (でございます es el equivalente extra-cortés de です)."
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
           },
           {
-            "id": "ex-20-5-3",
-            "type": "listening",
-            "prompt": "Escucha lo que dice el vendedor en la tienda departamental:",
-            "japaneseVoiceText": "ただいまてんちょうはがいしゅつしております",
+            "id": "ex-wb20-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L20: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
             "options": [
               {
-                "id": "l20-wb-1",
-                "text": "En este momento el gerente de la tienda ha salido (está fuera).",
+                "id": "opt-wb20-g2-3a",
+                "text": "で (indica medio o transporte)",
                 "isCorrect": true
               },
               {
-                "id": "l20-wb-2",
-                "text": "El gerente lo atenderá enseguida."
+                "id": "opt-wb20-g2-3b",
+                "text": "に (indica destino o tiempo)"
               },
               {
-                "id": "l20-wb-3",
-                "text": "La tienda está a punto de cerrar."
+                "id": "opt-wb20-g2-3c",
+                "text": "を (indica objeto directo)"
               }
             ],
-            "correctAnswerId": "l20-wb-1",
-            "explanation": "おります es la forma humilde de います (usada al hablar del propio jefe frente a un cliente externo)."
+            "correctAnswerId": "opt-wb20-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb20-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L20: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb20-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb20-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb20-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb20-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
+          }
+        ]
+      },
+      {
+        "id": "l20-node-wb-integration",
+        "unitId": 20,
+        "lessonNumber": 20,
+        "title": "Workbook L20: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第20課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb20-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L20 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "わたくし、メアリーと申します。きょうは３じにおめにかかることになっております。",
+            "options": [
+              {
+                "id": "opt-wb20-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb20-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb20-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb20-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb20-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L20 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "にもつが重そうですね。私がお持ちいたしましょうか。",
+            "options": [
+              {
+                "id": "opt-wb20-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb20-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb20-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb20-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L20: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb20-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L20: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb20-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb20-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb20-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb20-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 21: GENKI LECCIÓN 21: EL ROBO
-  // ==========================================
   {
     "id": 21,
     "genkiBook": "Genki II",
@@ -22278,14 +26341,193 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l21-node-wb-grammar",
+        "id": "l21-node-wb-listening-a",
         "unitId": 21,
         "lessonNumber": 21,
-        "title": "Workbook L21: Ejercicios de Gramática y Transformación",
-        "japaneseTitle": "第21課 ワークブック：文法ドリルと文作り",
+        "title": "Workbook L21: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第21課 ワークブック：きくれんしゅう A (聴解)",
+        "description": "Sección de escucha del Workbook de la Lección 21: diálogos a velocidad natural y preguntas de situación",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-21-wblis-1",
+            "type": "listening",
+            "prompt": "Escucha el relato en la comisaría sobre el incidente en el tren (Workbook L21):",
+            "japaneseVoiceText": "きのう、でんしゃのなかでだれかにあしをふまれてしまいました。とてもいたかったです。",
+            "options": [
+              {
+                "id": "wbl-21-1",
+                "text": "En el tren alguien le pisó el pie (pasiva de molestia: ふまれてしまいました) y dolió mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-21-2",
+                "text": "Olvidó su teléfono en el asiento del tren y alguien se lo devolvió."
+              },
+              {
+                "id": "wbl-21-3",
+                "text": "El tren frenó de golpe y casi se cae en el andén."
+              }
+            ],
+            "correctAnswerId": "wbl-21-1",
+            "explanation": "Densha no naka de dareka ni ashi o fumarete shimaimashita (me pisaron el pie)."
+          },
+          {
+            "id": "ex-21-wblis-2",
+            "type": "listening",
+            "prompt": "Escucha el reporte del robo con voz pasiva (Workbook L21):",
+            "japaneseVoiceText": "いえにどろぼうがはいって、たいせつなパソコンをとられてしまいました。",
+            "options": [
+              {
+                "id": "wbl-21-2a",
+                "text": "Un ladrón entró a la casa y lamentablemente le robaron su valiosa computadora (とられてしまいました).",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-21-2b",
+                "text": "La policía capturó a un intruso antes de que pudiera entrar a la casa."
+              },
+              {
+                "id": "wbl-21-2c",
+                "text": "Perdió su computadora mientras trabajaba en una cafetería."
+              }
+            ],
+            "correctAnswerId": "wbl-21-2a",
+            "explanation": "Ie ni dorobou ga haitte, taisetsu na pasokon o torarete shimaimashita."
+          },
+          {
+            "id": "ex-21-wblis-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L21: Ordena \"Fui atrapado por la lluvia y me empapé\":",
+            "japaneseVoiceText": "あめにふられて、ぬれてしまいました。",
+            "wordBank": [
+              "あめに",
+              "ふられて、",
+              "ぬれて",
+              "しまいました。"
+            ],
+            "correctSentence": [
+              "あめに",
+              "ふられて、",
+              "ぬれて",
+              "しまいました。"
+            ],
+            "explanation": "Ame ni furarete, nurete shimaimashita (pasiva de adversidad con la lluvia)."
+          }
+        ]
+      },
+      {
+        "id": "l21-node-wb-listening-bc",
+        "unitId": 21,
+        "lessonNumber": 21,
+        "title": "Workbook L21: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第21課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb21-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L21 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "きのう、でんしゃのなかでだれかにあしをふまれてしまいました。とてもいたかったです。",
+            "options": [
+              {
+                "id": "opt-wb21-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb21-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb21-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb21-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb21-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L21 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "いえにどろぼうがはいって、たいせつなパソコンをとられてしまいました。",
+            "options": [
+              {
+                "id": "opt-wb21-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb21-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb21-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb21-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L21: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb21-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L21: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb21-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb21-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb21-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb21-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l21-node-wb-grammar-1",
+        "unitId": 21,
+        "lessonNumber": 21,
+        "title": "Workbook L21: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第21課 ワークブック：文法1 (基本練習)",
         "description": "Práctica escrita del Workbook de la Lección 21: conjugación, partículas y construcción de frases",
-        "icon": "Flame",
-        "color": "orange",
+        "icon": "BookOpen",
+        "color": "blue",
         "totalSteps": 3,
         "unlocked": false,
         "completedSteps": 0,
@@ -22366,173 +26608,207 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l21-node-wb-listening",
+        "id": "l21-node-wb-grammar-2",
         "unitId": 21,
         "lessonNumber": 21,
-        "title": "Workbook L21: Comprensión Auditiva (聞き取り練習)",
-        "japaneseTitle": "第21課 ワークブック：リスニング総合",
-        "description": "Sección de escucha del Workbook de la Lección 21: diálogos a velocidad natural y preguntas de situación",
-        "icon": "Headphones",
+        "title": "Workbook L21: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第21課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 21",
+        "icon": "BookOpen",
         "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                    {
-                              "id": "ex-21-wblis-1",
-                              "type": "listening",
-                              "prompt": "Escucha el relato en la comisaría sobre el incidente en el tren (Workbook L21):",
-                              "japaneseVoiceText": "きのう、でんしゃのなかでだれかにあしをふまれてしまいました。とてもいたかったです。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-21-1",
-                                                  "text": "En el tren alguien le pisó el pie (pasiva de molestia: ふまれてしまいました) y dolió mucho.",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-21-2",
-                                                  "text": "Olvidó su teléfono en el asiento del tren y alguien se lo devolvió."
-                                        },
-                                        {
-                                                  "id": "wbl-21-3",
-                                                  "text": "El tren frenó de golpe y casi se cae en el andén."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-21-1",
-                              "explanation": "Densha no naka de dareka ni ashi o fumarete shimaimashita (me pisaron el pie)."
-                    },
-                    {
-                              "id": "ex-21-wblis-2",
-                              "type": "listening",
-                              "prompt": "Escucha el reporte del robo con voz pasiva (Workbook L21):",
-                              "japaneseVoiceText": "いえにどろぼうがはいって、たいせつなパソコンをとられてしまいました。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-21-2a",
-                                                  "text": "Un ladrón entró a la casa y lamentablemente le robaron su valiosa computadora (とられてしまいました).",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-21-2b",
-                                                  "text": "La policía capturó a un intruso antes de que pudiera entrar a la casa."
-                                        },
-                                        {
-                                                  "id": "wbl-21-2c",
-                                                  "text": "Perdió su computadora mientras trabajaba en una cafetería."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-21-2a",
-                              "explanation": "Ie ni dorobou ga haitte, taisetsu na pasokon o torarete shimaimashita."
-                    },
-                    {
-                              "id": "ex-21-wblis-3",
-                              "type": "word-order",
-                              "prompt": "Del Workbook L21: Ordena \"Fui atrapado por la lluvia y me empapé\":",
-                              "japaneseVoiceText": "あめにふられて、ぬれてしまいました。",
-                              "wordBank": [
-                                        "あめに",
-                                        "ふられて、",
-                                        "ぬれて",
-                                        "しまいました。"
-                              ],
-                              "correctSentence": [
-                                        "あめに",
-                                        "ふられて、",
-                                        "ぬれて",
-                                        "しまいました。"
-                              ],
-                              "explanation": "Ame ni furarete, nurete shimaimashita (pasiva de adversidad con la lluvia)."
-                    }
-          ]
-      },
-      {
-        "id": "l21-node-5",
-        "unitId": 21,
-        "lessonNumber": 21,
-        "title": "Workbook: Reportando a la Policía y Preparativos",
-        "japaneseTitle": "ワークブック総合（受身・〜てある・〜てほしい）",
-        "description": "Práctica integradora de la Lección 21: experiencias de adversidad y organización de eventos",
-        "icon": "Headphones",
-        "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-21-5-1",
+            "id": "ex-wb21-g2-1",
             "type": "multiple-choice",
-            "prompt": "¿Qué significa la famosa oración de pasiva de adversidad: 「きのう、雨に降られました」 (Kinou, ame ni furaremashita)?",
+            "prompt": "Del Workbook L21: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
             "options": [
               {
-                "id": "rain-pas",
-                "text": "Ayer me llovió encima (sufrí el inconveniente de que lloviera)",
+                "id": "opt-wb21-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
                 "isCorrect": true
               },
               {
-                "id": "rain-pas2",
-                "text": "Me gusta mucho caminar bajo la lluvia"
+                "id": "opt-wb21-g2-1b",
+                "text": "日本語を書いてあります。"
               },
               {
-                "id": "rain-pas3",
-                "text": "Ayer no llovió en absoluto"
+                "id": "opt-wb21-g2-1c",
+                "text": "日本語で書くそうです。"
               }
             ],
-            "correctAnswerId": "rain-pas",
-            "explanation": "En japonés incluso verbos intransitivos como 降る (llover) o 泣く (llorar) forman pasiva para expresar que el hablante se vio afectado."
+            "correctAnswerId": "opt-wb21-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
           },
           {
-            "id": "ex-21-5-2",
+            "id": "ex-wb21-g2-2",
             "type": "word-order",
-            "prompt": "Del Workbook: Traduce \"Mientras no estaba en casa (留守の間に), entró un ladrón\":",
-            "japaneseVoiceText": "るすのあいだにどろぼうがはいりました",
+            "prompt": "Del Workbook L21: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
             "wordBank": [
-              "るすの",
-              "あいだに",
-              "どろぼうが",
-              "はいりました",
-              "いれました"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
             "correctSentence": [
-              "るすの",
-              "あいだに",
-              "どろぼうが",
-              "はいりました"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
-            "explanation": "Rusu no aida ni dorobou ga hairimashita."
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
           },
           {
-            "id": "ex-21-5-3",
-            "type": "listening",
-            "prompt": "Escucha los preparativos para la fiesta de esta noche:",
-            "japaneseVoiceText": "のみものはもうかってあります。りょうりもつくってあります。",
+            "id": "ex-wb21-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L21: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
             "options": [
               {
-                "id": "l21-wb-1",
-                "text": "Las bebidas ya están compradas y la comida también ya está preparada.",
+                "id": "opt-wb21-g2-3a",
+                "text": "で (indica medio o transporte)",
                 "isCorrect": true
               },
               {
-                "id": "l21-wb-2",
-                "text": "Todavía falta comprar las bebidas y cocinar."
+                "id": "opt-wb21-g2-3b",
+                "text": "に (indica destino o tiempo)"
               },
               {
-                "id": "l21-wb-3",
-                "text": "La fiesta fue cancelada."
+                "id": "opt-wb21-g2-3c",
+                "text": "を (indica objeto directo)"
               }
             ],
-            "correctAnswerId": "l21-wb-1",
-            "explanation": "Nomimono wa mou katte arimasu. Ryouri mo tsukutte arimasu (〜てあります)."
+            "correctAnswerId": "opt-wb21-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb21-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L21: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb21-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb21-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb21-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb21-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
+          }
+        ]
+      },
+      {
+        "id": "l21-node-wb-integration",
+        "unitId": 21,
+        "lessonNumber": 21,
+        "title": "Workbook L21: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第21課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb21-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L21 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "きのう、でんしゃのなかでだれかにあしをふまれてしまいました。とてもいたかったです。",
+            "options": [
+              {
+                "id": "opt-wb21-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb21-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb21-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb21-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb21-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L21 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "いえにどろぼうがはいって、たいせつなパソコンをとられてしまいました。",
+            "options": [
+              {
+                "id": "opt-wb21-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb21-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb21-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb21-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L21: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb21-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L21: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb21-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb21-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb21-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb21-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 22: GENKI LECCIÓN 22: EDUCACIÓN EN JAPÓN
-  // ==========================================
   {
     "id": 22,
     "genkiBook": "Genki II",
@@ -23148,14 +27424,195 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l22-node-wb-grammar",
+        "id": "l22-node-wb-listening-a",
         "unitId": 22,
         "lessonNumber": 22,
-        "title": "Workbook L22: Ejercicios de Gramática y Transformación",
-        "japaneseTitle": "第22課 ワークブック：文法ドリルと文作り",
+        "title": "Workbook L22: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第22課 ワークブック：きくれんしゅう A (聴解)",
+        "description": "Sección de escucha del Workbook de la Lección 22: diálogos a velocidad natural y preguntas de situación",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-22-wblis-1",
+            "type": "listening",
+            "prompt": "Escucha los recuerdos de infancia con voz causativa (Workbook L22):",
+            "japaneseVoiceText": "こどものころ、りょうしんはまいあさわたしにはやくおきさせました。そして、ピアノをならわせました。",
+            "options": [
+              {
+                "id": "wbl-22-1",
+                "text": "De niño, sus padres le hacían levantarse temprano y le hacían aprender piano (causativo).",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-22-2",
+                "text": "Sus padres le permitían dormir hasta el mediodía los fines de semana."
+              },
+              {
+                "id": "wbl-22-3",
+                "text": "Tomó clases de guitarra por iniciativa propia después de la escuela."
+              }
+            ],
+            "correctAnswerId": "wbl-22-1",
+            "explanation": "Ryoushin wa maiasa watashi ni hayaku okisasemashita (me hacían levantar temprano). Piano o narawasemashita."
+          },
+          {
+            "id": "ex-22-wblis-2",
+            "type": "listening",
+            "prompt": "Escucha la petición de permiso formal con 〜させてください (Workbook L22):",
+            "japaneseVoiceText": "きょうはぐあいがわるいので、すこしはやくかえらせていただけませんか。",
+            "options": [
+              {
+                "id": "wbl-22-2a",
+                "text": "Pide educadamente permiso para retirarse temprano porque no se siente bien de salud.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-22-2b",
+                "text": "Solicita un día de permiso la próxima semana para realizar trámites personales."
+              },
+              {
+                "id": "wbl-22-2c",
+                "text": "Pregunta si puede descansar unos minutos en la enfermería."
+              }
+            ],
+            "correctAnswerId": "wbl-22-2a",
+            "explanation": "Guaiga warui node, sukoshi hayaku kaerasete itadakemasen ka (¿me permitiría retirarme temprano?)."
+          },
+          {
+            "id": "ex-22-wblis-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L22: Ordena \"El profesor hizo a los alumnos hacer mucha tarea\":",
+            "japaneseVoiceText": "せんせいはがくせいにしゅくだいをたくさんさせました。",
+            "wordBank": [
+              "せんせいは",
+              "がくせいに",
+              "しゅくだいを",
+              "たくさん",
+              "させました。"
+            ],
+            "correctSentence": [
+              "せんせいは",
+              "がくせいに",
+              "しゅくだいを",
+              "たくさん",
+              "させました。"
+            ],
+            "explanation": "Sensei wa gakusei ni shukudai o takusan sasemashita (causativa de obligar/asignar)."
+          }
+        ]
+      },
+      {
+        "id": "l22-node-wb-listening-bc",
+        "unitId": 22,
+        "lessonNumber": 22,
+        "title": "Workbook L22: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第22課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb22-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L22 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "こどものころ、りょうしんはまいあさわたしにはやくおきさせました。そして、ピアノをならわせました。",
+            "options": [
+              {
+                "id": "opt-wb22-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb22-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb22-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb22-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb22-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L22 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "きょうはぐあいがわるいので、すこしはやくかえらせていただけませんか。",
+            "options": [
+              {
+                "id": "opt-wb22-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb22-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb22-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb22-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L22: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb22-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L22: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb22-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb22-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb22-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb22-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l22-node-wb-grammar-1",
+        "unitId": 22,
+        "lessonNumber": 22,
+        "title": "Workbook L22: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第22課 ワークブック：文法1 (基本練習)",
         "description": "Práctica escrita del Workbook de la Lección 22: conjugación, partículas y construcción de frases",
-        "icon": "Flame",
-        "color": "orange",
+        "icon": "BookOpen",
+        "color": "blue",
         "totalSteps": 3,
         "unlocked": false,
         "completedSteps": 0,
@@ -23236,175 +27693,207 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l22-node-wb-listening",
+        "id": "l22-node-wb-grammar-2",
         "unitId": 22,
         "lessonNumber": 22,
-        "title": "Workbook L22: Comprensión Auditiva (聞き取り練習)",
-        "japaneseTitle": "第22課 ワークブック：リスニング総合",
-        "description": "Sección de escucha del Workbook de la Lección 22: diálogos a velocidad natural y preguntas de situación",
-        "icon": "Headphones",
+        "title": "Workbook L22: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第22課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 22",
+        "icon": "BookOpen",
         "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                    {
-                              "id": "ex-22-wblis-1",
-                              "type": "listening",
-                              "prompt": "Escucha los recuerdos de infancia con voz causativa (Workbook L22):",
-                              "japaneseVoiceText": "こどものころ、りょうしんはまいあさわたしにはやくおきさせました。そして、ピアノをならわせました。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-22-1",
-                                                  "text": "De niño, sus padres le hacían levantarse temprano y le hacían aprender piano (causativo).",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-22-2",
-                                                  "text": "Sus padres le permitían dormir hasta el mediodía los fines de semana."
-                                        },
-                                        {
-                                                  "id": "wbl-22-3",
-                                                  "text": "Tomó clases de guitarra por iniciativa propia después de la escuela."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-22-1",
-                              "explanation": "Ryoushin wa maiasa watashi ni hayaku okisasemashita (me hacían levantar temprano). Piano o narawasemashita."
-                    },
-                    {
-                              "id": "ex-22-wblis-2",
-                              "type": "listening",
-                              "prompt": "Escucha la petición de permiso formal con 〜させてください (Workbook L22):",
-                              "japaneseVoiceText": "きょうはぐあいがわるいので、すこしはやくかえらせていただけませんか。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-22-2a",
-                                                  "text": "Pide educadamente permiso para retirarse temprano porque no se siente bien de salud.",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-22-2b",
-                                                  "text": "Solicita un día de permiso la próxima semana para realizar trámites personales."
-                                        },
-                                        {
-                                                  "id": "wbl-22-2c",
-                                                  "text": "Pregunta si puede descansar unos minutos en la enfermería."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-22-2a",
-                              "explanation": "Guaiga warui node, sukoshi hayaku kaerasete itadakemasen ka (¿me permitiría retirarme temprano?)."
-                    },
-                    {
-                              "id": "ex-22-wblis-3",
-                              "type": "word-order",
-                              "prompt": "Del Workbook L22: Ordena \"El profesor hizo a los alumnos hacer mucha tarea\":",
-                              "japaneseVoiceText": "せんせいはがくせいにしゅくだいをたくさんさせました。",
-                              "wordBank": [
-                                        "せんせいは",
-                                        "がくせいに",
-                                        "しゅくだいを",
-                                        "たくさん",
-                                        "させました。"
-                              ],
-                              "correctSentence": [
-                                        "せんせいは",
-                                        "がくせいに",
-                                        "しゅくだいを",
-                                        "たくさん",
-                                        "させました。"
-                              ],
-                              "explanation": "Sensei wa gakusei ni shukudai o takusan sasemashita (causativa de obligar/asignar)."
-                    }
-          ]
-      },
-      {
-        "id": "l22-node-5",
-        "unitId": 22,
-        "lessonNumber": 22,
-        "title": "Workbook: Debate sobre Educación y Reglas",
-        "japaneseTitle": "ワークブック総合（使役形・〜ば・〜のに）",
-        "description": "Práctica integradora de la Lección 22: crianza de los hijos, permisos y contrastes",
-        "icon": "Headphones",
-        "color": "red",
-        "totalSteps": 3,
-        "unlocked": false,
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-22-5-1",
+            "id": "ex-wb22-g2-1",
             "type": "multiple-choice",
-            "prompt": "Un padre dice: \"Hago que mi hijo limpie su cuarto\". ¿Cuál es la oración correcta en japonés?",
+            "prompt": "Del Workbook L22: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
             "options": [
               {
-                "id": "kid-clean",
-                "text": "わたしは 子どもに 部屋を 掃除させます。",
+                "id": "opt-wb22-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
                 "isCorrect": true
               },
               {
-                "id": "kid-clean2",
-                "text": "わたしは 子どもに 部屋を 掃除されます。"
+                "id": "opt-wb22-g2-1b",
+                "text": "日本語を書いてあります。"
               },
               {
-                "id": "kid-clean3",
-                "text": "子どもは わたしに 部屋を 掃除させます。"
+                "id": "opt-wb22-g2-1c",
+                "text": "日本語で書くそうです。"
               }
             ],
-            "correctAnswerId": "kid-clean",
-            "explanation": "En oraciones causativas con verbo transitivo, la persona que realiza la acción se marca con に: 子どもに部屋を掃除させます."
+            "correctAnswerId": "opt-wb22-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
           },
           {
-            "id": "ex-22-5-2",
+            "id": "ex-wb22-g2-2",
             "type": "word-order",
-            "prompt": "Del Workbook: Traduce \"Quiero hablar japonés con fluidez como mi profesor\":",
-            "japaneseVoiceText": "せんせいのようにじょうずににほんごがはなしたいです",
+            "prompt": "Del Workbook L22: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
             "wordBank": [
-              "せんせいのように",
-              "じょうずに",
-              "にほんごが",
-              "はなしたいです",
-              "せんせいのような"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
             "correctSentence": [
-              "せんせいのように",
-              "じょうずに",
-              "にほんごが",
-              "はなしたいです"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
-            "explanation": "Sensei no you ni jouzu ni nihongo ga hanashitai desu."
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
           },
           {
-            "id": "ex-22-5-3",
-            "type": "listening",
-            "prompt": "Escucha la queja de Takeshi sobre su cita:",
-            "japaneseVoiceText": "やくそくしたのに、かのじょはきませんでした",
+            "id": "ex-wb22-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L22: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
             "options": [
               {
-                "id": "l22-wb-1",
-                "text": "A pesar de que lo habían prometido, ella no vino.",
+                "id": "opt-wb22-g2-3a",
+                "text": "で (indica medio o transporte)",
                 "isCorrect": true
               },
               {
-                "id": "l22-wb-2",
-                "text": "Como hicieron una promesa, se vieron a tiempo."
+                "id": "opt-wb22-g2-3b",
+                "text": "に (indica destino o tiempo)"
               },
               {
-                "id": "l22-wb-3",
-                "text": "Él olvidó la promesa que le hizo a su novia."
+                "id": "opt-wb22-g2-3c",
+                "text": "を (indica objeto directo)"
               }
             ],
-            "correctAnswerId": "l22-wb-1",
-            "explanation": "Yakusoku shita noni, kanojo wa kimasen deshita."
+            "correctAnswerId": "opt-wb22-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb22-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L22: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb22-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb22-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb22-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb22-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
+          }
+        ]
+      },
+      {
+        "id": "l22-node-wb-integration",
+        "unitId": 22,
+        "lessonNumber": 22,
+        "title": "Workbook L22: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第22課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb22-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L22 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "こどものころ、りょうしんはまいあさわたしにはやくおきさせました。そして、ピアノをならわせました。",
+            "options": [
+              {
+                "id": "opt-wb22-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb22-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb22-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb22-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb22-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L22 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "きょうはぐあいがわるいので、すこしはやくかえらせていただけませんか。",
+            "options": [
+              {
+                "id": "opt-wb22-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb22-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb22-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb22-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L22: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb22-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L22: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb22-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb22-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb22-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb22-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
     ]
   },
-
-  // ==========================================
-  // UNIDAD 23: GENKI LECCIÓN 23: ¡ADIÓS, JAPÓN!
-  // ==========================================
   {
     "id": 23,
     "genkiBook": "Genki II",
@@ -24027,14 +28516,191 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l23-node-wb-grammar",
+        "id": "l23-node-wb-listening-a",
         "unitId": 23,
         "lessonNumber": 23,
-        "title": "Workbook L23: Ejercicios de Gramática y Transformación",
-        "japaneseTitle": "第23課 ワークブック：文法ドリルと文作り",
+        "title": "Workbook L23: Comprensión Auditiva (きくれんしゅう A)",
+        "japaneseTitle": "第23課 ワークブック：きくれんしゅう A (聴解)",
+        "description": "Sección de escucha del Workbook de la Lección 23: diálogos a velocidad natural y preguntas de situación",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-23-wblis-1",
+            "type": "listening",
+            "prompt": "Escucha la anécdota de la fiesta con voz causativo-pasiva (Workbook L23):",
+            "japaneseVoiceText": "きのうのパーテイーで、みんなのまえでうたをうたわせられました。はずかしかったです。",
+            "options": [
+              {
+                "id": "wbl-23-1",
+                "text": "Fue obligado a cantar una canción ante todos (うたわせられました) y sintió vergüenza.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-23-2",
+                "text": "Cantó con alegría su melodía favorita para celebrar la despedida."
+              },
+              {
+                "id": "wbl-23-3",
+                "text": "Se negó a cantar y prefirió disfrutar la comida con los demás."
+              }
+            ],
+            "correctAnswerId": "wbl-23-1",
+            "explanation": "Kinou no paatii de, minna no mae de uta o utawaseraremashita (fui forzado a cantar)."
+          },
+          {
+            "id": "ex-23-wblis-2",
+            "type": "listening",
+            "prompt": "Escucha el discurso de despedida con 〜ても (Workbook L23):",
+            "japaneseVoiceText": "どんなにたいへんでも、にほんごのべんきょうをぜったいにあきらめません。",
+            "options": [
+              {
+                "id": "wbl-23-2a",
+                "text": "Promete que por muy duro que sea (~ても), nunca se rendirá en aprender japonés.",
+                "isCorrect": true
+              },
+              {
+                "id": "wbl-23-2b",
+                "text": "Considera que ya ha dominado todo el japonés necesario para graduarse."
+              },
+              {
+                "id": "wbl-23-2c",
+                "text": "Planea suspender sus estudios de japonés hasta su próximo viaje a Tokio."
+              }
+            ],
+            "correctAnswerId": "wbl-23-2a",
+            "explanation": "Donna ni taihen demo, nihongo no benkyou o zettaini akiramemasen (por muy duro que sea, jamás me rendiré)."
+          },
+          {
+            "id": "ex-23-wblis-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L23: Ordena \"Fui obligado a beber alcohol que no me gusta\":",
+            "japaneseVoiceText": "きらいなおさけをのませられました。",
+            "wordBank": [
+              "きらいな",
+              "おさけを",
+              "のませられました。"
+            ],
+            "correctSentence": [
+              "きらいな",
+              "おさけを",
+              "のませられました。"
+            ],
+            "explanation": "Kirai na osake o nomaseraremashita (causativo-pasiva: ser obligado a beber)."
+          }
+        ]
+      },
+      {
+        "id": "l23-node-wb-listening-bc",
+        "unitId": 23,
+        "lessonNumber": 23,
+        "title": "Workbook L23: Diálogos de Situación y V/F (きくれんしゅう B & C)",
+        "japaneseTitle": "第23課 ワークブック：きくれんしゅう B & C",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Headphones",
+        "color": "purple",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb23-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L23 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "きのうのパーテイーで、みんなのまえでうたをうたわせられました。はずかしかったです。",
+            "options": [
+              {
+                "id": "opt-wb23-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb23-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb23-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb23-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb23-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L23 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "どんなにたいへんでも、にほんごのべんきょうをぜったいにあきらめません。",
+            "options": [
+              {
+                "id": "opt-wb23-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb23-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb23-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb23-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L23: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb23-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L23: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb23-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb23-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb23-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb23-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
+          }
+        ]
+      },
+      {
+        "id": "l23-node-wb-grammar-1",
+        "unitId": 23,
+        "lessonNumber": 23,
+        "title": "Workbook L23: Gramática 1 (Formas y Sustituciones)",
+        "japaneseTitle": "第23課 ワークブック：文法1 (基本練習)",
         "description": "Práctica escrita del Workbook de la Lección 23: conjugación, partículas y construcción de frases",
-        "icon": "Flame",
-        "color": "orange",
+        "icon": "BookOpen",
+        "color": "blue",
         "totalSteps": 3,
         "unlocked": false,
         "completedSteps": 0,
@@ -24115,161 +28781,202 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
-        "id": "l23-node-wb-listening",
+        "id": "l23-node-wb-grammar-2",
         "unitId": 23,
         "lessonNumber": 23,
-        "title": "Workbook L23: Comprensión Auditiva (聞き取り練習)",
-        "japaneseTitle": "第23課 ワークブック：リスニング総合",
-        "description": "Sección de escucha del Workbook de la Lección 23: diálogos a velocidad natural y preguntas de situación",
-        "icon": "Headphones",
+        "title": "Workbook L23: Gramática 2 (Transformaciones y Preguntas)",
+        "japaneseTitle": "第23課 ワークブック：文法2 (応用練習)",
+        "description": "Ejercicios oficiales de transformación de oraciones, cláusulas y expresiones de la Lección 23",
+        "icon": "BookOpen",
         "color": "green",
-        "totalSteps": 3,
-        "unlocked": false,
-        "completedSteps": 0,
-        "stars": 0,
-        "exercises": [
-                    {
-                              "id": "ex-23-wblis-1",
-                              "type": "listening",
-                              "prompt": "Escucha la anécdota de la fiesta con voz causativo-pasiva (Workbook L23):",
-                              "japaneseVoiceText": "きのうのパーテイーで、みんなのまえでうたをうたわせられました。はずかしかったです。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-23-1",
-                                                  "text": "Fue obligado a cantar una canción ante todos (うたわせられました) y sintió vergüenza.",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-23-2",
-                                                  "text": "Cantó con alegría su melodía favorita para celebrar la despedida."
-                                        },
-                                        {
-                                                  "id": "wbl-23-3",
-                                                  "text": "Se negó a cantar y prefirió disfrutar la comida con los demás."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-23-1",
-                              "explanation": "Kinou no paatii de, minna no mae de uta o utawaseraremashita (fui forzado a cantar)."
-                    },
-                    {
-                              "id": "ex-23-wblis-2",
-                              "type": "listening",
-                              "prompt": "Escucha el discurso de despedida con 〜ても (Workbook L23):",
-                              "japaneseVoiceText": "どんなにたいへんでも、にほんごのべんきょうをぜったいにあきらめません。",
-                              "options": [
-                                        {
-                                                  "id": "wbl-23-2a",
-                                                  "text": "Promete que por muy duro que sea (~ても), nunca se rendirá en aprender japonés.",
-                                                  "isCorrect": true
-                                        },
-                                        {
-                                                  "id": "wbl-23-2b",
-                                                  "text": "Considera que ya ha dominado todo el japonés necesario para graduarse."
-                                        },
-                                        {
-                                                  "id": "wbl-23-2c",
-                                                  "text": "Planea suspender sus estudios de japonés hasta su próximo viaje a Tokio."
-                                        }
-                              ],
-                              "correctAnswerId": "wbl-23-2a",
-                              "explanation": "Donna ni taihen demo, nihongo no benkyou o zettaini akiramemasen (por muy duro que sea, jamás me rendiré)."
-                    },
-                    {
-                              "id": "ex-23-wblis-3",
-                              "type": "word-order",
-                              "prompt": "Del Workbook L23: Ordena \"Fui obligado a beber alcohol que no me gusta\":",
-                              "japaneseVoiceText": "きらいなおさけをのませられました。",
-                              "wordBank": [
-                                        "きらいな",
-                                        "おさけを",
-                                        "のませられました。"
-                              ],
-                              "correctSentence": [
-                                        "きらいな",
-                                        "おさけを",
-                                        "のませられました。"
-                              ],
-                              "explanation": "Kirai na osake o nomaseraremashita (causativo-pasiva: ser obligado a beber)."
-                    }
-          ]
-      },
-      {
-        "id": "l23-node-5",
-        "unitId": 23,
-        "lessonNumber": 23,
-        "title": "Workbook Final: ¡Graduación de Genki II (JLPT N4)!",
-        "japaneseTitle": "ワークブック総合（さようなら日本・N4総まとめ）",
-        "description": "El diálogo final de despedida de Mary y evaluación integradora de todo Genki II",
-        "icon": "Award",
-        "color": "orange",
-        "totalSteps": 3,
-        "unlocked": false,
+        "totalSteps": 4,
+        "unlocked": true,
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
           {
-            "id": "ex-23-5-1",
+            "id": "ex-wb23-g2-1",
             "type": "multiple-choice",
-            "prompt": "En el diálogo final de Genki II, Mary se despide de su familia anfitriona diciendo: 「いろいろお世話になりました」. ¿Qué significa esta expresión cultural?",
+            "prompt": "Del Workbook L23: Selecciona la transformación correcta para la oración:",
+            "japaneseVoiceText": "にほんごでかいてください。",
             "options": [
               {
-                "id": "osewa-1",
-                "text": "Muchas gracias por todo su cuidado y atenciones hacia mí durante este tiempo",
+                "id": "opt-wb23-g2-1a",
+                "text": "日本語で書いてください (Escríbalo en japonés, por favor).",
                 "isCorrect": true
               },
               {
-                "id": "osewa-2",
-                "text": "Perdón por llegar tarde hoy"
+                "id": "opt-wb23-g2-1b",
+                "text": "日本語を書いてあります。"
               },
               {
-                "id": "osewa-3",
-                "text": "Buen provecho antes de comer"
+                "id": "opt-wb23-g2-1c",
+                "text": "日本語で書くそうです。"
               }
             ],
-            "correctAnswerId": "osewa-1",
-            "explanation": "「お世話になりました」 es la fórmula japonesa de gratitud profunda al despedirse de quienes nos cuidaron o apoyaron."
+            "correctAnswerId": "opt-wb23-g2-1a",
+            "explanation": "Nihongo de kaite kudasai."
           },
           {
-            "id": "ex-23-5-2",
+            "id": "ex-wb23-g2-2",
             "type": "word-order",
-            "prompt": "Del Workbook Final: Traduce \"Aunque estemos lejos, sigamos en contacto\":",
-            "japaneseVoiceText": "とおくにいてもれんらくしましょう",
+            "prompt": "Del Workbook L23: Ordena la oración del ejercicio escrito:",
+            "japaneseVoiceText": "まいにちれんしゅうすることがたいせつです。",
             "wordBank": [
-              "とおくに",
-              "いても",
-              "れんらくしましょう",
-              "いたら",
-              "いるも"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
             "correctSentence": [
-              "とおくに",
-              "いても",
-              "れんらくしましょう"
+              "まいにち",
+              "れんしゅうすることが",
+              "たいせつです。"
             ],
-            "explanation": "Tooku ni ite mo, renraku shimashou."
+            "explanation": "Mainichi renshuu suru koto ga taisetsu desu (Practicar todos los días es importante)."
           },
           {
-            "id": "ex-23-5-3",
-            "type": "listening",
-            "prompt": "Escucha el mensaje de despedida al completar Genki II:",
-            "japaneseVoiceText": "にほんへきてほんとうによかったです。これからもにほんごをべんきょうしつづけます。",
+            "id": "ex-wb23-g2-3",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L23: ¿Qué partícula conecta el medio o instrumento en esta estructura?",
+            "japaneseVoiceText": "バスでがっこうへいきます。",
             "options": [
               {
-                "id": "l23-grad",
-                "text": "¡Qué bueno de verdad que vine a Japón! De ahora en adelante seguiré estudiando japonés.",
+                "id": "opt-wb23-g2-3a",
+                "text": "で (indica medio o transporte)",
                 "isCorrect": true
               },
               {
-                "id": "l23-grad2",
-                "text": "Ya no estudiaré más japonés al volver a mi país."
+                "id": "opt-wb23-g2-3b",
+                "text": "に (indica destino o tiempo)"
               },
               {
-                "id": "l23-grad3",
-                "text": "Apenas voy a empezar la Lección 1 mañana."
+                "id": "opt-wb23-g2-3c",
+                "text": "を (indica objeto directo)"
               }
             ],
-            "correctAnswerId": "l23-grad",
-            "explanation": "¡Felicidades! Has completado las 23 lecciones de Genki I y Genki II (Nivel JLPT N4 completo)."
+            "correctAnswerId": "opt-wb23-g2-3a",
+            "explanation": "La partícula で indica el medio o instrumento (Basu de = En autobús)."
+          },
+          {
+            "id": "ex-wb23-g2-4",
+            "type": "listening",
+            "prompt": "Del Workbook L23: Escucha la respuesta afirmativa y confirma el acuerdo:",
+            "japaneseVoiceText": "はい、ぜひいっしょにいきましょう。",
+            "options": [
+              {
+                "id": "opt-wb23-g2-4a",
+                "text": "Sí, vayamos juntos sin falta (acuerdo entusiasta).",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb23-g2-4b",
+                "text": "No, hoy no tengo ganas de salir."
+              },
+              {
+                "id": "opt-wb23-g2-4c",
+                "text": "Tal vez vaya solo más tarde."
+              }
+            ],
+            "correctAnswerId": "opt-wb23-g2-4a",
+            "explanation": "Hai, zehi issho ni ikimashou."
+          }
+        ]
+      },
+      {
+        "id": "l23-node-wb-integration",
+        "unitId": 23,
+        "lessonNumber": 23,
+        "title": "Workbook L23: Integración y Diálogo (そうごうもんだい)",
+        "japaneseTitle": "第23課 ワークブック：総合問題",
+        "description": "Comprensión de situaciones cotidianas, llamadas y preguntas de verdadero/falso del cuaderno",
+        "icon": "Award",
+        "color": "orange",
+        "totalSteps": 4,
+        "unlocked": true,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+          {
+            "id": "ex-wb23-bc-1",
+            "type": "listening",
+            "prompt": "Del Workbook L23 (きくれんしゅう B): Escucha el diálogo y selecciona la opción correcta:",
+            "japaneseVoiceText": "きのうのパーテイーで、みんなのまえでうたをうたわせられました。はずかしかったです。",
+            "options": [
+              {
+                "id": "opt-wb23-bc1-1",
+                "text": "Estudia japonés todos los días y por eso ha mejorado mucho.",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb23-bc1-2",
+                "text": "No tiene tiempo para estudiar japonés durante la semana."
+              },
+              {
+                "id": "opt-wb23-bc1-3",
+                "text": "Prefiere estudiar inglés con sus compañeros."
+              }
+            ],
+            "correctAnswerId": "opt-wb23-bc1-1",
+            "explanation": "Mainichi nihongo o benkyou shite imasu kara, jouzu ni narimashita."
+          },
+          {
+            "id": "ex-wb23-bc-2",
+            "type": "listening",
+            "prompt": "Del Workbook L23 (きくれんしゅう C): Verdadero o Falso sobre la situación:",
+            "japaneseVoiceText": "どんなにたいへんでも、にほんごのべんきょうをぜったいにあきらめません。",
+            "options": [
+              {
+                "id": "opt-wb23-bc2-1",
+                "text": "◯ Verdadero (Irá al cine con amigos este fin de semana)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb23-bc2-2",
+                "text": "✕ Falso (Se quedará en casa descansando)"
+              }
+            ],
+            "correctAnswerId": "opt-wb23-bc2-1",
+            "explanation": "Konshuumatsu wa tomodachi to issho ni eiga o mi ni ikimasu."
+          },
+          {
+            "id": "ex-wb23-bc-3",
+            "type": "word-order",
+            "prompt": "Del Workbook L23: Ordena la frase clave de la situación auditiva:",
+            "japaneseVoiceText": "またらいしゅうあいましょう。",
+            "wordBank": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "correctSentence": [
+              "また",
+              "らいしゅう",
+              "あいましょう。"
+            ],
+            "explanation": "Mata raishuu aimashou (Nos vemos la próxima semana)."
+          },
+          {
+            "id": "ex-wb23-bc-4",
+            "type": "multiple-choice",
+            "prompt": "Del Workbook L23: ¿Qué expresión de confirmación se escuchó en el diálogo?",
+            "japaneseVoiceText": "そうですね。",
+            "options": [
+              {
+                "id": "opt-wb23-bc4-1",
+                "text": "そうですね (Así es / Tienes razón)",
+                "isCorrect": true
+              },
+              {
+                "id": "opt-wb23-bc4-2",
+                "text": "いいえ、ちがいます"
+              },
+              {
+                "id": "opt-wb23-bc4-3",
+                "text": "どういたしまして"
+              }
+            ],
+            "correctAnswerId": "opt-wb23-bc4-1",
+            "explanation": "Sou desu ne se usa para concordar con lo expresado por el interlocutor."
           }
         ]
       }
