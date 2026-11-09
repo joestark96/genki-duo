@@ -33,8 +33,8 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
     setDownloadStarted(true);
     // Direct download trigger
     const link = document.createElement('a');
-    link.href = './downloads/nihongo-dojo-v1.1.apk';
-    link.download = 'nihongo-dojo-v1.1.apk';
+    link.href = './downloads/nihongo-v1.1.apk';
+    link.download = 'nihongo-v1.1.apk';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -54,10 +54,10 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
             </div>
             <div>
               <div className="font-black text-lg leading-tight tracking-tight flex items-center gap-1.5">
-                <span>NihonGo! Dojo</span>
+                <span>NihonGo!</span>
                 <span className="text-[10px] uppercase font-black px-1.5 py-0.5 rounded-md bg-duo-green/15 text-duo-green">v1.1</span>
               </div>
-              <p className="text-[10px] font-bold text-gray-400 dark:text-gray-500 leading-none">日本語道場 • Genki I & II</p>
+              <p className="text-[10px] font-bold text-gray-400 dark:text-gray-500 leading-none">日本語 • Genki I & II</p>
             </div>
           </div>
 
@@ -156,7 +156,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
                 <span className="w-3 h-3 rounded-full bg-rose-500 inline-block" />
                 <span className="w-3 h-3 rounded-full bg-amber-500 inline-block" />
                 <span className="w-3 h-3 rounded-full bg-emerald-500 inline-block" />
-                <span className="ml-2 text-gray-400">nihongodojo.app</span>
+                <span className="ml-2 text-gray-400">nihongo.app</span>
               </div>
               <div className="flex items-center gap-3 text-xs">
                 <span className="flex items-center gap-1 text-rose-500"><Heart className="w-3.5 h-3.5 fill-rose-500" /> 5</span>
@@ -314,7 +314,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
             <div className="w-12 h-12 rounded-2xl bg-pink-100 dark:bg-pink-950/60 text-pink-600 dark:text-pink-400 flex items-center justify-center font-black">
               <PenTool className="w-6 h-6 stroke-[2.5px]" />
             </div>
-            <h3 className="text-base font-black text-gray-900 dark:text-white">Dojo de Escritura y Trazos</h3>
+            <h3 className="text-base font-black text-gray-900 dark:text-white">Taller de Escritura y Trazos</h3>
             <p className="text-xs font-medium text-gray-600 dark:text-gray-400 leading-relaxed">
               Lienzo digital interactivo para practicar Hiragana, Katakana y Kanjis oficiales del JLPT N5 y N4 siguiendo el orden exacto de los trazos.
             </p>
@@ -342,7 +342,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
                 Compilado Oficial para Android
               </span>
               <h2 className="text-2xl sm:text-3xl font-black text-gray-900 dark:text-white mt-2 mb-2">
-                NihonGo! Dojo v1.1 (APK Release)
+                NihonGo! v1.1 (APK Release)
               </h2>
               <p className="text-xs sm:text-sm font-bold text-gray-600 dark:text-gray-300 mb-4 leading-relaxed">
                 Descarga el archivo APK de producción directamente a tu dispositivo móvil. Compatible con teléfonos y tablets Android 8.0 en adelante.
@@ -401,7 +401,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs font-semibold text-gray-600 dark:text-gray-400">
               <div className="flex items-start gap-2.5">
                 <span className="w-6 h-6 rounded-lg bg-duo-green text-white font-black flex items-center justify-center flex-shrink-0">1</span>
-                <p>Descarga el archivo <strong>nihongo-dojo-v1.1.apk</strong> presionando el botón verde.</p>
+                <p>Descarga el archivo <strong>nihongo-v1.1.apk</strong> presionando el botón verde.</p>
               </div>
               <div className="flex items-start gap-2.5">
                 <span className="w-6 h-6 rounded-lg bg-duo-green text-white font-black flex items-center justify-center flex-shrink-0">2</span>
@@ -424,14 +424,14 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
             ¿Quieres probarla ahora mismo en tu navegador?
           </h2>
           <p className="text-xs sm:text-sm font-bold text-white/90 max-w-xl mb-6">
-            NihonGo! Dojo cuenta con una versión web 100% interactiva que corre directamente en Chrome, Safari, Firefox o Edge sin necesidad de instalar nada.
+            NihonGo! cuenta con una versión web 100% interactiva que corre directamente en Chrome, Safari, Firefox o Edge sin necesidad de instalar nada.
           </p>
           <button
             onClick={onEnterApp}
             className="py-3.5 px-8 rounded-2xl bg-white text-duo-blue hover:bg-gray-100 font-black text-sm uppercase tracking-wider shadow-lg active:translate-y-0.5 transition-all flex items-center gap-2 cursor-pointer"
           >
             <Play className="w-4 h-4 fill-duo-blue" />
-            <span>Abrir NihonGo! Dojo en el Navegador</span>
+            <span>Abrir NihonGo! en el Navegador</span>
           </button>
         </div>
       </section>
@@ -440,7 +440,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onEnterApp }) => {
       <footer className="bg-white dark:bg-[#131f24] border-t border-gray-200 dark:border-[#283842] py-10 px-4 text-xs font-semibold text-gray-500 dark:text-gray-400">
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <div>
-            <p className="font-black text-gray-800 dark:text-gray-100">NihonGo! Dojo (日本語道場) • Versión 1.1</p>
+            <p className="font-black text-gray-800 dark:text-gray-100">NihonGo! (日本語) • Versión 1.1</p>
             <p className="text-[11px] text-gray-400 mt-0.5">
               Basado en el currículum de <em>GENKI: An Integrated Course in Elementary Japanese</em> (The Japan Times).
             </p>

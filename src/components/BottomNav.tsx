@@ -65,7 +65,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) 
     {
       id: 'writing',
       label: 'Escritura',
-      subtitle: 'Dojo de trazos y dictado escrito',
+      subtitle: 'Trazos y dictado escrito',
       icon: PenTool,
       badgeColor: 'bg-indigo-500/15 text-indigo-600 dark:text-indigo-400 border-indigo-400/30'
     },

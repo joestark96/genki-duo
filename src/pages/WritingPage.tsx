@@ -158,7 +158,7 @@ export const WritingPage: React.FC<WritingPageProps> = ({ showRomaji = true }) =
               <PenTool className="w-6 h-6 text-white" />
             </div>
             <div>
-              <h1 className="text-lg font-black leading-tight">Dojo de Escritura</h1>
+              <h1 className="text-lg font-black leading-tight">Taller de Escritura</h1>
               <p className="text-xs font-bold text-white/90">
                 Caligrafía japonesa: trazos de Hiragana, Katakana y Kanji
               </p>

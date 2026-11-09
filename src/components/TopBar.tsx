@@ -22,7 +22,7 @@ export const TopBar: React.FC<TopBarProps> = ({ profile, nextHeartMinutes, onSou
         >
           <img
             src="./app-icon.png"
-            alt="NihonGo! Dojo"
+            alt="NihonGo!"
             className="w-7 h-7 rounded-lg shadow-2xs flex-shrink-0 object-cover"
           />
           <span className="hidden sm:inline text-xs font-black tracking-tight text-gray-800 dark:text-gray-100">

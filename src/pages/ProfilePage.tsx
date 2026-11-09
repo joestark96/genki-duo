@@ -191,12 +191,12 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
       <div className="flex items-center gap-4 bg-white dark:bg-[#18272e] p-5 rounded-3xl border-2 border-duo-gray-200 dark:border-[#283842] shadow-duo-card dark:shadow-none mb-4 transition-colors">
         <img
           src="./app-icon.png"
-          alt="NihonGo! Dojo Mascot"
+          alt="NihonGo! Mascot"
           className="w-16 h-16 rounded-2xl shadow-duo-btn-sm border-2 border-duo-blue/40 flex-shrink-0 object-cover"
         />
         <div>
           <h2 className="text-xl font-black text-gray-800 dark:text-gray-100">{profile.username}</h2>
-          <p className="text-xs font-bold text-gray-400 dark:text-gray-400">NihonGo! Dojo (日本語道場) • Genki 3.ª Ed.</p>
+          <p className="text-xs font-bold text-gray-400 dark:text-gray-400">NihonGo! (日本語) • Genki 3.ª Ed.</p>
           <div className="flex items-center gap-1 mt-1 text-xs font-black text-duo-green">
             <CheckCircle2 className="w-4 h-4" />
             <span>{completedCount} de {totalLessons} lecciones dominadas</span>

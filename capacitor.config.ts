@@ -2,7 +2,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.nihongodojo.app',
-  appName: 'NihonGo! Dojo',
+  appName: 'NihonGo!',
   webDir: 'dist',
   server: {
     androidScheme: 'https'
