@@ -3134,6 +3134,91 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
+        "id": "l1-node-wb-grammar",
+        "unitId": 1,
+        "lessonNumber": 1,
+        "title": "Workbook L1: Ejercicios de Gramática y Transformación",
+        "japaneseTitle": "第1課 ワークブック：文法ドリル（〜は〜です・助詞の「の」）",
+        "description": "Ejercicios escritos del Workbook de la Lección 1: estructura X wa Y desu, partícula no y preguntas",
+        "icon": "Flame",
+        "color": "orange",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+                {
+                        "id": "ex-1-wbg-1",
+                        "type": "match-pairs",
+                        "prompt": "Empareja los términos y pronombres clave del Workbook L1:",
+                        "pairs": [
+                                {
+                                        "id": "w1p-1",
+                                        "left": "わたし (私)",
+                                        "right": "Yo"
+                                },
+                                {
+                                        "id": "w1p-2",
+                                        "left": "がくせい (学生)",
+                                        "right": "Estudiante"
+                                },
+                                {
+                                        "id": "w1p-3",
+                                        "left": "せんせい (先生)",
+                                        "right": "Profesor / Maestro"
+                                },
+                                {
+                                        "id": "w1p-4",
+                                        "left": "だいがくいんせい",
+                                        "right": "Estudiante de posgrado"
+                                }
+                        ],
+                        "explanation": "Vocabulario y roles fundamentales para completar las tablas de la Lección 1 del cuaderno."
+                },
+                {
+                        "id": "ex-1-wbg-2",
+                        "type": "word-order",
+                        "prompt": "Del Workbook L1: Traduce \"El señor Smith no es estudiante\":",
+                        "japaneseVoiceText": "スミスさんはがくせいじゃありません",
+                        "wordBank": [
+                                "スミスさんは",
+                                "がくせい",
+                                "じゃありません",
+                                "です",
+                                "でした"
+                        ],
+                        "correctSentence": [
+                                "スミスさんは",
+                                "がくせい",
+                                "じゃありません"
+                        ],
+                        "explanation": "Smith-san wa gakusei ja arimasen (Forma negativa formal de です)."
+                },
+                {
+                        "id": "ex-1-wbg-3",
+                        "type": "multiple-choice",
+                        "prompt": "Del Workbook L1: ¿Cuál es la forma correcta para preguntar \"¿Es Mary de primer año en la universidad?\"?",
+                        "options": [
+                                {
+                                        "id": "w1-q-1",
+                                        "text": "メアリーさんは いちねんせいですか。",
+                                        "isCorrect": true
+                                },
+                                {
+                                        "id": "w1-q-2",
+                                        "text": "メアリーさんはいちねんせいでしたか。"
+                                },
+                                {
+                                        "id": "w1-q-3",
+                                        "text": "メアリーさんはいちねんせいです。"
+                                }
+                        ],
+                        "correctAnswerId": "w1-q-1",
+                        "explanation": "La partícula か al final de です transforma la oración en pregunta formal."
+                }
+        ]
+},
+        {
         "id": "l1-node-12",
         "unitId": 1,
         "lessonNumber": 1,
@@ -4369,6 +4454,91 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
+        "id": "l2-node-wb-grammar",
+        "unitId": 2,
+        "lessonNumber": 2,
+        "title": "Workbook L2: Ejercicios de Gramática y Demostrativos",
+        "japaneseTitle": "第2課 ワークブック：これ・それ・あれ・どれ と 助詞「も」",
+        "description": "Ejercicios escritos del Workbook de la Lección 2: demostrativos y precios en compras",
+        "icon": "ShoppingBag",
+        "color": "blue",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+                {
+                        "id": "ex-2-wbg-1",
+                        "type": "match-pairs",
+                        "prompt": "Del Workbook L2: Empareja la serie Ko-So-A-Do con su referencia espacial:",
+                        "pairs": [
+                                {
+                                        "id": "w2d-1",
+                                        "left": "これ (kore)",
+                                        "right": "Esto (cerca de quien habla)"
+                                },
+                                {
+                                        "id": "w2d-2",
+                                        "left": "それ (sore)",
+                                        "right": "Eso (cerca de quien escucha)"
+                                },
+                                {
+                                        "id": "w2d-3",
+                                        "left": "あれ (are)",
+                                        "right": "Aquello (lejos de ambos)"
+                                },
+                                {
+                                        "id": "w2d-4",
+                                        "left": "どれ (dore)",
+                                        "right": "¿Cuál? (interrogativo)"
+                                }
+                        ],
+                        "explanation": "La serie de demostrativos independientes del Workbook Genki L2."
+                },
+                {
+                        "id": "ex-2-wbg-2",
+                        "type": "word-order",
+                        "prompt": "Del Workbook L2: Traduce \"¿De quién es este paraguas?\":",
+                        "japaneseVoiceText": "これはだれのかさですか",
+                        "wordBank": [
+                                "これは",
+                                "だれの",
+                                "かさですか",
+                                "どれは",
+                                "のですか"
+                        ],
+                        "correctSentence": [
+                                "これは",
+                                "だれの",
+                                "かさですか"
+                        ],
+                        "explanation": "Kore wa dare no kasa desu ka (dare no = de quién)."
+                },
+                {
+                        "id": "ex-2-wbg-3",
+                        "type": "multiple-choice",
+                        "prompt": "Del Workbook L2: Takeshi dice: \"Soy estudiante de 2.º año\". Mary quiere decir: \"Yo también soy estudiante de 2.º año\". ¿Qué debe decir?",
+                        "options": [
+                                {
+                                        "id": "w2-mo-1",
+                                        "text": "わたしも にねんせいです。",
+                                        "isCorrect": true
+                                },
+                                {
+                                        "id": "w2-mo-2",
+                                        "text": "わたしは にねんせいもです。"
+                                },
+                                {
+                                        "id": "w2-mo-3",
+                                        "text": "わたしのにねんせいもです。"
+                                }
+                        ],
+                        "correctAnswerId": "w2-mo-1",
+                        "explanation": "La partícula も reemplaza directamente a は para indicar \"también\"."
+                }
+        ]
+},
+        {
         "id": "l2-node-12",
         "unitId": 2,
         "lessonNumber": 2,
@@ -5429,6 +5599,93 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
+        "id": "l3-node-wb-grammar",
+        "unitId": 3,
+        "lessonNumber": 3,
+        "title": "Workbook L3: Conjugación de Verbos y Partículas",
+        "japaneseTitle": "第3課 ワークブック：動詞の活用と助詞（を・で・に・へ）",
+        "description": "Ejercicios de conjugación formal -masu y selección de partículas del Workbook L3",
+        "icon": "Flame",
+        "color": "orange",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+                {
+                        "id": "ex-3-wbg-1",
+                        "type": "match-pairs",
+                        "prompt": "Del Workbook L3: Empareja los verbos en forma diccionario con su forma Masu afirmativa:",
+                        "pairs": [
+                                {
+                                        "id": "w3v-1",
+                                        "left": "いく (ir - u-verb)",
+                                        "right": "いきます"
+                                },
+                                {
+                                        "id": "w3v-2",
+                                        "left": "たべる (comer - ru-verb)",
+                                        "right": "たべます"
+                                },
+                                {
+                                        "id": "w3v-3",
+                                        "left": "する (hacer - irregular)",
+                                        "right": "します"
+                                },
+                                {
+                                        "id": "w3v-4",
+                                        "left": "くる (venir - irregular)",
+                                        "right": "きます"
+                                }
+                        ],
+                        "explanation": "Tabla fundamental de conjugación a 〜ます del Workbook L3."
+                },
+                {
+                        "id": "ex-3-wbg-2",
+                        "type": "word-order",
+                        "prompt": "Del Workbook L3: Traduce \"A menudo veo películas los fines de semana\":",
+                        "japaneseVoiceText": "しゅうまつによくえいがをみます",
+                        "wordBank": [
+                                "しゅうまつに",
+                                "よく",
+                                "えいがを",
+                                "みます",
+                                "で",
+                                "へ"
+                        ],
+                        "correctSentence": [
+                                "しゅうまつに",
+                                "よく",
+                                "えいがを",
+                                "みます"
+                        ],
+                        "explanation": "Shuumatsu ni (tiempo) yoku (frecuencia) eiga o (objeto directo) mimasu."
+                },
+                {
+                        "id": "ex-3-wbg-3",
+                        "type": "multiple-choice",
+                        "prompt": "Del Workbook L3: ¿Qué partícula completa la frase \"Almorcé EN la cafetería\" (cafetería = lugar de acción)?",
+                        "options": [
+                                {
+                                        "id": "w3p-de",
+                                        "text": "カフェテリア「で」ひるごはんをたべます。",
+                                        "isCorrect": true
+                                },
+                                {
+                                        "id": "w3p-ni",
+                                        "text": "カフェテリア「に」ひるごはんをたべます。"
+                                },
+                                {
+                                        "id": "w3p-wo",
+                                        "text": "カフェテリア「を」ひるごはんをたべます。"
+                                }
+                        ],
+                        "correctAnswerId": "w3p-de",
+                        "explanation": "La partícula で indica el lugar físico donde se realiza una acción."
+                }
+        ]
+},
+        {
         "id": "l3-node-11",
         "unitId": 3,
         "lessonNumber": 3,
@@ -6411,6 +6668,93 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
+        "id": "l4-node-wb-grammar",
+        "unitId": 4,
+        "lessonNumber": 4,
+        "title": "Workbook L4: Existencia y Localizaciones",
+        "japaneseTitle": "第4課 ワークブック：あります／います と 位置の表現",
+        "description": "Ejercicios escritos del Workbook L4: posiciones espaciales y verbos de existencia",
+        "icon": "MapPin",
+        "color": "green",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+                {
+                        "id": "ex-4-wbg-1",
+                        "type": "match-pairs",
+                        "prompt": "Del Workbook L4: Empareja las palabras de posición espacial:",
+                        "pairs": [
+                                {
+                                        "id": "w4pos-1",
+                                        "left": "うえ (上)",
+                                        "right": "Arriba / Sobre"
+                                },
+                                {
+                                        "id": "w4pos-2",
+                                        "left": "した (下)",
+                                        "right": "Debajo / Abajo"
+                                },
+                                {
+                                        "id": "w4pos-3",
+                                        "left": "なか (中)",
+                                        "right": "Dentro"
+                                },
+                                {
+                                        "id": "w4pos-4",
+                                        "left": "となり (隣)",
+                                        "right": "Al lado"
+                                }
+                        ],
+                        "explanation": "Palabras de ubicación que se conectan con の (ej. テーブルの上)."
+                },
+                {
+                        "id": "ex-4-wbg-2",
+                        "type": "word-order",
+                        "prompt": "Del Workbook L4: Traduce \"Hay un gato debajo de la mesa\":",
+                        "japaneseVoiceText": "テーブルのしたにねこがいます",
+                        "wordBank": [
+                                "テーブルの",
+                                "したに",
+                                "ねこが",
+                                "います",
+                                "あります",
+                                "を"
+                        ],
+                        "correctSentence": [
+                                "テーブルの",
+                                "したに",
+                                "ねこが",
+                                "います"
+                        ],
+                        "explanation": "Teeburu no shita ni neko ga imasu (para animales vivos se usa います)."
+                },
+                {
+                        "id": "ex-4-wbg-3",
+                        "type": "multiple-choice",
+                        "prompt": "Del Workbook L4: Para decir \"Hay un banco cerca de la estación\", ¿cuál es el verbo correcto?",
+                        "options": [
+                                {
+                                        "id": "w4v-ari",
+                                        "text": "えきのエ近くにぎんこうが「あります」。",
+                                        "isCorrect": true
+                                },
+                                {
+                                        "id": "w4v-i",
+                                        "text": "えきの近くにぎんこうが「います」。"
+                                },
+                                {
+                                        "id": "w4v-si",
+                                        "text": "えきの近くにぎんこうが「します」。"
+                                }
+                        ],
+                        "correctAnswerId": "w4v-ari",
+                        "explanation": "Para objetos inanimados y edificios se emplea あります."
+                }
+        ]
+},
+        {
         "id": "l4-node-10",
         "unitId": 4,
         "lessonNumber": 4,
@@ -7382,6 +7726,91 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
+        "id": "l5-node-wb-grammar",
+        "unitId": 5,
+        "lessonNumber": 5,
+        "title": "Workbook L5: Adjetivos い y な",
+        "japaneseTitle": "第5課 ワークブック：い形容詞とな形容詞の活用ドリル",
+        "description": "Ejercicios de conjugación en presente, pasado, afirmativo y negativo del Workbook L5",
+        "icon": "Flame",
+        "color": "orange",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+                {
+                        "id": "ex-5-wbg-1",
+                        "type": "match-pairs",
+                        "prompt": "Del Workbook L5: Empareja el adjetivo con su forma negativa en tiempo presente:",
+                        "pairs": [
+                                {
+                                        "id": "w5adj-1",
+                                        "left": "さむい (frío clima)",
+                                        "right": "さむくないです"
+                                },
+                                {
+                                        "id": "w5adj-2",
+                                        "left": "おもしろい (interesante)",
+                                        "right": "おもしろくないです"
+                                },
+                                {
+                                        "id": "w5adj-3",
+                                        "left": "げんき (con energía / な-adj)",
+                                        "right": "げんきじゃないです"
+                                },
+                                {
+                                        "id": "w5adj-4",
+                                        "left": "いい (bueno / irregular)",
+                                        "right": "よくないです"
+                                }
+                        ],
+                        "explanation": "Reglas de negación de adjetivos del Workbook Genki L5."
+                },
+                {
+                        "id": "ex-5-wbg-2",
+                        "type": "word-order",
+                        "prompt": "Del Workbook L5: Traduce \"El viaje a Okinawa no fue caro\":",
+                        "japaneseVoiceText": "おきなわのりょこうはたかくなかったです",
+                        "wordBank": [
+                                "おきなわの",
+                                "りょこうは",
+                                "たかくなかったです",
+                                "たかいです",
+                                "じゃありませんでした"
+                        ],
+                        "correctSentence": [
+                                "おきなわの",
+                                "りょこうは",
+                                "たかくなかったです"
+                        ],
+                        "explanation": "Okinawa no ryokou wa takakunakatta desu (Takai -> Takaku nakatta desu)."
+                },
+                {
+                        "id": "ex-5-wbg-3",
+                        "type": "multiple-choice",
+                        "prompt": "Del Workbook L5: ¿Cómo se dice \"una ciudad tranquila\" modificando directamente el sustantivo まち (ciudad)?",
+                        "options": [
+                                {
+                                        "id": "w5-shizuka-na",
+                                        "text": "しずかな まち",
+                                        "isCorrect": true
+                                },
+                                {
+                                        "id": "w5-shizuka-i",
+                                        "text": "しずかい まち"
+                                },
+                                {
+                                        "id": "w5-shizuka-no",
+                                        "text": "しずかの まち"
+                                }
+                        ],
+                        "correctAnswerId": "w5-shizuka-na",
+                        "explanation": "Los adjetivos な requieren añadir な antes del sustantivo que modifican."
+                }
+        ]
+},
+        {
         "id": "l5-node-9",
         "unitId": 5,
         "lessonNumber": 5,
@@ -10305,6 +10734,89 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
+        "id": "l8-node-wb-listening",
+        "unitId": 8,
+        "lessonNumber": 8,
+        "title": "Workbook L8: Comprensión Auditiva de Conversación Casual",
+        "japaneseTitle": "第8課 ワークブック：日常会話と予定の聞き取り",
+        "description": "Comprensión auditiva oficial del Workbook L8: diálogos entre amigos en forma corta",
+        "icon": "Headphones",
+        "color": "green",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+                {
+                        "id": "ex-8-wbl-1",
+                        "type": "listening",
+                        "prompt": "Escucha la invitación informal entre Mary y Takeshi:",
+                        "japaneseVoiceText": "こんばん、いっしょにごはんをたべない？ー うん、いいね。なにをたべる？",
+                        "options": [
+                                {
+                                        "id": "w8l-1a",
+                                        "text": "Mary invita a Takeshi a cenar juntos y él acepta con gusto.",
+                                        "isCorrect": true
+                                },
+                                {
+                                        "id": "w8l-1b",
+                                        "text": "Takeshi rechaza la invitación porque tiene trabajo."
+                                },
+                                {
+                                        "id": "w8l-1c",
+                                        "text": "Quedaron en verse mañana para almorzar."
+                                }
+                        ],
+                        "correctAnswerId": "w8l-1a",
+                        "explanation": "Konban, issho ni gohan o tabenai? (Forma corta negativa de invitación) - Un, ii ne (Aceptación informal)."
+                },
+                {
+                        "id": "ex-8-wbl-2",
+                        "type": "listening",
+                        "prompt": "Escucha los planes que cuenta Robert para el fin de semana:",
+                        "japaneseVoiceText": "あしたはテストがあるから、どこにもいかないでべんきょうする",
+                        "options": [
+                                {
+                                        "id": "w8l-2a",
+                                        "text": "No irá a ningún lado y se quedará estudiando porque mañana tiene examen.",
+                                        "isCorrect": true
+                                },
+                                {
+                                        "id": "w8l-2b",
+                                        "text": "Irá a esquiar a la montaña con sus amigos."
+                                },
+                                {
+                                        "id": "w8l-2c",
+                                        "text": "Ya terminó de estudiar para el examen de mañana."
+                                }
+                        ],
+                        "correctAnswerId": "w8l-2a",
+                        "explanation": "Doko ni mo ikanaide benkyou suru (Dokonimo + negativo = a ningún lado)."
+                },
+                {
+                        "id": "ex-8-wbl-3",
+                        "type": "word-order",
+                        "prompt": "Del Workbook L8: Traduce \"Takeshi dijo que no fuma cigarrillos\":",
+                        "japaneseVoiceText": "たけしさんはたばこをすわないといいました",
+                        "wordBank": [
+                                "たけしさんは",
+                                "たばこを",
+                                "すわないと",
+                                "いいました",
+                                "すいませんと",
+                                "言いました"
+                        ],
+                        "correctSentence": [
+                                "たけしさんは",
+                                "たばこを",
+                                "すわないと",
+                                "いいました"
+                        ],
+                        "explanation": "Takeshi-san wa tabako o suwanai (forma corta) to iimashita."
+                }
+        ]
+},
+        {
         "id": "l8-node-6",
         "unitId": 8,
         "lessonNumber": 8,
@@ -12002,6 +12514,174 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
+        "id": "l10-node-wb-grammar",
+        "unitId": 10,
+        "lessonNumber": 10,
+        "title": "Workbook L10: Comparaciones y Superlativos",
+        "japaneseTitle": "第10課 ワークブック：比較（〜のほうが）と最上級（いちばん）",
+        "description": "Ejercicios escritos de comparación entre dos alternativas y superlativos del Workbook L10",
+        "icon": "Flame",
+        "color": "orange",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+                {
+                        "id": "ex-10-wbg-1",
+                        "type": "match-pairs",
+                        "prompt": "Del Workbook L10: Empareja las estructuras de comparación:",
+                        "pairs": [
+                                {
+                                        "id": "w10c-1",
+                                        "left": "A のほうが (A no hou ga)",
+                                        "right": "A es más... (alternativa elegida)"
+                                },
+                                {
+                                        "id": "w10c-2",
+                                        "left": "B より (B yori)",
+                                        "right": "Más que B / En comparación con B"
+                                },
+                                {
+                                        "id": "w10c-3",
+                                        "left": "どちら (dochira)",
+                                        "right": "¿Cuál de los dos?"
+                                },
+                                {
+                                        "id": "w10c-4",
+                                        "left": "いちばん (ichiban)",
+                                        "right": "El más... / El número uno (superlativo)"
+                                }
+                        ],
+                        "explanation": "Patrones comparativos fundamentales de Genki L10."
+                },
+                {
+                        "id": "ex-10-wbg-2",
+                        "type": "word-order",
+                        "prompt": "Del Workbook L10: Traduce \"El autobús es más barato que el tren\":",
+                        "japaneseVoiceText": "バスはでんしゃよりやすいです",
+                        "wordBank": [
+                                "バスは",
+                                "でんしゃより",
+                                "やすいです",
+                                "のほうが",
+                                "たかいです"
+                        ],
+                        "correctSentence": [
+                                "バスは",
+                                "でんしゃより",
+                                "やすいです"
+                        ],
+                        "explanation": "Basu wa densha yori yasui desu."
+                },
+                {
+                        "id": "ex-10-wbg-3",
+                        "type": "multiple-choice",
+                        "prompt": "Del Workbook L10: ¿Cómo se pregunta \"¿Qué estación del año te gusta más?\"?",
+                        "options": [
+                                {
+                                        "id": "w10s-1",
+                                        "text": "きせつのなかで どのきせつがいちばんすきですか。",
+                                        "isCorrect": true
+                                },
+                                {
+                                        "id": "w10s-2",
+                                        "text": "きせつのなかで どのきせつがどちらすきですか。"
+                                },
+                                {
+                                        "id": "w10s-3",
+                                        "text": "きせつのなかで どのきせつがほうすきですか。"
+                                }
+                        ],
+                        "correctAnswerId": "w10s-1",
+                        "explanation": "Estructura superlativa: [Grupo] のなかで [Interrogativo] がいちばんすきですか。"
+                }
+        ]
+},
+        {
+        "id": "l10-node-wb-listening",
+        "unitId": 10,
+        "lessonNumber": 10,
+        "title": "Workbook L10: Comprensión Auditiva de Viajes y Estaciones",
+        "japaneseTitle": "第10課 ワークブック：旅行プランと季節のリスニング",
+        "description": "Comprensión auditiva oficial del Workbook L10: diálogos de transporte y preferencias",
+        "icon": "Headphones",
+        "color": "green",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+                {
+                        "id": "ex-10-wbl-1",
+                        "type": "listening",
+                        "prompt": "Escucha la conversación sobre el medio de transporte para el viaje a Hokkaido:",
+                        "japaneseVoiceText": "ひこうきのほうがしんかんせんよりはやいですから、ひこうきでいきましょう",
+                        "options": [
+                                {
+                                        "id": "w10l-1a",
+                                        "text": "Decidieron ir en avión porque es más rápido que el tren bala.",
+                                        "isCorrect": true
+                                },
+                                {
+                                        "id": "w10l-1b",
+                                        "text": "Prefieren el tren bala para disfrutar del paisaje."
+                                },
+                                {
+                                        "id": "w10l-1c",
+                                        "text": "Cancelaron el viaje a Hokkaido por mal tiempo."
+                                }
+                        ],
+                        "correctAnswerId": "w10l-1a",
+                        "explanation": "Hikouki no hou ga shinkansen yori hayai desu kara, hikouki de ikimashou."
+                },
+                {
+                        "id": "ex-10-wbl-2",
+                        "type": "listening",
+                        "prompt": "Escucha cuál estación del año le gusta más a Mary y por qué:",
+                        "japaneseVoiceText": "きせつのなかであきがいちばんすきです。もみじがきれいですから。",
+                        "options": [
+                                {
+                                        "id": "w10l-2a",
+                                        "text": "Le gusta más el otoño porque las hojas de otoño son muy hermosas.",
+                                        "isCorrect": true
+                                },
+                                {
+                                        "id": "w10l-2b",
+                                        "text": "Le gusta el verano por ir a la playa."
+                                },
+                                {
+                                        "id": "w10l-2c",
+                                        "text": "Le gusta la primavera por el calor."
+                                }
+                        ],
+                        "correctAnswerId": "w10l-2a",
+                        "explanation": "Aki ga ichiban suki desu. Momiji ga kirei desu kara."
+                },
+                {
+                        "id": "ex-10-wbl-3",
+                        "type": "word-order",
+                        "prompt": "Del Workbook L10: Traduce \"Tengo la intención de ir a Kioto el próximo año\":",
+                        "japaneseVoiceText": "らいねんきょうとへいくつもりです",
+                        "wordBank": [
+                                "らいねん",
+                                "きょうとへ",
+                                "いく",
+                                "つもりです",
+                                "いきました",
+                                "たいです"
+                        ],
+                        "correctSentence": [
+                                "らいねん",
+                                "きょうとへ",
+                                "いく",
+                                "つもりです"
+                        ],
+                        "explanation": "Rainen Kyouto e iku (forma corta) tsumori desu (intención planeada)."
+                }
+        ]
+},
+        {
         "id": "l10-node-wb-1",
         "unitId": 10,
         "lessonNumber": 10,
@@ -12861,6 +13541,89 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
+        "id": "l11-node-wb-listening",
+        "unitId": 11,
+        "lessonNumber": 11,
+        "title": "Workbook L11: Comprensión Auditiva de Deseos y Actividades",
+        "japaneseTitle": "第11課 ワークブック：願望（〜たい）と行動のリスニング",
+        "description": "Comprensión auditiva oficial del Workbook L11: deseos con 〜たい y listas de actividades 〜たり〜たり",
+        "icon": "Headphones",
+        "color": "green",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+                {
+                        "id": "ex-11-wbl-1",
+                        "type": "listening",
+                        "prompt": "Escucha lo que desea hacer Takeshi en las vacaciones de verano:",
+                        "japaneseVoiceText": "ことしのなつやすみはおきなわにいって、うみでおよぎたいです",
+                        "options": [
+                                {
+                                        "id": "w11l-1a",
+                                        "text": "En las vacaciones de este año quiere ir a Okinawa y nadar en el mar.",
+                                        "isCorrect": true
+                                },
+                                {
+                                        "id": "w11l-1b",
+                                        "text": "Quiere quedarse descansando en su casa de Tokio."
+                                },
+                                {
+                                        "id": "w11l-1c",
+                                        "text": "Quiere subir al monte Fuji con sus amigos."
+                                }
+                        ],
+                        "correctAnswerId": "w11l-1a",
+                        "explanation": "Okinawa ni itte, umi de oyogitai desu (oyogu -> oyogitai = desear nadar)."
+                },
+                {
+                        "id": "ex-11-wbl-2",
+                        "type": "listening",
+                        "prompt": "Escucha qué hizo Mary durante el fin de semana (〜たり〜たりする):",
+                        "japaneseVoiceText": "きのうはへやをそうじしたり、せんたくしたりしました",
+                        "options": [
+                                {
+                                        "id": "w11l-2a",
+                                        "text": "Ayer limpió su habitación y lavó la ropa, entre otras tareas.",
+                                        "isCorrect": true
+                                },
+                                {
+                                        "id": "w11l-2b",
+                                        "text": "Fue de compras al centro comercial y cocinó."
+                                },
+                                {
+                                        "id": "w11l-2c",
+                                        "text": "Se fue de fiesta todo el día."
+                                }
+                        ],
+                        "correctAnswerId": "w11l-2a",
+                        "explanation": "Heya o souji shitari, sentaku shitari shimashita (lista no exhaustiva de acciones en tiempo pasado)."
+                },
+                {
+                        "id": "ex-11-wbl-3",
+                        "type": "word-order",
+                        "prompt": "Del Workbook L11: Traduce \"¿Alguna vez has subido al monte Fuji?\":",
+                        "japaneseVoiceText": "ふじさんにのぼったことがありますか",
+                        "wordBank": [
+                                "ふじさんに",
+                                "のぼった",
+                                "ことが",
+                                "ありますか",
+                                "のぼりますか",
+                                "でしたか"
+                        ],
+                        "correctSentence": [
+                                "ふじさんに",
+                                "のぼった",
+                                "ことが",
+                                "ありますか"
+                        ],
+                        "explanation": "Fuji-san ni nobotta koto ga arimasu ka (experiencia pasada: forma Ta + koto ga arimasu ka)."
+                }
+        ]
+},
+        {
         "id": "l11-node-wb-1",
         "unitId": 11,
         "lessonNumber": 11,
@@ -13648,6 +14411,89 @@ export const genkiCurriculum: Unit[] = [
         ]
       },
       {
+        "id": "l12-node-wb-listening",
+        "unitId": 12,
+        "lessonNumber": 12,
+        "title": "Workbook L12: Comprensión Auditiva de Síntomas Médicos y Consejos",
+        "japaneseTitle": "第12課 ワークブック：病気の症状（〜んです）とアドバイス",
+        "description": "Comprensión auditiva oficial del Workbook L12: diálogo en la clínica médica con explicaciones y sugerencias",
+        "icon": "Headphones",
+        "color": "green",
+        "totalSteps": 3,
+        "unlocked": false,
+        "completedSteps": 0,
+        "stars": 0,
+        "exercises": [
+                {
+                        "id": "ex-12-wbl-1",
+                        "type": "listening",
+                        "prompt": "Escucha los síntomas que explica Robert al médico en el hospital:",
+                        "japaneseVoiceText": "きのうからあたまがいたくて、ねつもあるんです",
+                        "options": [
+                                {
+                                        "id": "w12l-1a",
+                                        "text": "Explica que desde ayer le duele la cabeza y además tiene fiebre.",
+                                        "isCorrect": true
+                                },
+                                {
+                                        "id": "w12l-1b",
+                                        "text": "Dice que le duele la garganta y tiene tos."
+                                },
+                                {
+                                        "id": "w12l-1c",
+                                        "text": "Dice que ya se siente completamente recuperado."
+                                }
+                        ],
+                        "correctAnswerId": "w12l-1a",
+                        "explanation": "Kinou kara atama ga itakute, netsu mo arun desu (〜んです para dar explicaciones clínicas)."
+                },
+                {
+                        "id": "ex-12-wbl-2",
+                        "type": "listening",
+                        "prompt": "Escucha las indicaciones y consejo del médico a Robert:",
+                        "japaneseVoiceText": "きょうはくすりをのんで、はやくねたほうがいいですよ",
+                        "options": [
+                                {
+                                        "id": "w12l-2a",
+                                        "text": "Le aconseja tomar el medicamento e irse a dormir temprano hoy.",
+                                        "isCorrect": true
+                                },
+                                {
+                                        "id": "w12l-2b",
+                                        "text": "Le dice que vaya a la universidad como siempre."
+                                },
+                                {
+                                        "id": "w12l-2c",
+                                        "text": "Le indica que debe operarse de inmediato."
+                                }
+                        ],
+                        "correctAnswerId": "w12l-2a",
+                        "explanation": "Kusuri o nonde, hayaku neta hou ga ii desu yo (Forma Ta + hou ga ii = es mejor que...)."
+                },
+                {
+                        "id": "ex-12-wbl-3",
+                        "type": "word-order",
+                        "prompt": "Del Workbook L12: Traduce el consejo \"Es mejor que no te sobrecargues de trabajo / te esfuerces en exceso\":",
+                        "japaneseVoiceText": "むりをしないほうがいいです",
+                        "wordBank": [
+                                "むりを",
+                                "しない",
+                                "ほうが",
+                                "いいです",
+                                "した",
+                                "いけません"
+                        ],
+                        "correctSentence": [
+                                "むりを",
+                                "しない",
+                                "ほうが",
+                                "いいです"
+                        ],
+                        "explanation": "Muri o shinai hou ga ii desu (Forma Nai + hou ga ii = es mejor no...)."
+                }
+        ]
+},
+        {
         "id": "l12-node-wb-1",
         "unitId": 12,
         "lessonNumber": 12,
@@ -15426,73 +16272,72 @@ export const genkiCurriculum: Unit[] = [
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
-          {
-            "id": "ex-14-wblis-1",
-            "type": "listening",
-            "prompt": "Escucha el diálogo del Workbook L14 y selecciona qué decidieron hacer:",
-            "japaneseVoiceText": "こんしゅうまつはてんきがよさそうですから、みんなでうみへいきましょう",
-            "options": [
-              {
-                "id": "wbl-14-1",
-                "text": "Como parece que habrá buen clima este fin de semana, irán todos al mar.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-14-2",
-                "text": "Se quedarán estudiando en la biblioteca porque lloverá."
-              },
-              {
-                "id": "wbl-14-3",
-                "text": "Cancelaron el viaje por falta de tiempo."
-              }
-            ],
-            "correctAnswerId": "wbl-14-1",
-            "explanation": "Konshuumatsu wa tenki ga yosasou desu kara, minna de umi e ikimashou."
-          },
-          {
-            "id": "ex-14-wblis-2",
-            "type": "listening",
-            "prompt": "Escucha el aviso en la estación de tren (Práctica Auditiva L14):",
-            "japaneseVoiceText": "まもなくにばんせんにでんしゃがまいります。あぶないですから、きいろいせんのうしろまでおさがりください。",
-            "options": [
-              {
-                "id": "wbl-14-2a",
-                "text": "En breve llegará un tren al andén 2; por seguridad, retroceda detrás de la línea amarilla.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-14-2b",
-                "text": "El último tren de hoy ha sido cancelado."
-              },
-              {
-                "id": "wbl-14-2c",
-                "text": "Los boletos se venden en el segundo piso."
-              }
-            ],
-            "correctAnswerId": "wbl-14-2a",
-            "explanation": "Anuncio real de las estaciones de Japón usando まいります y おさがりください."
-          },
-          {
-            "id": "ex-14-wblis-3",
-            "type": "word-order",
-            "prompt": "Del Workbook L14: Traduce \"La verdad es que todavía no he terminado el reporte\":",
-            "japaneseVoiceText": "じつはまだレポートがおわっていません",
-            "wordBank": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません",
-              "おわりませんでした"
-            ],
-            "correctSentence": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません"
-            ],
-            "explanation": "Jitsu wa mada repooto ga owatte imasen."
-          }
-        ]
+                    {
+                              "id": "ex-14-wblis-1",
+                              "type": "listening",
+                              "prompt": "Escucha el diálogo del Workbook L14 (San Valentín) y responde:",
+                              "japaneseVoiceText": "バレンタインデーにメアリーさんはたけしさんにチョコレートをあげました。たけしさんはとてもよろこんでいました。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-14-1",
+                                                  "text": "Mary le regaló chocolates a Takeshi y él se alegró mucho.",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-14-2",
+                                                  "text": "Takeshi le regaló flores a Mary en la universidad."
+                                        },
+                                        {
+                                                  "id": "wbl-14-3",
+                                                  "text": "Mary compró chocolates para ella misma en la pastelería."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-14-1",
+                              "explanation": "Barentain dee ni Mearii-san wa Takeshi-san ni chokoreeto o agemashita (Mary le dio chocolates a Takeshi)."
+                    },
+                    {
+                              "id": "ex-14-wblis-2",
+                              "type": "listening",
+                              "prompt": "Escucha el consejo con 〜たらどうですか (Práctica Auditiva L14):",
+                              "japaneseVoiceText": "あたまがいたいなら、くすりをのんで、きょうははやくねたらどうですか。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-14-2a",
+                                                  "text": "Si le duele la cabeza, le aconseja tomar medicina y acostarse temprano hoy.",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-14-2b",
+                                                  "text": "Le sugiere ir inmediatamente al hospital central."
+                                        },
+                                        {
+                                                  "id": "wbl-14-2c",
+                                                  "text": "Le pide que termine el informe antes de salir de la oficina."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-14-2a",
+                              "explanation": "Kusuri o nonde, kyou wa hayaku netara dou desu ka (¿Qué tal si tomas medicina y te duermes temprano?)."
+                    },
+                    {
+                              "id": "ex-14-wblis-3",
+                              "type": "word-order",
+                              "prompt": "Del Workbook L14: Ordena la frase \"Un amigo me dio un libro\":",
+                              "japaneseVoiceText": "ともだちがわたしにほんをくれました。",
+                              "wordBank": [
+                                        "ともだちが",
+                                        "わたしに",
+                                        "ほんを",
+                                        "くれました。"
+                              ],
+                              "correctSentence": [
+                                        "ともだちが",
+                                        "わたしに",
+                                        "ほんを",
+                                        "くれました。"
+                              ],
+                              "explanation": "Tomodachi ga watashi ni hon o kuremashita (Un amigo me dio a mí un libro)."
+                    }
+          ]
       },
       {
         "id": "l14-node-5",
@@ -16306,73 +17151,70 @@ export const genkiCurriculum: Unit[] = [
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
-          {
-            "id": "ex-15-wblis-1",
-            "type": "listening",
-            "prompt": "Escucha el diálogo del Workbook L15 y selecciona qué decidieron hacer:",
-            "japaneseVoiceText": "こんしゅうまつはてんきがよさそうですから、みんなでうみへいきましょう",
-            "options": [
-              {
-                "id": "wbl-15-1",
-                "text": "Como parece que habrá buen clima este fin de semana, irán todos al mar.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-15-2",
-                "text": "Se quedarán estudiando en la biblioteca porque lloverá."
-              },
-              {
-                "id": "wbl-15-3",
-                "text": "Cancelaron el viaje por falta de tiempo."
-              }
-            ],
-            "correctAnswerId": "wbl-15-1",
-            "explanation": "Konshuumatsu wa tenki ga yosasou desu kara, minna de umi e ikimashou."
-          },
-          {
-            "id": "ex-15-wblis-2",
-            "type": "listening",
-            "prompt": "Escucha el aviso en la estación de tren (Práctica Auditiva L15):",
-            "japaneseVoiceText": "まもなくにばんせんにでんしゃがまいります。あぶないですから、きいろいせんのうしろまでおさがりください。",
-            "options": [
-              {
-                "id": "wbl-15-2a",
-                "text": "En breve llegará un tren al andén 2; por seguridad, retroceda detrás de la línea amarilla.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-15-2b",
-                "text": "El último tren de hoy ha sido cancelado."
-              },
-              {
-                "id": "wbl-15-2c",
-                "text": "Los boletos se venden en el segundo piso."
-              }
-            ],
-            "correctAnswerId": "wbl-15-2a",
-            "explanation": "Anuncio real de las estaciones de Japón usando まいります y おさがりください."
-          },
-          {
-            "id": "ex-15-wblis-3",
-            "type": "word-order",
-            "prompt": "Del Workbook L15: Traduce \"La verdad es que todavía no he terminado el reporte\":",
-            "japaneseVoiceText": "じつはまだレポートがおわっていません",
-            "wordBank": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません",
-              "おわりませんでした"
-            ],
-            "correctSentence": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません"
-            ],
-            "explanation": "Jitsu wa mada repooto ga owatte imasen."
-          }
-        ]
+                    {
+                              "id": "ex-15-wblis-1",
+                              "type": "listening",
+                              "prompt": "Escucha el audio del Workbook L15 (Viaje a Nagano) y selecciona:",
+                              "japaneseVoiceText": "こんどのやすみに、ながのへスキーにいくとおもっています。ホテルももうよやくしておきました。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-15-1",
+                                                  "text": "Planea ir a esquiar a Nagano y ya reservó el hotel con anticipación (~ておく).",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-15-2",
+                                                  "text": "Canceló su viaje a Nagano debido a la falta de nieve."
+                                        },
+                                        {
+                                                  "id": "wbl-15-3",
+                                                  "text": "Se quedará estudiando en casa todo el fin de semana."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-15-1",
+                              "explanation": "Nagano e sukii ni ikou to omotte imasu. Hoteru mo mou yoyaku shite okimashita."
+                    },
+                    {
+                              "id": "ex-15-wblis-2",
+                              "type": "listening",
+                              "prompt": "Escucha la descripción de planes con oraciones relativas (Workbook L15):",
+                              "japaneseVoiceText": "きのうみつけたあのみせで、あしたともだちとばんごはんをたべるつもりです。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-15-2a",
+                                                  "text": "Planea cenar mañana con un amigo en la tienda/restaurante que encontró ayer.",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-15-2b",
+                                                  "text": "Irá a comprar regalos a una tienda recomendada por su profesor."
+                                        },
+                                        {
+                                                  "id": "wbl-15-2c",
+                                                  "text": "Cocinará la cena en casa con los ingredientes que compró ayer."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-15-2a",
+                              "explanation": "Kinou mitsuketa ano mise de, ashita tomodachi to bangohan o taberu tsumori desu."
+                    },
+                    {
+                              "id": "ex-15-wblis-3",
+                              "type": "word-order",
+                              "prompt": "Del Workbook L15: Ordena \"Compremos los boletos con anticipación\":",
+                              "japaneseVoiceText": "きっぷをかっておきましょう。",
+                              "wordBank": [
+                                        "きっぷを",
+                                        "かって",
+                                        "おきましょう。"
+                              ],
+                              "correctSentence": [
+                                        "きっぷを",
+                                        "かって",
+                                        "おきましょう。"
+                              ],
+                              "explanation": "Kippu o katte okimashou (Compremos los boletos por adelantado)."
+                    }
+          ]
       },
       {
         "id": "l15-node-5",
@@ -17185,73 +18027,70 @@ export const genkiCurriculum: Unit[] = [
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
-          {
-            "id": "ex-16-wblis-1",
-            "type": "listening",
-            "prompt": "Escucha el diálogo del Workbook L16 y selecciona qué decidieron hacer:",
-            "japaneseVoiceText": "こんしゅうまつはてんきがよさそうですから、みんなでうみへいきましょう",
-            "options": [
-              {
-                "id": "wbl-16-1",
-                "text": "Como parece que habrá buen clima este fin de semana, irán todos al mar.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-16-2",
-                "text": "Se quedarán estudiando en la biblioteca porque lloverá."
-              },
-              {
-                "id": "wbl-16-3",
-                "text": "Cancelaron el viaje por falta de tiempo."
-              }
-            ],
-            "correctAnswerId": "wbl-16-1",
-            "explanation": "Konshuumatsu wa tenki ga yosasou desu kara, minna de umi e ikimashou."
-          },
-          {
-            "id": "ex-16-wblis-2",
-            "type": "listening",
-            "prompt": "Escucha el aviso en la estación de tren (Práctica Auditiva L16):",
-            "japaneseVoiceText": "まもなくにばんせんにでんしゃがまいります。あぶないですから、きいろいせんのうしろまでおさがりください。",
-            "options": [
-              {
-                "id": "wbl-16-2a",
-                "text": "En breve llegará un tren al andén 2; por seguridad, retroceda detrás de la línea amarilla.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-16-2b",
-                "text": "El último tren de hoy ha sido cancelado."
-              },
-              {
-                "id": "wbl-16-2c",
-                "text": "Los boletos se venden en el segundo piso."
-              }
-            ],
-            "correctAnswerId": "wbl-16-2a",
-            "explanation": "Anuncio real de las estaciones de Japón usando まいります y おさがりください."
-          },
-          {
-            "id": "ex-16-wblis-3",
-            "type": "word-order",
-            "prompt": "Del Workbook L16: Traduce \"La verdad es que todavía no he terminado el reporte\":",
-            "japaneseVoiceText": "じつはまだレポートがおわっていません",
-            "wordBank": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません",
-              "おわりませんでした"
-            ],
-            "correctSentence": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません"
-            ],
-            "explanation": "Jitsu wa mada repooto ga owatte imasen."
-          }
-        ]
+                    {
+                              "id": "ex-16-wblis-1",
+                              "type": "listening",
+                              "prompt": "Escucha el aviso de objetos perdidos en la estación (Workbook L16):",
+                              "japaneseVoiceText": "たいへんです！でんしゃのなかにかばんをわすれてしまいました。さいふもはいっています。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-16-1",
+                                                  "text": "Olvidó accidentalmente su bolso en el tren (~てしまいました) con su cartera dentro.",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-16-2",
+                                                  "text": "Perdió su paraguas en la parada del autobús esta mañana."
+                                        },
+                                        {
+                                                  "id": "wbl-16-3",
+                                                  "text": "Le robaron el teléfono móvil en la entrada de la estación."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-16-1",
+                              "explanation": "Densha no naka ni kaban o wasurete shimaimashita. Saifu mo haitte imasu."
+                    },
+                    {
+                              "id": "ex-16-wblis-2",
+                              "type": "listening",
+                              "prompt": "Escucha el arrepentimiento con 〜ばよかったです (Workbook L16):",
+                              "japaneseVoiceText": "きのうのパーテイーにいけばよかったです。みんなとてもたのしかったといっていました。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-16-2a",
+                                                  "text": "Lamenta no haber ido a la fiesta de ayer, pues todos dijeron que estuvo muy divertida.",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-16-2b",
+                                                  "text": "Lamenta haber gastado tanto dinero en la fiesta de ayer."
+                                        },
+                                        {
+                                                  "id": "wbl-16-2c",
+                                                  "text": "Se alegra de haberse quedado en casa descansando ayer."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-16-2a",
+                              "explanation": "Kinou no paatii ni ikeba yokatta desu (Ojalá hubiera ido a la fiesta de ayer)."
+                    },
+                    {
+                              "id": "ex-16-wblis-3",
+                              "type": "word-order",
+                              "prompt": "Del Workbook L16: Ordena \"La puerta está cerrada (intransitivo)\":",
+                              "japaneseVoiceText": "ドアがしまっています。",
+                              "wordBank": [
+                                        "ドアが",
+                                        "しまって",
+                                        "います。"
+                              ],
+                              "correctSentence": [
+                                        "ドアが",
+                                        "しまって",
+                                        "います。"
+                              ],
+                              "explanation": "Doa ga shimatte imasu (La puerta está cerrada)."
+                    }
+          ]
       },
       {
         "id": "l16-node-5",
@@ -18055,73 +18894,72 @@ export const genkiCurriculum: Unit[] = [
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
-          {
-            "id": "ex-17-wblis-1",
-            "type": "listening",
-            "prompt": "Escucha el diálogo del Workbook L17 y selecciona qué decidieron hacer:",
-            "japaneseVoiceText": "こんしゅうまつはてんきがよさそうですから、みんなでうみへいきましょう",
-            "options": [
-              {
-                "id": "wbl-17-1",
-                "text": "Como parece que habrá buen clima este fin de semana, irán todos al mar.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-17-2",
-                "text": "Se quedarán estudiando en la biblioteca porque lloverá."
-              },
-              {
-                "id": "wbl-17-3",
-                "text": "Cancelaron el viaje por falta de tiempo."
-              }
-            ],
-            "correctAnswerId": "wbl-17-1",
-            "explanation": "Konshuumatsu wa tenki ga yosasou desu kara, minna de umi e ikimashou."
-          },
-          {
-            "id": "ex-17-wblis-2",
-            "type": "listening",
-            "prompt": "Escucha el aviso en la estación de tren (Práctica Auditiva L17):",
-            "japaneseVoiceText": "まもなくにばんせんにでんしゃがまいります。あぶないですから、きいろいせんのうしろまでおさがりください。",
-            "options": [
-              {
-                "id": "wbl-17-2a",
-                "text": "En breve llegará un tren al andén 2; por seguridad, retroceda detrás de la línea amarilla.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-17-2b",
-                "text": "El último tren de hoy ha sido cancelado."
-              },
-              {
-                "id": "wbl-17-2c",
-                "text": "Los boletos se venden en el segundo piso."
-              }
-            ],
-            "correctAnswerId": "wbl-17-2a",
-            "explanation": "Anuncio real de las estaciones de Japón usando まいります y おさがりください."
-          },
-          {
-            "id": "ex-17-wblis-3",
-            "type": "word-order",
-            "prompt": "Del Workbook L17: Traduce \"La verdad es que todavía no he terminado el reporte\":",
-            "japaneseVoiceText": "じつはまだレポートがおわっていません",
-            "wordBank": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません",
-              "おわりませんでした"
-            ],
-            "correctSentence": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません"
-            ],
-            "explanation": "Jitsu wa mada repooto ga owatte imasen."
-          }
-        ]
+                    {
+                              "id": "ex-17-wblis-1",
+                              "type": "listening",
+                              "prompt": "Escucha el chisme/noticia del campus (Workbook L17):",
+                              "japaneseVoiceText": "たけしさんはらいげつ、イギリスへりゅうがくするそうですよ。もうじゅんびをはじめたそうです。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-17-1",
+                                                  "text": "Dicen que el próximo mes Takeshi se va a estudiar a Inglaterra y ya inició preparativos.",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-17-2",
+                                                  "text": "Dicen que Takeshi acaba de regresar de un viaje por Londres."
+                                        },
+                                        {
+                                                  "id": "wbl-17-3",
+                                                  "text": "Escuchó que Takeshi decidió cambiar de carrera universitaria."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-17-1",
+                              "explanation": "Takeshi-san wa raigetsu, Igirisu e ryuugaku suru sou desu yo (~sou desu indica rumor/oído de otros)."
+                    },
+                    {
+                              "id": "ex-17-wblis-2",
+                              "type": "listening",
+                              "prompt": "Escucha la conversación sobre el clima y planes con 〜たら (Workbook L17):",
+                              "japaneseVoiceText": "あしたあめがふったら、バーベキューはやめて、うちでえいがをみましょう。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-17-2a",
+                                                  "text": "Si llueve mañana, cancelarán la barbacoa y verán películas en casa.",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-17-2b",
+                                                  "text": "Harán la barbacoa aunque llueva bajo una lona protectora."
+                                        },
+                                        {
+                                                  "id": "wbl-17-2c",
+                                                  "text": "Irán al cine de la ciudad si el clima amanece soleado."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-17-2a",
+                              "explanation": "Ashita ame ga futtara, baabekyuu wa yamete, uchi de eiga o mimashou."
+                    },
+                    {
+                              "id": "ex-17-wblis-3",
+                              "type": "word-order",
+                              "prompt": "Del Workbook L17: Ordena \"Dicen que el profesor no vendrá mañana\":",
+                              "japaneseVoiceText": "せんせいはあしたこないそうです。",
+                              "wordBank": [
+                                        "せんせいは",
+                                        "あした",
+                                        "こない",
+                                        "そうです。"
+                              ],
+                              "correctSentence": [
+                                        "せんせいは",
+                                        "あした",
+                                        "こない",
+                                        "そうです。"
+                              ],
+                              "explanation": "Sensei wa ashita konai sou desu (Dicen que el profesor no viene mañana)."
+                    }
+          ]
       },
       {
         "id": "l17-node-5",
@@ -18926,73 +19764,70 @@ export const genkiCurriculum: Unit[] = [
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
-          {
-            "id": "ex-18-wblis-1",
-            "type": "listening",
-            "prompt": "Escucha el diálogo del Workbook L18 y selecciona qué decidieron hacer:",
-            "japaneseVoiceText": "こんしゅうまつはてんきがよさそうですから、みんなでうみへいきましょう",
-            "options": [
-              {
-                "id": "wbl-18-1",
-                "text": "Como parece que habrá buen clima este fin de semana, irán todos al mar.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-18-2",
-                "text": "Se quedarán estudiando en la biblioteca porque lloverá."
-              },
-              {
-                "id": "wbl-18-3",
-                "text": "Cancelaron el viaje por falta de tiempo."
-              }
-            ],
-            "correctAnswerId": "wbl-18-1",
-            "explanation": "Konshuumatsu wa tenki ga yosasou desu kara, minna de umi e ikimashou."
-          },
-          {
-            "id": "ex-18-wblis-2",
-            "type": "listening",
-            "prompt": "Escucha el aviso en la estación de tren (Práctica Auditiva L18):",
-            "japaneseVoiceText": "まもなくにばんせんにでんしゃがまいります。あぶないですから、きいろいせんのうしろまでおさがりください。",
-            "options": [
-              {
-                "id": "wbl-18-2a",
-                "text": "En breve llegará un tren al andén 2; por seguridad, retroceda detrás de la línea amarilla.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-18-2b",
-                "text": "El último tren de hoy ha sido cancelado."
-              },
-              {
-                "id": "wbl-18-2c",
-                "text": "Los boletos se venden en el segundo piso."
-              }
-            ],
-            "correctAnswerId": "wbl-18-2a",
-            "explanation": "Anuncio real de las estaciones de Japón usando まいります y おさがりください."
-          },
-          {
-            "id": "ex-18-wblis-3",
-            "type": "word-order",
-            "prompt": "Del Workbook L18: Traduce \"La verdad es que todavía no he terminado el reporte\":",
-            "japaneseVoiceText": "じつはまだレポートがおわっていません",
-            "wordBank": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません",
-              "おわりませんでした"
-            ],
-            "correctSentence": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません"
-            ],
-            "explanation": "Jitsu wa mada repooto ga owatte imasen."
-          }
-        ]
+                    {
+                              "id": "ex-18-wblis-1",
+                              "type": "listening",
+                              "prompt": "Escucha la conversación de seguridad del apartamento (Workbook L18):",
+                              "japaneseVoiceText": "るすのあいだに、へやのまどはちゃんとしめてありますから、あんしんしてください。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-18-1",
+                                                  "text": "Las ventanas de la habitación están debidamente cerradas (~てある) durante la ausencia.",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-18-2",
+                                                  "text": "Se dejaron abiertas las ventanas para que circule el aire fresco."
+                                        },
+                                        {
+                                                  "id": "wbl-18-3",
+                                                  "text": "Las llaves fueron entregadas al portero del edificio."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-18-1",
+                              "explanation": "Rusu no aida ni, heya no mado wa chanto shimete arimasu kara, anshin shite kudasai."
+                    },
+                    {
+                              "id": "ex-18-wblis-2",
+                              "type": "listening",
+                              "prompt": "Escucha la preparación para el examen con 〜ておく (Workbook L18):",
+                              "japaneseVoiceText": "らいしゅうのテストのために、きょうかしょをなんかいもよんでおきました。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-18-2a",
+                                                  "text": "Leyó varias veces el libro de texto como preparación para el examen de la próxima semana.",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-18-2b",
+                                                  "text": "Le pidió apuntes prestados a un amigo para estudiar la noche anterior."
+                                        },
+                                        {
+                                                  "id": "wbl-18-2c",
+                                                  "text": "Olvidó comprar el libro de texto requerido para la materia."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-18-2a",
+                              "explanation": "Raishuu no tesuto no tame ni, kyoukasho o nankai mo yonde okimashita."
+                    },
+                    {
+                              "id": "ex-18-wblis-3",
+                              "type": "word-order",
+                              "prompt": "Del Workbook L18: Ordena \"Está escrito en el calendario\":",
+                              "japaneseVoiceText": "カレンダーにかいてあります。",
+                              "wordBank": [
+                                        "カレンダーに",
+                                        "かいて",
+                                        "あります。"
+                              ],
+                              "correctSentence": [
+                                        "カレンダーに",
+                                        "かいて",
+                                        "あります。"
+                              ],
+                              "explanation": "Karendaa ni kaite arimasu (Está anotado/escrito en el calendario con fin previo)."
+                    }
+          ]
       },
       {
         "id": "l18-node-5",
@@ -19807,73 +20642,70 @@ export const genkiCurriculum: Unit[] = [
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
-          {
-            "id": "ex-19-wblis-1",
-            "type": "listening",
-            "prompt": "Escucha el diálogo del Workbook L19 y selecciona qué decidieron hacer:",
-            "japaneseVoiceText": "こんしゅうまつはてんきがよさそうですから、みんなでうみへいきましょう",
-            "options": [
-              {
-                "id": "wbl-19-1",
-                "text": "Como parece que habrá buen clima este fin de semana, irán todos al mar.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-19-2",
-                "text": "Se quedarán estudiando en la biblioteca porque lloverá."
-              },
-              {
-                "id": "wbl-19-3",
-                "text": "Cancelaron el viaje por falta de tiempo."
-              }
-            ],
-            "correctAnswerId": "wbl-19-1",
-            "explanation": "Konshuumatsu wa tenki ga yosasou desu kara, minna de umi e ikimashou."
-          },
-          {
-            "id": "ex-19-wblis-2",
-            "type": "listening",
-            "prompt": "Escucha el aviso en la estación de tren (Práctica Auditiva L19):",
-            "japaneseVoiceText": "まもなくにばんせんにでんしゃがまいります。あぶないですから、きいろいせんのうしろまでおさがりください。",
-            "options": [
-              {
-                "id": "wbl-19-2a",
-                "text": "En breve llegará un tren al andén 2; por seguridad, retroceda detrás de la línea amarilla.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-19-2b",
-                "text": "El último tren de hoy ha sido cancelado."
-              },
-              {
-                "id": "wbl-19-2c",
-                "text": "Los boletos se venden en el segundo piso."
-              }
-            ],
-            "correctAnswerId": "wbl-19-2a",
-            "explanation": "Anuncio real de las estaciones de Japón usando まいります y おさがりください."
-          },
-          {
-            "id": "ex-19-wblis-3",
-            "type": "word-order",
-            "prompt": "Del Workbook L19: Traduce \"La verdad es que todavía no he terminado el reporte\":",
-            "japaneseVoiceText": "じつはまだレポートがおわっていません",
-            "wordBank": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません",
-              "おわりませんでした"
-            ],
-            "correctSentence": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません"
-            ],
-            "explanation": "Jitsu wa mada repooto ga owatte imasen."
-          }
-        ]
+                    {
+                              "id": "ex-19-wblis-1",
+                              "type": "listening",
+                              "prompt": "Escucha el diálogo en la sala de profesores con Sonkeigo (Workbook L19):",
+                              "japaneseVoiceText": "やまだせんせいは、きょうけんきゅうしつにいらっしゃいますか。さきほどそのようにおっしゃっていました。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-19-1",
+                                                  "text": "Pregunta si el Prof. Yamada estará en su despacho; él mismo lo mencionó con honorífico.",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-19-2",
+                                                  "text": "Avisa que el Prof. Yamada no dará asesorías el día de hoy."
+                                        },
+                                        {
+                                                  "id": "wbl-19-3",
+                                                  "text": "El Prof. Yamada solicita que le envíen los trabajos por correo."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-19-1",
+                              "explanation": "Irasshaimasu (honorífico de estar) y osshatte imashita (honorífico de decir)."
+                    },
+                    {
+                              "id": "ex-19-wblis-2",
+                              "type": "listening",
+                              "prompt": "Escucha la atención en la recepción con お〜になる (Workbook L19):",
+                              "japaneseVoiceText": "しゃちょうはもうお帰りになりました。あしたのあさ、またごれんらくください。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-19-2a",
+                                                  "text": "El presidente de la empresa ya se marchó a casa (お帰りになりました); pide llamar mañana.",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-19-2b",
+                                                  "text": "El presidente se encuentra en una reunión confidencial en la sala principal."
+                                        },
+                                        {
+                                                  "id": "wbl-19-2c",
+                                                  "text": "El presidente estará de viaje de negocios durante toda la semana."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-19-2a",
+                              "explanation": "Shachou wa mou okaeri ni narimashita. Ashita no asa, mata gorenraku kudasai."
+                    },
+                    {
+                              "id": "ex-19-wblis-3",
+                              "type": "word-order",
+                              "prompt": "Del Workbook L19: Ordena \"¿Qué va a comer/beber el profesor? (honorífico)\":",
+                              "japaneseVoiceText": "せんせいはなにをめしあがりますか。",
+                              "wordBank": [
+                                        "せんせいは",
+                                        "なにを",
+                                        "めしあがりますか。"
+                              ],
+                              "correctSentence": [
+                                        "せんせいは",
+                                        "なにを",
+                                        "めしあがりますか。"
+                              ],
+                              "explanation": "Sensei wa nani o meshiagarimasu ka (meshiagaru = comer/beber en sonkeigo)."
+                    }
+          ]
       },
       {
         "id": "l19-node-5",
@@ -20671,73 +21503,70 @@ export const genkiCurriculum: Unit[] = [
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
-          {
-            "id": "ex-20-wblis-1",
-            "type": "listening",
-            "prompt": "Escucha el diálogo del Workbook L20 y selecciona qué decidieron hacer:",
-            "japaneseVoiceText": "こんしゅうまつはてんきがよさそうですから、みんなでうみへいきましょう",
-            "options": [
-              {
-                "id": "wbl-20-1",
-                "text": "Como parece que habrá buen clima este fin de semana, irán todos al mar.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-20-2",
-                "text": "Se quedarán estudiando en la biblioteca porque lloverá."
-              },
-              {
-                "id": "wbl-20-3",
-                "text": "Cancelaron el viaje por falta de tiempo."
-              }
-            ],
-            "correctAnswerId": "wbl-20-1",
-            "explanation": "Konshuumatsu wa tenki ga yosasou desu kara, minna de umi e ikimashou."
-          },
-          {
-            "id": "ex-20-wblis-2",
-            "type": "listening",
-            "prompt": "Escucha el aviso en la estación de tren (Práctica Auditiva L20):",
-            "japaneseVoiceText": "まもなくにばんせんにでんしゃがまいります。あぶないですから、きいろいせんのうしろまでおさがりください。",
-            "options": [
-              {
-                "id": "wbl-20-2a",
-                "text": "En breve llegará un tren al andén 2; por seguridad, retroceda detrás de la línea amarilla.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-20-2b",
-                "text": "El último tren de hoy ha sido cancelado."
-              },
-              {
-                "id": "wbl-20-2c",
-                "text": "Los boletos se venden en el segundo piso."
-              }
-            ],
-            "correctAnswerId": "wbl-20-2a",
-            "explanation": "Anuncio real de las estaciones de Japón usando まいります y おさがりください."
-          },
-          {
-            "id": "ex-20-wblis-3",
-            "type": "word-order",
-            "prompt": "Del Workbook L20: Traduce \"La verdad es que todavía no he terminado el reporte\":",
-            "japaneseVoiceText": "じつはまだレポートがおわっていません",
-            "wordBank": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません",
-              "おわりませんでした"
-            ],
-            "correctSentence": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません"
-            ],
-            "explanation": "Jitsu wa mada repooto ga owatte imasen."
-          }
-        ]
+                    {
+                              "id": "ex-20-wblis-1",
+                              "type": "listening",
+                              "prompt": "Escucha la presentación humilde de negocios con Kenjougo (Workbook L20):",
+                              "japaneseVoiceText": "わたくし、メアリーと申します。きょうは３じにおめにかかることになっております。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-20-1",
+                                                  "text": "Se presenta humildemente como Mary (申します) con cita para reunirse (お目にかかる) a las 3.",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-20-2",
+                                                  "text": "Llama para solicitar una reprogramación de su cita para las 4 de la tarde."
+                                        },
+                                        {
+                                                  "id": "wbl-20-3",
+                                                  "text": "Pregunta por el nombre del encargado del departamento de compras."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-20-1",
+                              "explanation": "Watakushi, Mearii to moushimasu (me llamo Mary). Ome ni kakaru (reunirme con ud)."
+                    },
+                    {
+                              "id": "ex-20-wblis-2",
+                              "type": "listening",
+                              "prompt": "Escucha el ofrecimiento de ayuda con お〜する (Workbook L20):",
+                              "japaneseVoiceText": "にもつが重そうですね。私がお持ちいたしましょうか。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-20-2a",
+                                                  "text": "Al ver que las maletas pesan, se ofrece humildemente a cargarlas (お持ちいたしましょうか).",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-20-2b",
+                                                  "text": "Sugiere guardar el equipaje en el casillero de la estación."
+                                        },
+                                        {
+                                                  "id": "wbl-20-2c",
+                                                  "text": "Le pide a un empleado de la estación que cargue las maletas."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-20-2a",
+                              "explanation": "Nimotsu ga omosou desu ne. Watashi ga omochi itashimashou ka."
+                    },
+                    {
+                              "id": "ex-20-wblis-3",
+                              "type": "word-order",
+                              "prompt": "Del Workbook L20: Ordena \"Mañana vendré nuevamente (humilde)\":",
+                              "japaneseVoiceText": "あしたまたまいります。",
+                              "wordBank": [
+                                        "あした",
+                                        "また",
+                                        "まいります。"
+                              ],
+                              "correctSentence": [
+                                        "あした",
+                                        "また",
+                                        "まいります。"
+                              ],
+                              "explanation": "Ashita mata mairimasu (mairu = ir/venir en kenjougo humilde)."
+                    }
+          ]
       },
       {
         "id": "l20-node-5",
@@ -21550,73 +22379,72 @@ export const genkiCurriculum: Unit[] = [
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
-          {
-            "id": "ex-21-wblis-1",
-            "type": "listening",
-            "prompt": "Escucha el diálogo del Workbook L21 y selecciona qué decidieron hacer:",
-            "japaneseVoiceText": "こんしゅうまつはてんきがよさそうですから、みんなでうみへいきましょう",
-            "options": [
-              {
-                "id": "wbl-21-1",
-                "text": "Como parece que habrá buen clima este fin de semana, irán todos al mar.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-21-2",
-                "text": "Se quedarán estudiando en la biblioteca porque lloverá."
-              },
-              {
-                "id": "wbl-21-3",
-                "text": "Cancelaron el viaje por falta de tiempo."
-              }
-            ],
-            "correctAnswerId": "wbl-21-1",
-            "explanation": "Konshuumatsu wa tenki ga yosasou desu kara, minna de umi e ikimashou."
-          },
-          {
-            "id": "ex-21-wblis-2",
-            "type": "listening",
-            "prompt": "Escucha el aviso en la estación de tren (Práctica Auditiva L21):",
-            "japaneseVoiceText": "まもなくにばんせんにでんしゃがまいります。あぶないですから、きいろいせんのうしろまでおさがりください。",
-            "options": [
-              {
-                "id": "wbl-21-2a",
-                "text": "En breve llegará un tren al andén 2; por seguridad, retroceda detrás de la línea amarilla.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-21-2b",
-                "text": "El último tren de hoy ha sido cancelado."
-              },
-              {
-                "id": "wbl-21-2c",
-                "text": "Los boletos se venden en el segundo piso."
-              }
-            ],
-            "correctAnswerId": "wbl-21-2a",
-            "explanation": "Anuncio real de las estaciones de Japón usando まいります y おさがりください."
-          },
-          {
-            "id": "ex-21-wblis-3",
-            "type": "word-order",
-            "prompt": "Del Workbook L21: Traduce \"La verdad es que todavía no he terminado el reporte\":",
-            "japaneseVoiceText": "じつはまだレポートがおわっていません",
-            "wordBank": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません",
-              "おわりませんでした"
-            ],
-            "correctSentence": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません"
-            ],
-            "explanation": "Jitsu wa mada repooto ga owatte imasen."
-          }
-        ]
+                    {
+                              "id": "ex-21-wblis-1",
+                              "type": "listening",
+                              "prompt": "Escucha el relato en la comisaría sobre el incidente en el tren (Workbook L21):",
+                              "japaneseVoiceText": "きのう、でんしゃのなかでだれかにあしをふまれてしまいました。とてもいたかったです。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-21-1",
+                                                  "text": "En el tren alguien le pisó el pie (pasiva de molestia: ふまれてしまいました) y dolió mucho.",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-21-2",
+                                                  "text": "Olvidó su teléfono en el asiento del tren y alguien se lo devolvió."
+                                        },
+                                        {
+                                                  "id": "wbl-21-3",
+                                                  "text": "El tren frenó de golpe y casi se cae en el andén."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-21-1",
+                              "explanation": "Densha no naka de dareka ni ashi o fumarete shimaimashita (me pisaron el pie)."
+                    },
+                    {
+                              "id": "ex-21-wblis-2",
+                              "type": "listening",
+                              "prompt": "Escucha el reporte del robo con voz pasiva (Workbook L21):",
+                              "japaneseVoiceText": "いえにどろぼうがはいって、たいせつなパソコンをとられてしまいました。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-21-2a",
+                                                  "text": "Un ladrón entró a la casa y lamentablemente le robaron su valiosa computadora (とられてしまいました).",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-21-2b",
+                                                  "text": "La policía capturó a un intruso antes de que pudiera entrar a la casa."
+                                        },
+                                        {
+                                                  "id": "wbl-21-2c",
+                                                  "text": "Perdió su computadora mientras trabajaba en una cafetería."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-21-2a",
+                              "explanation": "Ie ni dorobou ga haitte, taisetsu na pasokon o torarete shimaimashita."
+                    },
+                    {
+                              "id": "ex-21-wblis-3",
+                              "type": "word-order",
+                              "prompt": "Del Workbook L21: Ordena \"Fui atrapado por la lluvia y me empapé\":",
+                              "japaneseVoiceText": "あめにふられて、ぬれてしまいました。",
+                              "wordBank": [
+                                        "あめに",
+                                        "ふられて、",
+                                        "ぬれて",
+                                        "しまいました。"
+                              ],
+                              "correctSentence": [
+                                        "あめに",
+                                        "ふられて、",
+                                        "ぬれて",
+                                        "しまいました。"
+                              ],
+                              "explanation": "Ame ni furarete, nurete shimaimashita (pasiva de adversidad con la lluvia)."
+                    }
+          ]
       },
       {
         "id": "l21-node-5",
@@ -22421,73 +23249,74 @@ export const genkiCurriculum: Unit[] = [
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
-          {
-            "id": "ex-22-wblis-1",
-            "type": "listening",
-            "prompt": "Escucha el diálogo del Workbook L22 y selecciona qué decidieron hacer:",
-            "japaneseVoiceText": "こんしゅうまつはてんきがよさそうですから、みんなでうみへいきましょう",
-            "options": [
-              {
-                "id": "wbl-22-1",
-                "text": "Como parece que habrá buen clima este fin de semana, irán todos al mar.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-22-2",
-                "text": "Se quedarán estudiando en la biblioteca porque lloverá."
-              },
-              {
-                "id": "wbl-22-3",
-                "text": "Cancelaron el viaje por falta de tiempo."
-              }
-            ],
-            "correctAnswerId": "wbl-22-1",
-            "explanation": "Konshuumatsu wa tenki ga yosasou desu kara, minna de umi e ikimashou."
-          },
-          {
-            "id": "ex-22-wblis-2",
-            "type": "listening",
-            "prompt": "Escucha el aviso en la estación de tren (Práctica Auditiva L22):",
-            "japaneseVoiceText": "まもなくにばんせんにでんしゃがまいります。あぶないですから、きいろいせんのうしろまでおさがりください。",
-            "options": [
-              {
-                "id": "wbl-22-2a",
-                "text": "En breve llegará un tren al andén 2; por seguridad, retroceda detrás de la línea amarilla.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-22-2b",
-                "text": "El último tren de hoy ha sido cancelado."
-              },
-              {
-                "id": "wbl-22-2c",
-                "text": "Los boletos se venden en el segundo piso."
-              }
-            ],
-            "correctAnswerId": "wbl-22-2a",
-            "explanation": "Anuncio real de las estaciones de Japón usando まいります y おさがりください."
-          },
-          {
-            "id": "ex-22-wblis-3",
-            "type": "word-order",
-            "prompt": "Del Workbook L22: Traduce \"La verdad es que todavía no he terminado el reporte\":",
-            "japaneseVoiceText": "じつはまだレポートがおわっていません",
-            "wordBank": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません",
-              "おわりませんでした"
-            ],
-            "correctSentence": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません"
-            ],
-            "explanation": "Jitsu wa mada repooto ga owatte imasen."
-          }
-        ]
+                    {
+                              "id": "ex-22-wblis-1",
+                              "type": "listening",
+                              "prompt": "Escucha los recuerdos de infancia con voz causativa (Workbook L22):",
+                              "japaneseVoiceText": "こどものころ、りょうしんはまいあさわたしにはやくおきさせました。そして、ピアノをならわせました。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-22-1",
+                                                  "text": "De niño, sus padres le hacían levantarse temprano y le hacían aprender piano (causativo).",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-22-2",
+                                                  "text": "Sus padres le permitían dormir hasta el mediodía los fines de semana."
+                                        },
+                                        {
+                                                  "id": "wbl-22-3",
+                                                  "text": "Tomó clases de guitarra por iniciativa propia después de la escuela."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-22-1",
+                              "explanation": "Ryoushin wa maiasa watashi ni hayaku okisasemashita (me hacían levantar temprano). Piano o narawasemashita."
+                    },
+                    {
+                              "id": "ex-22-wblis-2",
+                              "type": "listening",
+                              "prompt": "Escucha la petición de permiso formal con 〜させてください (Workbook L22):",
+                              "japaneseVoiceText": "きょうはぐあいがわるいので、すこしはやくかえらせていただけませんか。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-22-2a",
+                                                  "text": "Pide educadamente permiso para retirarse temprano porque no se siente bien de salud.",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-22-2b",
+                                                  "text": "Solicita un día de permiso la próxima semana para realizar trámites personales."
+                                        },
+                                        {
+                                                  "id": "wbl-22-2c",
+                                                  "text": "Pregunta si puede descansar unos minutos en la enfermería."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-22-2a",
+                              "explanation": "Guaiga warui node, sukoshi hayaku kaerasete itadakemasen ka (¿me permitiría retirarme temprano?)."
+                    },
+                    {
+                              "id": "ex-22-wblis-3",
+                              "type": "word-order",
+                              "prompt": "Del Workbook L22: Ordena \"El profesor hizo a los alumnos hacer mucha tarea\":",
+                              "japaneseVoiceText": "せんせいはがくせいにしゅくだいをたくさんさせました。",
+                              "wordBank": [
+                                        "せんせいは",
+                                        "がくせいに",
+                                        "しゅくだいを",
+                                        "たくさん",
+                                        "させました。"
+                              ],
+                              "correctSentence": [
+                                        "せんせいは",
+                                        "がくせいに",
+                                        "しゅくだいを",
+                                        "たくさん",
+                                        "させました。"
+                              ],
+                              "explanation": "Sensei wa gakusei ni shukudai o takusan sasemashita (causativa de obligar/asignar)."
+                    }
+          ]
       },
       {
         "id": "l22-node-5",
@@ -23299,73 +24128,70 @@ export const genkiCurriculum: Unit[] = [
         "completedSteps": 0,
         "stars": 0,
         "exercises": [
-          {
-            "id": "ex-23-wblis-1",
-            "type": "listening",
-            "prompt": "Escucha el diálogo del Workbook L23 y selecciona qué decidieron hacer:",
-            "japaneseVoiceText": "こんしゅうまつはてんきがよさそうですから、みんなでうみへいきましょう",
-            "options": [
-              {
-                "id": "wbl-23-1",
-                "text": "Como parece que habrá buen clima este fin de semana, irán todos al mar.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-23-2",
-                "text": "Se quedarán estudiando en la biblioteca porque lloverá."
-              },
-              {
-                "id": "wbl-23-3",
-                "text": "Cancelaron el viaje por falta de tiempo."
-              }
-            ],
-            "correctAnswerId": "wbl-23-1",
-            "explanation": "Konshuumatsu wa tenki ga yosasou desu kara, minna de umi e ikimashou."
-          },
-          {
-            "id": "ex-23-wblis-2",
-            "type": "listening",
-            "prompt": "Escucha el aviso en la estación de tren (Práctica Auditiva L23):",
-            "japaneseVoiceText": "まもなくにばんせんにでんしゃがまいります。あぶないですから、きいろいせんのうしろまでおさがりください。",
-            "options": [
-              {
-                "id": "wbl-23-2a",
-                "text": "En breve llegará un tren al andén 2; por seguridad, retroceda detrás de la línea amarilla.",
-                "isCorrect": true
-              },
-              {
-                "id": "wbl-23-2b",
-                "text": "El último tren de hoy ha sido cancelado."
-              },
-              {
-                "id": "wbl-23-2c",
-                "text": "Los boletos se venden en el segundo piso."
-              }
-            ],
-            "correctAnswerId": "wbl-23-2a",
-            "explanation": "Anuncio real de las estaciones de Japón usando まいります y おさがりください."
-          },
-          {
-            "id": "ex-23-wblis-3",
-            "type": "word-order",
-            "prompt": "Del Workbook L23: Traduce \"La verdad es que todavía no he terminado el reporte\":",
-            "japaneseVoiceText": "じつはまだレポートがおわっていません",
-            "wordBank": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません",
-              "おわりませんでした"
-            ],
-            "correctSentence": [
-              "じつは",
-              "まだ",
-              "レポートが",
-              "おわっていません"
-            ],
-            "explanation": "Jitsu wa mada repooto ga owatte imasen."
-          }
-        ]
+                    {
+                              "id": "ex-23-wblis-1",
+                              "type": "listening",
+                              "prompt": "Escucha la anécdota de la fiesta con voz causativo-pasiva (Workbook L23):",
+                              "japaneseVoiceText": "きのうのパーテイーで、みんなのまえでうたをうたわせられました。はずかしかったです。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-23-1",
+                                                  "text": "Fue obligado a cantar una canción ante todos (うたわせられました) y sintió vergüenza.",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-23-2",
+                                                  "text": "Cantó con alegría su melodía favorita para celebrar la despedida."
+                                        },
+                                        {
+                                                  "id": "wbl-23-3",
+                                                  "text": "Se negó a cantar y prefirió disfrutar la comida con los demás."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-23-1",
+                              "explanation": "Kinou no paatii de, minna no mae de uta o utawaseraremashita (fui forzado a cantar)."
+                    },
+                    {
+                              "id": "ex-23-wblis-2",
+                              "type": "listening",
+                              "prompt": "Escucha el discurso de despedida con 〜ても (Workbook L23):",
+                              "japaneseVoiceText": "どんなにたいへんでも、にほんごのべんきょうをぜったいにあきらめません。",
+                              "options": [
+                                        {
+                                                  "id": "wbl-23-2a",
+                                                  "text": "Promete que por muy duro que sea (~ても), nunca se rendirá en aprender japonés.",
+                                                  "isCorrect": true
+                                        },
+                                        {
+                                                  "id": "wbl-23-2b",
+                                                  "text": "Considera que ya ha dominado todo el japonés necesario para graduarse."
+                                        },
+                                        {
+                                                  "id": "wbl-23-2c",
+                                                  "text": "Planea suspender sus estudios de japonés hasta su próximo viaje a Tokio."
+                                        }
+                              ],
+                              "correctAnswerId": "wbl-23-2a",
+                              "explanation": "Donna ni taihen demo, nihongo no benkyou o zettaini akiramemasen (por muy duro que sea, jamás me rendiré)."
+                    },
+                    {
+                              "id": "ex-23-wblis-3",
+                              "type": "word-order",
+                              "prompt": "Del Workbook L23: Ordena \"Fui obligado a beber alcohol que no me gusta\":",
+                              "japaneseVoiceText": "きらいなおさけをのませられました。",
+                              "wordBank": [
+                                        "きらいな",
+                                        "おさけを",
+                                        "のませられました。"
+                              ],
+                              "correctSentence": [
+                                        "きらいな",
+                                        "おさけを",
+                                        "のませられました。"
+                              ],
+                              "explanation": "Kirai na osake o nomaseraremashita (causativo-pasiva: ser obligado a beber)."
+                    }
+          ]
       },
       {
         "id": "l23-node-5",

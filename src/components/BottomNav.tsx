@@ -30,7 +30,7 @@ export const BottomNav: React.FC<BottomNavProps> = ({ activeTab, onTabChange }) 
     {
       id: 'theory',
       label: 'Estudio',
-      subtitle: 'Teoría y Cuaderno Workbook',
+      subtitle: 'Teoría y Guía Gramatical',
       icon: BookOpen,
       badgeColor: 'bg-sky-500/15 text-sky-600 dark:text-sky-400 border-sky-400/30'
     },

@@ -95,6 +95,25 @@ export function expandLessonExercises(node: LessonNode, unit?: Unit, targetCount
       .trim();
   };
 
+  const detectCategory = (jp: string, sp: string): string => {
+    const cJp = cleanJapanese(jp);
+    const cSp = sp.replace(/\s*\([^\)]*\)/g, '').toLowerCase().trim();
+    const direct = genkiVocabulary.find(v =>
+      (cJp && (v.japanese === cJp || v.furigana === cJp || cleanJapanese(v.japanese) === cJp)) ||
+      (cSp && v.spanish.toLowerCase().trim() === cSp)
+    );
+    if (direct) return getCategory(direct.pos);
+
+    // Heuristics
+    const famWords = ['madre', 'padre', 'hermano', 'hermana', 'familia', 'esposo', 'esposa', 'hijo', 'hija', 'amigo', 'profesor', 'estudiante'];
+    if (famWords.some(w => cSp.includes(w))) return 'noun';
+    if (cSp.startsWith('mi ') || cSp.includes('el ') || cSp.includes('la ') || cSp.includes('los ') || cSp.includes('las ')) return 'noun';
+    if (cSp.endsWith('ar') || cSp.endsWith('er') || cSp.endsWith('ir')) return 'verb';
+    if (/[い]$/.test(cJp)) return 'adjective';
+    if (/[う|く|ぐ|す|つ|ぬ|ぶ|む|る]$/.test(cJp)) return 'verb';
+    return 'other';
+  };
+
   // Only consider pairs that are actual Japanese -> Spanish vocabulary translations
   const nodeVocabPairs = allNodePairs.filter(p => isJapaneseText(p.left) && isSpanishTranslation(p.right));
   const siblingVocabPairs = siblingPairs.filter(p => isJapaneseText(p.left) && isSpanishTranslation(p.right));
@@ -111,6 +130,40 @@ export function expandLessonExercises(node: LessonNode, unit?: Unit, targetCount
     ...siblingVocabPairs.map(p => cleanJapanese(p.left)),
     ...genkiVocabulary.filter(v => v.lesson === node.lessonNumber).map(v => v.japanese.trim())
   ])).filter(Boolean);
+
+  // Helper to build 4 unique options (1 correct + 3 distractors) matching category whenever possible
+  const getCategoryPool = (
+    category: string,
+    targetText: string,
+    mode: 'spanish' | 'japanese',
+    localOptions: string[]
+  ): string[] => {
+    if (category === 'other') {
+      const filtered = localOptions.filter(t => t !== targetText);
+      return filtered.length >= 3 ? filtered : (mode === 'spanish' ? allRightOptions : allLeftOptions).filter(t => t !== targetText);
+    }
+
+    // 1. First preference: local options of the exact same category
+    const localSameCat = localOptions.filter(t => {
+      if (t === targetText) return false;
+      const cat = mode === 'spanish' ? detectCategory('', t) : detectCategory(t, '');
+      return cat === category;
+    });
+
+    if (localSameCat.length >= 3) return localSameCat;
+
+    // 2. Second preference: vocabulary of the same category across all lessons
+    const vocabSameCat = genkiVocabulary
+      .filter(v => getCategory(v.pos) === category)
+      .map(v => mode === 'spanish' ? v.spanish.trim() : cleanJapanese(v.japanese))
+      .filter(t => t !== targetText);
+
+    const merged = Array.from(new Set([...localSameCat, ...vocabSameCat]));
+    if (merged.length >= 3) return merged;
+
+    // Fallback: general options
+    return (mode === 'spanish' ? allRightOptions : allLeftOptions).filter(t => t !== targetText);
+  };
 
   // Helper to build 4 unique options (1 correct + 3 distractors)
   const buildOptions = (correctText: string, pool: string[]): ExerciseOption[] => {
@@ -132,11 +185,8 @@ export function expandLessonExercises(node: LessonNode, unit?: Unit, targetCount
     const cleanRight = pair.right.replace(/\s*\([^\)]*\)/g, '').trim();
 
     if (cleanLeft && cleanRight) {
-      // Prioritize distractors from the same node's pairs if at least 3 exist
-      const nodeRightDistractors = nodeVocabPairs
-        .map(p => p.right.replace(/\s*\([^\)]*\)/g, '').trim())
-        .filter(r => r && r !== cleanRight);
-      const rightPool = nodeRightDistractors.length >= 3 ? nodeRightDistractors : allRightOptions;
+      const cat = detectCategory(cleanLeft, cleanRight);
+      const rightPool = getCategoryPool(cat, cleanRight, 'spanish', nodeVocabPairs.map(p => p.right.replace(/\s*\([^\)]*\)/g, '').trim()));
 
       // A) Listening exercise for pair: Hear Japanese, pick translation
       const options = buildOptions(cleanRight, rightPool);
@@ -153,11 +203,7 @@ export function expandLessonExercises(node: LessonNode, unit?: Unit, targetCount
       });
 
       // B) Reverse question: "Cómo se dice en japonés: [Español]"
-      const nodeLeftDistractors = nodeVocabPairs
-        .map(p => cleanJapanese(p.left))
-        .filter(l => l && l !== cleanLeft);
-      const leftPool = nodeLeftDistractors.length >= 3 ? nodeLeftDistractors : allLeftOptions;
-
+      const leftPool = getCategoryPool(cat, cleanLeft, 'japanese', nodeVocabPairs.map(p => cleanJapanese(p.left)));
       const leftOptions = buildOptions(cleanLeft, leftPool);
       const correctLeftOpt = leftOptions.find(o => o.isCorrect)!;
       generatedExercises.push({
@@ -197,25 +243,10 @@ export function expandLessonExercises(node: LessonNode, unit?: Unit, targetCount
     const shuffledVocab = shuffle(lessonVocab);
     shuffledVocab.slice(0, 4).forEach((v, idx) => {
       const vCat = getCategory(v.pos);
-      // Select candidate distractors strictly of the same grammatical category (e.g. adjectives with adjectives)
-      const sameCategorySameLesson = lessonVocab
-        .filter(w => w.id !== v.id && getCategory(w.pos) === vCat)
-        .map(w => w.spanish.trim());
-      const sameCategoryAllLessons = genkiVocabulary
-        .filter(w => w.id !== v.id && getCategory(w.pos) === vCat)
-        .map(w => w.spanish.trim());
-
-      const targetPool = Array.from(new Set([
-        ...sameCategorySameLesson,
-        ...sameCategoryAllLessons
-      ])).filter(Boolean);
-
-      const poolToUse = targetPool.length >= 3
-        ? targetPool
-        : (allRightOptions.length >= 4 ? allRightOptions : lessonVocab.map(w => w.spanish));
+      const rightPool = getCategoryPool(vCat, v.spanish.trim(), 'spanish', lessonVocab.map(w => w.spanish.trim()));
 
       // Direct vocabulary meaning
-      const options = buildOptions(v.spanish, poolToUse);
+      const options = buildOptions(v.spanish, rightPool);
       const correctOpt = options.find(o => o.isCorrect)!;
       generatedExercises.push({
         id: `gen-vocab-${node.id}-${idx}-${v.id}`,

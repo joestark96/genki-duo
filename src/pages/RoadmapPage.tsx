@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Unit, LessonNode, UserProfile } from '../types';
 import { RoadmapNode } from '../components/Roadmap/RoadmapNode';
 import { QuizModal } from '../components/Quiz/QuizModal';
-import { BookOpen, Sparkles, CheckCircle2, FastForward, ShieldAlert, Award, Dumbbell, Compass, X, Star, Play, RotateCcw, Lock, BookMarked } from 'lucide-react';
+import { BookOpen, Sparkles, CheckCircle2, FastForward, ShieldAlert, Award, Dumbbell, Compass, X, Star, Play, RotateCcw, Lock, BookMarked, Volume2, Headphones } from 'lucide-react';
 import { sound } from '../services/sound';
 import { createJumpAheadLesson, createMultiUnitJumpAheadLesson } from '../utils/jumpAhead';
 import { createPracticeLesson, createUnitReviewLesson } from '../utils/practiceLesson';
@@ -33,20 +33,39 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
   } | null>(null);
   const [isJumpAheadActive, setIsJumpAheadActive] = useState(false);
   const [isPracticeActive, setIsPracticeActive] = useState(false);
+  const [roadmapMode, setRoadmapMode] = useState<'textbook' | 'workbook'>(() => {
+    const saved = localStorage.getItem('nihongo_roadmap_mode');
+    return saved === 'workbook' ? 'workbook' : 'textbook';
+  });
 
-  // Determine which node is currently active (the first unlocked but uncompleted node)
+  const handleModeChange = (mode: 'textbook' | 'workbook') => {
+    sound.playTap();
+    setRoadmapMode(mode);
+    localStorage.setItem('nihongo_roadmap_mode', mode);
+  };
+
+  // Helper to determine if a node belongs to the Workbook
+  const isWorkbookNode = (n: LessonNode) =>
+    n.title.toLowerCase().includes('workbook') || n.id.includes('wb');
+
+  // Determine which node is currently active (first unlocked but uncompleted in current mode)
   const getActiveNodeId = (): string => {
+    const isTarget = (n: LessonNode) =>
+      roadmapMode === 'workbook' ? isWorkbookNode(n) : !isWorkbookNode(n);
+
     for (const unit of units) {
       for (const node of unit.nodes) {
+        if (!isTarget(node)) continue;
         if (node.unlocked && node.stars === 0) {
           return node.id;
         }
       }
     }
-    // If all unlocked nodes are completed, find the last unlocked node
-    let lastUnlockedId = units[0]?.nodes[0]?.id || '';
+    // If all unlocked nodes are completed, find the last unlocked node of current mode
+    let lastUnlockedId = '';
     for (const unit of units) {
       for (const node of unit.nodes) {
+        if (!isTarget(node)) continue;
         if (node.unlocked) {
           lastUnlockedId = node.id;
         }
@@ -98,7 +117,7 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
       clearTimeout(timer2);
       window.removeEventListener('focus-roadmap-active-node', handleFocusEvent);
     };
-  }, [activeNodeId]);
+  }, [activeNodeId, roadmapMode]);
 
   const handleStartJumpAhead = (unit: Unit) => {
     sound.playTap();
@@ -190,10 +209,76 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
         </button>
       </div>
 
+      {/* Selector de Modo del Roadmap: Libro de Texto vs Cuaderno (Workbook) */}
+      <div className="w-full max-w-sm mx-auto mb-6 p-1.5 bg-gray-200/80 dark:bg-[#18272e] rounded-2xl border-2 border-duo-gray-200 dark:border-[#283842] flex items-center gap-1.5 shadow-sm sticky top-2 z-30 backdrop-blur-md">
+        <button
+          onClick={() => handleModeChange('textbook')}
+          className={`flex-1 py-2.5 px-3 rounded-xl font-black text-xs flex items-center justify-center gap-2 transition-all cursor-pointer ${
+            roadmapMode === 'textbook'
+              ? 'bg-white dark:bg-[#20323c] text-duo-green dark:text-green-400 shadow-md border border-gray-200/80 dark:border-gray-700 scale-[1.02]'
+              : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
+          }`}
+        >
+          <BookOpen className="w-4 h-4 stroke-[2.5px]" />
+          <span>Libro de Texto</span>
+        </button>
+
+        <button
+          onClick={() => handleModeChange('workbook')}
+          className={`flex-1 py-2.5 px-3 rounded-xl font-black text-xs flex items-center justify-center gap-2 transition-all cursor-pointer ${
+            roadmapMode === 'workbook'
+              ? 'bg-gradient-to-r from-indigo-500 to-purple-600 text-white shadow-md scale-[1.02]'
+              : 'text-gray-500 dark:text-gray-400 hover:text-gray-800 dark:hover:text-gray-200'
+          }`}
+        >
+          <BookMarked className="w-4 h-4 stroke-[2.5px]" />
+          <span>Cuaderno (Workbook)</span>
+        </button>
+      </div>
+
+      {/* Banner de Modo Cuaderno de Trabajo */}
+      {roadmapMode === 'workbook' && (
+        <div className="w-full mb-6 p-4 rounded-3xl bg-gradient-to-r from-indigo-600/90 via-purple-600/90 to-indigo-700/90 text-white shadow-md border border-indigo-400/30 flex items-center justify-between animate-fade-in">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center">
+              <BookMarked className="w-6 h-6 stroke-[2.5px]" />
+            </div>
+            <div>
+              <span className="text-[10px] font-black uppercase tracking-wider bg-white/20 px-2 py-0.5 rounded-md">
+                Modo Cuaderno Oficial
+              </span>
+              <h3 className="text-sm font-black mt-0.5">Ejercicios de Workbook Genki I & II</h3>
+            </div>
+          </div>
+          <span className="text-xs font-black bg-white/20 px-2.5 py-1 rounded-xl">
+            23 Lecciones
+          </span>
+        </div>
+      )}
+
       {/* Units List */}
       {units.map((unit) => {
-        const isUnitUnlocked = unit.nodes.some(n => n.unlocked);
-        const isUnitCompleted = unit.nodes.length > 0 && unit.nodes.every(n => n.stars > 0);
+        const isWorkbook = roadmapMode === 'workbook';
+        const currentNodes = isWorkbook
+          ? unit.nodes.filter(isWorkbookNode)
+          : unit.nodes.filter(n => !isWorkbookNode(n));
+
+        // En modo workbook, si la unidad no tiene ejercicios de workbook (ej. Unidad 0 - Alfabetos Kana), se omite
+        if (isWorkbook && currentNodes.length === 0) {
+          return null;
+        }
+
+        // Si la unidad está desbloqueada en libro de texto, asegurar que el primer ejercicio de workbook esté disponible
+        const isUnitUnlockedInTextbook = unit.nodes.some(n => !isWorkbookNode(n) && n.unlocked);
+        const displayNodes = currentNodes.map((n, idx) => {
+          if (isWorkbook && idx === 0 && isUnitUnlockedInTextbook && !n.unlocked) {
+            return { ...n, unlocked: true };
+          }
+          return n;
+        });
+
+        const isUnitUnlocked = displayNodes.some(n => n.unlocked);
+        const isUnitCompleted = displayNodes.length > 0 && displayNodes.every(n => n.stars > 0);
 
         return (
           <div key={unit.id} className="w-full mb-8">
@@ -202,20 +287,27 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
               className={`w-full p-4 rounded-3xl text-white shadow-md mb-6 relative overflow-hidden transition-all ${
                 !isUnitUnlocked ? 'opacity-60 saturate-50' : ''
               }`}
-              style={{ backgroundColor: unit.themeColor }}
+              style={{
+                backgroundColor: isWorkbook ? '#4f46e5' : unit.themeColor,
+                backgroundImage: isWorkbook ? 'linear-gradient(135deg, #4338ca 0%, #6366f1 50%, #7c3aed 100%)' : undefined
+              }}
             >
               <div className="flex items-center justify-between mb-1">
                 <span className="px-2.5 py-0.5 bg-black/20 text-white rounded-lg text-[10px] font-black uppercase tracking-wider flex items-center gap-1">
-                  <BookOpen className="w-3 h-3" />
-                  {unit.genkiBook}
+                  {isWorkbook ? <BookMarked className="w-3 h-3" /> : <BookOpen className="w-3 h-3" />}
+                  {isWorkbook ? `${unit.genkiBook} • Cuaderno Oficial` : unit.genkiBook}
                 </span>
                 <span className="text-xs font-black opacity-90">
-                  Unidad {unit.id + 1}
+                  {isWorkbook ? `Workbook Lección ${unit.id}` : `Unidad ${unit.id + 1}`}
                 </span>
               </div>
 
-              <h3 className="text-lg font-black tracking-tight">{unit.title}</h3>
-              <p className="text-xs font-bold opacity-90 mt-0.5">{unit.subtitle}</p>
+              <h3 className="text-lg font-black tracking-tight">
+                {isWorkbook ? `Cuaderno: ${unit.title.replace(/^Genki\s+Lección\s+\d+:\s*/i, '')}` : unit.title}
+              </h3>
+              <p className="text-xs font-bold opacity-90 mt-0.5">
+                {isWorkbook ? `Ejercicios del cuaderno oficial de trabajo (${displayNodes.length} módulos)` : unit.subtitle}
+              </p>
 
               {/* Theory Guide Pill Button */}
               <div className="flex items-center justify-between mt-3 pt-2.5 border-t border-white/20">
@@ -224,52 +316,35 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
                     sound.playTap();
                     if (onOpenTheory) onOpenTheory(unit.id);
                   }}
-                  className="px-3 py-1.5 bg-white/20 hover:bg-white/30 active:translate-y-0.5 rounded-xl font-black text-xs text-white flex items-center gap-1.5 transition-all shadow-sm backdrop-blur-sm"
+                  className="px-3 py-1.5 bg-white/20 hover:bg-white/30 active:translate-y-0.5 rounded-xl font-black text-xs text-white flex items-center gap-1.5 transition-all shadow-sm backdrop-blur-sm cursor-pointer"
                 >
                   <BookOpen className="w-3.5 h-3.5" />
-                  Guía de Teoría y Gramática
+                  Ver Guía de Teoría
                 </button>
 
-                {/* Botón de acceso rápido a ejercicios del Workbook */}
-                {unit.nodes.some(n => n.title.toLowerCase().includes('workbook')) && (
-                  <button
-                    onClick={() => {
-                      sound.playTap();
-                      const firstWb = unit.nodes.find(n => n.title.toLowerCase().includes('workbook'));
-                      if (firstWb) {
-                        setSelectedNodeForPopover({
-                          node: firstWb,
-                          unitId: unit.id,
-                          unitTitle: `${unit.title} — ${unit.subtitle}`
-                        });
-                        const el = document.getElementById(`roadmap-node-${firstWb.id}`);
-                        el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-                      }
-                    }}
-                    className="px-3 py-1.5 bg-indigo-600/90 hover:bg-indigo-700 active:translate-y-0.5 rounded-xl font-black text-xs text-white flex items-center gap-1.5 transition-all shadow-sm border border-white/20 cursor-pointer"
-                    title={`Ver ejercicios del Workbook de ${unit.title}`}
-                  >
-                    <BookMarked className="w-3.5 h-3.5 stroke-[2.5px]" />
-                    <span>Workbook ({unit.nodes.filter(n => n.title.toLowerCase().includes('workbook')).length})</span>
-                  </button>
-                )}
-
-                {!isUnitUnlocked && (
-                  <button
-                    onClick={() => handleStartMultiJump(unit.id)}
-                    className="px-3 py-1.5 bg-duo-orange hover:bg-duo-orange-dark active:translate-y-0.5 rounded-xl font-black text-xs text-white flex items-center gap-1.5 transition-all shadow-sm border border-white/20 cursor-pointer"
-                    title={`Saltar hasta ${unit.title}`}
-                  >
-                    <FastForward className="w-3.5 h-3.5 stroke-[2.5px]" />
-                    <span>Saltar a esta unidad</span>
-                  </button>
+                {isWorkbook ? (
+                  <span className="px-2.5 py-1 bg-white/20 rounded-xl text-[11px] font-black flex items-center gap-1">
+                    <Headphones className="w-3.5 h-3.5" />
+                    <span>Audios Incluidos</span>
+                  </span>
+                ) : (
+                  !isUnitUnlocked && (
+                    <button
+                      onClick={() => handleStartMultiJump(unit.id)}
+                      className="px-3 py-1.5 bg-duo-orange hover:bg-duo-orange-dark active:translate-y-0.5 rounded-xl font-black text-xs text-white flex items-center gap-1.5 transition-all shadow-sm border border-white/20 cursor-pointer"
+                      title={`Saltar hasta ${unit.title}`}
+                    >
+                      <FastForward className="w-3.5 h-3.5 stroke-[2.5px]" />
+                      <span>Saltar a esta unidad</span>
+                    </button>
+                  )
                 )}
               </div>
             </div>
 
             {/* Serpentine Roadmap Nodes */}
             <div className="flex flex-col items-center relative">
-              {unit.nodes.map((node, nodeIdx) => {
+              {displayNodes.map((node, nodeIdx) => {
                 const pattern = ['center', 'left', 'center', 'right'] as const;
                 const position = pattern[nodeIdx % pattern.length];
                 const isActive = node.id === activeNodeId;
@@ -284,7 +359,9 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
                       setSelectedNodeForPopover({
                         node: selected,
                         unitId: unit.id,
-                        unitTitle: `${unit.title} — ${unit.subtitle}`
+                        unitTitle: isWorkbook
+                          ? `Cuaderno ${unit.title}`
+                          : `${unit.title} — ${unit.subtitle}`
                       });
                     }}
                   />
@@ -422,14 +499,22 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
             <div className="flex items-center gap-3 pr-6">
               <div
                 className={`w-14 h-14 rounded-2xl flex items-center justify-center text-white shadow-md flex-shrink-0 ${
-                  !selectedNodeForPopover.node.unlocked
+                  isWorkbookNode(selectedNodeForPopover.node)
+                    ? 'bg-gradient-to-tr from-indigo-600 to-purple-600 shadow-[0_4px_0_0_#4338ca]'
+                    : !selectedNodeForPopover.node.unlocked
                     ? 'bg-amber-500 shadow-[0_4px_0_0_#d97706]'
                     : selectedNodeForPopover.node.stars > 0
                     ? 'bg-duo-yellow shadow-[0_4px_0_0_#e5b400]'
                     : 'bg-duo-green shadow-[0_4px_0_0_#46a302]'
                 }`}
               >
-                {!selectedNodeForPopover.node.unlocked ? (
+                {isWorkbookNode(selectedNodeForPopover.node) ? (
+                  selectedNodeForPopover.node.icon === 'Headphones' ? (
+                    <Headphones className="w-7 h-7 stroke-[2.5px]" />
+                  ) : (
+                    <BookMarked className="w-7 h-7 stroke-[2.5px]" />
+                  )
+                ) : !selectedNodeForPopover.node.unlocked ? (
                   <Lock className="w-7 h-7 stroke-[2.5px]" />
                 ) : selectedNodeForPopover.node.stars > 0 ? (
                   <Star className="w-7 h-7 fill-white stroke-[2.5px]" />
@@ -439,7 +524,7 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
               </div>
 
               <div className="min-w-0">
-                <span className="text-[10px] font-black uppercase tracking-wider text-duo-green dark:text-green-400">
+                <span className="text-[10px] font-black uppercase tracking-wider text-indigo-600 dark:text-indigo-400">
                   {selectedNodeForPopover.unitTitle}
                 </span>
                 <h3 className="text-base font-black text-gray-800 dark:text-gray-100 leading-snug">
@@ -473,6 +558,53 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
                 ))}
               </div>
             </div>
+
+            {/* Reproductor de Audio si el ejercicio de Workbook contiene pistas de voz */}
+            {isWorkbookNode(selectedNodeForPopover.node) &&
+              selectedNodeForPopover.node.exercises.some(e => Boolean(e.japaneseVoiceText)) && (
+                <div className="p-3 rounded-2xl bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/50 dark:to-purple-950/50 border border-indigo-200 dark:border-indigo-800/60 flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-[11px] font-black uppercase text-indigo-700 dark:text-indigo-300 flex items-center gap-1.5">
+                      <Headphones className="w-3.5 h-3.5" />
+                      Pista de Audio del Cuaderno
+                    </span>
+                    <span className="text-[10px] font-black px-2 py-0.5 rounded-full bg-indigo-200/60 dark:bg-indigo-900/60 text-indigo-800 dark:text-indigo-200">
+                      {selectedNodeForPopover.node.exercises.filter(e => Boolean(e.japaneseVoiceText)).length} pistas de voz
+                    </span>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => {
+                        sound.playTap();
+                        const firstAudio = selectedNodeForPopover.node.exercises.find(e => Boolean(e.japaneseVoiceText));
+                        if (firstAudio?.japaneseVoiceText) {
+                          sound.speakJapanese(firstAudio.japaneseVoiceText, 0.9);
+                        }
+                      }}
+                      className="flex-1 py-2 px-3 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs flex items-center justify-center gap-1.5 shadow-sm active:scale-95 transition-all cursor-pointer"
+                    >
+                      <Volume2 className="w-4 h-4" />
+                      <span>Escuchar Diálogo</span>
+                    </button>
+
+                    <button
+                      onClick={() => {
+                        sound.playTap();
+                        const firstAudio = selectedNodeForPopover.node.exercises.find(e => Boolean(e.japaneseVoiceText));
+                        if (firstAudio?.japaneseVoiceText) {
+                          sound.speakJapanese(firstAudio.japaneseVoiceText, 0.70);
+                        }
+                      }}
+                      className="py-2 px-2.5 rounded-xl bg-indigo-100 hover:bg-indigo-200 dark:bg-indigo-900/50 text-indigo-800 dark:text-indigo-200 font-black text-xs flex items-center justify-center gap-1 active:scale-95 transition-all cursor-pointer"
+                      title="Escuchar audio a velocidad lenta (0.7x)"
+                    >
+                      <span>🐢</span>
+                      <span className="text-[10px]">Lento</span>
+                    </button>
+                  </div>
+                </div>
+              )}
 
             {/* Botones de Acción */}
             {!selectedNodeForPopover.node.unlocked ? (
@@ -534,10 +666,22 @@ export const RoadmapPage: React.FC<RoadmapPageProps> = ({
                     setIsPracticeActive(false);
                     setActiveQuizLesson(targetLesson);
                   }}
-                  className="w-full py-3.5 bg-duo-green hover:bg-duo-green-dark text-white font-black text-xs rounded-2xl shadow-[0_4px_0_0_#46a302] active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider"
+                  className={`w-full py-3.5 text-white font-black text-xs rounded-2xl active:translate-y-1 active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer uppercase tracking-wider ${
+                    isWorkbookNode(selectedNodeForPopover.node)
+                      ? 'bg-gradient-to-r from-indigo-600 to-purple-600 hover:brightness-105 shadow-[0_4px_0_0_#4338ca]'
+                      : 'bg-duo-green hover:bg-duo-green-dark shadow-[0_4px_0_0_#46a302]'
+                  }`}
                 >
                   <Play className="w-4 h-4 fill-white stroke-[2px]" />
-                  <span>{selectedNodeForPopover.node.stars > 0 ? 'Repasar Lección' : 'Iniciar Lección'}</span>
+                  <span>
+                    {isWorkbookNode(selectedNodeForPopover.node)
+                      ? selectedNodeForPopover.node.stars > 0
+                        ? 'Repasar Cuaderno (Workbook)'
+                        : '¡Hacer Ejercicios de Workbook!'
+                      : selectedNodeForPopover.node.stars > 0
+                      ? 'Repasar Lección'
+                      : 'Iniciar Lección'}
+                  </span>
                 </button>
 
                 {/* Botón 2: Ver Teoría de la Lección */}

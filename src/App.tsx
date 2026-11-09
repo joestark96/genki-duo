@@ -387,6 +387,8 @@ export const App: React.FC = () => {
     // 2. Update node and find next node to unlock
     let foundCurrent = false;
     let nextNodeToUnlock: { nodeId: string; unitId: number } | null = null;
+    const isWb = (n: LessonNode) => n.title.toLowerCase().includes('workbook') || n.id.includes('wb');
+    const isCurrentNodeWb = units.some(u => u.nodes.some(n => n.id === nodeId && isWb(n)));
 
     const newUnits = units.map(unit => {
       const newNodes = unit.nodes.map(node => {
@@ -398,7 +400,8 @@ export const App: React.FC = () => {
             completedSteps: node.totalSteps
           };
         }
-        if (foundCurrent && !nextNodeToUnlock && !node.unlocked) {
+        // Desbloquear según el tipo (libro de texto desbloquea siguiente lección de texto; workbook desbloquea siguiente workbook)
+        if (foundCurrent && !nextNodeToUnlock && !node.unlocked && (isCurrentNodeWb ? isWb(node) : !isWb(node))) {
           nextNodeToUnlock = { nodeId: node.id, unitId: unit.id };
           return {
             ...node,
