@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { User, Flame, Zap, Heart, Gem, Database, RotateCcw, Award, CheckCircle2, Volume2, Moon, Sun, Type, Sparkles, Trophy, Target, Gift } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { User, Flame, Zap, Heart, Gem, Database, RotateCcw, Award, CheckCircle2, Volume2, Moon, Sun, Type, Sparkles, Trophy, Target, Gift, Cloud, CloudUpload, CloudDownload, Share2, AlertCircle } from 'lucide-react';
 import { UserProfile, Unit } from '../types';
 import { sound, CHARACTER_VOICES } from '../services/sound';
 import { getLocalDateKey, getDailyQuestStats } from '../utils/dateUtils';
 import { NavTab } from '../components/BottomNav';
 import { AudioDownloadManager } from '../components/Audio/AudioDownloadManager';
+import { backupService, NihonGoBackupPayload } from '../services/backupService';
 
 interface ProfilePageProps {
   profile: UserProfile;
@@ -182,6 +183,97 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
     }
     if (onClaimQuestReward) {
       onClaimQuestReward(xpReward, gemReward);
+    }
+  };
+
+  // Google Drive & Backup System
+  const [lastBackupAt, setLastBackupAt] = useState<string | null>(() => backupService.getLastBackupDate());
+  const [backupStatusMessage, setBackupStatusMessage] = useState<string | null>(null);
+  const [backupErrorMessage, setBackupErrorMessage] = useState<string | null>(null);
+  const [pendingRestorePayload, setPendingRestorePayload] = useState<Partial<NihonGoBackupPayload> | null>(null);
+  const [isExporting, setIsExporting] = useState<boolean>(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleExportToDrive = async () => {
+    sound.playTap();
+    setIsExporting(true);
+    setBackupStatusMessage(null);
+    setBackupErrorMessage(null);
+    try {
+      const res = await backupService.exportToDriveOrShare();
+      setLastBackupAt(backupService.getLastBackupDate());
+      if (res.shared) {
+        setBackupStatusMessage('☁️ Menú abierto. Selecciona "Guardar en Drive" para respaldar en tu cuenta de Google.');
+      } else {
+        setBackupStatusMessage(`📥 Respaldo descargado como "${res.fileName}".`);
+      }
+    } catch (err: any) {
+      if (err?.name !== 'AbortError') {
+        try {
+          const payload = await backupService.exportBackupData();
+          const fileName = `nihongo-respaldo-${getLocalDateKey()}.json`;
+          backupService.downloadBackupFile(JSON.stringify(payload, null, 2), fileName);
+          setLastBackupAt(backupService.getLastBackupDate());
+          setBackupStatusMessage(`📥 Respaldo descargado (${fileName}). Puedes subirlo a tu Google Drive.`);
+        } catch {
+          setBackupErrorMessage('No se pudo generar la copia de seguridad.');
+        }
+      }
+    } finally {
+      setIsExporting(false);
+    }
+  };
+
+  const handleDirectDownload = async () => {
+    sound.playTap();
+    setBackupStatusMessage(null);
+    setBackupErrorMessage(null);
+    try {
+      const payload = await backupService.exportBackupData();
+      const fileName = `nihongo-respaldo-${getLocalDateKey()}.json`;
+      backupService.downloadBackupFile(JSON.stringify(payload, null, 2), fileName);
+      setLastBackupAt(backupService.getLastBackupDate());
+      setBackupStatusMessage(`📥 Archivo "${fileName}" guardado correctamente.`);
+    } catch {
+      setBackupErrorMessage('Error al descargar el archivo de respaldo.');
+    }
+  };
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    setBackupStatusMessage(null);
+    setBackupErrorMessage(null);
+    try {
+      const text = await file.text();
+      const parsed = JSON.parse(text) as Partial<NihonGoBackupPayload>;
+      if (!parsed || typeof parsed !== 'object' || (!parsed.appName && !parsed.profile && !parsed.lessonProgress)) {
+        setBackupErrorMessage('El archivo no parece ser un respaldo válido de NihonGo!.');
+        return;
+      }
+      setPendingRestorePayload(parsed);
+    } catch {
+      setBackupErrorMessage('No se pudo leer el archivo JSON. Verifica que sea un respaldo válido.');
+    } finally {
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+    }
+  };
+
+  const handleConfirmRestore = async () => {
+    if (!pendingRestorePayload) return;
+    try {
+      sound.playLessonComplete();
+      await backupService.importBackupData(pendingRestorePayload);
+      setPendingRestorePayload(null);
+      setBackupStatusMessage('✅ ¡Progreso restaurado con éxito! Recargando aplicación...');
+      setTimeout(() => {
+        window.location.reload();
+      }, 700);
+    } catch (err: any) {
+      setBackupErrorMessage(err?.message || 'Error al restaurar los datos.');
+      setPendingRestorePayload(null);
     }
   };
 
@@ -563,6 +655,122 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
       {/* Audio Download Manager (Offline voices stored in device storage) */}
       <h3 className="text-sm font-black text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-2">Voces Offline</h3>
       <AudioDownloadManager units={units} />
+
+      {/* Google Drive & Backup Section */}
+      <h3 className="text-sm font-black text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-2 flex items-center gap-1.5">
+        <Cloud className="w-4 h-4 text-emerald-500" />
+        <span>Copia de Seguridad y Google Drive</span>
+      </h3>
+      <div className="bg-white dark:bg-[#18272e] p-4 rounded-2xl border-2 border-duo-gray-200 dark:border-[#283842] shadow-duo-card dark:shadow-none mb-5 transition-colors">
+        <div className="flex items-center gap-2.5 mb-2">
+          <div className="w-9 h-9 rounded-xl bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center text-emerald-500 flex-shrink-0">
+            <Cloud className="w-5 h-5" />
+          </div>
+          <div>
+            <span className="text-xs font-black text-gray-800 dark:text-gray-100">
+              Respaldo en Google Drive / Nube
+            </span>
+            <p className="text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
+              Compatible con Google Drive, Descargas y archivos locales
+            </p>
+          </div>
+        </div>
+
+        <p className="text-xs font-medium text-gray-500 dark:text-gray-400 mb-3 leading-relaxed">
+          Guarda todo tu avance (perfil, gemas, corazones, estrellas del roadmap, lecciones del libro y del workbook, y niveles SRS) en tu cuenta de Google Drive para no perder tu progreso.
+        </p>
+
+        {lastBackupAt && (
+          <div className="text-[11px] font-bold text-emerald-700 dark:text-emerald-300 bg-emerald-50 dark:bg-emerald-950/40 border border-emerald-300/60 dark:border-emerald-800/60 rounded-xl p-2.5 mb-3 text-center flex items-center justify-center gap-1.5">
+            <span>🕒 Último respaldo:</span>
+            <span>
+              {new Date(lastBackupAt).toLocaleDateString('es-ES', { day: '2-digit', month: '2-digit', year: 'numeric' })} ({new Date(lastBackupAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })})
+            </span>
+          </div>
+        )}
+
+        {backupStatusMessage && (
+          <div className="text-[11px] font-bold text-duo-blue-dark dark:text-blue-200 bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-800 rounded-xl p-2.5 mb-3 text-center">
+            {backupStatusMessage}
+          </div>
+        )}
+
+        {backupErrorMessage && (
+          <div className="text-[11px] font-bold text-duo-red-dark dark:text-red-300 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800 rounded-xl p-2.5 mb-3 text-center flex items-center justify-center gap-1.5">
+            <AlertCircle className="w-3.5 h-3.5 flex-shrink-0" />
+            <span>{backupErrorMessage}</span>
+          </div>
+        )}
+
+        {/* Primary Action Button: Guardar en Google Drive / Compartir */}
+        <button
+          onClick={handleExportToDrive}
+          disabled={isExporting}
+          className="w-full py-3 px-4 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-duo-btn-sm active:translate-y-0.5 transition-all flex items-center justify-center gap-2 cursor-pointer mb-2.5"
+        >
+          <Share2 className="w-4 h-4" />
+          <span>Guardar en Google Drive / Compartir</span>
+        </button>
+
+        {/* Secondary Row: Descargar JSON y Restaurar Copia */}
+        <div className="grid grid-cols-2 gap-2">
+          <button
+            onClick={handleDirectDownload}
+            className="py-2.5 px-3 bg-white dark:bg-[#131f24] border-2 border-duo-blue text-duo-blue-dark dark:text-blue-300 hover:bg-duo-blue-light/30 font-black text-xs rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+          >
+            <CloudDownload className="w-4 h-4 text-duo-blue" />
+            <span>Descargar .JSON</span>
+          </button>
+
+          <button
+            onClick={() => fileInputRef.current?.click()}
+            className="py-2.5 px-3 bg-white dark:bg-[#131f24] border-2 border-duo-purple text-duo-purple dark:text-purple-300 hover:bg-duo-purple/15 font-black text-xs rounded-xl transition-all flex items-center justify-center gap-1.5 cursor-pointer"
+          >
+            <CloudUpload className="w-4 h-4 text-duo-purple" />
+            <span>Restaurar Copia</span>
+          </button>
+        </div>
+
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept=".json,application/json"
+          className="hidden"
+          onChange={handleFileChange}
+        />
+      </div>
+
+      {/* Confirmation Modal for Restore */}
+      {pendingRestorePayload && (
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-xs flex items-center justify-center p-4 animate-fade-in">
+          <div className="bg-white dark:bg-[#18272e] rounded-3xl p-6 border-2 border-duo-gray-200 dark:border-[#283842] shadow-2xl max-w-sm w-full animate-scale-up">
+            <div className="w-12 h-12 rounded-2xl bg-amber-500/15 border border-amber-500/30 text-amber-500 flex items-center justify-center mx-auto mb-3">
+              <CloudUpload className="w-6 h-6" />
+            </div>
+            <h3 className="text-base font-black text-center text-gray-800 dark:text-gray-100 mb-1">
+              ¿Restaurar Copia de Seguridad?
+            </h3>
+            <p className="text-xs text-center text-gray-500 dark:text-gray-400 mb-4 leading-relaxed">
+              Esta acción actualizará tu perfil, estrellas, lecciones y niveles SRS con los datos del respaldo seleccionado
+              {pendingRestorePayload.exportedAt ? ` (fecha: ${new Date(pendingRestorePayload.exportedAt).toLocaleDateString('es-ES')})` : ''}.
+            </p>
+            <div className="flex gap-2">
+              <button
+                onClick={() => setPendingRestorePayload(null)}
+                className="flex-1 py-2.5 bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 text-gray-700 dark:text-gray-300 font-black text-xs rounded-xl transition-all cursor-pointer"
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={handleConfirmRestore}
+                className="flex-1 py-2.5 bg-duo-green hover:bg-duo-green-dark text-white font-black text-xs rounded-xl shadow-duo-btn-sm active:translate-y-0.5 transition-all cursor-pointer"
+              >
+                Restaurar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* SQLite Local Persistence Section */}
       <h3 className="text-sm font-black text-gray-700 dark:text-gray-300 uppercase tracking-wider mb-2">Persistencia de Datos</h3>

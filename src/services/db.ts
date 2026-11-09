@@ -467,6 +467,89 @@ class DatabaseService {
     }
     this.initFallbackStorage();
   }
+
+  // Import and rehydrate full database from backup
+  public async importAllData(data: {
+    profile: UserProfile;
+    lessonProgress: Record<string, { unlocked: boolean; completedSteps: number; stars: number; totalSteps?: number }>;
+    flashcardSRS: Record<string, { srsLevel: number; intervalDays: number; nextReviewDate: string; timesReviewed: number; timesCorrect: number }>;
+  }): Promise<void> {
+    await this.init();
+
+    if (this.db) {
+      try {
+        await this.db.execute('DELETE FROM user_profile; DELETE FROM lesson_progress; DELETE FROM flashcard_srs; DELETE FROM quiz_history;');
+      } catch (e) {
+        console.warn('SQLite clear error before import:', e);
+      }
+    }
+
+    // Save profile
+    if (data.profile) {
+      await this.saveUserProfile(data.profile);
+    }
+
+    // Save lesson progress
+    if (data.lessonProgress) {
+      for (const [nodeId, prog] of Object.entries(data.lessonProgress)) {
+        let unitId = 0;
+        const match = nodeId.match(/^l(\d+)-/);
+        if (match) {
+          unitId = parseInt(match[1], 10);
+        }
+        await this.saveLessonNodeProgress(
+          nodeId,
+          unitId,
+          prog.unlocked,
+          prog.completedSteps,
+          prog.totalSteps || 3,
+          prog.stars
+        );
+      }
+    }
+
+    // Save flashcards SRS
+    if (data.flashcardSRS) {
+      for (const [cardId, srs] of Object.entries(data.flashcardSRS)) {
+        if (this.db) {
+          try {
+            const query = `
+              INSERT OR REPLACE INTO flashcard_srs (card_id, category, srs_level, interval_days, next_review_date, times_reviewed, times_correct)
+              VALUES (?, ?, ?, ?, ?, ?, ?);
+            `;
+            await this.db.run(query, [
+              cardId,
+              'general',
+              srs.srsLevel,
+              srs.intervalDays,
+              srs.nextReviewDate,
+              srs.timesReviewed,
+              srs.timesCorrect
+            ]);
+          } catch (e) {
+            console.error('SQLite insert SRS on import error:', e);
+          }
+        }
+      }
+    }
+
+    // Update fallback storage
+    const fallback = {
+      profile: data.profile,
+      lessonProgress: data.lessonProgress,
+      flashcardSRS: data.flashcardSRS,
+      quizHistory: []
+    };
+    this.saveFallbackData(fallback);
+
+    if (!this.isNative && this.sqlite) {
+      try {
+        await this.sqlite.saveToStore(DB_NAME);
+      } catch (e) {
+        console.warn('saveToStore warning:', e);
+      }
+    }
+  }
 }
 
 export const dbService = new DatabaseService();
