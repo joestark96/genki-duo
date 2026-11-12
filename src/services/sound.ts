@@ -389,7 +389,9 @@ class SoundService {
 
   // Normalize phonetics for Japanese TTS engines (prevents morphological misreadings like 'はは' being parsed as topic particles 'wa-wa')
   private normalizeJapanesePhonetics(input: string): string {
-    return input.replace(/(^|[^ぁ-んァ-ン一-龥])はは([^ぁ-んァ-ン一-龥]|$)/g, '$1ハハ$2');
+    return input
+      .replace(/(^|[^ぁ-んァ-ン一-龥])はは(?=([^ぁ-んァ-ン一-龥]|$))/g, '$1母')
+      .replace(/(^|[^ぁ-んァ-ン一-龥])はは(は|が|を|に|へ|と|も|の|で|や|から|まで)/g, '$1母$2');
   }
 
   // Play neural Japanese voice via unlocked Web Audio API with male formant warmth
@@ -674,12 +676,13 @@ class SoundService {
     }
 
     // Strip square brackets [Furigana] and parentheses translations (e.g. "みます (veo)" -> "みます")
-    const cleanText = text
+    const rawClean = text
       .replace(/\[.*?\]/g, '')
       .replace(/\(.*?\)/g, '')
       .replace(/（.*?）/g, '')
       .trim();
-    if (!cleanText) return;
+    if (!rawClean) return;
+    const cleanText = this.normalizeJapanesePhonetics(rawClean);
 
     this.getAudioContext();
     this.stopActivePlayback();

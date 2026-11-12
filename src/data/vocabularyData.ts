@@ -136,7 +136,7 @@ export const genkiVocabulary: VocabWord[] = [
   // --- LECCIÓN 7: FOTOGRAFÍA FAMILIAR (Te iru, Apariencia, Conectar oraciones) ---
   { id: 'v7-1', lesson: 7, japanese: '家族', furigana: 'かぞく', romaji: 'kazoku', spanish: 'Familia', pos: 'noun' },
   { id: 'v7-2', lesson: 7, japanese: '父', furigana: 'ちち', romaji: 'chichi', spanish: 'Mi padre (humilde)', pos: 'noun' },
-  { id: 'v7-3', lesson: 7, japanese: '母', furigana: 'はは', romaji: 'haha', spanish: 'Mi madre (humilde)', pos: 'noun' },
+  { id: 'v7-3', lesson: 7, japanese: '母', furigana: 'はは', romaji: 'haha', spanish: 'Mi madre (humilde)', pos: 'noun', audioText: '母' },
   { id: 'v7-4', lesson: 7, japanese: 'お父さん', furigana: 'おとうさん', romaji: 'otousan', spanish: 'Padre (de otra persona / respetuoso)', pos: 'noun' },
   { id: 'v7-5', lesson: 7, japanese: 'お母さん', furigana: 'おかあさん', romaji: 'okaasan', spanish: 'Madre (de otra persona / respetuoso)', pos: 'noun' },
   { id: 'v7-6', lesson: 7, japanese: '兄', furigana: 'あに', romaji: 'ani', spanish: 'Mi hermano mayor', pos: 'noun' },
