@@ -53,7 +53,7 @@ export const backupService = {
 
     return {
       appName: 'NihonGo!',
-      version: '1.1.1',
+      version: '1.1.2',
       exportedAt: nowIso,
       profile,
       lessonProgress,
