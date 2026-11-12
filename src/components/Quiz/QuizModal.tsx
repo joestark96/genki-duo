@@ -165,6 +165,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
   const [wrongAttempts, setWrongAttempts] = useState(0);
   const [showDialogueTranslation, setShowDialogueTranslation] = useState(true);
   const [activeDialogueLineIdx, setActiveDialogueLineIdx] = useState<number | null>(null);
+  const [showTranscript, setShowTranscript] = useState(false);
   const dialogueLineRefs = useRef<Record<number, HTMLDivElement | null>>({});
 
   // Auto-scroll chat to active dialogue line during playback
@@ -195,6 +196,7 @@ export const QuizModal: React.FC<QuizModalProps> = ({
       setSelectedRight(null);
       setMismatchedPair(null);
       setActiveDialogueLineIdx(null);
+      setShowTranscript(false);
       setStatus('answering');
 
       if (currentExercise.options) {
@@ -276,10 +278,12 @@ export const QuizModal: React.FC<QuizModalProps> = ({
       if (currentExercise.japaneseVoiceText) {
         sound.speakJapanese(currentExercise.japaneseVoiceText);
       }
+      setShowTranscript(true);
       setStatus('correct');
     } else {
       sound.playIncorrect();
       setWrongAttempts(prev => prev + 1);
+      setShowTranscript(true);
 
       if (isJumpAhead) {
         const remaining = jumpChancesLeft - 1;
@@ -953,6 +957,70 @@ export const QuizModal: React.FC<QuizModalProps> = ({
                 <span className="text-2xl leading-none">🐢</span>
                 <span className="text-[9px] font-black uppercase mt-0.5">Lento</span>
               </button>
+            </div>
+          )}
+
+          {/* Transcript revealable after answering (Listening exercises & Audio prompts) */}
+          {(status === 'correct' || status === 'incorrect') && (currentExercise.type === 'listening' || currentExercise.japaneseVoiceText) && (
+            <div className="my-3 p-4 rounded-2xl bg-indigo-50/90 dark:bg-[#15232d] border-2 border-indigo-200 dark:border-indigo-800/70 shadow-sm animate-fade-in">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <span className="text-base">📝</span>
+                  <span className="text-xs font-black uppercase tracking-wider text-indigo-900 dark:text-indigo-200">
+                    Transcripción del Audio
+                  </span>
+                </div>
+                <button
+                  onClick={() => {
+                    sound.playTap();
+                    setShowTranscript(prev => !prev);
+                  }}
+                  className="px-2.5 py-1 rounded-xl text-xs font-black text-indigo-600 dark:text-indigo-300 hover:bg-indigo-100 dark:hover:bg-indigo-900/40 flex items-center gap-1 transition-colors cursor-pointer"
+                >
+                  {showTranscript ? <EyeOff className="w-3.5 h-3.5" /> : <Eye className="w-3.5 h-3.5" />}
+                  <span>{showTranscript ? 'Ocultar' : 'Ver transcripción'}</span>
+                </button>
+              </div>
+
+              {showTranscript && (
+                <div className="flex flex-col gap-2 mt-3 pt-3 border-t border-indigo-200/80 dark:border-indigo-800/50">
+                  <div className="flex items-start justify-between gap-3">
+                    <p className="text-lg md:text-xl font-bold font-['Noto_Sans_JP'] text-gray-900 dark:text-gray-100 leading-relaxed">
+                      {currentExercise.japaneseVoiceText || currentExercise.promptSub}
+                    </p>
+                    {currentExercise.japaneseVoiceText && (
+                      <div className="flex items-center gap-1.5 flex-shrink-0">
+                        <button
+                          onClick={() => {
+                            sound.playTap();
+                            sound.speakJapanese(currentExercise.japaneseVoiceText!, 0.9);
+                          }}
+                          className="p-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl shadow-xs transition-colors cursor-pointer"
+                          title="Replay audio normal"
+                        >
+                          <Volume2 className="w-4 h-4" />
+                        </button>
+                        <button
+                          onClick={() => {
+                            sound.playTap();
+                            sound.speakJapanese(currentExercise.japaneseVoiceText!, 0.70);
+                          }}
+                          className="p-2 bg-indigo-100 dark:bg-indigo-900/60 hover:bg-indigo-200 text-indigo-700 dark:text-indigo-200 rounded-xl transition-colors cursor-pointer"
+                          title="Replay lento (tortuga)"
+                        >
+                          <span className="text-sm leading-none">🐢</span>
+                        </button>
+                      </div>
+                    )}
+                  </div>
+
+                  {currentExercise.explanation && (
+                    <p className="text-xs font-semibold text-indigo-800/80 dark:text-indigo-300/90 mt-1 bg-white/60 dark:bg-black/20 p-2 rounded-xl">
+                      💡 {currentExercise.explanation}
+                    </p>
+                  )}
+                </div>
+              )}
             </div>
           )}
         </div>

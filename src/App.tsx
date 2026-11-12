@@ -21,6 +21,7 @@ import { GlobalDownloadBanner } from './components/Audio/GlobalDownloadBanner';
 import { LandingPage } from './pages/LandingPage';
 import { Capacitor } from '@capacitor/core';
 import { getLocalDateKey, recordDailyLessonActivity } from './utils/dateUtils';
+import { notificationService } from './services/notificationService';
 
 // Ionic core CSS
 import '@ionic/react/css/core.css';
@@ -229,6 +230,11 @@ export const App: React.FC = () => {
             return card;
           });
         });
+
+        // 4. Ensure notification reminder is active if user enabled it
+        if (notificationService.isEnabled()) {
+          notificationService.scheduleDailyReminder(notificationService.getReminderTime()).catch(() => {});
+        }
       } catch (err) {
         console.error('Error loading data from SQLite:', err);
       } finally {

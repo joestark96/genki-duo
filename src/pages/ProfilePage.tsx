@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { User, Flame, Zap, Heart, Gem, Database, RotateCcw, Award, CheckCircle2, Volume2, Moon, Sun, Type, Sparkles, Trophy, Target, Gift, Cloud, CloudUpload, CloudDownload, Share2, AlertCircle } from 'lucide-react';
+import { User, Flame, Zap, Heart, Gem, Database, RotateCcw, Award, CheckCircle2, Volume2, Moon, Sun, Type, Sparkles, Trophy, Target, Gift, Cloud, CloudUpload, CloudDownload, Share2, AlertCircle, Bell, Clock } from 'lucide-react';
 import { UserProfile, Unit } from '../types';
 import { sound, CHARACTER_VOICES } from '../services/sound';
 import { getLocalDateKey, getDailyQuestStats } from '../utils/dateUtils';
 import { NavTab } from '../components/BottomNav';
 import { AudioDownloadManager } from '../components/Audio/AudioDownloadManager';
 import { backupService, NihonGoBackupPayload } from '../services/backupService';
+import { notificationService } from '../services/notificationService';
 
 interface ProfilePageProps {
   profile: UserProfile;
@@ -275,6 +276,35 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
       setBackupErrorMessage(err?.message || 'Error al restaurar los datos.');
       setPendingRestorePayload(null);
     }
+  };
+
+  // Daily Habit Notification State
+  const [notificationsEnabled, setNotificationsEnabled] = useState<boolean>(() => notificationService.isEnabled());
+  const [reminderTime, setReminderTime] = useState<string>(() => notificationService.getReminderTime());
+
+  const handleToggleNotifications = async () => {
+    sound.playTap();
+    if (notificationsEnabled) {
+      await notificationService.cancelDailyReminder();
+      setNotificationsEnabled(false);
+    } else {
+      const scheduled = await notificationService.scheduleDailyReminder(reminderTime);
+      if (scheduled) {
+        setNotificationsEnabled(true);
+      }
+    }
+  };
+
+  const handleTimeChange = async (newTime: string) => {
+    setReminderTime(newTime);
+    if (notificationsEnabled) {
+      await notificationService.scheduleDailyReminder(newTime);
+    }
+  };
+
+  const handleSendTestNotification = async () => {
+    sound.playTap();
+    await notificationService.sendTestNotification();
   };
 
   return (
@@ -562,6 +592,75 @@ export const ProfilePage: React.FC<ProfilePageProps> = ({
               </span>
             </div>
           </button>
+        </div>
+
+        <div className="border-t border-duo-gray-200 dark:border-[#283842]" />
+
+        {/* Daily Study Reminder Notification */}
+        <div className="flex flex-col gap-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className={`p-2.5 rounded-xl border-2 transition-colors ${
+                notificationsEnabled
+                  ? 'bg-amber-500/20 border-amber-500 text-amber-500'
+                  : 'bg-gray-100 dark:bg-gray-800 border-gray-300 dark:border-gray-700 text-gray-400'
+              }`}>
+                <Bell className="w-5 h-5 stroke-[2.5px]" />
+              </div>
+              <div>
+                <div className="text-sm font-black text-gray-800 dark:text-gray-100 flex items-center gap-1.5">
+                  <span>Recordatorio Diario</span>
+                  {notificationsEnabled && (
+                    <span className="text-[10px] px-1.5 py-0.5 rounded-md bg-amber-500/20 text-amber-600 dark:text-amber-400 font-black">
+                      {reminderTime}
+                    </span>
+                  )}
+                </div>
+                <div className="text-[11px] font-bold text-gray-400 dark:text-gray-400">
+                  {notificationsEnabled
+                    ? `Aviso cada día a las ${reminderTime} para cuidar tu racha`
+                    : 'Desactivado (Activa para no olvidar tu estudio)'}
+                </div>
+              </div>
+            </div>
+
+            <button
+              onClick={handleToggleNotifications}
+              type="button"
+              role="switch"
+              aria-checked={notificationsEnabled}
+              className={`w-14 h-8 flex items-center rounded-full p-1 transition-colors duration-200 cursor-pointer ${
+                notificationsEnabled ? 'bg-amber-500 justify-end' : 'bg-duo-gray-300 dark:bg-gray-700 justify-start'
+              }`}
+            >
+              <div className="bg-white w-6 h-6 rounded-full shadow-md transform transition-transform duration-200 flex items-center justify-center">
+                <Bell className={`w-3.5 h-3.5 ${notificationsEnabled ? 'text-amber-500' : 'text-gray-400'}`} />
+              </div>
+            </button>
+          </div>
+
+          {/* Time Picker & Test Notification Button */}
+          {notificationsEnabled && (
+            <div className="flex items-center justify-between gap-2 p-2.5 rounded-xl bg-amber-50/60 dark:bg-amber-950/20 border border-amber-200/80 dark:border-amber-800/40">
+              <div className="flex items-center gap-2">
+                <Clock className="w-4 h-4 text-amber-600 dark:text-amber-400" />
+                <span className="text-xs font-bold text-gray-700 dark:text-gray-300">Hora:</span>
+                <input
+                  type="time"
+                  value={reminderTime}
+                  onChange={(e) => handleTimeChange(e.target.value)}
+                  className="px-2 py-1 rounded-lg bg-white dark:bg-[#18272e] border border-amber-300 dark:border-amber-700 font-bold text-xs text-gray-800 dark:text-gray-100 cursor-pointer"
+                />
+              </div>
+
+              <button
+                onClick={handleSendTestNotification}
+                className="px-2.5 py-1 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-[11px] font-black shadow-2xs active:translate-y-0.5 transition-all cursor-pointer"
+              >
+                Probar
+              </button>
+            </div>
+          )}
         </div>
       </div>
 
